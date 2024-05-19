@@ -52,7 +52,7 @@
 !>  [⛓](#ParaMonteLangDocumentation)
 !>  \section ParaMonteLangDocumentation ParaMonte Fortran Documentation Website
 !>
-!>  The documentation for the latest version of the ParaMonte Fortran library is always <a href="../../../fortran/latest/html/index.html" target="_blank"><b>available on this page</b></a>.<br>
+!>  The documentation for the latest version of the ParaMonte Fortran library is always <a href="../../fortran/latest/html/index.html" target="_blank"><b>available on this page</b></a>.<br>
 !>
 !>  [⛓](#ParaMonteLangModules)
 !>  \section ParaMonteLangModules ParaMonte Fortran Library Modules
@@ -643,7 +643,6 @@
 !>
 !>  \todo
 !>  \pvhigh
-!>  The module `pm_distanceHellinger` for computing the Hellinger metric distance must be added to the library.<br>
 !>  The module `pm_distanceManhattan` for computing the Manhattan metric distance must be added to the library.<br>
 !>  The module `pm_distanceMinkowski` for computing the Minkowski metric distance must be added to the library.<br>
 !>

@@ -15,7 +15,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief
-!>  This file contains procedure implementations of [pm_distGeom](@ref pm_distGeom).
+!>  This file contains procedure implementations of [pm_distGeom](@ref pm_distGeom).<br>
 !>
 !>  \final
 !>

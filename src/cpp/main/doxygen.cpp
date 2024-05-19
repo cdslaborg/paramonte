@@ -51,7 +51,7 @@
 /// [⛓](#ParaMonteLangDocumentation)
 /// \section ParaMonteLangDocumentation ParaMonte C++ Documentation Website
 ///
-/// The documentation for the latest version of the ParaMonte C++ library is always <a href="../../../cpp/latest/html/index.html" target="_blank"><b>available on this page</b></a>.<br>
+/// The documentation for the latest version of the ParaMonte C++ library is always <a href="../../cpp/latest/html/index.html" target="_blank"><b>available on this page</b></a>.<br>
 ///
 /// [⛓](#ParaMonteLangModules)
 /// \section ParaMonteLangModules ParaMonte C++ Library Modules

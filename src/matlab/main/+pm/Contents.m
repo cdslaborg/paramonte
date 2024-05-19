@@ -51,7 +51,7 @@
 %>  [⛓](#ParaMonteLangDocumentation)
 %>  \section ParaMonteLangDocumentation ParaMonte MATLAB Documentation Website
 %>
-%>  The documentation for the latest version of the ParaMonte MATLAB library is always <a href="../../../matlab/latest/html/index.html" target="_blank"><b>available on this page</b></a>.<br>
+%>  The documentation for the latest version of the ParaMonte MATLAB library is always <a href="../../matlab/latest/html/index.html" target="_blank"><b>available on this page</b></a>.<br>
 %>
 %>  [⛓](#ParaMonteUsage)
 %>  <!--=====================================-->
@@ -62,10 +62,8 @@
 %>
 %>  &emsp;<a href="https://www.cdslab.org/paramonte" target="_blank"><b>https://www.cdslab.org/paramonte</b></a>
 %>
-%>  To get started with the library once you download it, simply create an instance of the @paramonte
-%>  class to access the routines and functionalities available in the library.
-%>  Before doing so, ensure to add the library path to your MATLAB session,
-%>  as done below enclosed between the two comment lines,
+%>  To get started with the library once you download it, simply add the path to the ParaMonte library `+pm`
+%>  package to access the routines and functionalities available in the library.<br>
 %>
 %>  \code{.m}
 %>
@@ -79,7 +77,7 @@
 %>  [⛓](#ParaMonteLangDocumentation)
 %>  \section ParaMonteLangDocumentation ParaMonte MATLAB Documentation Website
 %>
-%>  The documentation for the latest version of the ParaMonte MATLAB library is always <a href="../../../matlab/latest/html/index.html" target="_blank"><b>available on this page</b></a>.<br>
+%>  The documentation for the latest version of the ParaMonte MATLAB library is always <a href="../../matlab/latest/html/index.html" target="_blank"><b>available on this page</b></a>.<br>
 %>
 %>  [⛓](#ParaMonteLangModules)
 %>  \section ParaMonteLangModules ParaMonte MATLAB Library Modules

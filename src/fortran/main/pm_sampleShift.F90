@@ -16,15 +16,16 @@
 
 !>  \brief
 !>  This module contains classes and procedures for shifting
-!>  univariate or multivariate samples by arbitrary amounts along specific directions.
+!>  univariate or multivariate samples by arbitrary amounts along specific directions.<br>
 !>
 !>  \devnote
-!>  While it is tempting to add generic interfaces for automatic shifting by the negative of the mean of the sample (in the absence of arbitrary `amount` argument),
+!>  While it is tempting to add generic interfaces for automatic shifting by the 
+!>  negative of the mean of the sample (in the absence of arbitrary `amount` argument),
 !>  such interfaces were not added to this module for the following reasons:<br>
 !>  <ol>
-!>      <li>    Why should shifting by the negative of the mean be the default behavior?
-!>      <li>    Even though shifting by the negative of the mean is popular, its implementation as the default normalization in
-!>              the generic interfaces of this module requires inclusion of sample `weight` arguments,
+!>      <li>    Why should shifting by the negative of the mean be the default behavior?<br>
+!>      <li>    Even though shifting by the negative of the mean is popular, its implementation as the default 
+!>              normalization in the generic interfaces of this module requires inclusion of sample `weight` arguments,
 !>              thus significantly complicating the interfaces of this module with little gain.<br>
 !>  </ol>
 !>
@@ -74,10 +75,10 @@ module pm_sampleShift
     !>  For example usage, see the relevant interfaces that use instances of this derived type.<br>
     !>
     !>  \see
-    !>  [meanshift](@ref pm_sampleShift::meanshift)
+    !>  [meanshift](@ref pm_sampleShift::meanshift)<br>
     !>
     !>  \test
-    !>  [test_pm_sampleShift](@ref test_pm_sampleShift)
+    !>  [test_pm_sampleShift](@ref test_pm_sampleShift)<br>
     !>
     !>  \final{meanshift_type}
     !>
@@ -92,10 +93,12 @@ module pm_sampleShift
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !>  Generate a sample of shape `(nsam)`, or `(ndim, nsam)` or `(nsam, ndim)` that is shifted by the specified input `amount` along the specified axis `dim`.<br>
+    !>  Generate a sample of shape `(nsam)`, or `(ndim, nsam)` or `(nsam, ndim)` that 
+    !>  is shifted by the specified input `amount` along the specified axis `dim`.<br>
     !>
     !>  \details
-    !>  Here, `ndim` stands for the number of dimensions (data attributes) of the input `sample` and `nsam` represents the number of data points in the `sample`.<br>
+    !>  Here, `ndim` stands for the number of dimensions (data attributes) of the 
+    !>  input `sample` and `nsam` represents the number of data points in the `sample`.<br>
     !>  If the input `amount` is the negative of the mean of the sample, then the returned sample will have a mean of zero.<br>
     !>
     !>  \param[in]  sample      :   The input `contiguous` array of shape `(nsam)`, `(ndim, nsam)`, or `(nsam, ndim)` of,
