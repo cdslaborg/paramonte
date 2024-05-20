@@ -1,4 +1,3 @@
-function [imageData, alpha] = savefig(varargin) %#ok<*STRCL1,*DATST,*TNOW1>
 %EXPORT_FIG  Exports figures in a publication-quality format
 %
 % Examples:
@@ -391,6 +390,7 @@ function [imageData, alpha] = savefig(varargin) %#ok<*STRCL1,*DATST,*TNOW1>
 % 05/12/23: (3.42) Fixed unintended cropping of colorbar title in PDF export with -transparent (issues #382, #383)
 % 07/12/23: (3.43) Fixed unintended modification of colorbar in bitmap export (issue #385)
 %}
+function [imageData, alpha] = savefig(varargin) %#ok<*STRCL1,*DATST,*TNOW1>
 
     %%%%
     %%%% Ensure all input string values are characters.

@@ -1,57 +1,52 @@
+%
+%   Return a MATLAB double, cell, or table matrix whose rows or
+%   columns are unrolled according to a prespecified ``weight``.
+%
+%       cmat
+%
+%           The input compact MATLAB double, cell, or table
+%           matrix that is to be unrolled along an axis.
+%
+%       dim
+%
+%           The input scalar MATLAB integer
+%           that can be either ``1`` or ``2``
+%           representing the axis along with the
+%           array must be unrolled.
+%           An input value of ``1`` implies unrolling
+%           along the columns of the input ``cmat``,
+%           that is, unrolling the ``cmat`` rows.
+%
+%       weight
+%
+%           The input MATLAB matrix of integer values
+%           of size ``size(cmat, dim)`` containing the
+%           set of weights to used for unrolling the
+%           input ``cmat``.
+%
+%           Negative weights lead to a runtime error.
+%           Any entry corresponding to a zero weight
+%           is ignored in the output ``vmat``.
+%
+%>  \return
+%       vmat
+%
+%           The output MATLAB matrix of the same type and kind
+%           as the input ``cmat``, containing the ``cmat`` that
+%           is unrolled along the specified axis ``dim`` using
+%           the input weights.
+%
+%   Interface
+%   ---------
+%
+%       vmat = pm.array.verbose(cmat, dim, weight)
+%
+%>  \final{}
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function vmat = verbose(cmat, dim, weight)
-    %
-    %   Return a MATLAB double, cell, or table matrix whose rows or
-    %   columns are unrolled according to a prespecified ``weight``.
-    %
-    %   Parameters
-    %   ----------
-    %
-    %       cmat
-    %
-    %           The input compact MATLAB double, cell, or table
-    %           matrix that is to be unrolled along an axis.
-    %
-    %       dim
-    %
-    %           The input scalar MATLAB integer
-    %           that can be either ``1`` or ``2``
-    %           representing the axis along with the
-    %           array must be unrolled.
-    %           An input value of ``1`` implies unrolling
-    %           along the columns of the input ``cmat``,
-    %           that is, unrolling the ``cmat`` rows.
-    %
-    %       weight
-    %
-    %           The input MATLAB matrix of integer values
-    %           of size ``size(cmat, dim)`` containing the
-    %           set of weights to used for unrolling the
-    %           input ``cmat``.
-    %
-    %           Negative weights lead to a runtime error.
-    %           Any entry corresponding to a zero weight
-    %           is ignored in the output ``vmat``.
-    %
-    %   Returns
-    %   -------
-    %
-    %       vmat
-    %
-    %           The output MATLAB matrix of the same type and kind
-    %           as the input ``cmat``, containing the ``cmat`` that
-    %           is unrolled along the specified axis ``dim`` using
-    %           the input weights.
-    %
-    %   Interface
-    %   ---------
-    %
-    %       vmat = pm.array.verbose(cmat, dim, weight)
-    %
-    %   LICENSE
-    %   -------
-    %
-    %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-    %
     if nargin < 3
         help("pm.array.verbose");
         error   ( newline ...

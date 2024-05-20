@@ -1,49 +1,44 @@
+%
+%   Return the vector of MATLAB strings containing the
+%   path(s) to the ParaMonte library mex shared files.
+%
+%       mexname
+%
+%           The input scalar MATLAB string containing
+%           the (partial) name of a MEX file name without MEX extension.
+%           (**optional**. If missing, all detected paths will be returned.)
+%
+%       config
+%
+%           The input scalar (or vector of) MATLAB string(s) containing the
+%           (set of) keyword(s) to match in the identified MEX files paths.
+%           (**optional**. If missing, all detected paths will be returned.)
+%
+%>  \return
+%       mexpaths
+%
+%           The output vector of MATLAB strings containing the
+%           path(s) to the ParaMonte library MEX shared files.
+%           The output ``mexpaths`` will be an empty list
+%           if no such paths are found.
+%
+%   Interface
+%   ---------
+%
+%       mexpaths = pm.lib.path.mex()
+%       mexpaths = pm.lib.path.mex([])
+%       mexpaths = pm.lib.path.mex([], [])
+%       mexpaths = pm.lib.path.mex(mexname)
+%       mexpaths = pm.lib.path.mex([], config)
+%       mexpaths = pm.lib.path.mex(mexname, [])
+%       mexpaths = pm.lib.path.mex(mexname, config)
+%
+%>  \final{}
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function mexpaths = mex(mexname, config)
-    %
-    %   Return the vector of MATLAB strings containing the
-    %   path(s) to the ParaMonte library mex shared files.
-    %
-    %   Parameters
-    %   ----------
-    %
-    %       mexname
-    %
-    %           The input scalar MATLAB string containing
-    %           the (partial) name of a MEX file name without MEX extension.
-    %           (**optional**. If missing, all detected paths will be returned.)
-    %
-    %       config
-    %
-    %           The input scalar (or vector of) MATLAB string(s) containing the
-    %           (set of) keyword(s) to match in the identified MEX files paths.
-    %           (**optional**. If missing, all detected paths will be returned.)
-    %
-    %   Returns
-    %   -------
-    %
-    %       mexpaths
-    %
-    %           The output vector of MATLAB strings containing the
-    %           path(s) to the ParaMonte library MEX shared files.
-    %           The output ``mexpaths`` will be an empty list
-    %           if no such paths are found.
-    %
-    %   Interface
-    %   ---------
-    %
-    %       mexpaths = pm.lib.path.mex()
-    %       mexpaths = pm.lib.path.mex([])
-    %       mexpaths = pm.lib.path.mex([], [])
-    %       mexpaths = pm.lib.path.mex(mexname)
-    %       mexpaths = pm.lib.path.mex([], config)
-    %       mexpaths = pm.lib.path.mex(mexname, [])
-    %       mexpaths = pm.lib.path.mex(mexname, config)
-    %
-    %   LICENSE
-    %   -------
-    %
-    %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-    %
     if  nargin < 2
         config = [];
     end

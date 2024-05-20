@@ -1,29 +1,24 @@
+%
+%   Return a MATLAB string containing the
+%   absolute path to the system home directory.
+%
+%       None
+%
+%>  \return
+%       A MATLAB string containing the
+%       absolute path to the system home directory.
+%
+%   Interface
+%   ---------
+%
+%       path = pm.sys.path.home()
+%
+%>  \final{}
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function path = home(varargin)
-    %
-    %   Return a MATLAB string containing the
-    %   absolute path to the system home directory.
-    %
-    %   Parameters
-    %   ----------
-    %
-    %       None
-    %
-    %   Returns
-    %   -------
-    %
-    %       A MATLAB string containing the
-    %       absolute path to the system home directory.
-    %
-    %   Interface
-    %   ---------
-    %
-    %       path = pm.sys.path.home()
-    %
-    %   LICENSE
-    %   -------
-    %
-    %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-    %
     persistent homePathPersistent
     %freshRequested = false;
     %if nargin==0

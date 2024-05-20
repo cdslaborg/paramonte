@@ -1,22 +1,17 @@
+%
+%   Check the requirements of the installed ParaMonte MATLAB library.
+%
+%       None
+%
+%>  \return
+%       None
+%
+%   Interface
+%   ---------
+%
+%       pm.lib.verify()
+%
 function verify()
-    %
-    %   Check the requirements of the installed ParaMonte MATLAB library.
-    %
-    %   Parameters
-    %   ----------
-    %
-    %       None
-    %
-    %   Returns
-    %   -------
-    %
-    %       None
-    %
-    %   Interface
-    %   ---------
-    %
-    %       pm.lib.verify()
-    %
 
     %if isunix
     %    setenv('PATH', ['/usr/local/bin:', getenv('PATH')]);

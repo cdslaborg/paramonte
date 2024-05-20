@@ -1,4 +1,3 @@
-function colornames_view(palette,order)
 % View the COLORNAMES palettes in an interactive figure. Sort colors by name/color space.
 %
 % (c) 2014-2019 Stephen Cobeldick
@@ -31,6 +30,7 @@ function colornames_view(palette,order)
 % none
 %
 % See also COLORNAMES COLORNAMES_CUBE COLORNAMES_DELTAE MAXDISTCOLOR COLORMAP
+function colornames_view(palette,order)
 
 %% Figure Parameters %%
 %

@@ -1,29 +1,25 @@
+%
+%   This is the ``Abstract`` base class for generating
+%   subclass of MATLAB ``handle`` superclass whose annoying
+%   methods are forcefully hidden from the user view.
+%
+%       None
+%
+%>  \return
+%       None
+%
+%   Interface
+%   ---------
+%
+%       Handle = pm.matlab.Handle()
+%
+%>  \final{}
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef (Abstract) Handle < dynamicprops%handle
-    %
-    %   This is the ``Abstract`` base class for generating
-    %   subclass of MATLAB ``handle`` superclass whose annoying
-    %   methods are forcefully hidden from the user view.
-    %
-    %   Parameters
-    %   ----------
-    %
-    %       None
-    %
-    %   Returns
-    %   -------
-    %
-    %       None
-    %
-    %   Interface
-    %   ---------
-    %
-    %       Handle = pm.matlab.Handle()
-    %
-    %   LICENSE
-    %   -------
-    %
-    %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-    %
+
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     methods(Access = public)
@@ -61,33 +57,33 @@ classdef (Abstract) Handle < dynamicprops%handle
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     methods(Access = public)
+        %
+        %   Print help about the class of
+        %   the parent object on MATLAB display.
+        %
+        %   This is a dynamic method of the class ``pm.matlab.Handle``.
+        %
+        %   Parameters
+        %   ----------
+        %
+        %       None
+        %
+        %   Returns
+        %   -------
+        %
+        %       None
+        %
+        %   Interface
+        %   ---------
+        %
+        %       self.help()
+        %
+        %   LICENSE
+        %   -------
+        %
+        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
+        %
         function help(self)
-            %
-            %   Print help about the class of
-            %   the parent object on MATLAB display.
-            %
-            %   This is a dynamic method of the class ``pm.matlab.Handle``.
-            %
-            %   Parameters
-            %   ----------
-            %
-            %       None
-            %
-            %   Returns
-            %   -------
-            %
-            %       None
-            %
-            %   Interface
-            %   ---------
-            %
-            %       self.help()
-            %
-            %   LICENSE
-            %   -------
-            %
-            %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-            %
             help(class(self));
         end
     end

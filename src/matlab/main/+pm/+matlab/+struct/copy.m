@@ -1,56 +1,51 @@
+%
+%   Copy the contents of the struct/object ``from``
+%   to the struct/object ``to`` recursively and without
+%   destroying the existing components in ``to``.
+%
+%       from
+%
+%           The input scalar MATLAB struct whose (select)
+%           components must be copy/merged with the components
+%           of the input struct ``to``.
+%
+%       to
+%
+%           The input scalar MATLAB struct to which the
+%           components of ``from`` struct must be copied.
+%           (**optional**, default = ``struct()``)
+%
+%       fields
+%
+%           The input vector of MATLAB strings each element
+%           of which is a field name in ``from`` whose value
+%           has to be copied to the struct ``to``.
+%           (**optional**, default = ``fieldnames(from)`` or ``properties(from)``)
+%
+%>  \return
+%       tonew
+%
+%           The output MATLAB struct containing the
+%           merger of the two input MATLAB structs.
+%           If a field name in ``fields`` is common between
+%           ``from`` and ``to``, the field value of ``from`` will
+%           overwrite the corresponding field value of ``to``
+%           in the output ``tonew``.
+%
+%   Interface
+%   ---------
+%
+%       tonew = pm.matlab.struct.copy(from)
+%       tonew = pm.matlab.struct.copy(from, to)
+%       tonew = pm.matlab.struct.copy(from, [], fields)
+%       tonew = pm.matlab.struct.copy(from, to, fields)
+%
+%>  \final{}
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function tonew = copy(from, to, fields)
-    %
-    %   Copy the contents of the struct/object ``from``
-    %   to the struct/object ``to`` recursively and without
-    %   destroying the existing components in ``to``.
-    %
-    %   Parameters
-    %   ----------
-    %
-    %       from
-    %
-    %           The input scalar MATLAB struct whose (select)
-    %           components must be copy/merged with the components
-    %           of the input struct ``to``.
-    %
-    %       to
-    %
-    %           The input scalar MATLAB struct to which the
-    %           components of ``from`` struct must be copied.
-    %           (**optional**, default = ``struct()``)
-    %
-    %       fields
-    %
-    %           The input vector of MATLAB strings each element
-    %           of which is a field name in ``from`` whose value
-    %           has to be copied to the struct ``to``.
-    %           (**optional**, default = ``fieldnames(from)`` or ``properties(from)``)
-    %
-    %   Returns
-    %   -------
-    %
-    %       tonew
-    %
-    %           The output MATLAB struct containing the
-    %           merger of the two input MATLAB structs.
-    %           If a field name in ``fields`` is common between
-    %           ``from`` and ``to``, the field value of ``from`` will
-    %           overwrite the corresponding field value of ``to``
-    %           in the output ``tonew``.
-    %
-    %   Interface
-    %   ---------
-    %
-    %       tonew = pm.matlab.struct.copy(from)
-    %       tonew = pm.matlab.struct.copy(from, to)
-    %       tonew = pm.matlab.struct.copy(from, [], fields)
-    %       tonew = pm.matlab.struct.copy(from, to, fields)
-    %
-    %   LICENSE
-    %   -------
-    %
-    %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-    %
     if nargin < 3
         try
             fields = fieldnames(from);

@@ -1,169 +1,169 @@
+% Convert between RGB values and color names: from RGB to names, and names to RGB.
+%
+% (c) 2014-2019 Stephen Cobeldick
+%
+% Easily convert between RGB values and color names, in both directions!
+%
+% COLORNAMES matches the input colors (either names or an RGB map) to colors
+% from the requested palette. It returns both the color names and RGB values.
+%
+%%% Syntax:
+%  palettes = colornames()
+%  names = colornames(palette)
+%  names = colornames(palette,RGB)
+%  names = colornames(palette,RGB,deltaE)
+%  names = colornames(palette,names)
+%  names = colornames(palette,name1,name2,...)
+% [names,RGB] = colornames(palette,...)
+%
+%%% RGB inputs:
+% * Accepts multiple RGB values in a standard MATLAB Nx3 colormap.
+% * Choice of color distance (deltaE) calculation, any one of:
+%   'CIEDE2000', 'DIN99', 'CIE94' (default), 'CIE76', 'CMCl:c', or 'RGB'.
+%   For info on deltaE: <https://en.wikipedia.org/wiki/Color_difference>
+%   or: <http://www.colorwiki.com/wiki/Delta_E:_The_Color_Difference>
+% Note that palettes with sparse colors can produce unexpected matches.
+%
+%%% Color name inputs:
+% * Accepts multiple color names (in one cell array, or as separate inputs).
+% * Case-insensitive color name matches, e.g. 'Blue' == 'blue' == 'BLUE'.
+% * Allows optional space characters between the color name words.
+% * Allows camelCase to specify color names with space characters in them.
+% * Palettes with index numbers may be specified by the number: e.g.: '5'.
+% * Palettes Alphabet, MATLAB, and Natural also match the initial letter to
+%   the color name (except for 'Black' which is matched by 'k').
+%
+%% Space Characters in Color Names %%
+%
+% Many palettes use camelCase in the color names: COLORNAMES will match
+% the input names with any character case or spaces between the words, e.g.:
+% 'Sky Blue' == 'SKY BLUE' == 'sky blue' == 'SkyBlue' == 'SKYBLUE' == 'skyblue'.
+%
+% Palettes Foster and xkcd include spaces: clashes occur if the names are
+% converted to one case (e.g. lower) and the spaces removed. To make these
+% names more convenient to use, camelCase is equivalent to words separated
+% by spaces, e.g.: 'EggShell' == 'Egg Shell' == 'egg shell' == 'EGG SHELL'.
+% Note this is a different color to 'Eggshell' == 'eggshell' == 'EGGSHELL'.
+%
+% In xkcd the forward slash ('/') also distinguishes between different
+% colors, e.g.: 'Blue/Green' is not the same as 'Blue Green' (== 'BlueGreen').
+%
+%% Index Numbers in Color Names %%
+%
+% Palettes with a leading index number (e.g. AppleII, BS381C, CGA, RAL, etc)
+% can also use just the index number or words to select a color, e.g.:
+% '5' == 'Blue Flower' == 'BLUE FLOWER' == 'BlueFlower' == '5 Blue Flower'
+% And for the palettes with spaces, camelCase is also equivalent to words
+% separated by spaces, e.g.: '5BlueFlower' == '5 Blue Flower' == '5 blue flower'
+%
+%% Initial Letter Color Name Abbreviations %%
+%
+% Palettes Alphabet, MATLAB, and Natural also match the initial letter to
+% the color name (except for 'Black' which is matched by 'k'), e.g.:
+% 'B' == 'Blue', 'Y' =='Yellow', 'M' == 'Magenta', 'K' == 'Black'.
+%
+%% Examples %%
+%
+% >> palettes = colornames()
+% palettes =
+%     'Alphabet'
+%     'AmstradCPC'
+%     'AppleII'
+%     'Bang'
+%     'BS381C'
+%     'CGA'
+%     'Crayola'
+%     'CSS'
+%     'dvips'
+%     'Foster'
+%     'HTML4'
+%     'ISCC'
+%     'Kelly'
+%     'MacBeth'
+%     'MATLAB'
+%     'Natural'
+%     'R'
+%     'RAL'
+%     'Resene'
+%     'Resistor'
+%     'SherwinWilliams'
+%     'SVG'
+%     'Tableau'
+%     'Thesaurus'
+%     'Trubetskoy'
+%     'Wikipedia'
+%     'Wolfram'
+%     'X11'
+%     'xcolor'
+%     'xkcd'
+%
+% >> colornames('Natural') % all color names for one palette
+% ans =
+%     'Black'
+%     'Blue'
+%     'Green'
+%     'Red'
+%     'White'
+%     'Yellow'
+%
+% >> [names,rgb] = colornames('HTML4','blue','red','teal','olive')
+% names =
+%     'Blue'
+%     'Red'
+%     'Teal'
+%     'Olive'
+% rgb =
+%          0         0    1.0000
+%     1.0000         0         0
+%          0    0.5020    0.5020
+%     0.5020    0.5020         0
+%
+% >> colornames('HTML4',[0,0.5,1;1,0.5,0]) % default deltaE = CIE94
+% ans =
+%     'Blue'
+%     'Red'
+%
+% >> colornames('HTML4',[0,0.5,1;1,0.5,0],'rgb') % specify deltaE
+% ans =
+%     'Teal'
+%     'Olive'
+%
+% >> [names,rgb] = colornames('MATLAB');
+% >> [char(strcat(names,{'  '})),num2str(rgb)]
+%  ans =
+%  Black    0  0  0
+%  Blue     0  0  1
+%  Cyan     0  1  1
+%  Green    0  1  0
+%  Magenta  1  0  1
+%  Red      1  0  0
+%  White    1  1  1
+%  Yellow   1  1  0
+%
+% >> colornames('MATLAB','c','m','y','k')
+% ans =
+%     'Cyan'
+%     'Magenta'
+%     'Yellow'
+%     'Black'
+%
+%% Input and Output Arguments %%
+%
+%%% Inputs (*=default):
+%  palette = CharRowVector, the name of a supported palette, e.g.: 'CSS'.
+%%% The optional input/s can be names or RGB values. Names can be either:
+%  names  = CellOfCharRowVectors, any number of supported color names.
+%  name1,name2,... = CharRowVectors, any number of supported color names.
+%%% RGB values in a matrix, with optional choice of color-distance deltaE:
+%  RGB    = NumericMatrix, size Nx3, each row is an RGB triple (0<=rgb<=1).
+%  deltaE = CharRowVector: 'CIEDE2000', 'DIN99', 'CIE94'*, 'CIE76', 'CMCl:c', or 'RGB'.
+%
+%%% Outputs:
+%  cnc = CellOfCharRowVectors, size Nx1, the color names that best match the inputs.
+%  rgb = NumericMatrix, size Nx3, RGB values corresponding to names in <cnc>.
+%
+% See also COLORNAMES_CUBE COLORNAMES_DELTAE COLORNAMES_VIEW MAXDISTCOLOR COLORMAP
 function [cnc, rgb, dtE] = colornames(palette, varargin)
-    % Convert between RGB values and color names: from RGB to names, and names to RGB.
-    %
-    % (c) 2014-2019 Stephen Cobeldick
-    %
-    % Easily convert between RGB values and color names, in both directions!
-    %
-    % COLORNAMES matches the input colors (either names or an RGB map) to colors
-    % from the requested palette. It returns both the color names and RGB values.
-    %
-    %%% Syntax:
-    %  palettes = colornames()
-    %  names = colornames(palette)
-    %  names = colornames(palette,RGB)
-    %  names = colornames(palette,RGB,deltaE)
-    %  names = colornames(palette,names)
-    %  names = colornames(palette,name1,name2,...)
-    % [names,RGB] = colornames(palette,...)
-    %
-    %%% RGB inputs:
-    % * Accepts multiple RGB values in a standard MATLAB Nx3 colormap.
-    % * Choice of color distance (deltaE) calculation, any one of:
-    %   'CIEDE2000', 'DIN99', 'CIE94' (default), 'CIE76', 'CMCl:c', or 'RGB'.
-    %   For info on deltaE: <https://en.wikipedia.org/wiki/Color_difference>
-    %   or: <http://www.colorwiki.com/wiki/Delta_E:_The_Color_Difference>
-    % Note that palettes with sparse colors can produce unexpected matches.
-    %
-    %%% Color name inputs:
-    % * Accepts multiple color names (in one cell array, or as separate inputs).
-    % * Case-insensitive color name matches, e.g. 'Blue' == 'blue' == 'BLUE'.
-    % * Allows optional space characters between the color name words.
-    % * Allows camelCase to specify color names with space characters in them.
-    % * Palettes with index numbers may be specified by the number: e.g.: '5'.
-    % * Palettes Alphabet, MATLAB, and Natural also match the initial letter to
-    %   the color name (except for 'Black' which is matched by 'k').
-    %
-    %% Space Characters in Color Names %%
-    %
-    % Many palettes use camelCase in the color names: COLORNAMES will match
-    % the input names with any character case or spaces between the words, e.g.:
-    % 'Sky Blue' == 'SKY BLUE' == 'sky blue' == 'SkyBlue' == 'SKYBLUE' == 'skyblue'.
-    %
-    % Palettes Foster and xkcd include spaces: clashes occur if the names are
-    % converted to one case (e.g. lower) and the spaces removed. To make these
-    % names more convenient to use, camelCase is equivalent to words separated
-    % by spaces, e.g.: 'EggShell' == 'Egg Shell' == 'egg shell' == 'EGG SHELL'.
-    % Note this is a different color to 'Eggshell' == 'eggshell' == 'EGGSHELL'.
-    %
-    % In xkcd the forward slash ('/') also distinguishes between different
-    % colors, e.g.: 'Blue/Green' is not the same as 'Blue Green' (== 'BlueGreen').
-    %
-    %% Index Numbers in Color Names %%
-    %
-    % Palettes with a leading index number (e.g. AppleII, BS381C, CGA, RAL, etc)
-    % can also use just the index number or words to select a color, e.g.:
-    % '5' == 'Blue Flower' == 'BLUE FLOWER' == 'BlueFlower' == '5 Blue Flower'
-    % And for the palettes with spaces, camelCase is also equivalent to words
-    % separated by spaces, e.g.: '5BlueFlower' == '5 Blue Flower' == '5 blue flower'
-    %
-    %% Initial Letter Color Name Abbreviations %%
-    %
-    % Palettes Alphabet, MATLAB, and Natural also match the initial letter to
-    % the color name (except for 'Black' which is matched by 'k'), e.g.:
-    % 'B' == 'Blue', 'Y' =='Yellow', 'M' == 'Magenta', 'K' == 'Black'.
-    %
-    %% Examples %%
-    %
-    % >> palettes = colornames()
-    % palettes =
-    %     'Alphabet'
-    %     'AmstradCPC'
-    %     'AppleII'
-    %     'Bang'
-    %     'BS381C'
-    %     'CGA'
-    %     'Crayola'
-    %     'CSS'
-    %     'dvips'
-    %     'Foster'
-    %     'HTML4'
-    %     'ISCC'
-    %     'Kelly'
-    %     'MacBeth'
-    %     'MATLAB'
-    %     'Natural'
-    %     'R'
-    %     'RAL'
-    %     'Resene'
-    %     'Resistor'
-    %     'SherwinWilliams'
-    %     'SVG'
-    %     'Tableau'
-    %     'Thesaurus'
-    %     'Trubetskoy'
-    %     'Wikipedia'
-    %     'Wolfram'
-    %     'X11'
-    %     'xcolor'
-    %     'xkcd'
-    %
-    % >> colornames('Natural') % all color names for one palette
-    % ans =
-    %     'Black'
-    %     'Blue'
-    %     'Green'
-    %     'Red'
-    %     'White'
-    %     'Yellow'
-    %
-    % >> [names,rgb] = colornames('HTML4','blue','red','teal','olive')
-    % names =
-    %     'Blue'
-    %     'Red'
-    %     'Teal'
-    %     'Olive'
-    % rgb =
-    %          0         0    1.0000
-    %     1.0000         0         0
-    %          0    0.5020    0.5020
-    %     0.5020    0.5020         0
-    %
-    % >> colornames('HTML4',[0,0.5,1;1,0.5,0]) % default deltaE = CIE94
-    % ans =
-    %     'Blue'
-    %     'Red'
-    %
-    % >> colornames('HTML4',[0,0.5,1;1,0.5,0],'rgb') % specify deltaE
-    % ans =
-    %     'Teal'
-    %     'Olive'
-    %
-    % >> [names,rgb] = colornames('MATLAB');
-    % >> [char(strcat(names,{'  '})),num2str(rgb)]
-    %  ans =
-    %  Black    0  0  0
-    %  Blue     0  0  1
-    %  Cyan     0  1  1
-    %  Green    0  1  0
-    %  Magenta  1  0  1
-    %  Red      1  0  0
-    %  White    1  1  1
-    %  Yellow   1  1  0
-    %
-    % >> colornames('MATLAB','c','m','y','k')
-    % ans =
-    %     'Cyan'
-    %     'Magenta'
-    %     'Yellow'
-    %     'Black'
-    %
-    %% Input and Output Arguments %%
-    %
-    %%% Inputs (*=default):
-    %  palette = CharRowVector, the name of a supported palette, e.g.: 'CSS'.
-    %%% The optional input/s can be names or RGB values. Names can be either:
-    %  names  = CellOfCharRowVectors, any number of supported color names.
-    %  name1,name2,... = CharRowVectors, any number of supported color names.
-    %%% RGB values in a matrix, with optional choice of color-distance deltaE:
-    %  RGB    = NumericMatrix, size Nx3, each row is an RGB triple (0<=rgb<=1).
-    %  deltaE = CharRowVector: 'CIEDE2000', 'DIN99', 'CIE94'*, 'CIE76', 'CMCl:c', or 'RGB'.
-    %
-    %%% Outputs:
-    %  cnc = CellOfCharRowVectors, size Nx1, the color names that best match the inputs.
-    %  rgb = NumericMatrix, size Nx3, RGB values corresponding to names in <cnc>.
-    %
-    % See also COLORNAMES_CUBE COLORNAMES_DELTAE COLORNAMES_VIEW MAXDISTCOLOR COLORMAP
 
     %% Read Palette Data %%
     %

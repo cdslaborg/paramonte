@@ -1,40 +1,35 @@
+%
+%   Return a scalar MATLAB string containing the latest
+%   available ParaMonte MATLAB version newer than the
+%   existing version on the current system.
+%
+%       silent
+%
+%           The input scalar MATLAB logical.
+%           If ``true``, all descriptive messages on
+%           the MATLAB command line will be suppressed.
+%           (**optional**, default = ``false``)
+%
+%>  \return
+%       str
+%
+%           The output scalar MATLAB string containing the
+%           latest available ParaMonte MATLAB version newer
+%           than the existing version on the current system.
+%           The output ``str`` will be set to empty string ``""``
+%           if there is no newer version or the function fails.
+%
+%   Interface
+%   ---------
+%
+%       str = pm.lib.update.version()
+%
+%>  \final{}
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function str = version(silent)
-    %
-    %   Return a scalar MATLAB string containing the latest
-    %   available ParaMonte MATLAB version newer than the
-    %   existing version on the current system.
-    %
-    %   Parameters
-    %   ----------
-    %
-    %       silent
-    %
-    %           The input scalar MATLAB logical.
-    %           If ``true``, all descriptive messages on
-    %           the MATLAB command line will be suppressed.
-    %           (**optional**, default = ``false``)
-    %
-    %   Returns
-    %   -------
-    %
-    %       str
-    %
-    %           The output scalar MATLAB string containing the
-    %           latest available ParaMonte MATLAB version newer
-    %           than the existing version on the current system.
-    %           The output ``str`` will be set to empty string ``""``
-    %           if there is no newer version or the function fails.
-    %
-    %   Interface
-    %   ---------
-    %
-    %       str = pm.lib.update.version()
-    %
-    %   LICENSE
-    %   -------
-    %
-    %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-    %
     if  nargin < 1
         silent = [];
     end

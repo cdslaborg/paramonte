@@ -1,95 +1,90 @@
+%
+%   Return a copy of the input ``object``
+%   whose property (or field) values are overwritten
+%   with the corresponding (key, val) pairs in the
+%   input ``hashmap`` cell array.
+%
+%   \note
+%
+%       This functionality is useful for converting
+%       the variadic arguments of functions to the
+%       corresponding property values of objects
+%       with the functions.
+%
+%       hashmap
+%
+%           The input cell array of even number of elements
+%           containing the field names and values of the input ``object``
+%           as ``(key, val)`` pairs stored sequentially as the cell elements.
+%           All keys in the input ``hashmap`` must already exist as
+%           fields/properties of the input object.
+%
+%       object
+%
+%           The input scalar MATLAB struct
+%           or object whose property/field values
+%           are to be overwritten with the corresponding
+%           values from the input hashmap cell.
+%
+%       insensitive
+%
+%           The input scalar MATLAB logical.
+%           If ``false``, then keys within the input ``hashmap`` will be matched
+%           against the input ``object`` properties(or fields) case-sensitively.
+%           (**optional**, default = ``false``)
+%
+%       extensible
+%
+%           The input scalar MATLAB logical.
+%           If ``true``, then keys in the input ``hashmap`` that are missing in the
+%           input ``object`` properties(or fields) will be added to output ``objnew``.
+%           This functionality requires the input ``object`` to be either a MATLAB ``struct``
+%           or an object whose ultimate superclass is the MATLAB ``handle`` class,
+%           which allows adding new properties via ``addprop()`` method.
+%           (**optional**, default = ``false``)
+%
+%       recursive
+%
+%           The input scalar MATLAB logical.
+%           If ``true``, then key-val pairs in the input ``hashmap`` that match struct-cell
+%           or match object-cell pattern will be also converted recursively like the parent
+%           input ``object`` until all sub-components are obtained recursively.
+%           (**optional**, default = ``false``)
+%
+%>  \return
+%       objnew
+%
+%           The output copy of the input object whose
+%           property/field values are overwritten with the
+%           corresponding values from the input hashmap cell.
+%
+%   Interface
+%   ---------
+%
+%       objnew = pm.matlab.hashmap.hash2comp(hashmap, object)
+%       objnew = pm.matlab.hashmap.hash2comp(hashmap, object, [])
+%       objnew = pm.matlab.hashmap.hash2comp(hashmap, object, [], [])
+%       objnew = pm.matlab.hashmap.hash2comp(hashmap, object, [], [], [])
+%       objnew = pm.matlab.hashmap.hash2comp(hashmap, object, [], [], recursive)
+%       objnew = pm.matlab.hashmap.hash2comp(hashmap, object, [], extensible, [])
+%       objnew = pm.matlab.hashmap.hash2comp(hashmap, object, insensitive, [], [])
+%       objnew = pm.matlab.hashmap.hash2comp(hashmap, object, [], extensible, recursive)
+%       objnew = pm.matlab.hashmap.hash2comp(hashmap, object, insensitive, [], recursive)
+%       objnew = pm.matlab.hashmap.hash2comp(hashmap, object, insensitive, extensible, recursive)
+%
+%   Example
+%   -------
+%
+%       hashmap = {"key1", 2, "key2", "hash", "key3", true, "key4", 0};
+%       object = struct("key1", 1, "key2", "val2", "Key2", "val2duplicate", "key3", false, "key4", []);
+%       objnew = pm.matlab.hashmap.hash2comp(hashmap, object)
+%
+%>  \final{}
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function objnew = hash2comp(hashmap, object, insensitive, extensible, recursive)
-    %
-    %   Return a copy of the input ``object``
-    %   whose property (or field) values are overwritten
-    %   with the corresponding (key, val) pairs in the
-    %   input ``hashmap`` cell array.
-    %
-    %   \note
-    %
-    %       This functionality is useful for converting
-    %       the variadic arguments of functions to the
-    %       corresponding property values of objects
-    %       with the functions.
-    %
-    %   Parameters
-    %   ----------
-    %
-    %       hashmap
-    %
-    %           The input cell array of even number of elements
-    %           containing the field names and values of the input ``object``
-    %           as ``(key, val)`` pairs stored sequentially as the cell elements.
-    %           All keys in the input ``hashmap`` must already exist as
-    %           fields/properties of the input object.
-    %
-    %       object
-    %
-    %           The input scalar MATLAB struct
-    %           or object whose property/field values
-    %           are to be overwritten with the corresponding
-    %           values from the input hashmap cell.
-    %
-    %       insensitive
-    %
-    %           The input scalar MATLAB logical.
-    %           If ``false``, then keys within the input ``hashmap`` will be matched
-    %           against the input ``object`` properties(or fields) case-sensitively.
-    %           (**optional**, default = ``false``)
-    %
-    %       extensible
-    %
-    %           The input scalar MATLAB logical.
-    %           If ``true``, then keys in the input ``hashmap`` that are missing in the
-    %           input ``object`` properties(or fields) will be added to output ``objnew``.
-    %           This functionality requires the input ``object`` to be either a MATLAB ``struct``
-    %           or an object whose ultimate superclass is the MATLAB ``handle`` class,
-    %           which allows adding new properties via ``addprop()`` method.
-    %           (**optional**, default = ``false``)
-    %
-    %       recursive
-    %
-    %           The input scalar MATLAB logical.
-    %           If ``true``, then key-val pairs in the input ``hashmap`` that match struct-cell
-    %           or match object-cell pattern will be also converted recursively like the parent
-    %           input ``object`` until all sub-components are obtained recursively.
-    %           (**optional**, default = ``false``)
-    %
-    %   Returns
-    %   -------
-    %
-    %       objnew
-    %
-    %           The output copy of the input object whose
-    %           property/field values are overwritten with the
-    %           corresponding values from the input hashmap cell.
-    %
-    %   Interface
-    %   ---------
-    %
-    %       objnew = pm.matlab.hashmap.hash2comp(hashmap, object)
-    %       objnew = pm.matlab.hashmap.hash2comp(hashmap, object, [])
-    %       objnew = pm.matlab.hashmap.hash2comp(hashmap, object, [], [])
-    %       objnew = pm.matlab.hashmap.hash2comp(hashmap, object, [], [], [])
-    %       objnew = pm.matlab.hashmap.hash2comp(hashmap, object, [], [], recursive)
-    %       objnew = pm.matlab.hashmap.hash2comp(hashmap, object, [], extensible, [])
-    %       objnew = pm.matlab.hashmap.hash2comp(hashmap, object, insensitive, [], [])
-    %       objnew = pm.matlab.hashmap.hash2comp(hashmap, object, [], extensible, recursive)
-    %       objnew = pm.matlab.hashmap.hash2comp(hashmap, object, insensitive, [], recursive)
-    %       objnew = pm.matlab.hashmap.hash2comp(hashmap, object, insensitive, extensible, recursive)
-    %
-    %   Example
-    %   -------
-    %
-    %       hashmap = {"key1", 2, "key2", "hash", "key3", true, "key4", 0};
-    %       object = struct("key1", 1, "key2", "val2", "Key2", "val2duplicate", "key3", false, "key4", []);
-    %       objnew = pm.matlab.hashmap.hash2comp(hashmap, object)
-    %
-    %   LICENSE
-    %   -------
-    %
-    %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-    %
     objnew = object;
     hashmapLen = length(hashmap);
     if  rem(hashmapLen, 2) ~= 0

@@ -1,55 +1,53 @@
+%
+%   This is the abstract class for generating instances of objects
+%   that contain the specifications of various types of tile figures.
+%
+%   This is a generic class for generating figures
+%   containing multiple subplots (axes) of the same class.
+%
+%   \note
+%
+%       This class is not meant to be used directly by the end users.
+%       Instead, use the subclasses of this abstract class for visualizations.
+%
+%       template
+%
+%           The input scalar object of superclass ``pm.vis.subplot.Subplot``.
+%           It serves as the template based upon which all subplots are constructed.
+%
+%       varargin
+%
+%           Any ``property, value`` pair of the parent object.
+%           If the property is a ``struct()``, then its value must be given as a cell array,
+%           with consecutive elements representing the struct ``property-name, property-value`` pairs.
+%           Note that all of these property-value pairs can be also directly set via the
+%           parent object attributes, before calling the ``make()`` method.
+%
+%           \note
+%
+%               The input ``varargin`` can also contain the components
+%               of the ``template`` component of the parent object.
+%
+%>  \return
+%       self
+%
+%           The output scalar object of class ``pm.vis.tile.Tile``.
+%
+%   Interface
+%   ---------
+%
+%       tile = pm.vis.tile.Tile(template);
+%
+%   Attributes
+%   ----------
+%
+%       See the list of class attributes below,
+%       also those of the superclass ``pm.vis.figure.Tiling``.
+%
 classdef Tile < pm.vis.figure.Tiling
-    %
-    %   This is the abstract class for generating instances of objects
-    %   that contain the specifications of various types of tile figures.
-    %
-    %   This is a generic class for generating figures
-    %   containing multiple subplots (axes) of the same class.
-    %
-    %   \note
-    %
-    %       This class is not meant to be used directly by the end users.
-    %       Instead, use the subclasses of this abstract class for visualizations.
-    %
-    %   Parameters
-    %   ----------
-    %
-    %       template
-    %
-    %           The input scalar object of superclass ``pm.vis.subplot.Subplot``.
-    %           It serves as the template based upon which all subplots are constructed.
-    %
-    %       varargin
-    %
-    %           Any ``property, value`` pair of the parent object.
-    %           If the property is a ``struct()``, then its value must be given as a cell array,
-    %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
-    %           Note that all of these property-value pairs can be also directly set via the
-    %           parent object attributes, before calling the ``make()`` method.
-    %
-    %           \note
-    %
-    %               The input ``varargin`` can also contain the components
-    %               of the ``template`` component of the parent object.
-    %
-    %   Returns
-    %   -------
-    %
-    %       self
-    %
-    %           The output scalar object of class ``pm.vis.tile.Tile``.
-    %
-    %   Interface
-    %   ---------
-    %
-    %       tile = pm.vis.tile.Tile(template);
-    %
-    %   Attributes
-    %   ----------
-    %
-    %       See the list of class attributes below,
-    %       also those of the superclass ``pm.vis.figure.Tiling``.
-    %
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     properties(Access = public)
         %
         %   template
@@ -94,43 +92,44 @@ classdef Tile < pm.vis.figure.Tiling
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        %
+        %   Reset the properties of the tile to the original default settings.
+        %   Use this method when you change many attributes of the tile and
+        %   you want to clean up and go back to the default settings.
+        %
+        %   Parameters
+        %   ----------
+        %
+        %       varargin
+        %
+        %           Any ``property, value`` pair of the parent object.
+        %           If the property is a ``struct()``, then its value must be given as a cell array,
+        %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %           Note that all of these property-value pairs can be also directly set via the
+        %           parent object attributes, before calling the ``make()`` method.
+        %
+        %       \note
+        %
+        %           The input ``varargin`` can also contain the components
+        %           of the ``subplot`` component of the parent object.
+        %
+        %   Returns
+        %   -------
+        %
+        %       None
+        %
+        %   Interface
+        %   ---------
+        %
+        %       pm.vis.tile.Tile.reset() # reset the tile to the default settings.
+        %
+        %   LICENSE
+        %   -------
+        %
+        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
+        %
         function reset(self, varargin)
-            %
-            %   Reset the properties of the tile to the original default settings.
-            %   Use this method when you change many attributes of the tile and
-            %   you want to clean up and go back to the default settings.
-            %
-            %   Parameters
-            %   ----------
-            %
-            %       varargin
-            %
-            %           Any ``property, value`` pair of the parent object.
-            %           If the property is a ``struct()``, then its value must be given as a cell array,
-            %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
-            %           Note that all of these property-value pairs can be also directly set via the
-            %           parent object attributes, before calling the ``make()`` method.
-            %
-            %       \note
-            %
-            %           The input ``varargin`` can also contain the components
-            %           of the ``subplot`` component of the parent object.
-            %
-            %   Returns
-            %   -------
-            %
-            %       None
-            %
-            %   Interface
-            %   ---------
-            %
-            %       pm.vis.tile.Tile.reset() # reset the tile to the default settings.
-            %
-            %   LICENSE
-            %   -------
-            %
-            %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-            %
+
             self.tileshape = [];
             [vartemp, varleft] = pm.matlab.hashmap.popKeyVal("template", varargin);
             if ~isempty(vartemp)
@@ -147,57 +146,58 @@ classdef Tile < pm.vis.figure.Tiling
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        %
+        %   Configure the tile settings and specifications,
+        %   make the tile, and return nothing.
+        %
+        %   In making the figure, this method we call the ``make()``
+        %   methods of each of the subplot objects stored in the
+        %   ``subplot`` component.
+        %
+        %   \warning
+        %
+        %       This method has side-effects by manipulating
+        %       the existing attributes of the parent object.
+        %
+        %   Parameters
+        %   ----------
+        %
+        %       varargin
+        %
+        %           Any ``property, value`` pair of the parent object.
+        %           If the property is a ``struct()``, then its value must be given as a cell array,
+        %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %           Note that all of these property-value pairs can be also directly set via the
+        %           parent object attributes, before calling the ``make()`` method.
+        %
+        %       \note
+        %
+        %           The input ``varargin`` can also contain the components
+        %           of the ``subplot`` component of the parent object.
+        %
+        %   Returns
+        %   -------
+        %
+        %       None
+        %
+        %   Interface
+        %   ---------
+        %
+        %       t = pm.vis.tile.Tile.make(varargin);
+        %
+        %   Example
+        %   -------
+        %
+        %       t = pm.vis.tile.Tile(pm.vis.subplot.Line());
+        %       t.make()
+        %
+        %   LICENSE
+        %   -------
+        %
+        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
+        %
         function make(self, varargin)
-            %
-            %   Configure the tile settings and specifications,
-            %   make the tile, and return nothing.
-            %
-            %   In making the figure, this method we call the ``make()``
-            %   methods of each of the subplot objects stored in the
-            %   ``subplot`` component.
-            %
-            %   \warning
-            %
-            %       This method has side-effects by manipulating
-            %       the existing attributes of the parent object.
-            %
-            %   Parameters
-            %   ----------
-            %
-            %       varargin
-            %
-            %           Any ``property, value`` pair of the parent object.
-            %           If the property is a ``struct()``, then its value must be given as a cell array,
-            %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
-            %           Note that all of these property-value pairs can be also directly set via the
-            %           parent object attributes, before calling the ``make()`` method.
-            %
-            %       \note
-            %
-            %           The input ``varargin`` can also contain the components
-            %           of the ``subplot`` component of the parent object.
-            %
-            %   Returns
-            %   -------
-            %
-            %       None
-            %
-            %   Interface
-            %   ---------
-            %
-            %       t = pm.vis.tile.Tile.make(varargin);
-            %
-            %   Example
-            %   -------
-            %
-            %       t = pm.vis.tile.Tile(pm.vis.subplot.Line());
-            %       t.make()
-            %
-            %   LICENSE
-            %   -------
-            %
-            %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-            %
+
             self.premake(varargin{:});
 
             %%%% First set the tile dimensions.
@@ -382,47 +382,48 @@ classdef Tile < pm.vis.figure.Tiling
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        %
+        %   Configure the tile settings and specifications and return nothing.
+        %
+        %   \warning
+        %
+        %       This method has side-effects by manipulating
+        %       the existing attributes of the parent object.
+        %
+        %   Parameters
+        %   ----------
+        %
+        %       varargin
+        %
+        %           Any ``property, value`` pair of the parent object.
+        %           If the property is a ``struct()``, then its value must be given as a cell array,
+        %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %           Note that all of these property-value pairs can be also directly set via the
+        %           parent object attributes, before calling the ``premake()`` method.
+        %
+        %   Returns
+        %   -------
+        %
+        %       None
+        %
+        %   Interface
+        %   ---------
+        %
+        %       f = pm.vis.tile.Tile.premake(varargin);
+        %
+        %   Example
+        %   -------
+        %
+        %       f = pm.vis.tile.Tile(pm.vis.Line());
+        %       f.premake("figure", {"color", "none"})
+        %
+        %   LICENSE
+        %   -------
+        %
+        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
+        %
         function premake(self, varargin)
-            %
-            %   Configure the tile settings and specifications and return nothing.
-            %
-            %   \warning
-            %
-            %       This method has side-effects by manipulating
-            %       the existing attributes of the parent object.
-            %
-            %   Parameters
-            %   ----------
-            %
-            %       varargin
-            %
-            %           Any ``property, value`` pair of the parent object.
-            %           If the property is a ``struct()``, then its value must be given as a cell array,
-            %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
-            %           Note that all of these property-value pairs can be also directly set via the
-            %           parent object attributes, before calling the ``premake()`` method.
-            %
-            %   Returns
-            %   -------
-            %
-            %       None
-            %
-            %   Interface
-            %   ---------
-            %
-            %       f = pm.vis.tile.Tile.premake(varargin);
-            %
-            %   Example
-            %   -------
-            %
-            %       f = pm.vis.tile.Tile(pm.vis.Line());
-            %       f.premake("figure", {"color", "none"})
-            %
-            %   LICENSE
-            %   -------
-            %
-            %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-            %
+
             if ~isempty(varargin)
                 [varobj, vartemp] = pm.matlab.hashmap.popKeyVal(["figure", "subplot", "template", "tiledlayout", "tileshape"], varargin);
                 premake@pm.vis.figure.Tiling(self, varobj{:});

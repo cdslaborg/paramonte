@@ -1,46 +1,42 @@
+%
+%   This is the base class for generating objects containing
+%   information about autocorrelation of the input data.
+%
+%   \note
+%
+%       This is convenience class for easy computation
+%       of autocorrelation and its storage all in one place.
+%       The primary advantage of this class over the MATLAB
+%       intrinsic functions is in the ability of this class
+%       to compute the result for input dataframe table and
+%       return the results always in MATLAB ``table`` format.
+%
+%       See the documentation of the class constructor below.
+%
+%   Attributes
+%   ----------
+%
+%       See the documentation of the class constructor below.
+%
+%>  \return
+%       See the documentation of the class constructor below.
+%
+%   Interface
+%   ---------
+%
+%       acf = pm.stats.AutoCorr()
+%       acf = pm.stats.AutoCorr(df)
+%       acf = pm.stats.AutoCorr(df, numlags)
+%       acf = pm.stats.AutoCorr(df, [], numstd)
+%       acf = pm.stats.AutoCorr(df, numlags, numstd)
+%
+%>  \final{}
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef AutoCorr < pm.matlab.Handle
-    %
-    %   This is the base class for generating objects containing
-    %   information about autocorrelation of the input data.
-    %
-    %   \note
-    %
-    %       This is convenience class for easy computation
-    %       of autocorrelation and its storage all in one place.
-    %       The primary advantage of this class over the MATLAB
-    %       intrinsic functions is in the ability of this class
-    %       to compute the result for input dataframe table and
-    %       return the results always in MATLAB ``table`` format.
-    %
-    %   Parameters
-    %   ----------
-    %
-    %       See the documentation of the class constructor below.
-    %
-    %   Attributes
-    %   ----------
-    %
-    %       See the documentation of the class constructor below.
-    %
-    %   Returns
-    %   -------
-    %
-    %       See the documentation of the class constructor below.
-    %
-    %   Interface
-    %   ---------
-    %
-    %       acf = pm.stats.AutoCorr()
-    %       acf = pm.stats.AutoCorr(df)
-    %       acf = pm.stats.AutoCorr(df, numlags)
-    %       acf = pm.stats.AutoCorr(df, [], numstd)
-    %       acf = pm.stats.AutoCorr(df, numlags, numstd)
-    %
-    %   LICENSE
-    %   -------
-    %
-    %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-    %
+
     properties(Access = public)
         %
         %       numstd
@@ -102,53 +98,53 @@ classdef AutoCorr < pm.matlab.Handle
 
     methods(Access=public)
 
+        %
+        %   Return an object of class ``pm.stats.AutoCorr``.
+        %
+        %   This is the constructor of the ``pm.stats.AutoCorr`` class.
+        %
+        %   Parameters
+        %   ----------
+        %
+        %       df
+        %
+        %           The input MATLAB matrix or table of rank ``2``
+        %           containing the data as ``ncol`` columns of ``nrow``
+        %           observations whose autocorrelation must be computed.
+        %           (**optional**. If missing, the autocorrelation will not be computed.)
+        %
+        %       numstd
+        %
+        %           The input positive scalar MATLAB double representing the
+        %           number of standard deviations to be used in computing the
+        %           lower and upper significance levels of the autocorrelation.
+        %           This argument is directly passed to the corresponding argument
+        %           of the MATLAB intrinsic ``autocorr()`` in the Econometrics Toolbox.
+        %
+        %           (**optional**, default = ``1``)
+        %
+        %   Returns
+        %   -------
+        %
+        %       self
+        %
+        %           The output object of class ``pm.stats.AutoCorr``.
+        %
+        %   Interface
+        %   ---------
+        %
+        %       acf = pm.stats.AutoCorr()
+        %       acf = pm.stats.AutoCorr(df)
+        %       acf = pm.stats.AutoCorr(df, numlags)
+        %       acf = pm.stats.AutoCorr(df, [], numstd)
+        %       acf = pm.stats.AutoCorr(df, numlags, numstd)
+        %
+        %   LICENSE
+        %   -------
+        %
+        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
+        %
         function self = AutoCorr(df, numlags, numstd)
-            %
-            %   Return an object of class ``pm.stats.AutoCorr``.
-            %
-            %   This is the constructor of the ``pm.stats.AutoCorr`` class.
-            %
-            %   Parameters
-            %   ----------
-            %
-            %       df
-            %
-            %           The input MATLAB matrix or table of rank ``2``
-            %           containing the data as ``ncol`` columns of ``nrow``
-            %           observations whose autocorrelation must be computed.
-            %           (**optional**. If missing, the autocorrelation will not be computed.)
-            %
-            %       numstd
-            %
-            %           The input positive scalar MATLAB double representing the
-            %           number of standard deviations to be used in computing the
-            %           lower and upper significance levels of the autocorrelation.
-            %           This argument is directly passed to the corresponding argument
-            %           of the MATLAB intrinsic ``autocorr()`` in the Econometrics Toolbox.
-            %
-            %           (**optional**, default = ``1``)
-            %
-            %   Returns
-            %   -------
-            %
-            %       self
-            %
-            %           The output object of class ``pm.stats.AutoCorr``.
-            %
-            %   Interface
-            %   ---------
-            %
-            %       acf = pm.stats.AutoCorr()
-            %       acf = pm.stats.AutoCorr(df)
-            %       acf = pm.stats.AutoCorr(df, numlags)
-            %       acf = pm.stats.AutoCorr(df, [], numstd)
-            %       acf = pm.stats.AutoCorr(df, numlags, numstd)
-            %
-            %   LICENSE
-            %   -------
-            %
-            %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-            %
             if nargin < 3
                 numstd = 1;
             end
@@ -166,83 +162,83 @@ classdef AutoCorr < pm.matlab.Handle
             end
         end
 
+        %
+        %   Return the autocorrelation of the input
+        %   data from a lag of ``0`` to ``numlags``.
+        %
+        %   This is a dynamic method of the ``pm.stats.AutoCorr`` class.
+        %   This method automatically stores any input information
+        %   in the corresponding components of the parent object.
+        %   However, any components of the parent object
+        %   corresponding to the output of this method
+        %   must be set explicitly manually.
+        %
+        %   Parameters
+        %   ----------
+        %
+        %       df
+        %
+        %           The input MATLAB matrix or table of rank ``2``
+        %           containing the data as ``ncol`` columns of ``nrow``
+        %           observations whose autocorrelation must be computed.
+        %
+        %       numlags
+        %
+        %           The input positive scalar MATLAB integer representing the
+        %           number of lags to be used in computing the autocorrelation.
+        %           The default value will be used if the input ``numlags``
+        %           is unspecified or empty ``[]``.
+        %
+        %           (**optional**, default = ``size(df, 1) - 1``)
+        %
+        %       numstd
+        %
+        %           The input positive scalar MATLAB double representing the
+        %           number of standard deviations to be used in computing the
+        %           lower and upper significance levels of the autocorrelation.
+        %           This argument is directly passed to the corresponding argument
+        %           of the MATLAB intrinsic ``autocorr()`` in the Econometrics Toolbox.
+        %           The default value will be used if the input ``numstd`` is empty ``[]``.
+        %
+        %           (**optional**, default = ``1``)
+        %
+        %   Returns
+        %   -------
+        %
+        %       val
+        %
+        %           The output MATLAB ``table`` of size ``numlags + 1``
+        %           containing the autocorrelation from lag ``0`` to ``numlags``.
+        %
+        %       lag
+        %
+        %           The output MATLAB ``table`` of size ``numlags + 1``
+        %           containing the autocorrelation lags from ``0`` to ``numlags``.
+        %
+        %       bnd
+        %
+        %           The output MATLAB ``table`` of ``size(df, 2)`` rows by one column
+        %           containing the absolute ``numstd``-significance level of the
+        %           computed autocorrelations. Any autocorrelation value whose
+        %           magnitude is smaller than the corresponding ``bnd`` element
+        %           can be considered insignificant and mere fluctuation.
+        %
+        %   Interface
+        %   ---------
+        %
+        %       acf = pm.stats.AutoCorr()
+        %       [acf.val, acf.lag, acf.bnd] = acf.get(df)
+        %       [acf.val, acf.lag, acf.bnd] = acf.get(df, [])
+        %       [acf.val, acf.lag, acf.bnd] = acf.get(df, numlags)
+        %       [acf.val, acf.lag, acf.bnd] = acf.get(df, [], numstd)
+        %       [acf.val, acf.lag, acf.bnd] = acf.get(df, numlags, numstd)
+        %
+        %   LICENSE
+        %   -------
+        %
+        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
+        %
         function [val, lag, bnd] = get(self, df, numlags, numstd)
-            %
-            %   Return the autocorrelation of the input
-            %   data from a lag of ``0`` to ``numlags``.
-            %
-            %   This is a dynamic method of the ``pm.stats.AutoCorr`` class.
-            %   This method automatically stores any input information
-            %   in the corresponding components of the parent object.
-            %   However, any components of the parent object
-            %   corresponding to the output of this method
-            %   must be set explicitly manually.
-            %
-            %   Parameters
-            %   ----------
-            %
-            %       df
-            %
-            %           The input MATLAB matrix or table of rank ``2``
-            %           containing the data as ``ncol`` columns of ``nrow``
-            %           observations whose autocorrelation must be computed.
-            %
-            %       numlags
-            %
-            %           The input positive scalar MATLAB integer representing the
-            %           number of lags to be used in computing the autocorrelation.
-            %           The default value will be used if the input ``numlags``
-            %           is unspecified or empty ``[]``.
-            %
-            %           (**optional**, default = ``size(df, 1) - 1``)
-            %
-            %       numstd
-            %
-            %           The input positive scalar MATLAB double representing the
-            %           number of standard deviations to be used in computing the
-            %           lower and upper significance levels of the autocorrelation.
-            %           This argument is directly passed to the corresponding argument
-            %           of the MATLAB intrinsic ``autocorr()`` in the Econometrics Toolbox.
-            %           The default value will be used if the input ``numstd`` is empty ``[]``.
-            %
-            %           (**optional**, default = ``1``)
-            %
-            %   Returns
-            %   -------
-            %
-            %       val
-            %
-            %           The output MATLAB ``table`` of size ``numlags + 1``
-            %           containing the autocorrelation from lag ``0`` to ``numlags``.
-            %
-            %       lag
-            %
-            %           The output MATLAB ``table`` of size ``numlags + 1``
-            %           containing the autocorrelation lags from ``0`` to ``numlags``.
-            %
-            %       bnd
-            %
-            %           The output MATLAB ``table`` of ``size(df, 2)`` rows by one column
-            %           containing the absolute ``numstd``-significance level of the
-            %           computed autocorrelations. Any autocorrelation value whose
-            %           magnitude is smaller than the corresponding ``bnd`` element
-            %           can be considered insignificant and mere fluctuation.
-            %
-            %   Interface
-            %   ---------
-            %
-            %       acf = pm.stats.AutoCorr()
-            %       [acf.val, acf.lag, acf.bnd] = acf.get(df)
-            %       [acf.val, acf.lag, acf.bnd] = acf.get(df, [])
-            %       [acf.val, acf.lag, acf.bnd] = acf.get(df, numlags)
-            %       [acf.val, acf.lag, acf.bnd] = acf.get(df, [], numstd)
-            %       [acf.val, acf.lag, acf.bnd] = acf.get(df, numlags, numstd)
-            %
-            %   LICENSE
-            %   -------
-            %
-            %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-            %
             if nargin < 2
                 help("pm.stats.AutoCorr");
                 error   ( newline ...

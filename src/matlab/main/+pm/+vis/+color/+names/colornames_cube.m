@@ -1,4 +1,3 @@
-function colornames_cube(palette,space)
 % Plot COLORNAMES palettes in a color cube (RGB/DIN99/Lab/LCh/HSV/XYZ). With DataCursor labels.
 %
 % (c) 2014-2019 Stephen Cobeldick
@@ -24,6 +23,7 @@ function colornames_cube(palette,space)
 % none
 %
 % See also COLORNAMES COLORNAMES_DELTAE COLORNAMES_VIEW MAXDISTCOLOR COLORMAP
+function colornames_cube(palette,space)
 
 %% Figure Parameters %%
 %

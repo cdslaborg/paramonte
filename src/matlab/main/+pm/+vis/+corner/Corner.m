@@ -1,37 +1,35 @@
+%
+%   This is the abstract class for generating instances
+%   of figures containing a symmetric grid (corners) of subplots.
+%
+%       varargin
+%
+%           Any ``property, value`` pair of the parent object.
+%           If the property is a ``struct()``, then its value must be given as a cell array,
+%           with consecutive elements representing the struct ``property-name, property-value`` pairs.
+%           Note that all of these property-value pairs can be also directly set via the
+%           parent object attributes, before calling the ``make()`` method.
+%
+%>  \return
+%       self
+%
+%           The output scalar object of class ``pm.vis.corner.Corner``.
+%
+%   Interface
+%   ---------
+%
+%       plot = pm.vis.corner.Corner(subplot);
+%
+%   Attributes
+%   ----------
+%
+%       See the list of class attributes below,
+%       also those of the superclass ``pm.vis.figure.Tiling``.
+%
 classdef Corner < pm.vis.figure.Tiling
-    %
-    %   This is the abstract class for generating instances
-    %   of figures containing a symmetric grid (corners) of subplots.
-    %
-    %   Parameters
-    %   ----------
-    %
-    %       varargin
-    %
-    %           Any ``property, value`` pair of the parent object.
-    %           If the property is a ``struct()``, then its value must be given as a cell array,
-    %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
-    %           Note that all of these property-value pairs can be also directly set via the
-    %           parent object attributes, before calling the ``make()`` method.
-    %
-    %   Returns
-    %   -------
-    %
-    %       self
-    %
-    %           The output scalar object of class ``pm.vis.corner.Corner``.
-    %
-    %   Interface
-    %   ---------
-    %
-    %       plot = pm.vis.corner.Corner(subplot);
-    %
-    %   Attributes
-    %   ----------
-    %
-    %       See the list of class attributes below,
-    %       also those of the superclass ``pm.vis.figure.Tiling``.
-    %
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     properties(Access = public, Hidden)
         % %
         % %   df
@@ -62,6 +60,8 @@ classdef Corner < pm.vis.figure.Tiling
         %
         %rows = [];
     end
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     properties(Access = public)
         %
@@ -145,49 +145,50 @@ classdef Corner < pm.vis.figure.Tiling
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        %
+        %   Configure the figure settings and specifications,
+        %   make the figure and the subplots, and return nothing.
+        %   The subplots are made by calling their ``make()`` methods.
+        %
+        %   \warning
+        %
+        %       This method has side-effects by manipulating
+        %       the existing attributes of the parent object.
+        %
+        %   Parameters
+        %   ----------
+        %
+        %       varargin
+        %
+        %           Any ``property, value`` pair of the parent object.
+        %           If the property is a ``struct()``, then its value must be given as a cell array,
+        %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %           Note that all of these property-value pairs can be also directly set via the
+        %           parent object attributes, before calling the ``make()`` method.
+        %
+        %   Returns
+        %   -------
+        %
+        %       None
+        %
+        %   Interface
+        %   ---------
+        %
+        %       f = pm.vis.corner.Corner.make(varargin);
+        %
+        %   Example
+        %   -------
+        %
+        %       f = pm.vis.corner.Corner();
+        %       f.make()
+        %
+        %   LICENSE
+        %   -------
+        %
+        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
+        %
         function make(self, varargin)
-            %
-            %   Configure the figure settings and specifications,
-            %   make the figure and the subplots, and return nothing.
-            %   The subplots are made by calling their ``make()`` methods.
-            %
-            %   \warning
-            %
-            %       This method has side-effects by manipulating
-            %       the existing attributes of the parent object.
-            %
-            %   Parameters
-            %   ----------
-            %
-            %       varargin
-            %
-            %           Any ``property, value`` pair of the parent object.
-            %           If the property is a ``struct()``, then its value must be given as a cell array,
-            %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
-            %           Note that all of these property-value pairs can be also directly set via the
-            %           parent object attributes, before calling the ``make()`` method.
-            %
-            %   Returns
-            %   -------
-            %
-            %       None
-            %
-            %   Interface
-            %   ---------
-            %
-            %       f = pm.vis.corner.Corner.make(varargin);
-            %
-            %   Example
-            %   -------
-            %
-            %       f = pm.vis.corner.Corner();
-            %       f.make()
-            %
-            %   LICENSE
-            %   -------
-            %
-            %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-            %
+
             self.premake(varargin{:});
 
             %%%% First set the tile dimensions.
@@ -299,38 +300,39 @@ classdef Corner < pm.vis.figure.Tiling
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        %
+        %   Reset the properties of the figure to the original default settings.
+        %   Use this method when you change many attributes of the plot and
+        %   you want to clean up and go back to the default settings.
+        %
+        %   Parameters
+        %   ----------
+        %
+        %       varargin
+        %
+        %           Any ``property, value`` pair of the parent object.
+        %           If the property is a ``struct()``, then its value must be given as a cell array,
+        %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %           Note that all of these property-value pairs can be also directly set via the
+        %           parent object attributes, before calling the ``make()`` method.
+        %
+        %   Returns
+        %   -------
+        %
+        %       None
+        %
+        %   Interface
+        %   ---------
+        %
+        %       pm.vis.corner.Corner.reset() # reset all object properties to the default settings.
+        %
+        %   LICENSE
+        %   -------
+        %
+        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
+        %
         function reset(self, varargin)
-            %
-            %   Reset the properties of the figure to the original default settings.
-            %   Use this method when you change many attributes of the plot and
-            %   you want to clean up and go back to the default settings.
-            %
-            %   Parameters
-            %   ----------
-            %
-            %       varargin
-            %
-            %           Any ``property, value`` pair of the parent object.
-            %           If the property is a ``struct()``, then its value must be given as a cell array,
-            %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
-            %           Note that all of these property-value pairs can be also directly set via the
-            %           parent object attributes, before calling the ``make()`` method.
-            %
-            %   Returns
-            %   -------
-            %
-            %       None
-            %
-            %   Interface
-            %   ---------
-            %
-            %       pm.vis.corner.Corner.reset() # reset all object properties to the default settings.
-            %
-            %   LICENSE
-            %   -------
-            %
-            %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-            %
+
             self.dfref = [];
             self.cols = [];
             self.rows = [];
@@ -356,38 +358,39 @@ classdef Corner < pm.vis.figure.Tiling
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        %
+        %   Prepare the corner plot specs for subsequent visualization by ``make()``.
+        %
+        %   \warning
+        %
+        %       This method causes side-effects by manipulating
+        %       the existing attributes of the object.
+        %
+        %   Parameters
+        %   ----------
+        %
+        %       varargin
+        %
+        %           Any ``property, value`` pair of the parent object.
+        %           If the property is a ``struct()``, then its value must be given as a cell array,
+        %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %           Note that all of these property-value pairs can be also directly set via the
+        %           parent object attributes, before calling the ``make()`` method.
+        %
+        %   Returns
+        %   -------
+        %
+        %       None.
+        %
+        %   Example
+        %   -------
+        %
+        %       For example, change the left/bottom margin of the main
+        %       axis of the figure to provide room for lengthy variable names.
+        %       Then call the ``self.update()`` method to reflect the changes.
+        %
         function premake(self, varargin)
-            %
-            %   Prepare the corner plot specs for subsequent visualization by ``make()``.
-            %
-            %   \warning
-            %
-            %       This method causes side-effects by manipulating
-            %       the existing attributes of the object.
-            %
-            %   Parameters
-            %   ----------
-            %
-            %       varargin
-            %
-            %           Any ``property, value`` pair of the parent object.
-            %           If the property is a ``struct()``, then its value must be given as a cell array,
-            %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
-            %           Note that all of these property-value pairs can be also directly set via the
-            %           parent object attributes, before calling the ``make()`` method.
-            %
-            %   Returns
-            %   -------
-            %
-            %       None.
-            %
-            %   Example
-            %   -------
-            %
-            %       For example, change the left/bottom margin of the main
-            %       axis of the figure to provide room for lengthy variable names.
-            %       Then call the ``self.update()`` method to reflect the changes.
-            %
+
             premake@pm.vis.figure.Tiling(self, varargin{:});
             % if ~isa(self.diag, "self.type.is.histfit") && ~isa(self.diag, "self.type.is.histogram")
             %     help("pm.vis.corner.Corner");
@@ -411,6 +414,7 @@ classdef Corner < pm.vis.figure.Tiling
             %             + newline ...
             %             );
             % end
+
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

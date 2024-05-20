@@ -1,48 +1,43 @@
+%
+%   This is the base class for generating objects
+%   that contain the contents of a given file.
+%
+%   This class is meant to be primarily internally used
+%   by the ParaMonte library routines (e.g., samplers).
+%
+%   \devnote
+%
+%       The ``handle`` superclass of this class
+%       is critical for the class functionality.
+%
+%       See the documentation of the class constructor.
+%
+%   Attributes
+%   ----------
+%
+%       See below for information on the attributes (properties).
+%
+%   Methods
+%   -------
+%
+%       See below for information on the methods.
+%
+%>  \return
+%       An object of class pm.io.FileContents.
+%
+%   Interface
+%   ---------
+%
+%       contents = pm.io.FileContents(file)
+%       contents = pm.io.FileContents(file, [])
+%       contents = pm.io.FileContents(file, silent)
+%
+%>  \final{}
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef FileContents < pm.matlab.Handle
-    %
-    %   This is the base class for generating objects
-    %   that contain the contents of a given file.
-    %
-    %   This class is meant to be primarily internally used
-    %   by the ParaMonte library routines (e.g., samplers).
-    %
-    %   \devnote
-    %
-    %       The ``handle`` superclass of this class
-    %       is critical for the class functionality.
-    %
-    %   Parameters
-    %   ----------
-    %
-    %       See the documentation of the class constructor.
-    %
-    %   Attributes
-    %   ----------
-    %
-    %       See below for information on the attributes (properties).
-    %
-    %   Methods
-    %   -------
-    %
-    %       See below for information on the methods.
-    %
-    %   Returns
-    %   -------
-    %
-    %       An object of class pm.io.FileContents.
-    %
-    %   Interface
-    %   ---------
-    %
-    %       contents = pm.io.FileContents(file)
-    %       contents = pm.io.FileContents(file, [])
-    %       contents = pm.io.FileContents(file, silent)
-    %
-    %   LICENSE
-    %   -------
-    %
-    %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-    %
     properties(Access = public)
         %
         %   silent
@@ -70,49 +65,49 @@ classdef FileContents < pm.matlab.Handle
 
     methods(Access = public)
 
+        %
+        %   Return a scalar object of class ``pm.io.FileContents``.
+        %
+        %   This is the constructor of the class ``pm.io.FileContents``.
+        %   It merely serves as the blueprint for the IO subclasses
+        %   accessible to the end users.
+        %
+        %   Parameters
+        %   ----------
+        %
+        %       file
+        %
+        %           The input scalar MATLAB string
+        %           containing the path to an external file.
+        %
+        %       silent
+        %
+        %           The input scalar MATLAB logical.
+        %           if ``true``, all descriptive messages will be suppressed.
+        %           Setting this option to ``false`` is particularly useful
+        %           in MPI-parallel simulations.
+        %           (**optional**, default = ``false``)
+        %
+        %   Returns
+        %   -------
+        %
+        %       self
+        %
+        %           The output scalar object of class ``pm.io.FileContents``.
+        %
+        %   Interface
+        %   ---------
+        %
+        %       contents = pm.io.FileContents(file)
+        %       contents = pm.io.FileContents(file, [])
+        %       contents = pm.io.FileContents(file, silent)
+        %
+        %   LICENSE
+        %   -------
+        %
+        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
+        %
         function self = FileContents(file, silent)
-            %
-            %   Return a scalar object of class ``pm.io.FileContents``.
-            %
-            %   This is the constructor of the class ``pm.io.FileContents``.
-            %   It merely serves as the blueprint for the IO subclasses
-            %   accessible to the end users.
-            %
-            %   Parameters
-            %   ----------
-            %
-            %       file
-            %
-            %           The input scalar MATLAB string
-            %           containing the path to an external file.
-            %
-            %       silent
-            %
-            %           The input scalar MATLAB logical.
-            %           if ``true``, all descriptive messages will be suppressed.
-            %           Setting this option to ``false`` is particularly useful
-            %           in MPI-parallel simulations.
-            %           (**optional**, default = ``false``)
-            %
-            %   Returns
-            %   -------
-            %
-            %       self
-            %
-            %           The output scalar object of class ``pm.io.FileContents``.
-            %
-            %   Interface
-            %   ---------
-            %
-            %       contents = pm.io.FileContents(file)
-            %       contents = pm.io.FileContents(file, [])
-            %       contents = pm.io.FileContents(file, silent)
-            %
-            %   LICENSE
-            %   -------
-            %
-            %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-            %
             if  nargin < 2
                 silent = [];
             end
@@ -181,44 +176,44 @@ classdef FileContents < pm.matlab.Handle
             end
         end
 
+        %
+        %   Return a copy of the specified ``field`` (component)
+        %   of the parent object of class ``pm.io.FileContents``.
+        %
+        %   This method is an unfortunate result of the lack references in MATLAB.
+        %   The output of this method is used by the visualization methods of
+        %   this class to repeatedly sync the internal copy of ``df`` with
+        %   the original ``df`` component of the parent object.
+        %
+        %   Parameters
+        %   ----------
+        %
+        %       field
+        %
+        %           The input scalar MATLAB string containing the
+        %           name of a field (component/attribute) of the parent
+        %           object whose value will have to be returned.
+        %
+        %   Returns
+        %   -------
+        %
+        %       val
+        %
+        %           The output object containing the value of the
+        %           specified ``field`` of the parent object.
+        %
+        %   Interface
+        %   ---------
+        %
+        %       fc = pm.io.FileContents(field)
+        %       val = fc.getval(field)
+        %
+        %   LICENSE
+        %   -------
+        %
+        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
+        %
         function val = getval(self, field)
-            %
-            %   Return a copy of the specified ``field`` (component)
-            %   of the parent object of class ``pm.io.FileContents``.
-            %
-            %   This method is an unfortunate result of the lack references in MATLAB.
-            %   The output of this method is used by the visualization methods of
-            %   this class to repeatedly sync the internal copy of ``df`` with
-            %   the original ``df`` component of the parent object.
-            %
-            %   Parameters
-            %   ----------
-            %
-            %       field
-            %
-            %           The input scalar MATLAB string containing the
-            %           name of a field (component/attribute) of the parent
-            %           object whose value will have to be returned.
-            %
-            %   Returns
-            %   -------
-            %
-            %       val
-            %
-            %           The output object containing the value of the
-            %           specified ``field`` of the parent object.
-            %
-            %   Interface
-            %   ---------
-            %
-            %       fc = pm.io.FileContents(field)
-            %       val = fc.getval(field)
-            %
-            %   LICENSE
-            %   -------
-            %
-            %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-            %
             val = self.(field);
         end
 

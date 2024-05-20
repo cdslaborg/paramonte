@@ -1,17 +1,12 @@
+%
+%   Finalize the ParaMonte MATLAB sampler simulation run.
+%
+%       None
+%
+%>  \return
+%       None
+%
 function finalize(self)
-    %
-    %   Finalize the ParaMonte MATLAB sampler simulation run.
-    %
-    %   Parameters
-    %   ----------
-    %
-    %       None
-    %
-    %   Returns
-    %   -------
-    %
-    %       None
-    %
     if  self.partype == "openmp"
         if ~self.silent
             delete(gcp("nocreate"));

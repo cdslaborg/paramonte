@@ -1,22 +1,25 @@
+%
+%   This is the base class for the ParaMonte sampler routines.
+%
+%   Attributes
+%   ----------
+%
+%       See below for information on the attributes (properties).
+%
+%   Methods
+%   -------
+%
+%       See below for information on the methods.
+%
+%>  \final{}
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef Sampler < pm.matlab.Handle
-    %
-    %   This is the base class for the ParaMonte sampler routines.
-    %
-    %   Attributes
-    %   ----------
-    %
-    %       See below for information on the attributes (properties).
-    %
-    %   Methods
-    %   -------
-    %
-    %       See below for information on the methods.
-    %
-    %   LICENSE
-    %   -------
-    %
-    %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-    %
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     properties(Access = public)
         %
         %   input
@@ -120,6 +123,8 @@ classdef Sampler < pm.matlab.Handle
         spec = [];
     end
 
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     properties(Access = public, Hidden)
         mexname = "pm_sampling";
         libtype = "shared";
@@ -155,42 +160,42 @@ classdef Sampler < pm.matlab.Handle
 
     methods(Access = public)
 
+        %
+        %   Return a scalar object of class ``pm.sampling.Sampler``.
+        %
+        %   This is the constructor of the class ``pm.sampling.Sampler``.
+        %   This class is not meant to be accessed by the end users.
+        %   It merely serves as the blueprint for the sampler subclasses
+        %   accessible to the end users.
+        %
+        %   Parameters
+        %   ----------
+        %
+        %       method
+        %
+        %           The input scalar MATLAB string containing
+        %           the name of the target ParaMonte sampler.
+        %
+        %   Returns
+        %   -------
+        %
+        %       self
+        %
+        %           The output scalar object of class ``pm.sampling.Sampler``.
+        %
+        %   Interface
+        %   ---------
+        %
+        %       sampler = pm.sampling.Sampler();
+        %       sampler = pm.sampling.Sampler([]);
+        %       sampler = pm.sampling.Sampler(method);
+        %
+        %   LICENSE
+        %   -------
+        %
+        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
+        %
         function self = Sampler(method)
-            %
-            %   Return a scalar object of class ``pm.sampling.Sampler``.
-            %
-            %   This is the constructor of the class ``pm.sampling.Sampler``.
-            %   This class is not meant to be accessed by the end users.
-            %   It merely serves as the blueprint for the sampler subclasses
-            %   accessible to the end users.
-            %
-            %   Parameters
-            %   ----------
-            %
-            %       method
-            %
-            %           The input scalar MATLAB string containing
-            %           the name of the target ParaMonte sampler.
-            %
-            %   Returns
-            %   -------
-            %
-            %       self
-            %
-            %           The output scalar object of class ``pm.sampling.Sampler``.
-            %
-            %   Interface
-            %   ---------
-            %
-            %       sampler = pm.sampling.Sampler();
-            %       sampler = pm.sampling.Sampler([]);
-            %       sampler = pm.sampling.Sampler(method);
-            %
-            %   LICENSE
-            %   -------
-            %
-            %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-            %
             if  nargin < 1
                 self.method = "sampler";
             else

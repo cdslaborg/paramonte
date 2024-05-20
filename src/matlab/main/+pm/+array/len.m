@@ -1,64 +1,57 @@
+%>  \brief
+%>  Return a scalar MATLAB whole-number containing
+%>  the length of the input scalar or vector object.
+%>
+%>  \details
+%>  The following rules apply to computing the length:
+%>  <ol>
+%>      <li>    If the input ``obj`` is a scalar object of type ``char``
+%>              or ``string`` and empty, then the output ``val`` is ``0``.
+%>      
+%>      <li>    If the input ``obj`` is a scalar object of type ``char``
+%>              or ``string`` and non-empty, then the output ``val`` is ``1``.
+%>      
+%>      <li>    If the input ``obj`` is a scalar object of type other
+%>              than ``char`` or ``string``, then the output ``val`` is ``1``.
+%>              This is similar to the behavior of the MATLAB intrinsic ``length()``.
+%>      
+%>      <li>    If the input ``obj`` is a vector and empty, then the output ``val`` is ``0``.
+%>              This is similar to the behavior of the MATLAB intrinsic ``length()``.
+%>      
+%>      <li>    If the input ``obj`` is a vector and non-empty,
+%>              then the output ``val`` is the vector length as returned
+%>              by ``length(obj)`` minus the number of empty elements.
+%>  </ol>
+%>
+%>  \param[in]  obj :   The input scalar or vector object whose length
+%>                      is to returned according to the rules above.
+%>
+%>  \return
+%>      val         :   The output scalar MATLAB whole-number
+%>                      representing the length of the input object.
+%>
+%>  Interface
+%>  ---------
+%>
+%>      pm.array.len(obj)
+%>
+%>  Example
+%>  -------
+%>
+%>      pm.array.len(1) % = 1
+%>      pm.array.len("") % = 0
+%>      pm.array.len([]) % = 0
+%>      pm.array.len('paramonte') % = 1
+%>      pm.array.len("paramonte") % = 1
+%>      pm.array.len(["pm", 'array']) % = 2
+%>      pm.array.len(["pm", 'array', []]) % = 2
+%>
+%>  \final{}
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function val = len(obj)
-    %
-    %   Return a scalar MATLAB whole-number containing
-    %   the length of the input scalar or vector object.
-    %
-    %   The following rules apply to computing the length:
-    %
-    %       -   If the input ``obj`` is a scalar object of type ``char``
-    %           or ``string`` and empty, then the output ``val`` is ``0``.
-    %
-    %       -   If the input ``obj`` is a scalar object of type ``char``
-    %           or ``string`` and non-empty, then the output ``val`` is ``1``.
-    %
-    %       -   If the input ``obj`` is a scalar object of type other
-    %           than ``char`` or ``string``, then the output ``val`` is ``1``.
-    %           This is similar to the behavior of the MATLAB intrinsic ``length()``.
-    %
-    %       -   If the input ``obj`` is a vector and empty, then the output ``val`` is ``0``.
-    %           This is similar to the behavior of the MATLAB intrinsic ``length()``.
-    %
-    %       -   If the input ``obj`` is a vector and non-empty,
-    %           then the output ``val`` is the vector length as returned
-    %           by ``length(obj)`` minus the number of empty elements.
-    %
-    %   Parameters
-    %   ----------
-    %
-    %       obj
-    %
-    %           The input scalar or vector object whose length
-    %           is to returned according to the rules above.
-    %
-    %   Returns
-    %   -------
-    %
-    %       val
-    %
-    %           The output scalar MATLAB whole-number
-    %           representing the length of the input object.
-    %   Interface
-    %   ---------
-    %
-    %       pm.array.len(obj)
-    %
-    %   Example
-    %   -------
-    %
-    %       pm.array.len(1) % = 1
-    %       pm.array.len("") % = 0
-    %       pm.array.len([]) % = 0
-    %       pm.array.len('paramonte') % = 1
-    %       pm.array.len("paramonte") % = 1
-    %       pm.array.len(["pm", 'array']) % = 2
-    %       pm.array.len(["pm", 'array', []]) % = 2
-    %
-    %
-    %   LICENSE
-    %   -------
-    %
-    %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-    %
     if isa(obj, "char")
         obj = string(obj);
     end

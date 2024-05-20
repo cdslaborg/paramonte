@@ -1,53 +1,48 @@
+%
+%   This is the base class for generating objects
+%   that contain the tabular contents of a given file.
+%
+%   This class is meant to be primarily internally used
+%   by the ParaMonte library routines (e.g., samplers).
+%
+%   Tabular file comprises a header
+%   line followed by a table of data.
+%   If there are more than one header line,
+%   only the last such line is considered as
+%   header and the rest are discarded as text.
+%
+%       See the documentation of the class constructor.
+%
+%   Attributes
+%   ----------
+%
+%       See below for information on the attributes (properties).
+%
+%   Methods
+%   -------
+%
+%       See below for information on the methods.
+%
+%>  \return
+%       An object of class pm.io.FileContentsTabular.
+%
+%   Interface
+%   ---------
+%
+%       contents = pm.io.FileContentsTabular(file)
+%       contents = pm.io.FileContentsTabular(file, [])
+%       contents = pm.io.FileContentsTabular(file, silent)
+%       contents = pm.io.FileContentsTabular(file, [], [])
+%       contents = pm.io.FileContentsTabular(file, [], sep)
+%       contents = pm.io.FileContentsTabular(file, silent, [])
+%       contents = pm.io.FileContentsTabular(file, silent, sep)
+%
+%>  \final{}
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef FileContentsTabular < pm.io.FileContents
-    %
-    %   This is the base class for generating objects
-    %   that contain the tabular contents of a given file.
-    %
-    %   This class is meant to be primarily internally used
-    %   by the ParaMonte library routines (e.g., samplers).
-    %
-    %   Tabular file comprises a header
-    %   line followed by a table of data.
-    %   If there are more than one header line,
-    %   only the last such line is considered as
-    %   header and the rest are discarded as text.
-    %
-    %   Parameters
-    %   ----------
-    %
-    %       See the documentation of the class constructor.
-    %
-    %   Attributes
-    %   ----------
-    %
-    %       See below for information on the attributes (properties).
-    %
-    %   Methods
-    %   -------
-    %
-    %       See below for information on the methods.
-    %
-    %   Returns
-    %   -------
-    %
-    %       An object of class pm.io.FileContentsTabular.
-    %
-    %   Interface
-    %   ---------
-    %
-    %       contents = pm.io.FileContentsTabular(file)
-    %       contents = pm.io.FileContentsTabular(file, [])
-    %       contents = pm.io.FileContentsTabular(file, silent)
-    %       contents = pm.io.FileContentsTabular(file, [], [])
-    %       contents = pm.io.FileContentsTabular(file, [], sep)
-    %       contents = pm.io.FileContentsTabular(file, silent, [])
-    %       contents = pm.io.FileContentsTabular(file, silent, sep)
-    %
-    %   LICENSE
-    %   -------
-    %
-    %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-    %
     properties(Access = public)
         %
         %   sep
@@ -84,52 +79,52 @@ classdef FileContentsTabular < pm.io.FileContents
 
     methods(Access = public)
 
+        %
+        %   Return a scalar object of class ``pm.io.FileContentsTabular``.
+        %
+        %   This is the constructor of the class ``pm.io.FileContentsTabular``.
+        %
+        %   Parameters
+        %   ----------
+        %
+        %       file
+        %
+        %           See the documentation of the corresponding argument of ``pm.io.FileContents``.
+        %
+        %       silent
+        %
+        %           See the documentation of the corresponding argument of ``pm.io.FileContents``.
+        %
+        %       sep
+        %
+        %           The input scalar MATLAB string
+        %           containing the field separator used in the file.
+        %           (**optional**. The default is inferred from the contents of the specified input ``file``.)
+        %
+        %   Returns
+        %   -------
+        %
+        %       self
+        %
+        %           The output scalar object of class ``pm.io.FileContentsTabular``.
+        %
+        %   Interface
+        %   ---------
+        %
+        %       contents = pm.io.FileContentsTabular(file)
+        %       contents = pm.io.FileContentsTabular(file, [])
+        %       contents = pm.io.FileContentsTabular(file, silent)
+        %       contents = pm.io.FileContentsTabular(file, [], [])
+        %       contents = pm.io.FileContentsTabular(file, [], sep)
+        %       contents = pm.io.FileContentsTabular(file, silent, [])
+        %       contents = pm.io.FileContentsTabular(file, silent, sep)
+        %
+        %   LICENSE
+        %   -------
+        %
+        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
+        %
         function self = FileContentsTabular(file, silent, sep)
-            %
-            %   Return a scalar object of class ``pm.io.FileContentsTabular``.
-            %
-            %   This is the constructor of the class ``pm.io.FileContentsTabular``.
-            %
-            %   Parameters
-            %   ----------
-            %
-            %       file
-            %
-            %           See the documentation of the corresponding argument of ``pm.io.FileContents``.
-            %
-            %       silent
-            %
-            %           See the documentation of the corresponding argument of ``pm.io.FileContents``.
-            %
-            %       sep
-            %
-            %           The input scalar MATLAB string
-            %           containing the field separator used in the file.
-            %           (**optional**. The default is inferred from the contents of the specified input ``file``.)
-            %
-            %   Returns
-            %   -------
-            %
-            %       self
-            %
-            %           The output scalar object of class ``pm.io.FileContentsTabular``.
-            %
-            %   Interface
-            %   ---------
-            %
-            %       contents = pm.io.FileContentsTabular(file)
-            %       contents = pm.io.FileContentsTabular(file, [])
-            %       contents = pm.io.FileContentsTabular(file, silent)
-            %       contents = pm.io.FileContentsTabular(file, [], [])
-            %       contents = pm.io.FileContentsTabular(file, [], sep)
-            %       contents = pm.io.FileContentsTabular(file, silent, [])
-            %       contents = pm.io.FileContentsTabular(file, silent, sep)
-            %
-            %   LICENSE
-            %   -------
-            %
-            %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-            %
             if  nargin < 3
                 sep = [];
             end

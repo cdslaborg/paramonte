@@ -1,45 +1,41 @@
+%
+%   This is the base class for generating objects with methods
+%   and storage components for computing and storing the
+%   correlation matrix of an input data.
+%
+%   \note
+%
+%       This is convenience class for easy computation
+%       of correlation and its storage all in one place.
+%       The primary advantage of this class over the MATLAB
+%       intrinsic functions is in the ability of this class
+%       to compute the result for input dataframe table and
+%       return the results always in MATLAB ``table`` format.
+%
+%       See the documentation of the class constructor below.
+%
+%   Attributes
+%   ----------
+%
+%       See the documentation of the class constructor below.
+%
+%>  \return
+%       See the documentation of the class constructor below.
+%
+%   Interface
+%   ---------
+%
+%       mat = pm.stats.Cor()
+%       mat = pm.stats.Cor(df)
+%       mat = pm.stats.Cor(df, method)
+%
+%>  \final{}
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef Cor < pm.matlab.Handle
-    %
-    %   This is the base class for generating objects with methods
-    %   and storage components for computing and storing the
-    %   correlation matrix of an input data.
-    %
-    %   \note
-    %
-    %       This is convenience class for easy computation
-    %       of correlation and its storage all in one place.
-    %       The primary advantage of this class over the MATLAB
-    %       intrinsic functions is in the ability of this class
-    %       to compute the result for input dataframe table and
-    %       return the results always in MATLAB ``table`` format.
-    %
-    %   Parameters
-    %   ----------
-    %
-    %       See the documentation of the class constructor below.
-    %
-    %   Attributes
-    %   ----------
-    %
-    %       See the documentation of the class constructor below.
-    %
-    %   Returns
-    %   -------
-    %
-    %       See the documentation of the class constructor below.
-    %
-    %   Interface
-    %   ---------
-    %
-    %       mat = pm.stats.Cor()
-    %       mat = pm.stats.Cor(df)
-    %       mat = pm.stats.Cor(df, method)
-    %
-    %   LICENSE
-    %   -------
-    %
-    %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-    %
+
     properties(Access = public)
         %
         %   method
@@ -68,51 +64,51 @@ classdef Cor < pm.matlab.Handle
 
     methods(Access=public)
 
+        %
+        %   Return an object of class ``Cor``.
+        %
+        %   This is the constructor of the ``Cor`` class.
+        %
+        %   Parameters
+        %   ----------
+        %
+        %       df
+        %
+        %           The input MATLAB matrix or table of rank ``2``
+        %           containing the data as ``ncol`` columns of ``nrow``
+        %           observations whose correlation matrix must be computed.
+        %           (**optional**. If missing, the correlation matrix will not be computed.)
+        %
+        %       method
+        %
+        %           The input scalar MATLAB string that can be either:
+        %
+        %               "pearson"   : for computing the Pearson correlation matrix of the input data.
+        %               "kendall"   : for computing the kendall rank correlation matrix of the input data.
+        %               "spearman"  : for computing the Spearman rank correlation matrix of the input data.
+        %
+        %           (**optional**, default = ``"pearson"``)
+        %
+        %   Returns
+        %   -------
+        %
+        %       self
+        %
+        %           The output object of class ``pm.stats.Cor``.
+        %
+        %   Interface
+        %   ---------
+        %
+        %       mat = pm.stats.Cor()
+        %       mat = pm.stats.Cor(df)
+        %       mat = pm.stats.Cor(df, method)
+        %
+        %   LICENSE
+        %   -------
+        %
+        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
+        %
         function self = Cor(df, method)
-            %
-            %   Return an object of class ``Cor``.
-            %
-            %   This is the constructor of the ``Cor`` class.
-            %
-            %   Parameters
-            %   ----------
-            %
-            %       df
-            %
-            %           The input MATLAB matrix or table of rank ``2``
-            %           containing the data as ``ncol`` columns of ``nrow``
-            %           observations whose correlation matrix must be computed.
-            %           (**optional**. If missing, the correlation matrix will not be computed.)
-            %
-            %       method
-            %
-            %           The input scalar MATLAB string that can be either:
-            %
-            %               "pearson"   : for computing the Pearson correlation matrix of the input data.
-            %               "kendall"   : for computing the kendall rank correlation matrix of the input data.
-            %               "spearman"  : for computing the Spearman rank correlation matrix of the input data.
-            %
-            %           (**optional**, default = ``"pearson"``)
-            %
-            %   Returns
-            %   -------
-            %
-            %       self
-            %
-            %           The output object of class ``pm.stats.Cor``.
-            %
-            %   Interface
-            %   ---------
-            %
-            %       mat = pm.stats.Cor()
-            %       mat = pm.stats.Cor(df)
-            %       mat = pm.stats.Cor(df, method)
-            %
-            %   LICENSE
-            %   -------
-            %
-            %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-            %
             if nargin == 2
                 self.method = method;
             end
@@ -121,55 +117,55 @@ classdef Cor < pm.matlab.Handle
             end
         end
 
+        %
+        %   Return the correlation matrix of the input data.
+        %
+        %   This is a dynamic method of the ``Cor`` class.
+        %   This method automatically stores any input information
+        %   in the corresponding components of the parent object.
+        %   However, any components of the parent object
+        %   corresponding to the output of this method
+        %   must be set explicitly manually.
+        %
+        %   Parameters
+        %   ----------
+        %
+        %       df
+        %
+        %           The input MATLAB matrix or table of rank ``2``
+        %           containing the data as ``ncol`` columns of ``nrow``
+        %           observations whose correlation matrix must be computed.
+        %
+        %       method
+        %
+        %           The input scalar MATLAB string that can be either:
+        %
+        %               "pearson"   : for computing the Pearson correlation matrix of the input data.
+        %               "kendall"   : for computing the kendall rank correlation matrix of the input data.
+        %               "spearman"  : for computing the Spearman rank correlation matrix of the input data.
+        %
+        %           (**optional**, default = ``pm.stats.Cor.method``)
+        %
+        %   Returns
+        %   -------
+        %
+        %       val
+        %
+        %           The output MATLAB ``table`` containing the correlation matrix.
+        %
+        %   Interface
+        %   ---------
+        %
+        %       mat = pm.stats.Cor()
+        %       mat.val = mat.get(df)
+        %       mat.val = mat.get(df, method)
+        %
+        %   LICENSE
+        %   -------
+        %
+        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
+        %
         function val = get(self, df, method)
-            %
-            %   Return the correlation matrix of the input data.
-            %
-            %   This is a dynamic method of the ``Cor`` class.
-            %   This method automatically stores any input information
-            %   in the corresponding components of the parent object.
-            %   However, any components of the parent object
-            %   corresponding to the output of this method
-            %   must be set explicitly manually.
-            %
-            %   Parameters
-            %   ----------
-            %
-            %       df
-            %
-            %           The input MATLAB matrix or table of rank ``2``
-            %           containing the data as ``ncol`` columns of ``nrow``
-            %           observations whose correlation matrix must be computed.
-            %
-            %       method
-            %
-            %           The input scalar MATLAB string that can be either:
-            %
-            %               "pearson"   : for computing the Pearson correlation matrix of the input data.
-            %               "kendall"   : for computing the kendall rank correlation matrix of the input data.
-            %               "spearman"  : for computing the Spearman rank correlation matrix of the input data.
-            %
-            %           (**optional**, default = ``pm.stats.Cor.method``)
-            %
-            %   Returns
-            %   -------
-            %
-            %       val
-            %
-            %           The output MATLAB ``table`` containing the correlation matrix.
-            %
-            %   Interface
-            %   ---------
-            %
-            %       mat = pm.stats.Cor()
-            %       mat.val = mat.get(df)
-            %       mat.val = mat.get(df, method)
-            %
-            %   LICENSE
-            %   -------
-            %
-            %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-            %
             if nargin < 2
                 help("pm.stats.Cor");
                 error   ( newline ...

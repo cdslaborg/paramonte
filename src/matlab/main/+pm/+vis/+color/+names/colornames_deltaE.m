@@ -1,4 +1,3 @@
-function colornames_deltaE(palette,rgb)
 % Create a figure comparing the color difference (deltaE) calculations used in COLORNAMES.
 %
 % (c) 2014-2019 Stephen Cobeldick
@@ -34,6 +33,7 @@ function colornames_deltaE(palette,rgb)
 % none
 %
 % See also COLORNAMES COLORNAMES_CUBE COLORNAMES_VIEW MAXDISTCOLOR COLORMAP
+function colornames_deltaE(palette,rgb)
 
 % Get list of palettes and color difference metrics:
 [fnm,~,dtE] = colornames();

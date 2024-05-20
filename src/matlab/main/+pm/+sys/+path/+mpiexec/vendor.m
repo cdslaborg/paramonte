@@ -1,43 +1,38 @@
+%
+%   Return the a MATLAB string containing the MPI library vendor
+%   name corresponding to the input ``mpiexec`` system path.
+%
+%       path
+%
+%           The input scalar MATLAB string,
+%           containing the path to the ``mpiexec``
+%           binary whose vendor is to be determined.
+%           (**optional**,  default = ``pm.sys.path.mpiexec.which()``)
+%
+%>  \return
+%       name
+%
+%           The output MATLAB string containing the MPI library vendor name ALL in lower-case.
+%           Possible values are:
+%
+%               -   ``"Intel"``     :   representing the Intel MPI library.
+%               -   ``"MPICH"``     :   representing the MPICH MPI library.
+%               -   ``"OpenMPI"``   :   representing the OpenMPI library.
+%
+%           If the vendor name cannot be identified, the output will be empty ``[]``.
+%
+%   Interface
+%   ---------
+%
+%       name = pm.sys.path.mpiexec.vendor()
+%       name = pm.sys.path.mpiexec.vendor(path)
+%
+%>  \final{}
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function name = vendor(path)
-    %
-    %   Return the a MATLAB string containing the MPI library vendor
-    %   name corresponding to the input ``mpiexec`` system path.
-    %
-    %   Parameters
-    %   ----------
-    %
-    %       path
-    %
-    %           The input scalar MATLAB string,
-    %           containing the path to the ``mpiexec``
-    %           binary whose vendor is to be determined.
-    %           (**optional**,  default = ``pm.sys.path.mpiexec.which()``)
-    %
-    %   Returns
-    %   -------
-    %
-    %       name
-    %
-    %           The output MATLAB string containing the MPI library vendor name ALL in lower-case.
-    %           Possible values are:
-    %
-    %               -   ``"Intel"``     :   representing the Intel MPI library.
-    %               -   ``"MPICH"``     :   representing the MPICH MPI library.
-    %               -   ``"OpenMPI"``   :   representing the OpenMPI library.
-    %
-    %           If the vendor name cannot be identified, the output will be empty ``[]``.
-    %
-    %   Interface
-    %   ---------
-    %
-    %       name = pm.sys.path.mpiexec.vendor()
-    %       name = pm.sys.path.mpiexec.vendor(path)
-    %
-    %   LICENSE
-    %   -------
-    %
-    %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-    %
     name = "";
     if 0 == nargin
         path = pm.sys.path.mpiexec.which();

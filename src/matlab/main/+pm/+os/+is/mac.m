@@ -1,29 +1,24 @@
+%
+%   Return ``true`` if the current OS is MacOS (Darwin).
+%
+%       None
+%
+%>  \return
+%       itis
+%
+%           The output MATLAB logical scalar value that is ``true`` 
+%           if and only if the OS is MacOS (Darwin), otherwise ``false``.
+%
+%   Interface
+%   ---------
+%
+%       itis = pm.os.is.mac()
+%
+%>  \final{}
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function result = mac()
-    %
-    %   Return ``true`` if the current OS is MacOS (Darwin).
-    %
-    %   Parameters
-    %   ----------
-    %
-    %       None
-    %
-    %   Returns
-    %   -------
-    %
-    %       itis
-    %
-    %           The output MATLAB logical scalar value that is ``true`` 
-    %           if and only if the OS is MacOS (Darwin), otherwise ``false``.
-    %
-    %   Interface
-    %   ---------
-    %
-    %       itis = pm.os.is.mac()
-    %
-    %   LICENSE
-    %   -------
-    %
-    %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-    %
     result = ismac;
 end

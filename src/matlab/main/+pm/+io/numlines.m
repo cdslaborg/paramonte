@@ -1,41 +1,36 @@
+%
+%   Return a scalar MATLAB integer representing
+%   the number of lines in the specified input ``idname``.
+%
+%       idname
+%
+%           The input scalar MATLAB object that can be either:
+%
+%               1.  a MATLAB string containing the path
+%                   to a record-based external file whose
+%                   number of records (lines) must be returned.
+%
+%               2.  a MATLAB integer, representing the file
+%                   ID of an opened record-based file whose
+%                   number of records (lines) must be returned.
+%
+%>  \return
+%       nlines
+%
+%           The output scalar MATLAB integer containing the
+%           number of records (lines) in the specified input ``idname``.
+%
+%   Interface
+%   ---------
+%
+%       nlines = pm.io.numlines(idname);
+%
+%>  \final{}
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function nlines = numlines(idname)
-    %
-    %   Return a scalar MATLAB integer representing
-    %   the number of lines in the specified input ``idname``.
-    %
-    %   Parameters
-    %   ----------
-    %
-    %       idname
-    %
-    %           The input scalar MATLAB object that can be either:
-    %
-    %               1.  a MATLAB string containing the path
-    %                   to a record-based external file whose
-    %                   number of records (lines) must be returned.
-    %
-    %               2.  a MATLAB integer, representing the file
-    %                   ID of an opened record-based file whose
-    %                   number of records (lines) must be returned.
-    %
-    %   Returns
-    %   -------
-    %
-    %       nlines
-    %
-    %           The output scalar MATLAB integer containing the
-    %           number of records (lines) in the specified input ``idname``.
-    %
-    %   Interface
-    %   ---------
-    %
-    %       nlines = pm.io.numlines(idname);
-    %
-    %   LICENSE
-    %   -------
-    %
-    %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-    %
     if pm.introspection.istype(idname, "string", 1)
         [fid, errmsg] = fopen(idname, 'r');
         if fid < 0
