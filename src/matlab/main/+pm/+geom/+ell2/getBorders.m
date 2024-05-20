@@ -150,7 +150,7 @@ function bcrd = getBorders(gramian, center, zval, npnt)
         bcrd = zeros(npnt, 3);
         for iell = 1 : nell
             icol = (iell - 1) * 3 + 1;
-            bcrd(:, icol : icol + 1) = pm.geom.ell2.getBorder(gramian(:, :, min(iell, size(gramian, 3))), center(:, min(iell, size(center, 2))), [], npnt);
+            bcrd(:, icol : icol + 1) = pm.geom.ell2.getBorder(gramian(:, :, min(iell, size(gramian, 3))), center(:, min(iell, size(center, 2))), npnt);
             if  zvalScalar
                 bcrd(:, icol + 2) = zval;
             else
@@ -161,7 +161,7 @@ function bcrd = getBorders(gramian, center, zval, npnt)
         bcrd = zeros(npnt, 2);
         for iell = 1 : nell
             icol = (iell - 1) * 2 + 1;
-            bcrd(:, icol : icol + 1) = pm.geom.ell2.getBorder(gramian(:, :, min(iell, size(gramian, 3))), center(:, min(iell, size(center, 2))), [], npnt);
+            bcrd(:, icol : icol + 1) = pm.geom.ell2.getBorder(gramian(:, :, min(iell, size(gramian, 3))), center(:, min(iell, size(center, 2))), npnt);
         end
     end
 end
