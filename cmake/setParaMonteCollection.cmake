@@ -100,13 +100,15 @@ if (EXISTS "${origin}")
     #add_custom_target(${collection} COMMAND ${CMAKE_COMMAND} -E copy_directory "${origin}" "${destin}")
     file(COPY "${origin}" DESTINATION "${destin}")
 
-    if (EXISTS "${paramonte_${collection}_dir}/generic/")
-        message(NOTICE  "${pmattn} Copying the paramonte::${lang} library generic ${collection} files to the installation directory...\n"
-                        "${pmattn}      - from: ${paramonte_example_dir}/generic\n"
-                        "${pmattn}      -   to: ${destin}")
-        file(COPY "${paramonte_${collection}_dir}/generic/" DESTINATION "${destin}")
-    else()
-        message(NOTICE  "${pmwarn} The paramonte library generic ${collection} folder does not exists. skipping...")
+    if (NOT ${lang_is_dynamic})
+        if (EXISTS "${paramonte_${collection}_dir}/generic/")
+            message(NOTICE  "${pmattn} Copying the paramonte::${lang} library generic ${collection} files to the installation directory...\n"
+                            "${pmattn}      - from: ${paramonte_example_dir}/generic\n"
+                            "${pmattn}      -   to: ${destin}")
+            file(COPY "${paramonte_${collection}_dir}/generic/" DESTINATION "${destin}")
+        else()
+            message(NOTICE  "${pmwarn} The paramonte library generic ${collection} folder does not exists. skipping...")
+        endif()
     endif()
 
     #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
