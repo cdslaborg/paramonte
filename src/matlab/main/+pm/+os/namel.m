@@ -11,10 +11,11 @@
 %               ``"linux"`` if the OS is Linux.
 %               ``"windows"`` if the OS is Windows.
 %               ``"darwin"`` if the OS is macOS (Darwin).
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       str = pm.os.namel()
 %
 %>  \final{}

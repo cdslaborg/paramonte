@@ -9,9 +9,7 @@
 %           See the documentation of the corresponding input
 %           argument of the class ``pm.vis.plot.Plot``.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See the documentation of the attributes
 %       of the superclass ``pm.vis.cascade.Cascade``.
 %
@@ -30,10 +28,11 @@
 %
 %>  \return
 %       An object of ``pm.vis.cascade.Histfit`` class.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       p = pm.vis.cascade.Histfit(dfref);
 %       p = pm.vis.cascade.Histfit(dfref, varargin);
 %

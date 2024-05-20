@@ -17,10 +17,11 @@
 %           The output scalar MATLAB logical that is ``true`` if and
 %           only if the input ``str`` contains text that is convertible
 %           to number(s), e.g., integer, real, complex.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       itis = pm.str.isnumeric(str)
 %
 %>  \final{}

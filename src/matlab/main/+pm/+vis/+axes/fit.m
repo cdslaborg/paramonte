@@ -17,10 +17,11 @@
 %
 %>  \return
 %       None.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       pm.vis.fitaxes()
 %       pm.vis.fitaxes([])
 %       pm.vis.fitaxes(fig)

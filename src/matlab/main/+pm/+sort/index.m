@@ -20,10 +20,11 @@
 %
 %           The output MATLAB integer vector of the same size as the
 %           input ``array`` such that ``array(indx)`` is in ascending order.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       indx = pm.sort.index(array)
 %
 %   Example

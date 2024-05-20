@@ -35,10 +35,11 @@
 %           as the input ``cmat``, containing the ``cmat`` that
 %           is unrolled along the specified axis ``dim`` using
 %           the input weights.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       vmat = pm.array.verbose(cmat, dim, weight)
 %
 %>  \final{}

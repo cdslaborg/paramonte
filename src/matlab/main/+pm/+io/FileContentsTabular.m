@@ -13,22 +13,19 @@
 %
 %       See the documentation of the class constructor.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See below for information on the attributes (properties).
 %
-%   Methods
-%   -------
-%
+%   \note
 %       See below for information on the methods.
 %
 %>  \return
 %       An object of class pm.io.FileContentsTabular.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       contents = pm.io.FileContentsTabular(file)
 %       contents = pm.io.FileContentsTabular(file, [])
 %       contents = pm.io.FileContentsTabular(file, silent)
@@ -84,9 +81,6 @@ classdef FileContentsTabular < pm.io.FileContents
         %
         %   This is the constructor of the class ``pm.io.FileContentsTabular``.
         %
-        %   Parameters
-        %   ----------
-        %
         %       file
         %
         %           See the documentation of the corresponding argument of ``pm.io.FileContents``.
@@ -100,16 +94,16 @@ classdef FileContentsTabular < pm.io.FileContents
         %           The input scalar MATLAB string
         %           containing the field separator used in the file.
         %           (**optional**. The default is inferred from the contents of the specified input ``file``.)
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       self
         %
         %           The output scalar object of class ``pm.io.FileContentsTabular``.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       contents = pm.io.FileContentsTabular(file)
         %       contents = pm.io.FileContentsTabular(file, [])
@@ -119,11 +113,11 @@ classdef FileContentsTabular < pm.io.FileContents
         %       contents = pm.io.FileContentsTabular(file, silent, [])
         %       contents = pm.io.FileContentsTabular(file, silent, sep)
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = FileContentsTabular(file, silent, sep)
             if  nargin < 3
                 sep = [];

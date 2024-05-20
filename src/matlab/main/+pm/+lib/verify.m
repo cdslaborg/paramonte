@@ -5,10 +5,11 @@
 %
 %>  \return
 %       None
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       pm.lib.verify()
 %
 function verify()

@@ -57,10 +57,11 @@
 %           The output copy of the input object whose
 %           property/field values are overwritten with the
 %           corresponding values from the input hashmap cell.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       objnew = pm.matlab.hashmap.hash2comp(hashmap, object)
 %       objnew = pm.matlab.hashmap.hash2comp(hashmap, object, [])
 %       objnew = pm.matlab.hashmap.hash2comp(hashmap, object, [], [])

@@ -9,9 +9,7 @@
 %           See the documentation of the corresponding input
 %           argument of the superclass ``pm.vis.tile.Tile``.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See the documentation of the attributes
 %       of the superclass ``pm.vis.tile.Tile``.
 %
@@ -30,10 +28,11 @@
 %
 %>  \return
 %       An object of ``pm.vis.tile.Histfit`` class.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       t = pm.vis.tile.Histfit(dfref);
 %       t = pm.vis.tile.Histfit(dfref, varargin);
 %

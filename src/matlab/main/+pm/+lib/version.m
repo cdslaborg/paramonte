@@ -21,10 +21,11 @@
 %                   if the input argument ``current`` is present.
 %                   The output version may not necessarily exist
 %                   as a version of the ParaMonte library.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       vernum = pm.lib.version()
 %       vernum = pm.lib.version(current)
 %

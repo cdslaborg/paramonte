@@ -21,10 +21,11 @@
 %           The output scalar MATLAB logical that is ``true``
 %           if and only if ParaMonte MATLAB library is being called
 %           from MATLAB Graphical User Interface (GUI), otherwise, ``false``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       itis = pm.matlab.iscmd()
 %
 %>  \final{}

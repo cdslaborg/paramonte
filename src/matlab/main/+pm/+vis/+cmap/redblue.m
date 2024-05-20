@@ -18,10 +18,11 @@
 %
 %           The output blue-red colormap matrix
 %           of shape ``[nell, 3]`` containing a **redblue** colormap.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       cmap = pm.vis.cmap.redblue()
 %       cmap = pm.vis.cmap.redblue([])
 %       cmap = pm.vis.cmap.redblue(nell)

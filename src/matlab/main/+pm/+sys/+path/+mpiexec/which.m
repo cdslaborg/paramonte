@@ -31,10 +31,11 @@
 %           If the ``mpiexec`` does not exist or match the specified ``vendor``,
 %           the output will be an empty string ``""``.
 %
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       path = pm.sys.path.mpiexec.which()
 %       path = pm.sys.path.mpiexec.which(vendor)
 %

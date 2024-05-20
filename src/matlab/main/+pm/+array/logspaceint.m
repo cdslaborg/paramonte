@@ -25,10 +25,11 @@
 %           The output vector of MATLAB real values containing
 %           the set of logarithmically-spaced integer values in
 %           the specified input range with the specified ``base``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       array = pm.array.logspaceint(loglb, logub)
 %       array = pm.array.logspaceint(loglb, logub, logskip)
 %       array = pm.array.logspaceint(loglb, logub, [], base)

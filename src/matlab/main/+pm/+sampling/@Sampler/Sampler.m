@@ -1,14 +1,10 @@
 %
 %   This is the base class for the ParaMonte sampler routines.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See below for information on the attributes (properties).
 %
-%   Methods
-%   -------
-%
+%   \note
 %       See below for information on the methods.
 %
 %>  \final{}
@@ -168,33 +164,30 @@ classdef Sampler < pm.matlab.Handle
         %   It merely serves as the blueprint for the sampler subclasses
         %   accessible to the end users.
         %
-        %   Parameters
-        %   ----------
-        %
         %       method
         %
         %           The input scalar MATLAB string containing
         %           the name of the target ParaMonte sampler.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       self
         %
         %           The output scalar object of class ``pm.sampling.Sampler``.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       sampler = pm.sampling.Sampler();
         %       sampler = pm.sampling.Sampler([]);
         %       sampler = pm.sampling.Sampler(method);
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = Sampler(method)
             if  nargin < 1
                 self.method = "sampler";

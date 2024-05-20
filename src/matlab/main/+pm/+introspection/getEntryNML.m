@@ -38,8 +38,9 @@
 %>          If the input ``varval`` is an array, its elements will be comma-separated.
 %>          If the input value is string, it will be quoted properly.
 %>
-%>  Interface
-%>  ---------
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
 %>
 %>      entry = pm.introspection.getEntryNML(varname, varval, vartype, varsize)
 %>

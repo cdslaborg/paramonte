@@ -29,18 +29,17 @@
 %           The input ``varargin`` can also contain the components
 %           of the ``subplot`` component of the parent object.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See below and also the documentation of the
 %       attributes of the superclass ``pm.vis.tile.Tile``.
 %
 %>  \return
 %       An object of class ``pm.vis.tile.Ellipse``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       t = pm.vis.tile.Ellipse();
 %       t = pm.vis.tile.Ellipse(gramian);
 %       t = pm.vis.tile.Ellipse(gramian, center);

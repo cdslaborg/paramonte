@@ -35,10 +35,11 @@
 %
 %           The output vector of MATLAB strings containing the
 %           fully-resolved paths matching the input ``pattern``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       sampler = pm.sampling.Sampler();
 %       fileList = sampler.findfile(ftype)
 %       fileList = sampler.findfile(ftype, [], [])

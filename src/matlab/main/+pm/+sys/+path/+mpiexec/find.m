@@ -31,10 +31,11 @@
 %           all detected ``mpiexec`` binaries installed on the system.
 %           If the ``mpiexec`` is not found or does not match the specified ``vendor``,
 %           the output will be an empty list ``[]``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       pathList = pm.sys.path.mpiexec.find()
 %       pathList = pm.sys.path.mpiexec.find(vendor)
 %

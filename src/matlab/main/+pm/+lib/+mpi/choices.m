@@ -17,10 +17,11 @@
 %           the ParaMonte-preferred MPI library vendor names as
 %           used in naming the ParaMonte MATLAB shared libraries.
 %           in the default order of preference.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       names = pm.lib.mpi.choices()
 %
 %>  \final{}

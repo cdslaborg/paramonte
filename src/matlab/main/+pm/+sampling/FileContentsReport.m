@@ -8,22 +8,19 @@
 %
 %       See the documentation of the class constructor.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See below for information on the attributes (properties).
 %
-%   Methods
-%   -------
-%
+%   \note
 %       See below for information on the methods.
 %
 %>  \return
 %       An object of class ``pm.sampling.FileContentsReport``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       contents = pm.sampling.FileContentsReport(file)
 %       contents = pm.sampling.FileContentsReport(file, [])
 %       contents = pm.sampling.FileContentsReport(file, silent)
@@ -96,9 +93,6 @@ classdef FileContentsReport < pm.io.FileContents
         %
         %   This is the constructor of the class ``pm.sampling.FileContentsReport``.
         %
-        %   Parameters
-        %   ----------
-        %
         %       file
         %
         %           The input scalar MATLAB string
@@ -120,16 +114,16 @@ classdef FileContentsReport < pm.io.FileContents
         %               -   "ParaNest"
         %
         %           (**optional**. If missing, some of the report file contents may not be properly parsed.)
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       self
         %
         %           The output scalar object of class ``pm.sampling.FileContentsReport``.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       contents = pm.sampling.FileContentsReport(file)
         %       contents = pm.sampling.FileContentsReport(file, [])
@@ -138,11 +132,11 @@ classdef FileContentsReport < pm.io.FileContents
         %       contents = pm.sampling.FileContentsReport(file, silent, [])
         %       contents = pm.sampling.FileContentsReport(file, silent, method)
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = FileContentsReport(file, silent, method)
             if  nargin < 2
                 silent = [];

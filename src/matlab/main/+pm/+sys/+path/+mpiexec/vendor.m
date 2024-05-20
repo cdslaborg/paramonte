@@ -20,10 +20,11 @@
 %               -   ``"OpenMPI"``   :   representing the OpenMPI library.
 %
 %           If the vendor name cannot be identified, the output will be empty ``[]``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       name = pm.sys.path.mpiexec.vendor()
 %       name = pm.sys.path.mpiexec.vendor(path)
 %

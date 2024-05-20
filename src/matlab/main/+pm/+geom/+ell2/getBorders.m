@@ -55,8 +55,9 @@
 %>          containing the coordinates of a set of ``npnt`` points on
 %>          the boundary of the target 2D ellipsoid.
 %>
-%>  Interface
-%>  ---------
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
 %>
 %>      pm.geom.ell2.getBorders()
 %>      pm.geom.ell2.getBorders(gramian)

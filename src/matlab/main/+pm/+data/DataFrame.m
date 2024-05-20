@@ -22,15 +22,14 @@
 %       self
 %
 %           The output scalar object of class ``pm.data.DataFrame``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       df = pm.data.DataFrame(dfref);
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See the class attributes descriptions below.
 %
 classdef DataFrame < pm.data.DataRef
@@ -60,30 +59,27 @@ classdef DataFrame < pm.data.DataRef
         %   originates from the lack of the concept of references (pointers)
         %   in the MATLAB computing language.
         %
-        %   Parameters
-        %   ----------
-        %
         %       None
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       df
         %
         %           The output scalar MATLAB table a full copy of the dataframe
         %           contained in the user-specified input ``dfref`` passed
         %           to the constructor of the parent object.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       df = pm.data.DataFrame.copy()
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function df = copy(self)
             df = copy@pm.data.DataRef(self);
             if ~istable(df)
@@ -100,29 +96,26 @@ classdef DataFrame < pm.data.DataRef
         %   This class method is a handy shorthand for ``size(self.dfref, 2)``, particularly
         %   useful for specifying a range of indices of columns in visualization tasks.
         %
-        %   Parameters
-        %   ----------
-        %
         %       None
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       count
         %
         %           The output scalar MATLAB whole-number representing the number
         %           of columns in the ``dfref`` component of the parent object.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       count = pm.data.DataFrame.ncol()
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function count = ncol(self)
             count = size(self.copy(), 2);
         end
@@ -136,29 +129,26 @@ classdef DataFrame < pm.data.DataRef
         %   This class method is a handy shorthand for ``size(self.dfref, 2)``,
         %   particularly useful for specifying a range of indices of rows to visualize.
         %
-        %   Parameters
-        %   ----------
-        %
         %       None
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       count
         %
         %           The output scalar MATLAB whole-number representing the number
         %           of rows in the ``dfref`` component of the parent object.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       count = pm.data.DataFrame.nrow()
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function count = nrow(self)
             count = size(self.copy(), 1);
         end
@@ -177,9 +167,6 @@ classdef DataFrame < pm.data.DataRef
         %
         %       Beware of the different order of the input arguments
         %       between this method and ``pm.array.logrange()``.
-        %
-        %   Parameters
-        %   ----------
         %
         %       count
         %
@@ -205,18 +192,18 @@ classdef DataFrame < pm.data.DataRef
         %           It must be a number in the range ``[1, size(self.dfref, 1)]``.
         %           Otherwise, the value ``max(start, min(stop, self.nrow()))`` will be used.
         %           (**optional**, default = ``1``)
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       indices
         %
         %           The output vector of MATLAB real values containing
         %           the set of naturally logarithmically-spaced integer
         %           values in the specified input range.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       indices = pm.data.DataFrame()
         %       indices = pm.data.DataFrame([])
@@ -235,11 +222,11 @@ classdef DataFrame < pm.data.DataRef
         %       indices = pm.data.DataFrame(count, start, [])
         %       indices = pm.data.DataFrame(count, start, stop)
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function indices = rowslog(self, count, start, stop)
             if  nargin < 4
                 stop = [];

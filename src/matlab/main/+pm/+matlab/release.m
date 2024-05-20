@@ -19,10 +19,11 @@
 %
 %           The output scalar MATLAB string containing the
 %           MATLAB release version, year, or season as requested.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       matlabRelease = pm.matlab.release()
 %       matlabRelease = pm.matlab.release(type)
 %

@@ -25,10 +25,11 @@
 %           if and only if the input ``key`` exists in the input ``hashmap``,
 %           otherwise, it is ``false``.
 %           (**optional**. If missing, ``val`` will remain an empty array ``[]`` on output.)
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       val = pm.matlab.hashmap.getKeyVal(key, hashmap)
 %       [val, failed] = pm.matlab.hashmap.getKeyVal(key, hashmap)
 %

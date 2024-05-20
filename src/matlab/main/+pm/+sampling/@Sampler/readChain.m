@@ -46,10 +46,11 @@
 %           of class ``pm.sampling.FileContentsChain``,
 %           each of which corresponds to the contents
 %           of a unique chain file.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       sampler = pm.sampling.Sampler();
 %       chainList = sampler.readChain();
 %       chainList = sampler.readChain([]);

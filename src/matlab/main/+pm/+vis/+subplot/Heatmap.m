@@ -9,18 +9,17 @@
 %           See the documentation of the corresponding input
 %           argument of the superclass ``pm.vis.subplot.Subplot``.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See the documentation of the attributes
 %       of the superclass ``pm.vis.subplot.Subplot``.
 %
 %>  \return
 %       An object of ``pm.vis.subplot.Heatmap`` class.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       s = pm.vis.subplot.Heatmap(dfref);
 %       s = pm.vis.subplot.Heatmap(dfref, varargin);
 %
@@ -62,9 +61,6 @@ classdef Heatmap < pm.vis.subplot.Subplot
         %       This method has side-effects by manipulating
         %       the existing attributes of the parent object.
         %
-        %   Parameters
-        %   ----------
-        %
         %       lb
         %
         %           The input MATLAB object that can be either:
@@ -80,14 +76,14 @@ classdef Heatmap < pm.vis.subplot.Subplot
         %           The input MATLAB scalar double representing the upper bound of the Heatmap colormap limits.
         %           Its value is completely ignored if the input ``lb`` argument is a vector of size ``2``.
         %           (**optional**. If missing, the current value will remain intact.)
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       None
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       h = pm.vis.subplot.Subplot.make();
         %       h = pm.vis.subplot.Subplot.make([]);
@@ -107,11 +103,11 @@ classdef Heatmap < pm.vis.subplot.Subplot
         %       h.setcl(1, 2) % set the lower and upper bounds to 1 and 2.
         %       h.setcl([1, 2]) % set the lower and upper bounds to 1 and 2.
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function setcl(self, lb, ub)
 
             if  isfield(self.fout, "heatmap") && isprop(self.fout.heatmap, "ColorLimits")

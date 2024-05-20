@@ -46,10 +46,11 @@
 %           of class ``pm.sampling.FileContentsProgress``,
 %           each of which corresponds to the contents
 %           of a unique progress file.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       sampler = pm.sampling.Sampler();
 %       progressList = sampler.readProgress();
 %       progressList = sampler.readProgress([]);

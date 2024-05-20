@@ -25,10 +25,11 @@
 %           This means that the cache file contents are supposed to be updated only every month if necessary.
 %           A cache file is generated because retrieving system information is an expensive shell command-line operation.
 %           The time expense is particularly notable on Windows systems.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       [str, cache] = pm.sys.info()
 %
 %>  \final{}

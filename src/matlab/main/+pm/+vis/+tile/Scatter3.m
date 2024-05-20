@@ -22,18 +22,17 @@
 %           The input ``varargin`` can also contain the components
 %           of the ``subplot`` component of the parent object.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See the documentation of the attributes
 %       of the superclass ``pm.vis.tile.Tile``.
 %
 %>  \return
 %       An object of ``pm.vis.tile.Scatter3`` class.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       t = pm.vis.tile.Scatter3(dfref);
 %       t = pm.vis.tile.Scatter3(dfref, varargin);
 %

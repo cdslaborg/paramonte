@@ -30,8 +30,9 @@
 %>      val         :   The output scalar MATLAB whole-number
 %>                      representing the length of the input object.
 %>
-%>  Interface
-%>  ---------
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
 %>
 %>      pm.array.len(obj)
 %>

@@ -7,10 +7,11 @@
 %>  \return
 %       A MATLAB string containing the
 %       absolute path to the system home directory.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       path = pm.sys.path.home()
 %
 %>  \final{}

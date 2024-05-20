@@ -14,22 +14,19 @@
 %
 %       See the documentation of the class constructor.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See below for information on the attributes (properties).
 %
-%   Methods
-%   -------
-%
+%   \note
 %       See below for information on the methods.
 %
 %>  \return
 %       An object of class ``pm.timing.Timer``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       timer = pm.timing.Timer()
 %
 %   Example
@@ -83,28 +80,25 @@ classdef Timer < pm.matlab.Handle
         %
         %   This is the constructor of the class ``pm.timing.Timer``.
         %
-        %   Parameters
-        %   ----------
-        %
         %       None
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       self
         %
         %           The output scalar object of class ``pm.timing.Timer``.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       self = pm.timing.Timer()
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = Timer()
             self.tic();
         end
@@ -114,27 +108,24 @@ classdef Timer < pm.matlab.Handle
         %
         %   This is a dynamic method of the class ``pm.timing.Timer()``.
         %
-        %   Parameters
-        %   ----------
-        %
+        %       None
+        %>
+        %>  \return
+        %>
         %       None
         %
-        %   Returns
-        %   -------
-        %
-        %       None
-        %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       timer = pm.timing.Timer()
         %       timer.tic()
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function tic(self)
             self.start = tic();
             self.clock = 0;
@@ -147,30 +138,27 @@ classdef Timer < pm.matlab.Handle
         %
         %   This is a dynamic method of the class ``pm.timing.Timer()``.
         %
-        %   Parameters
-        %   ----------
-        %
         %       None
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       clock
         %
         %           The output scalar MATLAB ``real`` containing the time
         %           past since the (re)construction of the timer object.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       timer = pm.timing.Timer()
         %       clock = timer.toc()
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function clock = toc(self)
             self.clock = toc(self.start);
             clock = self.clock;
@@ -183,30 +171,27 @@ classdef Timer < pm.matlab.Handle
         %
         %   This is a dynamic method of the class ``pm.timing.Timer()``.
         %
-        %   Parameters
-        %   ----------
-        %
         %       None
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       delta
         %
         %           The output scalar MATLAB ``real`` containing the time
         %           past since the last time measurement by the timer object.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       timer = pm.timing.Timer()
         %       delta = timer.del()
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function delta = del(self)
             delta = self.clock;
             delta = self.toc() - delta;

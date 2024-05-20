@@ -9,10 +9,11 @@
 %
 %>  \return
 %       None
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       pm.lib.path.clean()
 %
 %>  \final{}

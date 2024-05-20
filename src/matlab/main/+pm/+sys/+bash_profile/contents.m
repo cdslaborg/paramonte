@@ -9,10 +9,11 @@
 %
 %           The output scalar MATLAB string containing the contents
 %           of the ``.bash_profile`` file if it exists or an empty string.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       str = pm.sys.bash_profile.contents()
 %
 %>  \final{}

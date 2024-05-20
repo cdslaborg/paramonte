@@ -17,10 +17,11 @@
 %           A MATLAB string list containing:
 %
 %               ``["native", "tuned", "ipo", "release", "testing", "debug"]``
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       typelist = pm.lib.bldtypes()
 %
 %>  \final{}

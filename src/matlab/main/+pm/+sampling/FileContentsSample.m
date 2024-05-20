@@ -8,22 +8,19 @@
 %
 %       See the documentation of the class constructor.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See below for information on the attributes (properties).
 %
-%   Methods
-%   -------
-%
+%   \note
 %       See below for information on the methods.
 %
 %>  \return
 %       An object of class ``pm.sampling.FileContentsSample``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       contents = pm.sampling.FileContentsSample(file)
 %       contents = pm.sampling.FileContentsSample(file, [])
 %       contents = pm.sampling.FileContentsSample(file, silent)
@@ -95,9 +92,6 @@ classdef FileContentsSample < pm.io.FileContentsTabular
         %
         %   This is the constructor of the class ``pm.sampling.FileContentsSample``.
         %
-        %   Parameters
-        %   ----------
-        %
         %       file
         %
         %           The input scalar MATLAB string
@@ -113,16 +107,16 @@ classdef FileContentsSample < pm.io.FileContentsTabular
         %           The input scalar MATLAB string
         %           containing the field separator used in the file.
         %           (**optional**, default = ``","``)
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       self
         %
         %           The output scalar object of class ``pm.sampling.FileContentsSample``.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       contents = pm.sampling.FileContentsSample(file)
         %       contents = pm.sampling.FileContentsSample(file, [])
@@ -132,11 +126,11 @@ classdef FileContentsSample < pm.io.FileContentsTabular
         %       contents = pm.sampling.FileContentsSample(file, silent, [])
         %       contents = pm.sampling.FileContentsSample(file, silent, sep)
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = FileContentsSample(file, silent, sep)
             if nargin < 3
                 sep = [];

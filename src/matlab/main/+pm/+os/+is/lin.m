@@ -8,10 +8,11 @@
 %
 %           The output MATLAB logical scalar value that is ``true``
 %           if and only if the OS is Linux, otherwise ``false``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       itis = pm.os.is.lin()
 %
 %>  \final{}

@@ -12,10 +12,11 @@
 %           The output scalar MATLAB string containing the
 %           the ParaMonte-preferred MPI library vendor name as
 %           used in naming the ParaMonte MATLAB shared libraries.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       name = pm.lib.mpi.choice()
 %
 %>  \final{}

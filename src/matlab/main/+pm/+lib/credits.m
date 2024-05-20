@@ -5,10 +5,11 @@
 %
 %>  \return
 %       A MATLAB string containing the ParaMonte MATLAB library acknowledgment statement.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       pm.lib.authors()
 %
 %>  \final{}

@@ -10,10 +10,11 @@
 %           The output MATLAB string list containing:
 %
 %               ``["Windows", "Linux", "Darwin"]``
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       names = pm.os.list()
 %
 %>  \final{}

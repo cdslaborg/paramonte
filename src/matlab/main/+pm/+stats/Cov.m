@@ -14,17 +14,16 @@
 %
 %       See the documentation of the class constructor below.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See the documentation of the class constructor below.
 %
 %>  \return
 %       See the documentation of the class constructor below.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       mat = pm.stats.Cov()
 %       mat = pm.stats.Cov(df)
 %       mat = pm.stats.Cov(df, method)
@@ -69,9 +68,6 @@ classdef Cov < pm.matlab.Handle
         %
         %   This is the constructor of the ``pm.stats.Cov`` class.
         %
-        %   Parameters
-        %   ----------
-        %
         %       df
         %
         %           The input MATLAB matrix or table of rank ``2``
@@ -87,26 +83,26 @@ classdef Cov < pm.matlab.Handle
         %               "spearman"  : for computing the Spearman rank covariance matrix of the input data.
         %
         %           (**optional**, default = ``"pearson"``)
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       self
         %
         %           The output object of class ``pm.stats.Cov``.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       mat = pm.stats.Cov()
         %       mat = pm.stats.Cov(df)
         %       mat = pm.stats.Cov(df, method)
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = Cov(df, method)
             if  1 < nargin
                 self.method = method;
@@ -126,9 +122,6 @@ classdef Cov < pm.matlab.Handle
         %   corresponding to the output of this method
         %   must be set explicitly manually.
         %
-        %   Parameters
-        %   ----------
-        %
         %       df
         %
         %           The input MATLAB matrix or table of rank ``2``
@@ -143,26 +136,26 @@ classdef Cov < pm.matlab.Handle
         %               "spearman"  : for computing the Spearman rank covariance matrix of the input data.
         %
         %           (**optional**, default = ``"pearson"``)
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       val
         %
         %           The output MATLAB ``table`` containing the covariance matrix.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       mat = pm.stats.Cov()
         %       mat.val = mat.get(df)
         %       mat.val = mat.get(df, method)
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function val = get(self, df, method)
             if nargin < 2
                 help("pm.stats.Cov");

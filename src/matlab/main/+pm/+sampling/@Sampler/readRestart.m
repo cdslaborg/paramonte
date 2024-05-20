@@ -59,10 +59,11 @@
 %           of class ``pm.sampling.FileContentsRestart``,
 %           each of which corresponds to the contents
 %           of a unique restart file.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       sampler = pm.sampling.Sampler();
 %       restartList = sampler.readRestart();
 %       restartList = sampler.readRestart([]);

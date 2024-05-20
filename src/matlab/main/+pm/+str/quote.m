@@ -12,10 +12,11 @@
 %       strQuoted
 %
 %           The output scalar MATLAB string containing the doubly-quoted escaped input string.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       strQuoted = pm.str.quote(str)
 %
 %>  \final{}

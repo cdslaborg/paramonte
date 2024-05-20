@@ -22,18 +22,17 @@
 %           The input ``varargin`` can also contain the components
 %           of the ``template`` component of the parent object.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See the documentation of the attributes
 %       of the superclass ``pm.vis.cascade.Cascade``.
 %
 %>  \return
 %       An object of ``pm.vis.cascade.Heatmap`` class.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       p = pm.vis.cascade.Heatmap(dfref);
 %       p = pm.vis.cascade.Heatmap(dfref, varargin);
 %

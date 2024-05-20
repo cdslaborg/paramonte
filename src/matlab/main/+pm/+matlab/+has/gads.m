@@ -14,10 +14,11 @@
 %           The output scalar MATLAB logical that is ``true`` if and
 %           only if the current installation of MATLAB contains
 %           the required MATLAB Toolbox.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       hasit = pm.matlab.has.gads();
 %
 %>  \final{}

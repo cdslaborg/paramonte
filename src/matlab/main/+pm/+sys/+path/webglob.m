@@ -54,10 +54,11 @@
 %           The output MATLAB cell array of the same size as ``pathList``,
 %           each element of which is a MATLAB logical value that is ``true`` if
 %           and only if the corresponding element of ``pathList`` is a directory.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       [pathList, isdirList] = pm.sys.path.webglob(pattern)
 %       [pathList, isdirList] = pm.sys.path.webglob(pattern, anycase)
 %

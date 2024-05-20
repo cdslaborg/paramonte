@@ -17,15 +17,14 @@
 %       self
 %
 %           The output scalar object of class ``pm.vis.figure.Figure``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       f = pm.vis.figure.Figure(varargin);
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See the list of class attributes below.
 %
 %
@@ -127,9 +126,6 @@ classdef Figure < pm.matlab.Handle
         %       This method has side-effects by manipulating
         %       the existing attributes of the parent object.
         %
-        %   Parameters
-        %   ----------
-        %
         %       varargin
         %
         %           Any ``property, value`` pair of the parent object.
@@ -137,14 +133,14 @@ classdef Figure < pm.matlab.Handle
         %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %           Note that all of these property-value pairs can be also directly set via the
         %           parent object attributes, before calling the ``make()`` method.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       None
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       f = pm.vis.figure.Figure.make(varargin);
         %
@@ -154,11 +150,11 @@ classdef Figure < pm.matlab.Handle
         %       f = pm.vis.figure.Figure();
         %       f.make()
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function make(self, varargin)
 
             self.premake(varargin{:});
@@ -202,9 +198,6 @@ classdef Figure < pm.matlab.Handle
         %   Use this method when you change many attributes of the plot and
         %   you want to clean up and go back to the default settings.
         %
-        %   Parameters
-        %   ----------
-        %
         %       varargin
         %
         %           Any ``property, value`` pair of the parent object.
@@ -212,22 +205,22 @@ classdef Figure < pm.matlab.Handle
         %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %           Note that all of these property-value pairs can be also directly set via the
         %           parent object attributes, before calling the ``make()`` method.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       None
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       pm.vis.figure.Figure.reset() # reset the plot to the default settings.
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function reset(self, varargin)
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -271,9 +264,6 @@ classdef Figure < pm.matlab.Handle
         %       This method has side-effects by manipulating
         %       the existing attributes of the parent object.
         %
-        %   Parameters
-        %   ----------
-        %
         %       varargin
         %
         %           Any ``property, value`` pair of the parent object.
@@ -281,14 +271,14 @@ classdef Figure < pm.matlab.Handle
         %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %           Note that all of these property-value pairs can be also directly set via the
         %           parent object attributes, before calling the ``premake()`` method.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       None
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       f = pm.vis.figure.Figure.premake(varargin);
         %
@@ -298,11 +288,11 @@ classdef Figure < pm.matlab.Handle
         %       f = pm.vis.figure.Figure();
         %       f.premake("figure", {"color", "none"})
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function premake(self, varargin)
 
             if ~isempty(varargin)
@@ -344,9 +334,6 @@ classdef Figure < pm.matlab.Handle
 
         %
         %   Export the current figure to the specified external file.
-        %
-        %   Parameters
-        %   ----------
         %
         %       file
         %
@@ -608,10 +595,9 @@ classdef Figure < pm.matlab.Handle
         %
         %               The input name (title) of the figure to export (e.g. 'Figure 1' or 'My fig').
         %               Overridden by handle (if specified); Default: current figure
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       imageData
         %
         %           The output image cube of type ``uint8`` of
@@ -622,8 +608,9 @@ classdef Figure < pm.matlab.Handle
         %           The output image matrix of shape ``[M, N]`` of alpha-matte
         %           values in the range [0,1] for the case of transparent background.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       f = pm.vis.figure.Figure();
         %       [imageData, alpha] = f.savefig();
@@ -637,11 +624,11 @@ classdef Figure < pm.matlab.Handle
         %       expoortFig("gridplot.pdf") % export figure to the specified PDF file.
         %       expoortFig("gridplot.png", "-m4 -transparent") % export a large png plot of magnitude 4 with transparency.
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function savefig(self, file, varargin)
 
             if nargin < 2

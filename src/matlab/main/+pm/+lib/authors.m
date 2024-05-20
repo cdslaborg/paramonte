@@ -5,10 +5,11 @@
 %
 %>  \return
 %       A MATLAB string containing the ParaMonte MATLAB library authors.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       str = pm.lib.authors()
 %
 function str = authors()

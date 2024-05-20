@@ -8,22 +8,19 @@
 %
 %       See the documentation of the class constructor.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See below for information on the attributes (properties).
 %
-%   Methods
-%   -------
-%
+%   \note
 %       See below for information on the methods.
 %
 %>  \return
 %       An object of class ``pm.sampling.FileContentsRestart``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       contents = pm.sampling.FileContentsRestart(file)
 %       contents = pm.sampling.FileContentsRestart(file, [])
 %       contents = pm.sampling.FileContentsRestart(file, silent)
@@ -85,9 +82,6 @@ classdef FileContentsRestart < pm.io.FileContents
         %
         %   This is the constructor of the class ``pm.sampling.FileContentsRestart``.
         %
-        %   Parameters
-        %   ----------
-        %
         %       file
         %
         %           The input scalar MATLAB string
@@ -109,16 +103,16 @@ classdef FileContentsRestart < pm.io.FileContents
         %               -   "ParaNest"
         %
         %           (**optional**. If missing, some of the restart file contents will not be (properly) parsed.)
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       self
         %
         %           The output scalar object of class ``pm.sampling.FileContentsRestart``.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       contents = pm.sampling.FileContentsRestart(file)
         %       contents = pm.sampling.FileContentsRestart(file, [])
@@ -127,11 +121,11 @@ classdef FileContentsRestart < pm.io.FileContents
         %       contents = pm.sampling.FileContentsRestart(file, silent, [])
         %       contents = pm.sampling.FileContentsRestart(file, silent, method)
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = FileContentsRestart(file, silent, method)
             if  nargin < 2
                 silent = [];

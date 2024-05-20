@@ -26,10 +26,11 @@
 %           of class ``containers.Map()`` will be returned containing all color
 %           names in the database and the corresponding RGB triplets.
 %
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       triplet = pm.vis.color.rgb()
 %       triplet = pm.vis.color.rgb([])
 %       triplet = pm.vis.color.rgb(cname)

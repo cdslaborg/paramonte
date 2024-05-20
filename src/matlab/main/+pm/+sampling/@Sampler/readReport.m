@@ -41,10 +41,11 @@
 %           of class ``pm.sampling.FileContentsReport``,
 %           each of which corresponds to the contents
 %           of a unique report file.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       sampler = pm.sampling.Sampler();
 %       reportList = sampler.readReport();
 %       reportList = sampler.readReport([]);

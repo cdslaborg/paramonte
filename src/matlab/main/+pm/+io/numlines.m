@@ -19,10 +19,11 @@
 %
 %           The output scalar MATLAB integer containing the
 %           number of records (lines) in the specified input ``idname``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       nlines = pm.io.numlines(idname);
 %
 %>  \final{}

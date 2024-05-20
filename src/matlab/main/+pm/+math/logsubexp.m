@@ -22,10 +22,11 @@
 %
 %           The output scalar MATLAB real containing the
 %           the result of ``log(exp(larger) - exp(smaller))`` accurately.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       val = pm.math.logsubexp(smaller, larger)
 %
 %   Example

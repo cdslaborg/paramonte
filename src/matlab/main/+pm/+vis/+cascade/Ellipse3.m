@@ -33,18 +33,17 @@
 %           The input ``varargin`` can also contain the components
 %           of the ``template`` component of the parent object.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See below and also the documentation of the
 %       attributes of the superclass ``pm.vis.figure.Figure``.
 %
 %>  \return
 %       An object of class ``pm.vis.cascade.Ellipse3``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       p = pm.vis.cascade.Ellipse3();
 %       p = pm.vis.cascade.Ellipse3(gramian);
 %       p = pm.vis.cascade.Ellipse3(gramian, center);

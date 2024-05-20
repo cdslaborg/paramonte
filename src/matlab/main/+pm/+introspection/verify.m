@@ -35,10 +35,11 @@
 %
 %>  \return
 %       None
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       pm.introspection.verify(varval, vartype, varsize, varname)
 %
 %>  \final{}

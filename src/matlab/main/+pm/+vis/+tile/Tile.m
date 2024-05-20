@@ -32,15 +32,14 @@
 %       self
 %
 %           The output scalar object of class ``pm.vis.tile.Tile``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       tile = pm.vis.tile.Tile(template);
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See the list of class attributes below,
 %       also those of the superclass ``pm.vis.figure.Tiling``.
 %
@@ -97,9 +96,6 @@ classdef Tile < pm.vis.figure.Tiling
         %   Use this method when you change many attributes of the tile and
         %   you want to clean up and go back to the default settings.
         %
-        %   Parameters
-        %   ----------
-        %
         %       varargin
         %
         %           Any ``property, value`` pair of the parent object.
@@ -112,22 +108,22 @@ classdef Tile < pm.vis.figure.Tiling
         %
         %           The input ``varargin`` can also contain the components
         %           of the ``subplot`` component of the parent object.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       None
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       pm.vis.tile.Tile.reset() # reset the tile to the default settings.
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function reset(self, varargin)
 
             self.tileshape = [];
@@ -159,9 +155,6 @@ classdef Tile < pm.vis.figure.Tiling
         %       This method has side-effects by manipulating
         %       the existing attributes of the parent object.
         %
-        %   Parameters
-        %   ----------
-        %
         %       varargin
         %
         %           Any ``property, value`` pair of the parent object.
@@ -174,14 +167,14 @@ classdef Tile < pm.vis.figure.Tiling
         %
         %           The input ``varargin`` can also contain the components
         %           of the ``subplot`` component of the parent object.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       None
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       t = pm.vis.tile.Tile.make(varargin);
         %
@@ -191,11 +184,11 @@ classdef Tile < pm.vis.figure.Tiling
         %       t = pm.vis.tile.Tile(pm.vis.subplot.Line());
         %       t.make()
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function make(self, varargin)
 
             self.premake(varargin{:});
@@ -390,9 +383,6 @@ classdef Tile < pm.vis.figure.Tiling
         %       This method has side-effects by manipulating
         %       the existing attributes of the parent object.
         %
-        %   Parameters
-        %   ----------
-        %
         %       varargin
         %
         %           Any ``property, value`` pair of the parent object.
@@ -400,14 +390,14 @@ classdef Tile < pm.vis.figure.Tiling
         %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %           Note that all of these property-value pairs can be also directly set via the
         %           parent object attributes, before calling the ``premake()`` method.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       None
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       f = pm.vis.tile.Tile.premake(varargin);
         %
@@ -417,11 +407,11 @@ classdef Tile < pm.vis.figure.Tiling
         %       f = pm.vis.tile.Tile(pm.vis.Line());
         %       f.premake("figure", {"color", "none"})
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function premake(self, varargin)
 
             if ~isempty(varargin)

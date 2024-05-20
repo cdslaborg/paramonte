@@ -14,10 +14,11 @@
 %           The output MATLAB vector of size ``ndot + 1`` containing the
 %           whole-number versions retrieved from the input version string,
 %           where ``ndot`` represents the number of dots in the input string.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       real = pm.str.split2real()
 %
 %>  \final{}

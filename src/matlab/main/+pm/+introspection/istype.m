@@ -50,10 +50,11 @@
 %           The output scalar MATLAB logical that is ``true`` if and only if
 %           the input ``varval`` conforms with the specified input type ``vartype``
 %           and the specified maximum size ``varsize``. Otherwise, it is ``false``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       itis = pm.introspection.istype(varval, vartype, varsize)
 %
 %>  \final{}

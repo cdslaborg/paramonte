@@ -26,10 +26,11 @@
 %           The output scalar (or vector of same size as ``keylist`` of)
 %           MATLAB string(s) containing the name(s) of the occurrence(s)
 %           of the input ``keylist``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       [loclist, namlist] = pm.str.locname(strlist, keylist)
 %
 %   Example

@@ -16,10 +16,11 @@
 %
 %           The output scalar MATLAB string containing the
 %           hyperlink (HTML-style-decorated) version of the input ``url``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       hlink = pm.web.href()
 %
 %>  \final{}

@@ -21,10 +21,11 @@
 %           path(s) to the ParaMonte library MEX shared files.
 %           The output ``mexpaths`` will be an empty list
 %           if no such paths are found.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       mexpaths = pm.lib.path.mex()
 %       mexpaths = pm.lib.path.mex([])
 %       mexpaths = pm.lib.path.mex([], [])

@@ -28,15 +28,14 @@
 %       self
 %
 %           The output scalar object of class ``pm.vis.cascade.Cascade``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       plot = pm.vis.cascade.Cascade(template);
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See the list of class attributes below,
 %       also those of the superclass ``pm.vis.figure.Handle``.
 %
@@ -79,9 +78,6 @@ classdef Cascade < pm.matlab.Handle
         %   Use this method when you change many attributes of the plot and
         %   you want to clean up and go back to the default settings.
         %
-        %   Parameters
-        %   ----------
-        %
         %       varargin
         %
         %           Any ``property, value`` pair of the parent object.
@@ -94,22 +90,22 @@ classdef Cascade < pm.matlab.Handle
         %
         %           The input ``varargin`` can also contain the components
         %           of the ``template`` component of the parent object.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       None
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       pm.vis.cascade.Cascade.reset() # reset the plot to the default settings.
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function reset(self, varargin)
 
             if ~isempty(varargin)
@@ -143,9 +139,6 @@ classdef Cascade < pm.matlab.Handle
         %       This method has side-effects by manipulating
         %       the existing attributes of the parent object.
         %
-        %   Parameters
-        %   ----------
-        %
         %       varargin
         %
         %           Any ``property, value`` pair of the parent object.
@@ -158,14 +151,14 @@ classdef Cascade < pm.matlab.Handle
         %
         %           The input ``varargin`` can also contain the components
         %           of the ``template`` component of the parent object.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       None
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       p = pm.vis.cascade.Cascade.make(varargin);
         %
@@ -175,11 +168,11 @@ classdef Cascade < pm.matlab.Handle
         %       p = pm.vis.cascade.Cascade("coly", 1:3);
         %       p.make()
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function make(self, varargin)
 
             self.premake(varargin{:});
@@ -265,9 +258,6 @@ classdef Cascade < pm.matlab.Handle
         %       all ``savefig`` methods of the figure objects in
         %       the ``window`` component of the parent cascade object.
         %
-        %   Parameters
-        %   ----------
-        %
         %       files
         %
         %           The input vector of MATLAB strings or cell array of char vectors that must be
@@ -284,14 +274,14 @@ classdef Cascade < pm.matlab.Handle
         %           Any optional key-val pair that is accepted by
         %           the ``savefig`` method of class ``pm.vis.figure.Figure``.
         %           For more information, see the ``savefig`` method of class ``pm.vis.figure.Figure``.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       None.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       c.savefigs();
         %       c.savefigs(files);
@@ -305,11 +295,11 @@ classdef Cascade < pm.matlab.Handle
         %       c.savefigs("gridplot.pdf") % export figure to the specified PDF file.
         %       c.savefigs("gridplot.png", "-m4 -transparent") % export a large png plot of magnitude 4 with transparency.
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function savefigs(self, files, varargin)
             if  nargin < 2 || isempty(files)
                 files = strings(length(self.window), 1);
@@ -345,9 +335,6 @@ classdef Cascade < pm.matlab.Handle
         %       This method has side-effects by manipulating
         %       the existing attributes of the parent object.
         %
-        %   Parameters
-        %   ----------
-        %
         %       varargin
         %
         %           Any ``property, value`` pair of the parent object.
@@ -355,14 +342,14 @@ classdef Cascade < pm.matlab.Handle
         %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %           Note that all of these property-value pairs can be also directly set via the
         %           parent object attributes, before calling the ``premake()`` method.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       None
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       c = pm.vis.cascade.Cascade.premake(varargin);
         %
@@ -372,11 +359,11 @@ classdef Cascade < pm.matlab.Handle
         %       c = pm.vis.cascade.Cascade();
         %       c.premake("figure", {"color", "none"})
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function premake(self, varargin)
 
             if ~isempty(varargin)

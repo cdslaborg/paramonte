@@ -16,10 +16,11 @@
 %           If the input ``url`` ends with ``/``, then the output
 %           basename is set to the default ``index.html``.
 %
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       name = pm.web.basename(url)
 %
 %>  \final{}

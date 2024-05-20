@@ -12,10 +12,11 @@
 %
 %           The output scalar MATLAB string containing ``4``
 %           blank characters equivalent to a tab character.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       pm.io.tab()
 %
 %>  \final{}

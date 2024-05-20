@@ -5,10 +5,11 @@
 %
 %>  \return
 %       A scalar MATLAB string containing the ParaMonte MATLAB library banner.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       str = pm.lib.banner()
 %
 %>  \final{}

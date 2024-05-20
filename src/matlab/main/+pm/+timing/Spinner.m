@@ -9,22 +9,19 @@
 %
 %       See the documentation of the class constructor.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See below for information on the attributes (properties).
 %
-%   Methods
-%   -------
-%
+%   \note
 %       See below for information on the methods.
 %
 %>  \return
 %       An object of class ``pm.timing.Spinner``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       self = pm.timing.Spinner()
 %
 %>  \final{}
@@ -75,32 +72,29 @@ classdef Spinner < pm.matlab.Handle
         %
         %   This is the constructor of the class ``pm.timing.Spinner``.
         %
-        %   Parameters
-        %   ----------
-        %
         %       tickmarks
         %
         %       The input MATLAB ``char`` vector containing the set of
         %       characters that represent the passage of time in the spinner.
         %       (**optional**, default = ``'|/-\'``)
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       self
         %
         %           The output scalar object of class ``pm.timing.Spinner``.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       self = pm.timing.Spinner()
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = Spinner()
             self.tickmarks = '|/-\';
             self.tickCount = length(self.tickmarks);
@@ -114,30 +108,27 @@ classdef Spinner < pm.matlab.Handle
         %
         %   This is a dynamic method of the class ``pm.timing.Spinner()``.
         %
-        %   Parameters
-        %   ----------
-        %
         %       fraction
         %
         %           The input scalar MATLAB fractional real (``0 <= fraction <= 1``)
         %           representing the fraction of work so far accomplished.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       None
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       spinner = pm.timing.Spinner()
         %       spinner.spin(fraction)
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function spin(self, fraction)
             if  0 < self.clock
                 if  fraction < 1

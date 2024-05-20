@@ -34,10 +34,11 @@
 %           The output vector of MATLAB real values containing
 %           the set of logarithmically-spaced values in the
 %           specified input range with the specified ``base``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       array = pm.array.logspace(loglb, logub)
 %       array = pm.array.logspace(loglb, logub, logskip)
 %       array = pm.array.logspace(loglb, logub, [], base)

@@ -58,10 +58,11 @@
 %           If the input ``path`` is empty, ``pathAbs`` is the current directory.
 %           The optional prefixes ``'\\?\'`` or ``'\\?\UNC'`` are added on demand
 %           as requested by the optional input argument ``style``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       path = pm.sys.path.abs(file)
 %       path = pm.sys.path.abs(file, style)
 %

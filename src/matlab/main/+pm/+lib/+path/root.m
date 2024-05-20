@@ -9,10 +9,11 @@
 %
 %           A scalar MATLAB string containing the root
 %           directory of the ParaMonte library package.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       path = pm.lib.path.root()
 %
 %>  \final{}

@@ -158,18 +158,17 @@
 %           Note that all of these property-value pairs can be also directly set via the
 %           parent object attributes, before calling the ``make()`` method.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See below and also the documentation of the attributes
 %       of the superclass ``pm.vis.subplot.LineScatter3``.
 %
 %>  \return
 %       An object of class ``pm.vis.subplot.Ellipse3``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       s = pm.vis.subplot.Ellipse3();
 %       s = pm.vis.subplot.Ellipse3(gramian);
 %       s = pm.vis.subplot.Ellipse3(gramian, center);
@@ -378,9 +377,6 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
         %       This method has side-effects by manipulating
         %       the existing attributes of the parent object.
         %
-        %   Parameters
-        %   ----------
-        %
         %       varargin
         %
         %           Any ``property, value`` pair of the parent object.
@@ -388,14 +384,14 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
         %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %           Note that all of these property-value pairs can be also directly set via the
         %           parent object attributes, before calling the ``premake()`` method.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       None
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       pm.vis.subplot.Ellipse3.premake(varargin);
         %
@@ -405,11 +401,11 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
         %       s = pm.vis.subplot.Ellipse3();
         %       s.premake("dims", [1, 2], "colormap", {"map", "autumn"})
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function premake(self, varargin)
 
             if ~isempty(varargin)
@@ -809,9 +805,6 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
         %
         %       This method is pure, except for the changes in ``fout`` component.
         %
-        %   Parameters
-        %   ----------
-        %
         %       varargin
         %
         %           Any ``property, value`` pair of the parent object.
@@ -819,14 +812,14 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
         %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %           Note that all of these property-value pairs can be also directly set via the
         %           parent object attributes, before calling the ``make()`` method.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       None
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       pm.vis.subplot.Ellipse3.make(varargin);
         %
@@ -836,11 +829,11 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
         %       s = pm.vis.subplot.Ellipse3();
         %       s.make("dims", [1, 2]);
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function make(self, varargin)
 
             make@pm.vis.subplot.LineScatter3(self, varargin{:});

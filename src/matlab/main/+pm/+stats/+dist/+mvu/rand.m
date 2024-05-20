@@ -35,10 +35,11 @@
 %           The output vector of MATLAB ``real`` of
 %           size ``(size(mean), 1)`` containing a random vector
 %           from the specified Multivariate Uniform distribution.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       rand = pm.stats.dist.mvu.rand(mean)
 %       rand = pm.stats.dist.mvu.rand([], cholow)
 %       rand = pm.stats.dist.mvu.rand(mean, cholow)

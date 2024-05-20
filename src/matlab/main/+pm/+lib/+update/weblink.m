@@ -18,10 +18,11 @@
 %           existing ParaMonte library version on the current system.
 %           The output ``str`` will be set to empty string ``""``
 %           if there is no newer version or the function fails.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       str = pm.lib.update.weblink()
 %
 %>  \final{}

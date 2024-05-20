@@ -9,10 +9,11 @@
 %
 %           The output scalar MATLAB string containing the path to
 %           the ``auxil`` directory of the ParaMonte library package.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       path = pm.lib.path.auxil()
 %
 %>  \final{}

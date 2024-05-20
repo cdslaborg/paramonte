@@ -8,22 +8,19 @@
 %
 %       See the documentation of the class constructor.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See below for information on the attributes (properties).
 %
-%   Methods
-%   -------
-%
+%   \note
 %       See below for information on the methods.
 %
 %>  \return
 %       An object of class ``pm.sampling.FileContentsChain``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       contents = pm.sampling.FileContentsChain(file)
 %       contents = pm.sampling.FileContentsChain(file, [])
 %       contents = pm.sampling.FileContentsChain(file, silent)
@@ -49,9 +46,6 @@ classdef FileContentsChain < pm.sampling.FileContentsSample
         %
         %   This is the constructor of the class ``pm.sampling.FileContentsChain``.
         %
-        %   Parameters
-        %   ----------
-        %
         %       file
         %
         %           The input scalar MATLAB string
@@ -66,16 +60,16 @@ classdef FileContentsChain < pm.sampling.FileContentsSample
         %
         %           See the corresponding argument of ``pm.sampling.FileContentsSample`` class.
         %           (**optional**. The default is set by ``pm.sampling.FileContentsSample``.)
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       self
         %
         %           The output scalar object of class ``pm.sampling.FileContentsChain``.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       contents = pm.sampling.FileContentsChain(file)
         %       contents = pm.sampling.FileContentsChain(file, [])
@@ -83,11 +77,11 @@ classdef FileContentsChain < pm.sampling.FileContentsSample
         %       contents = pm.sampling.FileContentsChain(file, [], sep)
         %       contents = pm.sampling.FileContentsChain(file, silent, sep)
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = FileContentsChain(file, silent, sep)
             if nargin < 3
                 sep = [];

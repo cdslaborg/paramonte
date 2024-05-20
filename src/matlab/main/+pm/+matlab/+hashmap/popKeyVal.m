@@ -28,10 +28,11 @@
 %           containing the ``(key, val)`` pairs of the input
 %           ``hashmap`` while all instances of keys matching
 %           the input ``keys`` along with their values are deleted.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       [keyval, hashout] = pm.matlab.hashmap.popKeyVal(keys, hashmap)
 %
 %   Example

@@ -18,15 +18,14 @@
 %       self
 %
 %           The output scalar object of class ``pm.vis.figure.Tiling``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       plot = pm.vis.figure.Tiling(subplot);
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See the list of class attributes below,
 %       also those of the superclass ``pm.vis.figure.Figure``.
 %
@@ -118,9 +117,6 @@ classdef Tiling < pm.vis.figure.Figure
         %       This method has side-effects by manipulating
         %       the existing attributes of the parent object.
         %
-        %   Parameters
-        %   ----------
-        %
         %       varargin
         %
         %           Any ``property, value`` pair of the parent object.
@@ -128,14 +124,14 @@ classdef Tiling < pm.vis.figure.Figure
         %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %           Note that all of these property-value pairs can be also directly set via the
         %           parent object attributes, before calling the ``make()`` method.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       None
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       f = pm.vis.figure.Tiling.make(varargin);
         %
@@ -145,11 +141,11 @@ classdef Tiling < pm.vis.figure.Figure
         %       f = pm.vis.figure.Tiling();
         %       f.make()
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function make(self, varargin)
 
             make@pm.vis.figure.Figure(self, varargin{:});
@@ -214,9 +210,6 @@ classdef Tiling < pm.vis.figure.Figure
         %   Use this method when you change many attributes of the plot and
         %   you want to clean up and go back to the default settings.
         %
-        %   Parameters
-        %   ----------
-        %
         %       varargin
         %
         %           Any ``property, value`` pair of the parent object.
@@ -224,22 +217,22 @@ classdef Tiling < pm.vis.figure.Figure
         %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %           Note that all of these property-value pairs can be also directly set via the
         %           parent object attributes, before calling the ``make()`` method.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       None
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       pm.vis.figure.Tiling.reset() # reset all object properties to the default settings.
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function reset(self, varargin)
 
             self.tiledlayout.innerPosition = [];
@@ -270,9 +263,6 @@ classdef Tiling < pm.vis.figure.Figure
         %       This method causes side-effects by manipulating
         %       the existing attributes of the object.
         %
-        %   Parameters
-        %   ----------
-        %
         %       varargin
         %
         %           Any ``property, value`` pair of the parent object.
@@ -280,10 +270,9 @@ classdef Tiling < pm.vis.figure.Figure
         %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %           Note that all of these property-value pairs can be also directly set via the
         %           parent object attributes, before calling the ``make()`` method.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       None.
         %
         %   Example

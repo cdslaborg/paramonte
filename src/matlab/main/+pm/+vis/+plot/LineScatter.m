@@ -22,18 +22,17 @@
 %           The input ``varargin`` can also contain the components
 %           of the ``subplot`` component of the parent object.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See the documentation of the attributes
 %       of the superclass ``pm.vis.plot.Plot``.
 %
 %>  \return
 %       An object of ``pm.vis.plot.LineScatter`` class.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       p = pm.vis.plot.LineScatter(dfref);
 %       p = pm.vis.plot.LineScatter(dfref, varargin);
 %

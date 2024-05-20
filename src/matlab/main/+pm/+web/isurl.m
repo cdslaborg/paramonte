@@ -12,10 +12,11 @@
 %
 %           The output scalar MATLAB logical that is ``true`` if and
 %           only if the input URL string exists in the world wide web.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       itis = pm.web.isurl(url)
 %
 %>  \final{}

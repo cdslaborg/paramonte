@@ -10,24 +10,21 @@
 %
 %           All class attributes can be set after constructing an instance of this class.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       The DRAM simulation specifications are all described on this page:
 %
 %           https://www.cdslab.org/paramonte/notes/usage/paradram/specifications/
 %
-%   Methods
-%   -------
-%
+%   \note
 %       See below for information on the methods.
 %
 %>  \return
 %       An object of class ``pm.sampling.SpecDRAM``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       spec = pm.sampling.SpecDRAM()
 %       spec = pm.sampling.SpecDRAM([])
 %       spec = pm.sampling.SpecDRAM([], [])
@@ -61,9 +58,6 @@ classdef SpecDRAM < pm.sampling.SpecMCMC
         %
         %   Construct and return an object of class ``pm.sampling.SpecDRAM``.
         %
-        %   Parameters
-        %   ----------
-        %
         %       method
         %
         %           The input scalar MATLAB string containing
@@ -77,14 +71,14 @@ classdef SpecDRAM < pm.sampling.SpecMCMC
         %           If ``true``, all descriptive messages on
         %           the MATLAB command line will be suppressed.
         %           (**optional**, default = ``false``)
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       The output scalar object of class ``pm.sampling.SpecDRAM``.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       spec = pm.sampling.SpecDRAM()
         %       spec = pm.sampling.SpecDRAM([])
@@ -94,11 +88,11 @@ classdef SpecDRAM < pm.sampling.SpecMCMC
         %       spec = pm.sampling.SpecDRAM([], silent)
         %       spec = pm.sampling.SpecDRAM(method, silent)
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = SpecDRAM(method, silent)
             if  nargin < 2
                 silent = [];
@@ -119,34 +113,31 @@ classdef SpecDRAM < pm.sampling.SpecMCMC
         %
         %   This is a dynamic method of the class ``pm.sampling.SpecMCMC``.
         %
-        %   Parameters
-        %   ----------
-        %
         %       ndim
         %
         %           The input scalar MATLAB integer containing the
         %           number of dimensions of the domain of the
         %           object function that is to be explored.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       entries
         %
         %           The output scalar MATLAB string containing
         %           the simulation specifications converted to
         %           a Fortran-namelist-compatible entry.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       entries = self.getEntriesNML(ndim)
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function entries = getEntriesNML(self, ndim)
             entries = getEntriesNML@pm.sampling.SpecMCMC(self, ndim);
             if  ~isempty(self.proposalAdaptationBurnin      ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalAdaptationBurnin     ", self.proposalAdaptationBurnin        , "real"   , 1); end

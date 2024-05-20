@@ -31,16 +31,15 @@
 %       self
 %
 %           The output scalar object of class ``pm.vis.subplot.Subplot``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       s = pm.vis.subplot.Subplot(ptype, dfref);
 %       s = pm.vis.subplot.Subplot(ptype, dfref, varargin);
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See the documentation of the superclass for a
 %       list of all class attributes that are dynamically
 %       added to the instantiated class objects based
@@ -243,9 +242,6 @@ classdef Subplot < pm.vis.axes.Axes
         %       This method has side-effects by manipulating
         %       the existing attributes of the parent object.
         %
-        %   Parameters
-        %   ----------
-        %
         %       varargin
         %
         %           Any ``property, value`` pair of the parent object.
@@ -253,14 +249,14 @@ classdef Subplot < pm.vis.axes.Axes
         %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %           Note that all of these property-value pairs can be also directly set via the
         %           parent object attributes, before calling the ``make()`` method.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       None
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       pm.vis.subplot.Subplot.make(varargin);
         %
@@ -271,11 +267,11 @@ classdef Subplot < pm.vis.axes.Axes
         %       s = pm.vis.subplot.Subplot("scatter", dfref);
         %       s.make("colx", 1, "coly", 2, "colc", 3)
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function make(self, varargin)
 
             self.premake(varargin{:});
@@ -864,9 +860,6 @@ classdef Subplot < pm.vis.axes.Axes
         %       This method has side-effects by manipulating
         %       the existing attributes of the parent object.
         %
-        %   Parameters
-        %   ----------
-        %
         %       varargin
         %
         %           Any ``property, value`` pair of the parent object.
@@ -874,14 +867,14 @@ classdef Subplot < pm.vis.axes.Axes
         %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %           Note that all of these property-value pairs can be also directly set via the
         %           parent object attributes, before calling the ``premake()`` method.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       None
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       pm.vis.subplot.Subplot.premake(varargin);
         %
@@ -892,11 +885,11 @@ classdef Subplot < pm.vis.axes.Axes
         %       s = pm.vis.subplot.Subplot("scatter", dfref);
         %       s.premake("colx", 1, "coly", 2, "colc", 3)
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function premake(self, varargin)
             premake@pm.vis.axes.Axes(self, varargin{:});
         end
@@ -908,9 +901,6 @@ classdef Subplot < pm.vis.axes.Axes
         %   Use this method when you change many attributes of the plot and
         %   you want to clean up and go back to the default settings.
         %
-        %   Parameters
-        %   ----------
-        %
         %       varargin
         %
         %           Any ``property, value`` pair of the parent object.
@@ -918,22 +908,22 @@ classdef Subplot < pm.vis.axes.Axes
         %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %           Note that all of these property-value pairs can be also directly set via the
         %           parent object attributes, before calling the ``make()`` method.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       None
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       pm.vis.subplot.Subplot.reset() # reset the plot to the default settings.
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function reset(self, varargin)
             self.rows = [];
             self.fout = struct();

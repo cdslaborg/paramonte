@@ -28,10 +28,11 @@
 %           The output vector of MATLAB real values containing
 %           the set of naturally logarithmically-spaced integer 
 %           values in the specified input range.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       array = pm.array.logrange(start, stop)
 %       array = pm.array.logrange(start, stop, [])
 %       array = pm.array.logrange(start, stop, sizemax)

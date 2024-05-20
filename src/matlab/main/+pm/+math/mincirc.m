@@ -23,10 +23,11 @@
 %
 %           The output scalar MATLAB whole-number
 %           representing the number of columns of the rectangle.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       [nrow, ncol] = pm.math.mincirc(area); 
 %
 %   Example

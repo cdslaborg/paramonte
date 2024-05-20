@@ -14,15 +14,14 @@
 %       self
 %
 %           The output scalar object of class ``pm.vis.corner.Corner``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       plot = pm.vis.corner.Corner(subplot);
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See the list of class attributes below,
 %       also those of the superclass ``pm.vis.figure.Tiling``.
 %
@@ -155,9 +154,6 @@ classdef Corner < pm.vis.figure.Tiling
         %       This method has side-effects by manipulating
         %       the existing attributes of the parent object.
         %
-        %   Parameters
-        %   ----------
-        %
         %       varargin
         %
         %           Any ``property, value`` pair of the parent object.
@@ -165,14 +161,14 @@ classdef Corner < pm.vis.figure.Tiling
         %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %           Note that all of these property-value pairs can be also directly set via the
         %           parent object attributes, before calling the ``make()`` method.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       None
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       f = pm.vis.corner.Corner.make(varargin);
         %
@@ -182,11 +178,11 @@ classdef Corner < pm.vis.figure.Tiling
         %       f = pm.vis.corner.Corner();
         %       f.make()
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function make(self, varargin)
 
             self.premake(varargin{:});
@@ -305,9 +301,6 @@ classdef Corner < pm.vis.figure.Tiling
         %   Use this method when you change many attributes of the plot and
         %   you want to clean up and go back to the default settings.
         %
-        %   Parameters
-        %   ----------
-        %
         %       varargin
         %
         %           Any ``property, value`` pair of the parent object.
@@ -315,22 +308,22 @@ classdef Corner < pm.vis.figure.Tiling
         %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %           Note that all of these property-value pairs can be also directly set via the
         %           parent object attributes, before calling the ``make()`` method.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       None
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       pm.vis.corner.Corner.reset() # reset all object properties to the default settings.
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function reset(self, varargin)
 
             self.dfref = [];
@@ -366,9 +359,6 @@ classdef Corner < pm.vis.figure.Tiling
         %       This method causes side-effects by manipulating
         %       the existing attributes of the object.
         %
-        %   Parameters
-        %   ----------
-        %
         %       varargin
         %
         %           Any ``property, value`` pair of the parent object.
@@ -376,10 +366,9 @@ classdef Corner < pm.vis.figure.Tiling
         %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %           Note that all of these property-value pairs can be also directly set via the
         %           parent object attributes, before calling the ``make()`` method.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       None.
         %
         %   Example

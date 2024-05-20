@@ -21,10 +21,11 @@
 %
 %               If the function cannot detect any of the above,
 %               the system-returned value will be output as is.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       str = pm.sys.arch()
 %
 %>  \final{}

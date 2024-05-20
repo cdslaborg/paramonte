@@ -14,22 +14,19 @@
 %
 %       See the documentation of the class constructor.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See below for information on the attributes (properties).
 %
-%   Methods
-%   -------
-%
+%   \note
 %       See below for information on the methods.
 %
 %>  \return
 %       An object of class ``pm.sampling.FileContentsRestartDRAM``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       contents = pm.sampling.FileContentsRestartDRAM(file)
 %       contents = pm.sampling.FileContentsRestartDRAM(file, [])
 %       contents = pm.sampling.FileContentsRestartDRAM(file, silent)
@@ -122,9 +119,6 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
         %
         %   This is the constructor of the class ``pm.sampling.FileContentsRestartDRAM``.
         %
-        %   Parameters
-        %   ----------
-        %
         %       file
         %
         %           The input scalar MATLAB string
@@ -134,16 +128,16 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
         %
         %           See the corresponding argument of ``pm.sampling.FileContentsRestart`` class.
         %           (**optional**. The default is set by ``pm.sampling.FileContentsRestart``.)
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       self
         %
         %           The output scalar object of class ``pm.sampling.FileContentsRestartDRAM``.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       contents = pm.sampling.FileContentsRestartDRAM(file)
         %       contents = pm.sampling.FileContentsRestartDRAM(file, [])
@@ -152,11 +146,11 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
         %       contents = pm.sampling.FileContentsRestartDRAM(file, silent, [])
         %       contents = pm.sampling.FileContentsRestartDRAM(file, silent, method)
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = FileContentsRestartDRAM(file, silent)
             if  nargin < 2
                 silent = [];

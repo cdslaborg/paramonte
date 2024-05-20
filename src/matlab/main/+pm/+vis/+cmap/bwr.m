@@ -25,10 +25,11 @@
 %
 %           The output blue-white-red colormap matrix
 %           of shape ``[nell, 3]`` containing a **cold** colormap.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       cmap = pm.vis.cmap.cold()
 %       cmap = pm.vis.cmap.cold([])
 %       cmap = pm.vis.cmap.cold(nell)

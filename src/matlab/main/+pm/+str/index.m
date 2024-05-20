@@ -30,10 +30,11 @@
 %           containing the location of the first occurrence of the
 %           input ``pattern`` in the input ``str`` or ``0`` if no such
 %           pattern exists.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       loc = pm.str.index(str, pattern)
 %
 %   Example

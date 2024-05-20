@@ -31,10 +31,11 @@
 %           ``from`` and ``to``, the field value of ``from`` will
 %           overwrite the corresponding field value of ``to``
 %           in the output ``tonew``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       tonew = pm.matlab.struct.copy(from)
 %       tonew = pm.matlab.struct.copy(from, to)
 %       tonew = pm.matlab.struct.copy(from, [], fields)

@@ -34,10 +34,11 @@
 %           The output scalar MATLAB logical that is ``true`` if and
 %           only if the deletion of the input file fails,
 %           otherwise, return ``false``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       failed = pm.sys.path.rmfile(file)
 %       failed = pm.sys.path.rmfile(file, desc)
 %

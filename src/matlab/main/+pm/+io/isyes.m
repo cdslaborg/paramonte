@@ -19,10 +19,11 @@
 %           user response to a question on the MATLAB command prompt
 %           is ``Y`` or ``y``, representing YES, otherwise `false`
 %           if the user response is ``N`` or ``n``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       pm.io.isyes()
 %       pm.io.isyes(question)
 %

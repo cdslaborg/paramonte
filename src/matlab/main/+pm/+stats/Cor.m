@@ -14,17 +14,16 @@
 %
 %       See the documentation of the class constructor below.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See the documentation of the class constructor below.
 %
 %>  \return
 %       See the documentation of the class constructor below.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       mat = pm.stats.Cor()
 %       mat = pm.stats.Cor(df)
 %       mat = pm.stats.Cor(df, method)
@@ -69,9 +68,6 @@ classdef Cor < pm.matlab.Handle
         %
         %   This is the constructor of the ``Cor`` class.
         %
-        %   Parameters
-        %   ----------
-        %
         %       df
         %
         %           The input MATLAB matrix or table of rank ``2``
@@ -88,26 +84,26 @@ classdef Cor < pm.matlab.Handle
         %               "spearman"  : for computing the Spearman rank correlation matrix of the input data.
         %
         %           (**optional**, default = ``"pearson"``)
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       self
         %
         %           The output object of class ``pm.stats.Cor``.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       mat = pm.stats.Cor()
         %       mat = pm.stats.Cor(df)
         %       mat = pm.stats.Cor(df, method)
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = Cor(df, method)
             if nargin == 2
                 self.method = method;
@@ -127,9 +123,6 @@ classdef Cor < pm.matlab.Handle
         %   corresponding to the output of this method
         %   must be set explicitly manually.
         %
-        %   Parameters
-        %   ----------
-        %
         %       df
         %
         %           The input MATLAB matrix or table of rank ``2``
@@ -145,26 +138,26 @@ classdef Cor < pm.matlab.Handle
         %               "spearman"  : for computing the Spearman rank correlation matrix of the input data.
         %
         %           (**optional**, default = ``pm.stats.Cor.method``)
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       val
         %
         %           The output MATLAB ``table`` containing the correlation matrix.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       mat = pm.stats.Cor()
         %       mat.val = mat.get(df)
         %       mat.val = mat.get(df, method)
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function val = get(self, df, method)
             if nargin < 2
                 help("pm.stats.Cor");

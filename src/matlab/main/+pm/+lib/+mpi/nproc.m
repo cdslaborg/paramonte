@@ -35,10 +35,11 @@
 %           MPI processes launched by the ``mpiexec`` command or ``1``
 %           if no ``mpiexec`` invocation has occurred or the routine
 %           fails to load any MPI-enabled ParaMonte library.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       count = pm.lib.mpi.nproc()
 %       count = pm.lib.mpi.nproc([])
 %       count = pm.lib.mpi.nproc(config)

@@ -17,10 +17,11 @@
 %           A MATLAB string list containing:
 %
 %               ``["intel", "gnu"]``
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       typelist = pm.lib.clstypes()
 %
 %>  \final{}

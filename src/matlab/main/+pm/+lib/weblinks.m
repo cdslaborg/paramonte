@@ -6,10 +6,11 @@
 %
 %>  \return
 %       A MATLAB `struct` containing the ParaMonte website information.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       pm.lib.weblinks()
 %
 %>  \final{}

@@ -22,10 +22,11 @@
 %
 %               -   an HTML-style hyperlink to the ParaMonte library publications
 %                   if the library is used within the MATLAB GUI interface.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       str = pm.lib.cite()
 %       str = pm.lib.cite(format)
 %

@@ -38,10 +38,11 @@
 %           The output cell array of even number of elements
 %           containing the field names and values of the input ``object``
 %           as ``(key, val)`` pairs stored sequentially as the cell elements.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       hashmap = pm.matlab.hashmap.struct2hash(object)
 %       hashmap = pm.matlab.hashmap.struct2hash(object, exkeys)
 %       hashmap = pm.matlab.hashmap.struct2hash(object, [], unique)

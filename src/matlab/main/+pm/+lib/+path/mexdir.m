@@ -21,10 +21,11 @@
 %           directory path(s) to the ParaMonte library MEX shared files.
 %           The output ``mexdirs`` will be an empty list
 %           if no such paths are found.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       mexdirs = pm.lib.path.mexdir()
 %       mexdirs = pm.lib.path.mexdir([])
 %       mexdirs = pm.lib.path.mexdir([], [])

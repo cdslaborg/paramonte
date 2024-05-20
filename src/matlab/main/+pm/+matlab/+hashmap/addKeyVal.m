@@ -24,10 +24,11 @@
 %           containing the input pair list and ``(key, val)`` pair.
 %           If the input ``key`` exists in the input ``hashmap``,
 %           the input ``(key, val)`` pair will not be added.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       hashnew = pm.matlab.hashmap.addKeyVal(key, val, hashmap)
 %
 %   Example

@@ -7,10 +7,11 @@
 %
 %>  \return
 %       None
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       Handle = pm.matlab.Handle()
 %
 %>  \final{}
@@ -63,26 +64,23 @@ classdef (Abstract) Handle < dynamicprops%handle
         %
         %   This is a dynamic method of the class ``pm.matlab.Handle``.
         %
-        %   Parameters
-        %   ----------
-        %
+        %       None
+        %>
+        %>  \return
+        %>
         %       None
         %
-        %   Returns
-        %   -------
-        %
-        %       None
-        %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       self.help()
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function help(self)
             help(class(self));
         end

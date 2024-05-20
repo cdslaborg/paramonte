@@ -50,18 +50,17 @@
 %           Note that all of these property-value pairs can be also directly set via the
 %           parent object attributes, before calling the ``make()`` method.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See below and also the documentation of the attributes
 %       of the superclass ``pm.vis.subplot.Ellipse3``.
 %
 %>  \return
 %       An object of class ``pm.vis.subplot.Ellipse``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       s = pm.vis.subplot.Ellipse();
 %       s = pm.vis.subplot.Ellipse(gramian);
 %       s = pm.vis.subplot.Ellipse(gramian, center);
@@ -114,9 +113,6 @@ classdef Ellipse < pm.vis.subplot.Ellipse3
         %
         %       This method is pure, except for the changes in ``fout`` component.
         %
-        %   Parameters
-        %   ----------
-        %
         %       varargin
         %
         %           Any ``property, value`` pair of the parent object.
@@ -124,14 +120,14 @@ classdef Ellipse < pm.vis.subplot.Ellipse3
         %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %           Note that all of these property-value pairs can be also directly set via the
         %           parent object attributes, before calling the ``make()`` method.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       None
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       pm.vis.subplot.Ellipse.make(varargin);
         %
@@ -141,11 +137,11 @@ classdef Ellipse < pm.vis.subplot.Ellipse3
         %       s = pm.vis.subplot.Ellipse();
         %       s.make("dims", [1, 2]);
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function make(self, varargin)
 
             make@pm.vis.subplot.Ellipse3(self, varargin{:});

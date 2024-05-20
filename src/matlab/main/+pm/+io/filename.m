@@ -41,10 +41,11 @@
 %               2.  ``MM``      is replaced with the current minute of hour.
 %               2.  ``SS``      is replaced with the current second of minute.
 %               2.  ``MMM``     is replaced with the current millisecond of second.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       str = pm.io.filename(prefix)
 %
 %>  \final{}

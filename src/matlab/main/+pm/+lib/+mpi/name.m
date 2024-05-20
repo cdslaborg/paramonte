@@ -21,10 +21,11 @@
 %           library name corresponding to the input MPI ``vendor``.
 %           If the input ``vendor`` is not supported, the default
 %           string ``"mpi"`` is returned as the value ``str``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       str = pm.lib.mpi.name(vendor)
 %
 %>  \final{}

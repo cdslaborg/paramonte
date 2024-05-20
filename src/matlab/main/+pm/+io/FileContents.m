@@ -12,22 +12,19 @@
 %
 %       See the documentation of the class constructor.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See below for information on the attributes (properties).
 %
-%   Methods
-%   -------
-%
+%   \note
 %       See below for information on the methods.
 %
 %>  \return
 %       An object of class pm.io.FileContents.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       contents = pm.io.FileContents(file)
 %       contents = pm.io.FileContents(file, [])
 %       contents = pm.io.FileContents(file, silent)
@@ -72,9 +69,6 @@ classdef FileContents < pm.matlab.Handle
         %   It merely serves as the blueprint for the IO subclasses
         %   accessible to the end users.
         %
-        %   Parameters
-        %   ----------
-        %
         %       file
         %
         %           The input scalar MATLAB string
@@ -87,26 +81,26 @@ classdef FileContents < pm.matlab.Handle
         %           Setting this option to ``false`` is particularly useful
         %           in MPI-parallel simulations.
         %           (**optional**, default = ``false``)
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       self
         %
         %           The output scalar object of class ``pm.io.FileContents``.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       contents = pm.io.FileContents(file)
         %       contents = pm.io.FileContents(file, [])
         %       contents = pm.io.FileContents(file, silent)
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = FileContents(file, silent)
             if  nargin < 2
                 silent = [];
@@ -185,34 +179,31 @@ classdef FileContents < pm.matlab.Handle
         %   this class to repeatedly sync the internal copy of ``df`` with
         %   the original ``df`` component of the parent object.
         %
-        %   Parameters
-        %   ----------
-        %
         %       field
         %
         %           The input scalar MATLAB string containing the
         %           name of a field (component/attribute) of the parent
         %           object whose value will have to be returned.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       val
         %
         %           The output object containing the value of the
         %           specified ``field`` of the parent object.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       fc = pm.io.FileContents(field)
         %       val = fc.getval(field)
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function val = getval(self, field)
             val = self.(field);
         end

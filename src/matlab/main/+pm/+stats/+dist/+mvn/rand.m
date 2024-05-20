@@ -31,10 +31,11 @@
 %           The output vector of MATLAB ``real`` of
 %           size ``(size(mean), 1)`` containing a random vector
 %           from the specified Multivariate Normal distribution.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       rand = pm.stats.dist.mvn.rand(mean)
 %       rand = pm.stats.dist.mvn.rand([], cholow)
 %       rand = pm.stats.dist.mvn.rand(mean, cholow)

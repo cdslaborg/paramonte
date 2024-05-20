@@ -9,18 +9,17 @@
 %           See the documentation of the corresponding input
 %           argument of the superclass ``pm.vis.subplot.Subplot``.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See the documentation of the attributes
 %       of the superclass ``pm.vis.subplot.Subplot``.
 %
 %>  \return
 %       An object of ``pm.vis.subplot.Histfit`` class.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       s = pm.vis.subplot.Histfit(dfref);
 %       s = pm.vis.subplot.Histfit(dfref, varargin);
 %

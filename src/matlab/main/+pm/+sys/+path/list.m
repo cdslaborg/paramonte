@@ -25,10 +25,11 @@
 %           will be prefixed to each item in the output ``namelist``.
 %           If the input `path` is not a directory or is empty,
 %           the output `namelist` will be empty.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       namelist = pm.sys.path.list()
 %       namelist = pm.sys.path.list(path)
 %

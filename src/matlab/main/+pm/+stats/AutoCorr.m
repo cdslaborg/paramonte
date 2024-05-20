@@ -13,17 +13,16 @@
 %
 %       See the documentation of the class constructor below.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       See the documentation of the class constructor below.
 %
 %>  \return
 %       See the documentation of the class constructor below.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       acf = pm.stats.AutoCorr()
 %       acf = pm.stats.AutoCorr(df)
 %       acf = pm.stats.AutoCorr(df, numlags)
@@ -103,9 +102,6 @@ classdef AutoCorr < pm.matlab.Handle
         %
         %   This is the constructor of the ``pm.stats.AutoCorr`` class.
         %
-        %   Parameters
-        %   ----------
-        %
         %       df
         %
         %           The input MATLAB matrix or table of rank ``2``
@@ -122,16 +118,16 @@ classdef AutoCorr < pm.matlab.Handle
         %           of the MATLAB intrinsic ``autocorr()`` in the Econometrics Toolbox.
         %
         %           (**optional**, default = ``1``)
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       self
         %
         %           The output object of class ``pm.stats.AutoCorr``.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       acf = pm.stats.AutoCorr()
         %       acf = pm.stats.AutoCorr(df)
@@ -139,11 +135,11 @@ classdef AutoCorr < pm.matlab.Handle
         %       acf = pm.stats.AutoCorr(df, [], numstd)
         %       acf = pm.stats.AutoCorr(df, numlags, numstd)
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = AutoCorr(df, numlags, numstd)
             if nargin < 3
                 numstd = 1;
@@ -173,9 +169,6 @@ classdef AutoCorr < pm.matlab.Handle
         %   corresponding to the output of this method
         %   must be set explicitly manually.
         %
-        %   Parameters
-        %   ----------
-        %
         %       df
         %
         %           The input MATLAB matrix or table of rank ``2``
@@ -201,10 +194,9 @@ classdef AutoCorr < pm.matlab.Handle
         %           The default value will be used if the input ``numstd`` is empty ``[]``.
         %
         %           (**optional**, default = ``1``)
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       val
         %
         %           The output MATLAB ``table`` of size ``numlags + 1``
@@ -223,8 +215,9 @@ classdef AutoCorr < pm.matlab.Handle
         %           magnitude is smaller than the corresponding ``bnd`` element
         %           can be considered insignificant and mere fluctuation.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       acf = pm.stats.AutoCorr()
         %       [acf.val, acf.lag, acf.bnd] = acf.get(df)
@@ -233,11 +226,11 @@ classdef AutoCorr < pm.matlab.Handle
         %       [acf.val, acf.lag, acf.bnd] = acf.get(df, [], numstd)
         %       [acf.val, acf.lag, acf.bnd] = acf.get(df, numlags, numstd)
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function [val, lag, bnd] = get(self, df, numlags, numstd)
             if nargin < 2
                 help("pm.stats.AutoCorr");

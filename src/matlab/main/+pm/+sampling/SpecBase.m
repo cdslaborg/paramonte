@@ -10,24 +10,21 @@
 %
 %           All class attributes can be set after constructing an instance of this class.
 %
-%   Attributes
-%   ----------
-%
+%   \note
 %       The MCMC simulation specifications are all described on this page:
 %
 %           https://www.cdslab.org/paramonte/notes/usage/paradram/specifications/
 %
-%   Methods
-%   -------
-%
+%   \note
 %       See below for information on the methods.
 %
 %>  \return
 %       An object of class ``pm.sampling.SpecBase``.
-%
-%   Interface
-%   ---------
-%
+%>
+%>  \interface{}
+%>  \code{.m}
+%>  \endcode
+%>
 %       spec = pm.sampling.SpecBase()
 %       spec = pm.sampling.SpecBase([])
 %       spec = pm.sampling.SpecBase([], [])
@@ -90,9 +87,6 @@ classdef SpecBase < pm.matlab.Handle
         %
         %   Construct and return an object of class ``pm.sampling.SpecBase``.
         %
-        %   Parameters
-        %   ----------
-        %
         %       method
         %
         %           The input scalar MATLAB string containing
@@ -106,14 +100,14 @@ classdef SpecBase < pm.matlab.Handle
         %           If ``true``, all descriptive messages on
         %           the MATLAB command line will be suppressed.
         %           (**optional**, default = ``false``)
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       The output scalar object of class ``pm.sampling.SpecBase``.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       spec = pm.sampling.SpecBase()
         %       spec = pm.sampling.SpecBase([])
@@ -123,11 +117,11 @@ classdef SpecBase < pm.matlab.Handle
         %       spec = pm.sampling.SpecBase([], silent)
         %       spec = pm.sampling.SpecBase(method, silent)
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = SpecBase(method, silent)
             if  nargin < 2
                 silent = [];
@@ -173,25 +167,22 @@ classdef SpecBase < pm.matlab.Handle
         %       work required for generating and maintaining such documentation across
         %       all supported programming language environments.
         %
-        %   Parameters
-        %   ----------
-        %
         %       specification
         %
         %           The input scalar MATLAB string containing the
         %           name of a simulation specification corresponding
         %           an attribute of the parent object.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       weblink
         %
         %           The output scalar MATLAB string containing the web address
         %           for the documentation of the requested simulation specification.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       weblink = self.doc()
         %       weblink = self.doc(specification)
@@ -202,11 +193,11 @@ classdef SpecBase < pm.matlab.Handle
         %       pmpd.spec.doc()                 % return help for all specifications.
         %       pmpd.spec.doc("outputFileName") % return help for the specification ``outputFileName``.
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function weblink = doc(self, specification)
 
             if  nargin < 2
@@ -247,34 +238,31 @@ classdef SpecBase < pm.matlab.Handle
         %
         %   This is a dynamic method of the class ``pm.sampling.SpecBase``.
         %
-        %   Parameters
-        %   ----------
-        %
         %       ndim
         %
         %           The input scalar MATLAB integer containing the
         %           number of dimensions of the domain of the
         %           object function that is to be explored.
-        %
-        %   Returns
-        %   -------
-        %
+        %>
+        %>  \return
+        %>
         %       entries
         %
         %           The output scalar MATLAB string containing
         %           the simulation specifications converted to
         %           a Fortran-namelist-compatible entry.
         %
-        %   Interface
-        %   ---------
+        %>  \interface{copy}
+        %>  \code{.m}
+        %>  \endcode
         %
         %       entries = self.getEntriesNML(ndim)
         %
-        %   LICENSE
-        %   -------
-        %
-        %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-        %
+        %>  \final{}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function entries = getEntriesNML(self, ndim)
             if  isempty(self.outputFileName)
                 % First define ``outputFileName`` if it is empty.
