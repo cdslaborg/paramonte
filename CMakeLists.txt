@@ -1419,7 +1419,7 @@ if (MATLAB_ENABLED)
                 "${pmwarn}      cmake -Dmatlabdir=path_to_matlab_root_directory\n"
                 "${pmwarn} \n"
                 "${pmwarn} The MATLAB root directory is the directory that is returned by the MATLAB command `matlabroot`.\n"
-                "${pmwarn} An example of the MATLAB root directory (on Windows) is 'C:\Program Files\MATLAB\R2017b'.\n"
+                "${pmwarn} An example of the MATLAB root directory (on Windows) is 'C:\\Program Files\\MATLAB\\R2017b'.\n"
                 "${pmwarn} PROCEEDING WITHOUT COMPILING MEX FILES AND MATLAB DEPENDENCIES..."
                 )
     endif()
