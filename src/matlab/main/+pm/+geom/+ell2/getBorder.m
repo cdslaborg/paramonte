@@ -38,12 +38,12 @@
 %>  [pm.vis.tile.Ellipse](@ref Ellipse)<br>
 %>
 %>  \example{getBorder}
-%>  \include{lineno} example/+geom/+ell2/getBorder/main.m
+%>  \include{lineno} example/geom/ell2/getBorder/main.m
 %>  \matlabrun{getBorder}
 %>  \vis{getBorder}
-%>  \image html example/+geom/+ell2/getBorder/getBorder.2d.png width=700
-%>  \image html example/+geom/+ell2/getBorder/getBorder.3d.png width=700
-%>  \image html example/+geom/+ell2/getBorder/getBorder.wavy.png width=700
+%>  \image html example/geom/ell2/getBorder/getBorder.2d.png width=700
+%>  \image html example/geom/ell2/getBorder/getBorder.3d.png width=700
+%>  \image html example/geom/ell2/getBorder/getBorder.wavy.png width=700
 %>
 %>  \final{getBorder}
 %>

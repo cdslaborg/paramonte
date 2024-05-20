@@ -1,140 +1,158 @@
-
-function [bandwidth, density, X, Y] = kde2d(data, n, MIN_XY, MAX_XY)
-    % fast and accurate state-of-the-art
-    % bivariate kernel density estimator
-    % with diagonal bandwidth matrix.
-    % The kernel is assumed to be Gaussian.
-    % The two bandwidth parameters are
-    % chosen optimally without ever
-    % using/assuming a parametric model for the data or any "rules of thumb".
-    % Unlike many other procedures, this one
-    % is immune to accuracy failures in the estimation of
-    % multimodal densities with widely separated modes (see examples).
-    % INPUTS: data - an N by 2 array with continuous data
-    %            n - size of the n by n grid over which the density is computed
-    %                n has to be a power of 2, otherwise n=2^ceil(log2(n));
-    %                the default value is 2^8;
-    % MIN_XY,MAX_XY- limits of the bounding box over which the density is computed;
-    %                the format is:
-    %                MIN_XY=[lower_Xlim,lower_Ylim]
-    %                MAX_XY=[upper_Xlim,upper_Ylim].
-    %                The dafault limits are computed as:
-    %                MAX=max(data,[],1); MIN=min(data,[],1); Range=MAX-MIN;
-    %                MAX_XY=MAX+Range/4; MIN_XY=MIN-Range/4;
-    % OUTPUT: bandwidth - a row vector with the two optimal
-    %                     bandwidths for a bivaroate Gaussian kernel;
-    %                     the format is:
-    %                     bandwidth=[bandwidth_X, bandwidth_Y];
-    %          density  - an n by n matrix containing the density values over the n by n grid;
-    %                     density is not computed unless the function is asked for such an output;
-    %              X,Y  - the meshgrid over which the variable "density" has been computed;
-    %                     the intended usage is as follows:
-    %                     surf(X,Y,density)
-    % Example (simple Gaussian mixture)
-    % clear all
-    %   % generate a Gaussian mixture with distant modes
-    %   data=[randn(500,2);
-    %       randn(500,1)+3.5, randn(500,1);];
-    %   % call the routine
-    %     [bandwidth,density,X,Y]=kde2d(data);
-    %   % plot the data and the density estimate
-    %     contour3(X,Y,density,50), hold on
-    %     plot(data(:,1),data(:,2),'r.','MarkerSize',5)
-    %
-    % Example (Gaussian mixture with distant modes):
-    %
-    % clear all
-    %  % generate a Gaussian mixture with distant modes
-    %  data=[randn(100,1), randn(100,1)/4;
-    %      randn(100,1)+18, randn(100,1);
-    %      randn(100,1)+15, randn(100,1)/2-18;];
-    %  % call the routine
-    %    [bandwidth,density,X,Y]=kde2d(data);
-    %  % plot the data and the density estimate
-    %  surf(X,Y,density,'LineStyle','none'), view([0,60])
-    %  colormap hot, hold on, alpha(.8)
-    %  set(gca, 'color', 'blue');
-    %  plot(data(:,1),data(:,2),'w.','MarkerSize',5)
-    %
-    % Example (Sinusoidal density):
-    %
-    % clear all
-    %   X=rand(1000,1); Y=sin(X*10*pi)+randn(size(X))/3; data=[X,Y];
-    %  % apply routine
-    %  [bandwidth,density,X,Y]=kde2d(data);
-    %  % plot the data and the density estimate
-    %  surf(X,Y,density,'LineStyle','none'), view([0,70])
-    %  colormap hot, hold on, alpha(.8)
-    %  set(gca, 'color', 'blue');
-    %  plot(data(:,1),data(:,2),'w.','MarkerSize',5)
-    %
-    %  Reference:
-    % Kernel density estimation via diffusion
-    % Z. I. Botev, J. F. Grotowski, and D. P. Kroese (2010)
-    % Annals of Statistics, Volume 38, Number 5, pages 2916-2957.
-    %
-    %
-    %
-    % Copyright (c) 2015, Dr. Zdravko Botev
-    % All rights reserved.
-    %
-    % Redistribution and use in source and binary forms, with or without
-    % modification, are permitted provided that the following conditions are
-    % met:
-    %
-    %     * Redistributions of source code must retain the above copyright
-    %       notice, this list of conditions and the following disclaimer.
-    %     * Redistributions in binary form must reproduce the above copyright
-    %       notice, this list of conditions and the following disclaimer in
-    %       the documentation and/or other materials provided with the distribution
-    %     * Neither the name of the The University of New South Wales nor the names
-    %       of its contributors may be used to endorse or promote products derived
-    %       from this software without specific prior written permission.
-    %
-    % THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-    % AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-    % IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-    % ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
-    % LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-    % CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-    % SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-    % INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-    % CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-    % ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-    % POSSIBILITY OF SUCH DAMAGE.
-    %
+%>  \brief
+%>  Compute the Gaussian kernel density estimate of the input bivariate data.
+%>
+%>  \details
+%>  This function offers a fast and accurate bivariate
+%>  kernel density estimator with diagonal bandwidth matrix.<br>
+%>  The kernel is assumed to be Gaussian.<br>
+%>  The two bandwidth parameters are chosen optimally without ever
+%>  using/assuming a parametric model for the data or any "rules of thumb".<br>
+%>  Particularly, this algorithm is immune to accuracy failures in the estimation
+%>  of multimodal densities with widely separated modes (see examples below).<br>
+%>
+%>  \param[in]  data    :   The input matrix of shape ``[nrow, 2]`` containing the
+%>                          continuous data whose density estimate is to be returned.<br>
+%>  \param[in]  resol   :   The input scalar whole number representing the size of
+%>                          the ``resol`` by ``resol`` grid over which the density
+%>                          is computed where ``resol`` has to be a power of ``2``,
+%>                          otherwise ``resol = 2^ceil(log2(resol))`` will be used.<br>
+%>                          (**optional**. If missing or empty, it will be set to ``2^8``.)
+%>  \param[in]  xymin   :   The input vector of size ``2`` containing the lower limits
+%>                          of the bounding box over which the density is computed.<br>
+%>                          (**optional**. If missing or empty, it will be set to an appropriate value as prescribed in the note below.)
+%>  \param[in]  xymax   :   The input vector of size ``2`` containing the upper limits
+%>                          of the bounding box over which the density is computed.<br>
+%>                          (**optional**. If missing or empty, it will be set to an appropriate value as prescribed in the note below.)
+%>
+%>  \return
+%>  ``bandwidth``       :   The output row vector with the two optimal bandwidths for a bivaroate Gaussian kernel.<br>
+%>                          The format of the vector is ``bandwidth = [bandwidth_x, bandwidth_y]``.<br>
+%>  ``density``         :   The output ``resol`` by ``resol`` matrix containing
+%>                          the density values over the ``resol`` by ``resol`` grid.<br>
+%>                          This argument is not computed unless the output argument is present.<br>
+%>  ``meshx``           :   The x-axis meshgrid over which the variable "density" has been computed.<br>
+%>                          This output is particularly useful in combination with MATLAB intrinsic ``surf``.<br>
+%>                          The intended usage is ``surf(meshx, meshy, density)``.<br>
+%>  ``meshy``           :   The y-axis meshgrid over which the variable "density" has been computed.<br>
+%>                          This output is particularly useful in combination with MATLAB intrinsic ``surf``.<br>
+%>                          The intended usage is ``surf(meshx, meshy, density)``.<br>
+%>
+%>  \interface{kde2d}
+%>  \code{.m}
+%>
+%>      [bandwidth, density, meshx, meshy] = pm.fit.kde2d(data);
+%>      [bandwidth, density, meshx, meshy] = pm.fit.kde2d(data, resol);
+%>      [bandwidth, density, meshx, meshy] = pm.fit.kde2d(data, resol, xymin);
+%>      [bandwidth, density, meshx, meshy] = pm.fit.kde2d(data, resol, xymin, xymax);
+%>
+%>  \endcode
+%>
+%>  \note
+%>  The procedure for computing the default values for the
+%>  input arguments ``xymin`` and ``xymax`` are as follows:<br>
+%>  \code{.m}
+%>      dmax = max(data, [], 1);
+%>      dmin = min(data, [], 1);
+%>      dlim = dmax - dmin;
+%>      xymax = dmax + dlim / 4;
+%>      xymin = dmin - dlim / 4;
+%>  \endcode
+%>
+%>  \see
+%>  Kernel density estimation via diffusion, Z. I. Botev, J. F. Grotowski, and D. P. Kroese (2010) Annals of Statistics, Volume 38, Number 5, pages 2916-2957.<br>
+%>  [pm.vis.subplot.Contour](@ref Contour).<br>
+%>  [pm.vis.cascade.Contour](@ref Contour).<br>
+%>  [pm.vis.plot.Contour](@ref Contour).<br>
+%>  [pm.vis.tile.Contour](@ref Contour).<br>
+%>  [pm.vis.subplot.Contourf](@ref Contourf).<br>
+%>  [pm.vis.cascade.Contourf](@ref Contourf).<br>
+%>  [pm.vis.plot.Contourf](@ref Contourf).<br>
+%>  [pm.vis.tile.Contourf](@ref Contourf).<br>
+%>  [pm.vis.subplot.Contour3](@ref Contour3).<br>
+%>  [pm.vis.cascade.Contour3](@ref Contour3).<br>
+%>  [pm.vis.plot.Contour3](@ref Contour3).<br>
+%>  [pm.vis.tile.Contour3](@ref Contour3).<br>
+%>
+%>  \example{mvnmix}
+%>  \include{lineno} example/fit/kde2d/mvnmix/main.m
+%>  \matlabrun{mvnmix}
+%>  \vis{mvnmix}
+%>  \image html example/fit/kde2d/mvnmix/kde2d.png width=700
+%>
+%>  \example{mvnmixfar}
+%>  \include{lineno} example/fit/kde2d/mvnmixfar/main.m
+%>  \matlabrun{mvnmixfar}
+%>  \vis{mvnmixfar}
+%>  \image html example/fit/kde2d/mvnmixfar/kde2d.png width=700
+%>
+%>  \example{sincos}
+%>  \include{lineno} example/fit/kde2d/sincos/main.m
+%>  \matlabrun{sincos}
+%>  \vis{sincos}
+%>  \image html example/fit/kde2d/sincos/kde2d.png width=700
+%>
+%>  \final{kde2d}
+%>
+%>  Copyright (c) 2015, Dr. Zdravko Botev
+%>  All rights reserved.
+%>
+%>  Redistribution and use in source and binary forms, with or without
+%>  modification, are permitted provided that the following conditions are
+%>  met:
+%>
+%>      * Redistributions of source code must retain the above copyright
+%>        notice, this list of conditions and the following disclaimer.
+%>      * Redistributions in binary form must reproduce the above copyright
+%>        notice, this list of conditions and the following disclaimer in
+%>        the documentation and/or other materials provided with the distribution
+%>      * Neither the name of the The University of New South Wales nor the names
+%>        of its contributors may be used to endorse or promote products derived
+%>        from this software without specific prior written permission.
+%>
+%>  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+%>  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+%>  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+%>  ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+%>  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+%>  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+%>  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+%>  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+%>  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+%>  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+%>  POSSIBILITY OF SUCH DAMAGE.
+function [bandwidth, density, meshx, meshy] = kde2d(data, resol, xymin, xymax)
     global N A2 I
     if nargin<2
-        n=2^8;
+        resol=2^8;
     end
-    n=2^ceil(log2(n)); % round up n to the next power of 2;
+    resol=2^ceil(log2(resol)); % round up resol to the next power of 2;
     N=size(data,1);
     if nargin<3
-        MAX=max(data,[],1); MIN=min(data,[],1); Range=MAX-MIN;
-        MAX_XY=MAX+Range/2; MIN_XY=MIN-Range/2;
+        dmax=max(data,[],1); dmin=min(data,[],1); dlim=dmax-dmin;
+        xymax=dmax+dlim/2; xymin=dmin-dlim/2;
     end
-    scaling=MAX_XY-MIN_XY;
+    scaling=xymax-xymin;
     if N<=size(data,2)
         error('data has to be an N by 2 array where each row represents a two dimensional observation')
     end
-    transformed_data=(data-repmat(MIN_XY,N,1))./repmat(scaling,N,1);
+    transformed_data=(data-repmat(xymin,N,1))./repmat(scaling,N,1);
     %bin the data uniformly using regular grid;
-    initial_data=ndhist(transformed_data,n);
+    initial_data=ndhist(transformed_data,resol);
     % discrete cosine transform of initial data
     a= dct2d(initial_data);
     % now compute the optimal bandwidth^2
-      I=(0:n-1).^2; A2=a.^2;
+      I=(0:resol-1).^2; A2=a.^2;
      t_star=root(@(t)(t-evolve(t)),N);
     p_02=func([0,2],t_star);p_20=func([2,0],t_star); p_11=func([1,1],t_star);
     t_y=(p_02^(3/4)/(4*pi*N*p_20^(3/4)*(p_11+sqrt(p_20*p_02))))^(1/3);
     t_x=(p_20^(3/4)/(4*pi*N*p_02^(3/4)*(p_11+sqrt(p_20*p_02))))^(1/3);
     % smooth the discrete cosine transform of initial data using t_star
-    a_t=exp(-(0:n-1)'.^2*pi^2*t_x/2)*exp(-(0:n-1).^2*pi^2*t_y/2).*a;
+    a_t=exp(-(0:resol-1)'.^2*pi^2*t_x/2)*exp(-(0:resol-1).^2*pi^2*t_y/2).*a;
     % now apply the inverse discrete cosine transform
     if nargout>1
         density=idct2d(a_t)*(numel(a_t)/prod(scaling));
         density(density<0)=eps; % remove any negative density values
-        [X,Y]=meshgrid(MIN_XY(1):scaling(1)/(n-1):MAX_XY(1),MIN_XY(2):scaling(2)/(n-1):MAX_XY(2));
+        [meshx,meshy]=meshgrid(xymin(1):scaling(1)/(resol-1):xymax(1),xymin(2):scaling(2)/(resol-1):xymax(2));
     end
     bandwidth=sqrt([t_x,t_y]).*scaling;
 end
@@ -222,8 +240,8 @@ end
 
 function binned_data=ndhist(data,M)
     % this function computes the histogram
-    % of an n-dimensional data set;
-    % 'data' is nrows by n columns
+    % of an ndim-dimensional data set;
+    % 'data' is nrows by ndim columns
     % M is the number of bins used in each dimension
     % so that 'binned_data' is a hypercube with
     % size length equal to M;

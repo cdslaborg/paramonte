@@ -203,6 +203,7 @@ classdef DataFrame < pm.data.DataRef
             %           The input scalar MATLAB whole-number (integer)
             %           representing the starting point of the output range.
             %           It must be a number in the range ``[1, size(self.dfref, 1)]``.
+            %           Otherwise, the value ``max(1, min(start, self.nrow()))`` will be used.
             %           (**optional**, default = ``1``)
             %
             %       stop
@@ -210,6 +211,7 @@ classdef DataFrame < pm.data.DataRef
             %           The input scalar MATLAB whole-number (integer)
             %           representing the stopping point of the output range.
             %           It must be a number in the range ``[1, size(self.dfref, 1)]``.
+            %           Otherwise, the value ``max(start, min(stop, self.nrow()))`` will be used.
             %           (**optional**, default = ``1``)
             %
             %   Returns
@@ -264,7 +266,7 @@ classdef DataFrame < pm.data.DataRef
             if  isempty(count)
                 count = 1000;
             end
-            indices = pm.array.logrange(start, stop, count);
+            indices = pm.array.logrange(max(1, min(start, self.nrow())), max(start, min(stop, self.nrow())), count);
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
