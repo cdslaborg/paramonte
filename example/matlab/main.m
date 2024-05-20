@@ -34,3 +34,5 @@ for ipath = 1 : length(examlist)
         close all;
     end
 end
+
+cd(rootdir);
