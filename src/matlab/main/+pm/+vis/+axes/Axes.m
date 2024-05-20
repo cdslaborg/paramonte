@@ -685,7 +685,7 @@ classdef Axes < pm.matlab.Handle
                 self.axes.color = [];
                 self.axes.colorScale = [];
                 self.axes.fontName = [];
-                self.axes.fontSize = [];
+                self.axes.fontSize = 13;
                 self.axes.fontSizeMode = [];
                 self.axes.fontSmoothing = [];
                 self.axes.fontWeight = [];
@@ -701,7 +701,7 @@ classdef Axes < pm.matlab.Handle
 
             self.newprop("title", struct());
             if ~self.type.is.heatmap
-                self.title.fontSize = [];
+                self.title.fontSize = 13;
                 self.title.interpreter = [];
                 self.title.fontWeight = [];
                 self.title.color = []; %[0, 0, 0];
@@ -718,7 +718,7 @@ classdef Axes < pm.matlab.Handle
             if ~self.type.is.heatmap
                 self.xlabel.color = []; %[0.15, 0.15, 0.15];
                 self.xlabel.fontAngle = [];
-                self.xlabel.fontSize = [];
+                self.xlabel.fontSize = 13;
                 self.xlabel.fontWeight = [];
                 self.xlabel.interpreter = [];
                 self.xlabel.rotation = [];
@@ -753,7 +753,7 @@ classdef Axes < pm.matlab.Handle
 
                 if ~self.type.is.heatmap
                     self.newprop("colorbar", struct());
-                    self.colorbar.fontSize = [];
+                    self.colorbar.fontSize = 13;
                     self.colorbar.direction = 'normal';
                     self.colorbar.limits = [];
                     self.colorbar.location = 'eastoutside';
@@ -775,7 +775,7 @@ classdef Axes < pm.matlab.Handle
                 self.newprop("legend", struct());
                 self.legend.box = 'off';
                 self.legend.color = 'none';
-                self.legend.fontSize = [];
+                self.legend.fontSize = 13;
                 self.legend.interpreter = 'none';
                 self.legend.location = [];
                 self.legend.numColumns = [];
@@ -801,7 +801,7 @@ classdef Axes < pm.matlab.Handle
                 self.heatmap.colorLimits = [];
                 self.heatmap.missingDataColor = [];
                 self.heatmap.fontName = [];
-                self.heatmap.fontSize = [];
+                self.heatmap.fontSize = 13;
                 self.heatmap.enabled = [];
             end
 
