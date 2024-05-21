@@ -27,14 +27,15 @@
 %>                      is to returned according to the rules above.
 %>
 %>  \return
-%>      val         :   The output scalar MATLAB whole-number
+%>   `val`          :   The output scalar MATLAB whole-number
 %>                      representing the length of the input object.
 %>
-%>  \interface{}
+%>  \interface{len}
 %>  \code{.m}
-%>  \endcode
 %>
 %>      pm.array.len(obj)
+%>
+%>  \endcode
 %>
 %>  Example
 %>  -------
@@ -47,9 +48,10 @@
 %>      pm.array.len(["pm", 'array']) % = 2
 %>      pm.array.len(["pm", 'array', []]) % = 2
 %>
-%>  \final{}
+%>  \final{len}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 4:25 PM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function val = len(obj)
