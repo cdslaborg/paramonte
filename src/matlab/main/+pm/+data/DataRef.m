@@ -36,7 +36,7 @@
 %>  \final{DataRef}
 %>
 %>  \author
-%>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+%>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin<br>
 classdef DataRef < pm.matlab.Handle
 
     properties(Access = protected, Hidden)
@@ -95,8 +95,8 @@ classdef DataRef < pm.matlab.Handle
         %>  \final{copy}
         %>
         %>  \author
-        %>  \JoshuaOsborne, Friday May 17, 2014, 6:40 PM, The University of Texas at Arlington, Dallas, TX
-        %>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+        %>  \JoshuaOsborne, Friday May 17, 2014, 6:40 PM, The University of Texas at Arlington, Dallas, TX<br>
+        %>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin<br>
         function df = copy(self)
             if  isa(self.dfref, 'function_handle')
                 df = self.dfref();
