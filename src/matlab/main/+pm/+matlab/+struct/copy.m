@@ -1,49 +1,42 @@
-%
-%   Copy the contents of the struct/object ``from``
-%   to the struct/object ``to`` recursively and without
-%   destroying the existing components in ``to``.
-%
-%       from
-%
-%           The input scalar MATLAB struct whose (select)
-%           components must be copy/merged with the components
-%           of the input struct ``to``.
-%
-%       to
-%
-%           The input scalar MATLAB struct to which the
-%           components of ``from`` struct must be copied.
-%           (**optional**, default = ``struct()``)
-%
-%       fields
-%
-%           The input vector of MATLAB strings each element
-%           of which is a field name in ``from`` whose value
-%           has to be copied to the struct ``to``.
-%           (**optional**, default = ``fieldnames(from)`` or ``properties(from)``)
-%
-%>  \return
-%       tonew
-%
-%           The output MATLAB struct containing the
-%           merger of the two input MATLAB structs.
-%           If a field name in ``fields`` is common between
-%           ``from`` and ``to``, the field value of ``from`` will
-%           overwrite the corresponding field value of ``to``
-%           in the output ``tonew``.
+%>  \brief
+%>  Copy the contents of the struct/object ``from``
+%>  to the struct/object ``to`` recursively and without
+%>  destroying the existing components in ``to``.
 %>
-%>  \interface{}
+%>  \param[in]  from    :   The input scalar MATLAB struct whose (select)
+%>                          components must be copy/merged with the components
+%>                          of the input struct ``to``.
+%>  
+%>  \param[in]  to      :   The input scalar MATLAB struct to which the
+%>                          components of ``from`` struct must be copied.
+%>                          (**optional**, default = ``struct()``)
+%>  
+%>  \param[in]  fields  :   The input vector of MATLAB strings each element
+%>                          of which is a field name in ``from`` whose value
+%>                          has to be copied to the struct ``to``.
+%>                          (**optional**, default = ``fieldnames(from)`` or ``properties(from)``)
+%>
+%>  \return
+%>  `tonew`             :   The output MATLAB struct containing the
+%>                          merger of the two input MATLAB structs.
+%>                          If a field name in ``fields`` is common between
+%>                          ``from`` and ``to``, the field value of ``from`` will
+%>                          overwrite the corresponding field value of ``to``
+%>                          in the output ``tonew``.
+%>
+%>  \interface{copy}
 %>  \code{.m}
 %>  \endcode
 %>
-%       tonew = pm.matlab.struct.copy(from)
-%       tonew = pm.matlab.struct.copy(from, to)
-%       tonew = pm.matlab.struct.copy(from, [], fields)
-%       tonew = pm.matlab.struct.copy(from, to, fields)
-%
-%>  \final{}
+%>      tonew = pm.matlab.struct.copy(from)
+%>      tonew = pm.matlab.struct.copy(from, to)
+%>      tonew = pm.matlab.struct.copy(from, [], fields)
+%>      tonew = pm.matlab.struct.copy(from, to, fields)
+%>
+%>  \final{copy}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 10:59 PM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function tonew = copy(from, to, fields)

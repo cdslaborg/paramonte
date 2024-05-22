@@ -1,51 +1,41 @@
-%
-%   Return the value corresponding to the input ``key``
-%   in the input ``hashmap`` cell array.
-%
-%       key
-%
-%           The input scalar MATLAB string
-%           containing the key to search for in the input pair list.
-%
-%       hashmap
-%
-%           The input cell array of even number of elements
-%           containing the ``(key, val)`` pairs of the hashmap
-%           in sequence as element of the cell array.
-%
+%>  \brief
+%>  Return the value corresponding to the input ``key``
+%>  in the input ``hashmap`` cell array.
+%>
+%>  \param[in]  key     :   The input scalar MATLAB string
+%>                          containing the key to search for in the input pair list.
+%>  
+%>  \param[in]  hashmap :   The input cell array of even number of elements
+%>                          containing the ``(key, val)`` pairs of the hashmap
+%>                          in sequence as element of the cell array.
+%>  
 %>  \return
-%       val
-%
-%           The output MATLAB object stored in the element of the
-%           input cell array, whose ``key`` is given as the input.
-%
-%       failed
-%
-%           The output scalar MATLAB logical that is ``true``
-%           if and only if the input ``key`` exists in the input ``hashmap``,
-%           otherwise, it is ``false``.
-%           (**optional**. If missing, ``val`` will remain an empty array ``[]`` on output.)
+%>  `val`               :   The output MATLAB object stored in the element of the
+%>                          input cell array, whose ``key`` is given as the input.
+%>  `failed`            :   The output scalar MATLAB logical that is ``true``
+%>                          if and only if the input ``key`` exists in the input ``hashmap``,
+%>                          otherwise, it is ``false``.
+%>                          (**optional**. If missing, ``val`` will remain an empty array ``[]`` on output.)
 %>
-%>  \interface{}
+%>  \interface{getKeyVal}
 %>  \code{.m}
-%>  \endcode
 %>
-%       val = pm.matlab.hashmap.getKeyVal(key, hashmap)
-%       [val, failed] = pm.matlab.hashmap.getKeyVal(key, hashmap)
-%
-%   Example
-%   -------
-%
-%       hashmap = {"key1", 1, "key2", "val2", "key3", false};
-%       [val, failed] = pm.matlab.hashmap.getKeyVal("key2", hashmap) % = "val2"
-%       [val, failed] = pm.matlab.hashmap.getKeyVal("key3", hashmap) % = false
-%       [val, failed] = pm.matlab.hashmap.getKeyVal("key3", hashmap(1:4)) % = {}
-%       [val, failed] = pm.matlab.hashmap.getKeyVal("key2", hashmap(1:4)) % = "val2"
-%       [val, failed] = pm.matlab.hashmap.getKeyVal("key2", hashmap(1:3)) % error
-%
-%>  \final{}
+%>      val = pm.matlab.hashmap.getKeyVal(key, hashmap)
+%>      [val, failed] = pm.matlab.hashmap.getKeyVal(key, hashmap)
+%>
+%>  \endcode
+%>  \example{getKeyVal}
+%>      hashmap = {"key1", 1, "key2", "val2", "key3", false};
+%>      [val, failed] = pm.matlab.hashmap.getKeyVal("key2", hashmap) % = "val2"
+%>      [val, failed] = pm.matlab.hashmap.getKeyVal("key3", hashmap) % = false
+%>      [val, failed] = pm.matlab.hashmap.getKeyVal("key3", hashmap(1:4)) % = {}
+%>      [val, failed] = pm.matlab.hashmap.getKeyVal("key2", hashmap(1:4)) % = "val2"
+%>      [val, failed] = pm.matlab.hashmap.getKeyVal("key2", hashmap(1:3)) % error
+%>
+%>  \final{getKeyVal}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 10:43 PM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function [val, failed] = getKeyVal(key, hashmap)

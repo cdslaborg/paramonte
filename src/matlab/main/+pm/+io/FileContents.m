@@ -1,53 +1,49 @@
-%
-%   This is the base class for generating objects
-%   that contain the contents of a given file.
-%
-%   This class is meant to be primarily internally used
-%   by the ParaMonte library routines (e.g., samplers).
-%
-%   \devnote
-%
-%       The ``handle`` superclass of this class
-%       is critical for the class functionality.
-%
-%       See the documentation of the class constructor.
-%
-%   \note
-%       See below for information on the attributes (properties).
-%
-%   \note
-%       See below for information on the methods.
-%
-%>  \return
-%       An object of class pm.io.FileContents.
+%>  \brief
+%>  This is the base class for generating objects
+%>  that contain the contents of a given file.
 %>
-%>  \interface{}
+%>  \details
+%>  This class is meant to be primarily internally used
+%>  by the ParaMonte library routines (e.g., samplers).
+%>
+%>  \devnote
+%>  The ``handle`` superclass of this class
+%>  is critical for the class functionality.
+%>  See the documentation of the class constructor.
+%>
+%>  \note
+%>  See below for information on the attributes (properties).
+%>
+%>  \note
+%>  See below for information on the methods.
+%>
+%>  \return
+%>  An object of class pm.io.FileContents.
+%>
+%>  \interface{FileContents}
 %>  \code{.m}
+%>
+%>      contents = pm.io.FileContents(file)
+%>      contents = pm.io.FileContents(file, [])
+%>      contents = pm.io.FileContents(file, silent)
 %>  \endcode
 %>
-%       contents = pm.io.FileContents(file)
-%       contents = pm.io.FileContents(file, [])
-%       contents = pm.io.FileContents(file, silent)
-%
-%>  \final{}
+%>  \final{FileContents}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 6:03 PM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef FileContents < pm.matlab.Handle
     properties(Access = public)
-        %
-        %   silent
-        %
-        %       The scalar MATLAB logical (Boolean) indicator which is ``false`` by default.
-        %       If it is set to ``true``, it will silence all output postprocessing messages.
-        %
+        %>
+        %>  \param  silent  :   The scalar MATLAB logical (Boolean) indicator which is ``false`` by default.
+        %>                        If it is set to ``true``, it will silence all output postprocessing messages.
+        %>
         silent = false;
-        %
-        %   file
-        %
-        %       The scalar MATLAB string containing the path to the file whose contents are read.
-        %
+        %>
+        %>  \param  file    :   The scalar MATLAB string containing the path to the file whose contents are read.
+        %>
         file = "";
     end
 
@@ -62,43 +58,38 @@ classdef FileContents < pm.matlab.Handle
 
     methods(Access = public)
 
-        %
-        %   Return a scalar object of class ``pm.io.FileContents``.
-        %
-        %   This is the constructor of the class ``pm.io.FileContents``.
-        %   It merely serves as the blueprint for the IO subclasses
-        %   accessible to the end users.
-        %
-        %       file
-        %
-        %           The input scalar MATLAB string
-        %           containing the path to an external file.
-        %
-        %       silent
-        %
-        %           The input scalar MATLAB logical.
-        %           if ``true``, all descriptive messages will be suppressed.
-        %           Setting this option to ``false`` is particularly useful
-        %           in MPI-parallel simulations.
-        %           (**optional**, default = ``false``)
+        %>  \brief
+        %>  Return a scalar object of class ``pm.io.FileContents``.
+        %>
+        %>  \details
+        %>  This is the constructor of the class ``pm.io.FileContents``.
+        %>  It merely serves as the blueprint for the IO subclasses
+        %>  accessible to the end users.
+        %>
+        %>  \param[in]  file    :   The input scalar MATLAB string
+        %>                          containing the path to an external file.
+        %>
+        %>  \param[in]  silent  :   The input scalar MATLAB logical.
+        %>                          if ``true``, all descriptive messages will be suppressed.<br>
+        %>                          Setting this option to ``false`` is particularly useful
+        %>                          in MPI-parallel simulations.
+        %>                          (**optional**, default = ``false``)
         %>
         %>  \return
+        %>  `self`              :   The output scalar object of class ``pm.io.FileContents``.
         %>
-        %       self
-        %
-        %           The output scalar object of class ``pm.io.FileContents``.
-        %
-        %>  \interface{copy}
+        %>  \interface{FileContents}
         %>  \code{.m}
+        %>
+        %>      contents = pm.io.FileContents(file)
+        %>      contents = pm.io.FileContents(file, [])
+        %>      contents = pm.io.FileContents(file, silent)
         %>  \endcode
-        %
-        %       contents = pm.io.FileContents(file)
-        %       contents = pm.io.FileContents(file, [])
-        %       contents = pm.io.FileContents(file, silent)
-        %
-        %>  \final{}
+        %>
+        %>  \final{FileContents}
         %>
         %>  \author
+        %>  \JoshuaOsborne, May 21 2024, 6:05 PM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = FileContents(file, silent)
@@ -170,38 +161,35 @@ classdef FileContents < pm.matlab.Handle
             end
         end
 
-        %
-        %   Return a copy of the specified ``field`` (component)
-        %   of the parent object of class ``pm.io.FileContents``.
-        %
-        %   This method is an unfortunate result of the lack references in MATLAB.
-        %   The output of this method is used by the visualization methods of
-        %   this class to repeatedly sync the internal copy of ``df`` with
-        %   the original ``df`` component of the parent object.
-        %
-        %       field
-        %
-        %           The input scalar MATLAB string containing the
-        %           name of a field (component/attribute) of the parent
-        %           object whose value will have to be returned.
+        %>  \brief
+        %>  Return a copy of the specified ``field`` (component)
+        %>  of the parent object of class ``pm.io.FileContents``.
+        %>
+        %>  \details
+        %>  This method is an unfortunate result of the lack references in MATLAB.
+        %>  The output of this method is used by the visualization methods of
+        %>  this class to repeatedly sync the internal copy of ``df`` with
+        %>  the original ``df`` component of the parent object.
+        %>
+        %>  \param[in]  field   :   The input scalar MATLAB string containing the
+        %>                          name of a field (component/attribute) of the parent
+        %>                          object whose value will have to be returned.
         %>
         %>  \return
+        %>  `val`               :   The output object containing the value of the
+        %>                          specified ``field`` of the parent object.
         %>
-        %       val
-        %
-        %           The output object containing the value of the
-        %           specified ``field`` of the parent object.
-        %
-        %>  \interface{copy}
+        %>  \interface{getval}
         %>  \code{.m}
+        %>
+        %>      fc = pm.io.FileContents(field)
+        %>      val = fc.getval(field)
+        %>
         %>  \endcode
-        %
-        %       fc = pm.io.FileContents(field)
-        %       val = fc.getval(field)
-        %
-        %>  \final{}
+        %>  \final{getval}
         %>
         %>  \author
+        %>  \JoshuaOsborne, May 21 2024, 6:07 PM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function val = getval(self, field)

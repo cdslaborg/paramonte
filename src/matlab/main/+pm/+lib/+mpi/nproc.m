@@ -1,52 +1,49 @@
-%
-%   Return the runtime number of MPI cores
-%   with which the `mpiexec` launcher may have been invoked.
-%   Otherwise, return `1` if no use of `mpiexec` launcher is detected
-%   or it is invoked with only ``1`` MPI process.
-%
-%   An output value of ``1`` can be used as an indication of
-%   the ``mpiexec`` launcher in launching the ParaMonte library.
-%
-%   \warning
-%
-%       This routine can lead to a full MATLAB session crash
-%       if the required MPI library dependencies are not detected
-%       on the system. This issue severely limits the utility of this routine.
-%
-%       config
-%
-%           The input scalar (or array of) MATLAB string(s)
-%           containing the ParaMonte-preferred MPI library vendor/name
-%           or other configurations as used in naming the ParaMonte MATLAB shared libraries.
-%           This argument is passed directly to the corresponding argument of ``pm.lib.path.mexdir``.
-%           Possible values of outmost interest to MPI applications are:
-%
-%               -   ``Intel`` or ``impi``, representing the Intel MPI library.
-%               -   ``MPICH`` or `mmpi``, representing the MPICH MPI library.
-%               -   ``OpenMPI`` or ``ompi``, representing the OpenMPI library.
-%
-%           All values are case-insensitive.
-%           (**optional**. If missing, all possibilities are considered and the largest inferred ``count`` is returned.)
-%
+%>  \brief
+%>  Return the runtime number of MPI cores
+%>  with which the `mpiexec` launcher may have been invoked.
+%>  Otherwise, return `1` if no use of `mpiexec` launcher is detected
+%>  or it is invoked with only ``1`` MPI process.
+%>
+%>  \note
+%>  An output value of ``1`` can be used as an indication of
+%>  the ``mpiexec`` launcher in launching the ParaMonte library.
+%>
+%>  \warning
+%>  This routine can lead to a full MATLAB session crash
+%>  if the required MPI library dependencies are not detected
+%>  on the system. This issue severely limits the utility of this routine.
+%>
+%>  \param[in]  config  :   The input scalar (or array of) MATLAB string(s)
+%>                          containing the ParaMonte-preferred MPI library vendor/name
+%>                          or other configurations as used in naming the ParaMonte MATLAB shared libraries.
+%>                          This argument is passed directly to the corresponding argument of ``pm.lib.path.mexdir``.
+%>                          Possible values of outmost interest to MPI applications are:<br>
+%>                          -   ``Intel`` or ``impi``, representing the Intel MPI library.<br>
+%>                          -   ``MPICH`` or `mmpi``, representing the MPICH MPI library.<br>
+%>                          -   ``OpenMPI`` or ``ompi``, representing the OpenMPI library.<br>
+%>                          <pre>
+%>                          All values are case-insensitive.
+%>                          (**optional**. If missing, all possibilities are considered and the largest inferred ``count`` is returned.)
+%>                          </pre>
+%>
 %>  \return
-%       count
-%
-%           The output MATLAB scalar integer containing the number of
-%           MPI processes launched by the ``mpiexec`` command or ``1``
-%           if no ``mpiexec`` invocation has occurred or the routine
-%           fails to load any MPI-enabled ParaMonte library.
+%>  `count`             :   The output MATLAB scalar integer containing the number of
+%>                          MPI processes launched by the ``mpiexec`` command or ``1``
+%>                          if no ``mpiexec`` invocation has occurred or the routine
+%>                          fails to load any MPI-enabled ParaMonte library.
 %>
-%>  \interface{}
+%>  \interface{nproc}
 %>  \code{.m}
-%>  \endcode
 %>
-%       count = pm.lib.mpi.nproc()
-%       count = pm.lib.mpi.nproc([])
-%       count = pm.lib.mpi.nproc(config)
-%
-%>  \final{}
+%>      count = pm.lib.mpi.nproc()
+%>      count = pm.lib.mpi.nproc([])
+%>      count = pm.lib.mpi.nproc(config)
+%>
+%>  \endcode
+%>  \final{nproc}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 7:14 PM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function count = nproc(config)

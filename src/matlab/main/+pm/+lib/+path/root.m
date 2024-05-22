@@ -1,24 +1,23 @@
-%
-%   Return a scalar MATLAB string containing the
-%   root directory of the ParaMonte library package.
-%
-%       None
-%
+%>  \brief
+%>  Return a scalar MATLAB string containing the
+%>  root directory of the ParaMonte library package.
+%>
+%>  \params `None`
+%>
 %>  \return
-%       path
-%
-%           A scalar MATLAB string containing the root
-%           directory of the ParaMonte library package.
+%>  `path`  :   A scalar MATLAB string containing the root
+%>              directory of the ParaMonte library package.
 %>
-%>  \interface{}
+%>  \interface{root}
 %>  \code{.m}
-%>  \endcode
 %>
-%       path = pm.lib.path.root()
-%
-%>  \final{}
+%>      path = pm.lib.path.root()
+%>
+%>  \endcode
+%>  \final{root}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 7:51 PM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function path = root()

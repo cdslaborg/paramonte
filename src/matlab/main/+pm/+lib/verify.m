@@ -1,17 +1,21 @@
-%
-%   Check the requirements of the installed ParaMonte MATLAB library.
-%
-%       None
-%
+%>  \brief
+%>  Check the requirements of the installed ParaMonte MATLAB library.
+%>
+%>  \params `None`
+%>
 %>  \return
-%       None
+%>  `None`
 %>
-%>  \interface{}
+%>  \interface{verify}
 %>  \code{.m}
-%>  \endcode
 %>
-%       pm.lib.verify()
-%
+%>      pm.lib.verify()
+%>
+%>  \endcode
+%>  \final{verify}
+%>
+%>  \author
+%>  \JoshuaOsborne, May 21 2024, 8:11 PM, University of Texas at Arlington<br>
 function verify()
 
     %if isunix

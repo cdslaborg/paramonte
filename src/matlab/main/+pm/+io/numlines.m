@@ -1,34 +1,29 @@
-%
-%   Return a scalar MATLAB integer representing
-%   the number of lines in the specified input ``idname``.
-%
-%       idname
-%
-%           The input scalar MATLAB object that can be either:
-%
-%               1.  a MATLAB string containing the path
-%                   to a record-based external file whose
-%                   number of records (lines) must be returned.
-%
-%               2.  a MATLAB integer, representing the file
-%                   ID of an opened record-based file whose
-%                   number of records (lines) must be returned.
-%
-%>  \return
-%       nlines
-%
-%           The output scalar MATLAB integer containing the
-%           number of records (lines) in the specified input ``idname``.
+%>  \brief
+%>  Return a scalar MATLAB integer representing
+%>  the number of lines in the specified input ``idname``.
 %>
-%>  \interface{}
+%>  \param[in]  idname  :   The input scalar MATLAB object that can be either:<br>
+%>                          1.  a MATLAB string containing the path
+%>                              to a record-based external file whose
+%>                              number of records (lines) must be returned.<br>
+%>                          2.  a MATLAB integer, representing the file
+%>                              ID of an opened record-based file whose
+%>                              number of records (lines) must be returned.<br>
+%>
+%>  \return
+%>  `nlines`            :   The output scalar MATLAB integer containing the
+%>                          number of records (lines) in the specified input ``idname``.
+%>
+%>  \interface{numlines}
 %>  \code{.m}
+%>
+%>      nlines = pm.io.numlines(idname);
 %>  \endcode
 %>
-%       nlines = pm.io.numlines(idname);
-%
-%>  \final{}
+%>  \final{numlines}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 5:50 PM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function nlines = numlines(idname)

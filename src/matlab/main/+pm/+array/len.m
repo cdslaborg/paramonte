@@ -37,8 +37,7 @@
 %>
 %>  \endcode
 %>
-%>  Example
-%>  -------
+%>  \example{len}
 %>
 %>      pm.array.len(1) % = 1
 %>      pm.array.len("") % = 0

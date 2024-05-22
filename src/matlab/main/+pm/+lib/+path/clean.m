@@ -1,24 +1,26 @@
-%
-%   Remove all paths that contain the ParaMonte
-%   `lib` directory from the MATLAB ``path`` variable.
-%
-%   This action is particularly vital for correct handling
-%   of MATLAB MEX files for different build configurations.
-%
-%       None
-%
+%>  \brief
+%>  Remove all paths that contain the ParaMonte
+%>  `lib` directory from the MATLAB ``path`` variable.
+%>
+%>  \details
+%>  This action is particularly vital for correct handling
+%>  of MATLAB MEX files for different build configurations.
+%>
+%>  \param  `None`
+%>
 %>  \return
-%       None
+%>  `None`
 %>
-%>  \interface{}
+%>  \interface{clean}
 %>  \code{.m}
-%>  \endcode
 %>
-%       pm.lib.path.clean()
-%
-%>  \final{}
+%>      pm.lib.path.clean()
+%>
+%>  \endcode
+%>  \final{clean}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 7:31 PM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function clean()

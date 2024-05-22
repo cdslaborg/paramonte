@@ -1,38 +1,32 @@
-%
-%   Return a scalar MATLAB raw string or HTML-style hyperlink
-%   containing the weblink to ParaMonte library publications.
-%
-%       format
-%
-%           The input scalar MATLAB string indicating
-%           the format of the output we address.
-%
-%               1.  An input value of ``"raw"`` will return a raw web address.
-%               2.  An input value of ``"html"`` will return an HTML style web address.
-%
-%           (**optional**, default = ``"html"``)
-%
+%>  \brief
+%>  Return a scalar MATLAB raw string or HTML-style hyperlink
+%>  containing the weblink to ParaMonte library publications.
+%>
+%>  \param[in]  format  :   The input scalar MATLAB string indicating
+%>                          the format of the output we address.
+%>                              1.  An input value of ``"raw"`` will return a raw web address.
+%>                              2.  An input value of ``"html"`` will return an HTML style web address.        
+%>                          (**optional**, default = ``"html"``)
+%>
 %>  \return
-%       str
-%
-%           The output scalar MATLAB string containing either,
-%
-%               -   a raw weblink to the ParaMonte library publications
-%                   if the library is used outside the MATLAB GUI interface, or,
-%
-%               -   an HTML-style hyperlink to the ParaMonte library publications
-%                   if the library is used within the MATLAB GUI interface.
+%>  `str`               :   The output scalar MATLAB string containing either,
+%>                          -   a raw weblink to the ParaMonte library publications
+%>                              if the library is used outside the MATLAB GUI interface, or,
+%>          
+%>                          -   an HTML-style hyperlink to the ParaMonte library publications
+%>                              if the library is used within the MATLAB GUI interface.
 %>
-%>  \interface{}
+%>  \interface{cite}
 %>  \code{.m}
-%>  \endcode
 %>
-%       str = pm.lib.cite()
-%       str = pm.lib.cite(format)
-%
-%>  \final{}
+%>      str = pm.lib.cite()
+%>      str = pm.lib.cite(format)
+%>
+%>  \endcode
+%>  \final{cite}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 8:05 PM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function str = cite(format)

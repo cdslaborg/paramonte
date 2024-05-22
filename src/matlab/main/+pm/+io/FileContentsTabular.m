@@ -1,121 +1,107 @@
-%
-%   This is the base class for generating objects
-%   that contain the tabular contents of a given file.
-%
-%   This class is meant to be primarily internally used
-%   by the ParaMonte library routines (e.g., samplers).
-%
-%   Tabular file comprises a header
-%   line followed by a table of data.
-%   If there are more than one header line,
-%   only the last such line is considered as
-%   header and the rest are discarded as text.
-%
-%       See the documentation of the class constructor.
-%
-%   \note
-%       See below for information on the attributes (properties).
-%
-%   \note
-%       See below for information on the methods.
-%
+%>  \brief
+%>  This is the base class for generating objects
+%>  that contain the tabular contents of a given file.
+%>
+%>  \details
+%>  This class is meant to be primarily internally used
+%>  by the ParaMonte library routines (e.g., samplers).
+%>
+%>  Tabular file comprises a header
+%>  line followed by a table of data.
+%>  If there are more than one header line,
+%>  only the last such line is considered as
+%>  header and the rest are discarded as text.
+%>
+%>      See the documentation of the class constructor.
+%>
+%>  \note
+%>  See below for information on the attributes (properties).
+%>
+%>  \note
+%>  See below for information on the methods.
+%>
 %>  \return
-%       An object of class pm.io.FileContentsTabular.
+%>  An object of class pm.io.FileContentsTabular.
 %>
-%>  \interface{}
+%>  \interface{FileContentsTabular}
 %>  \code{.m}
-%>  \endcode
 %>
-%       contents = pm.io.FileContentsTabular(file)
-%       contents = pm.io.FileContentsTabular(file, [])
-%       contents = pm.io.FileContentsTabular(file, silent)
-%       contents = pm.io.FileContentsTabular(file, [], [])
-%       contents = pm.io.FileContentsTabular(file, [], sep)
-%       contents = pm.io.FileContentsTabular(file, silent, [])
-%       contents = pm.io.FileContentsTabular(file, silent, sep)
-%
-%>  \final{}
+%>      contents = pm.io.FileContentsTabular(file)
+%>      contents = pm.io.FileContentsTabular(file, [])
+%>      contents = pm.io.FileContentsTabular(file, silent)
+%>      contents = pm.io.FileContentsTabular(file, [], [])
+%>      contents = pm.io.FileContentsTabular(file, [], sep)
+%>      contents = pm.io.FileContentsTabular(file, silent, [])
+%>      contents = pm.io.FileContentsTabular(file, silent, sep)
+%>
+%>  \endcode
+%>  \final{FileContentsTabular}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 6:08 PM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef FileContentsTabular < pm.io.FileContents
     properties(Access = public)
-        %
-        %   sep
-        %
-        %       The scalar MATLAB string representing
-        %       the field separator used in the file.
-        %       This property is either specified by
-        %       the user or is inferred from the
-        %       file to be read.
-        %
+        %>
+        %>  \param  sep     :   The scalar MATLAB string representing
+        %>                      the field separator used in the file.<br>
+        %>                      This property is either specified by
+        %>                      the user or is inferred from the
+        %>                      file to be read.
+        %>
         sep = [];
-        %
-        %   ncol
-        %
-        %       The scalar MATLAB integer representing
-        %       the number of columns identified in the file.
-        %
+        %>
+        %>  \param  ncol    :   The scalar MATLAB integer representing
+        %>                      the number of columns identified in the file.
+        %>
         ncol = 0;
-        %
-        %   nrow
-        %
-        %       The scalar MATLAB integer representing
-        %       the number of rows identified in the file.
-        %
+        %>
+        %>  \param  nrow    :   The scalar MATLAB integer representing
+        %>                      the number of rows identified in the file.
+        %>
         nrow = 0;
-        %
-        %   df
-        %
-        %       The scalar MATLAB table containing the
-        %       contents of the file as a dataframe.
-        %
+        %>
+        %>  \param  df      :   The scalar MATLAB table containing the
+        %>                      contents of the file as a dataframe.
+        %>
         df = [];
     end
 
     methods(Access = public)
 
-        %
-        %   Return a scalar object of class ``pm.io.FileContentsTabular``.
-        %
-        %   This is the constructor of the class ``pm.io.FileContentsTabular``.
-        %
-        %       file
-        %
-        %           See the documentation of the corresponding argument of ``pm.io.FileContents``.
-        %
-        %       silent
-        %
-        %           See the documentation of the corresponding argument of ``pm.io.FileContents``.
-        %
-        %       sep
-        %
-        %           The input scalar MATLAB string
-        %           containing the field separator used in the file.
-        %           (**optional**. The default is inferred from the contents of the specified input ``file``.)
+        %>  \brief
+        %>  Return a scalar object of class ``pm.io.FileContentsTabular``.
+        %>
+        %>  This is the constructor of the class ``pm.io.FileContentsTabular``.
+        %>
+        %>  \param[in]  file    :   See the documentation of the corresponding argument of ``pm.io.FileContents``.
+        %>
+        %>  \param[in]  silent  :   See the documentation of the corresponding argument of ``pm.io.FileContents``.
+        %>
+        %>  \param[in]  sep     :   The input scalar MATLAB string
+        %>                          containing the field separator used in the file.
+        %>                          (**optional**. The default is inferred from the contents of the specified input ``file``.)
         %>
         %>  \return
+        %>  `self`              :   The output scalar object of class ``pm.io.FileContentsTabular``.
         %>
-        %       self
-        %
-        %           The output scalar object of class ``pm.io.FileContentsTabular``.
-        %
-        %>  \interface{copy}
+        %>  \interface{FileContentsTabular}
         %>  \code{.m}
+        %>
+        %>      contents = pm.io.FileContentsTabular(file)
+        %>      contents = pm.io.FileContentsTabular(file, [])
+        %>      contents = pm.io.FileContentsTabular(file, silent)
+        %>      contents = pm.io.FileContentsTabular(file, [], [])
+        %>      contents = pm.io.FileContentsTabular(file, [], sep)
+        %>      contents = pm.io.FileContentsTabular(file, silent, [])
+        %>      contents = pm.io.FileContentsTabular(file, silent, sep)
+        %>
         %>  \endcode
-        %
-        %       contents = pm.io.FileContentsTabular(file)
-        %       contents = pm.io.FileContentsTabular(file, [])
-        %       contents = pm.io.FileContentsTabular(file, silent)
-        %       contents = pm.io.FileContentsTabular(file, [], [])
-        %       contents = pm.io.FileContentsTabular(file, [], sep)
-        %       contents = pm.io.FileContentsTabular(file, silent, [])
-        %       contents = pm.io.FileContentsTabular(file, silent, sep)
-        %
-        %>  \final{}
+        %>  \final{FileContentsTabular}
         %>
         %>  \author
+        %>  \JoshuaOsborne, May 21 2024, 6:11 PM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = FileContentsTabular(file, silent, sep)
