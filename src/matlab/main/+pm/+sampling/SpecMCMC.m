@@ -1,41 +1,37 @@
-%
-%   This is the base class for the ParaMonte sampler MCMC specifications.
-%
-%   This is an abstract class that is not meant to be used by the user.
-%
-%
-%       See the class constructor.
-%
-%       \note
-%
-%           All class attributes can be set after constructing an instance of this class.
-%
-%   \note
-%       The MCMC simulation specifications are all described on this page:
-%
-%           https://www.cdslab.org/paramonte/notes/usage/paradram/specifications/
-%
-%   \note
-%       See below for information on the methods.
-%
+%>  \brief
+%>  This is the base class for the ParaMonte sampler MCMC specifications.
+%>  This is an abstract class that is not meant to be used by the user.
+%>  See the class constructor.
+%>
+%>  \note
+%>  All class attributes can be set after constructing an instance of this class.
+%>
+%>  \note
+%>  The MCMC simulation specifications are all described on this page:
+%>  https://www.cdslab.org/paramonte/notes/usage/paradram/specifications/
+%>
+%>  \note
+%>  See below for information on the methods.
+%>
 %>  \return
-%       An object of class ``pm.sampling.SpecMCMC``.
+%>  An object of class ``pm.sampling.SpecMCMC``.
 %>
-%>  \interface{}
+%>  \interface{SpecMCMC}
 %>  \code{.m}
-%>  \endcode
 %>
-%       spec = pm.sampling.SpecMCMC()
-%       spec = pm.sampling.SpecMCMC([])
-%       spec = pm.sampling.SpecMCMC([], [])
-%       spec = pm.sampling.SpecMCMC(method)
-%       spec = pm.sampling.SpecMCMC(method, [])
-%       spec = pm.sampling.SpecMCMC([], silent)
-%       spec = pm.sampling.SpecMCMC(method, silent)
-%
-%>  \final{}
+%>      spec = pm.sampling.SpecMCMC()
+%>      spec = pm.sampling.SpecMCMC([])
+%>      spec = pm.sampling.SpecMCMC([], [])
+%>      spec = pm.sampling.SpecMCMC(method)
+%>      spec = pm.sampling.SpecMCMC(method, [])
+%>      spec = pm.sampling.SpecMCMC([], silent)
+%>      spec = pm.sampling.SpecMCMC(method, silent)
+%>
+%>  \endcode
+%>  \final{SpecMCMC}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 12:54 AM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef SpecMCMC < pm.sampling.SpecBase
@@ -60,43 +56,38 @@ classdef SpecMCMC < pm.sampling.SpecBase
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     methods(Access = public)
-
-        %
-        %   Construct and return an object of class ``pm.sampling.SpecMCMC``.
-        %
-        %       method
-        %
-        %           The input scalar MATLAB string containing
-        %           the name of the specific ParaMonte sampler
-        %           whose simulation specifications are to be
-        %           stored in the output of this constructor.
-        %
-        %       silent
-        %
-        %           The input scalar MATLAB logical.
-        %           If ``true``, all descriptive messages on
-        %           the MATLAB command line will be suppressed.
-        %           (**optional**, default = ``false``)
+        %>  \brief
+        %>  Construct and return an object of class ``pm.sampling.SpecMCMC``.
         %>
+        %>  \param[in]  method  :   The input scalar MATLAB string containing
+        %>                          the name of the specific ParaMonte sampler
+        %>                          whose simulation specifications are to be
+        %>                          stored in the output of this constructor.
+        %>  
+        %>  \param[in]  silent  :   The input scalar MATLAB logical.
+        %>                          If ``true``, all descriptive messages on
+        %>                          the MATLAB command line will be suppressed.
+        %>                          (**optional**, default = ``false``)
+        %>  
         %>  \return
+        %>  The output scalar object of class ``pm.sampling.SpecMCMC``.
         %>
-        %       The output scalar object of class ``pm.sampling.SpecMCMC``.
-        %
-        %>  \interface{copy}
+        %>  \interface{SpecMCMC}
         %>  \code{.m}
+        %>
+        %>      spec = pm.sampling.SpecMCMC()
+        %>      spec = pm.sampling.SpecMCMC([])
+        %>      spec = pm.sampling.SpecMCMC([], [])
+        %>      spec = pm.sampling.SpecMCMC(method)
+        %>      spec = pm.sampling.SpecMCMC(method, [])
+        %>      spec = pm.sampling.SpecMCMC([], silent)
+        %>      spec = pm.sampling.SpecMCMC(method, silent)
+        %>
         %>  \endcode
-        %
-        %       spec = pm.sampling.SpecMCMC()
-        %       spec = pm.sampling.SpecMCMC([])
-        %       spec = pm.sampling.SpecMCMC([], [])
-        %       spec = pm.sampling.SpecMCMC(method)
-        %       spec = pm.sampling.SpecMCMC(method, [])
-        %       spec = pm.sampling.SpecMCMC([], silent)
-        %       spec = pm.sampling.SpecMCMC(method, silent)
-        %
-        %>  \final{}
+        %>  \final{SpecMCMC}
         %>
         %>  \author
+        %>  \JoshuaOsborne, May 21 2024, 12:58 AM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = SpecMCMC(method, silent)
@@ -112,35 +103,30 @@ classdef SpecMCMC < pm.sampling.SpecBase
     end
 
     methods(Hidden)
-
-        %
-        %   Ensure all specification properties of the parent object are sensible.
-        %
-        %   This is a dynamic method of the class ``pm.sampling.SpecMCMC``.
-        %
-        %       ndim
-        %
-        %           The input scalar MATLAB integer containing the
-        %           number of dimensions of the domain of the
-        %           object function that is to be explored.
+        %>  \brief
+        %>  Ensure all specification properties of the parent object are sensible.
+        %>  This is a dynamic method of the class ``pm.sampling.SpecMCMC``.
+        %>
+        %>  \param[in]  ndim    :   The input scalar MATLAB integer containing the
+        %>                          number of dimensions of the domain of the
+        %>                          object function that is to be explored.
         %>
         %>  \return
+        %>  `entries`           :   The output scalar MATLAB string containing
+        %>                          the simulation specifications converted to
+        %>                          a Fortran-namelist-compatible entry.
         %>
-        %       entries
-        %
-        %           The output scalar MATLAB string containing
-        %           the simulation specifications converted to
-        %           a Fortran-namelist-compatible entry.
-        %
-        %>  \interface{copy}
+        %>  \interface{getEntriesNML}
         %>  \code{.m}
+        %>
+        %>      entries = self.getEntriesNML(ndim)
+        %>
         %>  \endcode
-        %
-        %       entries = self.getEntriesNML(ndim)
-        %
-        %>  \final{}
+        %>
+        %>  \final{getEntriesNML}
         %>
         %>  \author
+        %>  \JoshuaOsborne, May 21 2024, 1:01 AM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function entries = getEntriesNML(self, ndim)
