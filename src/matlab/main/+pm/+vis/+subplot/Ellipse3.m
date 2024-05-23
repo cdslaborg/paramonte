@@ -1,293 +1,261 @@
-%
-%   This is the Ellipse3 class for generating
-%   instances of 3-dimensional Ellipse3 plots
-%   based on the relevant MATLAB
-%   intrinsic functions.
-%
-%   In the following documentation,
-%
-%       1.  the variable ``ndim`` represents the number of ellipsoids in the input data.
-%           The value of ``ndim`` is inferred from the shapes
-%           of the input ``gramian`` and ``center`` arguments
-%           as ``max([2, size(gramian, 1), size(center, 1)])``.
-%
-%       2.  the variable ``nell`` represents the number of ellipsoids in the input data.
-%           The value of ``nell`` is inferred from the shapes
-%           of the input ``gramian``, ``center``, ``zval``, and ``cval`` arguments
-%           as ``max([size(gramian, 3), size(center, 2), size(zval, 2), size(cval, 2)])``.
-%           If the above expression yields zero, then ``nell`` is set to ``75``.
-%
-%       3.  the variable ``npnt`` represents the number of points used in visualizing each ellipsoid.
-%           The value of ``npnt`` is inferred from the shapes of the input arguments
-%           ``zval`` and ``czval`` as ``max(size(zval, 1), size(cval, 1))``.
-%           If the above expression yields zero or one, then ``npnt`` is set to ``100``.
-%
-%   \note
-%
-%       To generate a 2D plot of ellipsoids, simply execute the
-%       MATLAB command ``view(2)`` to change the camera view to 2D.
-%
-%       gramian
-%
-%           The MATLAB (function handle returning an) object that can be either
-%
-%               1.  an empty object (e.g., ``[]``), in which case,
-%                   the value ``repmat(eye(ndim, ndim), 1, 1, nell)`` will be used.
-%
-%               2.  a scalar, containing the value of the diagonal elements
-%                   of the diagonal matrices representing the Gramian matrices
-%                   of all ``nell`` ellipsoids in the input data.
-%
-%               3.  a vector of shape ``[1, 1, nell]`` such that ``gramian(1, 1, iell)``
-%                   represents the diagonal value to be used in constructing the Gramian
-%                   matrix of the ellipsoid ``iell` in the input ``nell`` ellipsoid data.
-%
-%               4.  a matrix of shape ``[ndim, ndim, 1]`` used in constructing the Gramian
-%                   matrices of all ``nell`` ellipsoids in the input data.
-%
-%               5.  a tensor of shape ``[ndim, ndim, nell]`` such that ``gramian(:, :, iell)``
-%                   represents the Gramian matrix of the ellipsoid ``iell` in the input data.
-%
-%           \note
-%
-%               While it is possible to pass a data directly to this class,
-%               it is highly recommended to pass a function handle that returns
-%               such data when called, allowing the visualization data to be
-%               dynamically updated when needed.
-%
-%       center
-%
-%           The MATLAB (function handle returning an) object that can be either
-%
-%               1.  an empty object (e.g., ``[]``), in which case,
-%                   the value ``zeros(ndim, nell)`` will be used.
-%
-%               2.  a scalar, containing the value to assign to all coordinates
-%                   of the centers of all ``nell`` ellipsoids in the input data.
-%
-%               3.  a vector of shape ``[1, nell]`` such that ``center(1, iell)``
-%                   represents the value of all coordinates of the center of the
-%                   ellipsoid ``iell` in the input ``nell`` ellipsoid data.
-%
-%               4.  a vector of shape ``[ndim, 1]`` such that ``center(idim, 1)``
-%                   represents the value of ``idim`` coordinate of the centers of
-%                   all ``nell`` ellipsoids in the input data.
-%
-%               5.  a matrix of shape ``[ndim, nell]`` such that ``center(:, iell)`` represents
-%                   the coordinates of the center of the ellipsoid ``iell` in the input data.
-%
-%           \note
-%
-%               While it is possible to pass data directly to this class,
-%               it is highly recommended to pass a function handle that returns
-%               such data when called, allowing the visualization data to be
-%               dynamically updated when needed.
-%
-%       zval
-%
-%           The MATLAB (function handle returning an) object that can be either
-%
-%               1.  an empty object (e.g., ``[]``), in which case,
-%                   the value ``repmat(1 : nell, npnt, 1)`` will be used.
-%
-%               2.  a scalar, containing the value to assign to the z-axis
-%                   coordinates of all ``npnt`` points used in the visualization
-%                   of ``nell`` ellipsoids in the input data.
-%
-%               3.  a vector of shape ``[1, nell]`` such that ``zval(1, iell)``
-%                   represents the value of z-axis coordinates of all ``npnt``
-%                   points used in the visualization of the ellipsoid
-%                   ``iell` in the input ``nell`` ellipsoid data.
-%
-%               4.  a vector of shape ``[npnt, 1]`` such that ``zval(ipnt, 1)``
-%                   contains the z-axis value of ``ipnt`` points in the representations
-%                   of all ``nell`` ellipsoids in the input data.
-%
-%               5.  a matrix of shape ``[npnt, nell]`` such that ``zval(:, iell)`` represents
-%                   the z-axis coordinates of all ``npnt`` points used in the visualization of
-%                   the ellipsoid ``iell` in the input data.
-%
-%           \note
-%
-%               While it is possible to pass data directly to this class,
-%               it is highly recommended to pass a function handle that returns
-%               such data when called, allowing the visualization data to be
-%               dynamically updated when needed.
-%
-%       cval
-%
-%           The MATLAB (function handle returning an) object that can be either
-%
-%               1.  an empty object (e.g., ``[]``), in which case,
-%                   the input value ``zval`` will be used.
-%
-%               2.  a scalar, containing the value to assign to color values
-%                   of all ``npnt`` points used in the visualization
-%                   of  ``nell`` ellipsoids in the input data.
-%
-%               3.  a vector of shape ``[1, nell]`` such that ``cval(1, iell)``
-%                   represents the color values of all ``npnt`` points used in the
-%                   visualization of the ellipsoid ``iell` in the input ``nell`` ellipsoid data.
-%
-%               4.  a vector of shape ``[npnt, 1]`` such that ``cval(ipnt, 1)``
-%                   contains the color values of ``ipnt`` points in the representations
-%                   of all ``nell`` ellipsoids in the input data.
-%
-%               5.  a matrix of shape ``[npnt, nell]`` such that ``center(:, iell)`` represents
-%                   the color values of all ``npnt`` points used in the visualization of
-%                   the ellipsoid ``iell` in the input data.
-%
-%           \note
-%
-%               While it is possible to pass data directly to this class,
-%               it is highly recommended to pass a function handle that returns
-%               such data when called, allowing the visualization data to be
-%               dynamically updated when needed.
-%
-%           \note
-%
-%               The input value for ``cval`` is used only if ``colormap.enabled``
-%               component of the output object of class ``pm.vis.subplot.Ellipse3``
-%               is set to ``true``.
-%
-%       varargin
-%
-%           Any ``property, value`` pair of the object.
-%           If the property is a ``struct()``, then its value must be given as a cell array,
-%           with consecutive elements representing the struct ``property-name, property-value`` pairs.
-%           Note that all of these property-value pairs can be also directly set via the
-%           parent object attributes, before calling the ``make()`` method.
-%
-%   \note
-%       See below and also the documentation of the attributes
-%       of the superclass ``pm.vis.subplot.LineScatter3``.
-%
-%>  \return
-%       An object of class ``pm.vis.subplot.Ellipse3``.
-%>
-%>  \interface{}
-%>  \code{.m}
-%>  \endcode
-%>
-%       s = pm.vis.subplot.Ellipse3();
-%       s = pm.vis.subplot.Ellipse3(gramian);
-%       s = pm.vis.subplot.Ellipse3(gramian, center);
-%       s = pm.vis.subplot.Ellipse3(gramian, center, zval);
-%       s = pm.vis.subplot.Ellipse3(gramian, center, zval, cval);
-%       s = pm.vis.subplot.Ellipse3(gramian, center, zval, cval, varargin);
-%
-%   Example
-%   -------
-%
-%       s = pm.vis.subplot.Ellipse3();
-%       s.make("dims", [1, 2]);
-%
-%>  \final{}
-%>
-%>  \author
-%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
-%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
+%>  \brief
+%>  This is the Ellipse3 class for generating
+%>  instances of 3-dimensional Ellipse3 plots
+%>  based on the relevant MATLAB
+%>  intrinsic functions.
 classdef Ellipse3 < pm.vis.subplot.LineScatter3
     properties(Access = public)
-        %
-        %   names
-        %
-        %       The vector of MATLAB strings containing the names of dimensions
-        %       of the space within which the Gramian matrices are defined.
-        %       The default is ``"Dimension i"`` where ``i`` is replaced
-        %       by the ID of the corresponding axis.
-        %
+        %>
+        %>  \param  names   :   The vector of MATLAB strings containing the names of dimensions
+        %>                      of the space within which the Gramian matrices are defined.
+        %>                      The default is ``"Dimension i"`` where ``i`` is replaced
+        %>                      by the ID of the corresponding axis.
+        %>
         names = [];
-        %
-        %   dims
-        %
-        %       The vector of size ``2`` of MATLAB whole numbers representing the dimensions
-        %       of the input ``gramian`` and ``center`` data to use for 2D ellipsoid visualization.
-        %       The default is ``[1, 2]``.
-        %
+        %>
+        %>  \param  dims        :   The vector of size ``2`` of MATLAB whole numbers representing the dimensions
+        %>                          of the input ``gramian`` and ``center`` data to use for 2D ellipsoid visualization.
+        %>                          The default is ``[1, 2]``.
+        %>
         dims = [];
-        %
-        %   ellindex
-        %
-        %       The vector of MATLAB whole numbers representing the ellindex of the 2D
-        %       ellipsoids to display, represented by the input ``gramian`` and ``center``.
-        %       The specified ellindex will serve as the visualization values on the z-axis.
-        %       The default is ``ellindex = pm.array.logrange(start = 1, stop = nell, count = 75);``,
-        %       where ``nell`` represents the number of ellipsoids to visualize.
-        %
+        %>
+        %>  \param  ellindex    :   The vector of MATLAB whole numbers representing the ellindex of the 2D
+        %>                          ellipsoids to display, represented by the input ``gramian`` and ``center``.
+        %>                          The specified ellindex will serve as the visualization values on the z-axis.
+        %>                          The default is ``ellindex = pm.array.logrange(start = 1, stop = nell, count = 75);``,
+        %>                          where ``nell`` represents the number of ellipsoids to visualize.
+        %>
         ellindex = [];
-        %
-        %   gramian
-        %
-        %       A scalar object of class ``pm.data.DataRef``
-        %       containing the user-specified Gramian data to visualize.
-        %
+        %>
+        %>  \param  gramian     :   A scalar object of class ``pm.data.DataRef``
+        %>                          containing the user-specified Gramian data to visualize.
+        %>
         gramian = [];
-        %
-        %   center
-        %
-        %       A scalar object of class ``pm.data.DataRef``
-        %       containing the user-specified center data to visualize.
-        %
+        %>
+        %>  \param  center      :   A scalar object of class ``pm.data.DataRef``
+        %>                          containing the user-specified center data to visualize.
+        %>
         center = [];
-        %
-        %   zval
-        %
-        %       A scalar object of class ``pm.data.DataRef``
-        %       containing the user-specified z-axis data to visualize.
-        %
+        %>
+        %>  \param  zval        :   A scalar object of class ``pm.data.DataRef``
+        %>                          containing the user-specified z-axis data to visualize.
+        %>
         zval = [];
-        %
-        %   cval
-        %
-        %       A scalar object of class ``pm.data.DataRef``
-        %       containing the user-specified color data in colormap.
-        %       If empty or unspecified, it will be set to ``zval`` component.
-        %
+        %>
+        %>  \param  cval        :   A scalar object of class ``pm.data.DataRef``
+        %>                          containing the user-specified color data in colormap.
+        %>                          If empty or unspecified, it will be set to ``zval`` component.
+        %>
         cval = [];
     end
 
     properties(Access = public, Hidden)
-        %
-        %   ndim
-        %
-        %       A scalar MATLAB whole number representing the total number of the
-        %       dimensions of ellipsoids identified based on the input that can be visualized.
-        %       It is set to ``max(2, size(gramian, 2), size(center, 1))``.
-        %
+        %>
+        %>  \param  ndim        :   A scalar MATLAB whole number representing the total number of the
+        %>                          dimensions of ellipsoids identified based on the input that can be visualized.
+        %>                          It is set to ``max(2, size(gramian, 2), size(center, 1))``.
+        %>
         ndim = [];
-        %
-        %   nell
-        %
-        %       A scalar MATLAB whole number representing the total number of
-        %       ellipsoids identified based on the input that can be visualized.
-        %       It is set to ``max(20, size(gramian, 3), size(center, 2), size(zval, 2))``.
-        %
+        %>
+        %>  \param  nell        :   A scalar MATLAB whole number representing the total number of
+        %>                          ellipsoids identified based on the input that can be visualized.
+        %>                          It is set to ``max(20, size(gramian, 3), size(center, 2), size(zval, 2))``.
+        %>
         nell = [];
-        %
-        %   npnt
-        %
-        %       The scalar MATLAB whole number representing the number of
-        %       points with which the 2D ellipsoid boundaries are delineated.
-        %       It is set to ``max(size(zval, 1), size(cval, 1))`` or otherwise, ``100``.
-        %
+        %>
+        %>  \param  npnt        :   The scalar MATLAB whole number representing the number of
+        %>                          points with which the 2D ellipsoid boundaries are delineated.
+        %>                          It is set to ``max(size(zval, 1), size(cval, 1))`` or otherwise, ``100``.
+        %>
         npnt = [];
-        %
-        %   workspace
-        %
-        %       A scalar MATLAB ``struct()`` containing the current visualization information.
-        %       This information is updated with every call to the ``make()`` method.
-        %       The contents of this component are temporary and must remain read-only.
-        %       This component is solely provided for better insight into the internal
-        %       workings of the ``make()`` method of the parent object and
-        %       the resulting visualization.
-        %
+        %>
+        %>  \param  workspace   :   A scalar MATLAB ``struct()`` containing the current visualization information.
+        %>                          This information is updated with every call to the ``make()`` method.
+        %>                          The contents of this component are temporary and must remain read-only.
+        %>                          This component is solely provided for better insight into the internal
+        %>                          workings of the ``make()`` method of the parent object and
+        %>                          the resulting visualization.
+        %>
         workspace = [];
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     methods(Access = public)
+        %>
+        %>  \details
+        %>  In the following documentation,
+        %>  <ol>
+        %>      <li>    the variable ``ndim`` represents the number of ellipsoids in the input data.
+        %>              The value of ``ndim`` is inferred from the shapes
+        %>              of the input ``gramian`` and ``center`` arguments
+        %>              as ``max([2, size(gramian, 1), size(center, 1)])``.
+        %>
+        %>      <li>    the variable ``nell`` represents the number of ellipsoids in the input data.
+        %>              The value of ``nell`` is inferred from the shapes
+        %>              of the input ``gramian``, ``center``, ``zval``, and ``cval`` arguments
+        %>              as ``max([size(gramian, 3), size(center, 2), size(zval, 2), size(cval, 2)])``.
+        %>              If the above expression yields zero, then ``nell`` is set to ``75``.
+        %>
+        %>      <li>    the variable ``npnt`` represents the number of points used in visualizing each ellipsoid.
+        %>              The value of ``npnt`` is inferred from the shapes of the input arguments
+        %>              ``zval`` and ``czval`` as ``max(size(zval, 1), size(cval, 1))``.
+        %>              If the above expression yields zero or one, then ``npnt`` is set to ``100``.
+        %>  </ol>
+        %>
+        %>  \note
+        %>  To generate a 2D plot of ellipsoids, simply execute the
+        %>  MATLAB command ``view(2)`` to change the camera view to 2D.
+        %>
+        %>  \param[in]  gramian     :   The MATLAB (function handle returning an) object that can be either<br>
+        %>                          <ol>
+        %>                              <li>    an empty object (e.g., ``[]``), in which case,
+        %>                                      the value ``repmat(eye(ndim, ndim), 1, 1, nell)`` will be used.
+        %>                      
+        %>                              <li>    a scalar, containing the value of the diagonal elements
+        %>                                      of the diagonal matrices representing the Gramian matrices
+        %>                                      of all ``nell`` ellipsoids in the input data.
+        %>                      
+        %>                              <li>    a vector of shape ``[1, 1, nell]`` such that ``gramian(1, 1, iell)``
+        %>                                      represents the diagonal value to be used in constructing the Gramian
+        %>                                      matrix of the ellipsoid ``iell` in the input ``nell`` ellipsoid data.
+        %>                      
+        %>                              <li>    a matrix of shape ``[ndim, ndim, 1]`` used in constructing the Gramian
+        %>                                      matrices of all ``nell`` ellipsoids in the input data.
+        %>                      
+        %>                              <li>    a tensor of shape ``[ndim, ndim, nell]`` such that ``gramian(:, :, iell)``
+        %>                                      represents the Gramian matrix of the ellipsoid ``iell` in the input data.
+        %>                          </ol>
+        %>  
+        %>  \note
+        %>  While it is possible to pass a data directly to this class,
+        %>  it is highly recommended to pass a function handle that returns
+        %>  such data when called, allowing the visualization data to be
+        %>  dynamically updated when needed.
+        %>  
+        %>  \param[in]  center      :   The MATLAB (function handle returning an) object that can be either
+        %>                          <ol>
+        %>                              <li>    an empty object (e.g., ``[]``), in which case,
+        %>                                      the value ``zeros(ndim, nell)`` will be used.
+        %>                      
+        %>                              <li>    a scalar, containing the value to assign to all coordinates
+        %>                                      of the centers of all ``nell`` ellipsoids in the input data.
+        %>                      
+        %>                              <li>    a vector of shape ``[1, nell]`` such that ``center(1, iell)``
+        %>                                      represents the value of all coordinates of the center of the
+        %>                                      ellipsoid ``iell` in the input ``nell`` ellipsoid data.
+        %>                      
+        %>                              <li>    a vector of shape ``[ndim, 1]`` such that ``center(idim, 1)``
+        %>                                      represents the value of ``idim`` coordinate of the centers of
+        %>                                      all ``nell`` ellipsoids in the input data.
+        %>                      
+        %>                              <li>    a matrix of shape ``[ndim, nell]`` such that ``center(:, iell)`` represents
+        %>                                      the coordinates of the center of the ellipsoid ``iell` in the input data.
+        %>                          </ol>
+        %>  
+        %>  \note
+        %>  While it is possible to pass data directly to this class,
+        %>  it is highly recommended to pass a function handle that returns
+        %>  such data when called, allowing the visualization data to be
+        %>  dynamically updated when needed.
+        %>  
+        %>  \param[in]  zval        :   The MATLAB (function handle returning an) object that can be either
+        %>                          <ol>
+        %>                              <li>    an empty object (e.g., ``[]``), in which case,
+        %>                                      the value ``repmat(1 : nell, npnt, 1)`` will be used.
+        %>                      
+        %>                              <li>    a scalar, containing the value to assign to the z-axis
+        %>                                      coordinates of all ``npnt`` points used in the visualization
+        %>                                      of ``nell`` ellipsoids in the input data.
+        %>                      
+        %>                              <li>    a vector of shape ``[1, nell]`` such that ``zval(1, iell)``
+        %>                                      represents the value of z-axis coordinates of all ``npnt``
+        %>                                      points used in the visualization of the ellipsoid
+        %>                                      ``iell` in the input ``nell`` ellipsoid data.
+        %>                      
+        %>                              <li>    a vector of shape ``[npnt, 1]`` such that ``zval(ipnt, 1)``
+        %>                                      contains the z-axis value of ``ipnt`` points in the representations
+        %>                                      of all ``nell`` ellipsoids in the input data.
+        %>                      
+        %>                              <li>    a matrix of shape ``[npnt, nell]`` such that ``zval(:, iell)`` represents
+        %>                                      the z-axis coordinates of all ``npnt`` points used in the visualization of
+        %>                                      the ellipsoid ``iell` in the input data.
+        %>                          </ol>
+        %>  
+        %>  \note
+        %>  While it is possible to pass data directly to this class,
+        %>  it is highly recommended to pass a function handle that returns
+        %>  such data when called, allowing the visualization data to be
+        %>  dynamically updated when needed.
+        %>  
+        %>  \param[in]  cval        :   The MATLAB (function handle returning an) object that can be either
+        %>                          <ol>
+        %>                              <li>    an empty object (e.g., ``[]``), in which case,
+        %>                                      the input value ``zval`` will be used.
+        %>                      
+        %>                              <li>    a scalar, containing the value to assign to color values
+        %>                                      of all ``npnt`` points used in the visualization
+        %>                                      of  ``nell`` ellipsoids in the input data.
+        %>                      
+        %>                              <li>    a vector of shape ``[1, nell]`` such that ``cval(1, iell)``
+        %>                                      represents the color values of all ``npnt`` points used in the
+        %>                                      visualization of the ellipsoid ``iell` in the input ``nell`` ellipsoid data.
+        %>                      
+        %>                              <li>    a vector of shape ``[npnt, 1]`` such that ``cval(ipnt, 1)``
+        %>                                      contains the color values of ``ipnt`` points in the representations
+        %>                                      of all ``nell`` ellipsoids in the input data.
+        %>                      
+        %>                              <li>    a matrix of shape ``[npnt, nell]`` such that ``center(:, iell)`` represents
+        %>                                      the color values of all ``npnt`` points used in the visualization of
+        %>                                      the ellipsoid ``iell` in the input data.
+        %>                          </ol>
+        %>  
+        %>  \note
+        %>  While it is possible to pass data directly to this class,
+        %>  it is highly recommended to pass a function handle that returns
+        %>  such data when called, allowing the visualization data to be
+        %>          dynamically updated when needed.
+        %>  
+        %>  \note
+        %>  The input value for ``cval`` is used only if ``colormap.enabled``
+        %>  component of the output object of class ``pm.vis.subplot.Ellipse3``
+        %>  is set to ``true``.
+        %>  
+        %>  \param[in]  varargin    :   Any ``property, value`` pair of the object.
+        %>                              If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>                              Note that all of these property-value pairs can be also directly set via the
+        %>                              parent object attributes, before calling the ``make()`` method.
+        %>
+        %>  \note
+        %>  See below and also the documentation of the attributes
+        %>  of the superclass ``pm.vis.subplot.LineScatter3``.
+        %>
+        %>  \return
+        %>  An object of class ``pm.vis.subplot.Ellipse3``.
+        %>
+        %>  \interface{Ellipse3}
+        %>  \code{.m}
+        %>      s = pm.vis.subplot.Ellipse3();
+        %>      s = pm.vis.subplot.Ellipse3(gramian);
+        %>      s = pm.vis.subplot.Ellipse3(gramian, center);
+        %>      s = pm.vis.subplot.Ellipse3(gramian, center, zval);
+        %>      s = pm.vis.subplot.Ellipse3(gramian, center, zval, cval);
+        %>      s = pm.vis.subplot.Ellipse3(gramian, center, zval, cval, varargin);
+        %>
+        %>  \endcode
+        %>
+        %>  \example{Ellipse3}
+        %>
+        %>      s = pm.vis.subplot.Ellipse3();
+        %>      s.make("dims", [1, 2]);
+        %>
+        %>  \final{Ellipse3}
+        %>
+        %>  \author
+        %>  \JoshuaOsborne, May 21 2024, 5:35 PM, University of Texas at Arlington<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = Ellipse3(gramian, center, zval, cval, varargin)
 
             %%%% Define the missing optional values as empty with the right rank.
@@ -319,38 +287,32 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     methods(Access = public)
+        %>  \brief
+        %>  Reset the properties of the plot to the original default settings.
+        %>  Use this method when you change many attributes of the plot and
+        %>  you want to clean up and go back to the default settings.
+        %>
+        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
+        %>                              If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>                              Note that all of these property-value pairs can be also directly set via the
+        %>                              parent object attributes, before calling the ``make()`` method.
+        %>
+        %>  \return
+        %>  `None`
+        %>
+        %>  \interface{reset}
+        %>  \code{.m}
+        %>
+        %>      pm.vis.subplot.Ellipse3.reset() # reset the plot to the default settings.
+        %>
+        %>  \endcode
+        %>  \final{len}
+        %>
+        %>  \author
+        %>  \JoshuaOsborne, May 22 2024, 5:42 PM, University of Texas at Arlington<br>
+        %>
         function reset(self, varargin)
-            %
-            %   Reset the properties of the plot to the original default settings.
-            %   Use this method when you change many attributes of the plot and
-            %   you want to clean up and go back to the default settings.
-            %
-            %   Parameters
-            %   ----------
-            %
-            %       varargin
-            %
-            %           Any ``property, value`` pair of the parent object.
-            %           If the property is a ``struct()``, then its value must be given as a cell array,
-            %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
-            %           Note that all of these property-value pairs can be also directly set via the
-            %           parent object attributes, before calling the ``make()`` method.
-            %
-            %   Returns
-            %   -------
-            %
-            %       None
-            %
-            %   Interface
-            %   ---------
-            %
-            %       pm.vis.subplot.Ellipse3.reset() # reset the plot to the default settings.
-            %
-            %   LICENSE
-            %   -------
-            %
-            %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-            %
             self.dims = [];
             self.npnt = [];
             self.names = [];
@@ -369,41 +331,38 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
 
     methods(Access = public, Hidden)
 
-        %
-        %   Prepare the subplot for visualization.
-        %
-        %   \warning
-        %
-        %       This method has side-effects by manipulating
-        %       the existing attributes of the parent object.
-        %
-        %       varargin
-        %
-        %           Any ``property, value`` pair of the parent object.
-        %           If the property is a ``struct()``, then its value must be given as a cell array,
-        %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
-        %           Note that all of these property-value pairs can be also directly set via the
-        %           parent object attributes, before calling the ``premake()`` method.
+        %>  \brief
+        %>  Prepare the subplot for visualization.
+        %>
+        %>  \warning
+        %>  This method has side-effects by manipulating
+        %>  the existing attributes of the parent object.
+        %>
+        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
+        %>                              If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>                              Note that all of these property-value pairs can be also directly set via the
+        %>                              parent object attributes, before calling the ``premake()`` method.
         %>
         %>  \return
+        %>  `None`
         %>
-        %       None
-        %
-        %>  \interface{copy}
+        %>  \interface{premake}
         %>  \code{.m}
+        %>
+        %>      pm.vis.subplot.Ellipse3.premake(varargin);
+        %>
         %>  \endcode
-        %
-        %       pm.vis.subplot.Ellipse3.premake(varargin);
-        %
-        %   Example
-        %   -------
-        %
-        %       s = pm.vis.subplot.Ellipse3();
-        %       s.premake("dims", [1, 2], "colormap", {"map", "autumn"})
-        %
-        %>  \final{}
+        %>
+        %>  \example{premake}
+        %>
+        %>      s = pm.vis.subplot.Ellipse3();
+        %>      s.premake("dims", [1, 2], "colormap", {"map", "autumn"})
+        %>
+        %>  \final{premake}
         %>
         %>  \author
+        %>  \JoshuaOsborne, May 22 2024, 5:45 PM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function premake(self, varargin)
@@ -797,41 +756,38 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
 
     methods(Access = public)
 
-        %
-        %   Generate a plot from the selected dimensions
-        %   of the input ellipsoid data to the object constructor.
-        %
-        %   \note
-        %
-        %       This method is pure, except for the changes in ``fout`` component.
-        %
-        %       varargin
-        %
-        %           Any ``property, value`` pair of the parent object.
-        %           If the property is a ``struct()``, then its value must be given as a cell array,
-        %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
-        %           Note that all of these property-value pairs can be also directly set via the
-        %           parent object attributes, before calling the ``make()`` method.
+        %>  \brief
+        %>  Generate a plot from the selected dimensions
+        %>  of the input ellipsoid data to the object constructor.
+        %>
+        %>  \note
+        %>  This method is pure, except for the changes in ``fout`` component.
+        %>
+        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
+        %>                              If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>                              Note that all of these property-value pairs can be also directly set via the
+        %>                              parent object attributes, before calling the ``make()`` method.
         %>
         %>  \return
+        %>  `None`
         %>
-        %       None
-        %
-        %>  \interface{copy}
+        %>  \interface{make}
         %>  \code{.m}
+        %>
+        %>      pm.vis.subplot.Ellipse3.make(varargin);
+        %>
         %>  \endcode
-        %
-        %       pm.vis.subplot.Ellipse3.make(varargin);
-        %
-        %   Example
-        %   -------
-        %
-        %       s = pm.vis.subplot.Ellipse3();
-        %       s.make("dims", [1, 2]);
-        %
-        %>  \final{}
+        %>
+        %>  \example{make}
+        %>
+        %>      s = pm.vis.subplot.Ellipse3();
+        %>      s.make("dims", [1, 2]);
+        %>
+        %>  \final{make}
         %>
         %>  \author
+        %>  \JoshuaOsborne, May 22 2024, 5:46 PM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function make(self, varargin)

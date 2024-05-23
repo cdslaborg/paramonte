@@ -1,53 +1,43 @@
-%>
+%>  \brief
 %>  Return a Fortran-namelist-compatible conversion of the input ``varval``.
 %>
+%>  \details
 %>  This functionality is primarily used by the ParaMonte MATLAB internal
 %>  routines to communicate information with Fortran shared libraries.
 %>  As such, it is of limited to most end users of the library.
 %>
-%>      varname
+%>  \param[in]  varname :   The input scalar MATLAB string containing the label to assign
+%>                          to the namelist-converted value in the output ``entry``.<br>
+%>                          The specified value of ``varname`` will be trimmed
+%>                          (to remove leading and trailing blanks).
 %>
-%>          The input scalar MATLAB string containing the label to assign
-%>          to the namelist-converted value in the output ``entry``.
-%>          The specified value of ``varname`` will be trimmed
-%>          (to remove leading and trailing blanks).
+%>  \param[in]  varval  :   The input value to be converted to namelist-compatible value.
 %>
-%>      varval
+%>  \param[in]  vartype :   See the documentation of the corresponding
+%>                          argument of ``pm.introspection.istype()``.
 %>
-%>          The input value to be converted to namelist-compatible value.
-%>
-%>      vartype
-%>
-%>          See the documentation of the corresponding
-%>          argument of ``pm.introspection.istype()``.
-%>
-%>      varsize
-%>
-%>          See the documentation of the corresponding
-%>          argument of ``pm.introspection.istype()``.
+%>  \param[in]  varsize :   See the documentation of the corresponding
+%>                          argument of ``pm.introspection.istype()``.
 %>
 %>  \return
-%>      entry
+%>  `entry`             :   The output scalar MATLAB string containing the namelist-compatible
+%>                          conversion of the input value ``varval`` and the given ``varname``
+%>                          in the following format:    varname=namelist-compatible-varval
 %>
-%>          The output scalar MATLAB string containing the namelist-compatible
-%>          conversion of the input value ``varval`` and the given ``varname``
-%>          in the following format:
+%>                          \note
+%>                          If the input ``varval`` is an array, its elements will be comma-separated.
+%>                          If the input value is string, it will be quoted properly.
 %>
-%>              varname=namelist-compatible-varval
-%>
-%>          If the input ``varval`` is an array, its elements will be comma-separated.
-%>          If the input value is string, it will be quoted properly.
-%>
-%>  \interface{}
+%>  \interface{getEntryNML}
 %>  \code{.m}
-%>  \endcode
 %>
 %>      entry = pm.introspection.getEntryNML(varname, varval, vartype, varsize)
 %>
-%>  LICENSE
-%>  -------
+%>  \endcode
+%>  \final{getEntryNML}
 %>
-%>      https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
+%>  \author
+%>  \JoshuaOsborne, May 21 2024, 5:38 PM, University of Texas at Arlington<br>
 %>
 function entry = getEntryNML(varname, varval, vartype, varsize)
     varval = varval(:);

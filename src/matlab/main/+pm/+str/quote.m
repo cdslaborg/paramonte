@@ -1,27 +1,24 @@
-%
-%   Return the input scalar MATLAB string as doubly quoted string
-%   such that the first and last character of the output string are double-quotation
-%   marks while escaping any instances of double quote in the Fortran/MATLAB style,
-%   by duplicating every quotation mark within the string.
-%
-%       str
-%
-%           The input scalar MATLAB string to be doubly quoted.
-%
+%>  \brief
+%>  Return the input scalar MATLAB string as doubly quoted string
+%>  such that the first and last character of the output string are double-quotation
+%>  marks while escaping any instances of double quote in the Fortran/MATLAB style,
+%>  by duplicating every quotation mark within the string.
+%>
+%>  \param[in]  str :   The input scalar MATLAB string to be doubly quoted.
+%>
 %>  \return
-%       strQuoted
-%
-%           The output scalar MATLAB string containing the doubly-quoted escaped input string.
+%>  `strQuoted`     :   The output scalar MATLAB string containing the doubly-quoted escaped input string.
 %>
-%>  \interface{}
+%>  \interface{quote}
 %>  \code{.m}
-%>  \endcode
 %>
-%       strQuoted = pm.str.quote(str)
-%
-%>  \final{}
+%>      strQuoted = pm.str.quote(str)
+%>
+%>  \endcode
+%>  \final{quote}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 4:40 AM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function strQuoted = quote(str)

@@ -1,30 +1,6 @@
-%
-%   This is the abstract class for generating instances
-%   of figures containing a symmetric grid (corners) of subplots.
-%
-%       varargin
-%
-%           Any ``property, value`` pair of the parent object.
-%           If the property is a ``struct()``, then its value must be given as a cell array,
-%           with consecutive elements representing the struct ``property-name, property-value`` pairs.
-%           Note that all of these property-value pairs can be also directly set via the
-%           parent object attributes, before calling the ``make()`` method.
-%
-%>  \return
-%       self
-%
-%           The output scalar object of class ``pm.vis.corner.Corner``.
-%>
-%>  \interface{}
-%>  \code{.m}
-%>  \endcode
-%>
-%       plot = pm.vis.corner.Corner(subplot);
-%
-%   \note
-%       See the list of class attributes below,
-%       also those of the superclass ``pm.vis.figure.Tiling``.
-%
+%>  \brief
+%>  This is the abstract class for generating instances
+%>  of figures containing a symmetric grid (corners) of subplots.
 classdef Corner < pm.vis.figure.Tiling
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -63,62 +39,48 @@ classdef Corner < pm.vis.figure.Tiling
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     properties(Access = public)
-        %
-        %   cols (standing for columns)
-        %
-        %       The vector of MATLAB integers or names of of the input dataframe columns
-        %       that determines the columns of the specified dataframe to visualize.
-        %       It can have multiple forms:
-        %
-        %           1.  a numeric or cell array of column indices in the input ``dfref``.
-        %           2.  a string or cell array of column names in ``dfref.Properties.VariableNames``.
-        %           3.  a cell array of a mix of the above two.
-        %           4.  a numeric range.
-        %
-        %       Example usage:
-        %
-        %           1.  self.cols = [7, 8, 9]
-        %           2.  self.cols = ["sampleLogFunc", "sampleVariable1"]
-        %           3.  self.cols = {"sampleLogFunc", 9, "sampleVariable1"}
-        %           4.  self.cols = 7:9      # every column in the data frame starting from column #7 to #9
-        %           5.  self.cols = 7:2:20   # every other column in the data frame starting from column #7 to #20
-        %
-        %       The ``i``th element of the specified ``cols`` will be used as value for:
-        %
-        %           1.  the ``i``th column of data to visualize on the x-axis in subplot ``subplot{i, i}.
-        %           1.  the ``i``th column of data to visualize on the x-axis in subplot ``subplot{i, :}.
-        %           1.  the ``i``th column of data to visualize on the y-axis in subplot ``subplot{:, i}.
-        %
-        %       If ``cols`` is empty, no visualizations will be made.
-        %
+        %>
+        %>  \param[in]  cols (standing for columns):    The vector of MATLAB integers or names of of the input dataframe columns
+        %>                                              that determines the columns of the specified dataframe to visualize.
+        %>                                              It can have multiple forms:<br>
+        %>                                                  1.  a numeric or cell array of column indices in the input ``dfref``.
+        %>                                                  2.  a string or cell array of column names in ``dfref.Properties.VariableNames``.
+        %>                                                  3.  a cell array of a mix of the above two.
+        %>                                                  4.  a numeric range.<br>
+        %>                                              Example usage:<br>
+        %>                                                  1.  self.cols = [7, 8, 9]
+        %>                                                  2.  self.cols = ["sampleLogFunc", "sampleVariable1"]
+        %>                                                  3.  self.cols = {"sampleLogFunc", 9, "sampleVariable1"}
+        %>                                                  4.  self.cols = 7:9      # every column in the data frame starting from column #7 to #9
+        %>                                                  5.  self.cols = 7:2:20   # every other column in the data frame starting from column #7 to #20<br>
+        %>                                              The ``i``th element of the specified ``cols`` will be used as value for:<br>
+        %>                                                  1.  the ``i``th column of data to visualize on the x-axis in subplot ``subplot{i, i}.
+        %>                                                  1.  the ``i``th column of data to visualize on the x-axis in subplot ``subplot{i, :}.
+        %>                                                  1.  the ``i``th column of data to visualize on the y-axis in subplot ``subplot{:, i}.<br>
+        %>                                              If ``cols`` is empty, no visualizations will be made.
+        %>
         cols = [];
-        %
-        %       diag
-        %
-        %           The scalar object of superclass ``pm.vis.subplot.Subplot``
-        %           representing the template of the diagonal subplots to display.
-        %           Note that only the visualization properties of the template are used.
-        %           The data properties of the template are set by the ``make()`` method.
-        %           (**optional**. The default value is ``pm.vis.subplot.Histogram([])``.)
-        %
+        %>
+        %>  \param[in]  diag    :   The scalar object of superclass ``pm.vis.subplot.Subplot``
+        %>                          representing the template of the diagonal subplots to display.
+        %>                          Note that only the visualization properties of the template are used.
+        %>                          The data properties of the template are set by the ``make()`` method.
+        %>                          (**optional**. The default value is ``pm.vis.subplot.Histogram([])``.)
+        %>
         diag = [];
-        %
-        %       lower
-        %
-        %           The scalar object of superclass ``pm.vis.subplot.Subplot``
-        %           representing the template of the lower-triangle subplots to display.
-        %           The data properties of the template are set by the ``make()`` method.
-        %           (**optional**. The default value is ``pm.vis.subplot.Contour([])``.)
-        %
+        %>
+        %>  \param[in]  lower   :   The scalar object of superclass ``pm.vis.subplot.Subplot``
+        %>                          representing the template of the lower-triangle subplots to display.
+        %>                          The data properties of the template are set by the ``make()`` method.
+        %>                          (**optional**. The default value is ``pm.vis.subplot.Contour([])``.)
+        %>
         lower = [];
-        %
-        %       upper
-        %
-        %           The scalar object of superclass ``pm.vis.subplot.Subplot``
-        %           representing the template of the upper-triangle subplots to display.
-        %           The data properties of the template are set by the ``make()`` method.
-        %           (**optional**. The default value is ``pm.vis.subplot.LineScatter([])``.)
-        %
+        %>
+        %>  \param[in]  upper   :   The scalar object of superclass ``pm.vis.subplot.Subplot``
+        %>                          representing the template of the upper-triangle subplots to display.
+        %>                          The data properties of the template are set by the ``make()`` method.
+        %>                          (**optional**. The default value is ``pm.vis.subplot.LineScatter([])``.)
+        %>
         upper = [];
     end
 
@@ -128,6 +90,31 @@ classdef Corner < pm.vis.figure.Tiling
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        %>
+        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
+        %>                              If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>                              Note that all of these property-value pairs can be also directly set via the
+        %>                              parent object attributes, before calling the ``make()`` method.
+        %>
+        %>  \return
+        %>  `self`                  :   The output scalar object of class ``pm.vis.corner.Corner``.
+        %>
+        %>  \interface{Corner}
+        %>  \code{.m}
+        %>
+        %>      plot = pm.vis.corner.Corner(subplot);
+        %>
+        %>  \endcode
+        %>
+        %>  \note
+        %>  See the list of class attributes below,
+        %>  also those of the superclass ``pm.vis.figure.Tiling``.
+        %>
+        %>  \final{Corner}
+        %>
+        %>  \author
+        %>  \JoshuaOsborne, May 22 2024, 9:39 PM, University of Texas at Arlington<br>
         function self = Corner(diag, lower, upper, varargin)
             if  nargin < 3
                 upper = [];
@@ -144,43 +131,40 @@ classdef Corner < pm.vis.figure.Tiling
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        %
-        %   Configure the figure settings and specifications,
-        %   make the figure and the subplots, and return nothing.
-        %   The subplots are made by calling their ``make()`` methods.
-        %
-        %   \warning
-        %
-        %       This method has side-effects by manipulating
-        %       the existing attributes of the parent object.
-        %
-        %       varargin
-        %
-        %           Any ``property, value`` pair of the parent object.
-        %           If the property is a ``struct()``, then its value must be given as a cell array,
-        %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
-        %           Note that all of these property-value pairs can be also directly set via the
-        %           parent object attributes, before calling the ``make()`` method.
+        %>  \brief
+        %>  Configure the figure settings and specifications,
+        %>  make the figure and the subplots, and return nothing.
+        %>  The subplots are made by calling their ``make()`` methods.
+        %>
+        %>  \warning
+        %>  This method has side-effects by manipulating
+        %>  the existing attributes of the parent object.
+        %>
+        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
+        %>                              If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>                              Note that all of these property-value pairs can be also directly set via the
+        %>                              parent object attributes, before calling the ``make()`` method.
         %>
         %>  \return
+        %>  `None`
         %>
-        %       None
-        %
-        %>  \interface{copy}
+        %>  \interface{make}
         %>  \code{.m}
+        %>
+        %>      f = pm.vis.corner.Corner.make(varargin);
+        %>
         %>  \endcode
-        %
-        %       f = pm.vis.corner.Corner.make(varargin);
-        %
-        %   Example
-        %   -------
-        %
-        %       f = pm.vis.corner.Corner();
-        %       f.make()
-        %
-        %>  \final{}
+        %>
+        %>  \example{make}
+        %>
+        %>      f = pm.vis.corner.Corner();
+        %>      f.make()
+        %>
+        %>  \final{make}
         %>
         %>  \author
+        %>  \JoshuaOsborne, May 21 2024, 7:56 AM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function make(self, varargin)
@@ -296,32 +280,31 @@ classdef Corner < pm.vis.figure.Tiling
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        %
-        %   Reset the properties of the figure to the original default settings.
-        %   Use this method when you change many attributes of the plot and
-        %   you want to clean up and go back to the default settings.
-        %
-        %       varargin
-        %
-        %           Any ``property, value`` pair of the parent object.
-        %           If the property is a ``struct()``, then its value must be given as a cell array,
-        %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
-        %           Note that all of these property-value pairs can be also directly set via the
-        %           parent object attributes, before calling the ``make()`` method.
+        %>  \brief
+        %>  Reset the properties of the figure to the original default settings.
+        %>  Use this method when you change many attributes of the plot and
+        %>  you want to clean up and go back to the default settings.
+        %>
+        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
+        %>                              If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>                              Note that all of these property-value pairs can be also directly set via the
+        %>                              parent object attributes, before calling the ``make()`` method.
         %>
         %>  \return
+        %>  `None`
         %>
-        %       None
-        %
-        %>  \interface{copy}
+        %>  \interface{reset}
         %>  \code{.m}
+        %>
+        %>      pm.vis.corner.Corner.reset() # reset all object properties to the default settings.
+        %>
         %>  \endcode
-        %
-        %       pm.vis.corner.Corner.reset() # reset all object properties to the default settings.
-        %
-        %>  \final{}
+        %>
+        %>  \final{reset}
         %>
         %>  \author
+        %>  \JoshuaOsborne, May 21 2024, 7:58 AM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function reset(self, varargin)
@@ -351,33 +334,32 @@ classdef Corner < pm.vis.figure.Tiling
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        %
-        %   Prepare the corner plot specs for subsequent visualization by ``make()``.
-        %
-        %   \warning
-        %
-        %       This method causes side-effects by manipulating
-        %       the existing attributes of the object.
-        %
-        %       varargin
-        %
-        %           Any ``property, value`` pair of the parent object.
-        %           If the property is a ``struct()``, then its value must be given as a cell array,
-        %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
-        %           Note that all of these property-value pairs can be also directly set via the
-        %           parent object attributes, before calling the ``make()`` method.
+        %>  \brief
+        %>  Prepare the corner plot specs for subsequent visualization by ``make()``.
+        %>
+        %>  \warning
+        %>  This method causes side-effects by manipulating
+        %>  the existing attributes of the object.
+        %>
+        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
+        %>                              If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>                              Note that all of these property-value pairs can be also directly set via the
+        %>                              parent object attributes, before calling the ``make()`` method.
         %>
         %>  \return
+        %>  `None`
         %>
-        %       None.
-        %
-        %   Example
-        %   -------
-        %
-        %       For example, change the left/bottom margin of the main
-        %       axis of the figure to provide room for lengthy variable names.
-        %       Then call the ``self.update()`` method to reflect the changes.
-        %
+        %>  \example{premake}
+        %>
+        %>      For example, change the left/bottom margin of the main
+        %>      axis of the figure to provide room for lengthy variable names.
+        %>      Then call the ``self.update()`` method to reflect the changes.
+        %>
+        %>  \final{premake}
+        %>
+        %>  \author
+        %>  \JoshuaOsborne, May 21 2024, 8:00 AM, University of Texas at Arlington<br>
         function premake(self, varargin)
 
             premake@pm.vis.figure.Tiling(self, varargin{:});

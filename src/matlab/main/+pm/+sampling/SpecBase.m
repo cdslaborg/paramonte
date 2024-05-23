@@ -1,41 +1,37 @@
-%
-%   This is the base class for the ParaMonte sampler basic specifications.
-%
-%   This is an abstract class that is not meant to be used by the user.
-%
-%
-%       See the documentation of the class constructor.
-%
-%       \note
-%
-%           All class attributes can be set after constructing an instance of this class.
-%
-%   \note
-%       The MCMC simulation specifications are all described on this page:
-%
-%           https://www.cdslab.org/paramonte/notes/usage/paradram/specifications/
-%
-%   \note
-%       See below for information on the methods.
-%
+%>  \brief
+%>  This is the base class for the ParaMonte sampler basic specifications.<br>
+%>  This is an abstract class that is not meant to be used by the user.<br>
+%>  See the documentation of the class constructor.
+%>
+%>  \note
+%>  All class attributes can be set after constructing an instance of this class.
+%>
+%>  \note
+%>  The MCMC simulation specifications are all described on this page:
+%>  https://www.cdslab.org/paramonte/notes/usage/paradram/specifications/
+%>
+%>  \note
+%>  See below for information on the methods.
+%>
 %>  \return
-%       An object of class ``pm.sampling.SpecBase``.
+%>  An object of class ``pm.sampling.SpecBase``.
 %>
-%>  \interface{}
+%>  \interface{SpecBase}
 %>  \code{.m}
-%>  \endcode
 %>
-%       spec = pm.sampling.SpecBase()
-%       spec = pm.sampling.SpecBase([])
-%       spec = pm.sampling.SpecBase([], [])
-%       spec = pm.sampling.SpecBase(method)
-%       spec = pm.sampling.SpecBase(method, [])
-%       spec = pm.sampling.SpecBase([], silent)
-%       spec = pm.sampling.SpecBase(method, silent)
-%
-%>  \final{}
+%>      spec = pm.sampling.SpecBase()
+%>      spec = pm.sampling.SpecBase([])
+%>      spec = pm.sampling.SpecBase([], [])
+%>      spec = pm.sampling.SpecBase(method)
+%>      spec = pm.sampling.SpecBase(method, [])
+%>      spec = pm.sampling.SpecBase([], silent)
+%>      spec = pm.sampling.SpecBase(method, silent)
+%>
+%>  \endcode
+%>  \final{SpecBase}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 3:38 AM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef SpecBase < pm.matlab.Handle
@@ -84,42 +80,38 @@ classdef SpecBase < pm.matlab.Handle
 
     methods(Access = public)
 
-        %
-        %   Construct and return an object of class ``pm.sampling.SpecBase``.
-        %
-        %       method
-        %
-        %           The input scalar MATLAB string containing
-        %           the name of the specific ParaMonte sampler
-        %           whose simulation specifications are to be
-        %           stored in the output of this constructor.
-        %
-        %       silent
-        %
-        %           The input scalar MATLAB logical.
-        %           If ``true``, all descriptive messages on
-        %           the MATLAB command line will be suppressed.
-        %           (**optional**, default = ``false``)
+        %>  \brief
+        %>  Construct and return an object of class ``pm.sampling.SpecBase``.
+        %>
+        %>  \param[in]  method  :   The input scalar MATLAB string containing
+        %>                          the name of the specific ParaMonte sampler
+        %>                          whose simulation specifications are to be
+        %>                          stored in the output of this constructor.
+        %>  
+        %>  \param[in]  silent  :   The input scalar MATLAB logical.
+        %>                          If ``true``, all descriptive messages on
+        %>                          the MATLAB command line will be suppressed.
+        %>                          (**optional**, default = ``false``)
         %>
         %>  \return
+        %>  The output scalar object of class ``pm.sampling.SpecBase``.
         %>
-        %       The output scalar object of class ``pm.sampling.SpecBase``.
-        %
-        %>  \interface{copy}
+        %>  \interface{SpecBase}
         %>  \code{.m}
+        %>
+        %>      spec = pm.sampling.SpecBase()
+        %>      spec = pm.sampling.SpecBase([])
+        %>      spec = pm.sampling.SpecBase([], [])
+        %>      spec = pm.sampling.SpecBase(method)
+        %>      spec = pm.sampling.SpecBase(method, [])
+        %>      spec = pm.sampling.SpecBase([], silent)
+        %>      spec = pm.sampling.SpecBase(method, silent)
+        %>
         %>  \endcode
-        %
-        %       spec = pm.sampling.SpecBase()
-        %       spec = pm.sampling.SpecBase([])
-        %       spec = pm.sampling.SpecBase([], [])
-        %       spec = pm.sampling.SpecBase(method)
-        %       spec = pm.sampling.SpecBase(method, [])
-        %       spec = pm.sampling.SpecBase([], silent)
-        %       spec = pm.sampling.SpecBase(method, silent)
-        %
-        %>  \final{}
+        %>  \final{SpecBase}
         %>
         %>  \author
+        %>  \JoshuaOsborne, May 21 2024, 3:40 AM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = SpecBase(method, silent)
@@ -155,47 +147,41 @@ classdef SpecBase < pm.matlab.Handle
             %end
         end
 
-        %
-        %   Return documentation help for the input simulation specification name.
-        %   Otherwise, return documentation help for all simulation specifications
-        %   if the input ``specification`` argument is missing.
-        %
-        %   \devnote
-        %
-        %       The underlying reason for unifying documentation of object attributes
-        %       within a single online page is to significantly reduce duplication and
-        %       work required for generating and maintaining such documentation across
-        %       all supported programming language environments.
-        %
-        %       specification
-        %
-        %           The input scalar MATLAB string containing the
-        %           name of a simulation specification corresponding
-        %           an attribute of the parent object.
+        %>  \brief
+        %>  Return documentation help for the input simulation specification name.
+        %>  Otherwise, return documentation help for all simulation specifications
+        %>  if the input ``specification`` argument is missing.
+        %>
+        %>  \devnote
+        %>  The underlying reason for unifying documentation of object attributes
+        %>  within a single online page is to significantly reduce duplication and
+        %>  work required for generating and maintaining such documentation across
+        %>  all supported programming language environments.
+        %>
+        %>  specification   :   The input scalar MATLAB string containing the
+        %>                      name of a simulation specification corresponding
+        %>                      an attribute of the parent object.
         %>
         %>  \return
+        %>  `weblink`       :   The output scalar MATLAB string containing the web address
+        %>                      for the documentation of the requested simulation specification.
         %>
-        %       weblink
-        %
-        %           The output scalar MATLAB string containing the web address
-        %           for the documentation of the requested simulation specification.
-        %
-        %>  \interface{copy}
+        %>  \interface{doc}
         %>  \code{.m}
+        %>
+        %>      weblink = self.doc()
+        %>      weblink = self.doc(specification)
+        %>
         %>  \endcode
-        %
-        %       weblink = self.doc()
-        %       weblink = self.doc(specification)
-        %
-        %   Example
-        %   -------
-        %
-        %       pmpd.spec.doc()                 % return help for all specifications.
-        %       pmpd.spec.doc("outputFileName") % return help for the specification ``outputFileName``.
-        %
-        %>  \final{}
+        %>  \example{getBorder}
+        %>
+        %>      pmpd.spec.doc()                 % return help for all specifications.
+        %>      pmpd.spec.doc("outputFileName") % return help for the specification ``outputFileName``.
+        %>
+        %>  \final{doc}
         %>
         %>  \author
+        %>  \JoshuaOsborne, May 21 2024, 3:42 AM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function weblink = doc(self, specification)
@@ -233,34 +219,29 @@ classdef SpecBase < pm.matlab.Handle
 
     methods(Hidden)
 
-        %
-        %   Ensure all specification properties of the parent object are sensible.
-        %
-        %   This is a dynamic method of the class ``pm.sampling.SpecBase``.
-        %
-        %       ndim
-        %
-        %           The input scalar MATLAB integer containing the
-        %           number of dimensions of the domain of the
-        %           object function that is to be explored.
+        %>  \brief
+        %>  Ensure all specification properties of the parent object are sensible.<br>
+        %>  This is a dynamic method of the class ``pm.sampling.SpecBase``.
+        %>
+        %>  \param[in]  ndim    :   The input scalar MATLAB integer containing the
+        %>                          number of dimensions of the domain of the
+        %>                          object function that is to be explored.
         %>
         %>  \return
+        %>  `entries `          :   The output scalar MATLAB string containing
+        %>                          the simulation specifications converted to
+        %>                          a Fortran-namelist-compatible entry.
         %>
-        %       entries
-        %
-        %           The output scalar MATLAB string containing
-        %           the simulation specifications converted to
-        %           a Fortran-namelist-compatible entry.
-        %
-        %>  \interface{copy}
+        %>  \interface{getEntriesNML}
         %>  \code{.m}
+        %>
+        %>      entries = self.getEntriesNML(ndim)
+        %>
         %>  \endcode
-        %
-        %       entries = self.getEntriesNML(ndim)
-        %
-        %>  \final{}
+        %>  \final{getEntriesNML}
         %>
         %>  \author
+        %>  \JoshuaOsborne, May 21 2024, 3:43 AM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function entries = getEntriesNML(self, ndim)

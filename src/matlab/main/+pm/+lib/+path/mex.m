@@ -1,42 +1,37 @@
-%
-%   Return the vector of MATLAB strings containing the
-%   path(s) to the ParaMonte library mex shared files.
-%
-%       mexname
-%
-%           The input scalar MATLAB string containing
-%           the (partial) name of a MEX file name without MEX extension.
-%           (**optional**. If missing, all detected paths will be returned.)
-%
-%       config
-%
-%           The input scalar (or vector of) MATLAB string(s) containing the
-%           (set of) keyword(s) to match in the identified MEX files paths.
-%           (**optional**. If missing, all detected paths will be returned.)
-%
+%>  \brief
+%>  Return the vector of MATLAB strings containing the
+%>  path(s) to the ParaMonte library mex shared files.
+%>
+%>  \param[in]  mexname :   The input scalar MATLAB string containing
+%>                          the (partial) name of a MEX file name without MEX extension.
+%>                          (**optional**. If missing, all detected paths will be returned.)
+%>
+%>  \param[in]  config  :   The input scalar (or vector of) MATLAB string(s) containing the
+%>                          (set of) keyword(s) to match in the identified MEX files paths.
+%>                          (**optional**. If missing, all detected paths will be returned.)
+%>
 %>  \return
-%       mexpaths
-%
-%           The output vector of MATLAB strings containing the
-%           path(s) to the ParaMonte library MEX shared files.
-%           The output ``mexpaths`` will be an empty list
-%           if no such paths are found.
+%>  `mexpaths`          :   The output vector of MATLAB strings containing the
+%>                          path(s) to the ParaMonte library MEX shared files.<br>
+%>                          The output ``mexpaths`` will be an empty list
+%>                          if no such paths are found.
 %>
-%>  \interface{}
+%>  \interface{mex}
 %>  \code{.m}
-%>  \endcode
 %>
-%       mexpaths = pm.lib.path.mex()
-%       mexpaths = pm.lib.path.mex([])
-%       mexpaths = pm.lib.path.mex([], [])
-%       mexpaths = pm.lib.path.mex(mexname)
-%       mexpaths = pm.lib.path.mex([], config)
-%       mexpaths = pm.lib.path.mex(mexname, [])
-%       mexpaths = pm.lib.path.mex(mexname, config)
-%
-%>  \final{}
+%>      mexpaths = pm.lib.path.mex()
+%>      mexpaths = pm.lib.path.mex([])
+%>      mexpaths = pm.lib.path.mex([], [])
+%>      mexpaths = pm.lib.path.mex(mexname)
+%>      mexpaths = pm.lib.path.mex([], config)
+%>      mexpaths = pm.lib.path.mex(mexname, [])
+%>      mexpaths = pm.lib.path.mex(mexname, config)
+%>
+%>  \endcode
+%>  \final{mex}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 7:41 PM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function mexpaths = mex(mexname, config)

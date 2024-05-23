@@ -1,55 +1,44 @@
-%
-%   Return a vector of MATLAB strings containing the
-%   fully-resolved paths matching the input ``pattern``.
-%
-%       ftype
-%
-%           The input scalar MATLAB string containing the sampler file type,
-%           which can be one of the following:
-%
-%               -   "chain"
-%               -   "sample"
-%               -   "report"
-%               -   "restart"
-%               -   "progress"
-%
-%       pattern
-%
-%           The input scalar MATLAB string containing either:
-%
-%               1.  a pattern to search for paths on the current system.
-%                   Wildcards may be used for basenames and for the directory parts.
-%                   If pattern contains directory parts, then these will
-%                   be included in the output ``fileList``.
-%
-%                   Following wildcards can be used within the specified ``pattern``:
-%
-%                       ``*``   :   match zero or more characters.
-%
-%               2.  a full weblink to download and save locally on the system temporary folder.
-%
-%           (**optional**, default = ``pwd()``)
-%
+%>  \brief
+%>  Return a vector of MATLAB strings containing the
+%>  fully-resolved paths matching the input ``pattern``.
+%>
+%>  \param[in]  ftype   :   The input scalar MATLAB string containing the sampler file type,
+%>                          which can be one of the following:
+%>                          -   "chain"
+%>                          -   "sample"
+%>                          -   "report"
+%>                          -   "restart"
+%>                          -   "progress"
+%>  
+%>  \param[in]  pattern :   The input scalar MATLAB string containing either:
+%>                          1.  a pattern to search for paths on the current system.
+%>                              Wildcards may be used for basenames and for the directory parts.
+%>                              If pattern contains directory parts, then these will
+%>                              be included in the output ``fileList``.<br>
+%>                              Following wildcards can be used within the specified ``pattern``:
+%>                                  ``*``   :   match zero or more characters.<br>
+%>                          2.  a full weblink to download and save locally on the system temporary folder.
+%>                              (**optional**, default = ``pwd()``)
+%>
 %>  \return
-%       fileList
-%
-%           The output vector of MATLAB strings containing the
-%           fully-resolved paths matching the input ``pattern``.
+%>  `fileList`          :   The output vector of MATLAB strings containing the
+%>                          fully-resolved paths matching the input ``pattern``.
 %>
-%>  \interface{}
+%>  \interface{findfile}
 %>  \code{.m}
-%>  \endcode
 %>
-%       sampler = pm.sampling.Sampler();
-%       fileList = sampler.findfile(ftype)
-%       fileList = sampler.findfile(ftype, [], [])
-%       fileList = sampler.findfile(ftype, [], silent)
-%       fileList = sampler.findfile(ftype, pattern, [])
-%       fileList = sampler.findfile(ftype, pattern, silent)
-%
-%>  \final{}
+%>      sampler = pm.sampling.Sampler();
+%>      fileList = sampler.findfile(ftype)
+%>      fileList = sampler.findfile(ftype, [], [])
+%>      fileList = sampler.findfile(ftype, [], silent)
+%>      fileList = sampler.findfile(ftype, pattern, [])
+%>      fileList = sampler.findfile(ftype, pattern, silent)
+%>
+%>  \endcode
+%>  \final{findfile}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 12:14 AM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function fileList = findfile(self, ftype, pattern)

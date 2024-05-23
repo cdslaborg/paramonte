@@ -1,47 +1,45 @@
-%
-%   Alters the figure size corresponding to the input figure
-%   handle ``fig`` such that it has the minimum size necessary to
-%   enclose all axes in the figure without excess space around them.
-%
-%   \note
-%
-%       This function expands the figure to completely encompass all
-%       axes if necessary. If any 3D axes are present which have been zoomed,
-%       the procedure will produce an error, as these cannot easily be dealt with.
-%
-%       fig
-%
-%           The input scalar MATLAB object representing the
-%           handle to the figure whose axes must be tightly fit.
-%           (**optional**. If missing, the current figure will be used.)
-%
-%>  \return
-%       None.
+%>  \brief
+%>  Alters the figure size corresponding to the input figure
+%>  handle ``fig`` such that it has the minimum size necessary to
+%>  enclose all axes in the figure without excess space around them.
 %>
-%>  \interface{}
+%>  \note
+%>  This function expands the figure to completely encompass all
+%>  axes if necessary. If any 3D axes are present which have been zoomed,
+%>  the procedure will produce an error, as these cannot easily be dealt with.
+%>
+%>  \param[in]  fig :   The input scalar MATLAB object representing the
+%>                      handle to the figure whose axes must be tightly fit.
+%>                      (**optional**. If missing, the current figure will be used.)
+%>
+%>  \return
+%>  `None`
+%>
+%>  \interface{fitaxes}
 %>  \code{.m}
+%>
+%>      pm.vis.fitaxes()
+%>      pm.vis.fitaxes([])
+%>      pm.vis.fitaxes(fig)
+%>
 %>  \endcode
 %>
-%       pm.vis.fitaxes()
-%       pm.vis.fitaxes([])
-%       pm.vis.fitaxes(fig)
-%
-%   Example
-%   -------
-%
-%       pm.vis.fitaxes()
-%
-%>  \final{}
+%>  \example{fitaxes}
+%>
+%>      pm.vis.fitaxes()
+%>
+%>  \final{fitaxes}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 6:12 AM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
-%       This function build upon the work of,
-%
-%       Richard Crozier (2024). tightfig(hfig)
-%       (https://www.mathworks.com/matlabcentral/fileexchange/34055-tightfig-hfig),
-%       MATLAB Central File Exchange. Retrieved May 12, 2024.
-%
+%>      This function build upon the work of,
+%>
+%>      Richard Crozier (2024). tightfig(hfig)
+%>      (https://www.mathworks.com/matlabcentral/fileexchange/34055-tightfig-hfig),
+%>      MATLAB Central File Exchange. Retrieved May 12, 2024.
+%>
 function fitaxes(fig)
 
     if nargin == 0

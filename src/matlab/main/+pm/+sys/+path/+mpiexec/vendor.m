@@ -1,36 +1,31 @@
-%
-%   Return the a MATLAB string containing the MPI library vendor
-%   name corresponding to the input ``mpiexec`` system path.
-%
-%       path
-%
-%           The input scalar MATLAB string,
-%           containing the path to the ``mpiexec``
-%           binary whose vendor is to be determined.
-%           (**optional**,  default = ``pm.sys.path.mpiexec.which()``)
-%
+%>  \brief
+%>  Return the a MATLAB string containing the MPI library vendor
+%>  name corresponding to the input ``mpiexec`` system path.
+%>
+%>  \param[in]  path    :   The input scalar MATLAB string,
+%>                          containing the path to the ``mpiexec``
+%>                          binary whose vendor is to be determined.
+%>                          (**optional**,  default = ``pm.sys.path.mpiexec.which()``)
+%>
 %>  \return
-%       name
-%
-%           The output MATLAB string containing the MPI library vendor name ALL in lower-case.
-%           Possible values are:
-%
-%               -   ``"Intel"``     :   representing the Intel MPI library.
-%               -   ``"MPICH"``     :   representing the MPICH MPI library.
-%               -   ``"OpenMPI"``   :   representing the OpenMPI library.
-%
-%           If the vendor name cannot be identified, the output will be empty ``[]``.
+%>  `name`              :   The output MATLAB string containing the MPI library vendor name ALL in lower-case.
+%>                          Possible values are:<br>
+%>                          -   ``"Intel"``     :   representing the Intel MPI library.
+%>                          -   ``"MPICH"``     :   representing the MPICH MPI library.
+%>                          -   ``"OpenMPI"``   :   representing the OpenMPI library.
+%>                          If the vendor name cannot be identified, the output will be empty ``[]``.
 %>
-%>  \interface{}
+%>  \interface{vendor}
 %>  \code{.m}
-%>  \endcode
 %>
-%       name = pm.sys.path.mpiexec.vendor()
-%       name = pm.sys.path.mpiexec.vendor(path)
-%
-%>  \final{}
+%>      name = pm.sys.path.mpiexec.vendor()
+%>      name = pm.sys.path.mpiexec.vendor(path)
+%>
+%>  \endcode
+%>  \final{vendor}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 5:04 AM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function name = vendor(path)

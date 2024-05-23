@@ -1,35 +1,25 @@
-%
-%
-%   Perform the basic runtime checks for the sampler and return nothing.
-%
-%       getLogFunc()
-%
-%           The input MATLAB function handle or anonymous (lambda) function
-%           containing the implementation of the objective function to be sampled.
-%           This user-specified function must have the following interface,
-%
-%               function logFunc = getLogFunc(state)
-%                   ...
-%               end
-%
-%           where,
-%
-%               1.  the input argument ``state`` is a vector of type MATLAB ``double``
-%                   of size ``ndim`` representing a single point from within the ``ndim``
-%                   dimensional domain of the mathematical object function to be explored.
-%
-%               2.  the output argument `logFunc` is a scalar of the same type as the
-%                   input ``state`` containing the natural logarithm of the objective
-%                   function at the specified input ``state`` within its domain.
-%
-%       ndim
-%
-%           The input scalar positive-valued whole-number representing the number of dimensions
-%           of the domain of the user-specified objective function in the input ``getLogFunc()``.
-%
+%>  \brief
+%>  Perform the basic runtime checks for the sampler and return nothing.
+%>
+%>  \param[in]  getLogFunc()    :   The input MATLAB function handle or anonymous (lambda) function
+%>                                  containing the implementation of the objective function to be sampled.
+%>                                  This user-specified function must have the following interface,<br>
+%>                                      function logFunc = getLogFunc(state)
+%>                                          ...
+%>                                      end<br>
+%>                                  where,<br>  
+%>                                      1.  the input argument ``state`` is a vector of type MATLAB ``double``
+%>                                          of size ``ndim`` representing a single point from within the ``ndim``
+%>                                          dimensional domain of the mathematical object function to be explored.<br>
+%>                                      2.  the output argument `logFunc` is a scalar of the same type as the
+%>                                          input ``state`` containing the natural logarithm of the objective
+%>                                          function at the specified input ``state`` within its domain.
+%>  \param[in]  ndim            :   The input scalar positive-valued whole-number representing the number of dimensions
+%>                                  of the domain of the user-specified objective function in the input ``getLogFunc()``.
+%>
 %>  \return
-%       None
-%
+%>  `None`
+%>
 function run(self, getLogFunc, ndim)
 
     % Sanitize ``sampler.silent``.

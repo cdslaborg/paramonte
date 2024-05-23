@@ -1,47 +1,39 @@
-%
-%   Return the lists of values and indices of elements
-%   of the input ``strlist`` that match the input scalar
-%   (or vector of) string(s) or integer(s) index ``keylist``.
-%
-%       strlist
-%
-%           The input scalar (or vector of) MATLAB string(s).
-%
-%       keylist
-%
-%           The input scalar (or vector of) MATLAB string(s)
-%           or cell array of char vectors or vector of MATLAB
-%           integers or a cell array of mix of the element
-%           types to match the input ``strlist``.
-%
-%>  \return
-%       loclist
-%
-%           The output scalar (or vector of same size as ``keylist`` of)
-%           MATLAB integer(s) containing the location(s) of the occurrence(s)
-%           of the input ``keylist``.
-%
-%       namlist
-%
-%           The output scalar (or vector of same size as ``keylist`` of)
-%           MATLAB string(s) containing the name(s) of the occurrence(s)
-%           of the input ``keylist``.
+%>  \brief
+%>  Return the lists of values and indices of elements
+%>  of the input ``strlist`` that match the input scalar
+%>  (or vector of) string(s) or integer(s) index ``keylist``.
 %>
-%>  \interface{}
+%>  \param[in]  strlist :   The input scalar (or vector of) MATLAB string(s).
+%>  
+%>  \param[in]  keylist :   The input scalar (or vector of) MATLAB string(s)
+%>                          or cell array of char vectors or vector of MATLAB
+%>                          integers or a cell array of mix of the element
+%>                          types to match the input ``strlist``.
+%>
+%>  \return
+%>  `loclist`           :   The output scalar (or vector of same size as ``keylist`` of)
+%>                          MATLAB integer(s) containing the location(s) of the occurrence(s)
+%>                          of the input ``keylist``.<br>
+%>  `namlist`           :   The output scalar (or vector of same size as ``keylist`` of)
+%>                          MATLAB string(s) containing the name(s) of the occurrence(s)
+%>                          of the input ``keylist``.
+%>
+%>  \interface{locname}
 %>  \code{.m}
+%>
+%>      [loclist, namlist] = pm.str.locname(strlist, keylist)
+%>
 %>  \endcode
 %>
-%       [loclist, namlist] = pm.str.locname(strlist, keylist)
-%
-%   Example
-%   -------
-%
-%       [loclist, namlist] = pm.str.locname(["library", "paramonte"], "paramonte") % 2, "paramonte"
-%       [loclist, namlist] = pm.str.locname(["library", "paramonte"], ["paramonte", 1]) % [2, 1] ["paramonte" "library"]
-%
-%>  \final{}
+%>  \example{locname}
+%>
+%>      [loclist, namlist] = pm.str.locname(["library", "paramonte"], "paramonte") % 2, "paramonte"
+%>      [loclist, namlist] = pm.str.locname(["library", "paramonte"], ["paramonte", 1]) % [2, 1] ["paramonte" "library"]
+%>
+%>  \final{locname}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 4:38 AM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function [loclist, namlist] = locname(strlist, keylist)

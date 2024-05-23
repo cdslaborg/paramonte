@@ -1,17 +1,21 @@
-%
-%   Return a MATLAB string containing the ParaMonte MATLAB library authors.
-%
-%       None
-%
+%>  \brief
+%>  Return a MATLAB string containing the ParaMonte MATLAB library authors.
+%>
+%>  \params None
+%>
 %>  \return
-%       A MATLAB string containing the ParaMonte MATLAB library authors.
+%>  A MATLAB string containing the ParaMonte MATLAB library authors.
 %>
-%>  \interface{}
+%>  \interface{authors}
 %>  \code{.m}
-%>  \endcode
 %>
-%       str = pm.lib.authors()
-%
+%>      str = pm.lib.authors()
+%>
+%>  \endcode
+%>  \final{authors}
+%>
+%>  \author
+%>  \JoshuaOsborne, May 21 2024, 7:59 PM, University of Texas at Arlington<br>
 function str = authors()
     str = "The Computational Data Science Lab @ The University of Texas";
 end

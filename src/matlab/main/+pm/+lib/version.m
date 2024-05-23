@@ -1,43 +1,37 @@
-%
-%   Return a scalar MATLAB string containing
-%   the current ParaMonte MATLAB library version number,
-%   or the previous version from the specified current version.
-%
-%       current
-%
-%           The input scalar MATLAB string containing the
-%           current Semantic version of the library in
-%           triplet format (e.g., ``"1.2.3"``).
-%
+%>  \brief
+%>  Return a scalar MATLAB string containing
+%>  the current ParaMonte MATLAB library version number,
+%>  or the previous version from the specified current version.
+%>
+%>  \param[in]  current :   The input scalar MATLAB string containing the
+%>                          current Semantic version of the library in
+%>                          triplet format (e.g., ``"1.2.3"``).
+%>
 %>  \return
-%       vernum
-%
-%           The output scalar MATLAB string containing either:
-%
-%               1.  the ParaMonte MATLAB version if
-%                   the input argument ``current`` is missing.
-%
-%               2.  the semantically-previous version of the library
-%                   if the input argument ``current`` is present.
-%                   The output version may not necessarily exist
-%                   as a version of the ParaMonte library.
+%>  `vernum`            :   The output scalar MATLAB string containing either:
+%>                          1.  the ParaMonte MATLAB version if
+%>                              the input argument ``current`` is missing.
+%>                          2.  the semantically-previous version of the library
+%>                              if the input argument ``current`` is present.
+%>                              The output version may not necessarily exist
+%>                              as a version of the ParaMonte library.
 %>
-%>  \interface{}
+%>  \interface{version}
 %>  \code{.m}
-%>  \endcode
 %>
-%       vernum = pm.lib.version()
-%       vernum = pm.lib.version(current)
-%
-%   Example
-%   -------
-%
-%       vernum = pm.lib.version("1.1.1") % 1.1.0
-%       vernum = pm.lib.version("1.1.0") % 1.0.0
-%
-%>  \final{}
+%>      vernum = pm.lib.version()
+%>      vernum = pm.lib.version(current)
+%>
+%>  \endcode
+%>  \example{version}
+%>
+%>      vernum = pm.lib.version("1.1.1") % 1.1.0
+%>      vernum = pm.lib.version("1.1.0") % 1.0.0
+%>
+%>  \final{version}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 8:13 PM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function vernum = version(current)

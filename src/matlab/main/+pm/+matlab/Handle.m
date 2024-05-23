@@ -1,22 +1,23 @@
-%
-%   This is the ``Abstract`` base class for generating
-%   subclass of MATLAB ``handle`` superclass whose annoying
-%   methods are forcefully hidden from the user view.
-%
-%       None
-%
+%>  \brief
+%>  This is the ``Abstract`` base class for generating
+%>  subclass of MATLAB ``handle`` superclass whose annoying
+%>  methods are forcefully hidden from the user view.
+%>
+%>  \param[in]  `None`
+%>
 %>  \return
-%       None
+%>  `None`
 %>
-%>  \interface{}
+%>  \interface{Handle}
 %>  \code{.m}
-%>  \endcode
 %>
-%       Handle = pm.matlab.Handle()
-%
-%>  \final{}
+%>      Handle = pm.matlab.Handle()
+%>
+%>  \endcode
+%>  \final{Handle}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 11:31 PM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef (Abstract) Handle < dynamicprops%handle
@@ -24,33 +25,29 @@ classdef (Abstract) Handle < dynamicprops%handle
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     methods(Access = public)
+        %>  \brief
+        %>  Open the documentation of the class
+        %>  of the parent object on MATLAB display.
+        %>
+        %>  \details
+        %>  This is a dynamic method of the class ``pm.matlab.Handle``.
+        %>
+        %>  \param[in]  `None`
+        %>
+        %>  \return
+        %>  `None`
+        %>
+        %>  \interface{doc}
+        %>  \code{.m}
+        %>
+        %>      self.doc()
+        %>
+        %>  \endcode
+        %>  \final{doc}
+        %>
+        %>  \author
+        %>  \JoshuaOsborne, May 21 2024, 11:34 PM, University of Texas at Arlington<br>
         function doc(self)
-            %
-            %   Open the documentation of the class
-            %   of the parent object on MATLAB display.
-            %
-            %   This is a dynamic method of the class ``pm.matlab.Handle``.
-            %
-            %   Parameters
-            %   ----------
-            %
-            %       None
-            %
-            %   Returns
-            %   -------
-            %
-            %       None
-            %
-            %   Interface
-            %   ---------
-            %
-            %       self.doc()
-            %
-            %   LICENSE
-            %   -------
-            %
-            %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-            %
             doc(class(self));
         end
     end
@@ -58,27 +55,28 @@ classdef (Abstract) Handle < dynamicprops%handle
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     methods(Access = public)
-        %
-        %   Print help about the class of
-        %   the parent object on MATLAB display.
-        %
-        %   This is a dynamic method of the class ``pm.matlab.Handle``.
-        %
-        %       None
+        %>  \brief
+        %>  Print help about the class of
+        %>  the parent object on MATLAB display.
+        %>
+        %>  \details
+        %>  This is a dynamic method of the class ``pm.matlab.Handle``.
+        %>
+        %>  \param[in]  `None`
         %>
         %>  \return
+        %>  `None`
         %>
-        %       None
-        %
-        %>  \interface{copy}
+        %>  \interface{help}
         %>  \code{.m}
+        %>
+        %>      self.help()
+        %>
         %>  \endcode
-        %
-        %       self.help()
-        %
-        %>  \final{}
+        %>  \final{help}
         %>
         %>  \author
+        %>  \JoshuaOsborne, May 21 2024, 11:36 PM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function help(self)

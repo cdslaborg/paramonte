@@ -1,12 +1,12 @@
-%   pm.introspection - This ParaMonte MATLAB module contains routines and data related to type introspection.
-%
-%   Contents
-%   --------
-%
-%       pm.introspection.getEntryNML - function.
-%       pm.introspection.istype - function.
-%       pm.introspection.verify - function.
-%
+%>  pm.introspection - This ParaMonte MATLAB module contains routines and data related to type introspection.
+%>
+%>  Contents
+%>  --------
+%>
+%>      pm.introspection.getEntryNML - function.
+%>      pm.introspection.istype - function.
+%>      pm.introspection.verify - function.
+%>
 %>  \final{}
 %>
 %>  \author

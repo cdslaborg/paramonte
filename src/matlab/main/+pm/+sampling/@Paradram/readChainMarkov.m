@@ -8,7 +8,7 @@
 %>                          the constructor of the method ``pm.sampling.Sampler.readChain``.<br>
 %>                          (**optional**, The default is set by ``pm.sampling.Sampler.readChain``)
 %>  \param[in]  sep     :   See the documentation of the corresponding argument of
-%>                          the constructor of the method ``pm.sampling.Sampler.readChain``.
+%>                          the constructor of the method ``pm.sampling.Sampler.readChain``.<br>
 %>                          (**optional**, The default is set by ``pm.sampling.Sampler.readChain``)
 %>
 %>  \return
@@ -47,15 +47,12 @@
 %>  the chain contents from the default efficient compact format stored
 %>  in the file to the full verbose Markov chain format.
 %>
-%>  Example
-%>  -------
+%>  \example{readChainMarkov}
 %>
 %>      sampler = pm.sampling.Paradram()
-%>
 %>      sampler.readChainMarkov();
-%>
+
 %>      sim.readChainMarkov("./out/test_run_");
-%>
 %>      sim.spec.outputFileName = "./out/test_run_";
 %>      sim.readChainMarkov();
 %>
@@ -71,11 +68,10 @@
 %>      Except the first ``readChainMarkov()`` example,
 %>      all other examples are functionally equivalent.
 %>
-%>  LICENSE
-%>  -------
+%>  \final{readChainMarkov}
 %>
-%>      https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-%>
+%>  \author
+%>  \JoshuaOsborne, May 21 2024, 12:06 AM, University of Texas at Arlington<br>
 function chainMarkovList = readChainMarkov(self, pattern, sep)
     if nargin < 3
         sep = [];

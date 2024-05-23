@@ -1,21 +1,22 @@
-%
-%   Return a structure containing tree of weblinks for the
-%   ParaMonte MATLAB library source file and documentation website.
-%
-%       None
-%
+%>  \brief
+%>  Return a structure containing tree of weblinks for the
+%>  ParaMonte MATLAB library source file and documentation website.
+%>
+%>  \params `None`
+%>
 %>  \return
-%       A MATLAB `struct` containing the ParaMonte website information.
+%>  A MATLAB `struct` containing the ParaMonte website information.
 %>
-%>  \interface{}
+%>  \interface{weblinks}
 %>  \code{.m}
-%>  \endcode
 %>
-%       pm.lib.weblinks()
-%
-%>  \final{}
+%>      pm.lib.weblinks()
+%>
+%>  \endcode
+%>  \final{weblinks}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 7:58 PM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function tree = weblinks()

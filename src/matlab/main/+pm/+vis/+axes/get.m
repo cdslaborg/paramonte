@@ -1,28 +1,29 @@
-%SUBAXIS Create axes in tiled positions. (just like subplot)
-%   Usage:
-%      h=getAxes(rows,cols,cellno[,settings])
-%      h=getAxes(rows,cols,cellx,celly[,settings])
-%      h=getAxes(rows,cols,cellx,celly,spanx,spany[,settings])
-%
-% SETTINGS: Spacing,SpacingHoriz,SpacingVert
-%           Padding,PaddingRight,PaddingLeft,PaddingTop,PaddingBottom
-%           Margin,MarginRight,MarginLeft,MarginTop,MarginBottom
-%           Holdaxis
-%
-%           all units are relative (i.e. from 0 to 1)
-%
-%           Abbreviations of parameters can be used.. (Eg MR instead of MarginRight)
-%           (holdaxis means that it wont delete any axes below.)
-%
-%
-% Example:
-%
-%   >> getAxes(2,1,1,'SpacingVert',0,'MR',0);
-%   >> imagesc(magic(3))
-%   >> getAxes(2,'p',.02);
-%   >> imagesc(magic(4))
-%
-% 2001-2014 / Aslak Grinsted  (Feel free to modify this code.)
+%>  SUBAXIS Create axes in tiled positions. (just like subplot)
+%>      Usage:
+%>         h=getAxes(rows,cols,cellno[,settings])
+%>         h=getAxes(rows,cols,cellx,celly[,settings])
+%>         h=getAxes(rows,cols,cellx,celly,spanx,spany[,settings])
+%>
+%>  SETTINGS: Spacing,SpacingHoriz,SpacingVert
+%>            Padding,PaddingRight,PaddingLeft,PaddingTop,PaddingBottom
+%>            Margin,MarginRight,MarginLeft,MarginTop,MarginBottom
+%>            Holdaxis
+%>
+%>          all units are relative (i.e. from 0 to 1)
+%>
+%>          Abbreviations of parameters can be used.. (Eg MR instead of MarginRight)
+%>          (holdaxis means that it wont delete any axes below.)
+%>
+%>
+%>
+%>  \example{getAxes}
+%>
+%>  >> getAxes(2,1,1,'SpacingVert',0,'MR',0);
+%>  >> imagesc(magic(3))
+%>  >> getAxes(2,'p',.02);
+%>  >> imagesc(magic(4))
+%>
+%>  2001-2014 / Aslak Grinsted  (Feel free to modify this code.)
 function h = getAxes(varargin)
     f=gcf;
     UserDataArgsOK=0;

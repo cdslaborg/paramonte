@@ -1,11 +1,14 @@
-%
-%   Finalize the ParaMonte MATLAB sampler simulation run.
-%
-%       None
-%
+%>  \brief
+%>  Finalize the ParaMonte MATLAB sampler simulation run.
+%>
+%>  \param[in]  `None`
+%>
 %>  \return
-%       None
-%
+%>  `None`
+%>  \final{getBorder}
+%>
+%>  \author
+%>  \JoshuaOsborne, May 21 2024, 12:10 AM, University of Texas at Arlington<br>
 function finalize(self)
     if  self.partype == "openmp"
         if ~self.silent

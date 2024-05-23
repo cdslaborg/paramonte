@@ -7,57 +7,41 @@
 %>  Here ``nell`` refers to the number of ellipsoids which
 %>  is equal to ``2 * max(1, size(gramian, 3), size(center, 2))``.
 %>
-%>  Parameters
-%>  ----------
+%>  \param[in]  gramian :   The input matrix of MATLAB doubles of shape ``[2, 2, nell]``
+%>                          containing the Gramian matrices of the ``nell`` 2D ellipsoids
+%>                          whose boundary points are to be returned.<br>
+%>                          (**optional**, default = ``eye(2, 2, 1)``)
 %>
-%>      gramian
+%>  \param[in]  center  :   The input matrix of MATLAB doubles of shape ``[2, nell]`` containing
+%>                          the 2D coordinates of the centers of the ``nell`` 2D ellipsoids
+%>                          whose boundary points are to be returned.<br>
+%>                          (**optional**, default = ``zeros(2, 1)``)
 %>
-%>          The input matrix of MATLAB doubles of shape ``[2, 2, nell]``
-%>          containing the Gramian matrices of the ``nell`` 2D ellipsoids
-%>          whose boundary points are to be returned.
-%>          (**optional**, default = ``eye(2, 2, 1)``)
+%>  \param[in]  zval    :   The input scalar (or matrix of shape ``[npnt, nell]`` of) MATLAB double(s)
+%>                          containing the z-axis coordinates of the points on the borders of the ``nell`` 2D ellipsoids.<br>
+%>                          If present, the specified value(s) will occupy the ``[1 : 2 : 3 * nell]`` columns of the output ``bcrd``.<br>
+%>                          (**optional**. If not present or empty, it will not be present in the output.)
 %>
-%>      center
+%>      \note
+%>      This argument is present for the sake of convenience and
+%>      better performance of the algorithm to avoid further reallocations.
 %>
-%>          The input matrix of MATLAB doubles of shape ``[2, nell]`` containing
-%>          the 2D coordinates of the centers of the ``nell`` 2D ellipsoids
-%>          whose boundary points are to be returned.
-%>          (**optional**, default = ``zeros(2, 1)``)
-%>
-%>      zval
-%>
-%>          The input scalar (or matrix of shape ``[npnt, nell]`` of) MATLAB double(s)
-%>          containing the z-axis coordinates of the points on the borders of the ``nell`` 2D ellipsoids.
-%>          If present, the specified value(s) will occupy the ``[1 : 2 : 3 * nell]`` columns of the output ``bcrd``.
-%>          (**optional**. If not present or empty, it will not be present in the output.)
-%>
-%>          \note
-%>
-%>              This argument is present for the sake of convenience and
-%>              better performance of the algorithm to avoid further reallocations.
-%>
-%>      npnt
-%>
-%>          The input scalar MATLAB whole number containing the number of
-%>          points to return on the boundary of the target 2D ellipsoid.
-%>          (**optional**, default = ``50``)
+%>  \param[in]  npnt    :   The input scalar MATLAB whole number containing the number of
+%>                          points to return on the boundary of the target 2D ellipsoid.<br>
+%>                          (**optional**, default = ``50``)
 %>
 %>          \warning
-%>
-%>              The condition ``npnt == size(zval, 1)``
-%>              must hold for the corresponding input arguments.
+%>           The condition ``npnt == size(zval, 1)``
+%>           must hold for the corresponding input arguments.
 %>
 %>  \return
-%>      bcrd
+%>  `bcrd`              :   The output matrix of MATLAB doubles of shape ``[npnt, 2 * nell]``
+%>                          (or ``[npnt, 3 * nell]`` if the input argument ``zval`` is present)
+%>                          containing the coordinates of a set of ``npnt`` points on
+%>                          the boundary of the target 2D ellipsoid.
 %>
-%>          The output matrix of MATLAB doubles of shape ``[npnt, 2 * nell]``
-%>          (or ``[npnt, 3 * nell]`` if the input argument ``zval`` is present)
-%>          containing the coordinates of a set of ``npnt`` points on
-%>          the boundary of the target 2D ellipsoid.
-%>
-%>  \interface{}
+%>  \interface{getBorders}
 %>  \code{.m}
-%>  \endcode
 %>
 %>      pm.geom.ell2.getBorders()
 %>      pm.geom.ell2.getBorders(gramian)
@@ -65,8 +49,8 @@
 %>      pm.geom.ell2.getBorders(gramian, center, zval)
 %>      pm.geom.ell2.getBorders(gramian, center, zval, npnt)
 %>
-%>  Example
-%>  -------
+%>  \endcode
+%>  \example{getBorders}
 %>
 %>      bcrd = pm.geom.ell2.getBorders();
 %>      figure; h = plot(bcrd(:, 1), bcrd(:, 2), '-');
@@ -82,10 +66,10 @@
 %>          plot3(bcrd(:, icol), bcrd(:, icol + 1), bcrd(:, icol + 2), '-');
 %>      end
 %>
-%>  LICENSE
-%>  -------
+%>  \final{getBorders}
 %>
-%>      https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
+%>  \author
+%>  %>  \JoshuaOsborne, May 21 2024, 5:33 PM, University of Texas at Arlington<br>
 %
 function bcrd = getBorders(gramian, center, zval, npnt)
     if  nargin < 4

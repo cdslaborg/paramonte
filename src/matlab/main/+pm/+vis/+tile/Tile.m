@@ -1,76 +1,30 @@
-%
-%   This is the abstract class for generating instances of objects
-%   that contain the specifications of various types of tile figures.
-%
-%   This is a generic class for generating figures
-%   containing multiple subplots (axes) of the same class.
-%
-%   \note
-%
-%       This class is not meant to be used directly by the end users.
-%       Instead, use the subclasses of this abstract class for visualizations.
-%
-%       template
-%
-%           The input scalar object of superclass ``pm.vis.subplot.Subplot``.
-%           It serves as the template based upon which all subplots are constructed.
-%
-%       varargin
-%
-%           Any ``property, value`` pair of the parent object.
-%           If the property is a ``struct()``, then its value must be given as a cell array,
-%           with consecutive elements representing the struct ``property-name, property-value`` pairs.
-%           Note that all of these property-value pairs can be also directly set via the
-%           parent object attributes, before calling the ``make()`` method.
-%
-%           \note
-%
-%               The input ``varargin`` can also contain the components
-%               of the ``template`` component of the parent object.
-%
-%>  \return
-%       self
-%
-%           The output scalar object of class ``pm.vis.tile.Tile``.
-%>
-%>  \interface{}
-%>  \code{.m}
-%>  \endcode
-%>
-%       tile = pm.vis.tile.Tile(template);
-%
-%   \note
-%       See the list of class attributes below,
-%       also those of the superclass ``pm.vis.figure.Tiling``.
-%
+%>  \brief
+%>  This is the abstract class for generating instances of objects
+%>  that contain the specifications of various types of tile figures.<br>
+%>  This is a generic class for generating figures
+%>  containing multiple subplots (axes) of the same class.
 classdef Tile < pm.vis.figure.Tiling
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     properties(Access = public)
-        %
-        %   template
-        %
-        %       The scalar object of superclass ``pm.vis.subplot.Subplot``
-        %       representing the template of the set of subplots to display.
-        %
+        %>
+        %>  \param  template    :   The scalar object of superclass ``pm.vis.subplot.Subplot``
+        %>                          representing the template of the set of subplots to display.
+        %>
         template = [];
-        %
-        %   tileshape
-        %
-        %       The MATLAB vector ``[nrow, ncol]`` representing
-        %       the number of rows and columns in the tiled layout of subplots.
-        %       The default is the closest values of ``nrow`` and ``ncol`` whose
-        %       multiplication yields the maximum number of data columns in the
-        %       visualization.
-        %
+        %>
+        %>  \param  tileshape   :   The MATLAB vector ``[nrow, ncol]`` representing
+        %>                          the number of rows and columns in the tiled layout of subplots.
+        %>                          The default is the closest values of ``nrow`` and ``ncol`` whose
+        %>                          multiplication yields the maximum number of data columns in the
+        %>                          visualization.
+        %>
         tileshape = [];
-        %
-        %   tileindex
-        %
-        %       The MATLAB vector of size ``0`` or ``prod(tileshape)`` containing
-        %       the list of indices of the tiling to fill with subplots, starting
-        %
+        %>
+        %>  \param  tileindex   :   The MATLAB vector of size ``0`` or ``prod(tileshape)`` containing
+        %>                          the list of indices of the tiling to fill with subplots, starting
+        %>
         %tileindex = [];
     end
 
@@ -80,6 +34,42 @@ classdef Tile < pm.vis.figure.Tiling
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        %>
+        %>  \note
+        %>  This class is not meant to be used directly by the end users.
+        %>  Instead, use the subclasses of this abstract class for visualizations.
+        %>
+        %>  \param[in]  template    :   The input scalar object of superclass ``pm.vis.subplot.Subplot``.
+        %>                              It serves as the template based upon which all subplots are constructed.
+        %>  
+        %>  \param  [in]  varargin    :   Any ``property, value`` pair of the parent object.
+        %>                              If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>                              Note that all of these property-value pairs can be also directly set via the
+        %>                              parent object attributes, before calling the ``make()`` method.
+        %>  
+        %>  \note 
+        %>  The input ``varargin`` can also contain the components
+        %>  of the ``template`` component of the parent object.
+        %>
+        %>  \return
+        %>  `self`                  :   The output scalar object of class ``pm.vis.tile.Tile``.
+        %>
+        %>  \interface{Tile}
+        %>  \code{.m}
+        %>
+        %>      tile = pm.vis.tile.Tile(template);
+        %>
+        %>  \endcode
+        %>
+        %>  \note
+        %>  See the list of class attributes below,
+        %>  also those of the superclass ``pm.vis.figure.Tiling``.
+        %>
+        %>  \final{Tile}
+        %>
+        %>  \author
+        %>  \JoshuaOsborne, May 22 2024, 7:39 PM, University of Texas at Arlington<br>
         function self = Tile(template, varargin)
             [varobj, vartemp] = pm.matlab.hashmap.popKeyVal(["figure", "subplot", "template", "tiledlayout", "tileshape"], varargin);
             self = self@pm.vis.figure.Tiling(cell(0, 0), varobj{:});
@@ -91,37 +81,35 @@ classdef Tile < pm.vis.figure.Tiling
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        %
-        %   Reset the properties of the tile to the original default settings.
-        %   Use this method when you change many attributes of the tile and
-        %   you want to clean up and go back to the default settings.
-        %
-        %       varargin
-        %
-        %           Any ``property, value`` pair of the parent object.
-        %           If the property is a ``struct()``, then its value must be given as a cell array,
-        %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
-        %           Note that all of these property-value pairs can be also directly set via the
-        %           parent object attributes, before calling the ``make()`` method.
-        %
-        %       \note
-        %
-        %           The input ``varargin`` can also contain the components
-        %           of the ``subplot`` component of the parent object.
+        %>  \brief
+        %>  Reset the properties of the tile to the original default settings.
+        %>  Use this method when you change many attributes of the tile and
+        %>  you want to clean up and go back to the default settings.
+        %>
+        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
+        %>                              If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>                              Note that all of these property-value pairs can be also directly set via the
+        %>                              parent object attributes, before calling the ``make()`` method.
+        %>  
+        %>  \note
+        %>  The input ``varargin`` can also contain the components
+        %>  of the ``subplot`` component of the parent object.
         %>
         %>  \return
+        %>  `None`
         %>
-        %       None
-        %
-        %>  \interface{copy}
+        %>  \interface{reset}
         %>  \code{.m}
+        %>
+        %>      pm.vis.tile.Tile.reset() # reset the tile to the default settings.
+        %>
         %>  \endcode
-        %
-        %       pm.vis.tile.Tile.reset() # reset the tile to the default settings.
-        %
-        %>  \final{}
+        %>
+        %>  \final{reset}
         %>
         %>  \author
+        %>  \JoshuaOsborne, May 22 2024, 7:42 PM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function reset(self, varargin)
@@ -142,51 +130,48 @@ classdef Tile < pm.vis.figure.Tiling
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        %
-        %   Configure the tile settings and specifications,
-        %   make the tile, and return nothing.
-        %
-        %   In making the figure, this method we call the ``make()``
-        %   methods of each of the subplot objects stored in the
-        %   ``subplot`` component.
-        %
-        %   \warning
-        %
-        %       This method has side-effects by manipulating
-        %       the existing attributes of the parent object.
-        %
-        %       varargin
-        %
-        %           Any ``property, value`` pair of the parent object.
-        %           If the property is a ``struct()``, then its value must be given as a cell array,
-        %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
-        %           Note that all of these property-value pairs can be also directly set via the
-        %           parent object attributes, before calling the ``make()`` method.
-        %
-        %       \note
-        %
-        %           The input ``varargin`` can also contain the components
-        %           of the ``subplot`` component of the parent object.
+        %>  \brief
+        %>  Configure the tile settings and specifications,
+        %>  make the tile, and return nothing.
+        %>
+        %>  \details
+        %>  In making the figure, this method we call the ``make()``
+        %>  methods of each of the subplot objects stored in the
+        %>  ``subplot`` component.
+        %>
+        %>  \warning
+        %>  This method has side-effects by manipulating
+        %>  the existing attributes of the parent object.
+        %>
+        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
+        %>                              If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>                              Note that all of these property-value pairs can be also directly set via the
+        %>                              parent object attributes, before calling the ``make()`` method.
+        %>  
+        %>  \note
+        %>  The input ``varargin`` can also contain the components
+        %>  of the ``subplot`` component of the parent object.
         %>
         %>  \return
+        %>  `None`
         %>
-        %       None
-        %
-        %>  \interface{copy}
+        %>  \interface{make}
         %>  \code{.m}
+        %>
+        %>      t = pm.vis.tile.Tile.make(varargin);
+        %>
         %>  \endcode
-        %
-        %       t = pm.vis.tile.Tile.make(varargin);
-        %
-        %   Example
-        %   -------
-        %
-        %       t = pm.vis.tile.Tile(pm.vis.subplot.Line());
-        %       t.make()
-        %
-        %>  \final{}
+        %>
+        %>  \example{make}
+        %>
+        %>      t = pm.vis.tile.Tile(pm.vis.subplot.Line());
+        %>      t.make()
+        %>
+        %>  \final{make}
         %>
         %>  \author
+        %>  \JoshuaOsborne, May 22 2024, 7:44 PM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function make(self, varargin)
@@ -375,41 +360,38 @@ classdef Tile < pm.vis.figure.Tiling
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        %
-        %   Configure the tile settings and specifications and return nothing.
-        %
-        %   \warning
-        %
-        %       This method has side-effects by manipulating
-        %       the existing attributes of the parent object.
-        %
-        %       varargin
-        %
-        %           Any ``property, value`` pair of the parent object.
-        %           If the property is a ``struct()``, then its value must be given as a cell array,
-        %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
-        %           Note that all of these property-value pairs can be also directly set via the
-        %           parent object attributes, before calling the ``premake()`` method.
+        %>  \brief
+        %>  Configure the tile settings and specifications and return nothing.
+        %>
+        %>  \warning
+        %>  This method has side-effects by manipulating
+        %>  the existing attributes of the parent object.
+        %>
+        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
+        %>                              If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>                              Note that all of these property-value pairs can be also directly set via the
+        %>                              parent object attributes, before calling the ``premake()`` method.
         %>
         %>  \return
+        %>  `None`
         %>
-        %       None
-        %
-        %>  \interface{copy}
+        %>  \interface{premake}
         %>  \code{.m}
+        %>
+        %>      f = pm.vis.tile.Tile.premake(varargin);
+        %>
         %>  \endcode
-        %
-        %       f = pm.vis.tile.Tile.premake(varargin);
-        %
-        %   Example
-        %   -------
-        %
-        %       f = pm.vis.tile.Tile(pm.vis.Line());
-        %       f.premake("figure", {"color", "none"})
-        %
-        %>  \final{}
+        %>
+        %>  \example{getBorder}
+        %>
+        %>      f = pm.vis.tile.Tile(pm.vis.Line());
+        %>      f.premake("figure", {"color", "none"})
+        %>
+        %>  \final{premake}
         %>
         %>  \author
+        %>  \JoshuaOsborne, May 22 2024, 7:46 PM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function premake(self, varargin)

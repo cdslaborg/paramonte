@@ -1,53 +1,45 @@
-%
-%   Return the input ``hashmap`` while all cases
-%   of keys matching the input ``keys`` are deleted
-%   along with their corresponding values immediately
-%   appearing after the elements matching the input ``keys``.
-%
-%       keys
-%
-%           The input MATLAB cell array of rank 1 containing
-%           the key(s) to search for in the input pair list.
-%
-%       hashmap
-%
-%           The input cell array of even number of elements
-%           containing the ``(key, val)`` pairs of the input
-%           ``hashmap`` in sequence as element of the cell array.
-%
+%>  \brief
+%>  Return the input ``hashmap`` while all cases
+%>  of keys matching the input ``keys`` are deleted
+%>  along with their corresponding values immediately
+%>  appearing after the elements matching the input ``keys``.
+%>
+%>  \param[in]  keys    :   The input MATLAB cell array of rank 1 containing
+%>                          the key(s) to search for in the input pair list.
+%>  
+%>  \param[in]  hashmap :   The input cell array of even number of elements
+%>                          containing the ``(key, val)`` pairs of the input
+%>                          ``hashmap`` in sequence as element of the cell array.
+%>  
 %>  \return
-%       keyval
-%
-%           The output cell array of even number of elements
-%           containing the ``(key, val)`` pairs of the keys
-%           in the input argument ``keys``.
-%
-%       hashout
-%
-%           The output cell array of even number of elements
-%           containing the ``(key, val)`` pairs of the input
-%           ``hashmap`` while all instances of keys matching
-%           the input ``keys`` along with their values are deleted.
+%>  `keyval`            :   The output cell array of even number of elements
+%>                          containing the ``(key, val)`` pairs of the keys
+%>                          in the input argument ``keys``.
+%>  
+%>  `hashout`           :   The output cell array of even number of elements
+%>                          containing the ``(key, val)`` pairs of the input
+%>                          ``hashmap`` while all instances of keys matching
+%>                          the input ``keys`` along with their values are deleted.
 %>
-%>  \interface{}
+%>  \interface{popKeyVal}
 %>  \code{.m}
-%>  \endcode
 %>
-%       [keyval, hashout] = pm.matlab.hashmap.popKeyVal(keys, hashmap)
-%
-%   Example
-%   -------
-%
-%       hashmap = {"key1", 1, "key2", "val2", "key3", false, "key2", "last"};
-%       [keyval, hashout] = pm.matlab.hashmap.popKeyVal("key2", hashmap)
-%       [keyval, hashout] = pm.matlab.hashmap.popKeyVal("key3", hashmap)
-%       [keyval, hashout] = pm.matlab.hashmap.popKeyVal("key3", hashmap(1:4))
-%       [keyval, hashout] = pm.matlab.hashmap.popKeyVal({"key2", "key1"}, hashmap(1:4))
-%       [keyval, hashout] = pm.matlab.hashmap.popKeyVal("key2", hashmap(1:3)) % error: odd number of elements.
-%
-%>  \final{}
+%>      [keyval, hashout] = pm.matlab.hashmap.popKeyVal(keys, hashmap)
+%>
+%>  \endcode
+%>  \example{popKeyVal}
+%>
+%>      hashmap = {"key1", 1, "key2", "val2", "key3", false, "key2", "last"};
+%>      [keyval, hashout] = pm.matlab.hashmap.popKeyVal("key2", hashmap)
+%>      [keyval, hashout] = pm.matlab.hashmap.popKeyVal("key3", hashmap)
+%>      [keyval, hashout] = pm.matlab.hashmap.popKeyVal("key3", hashmap(1:4))
+%>      [keyval, hashout] = pm.matlab.hashmap.popKeyVal({"key2", "key1"}, hashmap(1:4))
+%>      [keyval, hashout] = pm.matlab.hashmap.popKeyVal("key2", hashmap(1:3)) % error: odd number of elements.
+%>
+%>  \final{popKeyVal}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 10:49 PM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function [keyval, hashout] = popKeyVal(keys, hashmap)

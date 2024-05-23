@@ -1,24 +1,23 @@
-%
-%   Return a scalar MATLAB string containing the path to
-%   the ``lib`` directory of the ParaMonte library package.
-%
-%       None
-%
+%>  \brief
+%>  Return a scalar MATLAB string containing the path to
+%>  the ``lib`` directory of the ParaMonte library package.
+%>
+%>  \param  `None`
+%>
 %>  \return
-%       path
-%
-%           The output scalar MATLAB string containing the path to
-%           the ``lib`` directory of the ParaMonte library package.
+%>  `path`  :   The output scalar MATLAB string containing the path to
+%>              the ``lib`` directory of the ParaMonte library package.
 %>
-%>  \interface{}
+%>  \interface{lib}
 %>  \code{.m}
-%>  \endcode
 %>
-%       path = pm.lib.path.lib()
-%
-%>  \final{}
+%>      path = pm.lib.path.lib()
+%>
+%>  \endcode
+%>  \final{lib}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 7:39 PM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function path = lib(key)
