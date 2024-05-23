@@ -1,36 +1,28 @@
-%
-%   Return the processor architecture name of
-%   the current system on which MATLAB is running,
-%   which is also supported by the ParaMonte MATLAB library.
-%
-%       None
-%
+%>  \brief
+%>  Return the processor architecture name of
+%>  the current system on which MATLAB is running,
+%>  which is also supported by the ParaMonte MATLAB library.
+%>
+%>  \param[in]  `None`
+%>
 %>  \return
-%       str
-%
-%           The output scalar MATLAB string containing the processor architecture.
-%           The output value can be either:
-%
-%               arm64
-%
-%                   This can be currently true only if the OS is Darwin.
-%
-%               amd64
-%
-%                   This can be currently true for either Darwin, Linux, or Windows.
-%
-%               If the function cannot detect any of the above,
-%               the system-returned value will be output as is.
+%>  `str`   :   The output scalar MATLAB string containing the processor architecture.
+%>              The output value can be either:<br>
+%>  'arm64' :   This can be currently true only if the OS is Darwin.<br>
+%>  `amd64` :   This can be currently true for either Darwin, Linux, or Windows.<br> 
+%>  If the function cannot detect any of the above,
+%>  the system-returned value will be output as is.
 %>
-%>  \interface{}
+%>  \interface{arch}
 %>  \code{.m}
-%>  \endcode
 %>
-%       str = pm.sys.arch()
-%
-%>  \final{}
+%>      str = pm.sys.arch()
+%>
+%>  \endcode
+%>  \final{arch}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 5:34 AM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function str = arch()

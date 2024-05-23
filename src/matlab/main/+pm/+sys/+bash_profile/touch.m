@@ -1,29 +1,27 @@
-%
-%   Return the contents of the ``.bash_profile`` file
-%   in the system home folder as a scalar MATLAB string.
-%
-%   If the file does not exist, create it. and add to it
-%   If the file does not contain the Bash to source the
-%   contents of the ``.bashrc`` file, then add it to
-%   the ``.bash_profile`` and return its contents.
-%
-%       None
-%
+%>  \brief
+%>  Return the contents of the ``.bash_profile`` file
+%>  in the system home folder as a scalar MATLAB string.<br>
+%>  If the file does not exist, create it. and add to it
+%>  If the file does not contain the Bash to source the
+%>  contents of the ``.bashrc`` file, then add it to
+%>  the ``.bash_profile`` and return its contents.
+%>
+%>  \param[in]  `None`
+%>
 %>  \return
-%       str
-%
-%           The output scalar MATLAB string containing
-%           the contents of the ``.bash_profile``.
+%>  `str`   :   The output scalar MATLAB string containing
+%>              the contents of the ``.bash_profile``.
 %>
-%>  \interface{}
+%>  \interface{touch}
 %>  \code{.m}
-%>  \endcode
 %>
-%       str = pm.sys.bash_profile.touch()
-%
-%>  \final{}
+%>      str = pm.sys.bash_profile.touch()
+%>
+%>  \endcode
+%>  \final{touch}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 4:58 AM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function str = touch()

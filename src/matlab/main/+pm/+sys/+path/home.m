@@ -1,22 +1,23 @@
-%
-%   Return a MATLAB string containing the
-%   absolute path to the system home directory.
-%
-%       None
-%
+%>  \brief
+%>  Return a MATLAB string containing the
+%>  absolute path to the system home directory.
+%>
+%>  \param[in]  `None`
+%>
 %>  \return
-%       A MATLAB string containing the
-%       absolute path to the system home directory.
+%>  A MATLAB string containing the
+%>  absolute path to the system home directory.
 %>
-%>  \interface{}
+%>  \interface{home}
 %>  \code{.m}
-%>  \endcode
 %>
-%       path = pm.sys.path.home()
-%
-%>  \final{}
+%>      path = pm.sys.path.home()
+%>
+%>  \endcode
+%>  \final{home}
 %>
 %>  \author
+%>  \JoshuaOsborne, May 21 2024, 5:25 AM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function path = home(varargin)

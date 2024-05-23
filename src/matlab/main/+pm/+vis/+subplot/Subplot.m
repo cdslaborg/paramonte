@@ -1,216 +1,42 @@
-%
-%   This is the abstract class for generating instances of axes
-%   with various types of plots from one or more columns of data.
-%
-%   While it can be directly used for visualization tasks,
-%   this class primarily serves as the superclass for the
-%   visualization subclasses accessible to the end users.
-%
-%   \note
-%
-%       In case of contourf/contour3/contour visualization objects,
-%       the density of the input data is first computed and smoothed
-%       by a Gaussian kernel density estimator and then passed to the
-%       MATLAB intrinsic plotting functions contourf/contour3/contour.
-%
-%       ptype
-%
-%           See the documentation of the corresponding
-%           component of the superclass constructor.
-%
-%       dfref
-%
-%           The input MATLAB matrix or table containing the data to plot or
-%           a function handle that returns such a MATLAB matrix or table.
-%           Specifying a function handle is superior to specifying the
-%           data directly, because the function handle will always use
-%           the most updated version of the user table or matrix.
-%           (**optional**. The default is an empty table.)
-%
-%>  \return
-%       self
-%
-%           The output scalar object of class ``pm.vis.subplot.Subplot``.
-%>
-%>  \interface{}
-%>  \code{.m}
-%>  \endcode
-%>
-%       s = pm.vis.subplot.Subplot(ptype, dfref);
-%       s = pm.vis.subplot.Subplot(ptype, dfref, varargin);
-%
-%   \note
-%       See the documentation of the superclass for a
-%       list of all class attributes that are dynamically
-%       added to the instantiated class objects based
-%       on the specified input plot type.
-%
-%       See also the explicit class and superclass attributes not listed below.
-%
-%       colx (standing for x-columns; available for all axes types)
-%
-%           Optional property that determines the columns of
-%           the specified dataframe to serve as the x-values.
-%           It can have multiple forms:
-%
-%               1.  a numeric or cell array of column indices in the input ``dfref``.
-%               2.  a string or cell array of column names in ``dfref.Properties.VariableNames``.
-%               3.  a cell array of a mix of the above two.
-%               4.  a numeric range.
-%
-%           If ``colx`` is empty,
-%
-%               1.  it will be set to the row indices of ``dfref`` for line/scatter axes types.
-%               1.  it will be set to all columns of ``dfref`` for density axes types.
-%
-%           Example usage:
-%
-%               1.  self.colx = [7, 8, 9]
-%               2.  self.colx = ["sampleLogFunc", "sampleVariable1"]
-%               3.  self.colx = {"sampleLogFunc", 9, "sampleVariable1"}
-%               4.  self.colx = 7:9      # every column in the data frame starting from column #7 to #9
-%               5.  self.colx = 7:2:20   # every other column in the data frame starting from column #7 to #20
-%
-%           \warning
-%
-%               In all cases, ``colx`` must have a length that is either
-%               0 (empty), 1, or equal to the length of ``coly`` or ``colz``.
-%               If the length is 1, then ``colx`` will be plotted against
-%               data corresponding to each element of ``coly`` and ``colz``.
-%
-%       coly (standing for y-columns; available for all axes types except heatmap, histogram, histfit)
-%
-%           Optional property that determines the columns of
-%           the specified dataframe to serve as the z-values.
-%           It can have multiple forms:
-%
-%               1.  a numeric or cell array of column indices in the input ``dfref``.
-%               2.  a string or cell array of column names in ``dfref.Properties.VariableNames``.
-%               3.  a cell array of a mix of the above two.
-%               4.  a numeric range.
-%
-%           If ``coly`` is empty,
-%
-%               1.  it will be set to the row indices of ``dfref`` for line/scatter axes types.
-%               1.  it will be set to all columns of ``dfref`` for density axes types.
-%
-%           Example usage:
-%
-%               1.  self.coly = [7, 8, 9]
-%               2.  self.coly = ["sampleLogFunc", "sampleVariable1"]
-%               3.  self.coly = {"sampleLogFunc", 9, "sampleVariable1"}
-%               4.  self.coly = 7:9      # every column in the data frame starting from column #7 to #9
-%               5.  self.coly = 7:2:20   # every other column in the data frame starting from column #7 to #20
-%
-%           \warning
-%
-%               In all cases, ``coly`` must have a length that is either
-%               0 (empty), 1, or equal to the length of ``colx`` or ``colz``.
-%               If the length is 1, then ``coly`` will be plotted against
-%               data corresponding to each element of ``colx`` and ``colz``.
-%
-%       colz (standing for z-columns; available only for 3D plots, e.g., line3, scatter3, lineScatter3)
-%
-%           Optional property that determines the columns of
-%           the specified dataframe to serve as the z-values.
-%           It can have multiple forms:
-%
-%               1.  a numeric or cell array of column indices in the input ``dfref``.
-%               2.  a string or cell array of column names in ``dfref.Properties.VariableNames``.
-%               3.  a cell array of a mix of the above two.
-%               4.  a numeric range.
-%
-%           If ``colz`` is empty,
-%
-%               1.  it will be set to the row indices of ``dfref`` for line/scatter axes types.
-%               1.  it will be set to all columns of ``dfref`` for density axes types.
-%
-%           Example usage:
-%
-%               1.  self.colz = [7, 8, 9]
-%               2.  self.colz = ["sampleLogFunc", "sampleVariable1"]
-%               3.  self.colz = {"sampleLogFunc", 9, "sampleVariable1"}
-%               4.  self.colz = 7:9      # every column in the data frame starting from column #7 to #9
-%               5.  self.colz = 7:2:20   # every other column in the data frame starting from column #7 to #20
-%
-%           \warning
-%
-%               In all cases, ``colz`` must have a length that is either
-%               0 (empty), 1, or equal to the length of ``colx`` or ``coly``.
-%               If the length is 1, then ``colz`` will be plotted against
-%               data corresponding to each element of ``colx`` and ``coly``.
-%
-%       colc (standing for color-columns; available only for 2D/3D line/scatter axes types)
-%
-%           Optional property that determines the columns of the input ``dfref`` to
-%           use as the color mapping values for each line/point element in the plot.
-%           It can have multiple forms:
-%
-%               1.  a numeric or cell array of column indices in the input ``dfref``.
-%               2.  a string or cell array of column names in ``dfref.Properties.VariableNames``.
-%               3.  a cell array of a mix of the above two.
-%               4.  a numeric range.
-%
-%           The default value is the indices of the rows of the input ``dfref``.
-%
-%           Example usage:
-%
-%               1.  self.colc = [7,8,9]
-%               2.  self.colc = ["sampleLogFunc", "sampleVariable1"]
-%               3.  self.colc = {"sampleLogFunc", 9, "sampleVariable1"}
-%               4.  self.colc = 7:9      # every column in the data frame starting from column #7 to #9
-%               5.  self.colc = 7:2:20   # every other column in the data frame starting from column #7 to #20
-%
-%           \warning
-%
-%               In all cases, ``colc`` must have a length that is either 0, or 1, or equal
-%               to the maximum lengths of ``(colx, coly, colz)``. If the length is 1, then all data
-%               will be plotted with the same color mapping determined by values specified by the elements
-%               of ``colc``. If it is an empty object having length 0, then the default value will be used.
-%
+%>  \brief
+%>  This is the abstract class for generating instances of axes
+%>  with various types of plots from one or more columns of data.<br>
+%>  While it can be directly used for visualization tasks,
+%>  this class primarily serves as the superclass for the
+%>  visualization subclasses accessible to the end users.
 classdef Subplot < pm.vis.axes.Axes
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     properties(Access = public)
-        %
-        %   df
-        %
-        %       A scalar object of class ``pm.data.DataFrame``
-        %       containing the user-specified data to visualize.
-        %
+        %>
+        %>  \param  df      :   A scalar object of class ``pm.data.DataFrame``
+        %>                      containing the user-specified data to visualize.
+        %>
         df = [];
-        %
-        %   fout
-        %
-        %       A MATLAB ``struct`` whose fields are the outputs of
-        %       various plotting tools used to make the current axis.
-        %
+        %>
+        %>  \param  fout    :   A MATLAB ``struct`` whose fields are the outputs of
+        %>                      various plotting tools used to make the current axis.
+        %>
         fout = struct();
-        %
-        %   rows
-        %
-        %       A numeric vector that serves as a storage for an arbitrary subset of indices
-        %       of the rows of the input dataframe reference ``dfref`` to the class constructor .
-        %
-        %       It can be either:
-        %
-        %           1.  a numeric range, or,
-        %           2.  a list of row indices of the ``dfref``.
-        %
-        %       Example usage:
-        %
-        %           1.  rows = 15 : -2 : 8
-        %           2.  rows = [12, 46, 7, 8, 9, 4, 7, 163]
-        %
-        %       If ``rows`` is empty, the default will be all rows of the ``dfref``.
-        %
-        %       \note
-        %
-        %           The ``pm.data.DataFrame.rowslog()`` method of this class
-        %           can be used to generate logarithmically-spaced
-        %           row indices of the target dataframe.
-        %
+        %>
+        %>  \param          :   A numeric vector that serves as a storage for an arbitrary subset of indices
+        %>                      of the rows of the input dataframe reference ``dfref`` to the class constructor .<br>
+        %>                      It can be either:
+        %>                      <ol>              
+        %>                          <li>    a numeric range, or,
+        %>                          <li>    a list of row indices of the ``dfref``.
+        %>                      </ol>              
+        %>                      \example{Subplot}
+        %>                          1.  rows = 15 : -2 : 8
+        %>                          2.  rows = [12, 46, 7, 8, 9, 4, 7, 163]
+        %>                      If ``rows`` is empty, the default will be all rows of the ``dfref``.
+        %>              
+        %>  \note            
+        %>  The ``pm.data.DataFrame.rowslog()`` method of this class
+        %>  can be used to generate logarithmically-spaced
+        %>  row indices of the target dataframe.
+        %>
         rows = [];
     end
 
@@ -220,6 +46,154 @@ classdef Subplot < pm.vis.axes.Axes
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        %>
+        %>  \note
+        %>  In case of contourf/contour3/contour visualization objects,
+        %>  the density of the input data is first computed and smoothed
+        %>  by a Gaussian kernel density estimator and then passed to the
+        %>  MATLAB intrinsic plotting functions contourf/contour3/contour.
+        %>
+        %>  \param[in]  ptype   :   See the documentation of the corresponding
+        %>                          component of the superclass constructor.
+        %>  
+        %>  \param[in]  dfref   :   The input MATLAB matrix or table containing the data to plot or
+        %>                          a function handle that returns such a MATLAB matrix or table.
+        %>                          Specifying a function handle is superior to specifying the
+        %>                          data directly, because the function handle will always use
+        %>                          the most updated version of the user table or matrix.
+        %>                          (**optional**. The default is an empty table.)
+        %>
+        %>  \return
+        %>  `self`              :   The output scalar object of class ``pm.vis.subplot.Subplot``.
+        %>
+        %>  \interface{Subplot}
+        %>  \code{.m}
+        %>
+        %>      s = pm.vis.subplot.Subplot(ptype, dfref);
+        %>      s = pm.vis.subplot.Subplot(ptype, dfref, varargin);
+        %>
+        %>  \endcode
+        %>
+        %>  \note
+        %>  See the documentation of the superclass for a
+        %>  list of all class attributes that are dynamically
+        %>  added to the instantiated class objects based
+        %>  on the specified input plot type.
+        %>  See also the explicit class and superclass attributes not listed below.
+        %>
+        %>  \param  colx (standing for x-columns; available for all axes types)                                     :
+        %>          Optional property that determines the columns of
+        %>          the specified dataframe to serve as the x-values.
+        %>          It can have multiple forms:<br>
+        %>          <ol>  
+        %>              <li>    a numeric or cell array of column indices in the input ``dfref``.
+        %>              <li>    a string or cell array of column names in ``dfref.Properties.VariableNames``.
+        %>              <li>    a cell array of a mix of the above two.
+        %>              <li>    a numeric range.
+        %>          </ol>
+        %>          If ``colx`` is empty,<br>
+        %>          <ol>  
+        %>              <li>  it will be set to the row indices of ``dfref`` for line/scatter axes types.
+        %>              <li>  it will be set to all columns of ``dfref`` for density axes types.
+        %>          </ol>  
+        %>          \example{Subplot}
+        %>              1.  self.colx = [7, 8, 9]
+        %>              2.  self.colx = ["sampleLogFunc", "sampleVariable1"]
+        %>              3.  self.colx = {"sampleLogFunc", 9, "sampleVariable1"}
+        %>              4.  self.colx = 7:9      # every column in the data frame starting from column #7 to #9
+        %>              5.  self.colx = 7:2:20   # every other column in the data frame starting from column #7 to #20
+        %>  
+        %>  \warning
+        %>  In all cases, ``colx`` must have a length that is either
+        %>  0 (empty), 1, or equal to the length of ``coly`` or ``colz``.
+        %>  If the length is 1, then ``colx`` will be plotted against
+        %>  data corresponding to each element of ``coly`` and ``colz``.
+        %>  
+        %>  \param  coly (standing for y-columns; available for all axes types except heatmap, histogram, histfit)  :  
+        %>          Optional property that determines the columns of
+        %>          the specified dataframe to serve as the z-values.
+        %>          It can have multiple forms:<br>
+        %>          <ol>      
+        %>              <li>    a numeric or cell array of column indices in the input ``dfref``.
+        %>              <li>    a string or cell array of column names in ``dfref.Properties.VariableNames``.
+        %>              <li>    a cell array of a mix of the above two.
+        %>              <li>    a numeric range.
+        %>          </ol>      
+        %>          If ``coly`` is empty,<br>
+        %>          <ol>
+        %>              <li>    it will be set to the row indices of ``dfref`` for line/scatter axes types.
+        %>              <li>    it will be set to all columns of ``dfref`` for density axes types.
+        %>          </ol>      
+        %>
+        %>          \example{Subplot}
+        %>              1.  self.coly = [7, 8, 9]
+        %>              2.  self.coly = ["sampleLogFunc", "sampleVariable1"]
+        %>              3.  self.coly = {"sampleLogFunc", 9, "sampleVariable1"}
+        %>              4.  self.coly = 7:9      # every column in the data frame starting from column #7 to #9
+        %>              5.  self.coly = 7:2:20   # every other column in the data frame starting from column #7 to #20
+        %>      
+        %>  \warning     
+        %>  In all cases, ``coly`` must have a length that is either
+        %>  0 (empty), 1, or equal to the length of ``colx`` or ``colz``.
+        %>  If the length is 1, then ``coly`` will be plotted against
+        %>  data corresponding to each element of ``colx`` and ``colz``.
+        %>  
+        %>  \param  colz (standing for z-columns; available only for 3D plots, e.g., line3, scatter3, lineScatter3) :
+        %>          Optional property that determines the columns of
+        %>          the specified dataframe to serve as the z-values.
+        %>          It can have multiple forms:<br>
+        %>          <ol>  
+        %>              <li>    a numeric or cell array of column indices in the input ``dfref``.
+        %>              <li>    a string or cell array of column names in ``dfref.Properties.VariableNames``.
+        %>              <li>    a cell array of a mix of the above two.
+        %>              <li>    a numeric range.
+        %>          </ol>  
+        %>          If ``colz`` is empty,<br>
+        %>          <ol>  
+        %>              <li>    it will be set to the row indices of ``dfref`` for line/scatter axes types.
+        %>              <li>    it will be set to all columns of ``dfref`` for density axes types.
+        %>          </ol>  
+        %>          \example{Subplot}
+        %>              1.  self.colz = [7, 8, 9]
+        %>              2.  self.colz = ["sampleLogFunc", "sampleVariable1"]
+        %>              3.  self.colz = {"sampleLogFunc", 9, "sampleVariable1"}
+        %>              4.  self.colz = 7:9      # every column in the data frame starting from column #7 to #9
+        %>              5.  self.colz = 7:2:20   # every other column in the data frame starting from column #7 to #20
+        %>  
+        %>  \warning 
+        %>  In all cases, ``colz`` must have a length that is either
+        %>  0 (empty), 1, or equal to the length of ``colx`` or ``coly``.
+        %>  If the length is 1, then ``colz`` will be plotted against
+        %>  data corresponding to each element of ``colx`` and ``coly``.
+        %>  
+        %>  \param  colc (standing for color-columns; available only for 2D/3D line/scatter axes types) :
+        %>          Optional property that determines the columns of the input ``dfref`` to
+        %>          use as the color mapping values for each line/point element in the plot.
+        %>          It can have multiple forms:
+        %>          <ol>  
+        %>              <li>    a numeric or cell array of column indices in the input ``dfref``.
+        %>              <li>    a string or cell array of column names in ``dfref.Properties.VariableNames``.
+        %>              <li>    a cell array of a mix of the above two.
+        %>              <li>    a numeric range.
+        %>          </ol>  
+        %>          The default value is the indices of the rows of the input ``dfref``.  
+        %>          \example{Subplot}
+        %>              1.  self.colc = [7,8,9]
+        %>              2.  self.colc = ["sampleLogFunc", "sampleVariable1"]
+        %>              3.  self.colc = {"sampleLogFunc", 9, "sampleVariable1"}
+        %>              4.  self.colc = 7:9      # every column in the data frame starting from column #7 to #9
+        %>              5.  self.colc = 7:2:20   # every other column in the data frame starting from column #7 to #20
+        %>  
+        %>  \warning
+        %>  In all cases, ``colc`` must have a length that is either 0, or 1, or equal
+        %>  to the maximum lengths of ``(colx, coly, colz)``. If the length is 1, then all data
+        %>  will be plotted with the same color mapping determined by values specified by the elements
+        %>  of ``colc``. If it is an empty object having length 0, then the default value will be used.
+        %>  
+        %>  \final{Subplot}
+        %>
+        %>  \author
+        %>  \JoshuaOsborne, May 22 2024, 6:45 PM, University of Texas at Arlington<br>
         function self = Subplot(ptype, dfref, varargin)
             if  nargin < 2
                 dfref = [];
@@ -233,43 +207,39 @@ classdef Subplot < pm.vis.axes.Axes
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        %
-        %   Generate a plot from the selected columns
-        %   of the parent object component ``df``.
-        %
-        %   \warning
-        %
-        %       This method has side-effects by manipulating
-        %       the existing attributes of the parent object.
-        %
-        %       varargin
-        %
-        %           Any ``property, value`` pair of the parent object.
-        %           If the property is a ``struct()``, then its value must be given as a cell array,
-        %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
-        %           Note that all of these property-value pairs can be also directly set via the
-        %           parent object attributes, before calling the ``make()`` method.
+        %>  \brief
+        %>  Generate a plot from the selected columns
+        %>  of the parent object component ``df``.
+        %>
+        %>  \warning
+        %>  This method has side-effects by manipulating
+        %>  the existing attributes of the parent object.
+        %>
+        %>  \param  varargin    :   Any ``property, value`` pair of the parent object.
+        %>                          If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                          with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>                          Note that all of these property-value pairs can be also directly set via the
+        %>                          parent object attributes, before calling the ``make()`` method.
         %>
         %>  \return
+        %>  `None`
         %>
-        %       None
-        %
-        %>  \interface{copy}
+        %>  \interface{make}
         %>  \code{.m}
+        %>
+        %>      pm.vis.subplot.Subplot.make(varargin);
+        %>
         %>  \endcode
-        %
-        %       pm.vis.subplot.Subplot.make(varargin);
-        %
-        %   Example
-        %   -------
-        %
-        %       dfref = rand(1000, 3);
-        %       s = pm.vis.subplot.Subplot("scatter", dfref);
-        %       s.make("colx", 1, "coly", 2, "colc", 3)
-        %
-        %>  \final{}
+        %>
+        %>  \example{make}
+        %>      dfref = rand(1000, 3);
+        %>      s = pm.vis.subplot.Subplot("scatter", dfref);
+        %>      s.make("colx", 1, "coly", 2, "colc", 3)
+        %>
+        %>  \final{make}
         %>
         %>  \author
+        %>  \JoshuaOsborne, May 22 2024, 6:36 PM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function make(self, varargin)
@@ -852,42 +822,38 @@ classdef Subplot < pm.vis.axes.Axes
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        %
-        %   Prepare the subplot for visualization.
-        %
-        %   \warning
-        %
-        %       This method has side-effects by manipulating
-        %       the existing attributes of the parent object.
-        %
-        %       varargin
-        %
-        %           Any ``property, value`` pair of the parent object.
-        %           If the property is a ``struct()``, then its value must be given as a cell array,
-        %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
-        %           Note that all of these property-value pairs can be also directly set via the
-        %           parent object attributes, before calling the ``premake()`` method.
+        %>  \brief
+        %>  Prepare the subplot for visualization.
+        %>
+        %>  \warning
+        %>  This method has side-effects by manipulating
+        %>  the existing attributes of the parent object.
+        %>
+        %>  \param  varargin    :   Any ``property, value`` pair of the parent object.
+        %>                          If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                          with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>                          Note that all of these property-value pairs can be also directly set via the
+        %>                          parent object attributes, before calling the ``premake()`` method.
         %>
         %>  \return
+        %>  `None`
         %>
-        %       None
-        %
-        %>  \interface{copy}
+        %>  \interface{premake}
         %>  \code{.m}
+        %>
+        %>      pm.vis.subplot.Subplot.premake(varargin);
+        %>
         %>  \endcode
-        %
-        %       pm.vis.subplot.Subplot.premake(varargin);
-        %
-        %   Example
-        %   -------
-        %
-        %       dfref = rand(1000, 3);
-        %       s = pm.vis.subplot.Subplot("scatter", dfref);
-        %       s.premake("colx", 1, "coly", 2, "colc", 3)
-        %
-        %>  \final{}
+        %>
+        %>  \example{premake}
+        %>      dfref = rand(1000, 3);
+        %>      s = pm.vis.subplot.Subplot("scatter", dfref);
+        %>      s.premake("colx", 1, "coly", 2, "colc", 3)
+        %>
+        %>  \final{premake}
         %>
         %>  \author
+        %>  \JoshuaOsborne, May 22 2024, 6:41 PM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function premake(self, varargin)
@@ -896,32 +862,31 @@ classdef Subplot < pm.vis.axes.Axes
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        %
-        %   Reset the properties of the plot to the original default settings.
-        %   Use this method when you change many attributes of the plot and
-        %   you want to clean up and go back to the default settings.
-        %
-        %       varargin
-        %
-        %           Any ``property, value`` pair of the parent object.
-        %           If the property is a ``struct()``, then its value must be given as a cell array,
-        %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
-        %           Note that all of these property-value pairs can be also directly set via the
-        %           parent object attributes, before calling the ``make()`` method.
+        %>  \brief
+        %>  Reset the properties of the plot to the original default settings.
+        %>  Use this method when you change many attributes of the plot and
+        %>  you want to clean up and go back to the default settings.
+        %>
+        %>  \param  varargin    :   Any ``property, value`` pair of the parent object.
+        %>                          If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                          with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>                          Note that all of these property-value pairs can be also directly set via the
+        %>                          parent object attributes, before calling the ``make()`` method.
         %>
         %>  \return
+        %>  `None`
         %>
-        %       None
-        %
-        %>  \interface{copy}
+        %>  \interface{reset}
         %>  \code{.m}
+        %>
+        %>      pm.vis.subplot.Subplot.reset() # reset the plot to the default settings.
+        %>
         %>  \endcode
-        %
-        %       pm.vis.subplot.Subplot.reset() # reset the plot to the default settings.
-        %
-        %>  \final{}
+        %>
+        %>  \final{reset}
         %>
         %>  \author
+        %>  \JoshuaOsborne, May 22 2024, 6:43 PM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function reset(self, varargin)
