@@ -1,15 +1,13 @@
 %>  \brief
 %>  Return a MATLAB string containing the ParaMonte MATLAB library authors.
 %>
-%>  \params None
-%>
 %>  \return
-%>  A MATLAB string containing the ParaMonte MATLAB library authors.
+%>  ``str`` :   The output MATLAB string containing the ParaMonte MATLAB library authors.
 %>
 %>  \interface{authors}
 %>  \code{.m}
 %>
-%>      str = pm.lib.authors()
+%>      str = pm.lib.authors();
 %>
 %>  \endcode
 %>  \final{authors}

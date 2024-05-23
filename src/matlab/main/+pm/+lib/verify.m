@@ -1,17 +1,16 @@
 %>  \brief
 %>  Check the requirements of the installed ParaMonte MATLAB library.
 %>
-%>  \params `None`
-%>
-%>  \return
-%>  `None`
+%>  \details
+%>  This function takes no input arguments and returns nothing.
 %>
 %>  \interface{verify}
 %>  \code{.m}
 %>
-%>      pm.lib.verify()
+%>      pm.lib.verify();
 %>
 %>  \endcode
+%>
 %>  \final{verify}
 %>
 %>  \author

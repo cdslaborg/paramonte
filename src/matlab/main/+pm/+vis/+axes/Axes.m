@@ -1,37 +1,39 @@
 %>  \brief
-%>  This is the abstract class for generating instances of objects
+%>  This is the class for generating instances of objects
 %>  that contain the specifications of various types of plots.
 %>
 %>  \details
 %>  This class primarily serves as the superclass for
-%>  the visualization-ready subclass ``pm.vis.subplot.Subplot``
+%>  the visualization-ready subclass [pm.vis.subplot.Subplot](@ref Subplot)
 %>  and its subclasses, all accessible to the end users.
 %>
-%>  \param[in]  ptype   :   The input scalar MATLAB string containing the name of the
-%>                          subclass that whose parent is Axes (e.g., "heatmap").
-%>                          Supported plot names are:<br>
-%>                          line
-%>                          line3
-%>                          scatter
-%>                          scatter3
-%>                          lineScatter
-%>                          lineScatter3
-%>                          histogram2
-%>                          histogram
-%>                          contour3
-%>                          contourf
-%>                          contour
-%>                          histfit
-%>                          heatmap
-%>  
-%>  \param[in]  varargin    :   Any ``property, value`` pair of the object.
+%>  \param[in]  ptype       :   The input scalar MATLAB string containing the name of the
+%>                              subclass that whose parent is Axes (e.g., "heatmap").
+%>                              Supported plot names are:<br>
+%>                              <ol>
+%>                                  <li>    ``"line"``
+%>                                  <li>    ``"line3"``
+%>                                  <li>    ``"scatter"``
+%>                                  <li>    ``"scatter3"``
+%>                                  <li>    ``"lineScatter"``
+%>                                  <li>    ``"lineScatter3"``
+%>                                  <li>    ``"histogram2"``
+%>                                  <li>    ``"histogram"``
+%>                                  <li>    ``"contour3"``
+%>                                  <li>    ``"contourf"``
+%>                                  <li>    ``"contour"``
+%>                                  <li>    ``"histfit"``
+%>                                  <li>    ``"heatmap"``
+%>                              </ol>
+%>
+%>  \param[in]  varargin    :   Any ``property, value`` pair of the object.<br>
 %>                              If the property is a ``struct()``, then its value must be given as a cell array,
-%>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
+%>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
 %>                              Note that all of these property-value pairs can be also directly set via the
-%>                              parent object attributes, before calling the ``premake()`` method.
+%>                              parent object attributes, before calling the ``premake()`` method.<br>
 %>
 %>  \return
-%>  `self`  :   The output scalar object of class ``pm.vis.axes.Axes``.
+%>  `self`                  :   The output scalar object of class ``pm.vis.axes.Axes``.
 %>
 %>  \interface{Axes}
 %>  \code{.m}
@@ -42,100 +44,124 @@
 %>
 %>  \note
 %>  The following is the list of all class attributes that are dynamically
-%>  added to the instantiated class objects based on the specified input plot type.
-%>  See also the explicit class and superclass attributes not listed below.
+%>  added to the instantiated class objects based on the specified input plot type.<br>
+%>  See also the explicit class and superclass attributes not listed below.<br>
 %>
 %>  \devnote
 %>  While dynamic addition of class attributes is not ideal, the current
 %>  design was deemed unavoidable and best, given the constraints of the
-%>  MATLAB language and visualization tools.
+%>  MATLAB language and visualization tools.<br>
 %>
-%>      axes (available for all plots except heatmap)
+%>  Dynamic class attributes
+%>  ------------------------
 %>
-%>          A MATLAB ``struct`` whose fields and values are passed as
-%>          keyword arguments to the MATLAB intrinsic ``set()`` for
-%>          the current active axes object in the plot ``gca()``.
+%>  This class contains a set of attributes that are defined dynamically at runtime
+%>  for the output object depending on its subclass (plot type it represents).<br>
+%>  The following lists the dynamic attributes and explains their functionalities.<br>
 %>
-%>      colorbar (available for all axes types that allow color-mapping)
+%>  <ol>
 %>
-%>          A MATLAB ``struct`` whose fields and their values will
-%>          be passed as keyword arguments to the MATLAB intrinsic ``colorbar``.
-%>          The following are the default components of ``colorbar``:
+%>      <li>    ``axes`` (available for all plots except heatmap)<br>
 %>
-%>              enabled
+%>              A MATLAB ``struct`` whose fields and values are passed as
+%>              keyword arguments to the MATLAB intrinsic ``set()`` for
+%>              the current active axes object in the plot ``gca()``.
 %>
-%>                  A logical value. If ``true``, the
-%>                  colorbar will be applied to the axes.
+%>      <li>    ``colorbar`` (available for all axes types that allow color-mapping)<br>
 %>
-%>              others
+%>              A MATLAB ``struct`` whose fields and their values will
+%>              be passed as keyword arguments to the MATLAB intrinsic ``colorbar``.<br>
+%>              The following are the default components of ``colorbar``:
 %>
-%>                  See the acceptable keyword arguments of the MATLAB intrinsic ``colorbar()``.
+%>              <ol>
 %>
-%>          Example usage:
+%>                  <li>    ``enabled``
 %>
-%>              self.colorbar.enabled = true;
-%>              self.colorbar.location = "west";
+%>                          A logical value. If ``true``, the
+%>                          color bar will be applied to the axes.
 %>
-%>          \warning
+%>                  <li>    others
 %>
+%>                          See the acceptable keyword arguments
+%>                          of the MATLAB intrinsic ``colorbar()``.
+%>
+%>              </ol>
+%>
+%>              Example usage:
+%>
+%>              \code{.m}
+%>
+%>                  self.colorbar.enabled = true;
+%>                  self.colorbar.location = "west";
+%>
+%>              \endcode
+%>
+%>              \warning
 %>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
 %>              Hence, ensure you do not add the same keyword as multiple different fields.
 %>              For example, ``colorbar.color`` and ``colorbar.Color`` are the same,
 %>              and only one of the two will be processed.
 %>
-%>      colormap (available for all axes types that allow color-mapping)
+%>      <li>    ``colormap`` (available for all axes types that allow color-mapping)
 %>
-%>          A MATLAB ``struct`` whose fields and their values will be passed
-%>          as keyword arguments to the MATLAB intrinsic ``colormap``.
-%>          The following are the default components of ``colormap``:
+%>              A MATLAB ``struct`` whose fields and their values will be passed
+%>              as keyword arguments to the MATLAB intrinsic ``colormap``.
+%>              The following are the default components of ``colormap``:
 %>
-%>              enabled
+%>              <ol>
 %>
-%>                  A logical value. If ``true``, the
-%>                  colormap will be applied to the axes.
+%>                  <li>    ``enabled``
 %>
-%>              map
+%>                          A logical value. If ``true``, the
+%>                          colormap will be applied to the axes.
 %>
-%>                  A string or a vector of color triplets or any other value
-%>                  that the intrinsic MATLAB ``colormap`` accepts as input.
+%>                  <li>    ``map``
 %>
-%>          This option is relevant only to visualizations that allow color-mapping.
+%>                          A string or a vector of color triplets or any other value
+%>                          that the intrinsic MATLAB ``colormap`` accepts as input.
 %>
-%>          Example usage:
+%>                          This option is relevant only to visualizations that allow color-mapping.
 %>
-%>              1.  self.colormap.enabled = true;
-%>              2.  self.colormap.map = "winter";
-%>              2.  self.colormap.map = "winter";
-%>              3.  self.colormap.map = 'default';
-%>              4.  self.colormap.map = pm.vis.cmap.redblue();
+%>              </ol>
 %>
-%>          \warning
+%>              Example usage:
 %>
+%>              \code{.m}
+%>
+%>                  self.colormap.enabled = true;
+%>                  self.colormap.map = "winter";
+%>                  self.colormap.map = "winter";
+%>                  self.colormap.map = 'default';
+%>                  self.colormap.map = pm.vis.cmap.redblue();
+%>
+%>              \endcode
+%>
+%>              \warning
 %>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
 %>              Hence, ensure you do not add the same keyword as multiple different fields.
 %>              For example, ``colormap.map`` and ``colormap.Map`` are the same,
 %>              and only one of the two will be processed.
 %>
-%>      contour (available only for contour axes types)
+%>      <li>    ``contour`` (available only for contour axes types)
 %>
 %>          A MATLAB ``struct`` whose fields and their values will be passed
 %>          as keyword arguments to the MATLAB intrinsic ``contour``.
 %>          The following are the default components of ``contour``:
 %>
-%>              enabled
+%>              ``enabled``
 %>
 %>                  A logical value. If ``true``, the
 %>                  contour will be added to the axes.
 %>
-%>              levels
+%>              ``levels``
 %>
 %>                  See the corresponding positional argument of the MATLAB intrinsic ``contourf()``.
 %>
-%>              lineSpec
+%>              ``lineSpec``
 %>
 %>                  See the corresponding positional argument of the MATLAB intrinsic ``contourf()``.
 %>
-%>              others
+%>              ``others``
 %>
 %>                  See the acceptable keyword arguments of the MATLAB intrinsic ``contour()``.
 %>
@@ -149,22 +175,22 @@
 %>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
 %>              Hence, ensure you do not add the same keyword as multiple different fields.
 %>
-%>      contour3 (available only for contour3 axes types)
+%>      <li>    ``contour3`` (available only for contour3 axes types)
 %>
 %>          A MATLAB ``struct`` whose fields and their values will be passed
 %>          as keyword arguments to the MATLAB intrinsic ``contour3``.
 %>          The following are the default components of ``contour3``:
 %>
-%>              enabled
+%>              ``enabled``
 %>
 %>                  A logical value. If ``true``, the
 %>                  contour3 will be added to the axes.
 %>
-%>              levels
+%>              ``levels``
 %>
 %>                  See the corresponding positional argument of the MATLAB intrinsic ``contourf()``.
 %>
-%>              lineSpec
+%>              ``lineSpec``
 %>
 %>                  See the corresponding positional argument of the MATLAB intrinsic ``contourf()``.
 %>
@@ -182,18 +208,18 @@
 %>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
 %>              Hence, ensure you do not add the same keyword as multiple different fields.
 %>
-%>      contourf (available only for contourf axes types)
+%>      <li>    ``contourf`` (available only for contourf axes types)
 %>
 %>          A MATLAB ``struct`` whose fields and their values will be passed
 %>          as keyword arguments to the MATLAB intrinsic ``contourf``.
 %>          The following are the default components of ``contourf``:
 %>
-%>              enabled
+%>              ``enabled``
 %>
 %>                  A logical value. If ``true``, the
 %>                  contourf will be added to the axes.
 %>
-%>              levels
+%>              ``levels``
 %>
 %>                  See the corresponding positional argument of the MATLAB intrinsic ``contourf()``.
 %>
@@ -215,7 +241,7 @@
 %>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
 %>              Hence, ensure you do not add the same keyword as multiple different fields.
 %>
-%>      histfit (available only for histfit axes types)
+%>      <li>    histfit (available only for histfit axes types)
 %>
 %>          A MATLAB ``struct`` whose fields and their values will be passed
 %>          as keyword arguments to the MATLAB intrinsic ``histfit``.
@@ -244,7 +270,7 @@
 %>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
 %>              Hence, ensure you do not add the same keyword as multiple different fields.
 %>
-%>      histogram (available only for histogram axes types)
+%>      <li>    histogram (available only for histogram axes types)
 %>
 %>          A MATLAB ``struct`` whose fields and their values will be passed
 %>          as keyword arguments to the MATLAB intrinsic ``histogram``.
@@ -278,7 +304,7 @@
 %>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
 %>              Hence, ensure you do not add the same keyword as multiple different fields.
 %>
-%>      histogram2 (available only for histogram2 axes types)
+%>      <li>    histogram2 (available only for histogram2 axes types)
 %>
 %>          A MATLAB ``struct`` whose fields and their values will be passed
 %>          as keyword arguments to the MATLAB intrinsic ``histogram2``.
@@ -316,12 +342,12 @@
 %>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
 %>              Hence, ensure you do not add the same keyword as multiple different fields.
 %>
-%>      legend (available for all axes types except heatmap)
+%>      <li>    legend (available for all axes types except heatmap)
 %>
 %>          A MATLAB ``struct`` whose fields and values are passed
 %>          as keyword arguments to the MATLAB intrinsic ``title()``.
 %>
-%>      maxnoise (available only for contour/contourf/contour3 axes types)
+%>      <li>    maxnoise (available only for contour/contourf/contour3 axes types)
 %>
 %>          A float indicating the threshold below which the kernel density
 %>          estimate is considered to be noise and is rounded to zero.
@@ -329,7 +355,7 @@
 %>          visible in the resulting contour plots.
 %>          If empty, the default value is ``0.001``.
 %>
-%>      plot (available only for line/lineScatter axes types)
+%>      <li>    plot (available only for line/lineScatter axes types)
 %>
 %>          A MATLAB ``struct`` whose fields and their values will be passed
 %>          as keyword arguments to the MATLAB intrinsic ``plot``.
@@ -358,7 +384,7 @@
 %>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
 %>              Hence, ensure you do not add the same keyword as multiple different fields.
 %>
-%>      plot3 (available only for line3/lineScatter3 axes types)
+%>      <li>    plot3 (available only for line3/lineScatter3 axes types)
 %>
 %>          A MATLAB ``struct`` whose fields and their values will be passed
 %>          as keyword arguments to the MATLAB intrinsic ``plot3``.
@@ -387,20 +413,20 @@
 %>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
 %>              Hence, ensure you do not add the same keyword as multiple different fields.
 %>
-%>      precision (available only for heatmap axes types)
+%>      <li>    precision (available only for heatmap axes types)
 %>
 %>          A scalar integer representing the number of digits after
 %>          the decimal point for the values that appear in each cell
 %>          of the heatmap. The default value is set by MATLAB.
 %>
-%>      resolution (available only for contour/contourf/contour3 axes types)
+%>      <li>    resolution (available only for contour/contourf/contour3 axes types)
 %>
 %>          A scalar integer indicating the grid resolution for discretization of
 %>          the data during the kernel density estimation. It must be a power of
 %>          two, otherwise it will be changed to the next power of two at the
 %>          time of using it. If empty, the default value is ``2^9``.
 %>
-%>      scatter (available only for scatter/lineScatter axes types)
+%>      <li>    scatter (available only for scatter/lineScatter axes types)
 %>
 %>          A MATLAB ``struct`` whose fields and their values will be passed
 %>          as keyword arguments to the MATLAB intrinsic ``scatter``.
@@ -444,7 +470,7 @@
 %>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
 %>              Hence, ensure you do not add the same keyword as multiple different fields.
 %>
-%>      scatter3 (available only for scatter3/lineScatter3 axes types)
+%>      <li>    scatter3 (available only for scatter3/lineScatter3 axes types)
 %>
 %>          A MATLAB ``struct`` whose fields and their values will be passed
 %>          as keyword arguments to the MATLAB intrinsic ``scatter3``.
@@ -488,7 +514,7 @@
 %>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
 %>              Hence, ensure you do not add the same keyword as multiple different fields.
 %>
-%>      surface (available only for line/lineScatter/line3/lineScatter3 axes types)
+%>      <li>    surface (available only for line/lineScatter/line3/lineScatter3 axes types)
 %>
 %>          A MATLAB ``struct`` whose fields and their values will be passed
 %>          as keyword arguments to the MATLAB intrinsic ``surface``.
@@ -513,62 +539,69 @@
 %>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
 %>              Hence, ensure you do not add the same keyword as multiple different fields.
 %>
-%>      title (available for all axes types)
+%>      <li>    title (available for all axes types)
 %>
 %>          A MATLAB ``struct`` whose fields and values are passed
 %>          as keyword arguments to the MATLAB intrinsic ``title()``.
 %>
-%>      xlabel (available for all axes types)
+%>      <li>    xlabel (available for all axes types)
 %>
 %>          A MATLAB ``struct`` whose fields and values are passed
 %>          as keyword arguments to the MATLAB intrinsic ``xlabel()``.
 %>
-%>      ylabel (available for all axes types)
+%>      <li>    ylabel (available for all axes types)
 %>
 %>          A MATLAB ``struct`` whose fields and values are passed
 %>          as keyword arguments to the MATLAB intrinsic ``ylabel()``.
 %>
-%>      zlabel (available only for all tri-axes axes types)
+%>      <li>    zlabel (available only for all tri-axes axes types)
 %>
 %>          A MATLAB ``struct`` whose fields and values are passed
 %>          as keyword arguments to the MATLAB intrinsic ``zlabel()``.
 %>
-%>      xlim (available for all axes types)
+%>      <li>    xlim (available for all axes types)
 %>
 %>          A MATLAB vector of length ``2`` whose fields and values are
 %>          passed as keyword arguments to the MATLAB intrinsic ``xlim()``.
 %>
-%>      ylim (available for all axes types)
+%>      <li>    ylim (available for all axes types)
 %>
 %>          A MATLAB vector of length ``2`` whose fields and values are
 %>          passed as keyword arguments to the MATLAB intrinsic ``ylim()``.
 %>
-%>      zlim (available only for all tri-axes axes types)
+%>      <li>    zlim (available only for all tri-axes axes types)
 %>
 %>          A MATLAB vector of length ``2`` whose fields and values are
 %>          passed as keyword arguments to the MATLAB intrinsic ``zlim()``.
 %>
-%>      xscale (available for all axes types)
+%>      <li>    xscale (available for all axes types)
 %>
 %>          A MATLAB string whose value is passed directly to the MATLAB intrinsic
 %>          ``xscale()`` to set the axis scale to either logarithmic or linear.
 %>          Possible values are: ``"log"``, ``"linear"``.
 %>          The default behavior is set by MATLAB.
 %>
-%>      yscale (available for all axes types)
+%>      <li>    yscale (available for all axes types)
 %>
 %>          A MATLAB string whose value is passed directly to the MATLAB intrinsic
 %>          ``yscale()`` to set the axis scale to either logarithmic or linear.
 %>          Possible values are: ``"log"``, ``"linear"``.
 %>          The default behavior is set by MATLAB.
 %>
-%>      zscale (available only for all tri-axes axes types)
+%>      <li>    zscale (available only for all tri-axes axes types)
 %>
 %>          A MATLAB string whose value is passed directly to the MATLAB intrinsic
 %>          ``zscale()`` to set the axis scale to either logarithmic or linear.
 %>          Possible values are: ``"log"``, ``"linear"``.
 %>          The default behavior is set by MATLAB.
 %>
+%>  </ol>
+%>
+%>  \final{Axes}
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef Axes < pm.matlab.Handle
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -631,29 +664,29 @@ classdef Axes < pm.matlab.Handle
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        %
-        %   Reset the properties of the plot to the original default settings.
-        %   Use this method when you change many attributes of the plot and
-        %   you want to clean up and go back to the default settings.
-        %
-        %       varargin
-        %
-        %           Any ``property, value`` pair of the parent object.
-        %           If the property is a ``struct()``, then its value must be given as a cell array,
-        %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
-        %           Note that all of these property-value pairs can be also directly set via the
-        %           parent object attributes.
+        %>  \brief
+        %>  Reset the properties of the plot to the original default settings.
+        %>  Use this method when you change many attributes of the plot and
+        %>  you want to clean up and go back to the default settings.
+        %>
+        %>      varargin
+        %>
+        %>          Any ``property, value`` pair of the parent object.
+        %>          If the property is a ``struct()``, then its value must be given as a cell array,
+        %>          with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>          Note that all of these property-value pairs can be also directly set via the
+        %>          parent object attributes.
         %>
         %>  \return
         %>
-        %       None
-        %
+        %>      None
+        %>
         %>  \interface{copy}
         %>  \code{.m}
         %>  \endcode
-        %
-        %       pm.vis.axes.Axes.reset() # reset the plot to the default settings.
-        %
+        %>
+        %>      pm.vis.axes.Axes.reset() # reset the plot to the default settings.
+        %>
         %>  \final{}
         %>
         %>  \author

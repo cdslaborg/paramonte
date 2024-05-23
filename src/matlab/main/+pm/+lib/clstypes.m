@@ -3,23 +3,21 @@
 %>  all supported compiler suites (vendor names) used for
 %>  building the ParaMonte MATLAB shared libraries.
 %>
-%>  \devnote
-%>  The CS names within this function must be
-%>  regularly updated with the latest CS names
-%>  available in the ParaMonte installation guide.
-%>
-%>  \params `None`
-%>
 %>  \return
-%>  `typelist`  :   A MATLAB string list containing:
-%>                  ``["intel", "gnu"]``
+%>  ``typelist``    :   The output MATLAB string list containing the value ``["intel", "gnu"]``.
 %>
 %>  \interface{clstypes}
 %>  \code{.m}
 %>
-%>      typelist = pm.lib.clstypes()
+%>      typelist = pm.lib.clstypes();
 %>
 %>  \endcode
+%>
+%>  \devnote
+%>  The CS names within this function must be
+%>  regularly updated with the latest CS names
+%>  available in the ParaMonte installation guide.<br>
+%>
 %>  \final{clstypes}
 %>
 %>  \author

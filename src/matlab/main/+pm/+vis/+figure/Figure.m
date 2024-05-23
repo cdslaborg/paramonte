@@ -8,6 +8,9 @@ classdef Figure < pm.matlab.Handle
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     properties(Access = public)
+        %>  \brief
+        %>  A MATLAB ``struct`` whose fields are the outputs of
+        %>                          various plotting tools used to make the current axis.
         %>
         %>  \param[in]  figure      :   A MATLAB ``struct`` whose fields and their values will
         %>                              be passed as keyword arguments to the MATLAB intrinsic ``figure``.

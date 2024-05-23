@@ -2,17 +2,16 @@
 %>  Return a structure containing tree of weblinks for the
 %>  ParaMonte MATLAB library source file and documentation website.
 %>
-%>  \params `None`
-%>
 %>  \return
-%>  A MATLAB `struct` containing the ParaMonte website information.
+%>  ``tree``    :   The output MATLAB ``struct`` containing the ParaMonte website information.
 %>
 %>  \interface{weblinks}
 %>  \code{.m}
 %>
-%>      pm.lib.weblinks()
+%>      tree = pm.lib.weblinks();
 %>
 %>  \endcode
+%>
 %>  \final{weblinks}
 %>
 %>  \author

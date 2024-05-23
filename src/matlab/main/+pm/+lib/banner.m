@@ -1,17 +1,16 @@
 %>  \brief
 %>  Return a scalar MATLAB string containing the ParaMonte MATLAB library banner.
 %>
-%>  \params `None`
-%>
 %>  \return
-%>  A scalar MATLAB string containing the ParaMonte MATLAB library banner.
+%>  ``str`` :   The output scalar MATLAB string containing the ParaMonte MATLAB library banner.
 %>
 %>  \interface{banner}
 %>  \code{.m}
 %>
-%>      str = pm.lib.banner()
+%>      str = pm.lib.banner();
 %>
 %>  \endcode
+%>
 %>  \final{banner}
 %>
 %>  \author

@@ -10,31 +10,46 @@ classdef Subplot < pm.vis.axes.Axes
 
     properties(Access = public)
         %>
-        %>  \param  df      :   A scalar object of class ``pm.data.DataFrame``
-        %>                      containing the user-specified data to visualize.
+        %>  ``df``
+        %>
+        %>  A scalar object of class ``pm.data.DataFrame``
+        %>  containing the user-specified data to visualize.
         %>
         df = [];
         %>
-        %>  \param  fout    :   A MATLAB ``struct`` whose fields are the outputs of
-        %>                      various plotting tools used to make the current axis.
+        %>  ``fout``
+        %>
+        %>  A MATLAB ``struct`` whose fields are the outputs of
+        %>  various plotting tools used to make the current axis.
         %>
         fout = struct();
         %>
-        %>  \param          :   A numeric vector that serves as a storage for an arbitrary subset of indices
-        %>                      of the rows of the input dataframe reference ``dfref`` to the class constructor .<br>
-        %>                      It can be either:
-        %>                      <ol>              
-        %>                          <li>    a numeric range, or,
-        %>                          <li>    a list of row indices of the ``dfref``.
-        %>                      </ol>              
-        %>                      \example{Subplot}
+        %>  ``rows``
         %>
-        %>                          1.  rows = 15 : -2 : 8
-        %>                          2.  rows = [12, 46, 7, 8, 9, 4, 7, 163]
-        %>                      If ``rows`` is empty, the default will be all rows of the ``dfref``.
-        %>              
-        %>  \note            
-        %>  The ``pm.data.DataFrame.rowslog()`` method of this class
+        %>  A numeric vector that serves as a storage for an arbitrary subset of indices
+        %>  of the rows of the input dataframe reference ``dfref`` to the class constructor .<br>
+        %>  It can be either:
+        %>  <ol>
+        %>      <li>    a numeric range, or,
+        %>      <li>    a list of row indices of the ``dfref``.
+        %>  </ol>
+        %>
+        %>  Example usage
+        %>  -------------
+        %>
+        %>  \code{fout}
+        %>
+        %>      s = pm.vis.subplot.Subplot();
+        %>      s.rows = 15 : -2 : 8;
+        %>      s.rows = [12, 46, 7, 8, 9, 4, 7, 163];
+        %>
+        %>  \endcode
+        %>
+        %>  \warning
+        %>  If ``rows`` is empty, the default will be all rows of the ``dfref``.
+        %>
+        %>  \note
+        %>  The [pm.data.DataFrame.rowslog()](@ref DataFrame::rowslog) method of this class
         %>  can be used to generate logarithmically-spaced
         %>  row indices of the target dataframe.
         %>
@@ -56,7 +71,7 @@ classdef Subplot < pm.vis.axes.Axes
         %>
         %>  \param[in]  ptype   :   See the documentation of the corresponding
         %>                          component of the superclass constructor.
-        %>  
+        %>
         %>  \param[in]  dfref   :   The input MATLAB matrix or table containing the data to plot or
         %>                          a function handle that returns such a MATLAB matrix or table.
         %>                          Specifying a function handle is superior to specifying the
@@ -65,7 +80,7 @@ classdef Subplot < pm.vis.axes.Axes
         %>                          (**optional**. The default is an empty table.)
         %>
         %>  \return
-        %>  `self`              :   The output scalar object of class ``pm.vis.subplot.Subplot``.
+        %>  ``self``            :   The output scalar object of class ``pm.vis.subplot.Subplot``.
         %>
         %>  \interface{Subplot}
         %>  \code{.m}
@@ -86,17 +101,17 @@ classdef Subplot < pm.vis.axes.Axes
         %>          Optional property that determines the columns of
         %>          the specified dataframe to serve as the x-values.
         %>          It can have multiple forms:<br>
-        %>          <ol>  
+        %>          <ol>
         %>              <li>    a numeric or cell array of column indices in the input ``dfref``.
         %>              <li>    a string or cell array of column names in ``dfref.Properties.VariableNames``.
         %>              <li>    a cell array of a mix of the above two.
         %>              <li>    a numeric range.
         %>          </ol>
         %>          If ``colx`` is empty,<br>
-        %>          <ol>  
+        %>          <ol>
         %>              <li>  it will be set to the row indices of ``dfref`` for line/scatter axes types.
         %>              <li>  it will be set to all columns of ``dfref`` for density axes types.
-        %>          </ol>  
+        %>          </ol>
         %>          \example{Subplot}
         %>
         %>              1.  self.colx = [7, 8, 9]
@@ -104,28 +119,28 @@ classdef Subplot < pm.vis.axes.Axes
         %>              3.  self.colx = {"sampleLogFunc", 9, "sampleVariable1"}
         %>              4.  self.colx = 7:9      # every column in the data frame starting from column #7 to #9
         %>              5.  self.colx = 7:2:20   # every other column in the data frame starting from column #7 to #20
-        %>  
+        %>
         %>  \warning
         %>  In all cases, ``colx`` must have a length that is either
         %>  0 (empty), 1, or equal to the length of ``coly`` or ``colz``.
         %>  If the length is 1, then ``colx`` will be plotted against
         %>  data corresponding to each element of ``coly`` and ``colz``.
-        %>  
-        %>  \param  coly (standing for y-columns; available for all axes types except heatmap, histogram, histfit)  :  
+        %>
+        %>  \param  coly (standing for y-columns; available for all axes types except heatmap, histogram, histfit)  :
         %>          Optional property that determines the columns of
         %>          the specified dataframe to serve as the z-values.
         %>          It can have multiple forms:<br>
-        %>          <ol>      
+        %>          <ol>
         %>              <li>    a numeric or cell array of column indices in the input ``dfref``.
         %>              <li>    a string or cell array of column names in ``dfref.Properties.VariableNames``.
         %>              <li>    a cell array of a mix of the above two.
         %>              <li>    a numeric range.
-        %>          </ol>      
+        %>          </ol>
         %>          If ``coly`` is empty,<br>
         %>          <ol>
         %>              <li>    it will be set to the row indices of ``dfref`` for line/scatter axes types.
         %>              <li>    it will be set to all columns of ``dfref`` for density axes types.
-        %>          </ol>      
+        %>          </ol>
         %>
         %>          \example{Subplot}
         %>
@@ -134,28 +149,28 @@ classdef Subplot < pm.vis.axes.Axes
         %>              3.  self.coly = {"sampleLogFunc", 9, "sampleVariable1"}
         %>              4.  self.coly = 7:9      # every column in the data frame starting from column #7 to #9
         %>              5.  self.coly = 7:2:20   # every other column in the data frame starting from column #7 to #20
-        %>      
-        %>  \warning     
+        %>
+        %>  \warning
         %>  In all cases, ``coly`` must have a length that is either
         %>  0 (empty), 1, or equal to the length of ``colx`` or ``colz``.
         %>  If the length is 1, then ``coly`` will be plotted against
         %>  data corresponding to each element of ``colx`` and ``colz``.
-        %>  
+        %>
         %>  \param  colz (standing for z-columns; available only for 3D plots, e.g., line3, scatter3, lineScatter3) :
         %>          Optional property that determines the columns of
         %>          the specified dataframe to serve as the z-values.
         %>          It can have multiple forms:<br>
-        %>          <ol>  
+        %>          <ol>
         %>              <li>    a numeric or cell array of column indices in the input ``dfref``.
         %>              <li>    a string or cell array of column names in ``dfref.Properties.VariableNames``.
         %>              <li>    a cell array of a mix of the above two.
         %>              <li>    a numeric range.
-        %>          </ol>  
+        %>          </ol>
         %>          If ``colz`` is empty,<br>
-        %>          <ol>  
+        %>          <ol>
         %>              <li>    it will be set to the row indices of ``dfref`` for line/scatter axes types.
         %>              <li>    it will be set to all columns of ``dfref`` for density axes types.
-        %>          </ol>  
+        %>          </ol>
         %>          \example{Subplot}
         %>
         %>              1.  self.colz = [7, 8, 9]
@@ -163,24 +178,24 @@ classdef Subplot < pm.vis.axes.Axes
         %>              3.  self.colz = {"sampleLogFunc", 9, "sampleVariable1"}
         %>              4.  self.colz = 7:9      # every column in the data frame starting from column #7 to #9
         %>              5.  self.colz = 7:2:20   # every other column in the data frame starting from column #7 to #20
-        %>  
-        %>  \warning 
+        %>
+        %>  \warning
         %>  In all cases, ``colz`` must have a length that is either
         %>  0 (empty), 1, or equal to the length of ``colx`` or ``coly``.
         %>  If the length is 1, then ``colz`` will be plotted against
         %>  data corresponding to each element of ``colx`` and ``coly``.
-        %>  
+        %>
         %>  \param  colc (standing for color-columns; available only for 2D/3D line/scatter axes types) :
         %>          Optional property that determines the columns of the input ``dfref`` to
         %>          use as the color mapping values for each line/point element in the plot.
         %>          It can have multiple forms:
-        %>          <ol>  
+        %>          <ol>
         %>              <li>    a numeric or cell array of column indices in the input ``dfref``.
         %>              <li>    a string or cell array of column names in ``dfref.Properties.VariableNames``.
         %>              <li>    a cell array of a mix of the above two.
         %>              <li>    a numeric range.
-        %>          </ol>  
-        %>          The default value is the indices of the rows of the input ``dfref``.  
+        %>          </ol>
+        %>          The default value is the indices of the rows of the input ``dfref``.
         %>          \example{Subplot}
         %>
         %>              1.  self.colc = [7,8,9]
@@ -188,13 +203,13 @@ classdef Subplot < pm.vis.axes.Axes
         %>              3.  self.colc = {"sampleLogFunc", 9, "sampleVariable1"}
         %>              4.  self.colc = 7:9      # every column in the data frame starting from column #7 to #9
         %>              5.  self.colc = 7:2:20   # every other column in the data frame starting from column #7 to #20
-        %>  
+        %>
         %>  \warning
         %>  In all cases, ``colc`` must have a length that is either 0, or 1, or equal
         %>  to the maximum lengths of ``(colx, coly, colz)``. If the length is 1, then all data
         %>  will be plotted with the same color mapping determined by values specified by the elements
         %>  of ``colc``. If it is an empty object having length 0, then the default value will be used.
-        %>  
+        %>
         %>  \final{Subplot}
         %>
         %>  \author

@@ -2,8 +2,6 @@
 %>  Return a scalar MATLAB string containing the path to
 %>  the ``lib`` directory of the ParaMonte library package.
 %>
-%>  \param  `None`
-%>
 %>  \return
 %>  `path`  :   The output scalar MATLAB string containing the path to
 %>              the ``lib`` directory of the ParaMonte library package.
@@ -11,9 +9,10 @@
 %>  \interface{lib}
 %>  \code{.m}
 %>
-%>      path = pm.lib.path.lib()
+%>      path = pm.lib.path.lib();
 %>
 %>  \endcode
+%>
 %>  \final{lib}
 %>
 %>  \author

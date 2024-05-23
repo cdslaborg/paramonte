@@ -3,23 +3,22 @@
 %>  all currently possible builds of the ParaMonte MATLAB
 %>  shared libraries.
 %>
+%>  \return
+%>  ``typelist``    :   The output MATLAB string list containing the 
+%>                      value ``["native", "tuned", "ipo", "release", "testing", "debug"]``.
+%>
+%>  \interface{bldtypes}
+%>  \code{.m}
+%>
+%>      typelist = pm.lib.bldtypes();
+%>
+%>  \endcode
+%>
 %>  \devnote
 %>  The build names within this function must be
 %>  regularly updated with the latest build names
 %>  available in the ParaMonte installation guide.
 %>
-%>  \params `None`
-%>
-%>  \return
-%>  `typelist`  :   A MATLAB string list containing:
-%>                  ``["native", "tuned", "ipo", "release", "testing", "debug"]``
-%>
-%>  \interface{bldtypes}
-%>  \code{.m}
-%>
-%>      typelist = pm.lib.bldtypes()
-%>
-%>  \endcode
 %>  \final{bldtypes}
 %>
 %>  \author
