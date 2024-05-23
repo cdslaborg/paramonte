@@ -28,6 +28,7 @@ classdef Subplot < pm.vis.axes.Axes
         %>                          <li>    a list of row indices of the ``dfref``.
         %>                      </ol>              
         %>                      \example{Subplot}
+        %>
         %>                          1.  rows = 15 : -2 : 8
         %>                          2.  rows = [12, 46, 7, 8, 9, 4, 7, 163]
         %>                      If ``rows`` is empty, the default will be all rows of the ``dfref``.
@@ -97,6 +98,7 @@ classdef Subplot < pm.vis.axes.Axes
         %>              <li>  it will be set to all columns of ``dfref`` for density axes types.
         %>          </ol>  
         %>          \example{Subplot}
+        %>
         %>              1.  self.colx = [7, 8, 9]
         %>              2.  self.colx = ["sampleLogFunc", "sampleVariable1"]
         %>              3.  self.colx = {"sampleLogFunc", 9, "sampleVariable1"}
@@ -126,6 +128,7 @@ classdef Subplot < pm.vis.axes.Axes
         %>          </ol>      
         %>
         %>          \example{Subplot}
+        %>
         %>              1.  self.coly = [7, 8, 9]
         %>              2.  self.coly = ["sampleLogFunc", "sampleVariable1"]
         %>              3.  self.coly = {"sampleLogFunc", 9, "sampleVariable1"}
@@ -154,6 +157,7 @@ classdef Subplot < pm.vis.axes.Axes
         %>              <li>    it will be set to all columns of ``dfref`` for density axes types.
         %>          </ol>  
         %>          \example{Subplot}
+        %>
         %>              1.  self.colz = [7, 8, 9]
         %>              2.  self.colz = ["sampleLogFunc", "sampleVariable1"]
         %>              3.  self.colz = {"sampleLogFunc", 9, "sampleVariable1"}
@@ -178,6 +182,7 @@ classdef Subplot < pm.vis.axes.Axes
         %>          </ol>  
         %>          The default value is the indices of the rows of the input ``dfref``.  
         %>          \example{Subplot}
+        %>
         %>              1.  self.colc = [7,8,9]
         %>              2.  self.colc = ["sampleLogFunc", "sampleVariable1"]
         %>              3.  self.colc = {"sampleLogFunc", 9, "sampleVariable1"}
@@ -232,6 +237,7 @@ classdef Subplot < pm.vis.axes.Axes
         %>  \endcode
         %>
         %>  \example{make}
+        %>
         %>      dfref = rand(1000, 3);
         %>      s = pm.vis.subplot.Subplot("scatter", dfref);
         %>      s.make("colx", 1, "coly", 2, "colc", 3)
@@ -846,6 +852,7 @@ classdef Subplot < pm.vis.axes.Axes
         %>  \endcode
         %>
         %>  \example{premake}
+        %>
         %>      dfref = rand(1000, 3);
         %>      s = pm.vis.subplot.Subplot("scatter", dfref);
         %>      s.premake("colx", 1, "coly", 2, "colc", 3)

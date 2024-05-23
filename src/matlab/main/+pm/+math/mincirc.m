@@ -27,6 +27,7 @@
 %>
 %>  \endcode
 %>  \example{mincirc}
+%>
 %>      [nrow, ncol] = pm.math.mincirc(5); % 3, 2
 %>      [nrow, ncol] = pm.math.mincirc(21); % 7, 3
 %>

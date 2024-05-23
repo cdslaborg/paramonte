@@ -33,6 +33,7 @@
 %>  \endcode
 %>
 %>  \example{index}
+%>
 %>      loc = pm.str.index("paramonte", "") % 1
 %>      loc = pm.str.index("paramonte", "M") % 0
 %>      loc = pm.str.index("paramonte", "mont") % 5

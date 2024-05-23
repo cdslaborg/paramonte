@@ -44,6 +44,7 @@ classdef Ellipse3 < pm.vis.cascade.Cascade
         %>  \endcode
         %>
         %>  \example{Ellipse3}
+        %>
         %>      p = pm.vis.cascade.Ellipse3();
         %>      p.make("dims", [1, 2]);
         %>

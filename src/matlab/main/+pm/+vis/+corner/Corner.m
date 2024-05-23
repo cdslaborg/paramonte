@@ -351,6 +351,7 @@ classdef Corner < pm.vis.figure.Tiling
         %>  `None`
         %>
         %>  \example{premake}
+        %>
         %>      For example, change the left/bottom margin of the main
         %>      axis of the figure to provide room for lengthy variable names.
         %>      Then call the ``self.update()`` method to reflect the changes.

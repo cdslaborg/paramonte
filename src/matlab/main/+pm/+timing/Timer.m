@@ -30,6 +30,7 @@
 %>  \endcode
 %>
 %>  \example{Timer}
+%>
 %>      timer = pm.timing.Timer()
 %>      timer.tic();
 %>      pause(1);

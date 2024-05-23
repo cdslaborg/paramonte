@@ -20,6 +20,7 @@
 %>  \endcode
 %>
 %>  \example{cold}
+%>
 %>      imagesc(peaks(500));
 %>      colormap(pm.vis.cmap.cold());
 %>      colorbar;

@@ -85,6 +85,7 @@ classdef Heatmap < pm.vis.subplot.Subplot
         %>  \endcode
         %>
         %>  \example{setcl}
+        %>
         %>      h = pm.vis.subplot.Heatmap(dfref);
         %>      h.make()
         %>      h.setcl() % symmetrize the current range.

@@ -30,61 +30,59 @@ classdef Sampler < pm.matlab.Handle
         %>
         input = "";
         %>
-        %>   \param[in] checked :   Optional scalar MATLAB logical.
-        %>                          If set to ``true``, then the checked (verified) versions of the
-        %>                          ParaMonte MATLAB shared libraries will be used for simulations.
-        %>                          This means that most function calls and computations will be
-        %>                          checked at runtime to ensure correctness, at the cost of
-        %>                          noticeably slower runtime simulation speeds.<br>
-        %>                          Set this option to ``true`` only for diagnostics, testing, and development.
-        %>                          If set to empty, the sampler will first search for the non-checked version
-        %>                          and if none found, will search for a checked version of the library.
+        %>   \param checked :   Optional scalar MATLAB logical.
+        %>                      If set to ``true``, then the checked (verified) versions of the
+        %>                      ParaMonte MATLAB shared libraries will be used for simulations.
+        %>                      This means that most function calls and computations will be
+        %>                      checked at runtime to ensure correctness, at the cost of
+        %>                      noticeably slower runtime simulation speeds.<br>
+        %>                      Set this option to ``true`` only for diagnostics, testing, and development.
+        %>                      If set to empty, the sampler will first search for the non-checked version
+        %>                      and if none found, will search for a checked version of the library.
         %>
         checked = [];
         %>
-        %>  \param[in]  mpiname :   Optional scalar MATLAB string representing the (vendor) name of the
-        %>                          MPI runtime library. The following three library names are supported:<br>
-        %>                          
-        %>                              -   "impi"      :   The Intel MPI runtime library (Windows/Linux).
-        %>                              -   "mpich"     :   The MPICH MPI runtime library (Linux/macOS).
-        %>                              -   "openmpi"   :   The OpenMPI runtime library (Linux/macOS).<br>
-        %>                          
-        %>                          By default, you should set this argument to ``pm.lib.mpi.choice()``
-        %>                          to enable the right preferred choice of MPI-enabled ParaMonte libraries.
-        %>                          If for any reason, you want to use a non-preferred non-default MPI library,
-        %>                          you can set the MPI library name explicitly as in the above list.<br>
-        %>                          Beware that you must launch MATLAB with an ``mpiexec`` binary that
-        %>                          comes from the same MPI library vendor specified for ``mpiname``.
-        %>                          Note that the MPI-parallel ParaMonte shared libraries
-        %>                          corresponding to the specified value for ``mpiname``
-        %>                          may not exist in the ParaMonte package.
-        %>                          For example,<br>
-        %>                              -   On Windows, only ParaMonte library
-        %>                                  builds with Intel MPI are supported.<br>
-        %>                              -   On Linux, the ParaMonte library builds with
-        %>                                  all MPI libraries listed above are supported,
-        %>                                  but there is no guarantee of their availability in
-        %>                                  the package. Only the ParaMonte library builds with
-        %>                                  Intel MPI (``"impi"``) are guaranteed to exist,
-        %>                                  unless user builds the ParaMonte MATLAB package
-        %>                                  from GitHub source for the desired MPI library.<br>
-        %>                              -   On Darwin (macOS), only the ParaMonte shared library
-        %>                                  builds with MPICH and OpenMPI libraries are supported,
-        %>                                  but there is no guarantee of their availability in the
-        %>                                  package. Only the ParaMonte library builds with OpenMPI
-        %>                                  (``"openmpi"``) are guaranteed to exist, unless user
-        %>                                  builds the ParaMonte MATLAB package from GitHub
-        %>                                  source for the desired specified MPI library.<br>
-        %>                          \warning                        
-        %>                          USE THIS OPTIONAL ARGUMENT ONLY IF YOU KNOW ITS RAMIFICATIONS.
-        %>                          This option should rarely be needed in any normal simulation..<br>
-        %>                          The default value for ``mpiname`` is an empty string,
+        %>  \param  mpiname :   Optional scalar MATLAB string representing the (vendor) name of the
+        %>                      MPI runtime library. The following three library names are supported:<br>
+        %>                          -   "impi"      :   The Intel MPI runtime library (Windows/Linux).
+        %>                          -   "mpich"     :   The MPICH MPI runtime library (Linux/macOS).
+        %>                          -   "openmpi"   :   The OpenMPI runtime library (Linux/macOS).<br>
+        %>                      By default, you should set this argument to ``pm.lib.mpi.choice()``
+        %>                      to enable the right preferred choice of MPI-enabled ParaMonte libraries.
+        %>                      If for any reason, you want to use a non-preferred non-default MPI library,
+        %>                      you can set the MPI library name explicitly as in the above list.<br>
+        %>                      Beware that you must launch MATLAB with an ``mpiexec`` binary that
+        %>                      comes from the same MPI library vendor specified for ``mpiname``.
+        %>                      Note that the MPI-parallel ParaMonte shared libraries
+        %>                      corresponding to the specified value for ``mpiname``
+        %>                      may not exist in the ParaMonte package.
+        %>                      For example,<br>
+        %>                          -   On Windows, only ParaMonte library
+        %>                              builds with Intel MPI are supported.<br>
+        %>                          -   On Linux, the ParaMonte library builds with
+        %>                              all MPI libraries listed above are supported,
+        %>                              but there is no guarantee of their availability in
+        %>                              the package. Only the ParaMonte library builds with
+        %>                              Intel MPI (``"impi"``) are guaranteed to exist,
+        %>                              unless user builds the ParaMonte MATLAB package
+        %>                              from GitHub source for the desired MPI library.<br>
+        %>                          -   On Darwin (macOS), only the ParaMonte shared library
+        %>                              builds with MPICH and OpenMPI libraries are supported,
+        %>                              but there is no guarantee of their availability in the
+        %>                              package. Only the ParaMonte library builds with OpenMPI
+        %>                              (``"openmpi"``) are guaranteed to exist, unless user
+        %>                              builds the ParaMonte MATLAB package from GitHub
+        %>                              source for the desired specified MPI library.<br>
+        %>                      \warning                        
+        %>                      USE THIS OPTIONAL ARGUMENT ONLY IF YOU KNOW ITS RAMIFICATIONS.
+        %>                      This option should rarely be needed in any normal simulation..<br>
+        %>                      The default value for ``mpiname`` is an empty string,
         %>                          implying no use of MPI-enabled ParaMonte library routines.
         %>
         mpiname = "";
         %>
-        %>  \param[in]  silent  :   Optional logical (Boolean) indicator which is ``false`` by default.
-        %>                          If it is set to ``true``, it will silence all output postprocessing messages.
+        %>  \param  silent  :   Optional logical (Boolean) indicator which is ``false`` by default.
+        %>                      If it is set to ``true``, it will silence all output postprocessing messages.
         %>
         %>  \note
         %>  Setting ``mpiname`` to a non-empty string
@@ -92,10 +90,10 @@ classdef Sampler < pm.matlab.Handle
         %>
         silent = false;
         %>
-        %>  \param[in]  spec    :   A MATLAB structure containing all simulation specifications.
-        %>                          All specifications are set to appropriate default values at runtime.
-        %>                          Set the `spec` attributes to the desired values of your choice
-        %>                          to override the default simulation specifications.
+        %>  \param  spec    :   A MATLAB structure containing all simulation specifications.
+        %>                      All specifications are set to appropriate default values at runtime.
+        %>                      Set the `spec` attributes to the desired values of your choice
+        %>                      to override the default simulation specifications.
         %>
         spec = [];
     end
@@ -117,9 +115,9 @@ classdef Sampler < pm.matlab.Handle
         %njob = [];
         nml = [];
         %>
-        %>  \param[in]  libspec :   Optional scalar MATLAB string containing a list of colon-(:)-separated
-        %>                          configurations of the kernel shared library to be used for the sampling task.
-        %>                          The most important of all is the compiler suite with which the library is built.
+        %>  \param  libspec :   Optional scalar MATLAB string containing a list of colon-(:)-separated
+        %>                      configurations of the kernel shared library to be used for the sampling task.
+        %>                      The most important of all is the compiler suite with which the library is built.
         %>
         %>  \warning
         %>  USE THIS OPTIONAL ARGUMENT ONLY IF YOU KNOW WHAT YOU ARE DOING.

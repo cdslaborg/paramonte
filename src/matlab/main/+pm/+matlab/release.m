@@ -21,6 +21,7 @@
 %>
 %>  \endcode
 %>  \example{release}
+%>
 %>      matlabReleaseSeason = pm.matlab.release("minor");
 %>      matlabReleaseSeason = pm.matlab.release("season");
 %>      matlabReleaseYear = str2double(pm.matlab.release("year"));

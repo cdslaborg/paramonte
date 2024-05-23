@@ -24,6 +24,7 @@
 %>
 %>  \endcode
 %>  \example{addKeyVal}
+%>
 %>      hashmap = {"key1", 1, "key2", "val2"};
 %>      hashnew = pm.matlab.hashmap.addKeyVal("key3", false, {})
 %>      hashnew = pm.matlab.hashmap.addKeyVal("key2", "val2", hashmap) % = hashmap

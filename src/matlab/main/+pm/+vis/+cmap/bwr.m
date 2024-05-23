@@ -30,6 +30,7 @@
 %>
 %>
 %>  \example{bwr}
+%>
 %>      figure;
 %>      imagesc(peaks(500));
 %>      colormap(pm.vis.cmap.bwr(256));

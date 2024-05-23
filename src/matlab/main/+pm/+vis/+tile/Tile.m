@@ -164,6 +164,7 @@ classdef Tile < pm.vis.figure.Tiling
         %>  \endcode
         %>
         %>  \example{make}
+        %>
         %>      t = pm.vis.tile.Tile(pm.vis.subplot.Line());
         %>      t.make()
         %>
@@ -383,6 +384,7 @@ classdef Tile < pm.vis.figure.Tiling
         %>  \endcode
         %>
         %>  \example{getBorder}
+        %>
         %>      f = pm.vis.tile.Tile(pm.vis.Line());
         %>      f.premake("figure", {"color", "none"})
         %>

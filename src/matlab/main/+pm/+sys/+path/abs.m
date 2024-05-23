@@ -55,6 +55,7 @@
 %>  \endcode
 %>
 %>  \example{abs}
+%>
 %>      cd(tempdir);                                        % Assumed as 'C:\Temp' here
 %>      pm.sys.path.abs('File.Ext')                         % 'C:\Temp\File.Ext'
 %>      pm.sys.path.abs('..\File.Ext')                      % 'C:\File.Ext'

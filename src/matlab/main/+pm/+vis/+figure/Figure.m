@@ -120,6 +120,7 @@ classdef Figure < pm.matlab.Handle
         %>  \endcode
         %>
         %>  \example{make}
+        %>
         %>      f = pm.vis.figure.Figure();
         %>      f.make()
         %>
@@ -254,6 +255,7 @@ classdef Figure < pm.matlab.Handle
         %>
         %>
         %>  \example{premake}
+        %>
         %>      f = pm.vis.figure.Figure();
         %>      f.premake("figure", {"color", "none"})
         %>
@@ -575,6 +577,7 @@ classdef Figure < pm.matlab.Handle
         %>  \endcode
         %>
         %>  \example{savefig}
+        %>
         %>      expoortFig(); % export the current figure with the default name.
         %>      expoortFig("gridplot.pdf") % export figure to the specified PDF file.
         %>      expoortFig("gridplot.png", "-m4 -transparent") % export a large png plot of magnitude 4 with transparency.

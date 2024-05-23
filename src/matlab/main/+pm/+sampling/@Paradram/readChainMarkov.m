@@ -48,6 +48,7 @@
 %>  in the file to the full verbose Markov chain format.
 %>
 %>  \example{readChainMarkov}
+%>
 %>      sampler = pm.sampling.Paradram()
 %>      sampler.readChainMarkov();
 

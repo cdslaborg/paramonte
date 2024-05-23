@@ -36,6 +36,7 @@
 %>  \endcode
 %>
 %>  \example{getBorder}
+%>
 %>      rand = pm.stats.dist.mvn.rand(zeros(2, 1))
 %>      histogram(pm.stats.dist.mvn.rand(zeros(2, 1), [], 10000))
 %>      histogram(pm.stats.dist.mvn.rand([-3, 3], chol([1 .5; .5, 1], "lower"), 10000))

@@ -174,6 +174,7 @@ classdef SpecBase < pm.matlab.Handle
         %>
         %>  \endcode
         %>  \example{getBorder}
+        %>
         %>      pmpd.spec.doc()                 % return help for all specifications.
         %>      pmpd.spec.doc("outputFileName") % return help for the specification ``outputFileName``.
         %>

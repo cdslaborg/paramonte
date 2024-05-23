@@ -2,7 +2,7 @@
 %>  Return a scalar MATLAB string containing the
 %>  root directory of the ParaMonte library package.
 %>
-%>  \params `None`
+%>  \param  `None`
 %>
 %>  \return
 %>  `path`  :   A scalar MATLAB string containing the root

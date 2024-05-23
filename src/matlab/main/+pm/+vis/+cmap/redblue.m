@@ -26,6 +26,7 @@
 %>  \endcode
 %>
 %>  \example{redblue}
+%>
 %>      imagesc(peaks(500));
 %>      colormap(pm.vis.cmap.redblue());
 %>      colorbar;

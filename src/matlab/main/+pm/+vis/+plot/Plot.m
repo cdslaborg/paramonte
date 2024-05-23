@@ -139,6 +139,7 @@ classdef Plot < pm.vis.figure.Figure
         %>  \endcode
         %>
         %>  \example{make}
+        %>
         %>      p = pm.vis.plot.Plot(pm.vis.subplot.Line());
         %>      p.make()
         %>
@@ -191,6 +192,7 @@ classdef Plot < pm.vis.figure.Figure
         %>  \endcode
         %>
         %>  \example{getBorder}
+        %>
         %>      f = pm.vis.plot.Plot(pm.vis.Line());
         %>      f.premake("figure", {"color", "none"})
         %>

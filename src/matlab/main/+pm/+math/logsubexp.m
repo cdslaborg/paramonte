@@ -24,6 +24,7 @@
 %>
 %>  \endcode
 %>  \example{logsubexp}
+%>
 %>      pm.math.logsubexp(log(400), log(1000))
 %>
 %>  \final{logsubexp}

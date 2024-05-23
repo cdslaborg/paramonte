@@ -246,6 +246,7 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
         %>  \endcode
         %>
         %>  \example{Ellipse3}
+        %>
         %>      s = pm.vis.subplot.Ellipse3();
         %>      s.make("dims", [1, 2]);
         %>
@@ -354,6 +355,7 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
         %>  \endcode
         %>
         %>  \example{premake}
+        %>
         %>      s = pm.vis.subplot.Ellipse3();
         %>      s.premake("dims", [1, 2], "colormap", {"map", "autumn"})
         %>
@@ -778,6 +780,7 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
         %>  \endcode
         %>
         %>  \example{make}
+        %>
         %>      s = pm.vis.subplot.Ellipse3();
         %>      s.make("dims", [1, 2]);
         %>

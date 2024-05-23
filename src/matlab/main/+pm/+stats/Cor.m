@@ -36,21 +36,21 @@ classdef Cor < pm.matlab.Handle
 
     properties(Access = public)
         %>  
-        %>  \param[in]  method  :   The scalar MATLAB string containing the
-        %>                          method of computing the correlation matrix.
-        %>                          It can be either:<br>
-        %>                          "pearson"   : for computing the Pearson correlation matrix of the input data.
-        %>                          "kendall"   : for computing the kendall rank correlation matrix of the input data.
-        %>                          "spearman"  : for computing the Spearman rank correlation matrix of the input data.
+        %>  \param  method  :   The scalar MATLAB string containing the
+        %>                      method of computing the correlation matrix.
+        %>                      It can be either:<br>
+        %>                      "pearson"   : for computing the Pearson correlation matrix of the input data.
+        %>                      "kendall"   : for computing the kendall rank correlation matrix of the input data.
+        %>                      "spearman"  : for computing the Spearman rank correlation matrix of the input data.
         %>  
         %>  
         method = "pearson";
         %>
-        %>  \param[in]  val     :   The MATLAB table of rank ``2`` serving as a
-        %>                          convenient storage component for the correlation matrix.<br>
-        %>                          This component is automatically populated at the time of
-        %>                          constructing an object of class ``pm.stats.Cor``.<br>
-        %>                          It must be populated manually at all other times.
+        %>  \param  val     :   The MATLAB table of rank ``2`` serving as a
+        %>                      convenient storage component for the correlation matrix.<br>
+        %>                      This component is automatically populated at the time of
+        %>                      constructing an object of class ``pm.stats.Cor``.<br>
+        %>                      It must be populated manually at all other times.
         %>
         val = [];
     end

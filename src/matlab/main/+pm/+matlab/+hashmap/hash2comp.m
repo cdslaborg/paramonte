@@ -61,6 +61,7 @@
 %>
 %>  \endcode
 %>  \example{hash2comp}
+%>
 %>      hashmap = {"key1", 2, "key2", "hash", "key3", true, "key4", 0};
 %>      object = struct("key1", 1, "key2", "val2", "Key2", "val2duplicate", "key3", false, "key4", []);
 %>      objnew = pm.matlab.hashmap.hash2comp(hashmap, object)

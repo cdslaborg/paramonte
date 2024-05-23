@@ -28,6 +28,7 @@
 %>
 %>  \endcode
 %>  \example{popKeyVal}
+%>
 %>      hashmap = {"key1", 1, "key2", "val2", "key3", false, "key2", "last"};
 %>      [keyval, hashout] = pm.matlab.hashmap.popKeyVal("key2", hashmap)
 %>      [keyval, hashout] = pm.matlab.hashmap.popKeyVal("key3", hashmap)

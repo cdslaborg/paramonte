@@ -25,6 +25,7 @@
 %>
 %>  \endcode
 %>  \example{getKeyVal}
+%>
 %>      hashmap = {"key1", 1, "key2", "val2", "key3", false};
 %>      [val, failed] = pm.matlab.hashmap.getKeyVal("key2", hashmap) % = "val2"
 %>      [val, failed] = pm.matlab.hashmap.getKeyVal("key3", hashmap) % = false

@@ -42,6 +42,7 @@ classdef Ellipse < pm.vis.cascade.Cascade
         %>
         %>
         %>  \example{getBorder}
+        %>
         %>      p = pm.vis.cascade.Ellipse();
         %>      p.make("dims", [1, 2]);
         %>

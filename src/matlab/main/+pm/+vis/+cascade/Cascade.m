@@ -9,13 +9,13 @@ classdef Cascade < pm.matlab.Handle
 
     properties(Access = public)
         %>
-        %>  \param[in]  window      :   The scalar object of superclass ``pm.vis.cascade.Cascade``
-        %>                              representing the cascade of plots to display.
+        %>  \param  window      :   The scalar object of superclass ``pm.vis.cascade.Cascade``
+        %>                          representing the cascade of plots to display.
         %>
         window = [];
         %>
-        %>  \param[in]  template    :   The scalar object of superclass ``pm.vis.cascade.Cascade``
-        %>                              representing the template of the cascade of plots to display.
+        %>  \param  template    :   The scalar object of superclass ``pm.vis.cascade.Cascade``
+        %>                          representing the template of the cascade of plots to display.
         %>
         template = [];
     end
@@ -151,6 +151,7 @@ classdef Cascade < pm.matlab.Handle
         %>  \endcode
         %>
         %>  \example{make}
+        %>
         %>      p = pm.vis.cascade.Cascade("coly", 1:3);
         %>      p.make()
         %>
@@ -270,6 +271,7 @@ classdef Cascade < pm.matlab.Handle
         %>
         %>
         %>  \example{getBorder}
+        %>
         %>      c = pm.vis.cascade.Cascade(pm.vis.plot.Line());
         %>      c.savefigs(); % export the current figure with the default name.
         %>      c.savefigs("gridplot.pdf") % export figure to the specified PDF file.
@@ -332,6 +334,7 @@ classdef Cascade < pm.matlab.Handle
         %>  \endcode
         %>
         %>  \example{premake}
+        %>
         %>      c = pm.vis.cascade.Cascade();
         %>      c.premake("figure", {"color", "none"})
         %>

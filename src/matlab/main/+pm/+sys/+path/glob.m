@@ -64,6 +64,7 @@
 %>  \endcode
 %>
 %>  \example{getBorder}
+%>
 %>      glob *.m        list all .m files in current directory.
 %>
 %>      glob baz/*      list all files and directories in subdirectory 'baz'.

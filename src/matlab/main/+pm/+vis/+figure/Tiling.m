@@ -128,6 +128,7 @@ classdef Tiling < pm.vis.figure.Figure
         %>  \endcode
         %>
         %>  \example{make}
+        %>
         %>      f = pm.vis.figure.Tiling();
         %>      f.make()
         %>
@@ -263,6 +264,7 @@ classdef Tiling < pm.vis.figure.Figure
         %>
         %>  %>  \interface{premake}
         %>  \example{premake}
+        %>
         %>      For example, change the left/bottom margin of the main
         %>      axis of the figure to provide room for lengthy variable names.
         %>      Then call the ``self.update()`` method to reflect the changes.

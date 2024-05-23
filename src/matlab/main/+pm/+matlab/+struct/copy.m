@@ -26,12 +26,13 @@
 %>
 %>  \interface{copy}
 %>  \code{.m}
-%>  \endcode
 %>
 %>      tonew = pm.matlab.struct.copy(from)
 %>      tonew = pm.matlab.struct.copy(from, to)
 %>      tonew = pm.matlab.struct.copy(from, [], fields)
 %>      tonew = pm.matlab.struct.copy(from, to, fields)
+%>
+%>  \endcode
 %>
 %>  \final{copy}
 %>

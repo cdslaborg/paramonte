@@ -3,49 +3,15 @@
 %>  This is the abstract class for generating instances of objects
 %>  that can contain basic attributes required for storing reference
 %>  to a given data.
-%>
-%>  \details
-%>  This class is merely a convenience read-only
-%>  wrapper to reference external data.
-%>
-%>  \param[in]  dfref   :   The input object containing the target dataset
-%>                          or function handle that takes no arguments and returns the dataset.<br>
-%>                          Specifying a function handle is superior to specifying the dataset
-%>                          directly, because the function handle will always allow the use of
-%>                          the most updated version of the user table or matrix.<br>
-%>                          (**optional**. default = ``[]``)
-%>
-%>  \return
-%>  `self`              :   The output scalar object of class ``pm.data.DataRef``.
-%>
-%>  \interface{DataRef}
-%>  \code{.m}
-%>
-%>      df = pm.data.DataRef(dfref);
-%>
-%>  \endcode
-%>
-%>  \note
-%>  This class primarily exist to facilitate bypassing
-%>  the lack of references and pointers in MATLAB.<br>
-%>
-%>  \see
-%>  [DataFrame](@ref DataFrame)<br>
-%>  See the class attributes descriptions.<br>
-%>
-%>  \final{DataRef}
-%>
-%>  \author
-%>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin<br>
 classdef DataRef < pm.matlab.Handle
 
     properties(Access = protected, Hidden)
         %>
-        %>  dfref   :   A ``protected`` and ``Hidden`` copy of the user-specified
-        %>              input data (or its handle) ``dfref`` to the class constructor.
-        %>              This is an exact copy of the user-specified function handle or data.
-        %>              Users are supposed to access this component only
-        %>              via the class method ``pm.data.DataRef.copy()``.
+        %>  \param  dfref   :   A ``protected`` and ``Hidden`` copy of the user-specified
+        %>                      input data (or its handle) ``dfref`` to the class constructor.
+        %>                      This is an exact copy of the user-specified function handle or data.
+        %>                      Users are supposed to access this component only
+        %>                      via the class method ``pm.data.DataRef.copy()``.
         %>
         dfref;
     end
@@ -56,6 +22,40 @@ classdef DataRef < pm.matlab.Handle
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        %>
+        %>  \details
+        %>  This class is merely a convenience read-only
+        %>  wrapper to reference external data.
+        %>
+        %>  \param[in]  dfref   :   The input object containing the target dataset
+        %>                          or function handle that takes no arguments and returns the dataset.<br>
+        %>                          Specifying a function handle is superior to specifying the dataset
+        %>                          directly, because the function handle will always allow the use of
+        %>                          the most updated version of the user table or matrix.<br>
+        %>                          (**optional**. default = ``[]``)
+        %>
+        %>  \return
+        %>  `self`              :   The output scalar object of class ``pm.data.DataRef``.
+        %>
+        %>  \interface{DataRef}
+        %>  \code{.m}
+        %>
+        %>      df = pm.data.DataRef(dfref);
+        %>
+        %>  \endcode
+        %>
+        %>  \note
+        %>  This class primarily exist to facilitate bypassing
+        %>  the lack of references and pointers in MATLAB.<br>
+        %>
+        %>  \see
+        %>  [DataFrame](@ref DataFrame)<br>
+        %>  See the class attributes descriptions.<br>
+        %>
+        %>  \final{DataRef}
+        %>
+        %>  \author
+        %>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin<br>
         function self = DataRef(dfref)
             if  nargin < 1
                 dfref = [];

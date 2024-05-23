@@ -26,6 +26,7 @@
 %>  \endcode
 %>
 %>  \example{locname}
+%>
 %>      [loclist, namlist] = pm.str.locname(["library", "paramonte"], "paramonte") % 2, "paramonte"
 %>      [loclist, namlist] = pm.str.locname(["library", "paramonte"], ["paramonte", 1]) % [2, 1] ["paramonte" "library"]
 %>

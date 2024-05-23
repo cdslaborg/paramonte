@@ -68,6 +68,7 @@ classdef Ellipse < pm.vis.subplot.Ellipse3
         %>  \endcode
         %>
         %>  \example{Ellipse}
+        %>
         %>      s = pm.vis.subplot.Ellipse();
         %>      s.make("dims", [1, 2]);
         %>
@@ -124,6 +125,7 @@ classdef Ellipse < pm.vis.subplot.Ellipse3
         %>  \endcode
         %>
         %>  \example{make}
+        %>
         %>      s = pm.vis.subplot.Ellipse();
         %>      s.make("dims", [1, 2]);
         %>

@@ -41,6 +41,7 @@ classdef Ellipse < pm.vis.plot.Plot
         %>  \endcode
         %>
         %>  \example{Ellipse}
+        %>
         %>      p = pm.vis.plot.Ellipse();
         %>      p.make("dims", [1, 2]);
         %>

@@ -9,9 +9,9 @@
 %>
 %>  \interface{mac}
 %>  \code{.m}
-%>  \endcode
-%>
 %>      itis = pm.os.is.mac()
+%>
+%>  \endcode
 %>
 %>  \final{mac}
 %>

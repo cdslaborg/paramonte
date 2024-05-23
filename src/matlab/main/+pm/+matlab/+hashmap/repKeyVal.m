@@ -26,6 +26,7 @@
 %>
 %>  \endcode
 %>  \example{repKeyVal}
+%>
 %>      hashmap = {"key1", 1, "key2", "val2"};
 %>      hashnew = pm.matlab.hashmap.repKeyVal("key2", 2, hashmap)
 %>      hashnew = pm.matlab.hashmap.repKeyVal("key3", true, hashmap)

@@ -42,6 +42,7 @@ classdef Ellipse < pm.vis.tile.Tile
         %>  \endcode
         %>
         %>  \example{Ellipse}
+        %>
         %>      t = pm.vis.tile.Ellipse();
         %>      t.make("dims", [1, 2]);
         %>
