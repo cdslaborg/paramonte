@@ -5,42 +5,41 @@
 %>
 %>  \details
 %>  This class is merely a convenience read-only wrapper
-%>  to reference external tabular data as table.
-%>
+%>  to reference external tabular data as table.<br>
 %>  This class primarily exist to facilitate bypassing
 %>  the lack of references and pointers in MATLAB.
-%>
-%>  \param[in]  dfref   :   The input MATLAB 2D matrix or table containing the target dataset
-%>                          or function handle that takes no arguments and returns the dataset.<br>
-%>                          Specifying a function handle is superior to specifying the dataset
-%>                          directly, because the function handle will always allow the use of
-%>                          the most updated version of the user table or matrix.<br>
-%>                          (**optional**. default = ``table(zeros(0, 0))``)
-%>
-%>  \return
-%>  `self`              :   The output scalar object of class ``pm.data.DataFrame``.
-%>
-%>  \interface{DataFrame}
-%>  \code{.m}
-%>
-%>      df = pm.data.DataFrame(dfref);
-%>
-%>  \endcode
-%>
-%>  \note
-%>  See the class attributes descriptions below.
-%>
-%>  \final{DataFrame}
-%>
-%>  \author
-%>  \JoshuaOsborne, May 21 2024, 4:45 PM, University of Texas at Arlington<br>
-%>
 classdef DataFrame < pm.data.DataRef
 
     methods(Access = public)
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        %>
+        %>  \param[in]  dfref   :   The input MATLAB 2D matrix or table containing the target dataset
+        %>                          or function handle that takes no arguments and returns the dataset.<br>
+        %>                          Specifying a function handle is superior to specifying the dataset
+        %>                          directly, because the function handle will always allow the use of
+        %>                          the most updated version of the user table or matrix.<br>
+        %>                          (**optional**. default = ``table(zeros(0, 0))``)
+        %>
+        %>  \return
+        %>  `self`              :   The output scalar object of class ``pm.data.DataFrame``.
+        %>
+        %>  \interface{DataFrame}
+        %>  \code{.m}
+        %>
+        %>      df = pm.data.DataFrame(dfref);
+        %>
+        %>  \endcode
+        %>
+        %>  \note
+        %>  See the class attributes descriptions below.
+        %>
+        %>  \final{DataFrame}
+        %>
+        %>  \author
+        %>  \JoshuaOsborne, May 21 2024, 4:45 PM, University of Texas at Arlington<br>
+        %>
         function self = DataFrame(dfref)
             if  nargin < 1
                 dfref = [];
