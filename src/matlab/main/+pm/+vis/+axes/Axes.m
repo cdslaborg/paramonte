@@ -60,7 +60,6 @@
 %>  The following lists the dynamic attributes and explains their functionalities.<br>
 %>
 %>  <ol>
-%>
 %>      <li>    ``axes`` (available for all plots except heatmap)<br>
 %>
 %>              A MATLAB ``struct`` whose fields and values are passed as
@@ -74,7 +73,6 @@
 %>              The following are the default components of ``colorbar``:
 %>
 %>              <ol>
-%>
 %>                  <li>    ``enabled``
 %>
 %>                          A logical value. If ``true``, the
@@ -84,8 +82,13 @@
 %>
 %>                          See the acceptable keyword arguments
 %>                          of the MATLAB intrinsic ``colorbar()``.
-%>
 %>              </ol>
+%>
+%>              \warning
+%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.<br>
+%>              Hence, ensure you do not add the same keyword as multiple different fields.<br>
+%>              For example, ``colorbar.color`` and ``colorbar.Color`` are the same,
+%>              and only one of the two will be processed.
 %>
 %>              Example usage:
 %>
@@ -96,12 +99,6 @@
 %>
 %>              \endcode
 %>
-%>              \warning
-%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
-%>              Hence, ensure you do not add the same keyword as multiple different fields.
-%>              For example, ``colorbar.color`` and ``colorbar.Color`` are the same,
-%>              and only one of the two will be processed.
-%>
 %>      <li>    ``colormap`` (available for all axes types that allow color-mapping)
 %>
 %>              A MATLAB ``struct`` whose fields and their values will be passed
@@ -109,7 +106,6 @@
 %>              The following are the default components of ``colormap``:
 %>
 %>              <ol>
-%>
 %>                  <li>    ``enabled``
 %>
 %>                          A logical value. If ``true``, the
@@ -121,8 +117,13 @@
 %>                          that the intrinsic MATLAB ``colormap`` accepts as input.
 %>
 %>                          This option is relevant only to visualizations that allow color-mapping.
-%>
 %>              </ol>
+%>
+%>              \warning
+%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.<br>
+%>              Hence, ensure you do not add the same keyword as multiple different fields.<br>
+%>              For example, ``colormap.map`` and ``colormap.Map`` are the same,
+%>              and only one of the two will be processed.<br>
 %>
 %>              Example usage:
 %>
@@ -135,12 +136,6 @@
 %>                  self.colormap.map = pm.vis.cmap.redblue();
 %>
 %>              \endcode
-%>
-%>              \warning
-%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
-%>              Hence, ensure you do not add the same keyword as multiple different fields.
-%>              For example, ``colormap.map`` and ``colormap.Map`` are the same,
-%>              and only one of the two will be processed.
 %>
 %>      <li>    ``contour`` (available only for contour axes types)
 %>
@@ -165,15 +160,14 @@
 %>
 %>                  See the acceptable keyword arguments of the MATLAB intrinsic ``contour()``.
 %>
+%>              \warning
+%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.<br>
+%>              Hence, ensure you do not add the same keyword as multiple different fields.<br>
+%>
 %>          Example usage:
 %>
 %>              1.  self.contour.enabled = true;
 %>              2.  self.contour.lineWidth = "none";
-%>
-%>          \warning
-%>
-%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
-%>              Hence, ensure you do not add the same keyword as multiple different fields.
 %>
 %>      <li>    ``contour3`` (available only for contour3 axes types)
 %>
@@ -205,14 +199,14 @@
 %>
 %>          \warning
 %>
-%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
-%>              Hence, ensure you do not add the same keyword as multiple different fields.
+%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.<br>
+%>              Hence, ensure you do not add the same keyword as multiple different fields.<br>
 %>
 %>      <li>    ``contourf`` (available only for contourf axes types)
 %>
 %>          A MATLAB ``struct`` whose fields and their values will be passed
-%>          as keyword arguments to the MATLAB intrinsic ``contourf``.
-%>          The following are the default components of ``contourf``:
+%>          as keyword arguments to the MATLAB intrinsic ``contourf``.<br>
+%>          The following are the default components of ``contourf``:<br>
 %>
 %>              ``enabled``
 %>
@@ -238,8 +232,8 @@
 %>
 %>          \warning
 %>
-%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
-%>              Hence, ensure you do not add the same keyword as multiple different fields.
+%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.<br>
+%>              Hence, ensure you do not add the same keyword as multiple different fields.<br>
 %>
 %>      <li>    histfit (available only for histfit axes types)
 %>
@@ -267,14 +261,14 @@
 %>
 %>          \warning
 %>
-%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
-%>              Hence, ensure you do not add the same keyword as multiple different fields.
+%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.<br>
+%>              Hence, ensure you do not add the same keyword as multiple different fields.<br>
 %>
 %>      <li>    histogram (available only for histogram axes types)
 %>
 %>          A MATLAB ``struct`` whose fields and their values will be passed
-%>          as keyword arguments to the MATLAB intrinsic ``histogram``.
-%>          The following are the default components of ``histogram``:
+%>          as keyword arguments to the MATLAB intrinsic ``histogram``.<br>
+%>          The following are the default components of ``histogram``:<br>
 %>
 %>              enabled
 %>
@@ -301,14 +295,14 @@
 %>
 %>          \warning
 %>
-%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
-%>              Hence, ensure you do not add the same keyword as multiple different fields.
+%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.<br>
+%>              Hence, ensure you do not add the same keyword as multiple different fields.<br>
 %>
 %>      <li>    histogram2 (available only for histogram2 axes types)
 %>
 %>          A MATLAB ``struct`` whose fields and their values will be passed
-%>          as keyword arguments to the MATLAB intrinsic ``histogram2``.
-%>          The following are the default components of ``histogram2``:
+%>          as keyword arguments to the MATLAB intrinsic ``histogram2``.<br>
+%>          The following are the default components of ``histogram2``:<br>
 %>
 %>              enabled
 %>
@@ -339,8 +333,8 @@
 %>
 %>          \warning
 %>
-%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
-%>              Hence, ensure you do not add the same keyword as multiple different fields.
+%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.<br>
+%>              Hence, ensure you do not add the same keyword as multiple different fields.<br>
 %>
 %>      <li>    legend (available for all axes types except heatmap)
 %>
@@ -350,16 +344,16 @@
 %>      <li>    maxnoise (available only for contour/contourf/contour3 axes types)
 %>
 %>          A float indicating the threshold below which the kernel density
-%>          estimate is considered to be noise and is rounded to zero.
+%>          estimate is considered to be noise and is rounded to zero.<br>
 %>          The higher this value is, the less noise will be
-%>          visible in the resulting contour plots.
-%>          If empty, the default value is ``0.001``.
+%>          visible in the resulting contour plots.<br>
+%>          If empty, the default value is ``0.001``.<br>
 %>
 %>      <li>    plot (available only for line/lineScatter axes types)
 %>
 %>          A MATLAB ``struct`` whose fields and their values will be passed
-%>          as keyword arguments to the MATLAB intrinsic ``plot``.
-%>          The following are the default components of ``plot``:
+%>          as keyword arguments to the MATLAB intrinsic ``plot``.<br>
+%>          The following are the default components of ``plot``:<br>
 %>
 %>              enabled
 %>
@@ -381,14 +375,14 @@
 %>
 %>          \warning
 %>
-%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
-%>              Hence, ensure you do not add the same keyword as multiple different fields.
+%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.<br>
+%>              Hence, ensure you do not add the same keyword as multiple different fields.<br>
 %>
 %>      <li>    plot3 (available only for line3/lineScatter3 axes types)
 %>
 %>          A MATLAB ``struct`` whose fields and their values will be passed
-%>          as keyword arguments to the MATLAB intrinsic ``plot3``.
-%>          The following are the default components of ``plot3``:
+%>          as keyword arguments to the MATLAB intrinsic ``plot3``.<br>
+%>          The following are the default components of ``plot3``:<br>
 %>
 %>              enabled
 %>
@@ -410,27 +404,27 @@
 %>
 %>          \warning
 %>
-%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
-%>              Hence, ensure you do not add the same keyword as multiple different fields.
+%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.<br>
+%>              Hence, ensure you do not add the same keyword as multiple different fields.<br>
 %>
 %>      <li>    precision (available only for heatmap axes types)
 %>
 %>          A scalar integer representing the number of digits after
 %>          the decimal point for the values that appear in each cell
-%>          of the heatmap. The default value is set by MATLAB.
+%>          of the heatmap. The default value is set by MATLAB.<br>
 %>
 %>      <li>    resolution (available only for contour/contourf/contour3 axes types)
 %>
 %>          A scalar integer indicating the grid resolution for discretization of
 %>          the data during the kernel density estimation. It must be a power of
 %>          two, otherwise it will be changed to the next power of two at the
-%>          time of using it. If empty, the default value is ``2^9``.
+%>          time of using it. If empty, the default value is ``2^9``.<br>
 %>
 %>      <li>    scatter (available only for scatter/lineScatter axes types)
 %>
 %>          A MATLAB ``struct`` whose fields and their values will be passed
-%>          as keyword arguments to the MATLAB intrinsic ``scatter``.
-%>          The following are the default components of ``scatter``:
+%>          as keyword arguments to the MATLAB intrinsic ``scatter``.<br>
+%>          The following are the default components of ``scatter``:<br>
 %>
 %>              enabled
 %>
@@ -467,14 +461,14 @@
 %>
 %>          \warning
 %>
-%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
-%>              Hence, ensure you do not add the same keyword as multiple different fields.
+%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.<br>
+%>              Hence, ensure you do not add the same keyword as multiple different fields.<br>
 %>
 %>      <li>    scatter3 (available only for scatter3/lineScatter3 axes types)
 %>
 %>          A MATLAB ``struct`` whose fields and their values will be passed
-%>          as keyword arguments to the MATLAB intrinsic ``scatter3``.
-%>          The following are the default components of ``scatter3``:
+%>          as keyword arguments to the MATLAB intrinsic ``scatter3``.<br>
+%>          The following are the default components of ``scatter3``:<br>
 %>
 %>              enabled
 %>
@@ -511,14 +505,14 @@
 %>
 %>          \warning
 %>
-%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
-%>              Hence, ensure you do not add the same keyword as multiple different fields.
+%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.<br>
+%>              Hence, ensure you do not add the same keyword as multiple different fields.<br>
 %>
 %>      <li>    surface (available only for line/lineScatter/line3/lineScatter3 axes types)
 %>
 %>          A MATLAB ``struct`` whose fields and their values will be passed
-%>          as keyword arguments to the MATLAB intrinsic ``surface``.
-%>          The following are the default components of ``surface``:
+%>          as keyword arguments to the MATLAB intrinsic ``surface``.<br>
+%>          The following are the default components of ``surface``:<br>
 %>
 %>              enabled
 %>
@@ -536,8 +530,8 @@
 %>
 %>          \warning
 %>
-%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.
-%>              Hence, ensure you do not add the same keyword as multiple different fields.
+%>              Keep in mind that MATLAB keyword arguments are case-INsensitive.<br>
+%>              Hence, ensure you do not add the same keyword as multiple different fields.<br>
 %>
 %>      <li>    title (available for all axes types)
 %>
@@ -577,23 +571,23 @@
 %>      <li>    xscale (available for all axes types)
 %>
 %>          A MATLAB string whose value is passed directly to the MATLAB intrinsic
-%>          ``xscale()`` to set the axis scale to either logarithmic or linear.
-%>          Possible values are: ``"log"``, ``"linear"``.
-%>          The default behavior is set by MATLAB.
+%>          ``xscale()`` to set the axis scale to either logarithmic or linear.<br>
+%>          Possible values are: ``"log"``, ``"linear"``.<br>
+%>          The default behavior is set by MATLAB.<br>
 %>
 %>      <li>    yscale (available for all axes types)
 %>
 %>          A MATLAB string whose value is passed directly to the MATLAB intrinsic
-%>          ``yscale()`` to set the axis scale to either logarithmic or linear.
-%>          Possible values are: ``"log"``, ``"linear"``.
-%>          The default behavior is set by MATLAB.
+%>          ``yscale()`` to set the axis scale to either logarithmic or linear.<br>
+%>          Possible values are: ``"log"``, ``"linear"``.<br>
+%>          The default behavior is set by MATLAB.<br>
 %>
 %>      <li>    zscale (available only for all tri-axes axes types)
 %>
 %>          A MATLAB string whose value is passed directly to the MATLAB intrinsic
-%>          ``zscale()`` to set the axis scale to either logarithmic or linear.
-%>          Possible values are: ``"log"``, ``"linear"``.
-%>          The default behavior is set by MATLAB.
+%>          ``zscale()`` to set the axis scale to either logarithmic or linear.<br>
+%>          Possible values are: ``"log"``, ``"linear"``.<br>
+%>          The default behavior is set by MATLAB.<br>
 %>
 %>  </ol>
 %>
