@@ -591,6 +591,9 @@
 %>
 %>  </ol>
 %>
+%>  \see
+%>  [pm.matlab.Handle](@ref Handle)<br>
+%>
 %>  \final{Axes}
 %>
 %>  \author
