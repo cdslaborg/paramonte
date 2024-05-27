@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import matplotlib.pyplot as plt
-import paramonte as pm
+#import paramonte as pm
 import pandas as pd
 import numpy as np
 import glob
