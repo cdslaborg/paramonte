@@ -636,7 +636,7 @@
 !>  </ol>
 !>
 !>  [⛓](#ParaMonteLangToDo)
-!>  \section ParaMonteLangToDo ParaMonte Fortran ToDO List
+!>  \section ParaMonteLangToDo ParaMonte Fortran ToDo List
 !>
 !>  For the full listing of all tasks to do see the dedicated [ToDo listing page](./todo.html).<br>
 !>  The following are the library tasks that need to be accomplished.<br>
@@ -654,6 +654,6 @@
 !>  \todo
 !>  \pvhigh
 !>  The ParaNest and ParaDISE samplers must be added to the module [pm_sampling](@ref pm_sampling).<br>
-!>  This is a task that only \AmirShahmoradi can achieve.<br>
+!>  This is a task that only \AmirShahmoradi can complete.<br>
 !>
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
