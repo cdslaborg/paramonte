@@ -2,11 +2,11 @@
 
 1.  Clone the ParaMonte repository on your system.
     ```bash
-    git clone git@github.com:cdslaborg/paramonte.git
+    git clone https://github.com/cdslaborg/paramonte.git
     ```
     Alternatively, you can **optionally** download the **OpenBLAS** and **other ParaMonte submodules** via,
     ```bash
-    git clone --recurse-submodules git@github.com:cdslaborg/paramonte.git
+    git clone --recurse-submodules https://github.com/cdslaborg/paramonte.git
     ```
 
 2.  Navigate to the root directory of the repository either in a Windows `CMD` command prompt or Unix `Bash` terminal.

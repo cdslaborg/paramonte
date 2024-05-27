@@ -474,7 +474,7 @@ vendor              | Any vendor name recognized by the CMake `BLA_VENDOR`.
 
 ### `matlabdir`
 
-Specifies the path to the MATLAB binary executable against which the library will be linked.
+Specifies the path to the **directory** of MATLAB binary executable against which the library will be linked.
 
 +   Usage (with `install.bat` or `install.sh`)
     ```bash

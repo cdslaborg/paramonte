@@ -26,8 +26,10 @@ if (narg /= 2) error stop "The inn command arguments must be only the path to th
 allocate(character(4096) :: inn_file, out_file)
 call get_command_argument(number = 1, value = inn_file, length = lenarg); inn_file = trim(adjustl(inn_file(1 : lenarg)))
 call get_command_argument(number = 2, value = out_file, length = lenarg); out_file = trim(adjustl(out_file(1 : lenarg)))
-open(newunit = out_unit, file = out_file, status = "replace", action = "write")
-open(newunit = inn_unit, file = inn_file, status = "old", action = "read")
+open(newunit = out_unit, file = out_file, status = "replace", action = "write", iostat = iostat, iomsg = iomsg)
+if (isFailed(iostat, "Failed to open the output destination file ("//trim(out_file)//") with `write` access: "//trim(iomsg))) return
+open(newunit = inn_unit, file = inn_file, status = "old", action = "read", iostat = iostat, iomsg = iomsg)
+if (isFailed(iostat, "Failed to open the output destination file ("//trim(inn_file)//") with `write` access: "//trim(iomsg))) return
 allocate(character(511) :: record)
 
 ! add license.
@@ -41,7 +43,7 @@ block
     do
         call setRecordFrom(inn_unit, record, lenrec, iostat, iomsg)
         if (iostat == iostat_end) exit
-        if (iostat /= 0) error stop trim(iomsg)
+        if (isFailed(iostat, "Failed to read the source file contents: "//trim(iomsg))) return
         i = getLocNB(record(1 : lenrec))
         if (0 < i) then
             valuable = record(i : i) /= "#"
@@ -63,6 +65,14 @@ close(inn_unit)
 close(out_unit)
 
 contains
+
+    function isFailed(iostat, iomsg) result(failed)
+        character(*), intent(in) :: iomsg
+        integer, intent(in) :: iostat
+        logical :: failed
+        failed = iostat /= 0
+        if (failed) write(*, "(A)") trim(iomsg)
+    end function
 
     ! Return the location of the first non-blank character, or 0 if str is empty or all blanks.
     function getLocNB(str) result(loc)

@@ -420,7 +420,7 @@ fi
 
 if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
 
-    if  [[ "${flag_fresh}" =~ .*"prereq".* || "${flag_fresh}" =~ .*"all".* ]]; then
+    if  [[ "${flag_fresh}" =~ .*"prereq".* ]]; then
         if  [ -d "${paramonte_req_dir}" ]; then
             echo >&2 "${pmnote} Removing the old prerequisites of the ParaMonte library build at: paramonte_req_dir=\"${paramonte_req_dir}\""
             rm -rf "${paramonte_req_dir}"
@@ -568,6 +568,13 @@ for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
                                 else
                                     echo >&2 "${pmnote} User-specified library build directory detected: bdir=\"${bdir}\""
                                     paramonte_bld_dir="${bdir}"
+                                fi
+
+                                if  [[ "${flag_fresh}" =~ .*"all".* ]]; then
+                                    if  [ -d "${paramonte_bld_dir}" ]; then
+                                        echo >&2 "${pmnote} Removing the old prerequisites of the ParaMonte library build at: paramonte_bld_dir=\"${paramonte_bld_dir}\""
+                                        rm -rf "${paramonte_bld_dir}"
+                                    fi
                                 fi
 
                                 # Make the build directory if needed.
