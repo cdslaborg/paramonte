@@ -5,14 +5,14 @@
 %>  \param[in]  format  :   The input scalar MATLAB string indicating
 %>                          the format of the output we address.
 %>                              1.  An input value of ``"raw"`` will return a raw web address.
-%>                              2.  An input value of ``"html"`` will return an HTML style web address.        
+%>                              2.  An input value of ``"html"`` will return an HTML style web address.
 %>                          (**optional**, default = ``"html"``)
 %>
 %>  \return
 %>  `str`               :   The output scalar MATLAB string containing either,
 %>                          -   a raw weblink to the ParaMonte library publications
 %>                              if the library is used outside the MATLAB GUI interface, or,
-%>          
+%>
 %>                          -   an HTML-style hyperlink to the ParaMonte library publications
 %>                              if the library is used within the MATLAB GUI interface.
 %>
@@ -39,8 +39,9 @@ function str = cite(format)
         if strcmpi(format, "html")
             str = pm.web.href(str);
         end
-    catch
+    catch me
         str = "";
+        rethrow(me);
         weblinks = pm.lib.weblinks();
         warning ( newline ...
                 + "Failed to read the contents of the citation file:" + newline ...

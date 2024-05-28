@@ -39,9 +39,10 @@ function str = version(silent)
     try
         versionFileLineList = strsplit(webread(versionLink), newline);
         str = string(versionFileLineList{1});
-    catch
+    catch me
         str = "";
         if ~silent
+            rethrow(me);
             warning ( newline ...
                     + "Failed to fetch the latest version number from the weblink:" + newline ...
                     + newline ...

@@ -43,8 +43,9 @@
 function failed = rmfile(file, desc)
     try
         delete(file);
-    catch
+    catch me
         if nargin == 2
+            rethrow(me);
             if isempty(desc) || desc == ""
                 desc = "the requested file";
             end

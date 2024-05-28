@@ -113,7 +113,8 @@ function fileList = findfile(self, ftype, pattern)
             if pm.web.isurl(pattern)
                 try
                     fileList = [string(websave(fullfile(tempdir, pm.web.basename(pattern)), pattern))];
-                catch
+                catch me
+                    rethrow(me);
                     warning ( newline ...
                             + "Failed to read data from the specified URL:" + newline ...
                             + pm.io.tab + newline ...

@@ -25,7 +25,8 @@ function str = banner()
     try
         str = strrep(fileread(bannerFile), string(repmat(' ', 1, offset)) + "Version 0.0.0", "Version " + pm.lib.version());
         str = newline + strrep(str, string(char(13)), "") + newline;
-    catch
+    catch me
+        rethrow(me);
         weblinks = pm.lib.weblinks;
         warning ( newline ...
                 + "Failed to read the ParaMonte banner file: " ...

@@ -679,13 +679,15 @@ classdef Figure < pm.matlab.Handle
                 failed = false;
                 try
                     set(self.fout.figure, "color", "none");
-                catch
+                catch me
                     failed = true;
+                    rethrow(me);
                 end
                 try
                     set(gca, "color", "none");
-                catch
+                catch me
                     failed = true;
+                    rethrow(me);
                 end
                 if  failed
                     warning("Failed to set the color property of gcf to ""none"" for transparent image export.");
@@ -704,13 +706,15 @@ classdef Figure < pm.matlab.Handle
                 failed = false;
                 try
                     set(self.currentFig.figure, "color", "default");
-                catch
+                catch me
                     failed = true;
+                    rethrow(me);
                 end
                 try
                     set(gca,"color","default");
-                catch
+                catch me
                     failed = true;
+                    rethrow(me);
                 end
                 if  failed
                     warning("Failed to set the color property of gca back to ""default"".");

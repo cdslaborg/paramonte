@@ -82,10 +82,10 @@ classdef FileContentsSample < pm.io.FileContentsTabular
         %>
         %>  \param[in]  file    :   The input scalar MATLAB string
         %>                          containing the path to an external file.
-        %>  
+        %>
         %>  \param[in]  silent  :   See the corresponding argument of ``pm.sampling.FileContentsRestart`` class.
         %>                          (**optional**. The default is set by ``pm.sampling.FileContentsRestart``.)
-        %>  
+        %>
         %>  \param[in]  sep     :   The input scalar MATLAB string
         %>                          containing the field separator used in the file.
         %>                          (**optional**, default = ``","``)
@@ -139,23 +139,25 @@ classdef FileContentsSample < pm.io.FileContentsTabular
                 return;
             end
 
+            %%%%
             %%%% statistics
+            %%%%
 
             self.stats = struct();
 
-            % Add chain cormat.
+            %%%% Add chain cormat.
 
             self.checkpoint("computing the sample correlation matrix...", false);
             self.stats.cor = pm.stats.Cor(self.df(:, self.sampleLogFuncColIndex + 1 : end));
             self.checkpoint();
 
-            % Add chain covmat.
+            %%%% Add chain covmat.
 
             self.checkpoint("computing the sample covariance matrix...", false);
             self.stats.cov = pm.stats.Cov(self.df(:, self.sampleLogFuncColIndex + 1 : end));
             self.checkpoint();
 
-            % Add chain acf.
+            %%%% Add chain acf.
 
             self.checkpoint("computing the sample autocorrelation...", false);
             self.stats.acf = pm.stats.AutoCorr(self.df(:, self.sampleLogFuncColIndex : end));
@@ -163,10 +165,13 @@ classdef FileContentsSample < pm.io.FileContentsTabular
 
             self.stats.max = struct("val", [], "loc", []);
             self.stats.min = struct("val", [], "loc", []);
-            [self.stats.max.val, self.stats.max.loc] = max(self.df);
-            [self.stats.min.val, self.stats.min.loc] = min(self.df);
-            self.stats.avg = mean(self.df);
-            self.stats.std = std(self.df);
+
+            %%%% The `{:,:}` slice is essential in MATLAB ~2020a.
+
+            [self.stats.max.val, self.stats.max.loc] = max(self.df{:,:});
+            [self.stats.min.val, self.stats.min.loc] = min(self.df{:,:});
+            self.stats.avg = mean(self.df{:,:});
+            self.stats.std = std(self.df{:,:});
 
         end
 

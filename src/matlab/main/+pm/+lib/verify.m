@@ -102,7 +102,8 @@ function verify()
     try
         fprintf('%s\n\n', fileread(msgfile1));
         fprintf('%s\n\n', fileread(msgfile2));
-    catch
+    catch me
+        rethrow(me);
         warning ( newline ...
                 + "Failed to read the contents of either or both of the following files:" + newline ...
                 + newline ...

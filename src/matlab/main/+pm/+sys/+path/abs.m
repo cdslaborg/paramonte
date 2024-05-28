@@ -266,10 +266,10 @@ function path = abs(path, style)
                         backCD = cd;
                         path   = cd(cd(path));
                         cd(backCD);
-                    catch ME
+                    catch me
                         if exist(path, 'dir')
                             % No idea what could cause an error then!
-                            rethrow(ME);
+                            rethrow(me);
                         else
                             % Reply "K:\" for not existing disk.
                             path = [path, dirsep];
