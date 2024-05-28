@@ -880,7 +880,7 @@ endif()
 if (MATLAB_ENABLED AND Matlab_FOUND)
     message(NOTICE "${pmattn} Matlab_INCLUDE_DIRS=${Matlab_INCLUDE_DIRS}")
     target_include_directories("${libname}" PUBLIC "${Matlab_INCLUDE_DIRS}")
-    #target_link_libraries("${libname}" PUBLIC "${Matlab_MEX_LIBRARY}" "${Matlab_MX_LIBRARY}")# "${Matlab_LIBRARIES}"
+    target_link_libraries("${libname}" PUBLIC "${Matlab_MEX_LIBRARY}" "${Matlab_MX_LIBRARY}")# "${Matlab_LIBRARIES}"
     #if (NOT CAF_ENABLED AND NOT MPI_ENABLED)
         #allow matlab console print only in serial MATLAB applications.
         target_compile_definitions("${libname}" PUBLIC "MEXPRINT_ENABLED=1")
@@ -1024,6 +1024,8 @@ if (DLL_ENABLED AND DEPS_ENABLED)
                 LIBRARIES ${LIBRARY}
                 RESOLVED_DEPENDENCIES_VAR resolved_deps
                 UNRESOLVED_DEPENDENCIES_VAR unresolved_deps
+                CONFLICTING_DEPENDENCIES_PREFIX colflicting
+                POST_EXCLUDE_REGEXES ".*MATLAB.*" ".*matlab.*"
                 DIRECTORIES "${ilibdir}"
             )
             foreach(FILE ${resolved_deps})
@@ -1034,11 +1036,16 @@ if (DLL_ENABLED AND DEPS_ENABLED)
             foreach(FILE ${unresolved_deps})
                 message(NOTICE "${pmwarn} Unresolved dependency from ${LIBRARY}: ${FILE}")
             endforeach()
+            foreach(FILE ${colflicting_FILENAMES})
+                message(NOTICE "${pmwarn} Conflicting dependency: ${FILE}")
+            endforeach()
         endfunction()
         file(GET_RUNTIME_DEPENDENCIES
             LIBRARIES $<TARGET_SONAME_FILE:libparamonte>
+            CONFLICTING_DEPENDENCIES_PREFIX colflicting
             UNRESOLVED_DEPENDENCIES_VAR unresolved_deps
             RESOLVED_DEPENDENCIES_VAR resolved_deps
+            POST_EXCLUDE_REGEXES ".*MATLAB.*" ".*matlab.*"
             DIRECTORIES "${ilibdir}"
         )
         foreach(FILE ${resolved_deps})
@@ -1046,6 +1053,9 @@ if (DLL_ENABLED AND DEPS_ENABLED)
         endforeach()
         foreach(FILE ${unresolved_deps})
             message(NOTICE "${pmwarn} Unresolved dependency: ${FILE}")
+        endforeach()
+        foreach(FILE ${colflicting_FILENAMES})
+            message(NOTICE "${pmwarn} Conflicting dependency: ${FILE}")
         endforeach()
     ]])
 endif()
