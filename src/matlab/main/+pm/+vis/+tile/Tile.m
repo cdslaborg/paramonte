@@ -41,14 +41,14 @@ classdef Tile < pm.vis.figure.Tiling
         %>
         %>  \param[in]  template    :   The input scalar object of superclass ``pm.vis.subplot.Subplot``.
         %>                              It serves as the template based upon which all subplots are constructed.
-        %>  
-        %>  \param  [in]  varargin    :   Any ``property, value`` pair of the parent object.
+        %>
+        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``make()`` method.
-        %>  
-        %>  \note 
+        %>
+        %>  \note
         %>  The input ``varargin`` can also contain the components
         %>  of the ``template`` component of the parent object.
         %>
@@ -91,7 +91,7 @@ classdef Tile < pm.vis.figure.Tiling
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``make()`` method.
-        %>  
+        %>
         %>  \note
         %>  The input ``varargin`` can also contain the components
         %>  of the ``subplot`` component of the parent object.
@@ -148,7 +148,7 @@ classdef Tile < pm.vis.figure.Tiling
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``make()`` method.
-        %>  
+        %>
         %>  \note
         %>  The input ``varargin`` can also contain the components
         %>  of the ``subplot`` component of the parent object.
@@ -250,6 +250,14 @@ classdef Tile < pm.vis.figure.Tiling
             %    tileindices = 1 : nplt;
             %end
 
+            %%%% unified colorbar using tiledlayout is only possible in MARLAB R2020b and beyond.
+
+            unicbar = ~isEllipsoid ...
+                    && lencolc == 1 ...
+                    && isprop(self.template, "colorbar") ...
+                    && isempty(self.template.colorbar.enabled) ...
+                    && "2020a" < string(version('-release'));
+
             %%%% Define the subplot cell matrix.
             %%%% The following code block may be improved in
             %%%% the future to avoid full data copy to subplots.
@@ -282,7 +290,7 @@ classdef Tile < pm.vis.figure.Tiling
                         end
                         if  1 < lencolc
                             self.subplot{irow, icol}.colc = self.template.colc(iplt);
-                        elseif lencolc == 1 && isprop(self.template, "colorbar") && isempty(self.template.colorbar.enabled)
+                        elseif unicbar
                             self.subplot{irow, icol}.colorbar.enabled = false;
                         elseif lencolc == 0 && isprop(self.template, "colormap") && isempty(self.template.colormap.enabled)
                             self.subplot{irow, icol}.colormap.enabled = true;
@@ -298,53 +306,51 @@ classdef Tile < pm.vis.figure.Tiling
 
             %%%% Define a single colorbar.
 
-            if ~isEllipsoid
+            if  unicbar && isprop(self.template, "colormap") && ~isempty(self.template.colormap.enabled)
+                unicbar = self.template.colormap.enabled;
+            end
 
-                unicbar = lencolc == 1;
-                if  unicbar && ~isempty(self.template.colormap.enabled)
-                    unicbar = self.template.colormap.enabled;
-                end
-                if  unicbar && ~isempty(self.template.colorbar.enabled)
-                    unicbar = self.template.colorbar.enabled;
-                end
-                if  unicbar
+            if  unicbar && isprop(self.template, "colorbar") && ~isempty(self.template.colorbar.enabled)
+                unicbar = self.template.colorbar.enabled;
+            end
 
-                    %%%% Get the start and end positions of the leftmost, lowest, rightmost, and highest axes.
+            if  unicbar
 
-                    % iplt = 0;
-                    % positions = zeros(4, nplt);
-                    % for icol = 1 : ncol
-                    %     for irow = 1 : nrow
-                    %         if  pm.introspection.istype(self.subplot{irow, icol}, "pm.vis.subplot.Subplot")
-                    %             iplt = iplt + 1;
-                    %             positions(:, iplt) = self.subplot{irow, icol}.fout.axes.Position;
-                    %         end
-                    %     end
-                    % end
-                    %
-                    % for i = 2 : -1 : 1
-                    %     start(i) = min(positions(i, :));
-                    %     finit(i) = max(positions(i, :) + positions(i + 2, :));
-                    % end
+                %%%% Get the start and end positions of the leftmost, lowest, rightmost, and highest axes.
 
-                    %%%% Create new invisible axes.
+                % iplt = 0;
+                % positions = zeros(4, nplt);
+                % for icol = 1 : ncol
+                %     for irow = 1 : nrow
+                %         if  pm.introspection.istype(self.subplot{irow, icol}, "pm.vis.subplot.Subplot")
+                %             iplt = iplt + 1;
+                %             positions(:, iplt) = self.subplot{irow, icol}.fout.axes.Position;
+                %         end
+                %     end
+                % end
+                %
+                % for i = 2 : -1 : 1
+                %     start(i) = min(positions(i, :));
+                %     finit(i) = max(positions(i, :) + positions(i + 2, :));
+                % end
 
-                    kws = struct();
-                    for prop =  [ "colorbar" ...
-                                ]
-                        if  isprop(self.template, prop)
-                            kws.(prop) = self.template.comp2hash(prop);
-                        end
+                %%%% Create new invisible axes.
+
+                kws = struct();
+                for prop =  [ "colorbar" ...
+                            ]
+                    if  isprop(self.template, prop)
+                        kws.(prop) = self.template.comp2hash(prop);
                     end
-                    %ax = axes("position", [start, finit], "visible", "off");
-                    self.fout.colorbar = colorbar(kws.colorbar{:});
-                    self.fout.colorbar.Layout.Tile = 'east';
-
-                    dfcopy = self.template.df.copy();
-                    [~, colnamc] = pm.str.locname(dfcopy.Properties.VariableNames, self.template.colc);
-                    ylabel(self.fout.colorbar, colnamc(1));
-
                 end
+
+                %ax = axes("position", [start, finit], "visible", "off");
+
+                self.fout.colorbar = colorbar(kws.colorbar{:});
+                self.fout.colorbar.Layout.Tile = 'east';
+                dfcopy = self.template.df.copy();
+                [~, colnamc] = pm.str.locname(dfcopy.Properties.VariableNames, self.template.colc);
+                ylabel(self.fout.colorbar, colnamc(1));
 
             end
 

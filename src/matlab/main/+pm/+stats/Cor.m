@@ -156,9 +156,9 @@ classdef Cor < pm.matlab.Handle
             try
                 val = array2table(corr(data, "type", self.method));
             catch me
-                rethrow(me);
                 val = NaN(size(data, 2), size(data, 2));
                 warning ( newline ...
+                        + string(me.identifier) + " : " + string(me.message) + newline ...
                         + "skipping the correlation matrix computation..." + newline ...
                         );
                 return;

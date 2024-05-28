@@ -677,20 +677,23 @@ classdef Figure < pm.matlab.Handle
             if  any(contains(string(varargin), "-transparent"))
                 istransparent = true;
                 failed = false;
+                errmsg = "";
                 try
                     set(self.fout.figure, "color", "none");
                 catch me
                     failed = true;
-                    rethrow(me);
+                    errmsg = string(me.identifier) + " : " + string(me.message) + newline;
                 end
                 try
                     set(gca, "color", "none");
                 catch me
                     failed = true;
-                    rethrow(me);
+                    errmsg = string(me.identifier) + " : " + string(me.message) + newline;
                 end
                 if  failed
-                    warning("Failed to set the color property of gcf to ""none"" for transparent image export.");
+                    warning ( newline + errmsg ...
+                            + "Failed to set the color property of gcf to ""none"" for transparent image export." + newline ...
+                            );
                 end
             else
                 istransparent = false;
@@ -704,20 +707,23 @@ classdef Figure < pm.matlab.Handle
 
             if  istransparent
                 failed = false;
+                errmsg = "";
                 try
                     set(self.currentFig.figure, "color", "default");
                 catch me
                     failed = true;
-                    rethrow(me);
+                    errmsg = string(me.identifier) + " : " + string(me.message) + newline;
                 end
                 try
                     set(gca,"color","default");
                 catch me
                     failed = true;
-                    rethrow(me);
+                    errmsg = string(me.identifier) + " : " + string(me.message) + newline;
                 end
                 if  failed
-                    warning("Failed to set the color property of gca back to ""default"".");
+                    warning ( newline + errmsg ...
+                            + "Failed to set the color property of gca back to ""default""." + newline ...
+                            );
                 end
             end
 
