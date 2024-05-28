@@ -177,7 +177,15 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
                         cholupp(1 : idim, idim) = str2double(self.lineList(self.ilast + istart : self.ilast + iend)); % This is the upper Cholesky.
                     end
                     self.proposalCov(:, :, icount) = cholupp' * cholupp;
-                    self.proposalCor(:, :, icount) = corrcov(squeeze(self.proposalCov(:, :, icount)));
+                    try
+                        self.proposalCor(:, :, icount) = corrcov(squeeze(self.proposalCov(:, :, icount)));
+                    catch me
+                        self.proposalCor(:, :, icount) = nan;
+                        warning ( newline ...
+                                + string(me.identifier) + " : " + string(me.message) + newline ...
+                                + newline ...
+                                );
+                    end
                     istart = iend + 1;
                 else
                     istart = istart + 2;
