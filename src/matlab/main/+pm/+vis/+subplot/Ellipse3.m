@@ -441,6 +441,8 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
             %%%% Get the shape of input data.
             %%%%
 
+            %%%% The following ``size()`` syntax is essential for compatibility with MATLAB R2019a.
+
             self.workspace.shape = struct();
 
             [s1, s2] = size(self.workspace.cval);
