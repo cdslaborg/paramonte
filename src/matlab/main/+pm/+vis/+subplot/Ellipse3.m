@@ -111,116 +111,116 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
         %>                          <ol>
         %>                              <li>    an empty object (e.g., ``[]``), in which case,
         %>                                      the value ``repmat(eye(ndim, ndim), 1, 1, nell)`` will be used.
-        %>                      
+        %>
         %>                              <li>    a scalar, containing the value of the diagonal elements
         %>                                      of the diagonal matrices representing the Gramian matrices
         %>                                      of all ``nell`` ellipsoids in the input data.
-        %>                      
+        %>
         %>                              <li>    a vector of shape ``[1, 1, nell]`` such that ``gramian(1, 1, iell)``
         %>                                      represents the diagonal value to be used in constructing the Gramian
         %>                                      matrix of the ellipsoid ``iell` in the input ``nell`` ellipsoid data.
-        %>                      
+        %>
         %>                              <li>    a matrix of shape ``[ndim, ndim, 1]`` used in constructing the Gramian
         %>                                      matrices of all ``nell`` ellipsoids in the input data.
-        %>                      
+        %>
         %>                              <li>    a tensor of shape ``[ndim, ndim, nell]`` such that ``gramian(:, :, iell)``
         %>                                      represents the Gramian matrix of the ellipsoid ``iell` in the input data.
         %>                          </ol>
-        %>  
+        %>
         %>  \note
         %>  While it is possible to pass a data directly to this class,
         %>  it is highly recommended to pass a function handle that returns
         %>  such data when called, allowing the visualization data to be
         %>  dynamically updated when needed.
-        %>  
+        %>
         %>  \param[in]  center      :   The MATLAB (function handle returning an) object that can be either
         %>                          <ol>
         %>                              <li>    an empty object (e.g., ``[]``), in which case,
         %>                                      the value ``zeros(ndim, nell)`` will be used.
-        %>                      
+        %>
         %>                              <li>    a scalar, containing the value to assign to all coordinates
         %>                                      of the centers of all ``nell`` ellipsoids in the input data.
-        %>                      
+        %>
         %>                              <li>    a vector of shape ``[1, nell]`` such that ``center(1, iell)``
         %>                                      represents the value of all coordinates of the center of the
         %>                                      ellipsoid ``iell` in the input ``nell`` ellipsoid data.
-        %>                      
+        %>
         %>                              <li>    a vector of shape ``[ndim, 1]`` such that ``center(idim, 1)``
         %>                                      represents the value of ``idim`` coordinate of the centers of
         %>                                      all ``nell`` ellipsoids in the input data.
-        %>                      
+        %>
         %>                              <li>    a matrix of shape ``[ndim, nell]`` such that ``center(:, iell)`` represents
         %>                                      the coordinates of the center of the ellipsoid ``iell` in the input data.
         %>                          </ol>
-        %>  
+        %>
         %>  \note
         %>  While it is possible to pass data directly to this class,
         %>  it is highly recommended to pass a function handle that returns
         %>  such data when called, allowing the visualization data to be
         %>  dynamically updated when needed.
-        %>  
+        %>
         %>  \param[in]  zval        :   The MATLAB (function handle returning an) object that can be either
         %>                          <ol>
         %>                              <li>    an empty object (e.g., ``[]``), in which case,
         %>                                      the value ``repmat(1 : nell, npnt, 1)`` will be used.
-        %>                      
+        %>
         %>                              <li>    a scalar, containing the value to assign to the z-axis
         %>                                      coordinates of all ``npnt`` points used in the visualization
         %>                                      of ``nell`` ellipsoids in the input data.
-        %>                      
+        %>
         %>                              <li>    a vector of shape ``[1, nell]`` such that ``zval(1, iell)``
         %>                                      represents the value of z-axis coordinates of all ``npnt``
         %>                                      points used in the visualization of the ellipsoid
         %>                                      ``iell` in the input ``nell`` ellipsoid data.
-        %>                      
+        %>
         %>                              <li>    a vector of shape ``[npnt, 1]`` such that ``zval(ipnt, 1)``
         %>                                      contains the z-axis value of ``ipnt`` points in the representations
         %>                                      of all ``nell`` ellipsoids in the input data.
-        %>                      
+        %>
         %>                              <li>    a matrix of shape ``[npnt, nell]`` such that ``zval(:, iell)`` represents
         %>                                      the z-axis coordinates of all ``npnt`` points used in the visualization of
         %>                                      the ellipsoid ``iell` in the input data.
         %>                          </ol>
-        %>  
+        %>
         %>  \note
         %>  While it is possible to pass data directly to this class,
         %>  it is highly recommended to pass a function handle that returns
         %>  such data when called, allowing the visualization data to be
         %>  dynamically updated when needed.
-        %>  
+        %>
         %>  \param[in]  cval        :   The MATLAB (function handle returning an) object that can be either
         %>                          <ol>
         %>                              <li>    an empty object (e.g., ``[]``), in which case,
         %>                                      the input value ``zval`` will be used.
-        %>                      
+        %>
         %>                              <li>    a scalar, containing the value to assign to color values
         %>                                      of all ``npnt`` points used in the visualization
         %>                                      of  ``nell`` ellipsoids in the input data.
-        %>                      
+        %>
         %>                              <li>    a vector of shape ``[1, nell]`` such that ``cval(1, iell)``
         %>                                      represents the color values of all ``npnt`` points used in the
         %>                                      visualization of the ellipsoid ``iell` in the input ``nell`` ellipsoid data.
-        %>                      
+        %>
         %>                              <li>    a vector of shape ``[npnt, 1]`` such that ``cval(ipnt, 1)``
         %>                                      contains the color values of ``ipnt`` points in the representations
         %>                                      of all ``nell`` ellipsoids in the input data.
-        %>                      
+        %>
         %>                              <li>    a matrix of shape ``[npnt, nell]`` such that ``center(:, iell)`` represents
         %>                                      the color values of all ``npnt`` points used in the visualization of
         %>                                      the ellipsoid ``iell` in the input data.
         %>                          </ol>
-        %>  
+        %>
         %>  \note
         %>  While it is possible to pass data directly to this class,
         %>  it is highly recommended to pass a function handle that returns
         %>  such data when called, allowing the visualization data to be
         %>          dynamically updated when needed.
-        %>  
+        %>
         %>  \note
         %>  The input value for ``cval`` is used only if ``colormap.enabled``
         %>  component of the output object of class ``pm.vis.subplot.Ellipse3``
         %>  is set to ``true``.
-        %>  
+        %>
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the object.
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
@@ -442,10 +442,18 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
             %%%%
 
             self.workspace.shape = struct();
-            self.workspace.shape.cval = size(self.workspace.cval, 1, 2);
-            self.workspace.shape.zval = size(self.workspace.zval, 1, 2);
-            self.workspace.shape.center = size(self.workspace.center, 1, 2);
-            self.workspace.shape.gramian = size(self.workspace.gramian, 1, 2, 3);
+
+            [s1, s2] = size(self.workspace.cval);
+            self.workspace.shape.cval = [s1, s2];
+
+            [s1, s2] = size(self.workspace.zval);
+            self.workspace.shape.zval = [s1, s2];
+
+            [s1, s2] = size(self.workspace.center);
+            self.workspace.shape.center = [s1, s2];
+
+            [s1, s2, s3] = size(self.workspace.gramian);
+            self.workspace.shape.gramian = [s1, s2, s3];
 
             %%%%
             %%%% Infer ``ndim``.

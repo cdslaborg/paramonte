@@ -107,10 +107,10 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
         %>
         %>  \param[in]  file    :   The input scalar MATLAB string
         %>                          containing the path to an external report file.
-        %>  
+        %>
         %>  \param[in]  silent  :   See the corresponding argument of ``pm.sampling.FileContentsRestart`` class.
         %>                          (**optional**. The default is set by ``pm.sampling.FileContentsRestart``.)
-        %>  
+        %>
         %>  \return
         %>  `self`              :   The output scalar object of class ``pm.sampling.FileContentsRestartDRAM``.
         %>
@@ -158,7 +158,9 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
             skip = 10 + self.ndim * (self.ndim + 3) / 2;
             icount = 0;
             istart = 1;
+
             while istart < length(self.lineList) - skip
+
                 if ~strcmp(self.lineList{self.ilast + istart}, self.lineList{self.ilast + istart + 2})
                     icount = icount + 1;
                     if mod(icount, 10) == 0
@@ -177,20 +179,34 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
                         cholupp(1 : idim, idim) = str2double(self.lineList(self.ilast + istart : self.ilast + iend)); % This is the upper Cholesky.
                     end
                     self.proposalCov(:, :, icount) = cholupp' * cholupp;
-                    try
-                        self.proposalCor(:, :, icount) = corrcov(squeeze(self.proposalCov(:, :, icount)));
-                    catch me
-                        self.proposalCor(:, :, icount) = nan;
-                        warning ( newline ...
-                                + string(me.identifier) + " : " + string(me.message) + newline ...
-                                + newline ...
-                                );
-                    end
                     istart = iend + 1;
                 else
                     istart = istart + 2;
                 end
+
             end
+
+            %%%%
+            %%%% Ensure the instrinc ``corrcov`` is installed.
+            %%%%
+
+            try
+
+                for icount = 1 : size(self.proposalCov, 3)
+                    self.proposalCor(:, :, icount) = corrcov(squeeze(self.proposalCov(:, :, icount)));
+                end
+
+            catch me
+
+                self.proposalCor = self.proposalCov;
+                warning ( newline ...
+                        + string(me.identifier) + " : " + string(me.message) + newline ...
+                        + "The component ``proposalCor`` will be set to the same values as the component ``proposalCor``." + newline ...
+                        + newline ...
+                        );
+
+            end
+
             self.spinner.spin(1);
             self.checkpoint([]);
 
