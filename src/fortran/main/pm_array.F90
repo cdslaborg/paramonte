@@ -17,9 +17,9 @@
 !>  \brief
 !>  This module contains abstract and concrete derived types that are required for compile-time
 !>  resolution of procedures within the generic interfaces of the ParaMonte library for various array operations.<br>
-!>  Such procedures frequently need to work in a specific direction of some of their input array arguments.<br>
 !>
 !>  \details
+!>  Such procedures frequently need to work in a specific direction of some of their input array arguments.<br>
 !>  While the English words, **inverse**, **reverse**, **backward** are sometimes used synonymously,
 !>  there are subtle differences between them that make different in practice.<br>
 !>  <ol>

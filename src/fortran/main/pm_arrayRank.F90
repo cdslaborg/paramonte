@@ -15,81 +15,79 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief
-!>  This module contains procedures and generic interfaces for obtaining the **Ordinal Ranking** of the elements of arrays of various types.
+!>  This module contains procedures and generic interfaces for obtaining **various rankings of elements** of arrays of various types.
 !>
 !>  \details
 !>  Depending on the applications, the rank of the elements of an array can be defined in different ways:
 !>
 !>  <ol>
-!>
-!>  <li>    <b>Ordinal ranking (`1234`) ranking:</b> [getRankOrdinal](@ref pm_arrayRank::getRankOrdinal) or [setRankOrdinal](@ref pm_arrayRank::setRankOrdinal)<br>
-!>          This kind of ranking of values is widely known as ordinal (`1234`) ranking.<br>
-!>          In ordinal ranking, all items receive distinct ordinal numbers, including items that compare equal.<br>
-!>          The assignment of distinct ordinal numbers to items that compare equal can be done at random, or arbitrarily,
-!>          but it is generally preferable to use a system that is arbitrary but consistent,
-!>          as this gives stable results if the ranking is done multiple times.<br>
-!>          In computer data processing, ordinal ranking is also referred to as <b>row numbering</b>.
-!>          That is, if `A < B == C < D`, then the sequence `ABCD` has the <b>ordinal ranking</b> `1234`.<br>
-!>
-!>  <li>    <b>Standard competition (`1224`) ranking:</b> [getRankStandard](@ref pm_arrayRank::getRankStandard) or [setRankStandard](@ref pm_arrayRank::setRankStandard)<br>
-!>          This kind of ranking of values is widely known as Standard Competition (`1224`) ranking.<br>
-!>          In Standard Competition ranking, items that compare equal receive the same ranking number,
-!>          and then a gap is left in the ranking numbers. The number of ranking numbers that are left out
-!>          in this gap is one less than the number of items that compared equal.<br>
-!>          Equivalently, the ranking number of each item is `1` plus the number of items ranked above it.<br>
-!>          This ranking strategy is frequently adopted for competitions, as it means that if two (or more) competitors
-!>          tie for a position in the ranking, and the position of all those ranked below them is unaffected
-!>          (i.e., a competitor only comes second if exactly one person scores better than them,
-!>          third if exactly two people score better than them, fourth if exactly three people score better than them, etc.).<br>
-!>          Thus if *A* ranks ahead of *B* and *C* (which compare equal) which are both ranked ahead of *D*, then *A* gets ranking number `1` (*first*),
-!>          *B* gets ranking number `2` (*joint second*), *C* also gets ranking number `2` (*joint second*) and *D* gets ranking number `4` (*fourth*).<br>
-!>          That is, if `A < B == C < D`, then the sequence `ABCD` has the Standard Competition ranking `1224`.<br>
-!>
-!>  <li>    <b>Modified competition (`1334`) ranking:</b> [getRankModified](@ref pm_arrayRank::getRankModified) or [setRankModified](@ref pm_arrayRank::setRankModified)<br>
-!>          This kind of ranking of values is widely known as Modified Competition (`1334`) ranking.<br>
-!>          Sometimes, competition ranking is done by leaving the gaps in the ranking numbers before the sets of equal-ranking items
-!>          (rather than after them as in Standard Competition ranking).<br>
-!>          The number of ranking numbers that are left out in this gap
-!>          remains one less than the number of items that compared equal.<br>
-!>          Equivalently, the ranking number of each item is equal to the number of items ranked equal to it or above it.<br>
-!>          This ranking ensures that a competitor only comes second if they score higher than all but one of their opponents,
-!>          third if they score higher than all but two of their opponents, etc.<br>
-!>          Thus if *A* ranks ahead of *B* and *C* (which compare equal) which are both ranked head of *D*, then *A* gets ranking
-!>          number `1` (*first*), *B* gets ranking number `3` (*joint third*), *C* also gets ranking number `3` (*joint third*)
-!>          and *D* gets ranking number `4` (*fourth*). In this case, nobody would get ranking number `2` (*second*) (left as a gap).<br>
-!>          That is, if `A < B == C < D`, then the sequence `ABCD` has the Modified Competition ranking `1334`.<br>
-!>
-!>  <li>    <b>Dense (`1223`) ranking:</b> [getRankDense](@ref pm_arrayRank::getRankDense) or [setRankDense](@ref pm_arrayRank::setRankDense)<br>
-!>          This kind of ranking of values is widely known as dense (`1223`) ranking.<br>
-!>          In Dense ranking, items that compare equally receive the same ranking number, and the next items receive the immediately following ranking number.<br>
-!>          Equivalently, the ranking number of each item is `1` plus the number of items ranked above it that are distinct with respect to the ranking order.<br>
-!>          Thus if *A* ranks ahead of *B* and *C* (which compare equal) which are both ranked ahead of *D*, then *A* gets ranking number 1 (*first*), *B* gets
-!>          ranking number `2` (*joint second*), *C* also gets ranking number `2` (*joint second*) and *D* gets ranking number `3` (*Third*).<br>
-!>          That is, if `A < B == C < D`, then the sequence `ABCD` has the Dense ranking `1223`.<br>
-!>          Dense ranking effective factorizes the array into classes of unique values.<br>
-!>          Therefore, the Dense rank of each element of the array is simply its class <b>level</b>.
-!>
-!>  <li>    <b>Fractional (`1 2.5 2.5 4`) ranking:</b> [getRankFractional](@ref pm_arrayRank::getRankFractional) or [setRankFractional](@ref pm_arrayRank::setRankFractional)<br>
-!>          This kind of ranking of values is widely known as fractional (`1 2.5 2.5 4`) ranking.<br>
-!>          In Fractional ranking, items that compare equal receive the same ranking number, which is the mean of what they would have under ordinal rankings;<br>
-!>          Equivalently, the ranking number of 1 plus the number of items ranked above it plus half the number of items equal to it.<br>
-!>          This strategy has the property that the sum of the ranking numbers is the same as under ordinal ranking.<br>
-!>          For this reason, it is used in computing Borda counts and ranking statistics (e.g., Spearman Correlation).<br>
-!>          Thus if *A* ranks ahead of *B* and *C* (which compare equal) which are both ranked ahead of *D*, then *A* gets ranking number `1` (*first*),
-!>          *B* and *C* each get ranking number `2.5` (average of *joint second/third*) and *D* gets ranking number `4` (*fourth*).<br>
-!>          That is, if `A < B == C < D`, then the sequence `ABCD` has the Fractional ranking `1223`.<br>
-!>          <b>Example:</b><br>
-!>          Suppose the data set is `1.0, 1.0, 2.0, 3.0, 3.0, 4.0, 5.0, 5.0, 5.0`.<br>
-!>          The ordinal ranks are `1, 2, 3, 4, 5, 6, 7, 8, 9`.<br>
-!>          For `v = 1.0`, the Fractional rank is the average of the ordinal ranks: `(1 + 2) / 2 = 1.5`.<br>
-!>          In a similar manner, for `v = 5.0`, the Fractional rank is `(7 + 8 + 9) / 3 = 8.0`.<br>
-!>          Thus the Fractional ranks are: `1.5, 1.5, 3.0, 4.5, 4.5, 6.0, 8.0, 8.0, 8.0`<br>
-!>
+!>      <li>    <b>Ordinal ranking (`1234`) ranking:</b> [getRankOrdinal](@ref pm_arrayRank::getRankOrdinal) or [setRankOrdinal](@ref pm_arrayRank::setRankOrdinal)<br>
+!>              This kind of ranking of values is widely known as ordinal (`1234`) ranking.<br>
+!>              In ordinal ranking, all items receive distinct ordinal numbers, including items that compare equal.<br>
+!>              The assignment of distinct ordinal numbers to items that compare equal can be done at random, or arbitrarily,
+!>              but it is generally preferable to use a system that is arbitrary but consistent,
+!>              as this gives stable results if the ranking is done multiple times.<br>
+!>              In computer data processing, ordinal ranking is also referred to as <b>row numbering</b>.
+!>              That is, if `A < B == C < D`, then the sequence `ABCD` has the <b>ordinal ranking</b> `1234`.<br>
+!>  
+!>      <li>    <b>Standard competition (`1224`) ranking:</b> [getRankStandard](@ref pm_arrayRank::getRankStandard) or [setRankStandard](@ref pm_arrayRank::setRankStandard)<br>
+!>              This kind of ranking of values is widely known as Standard Competition (`1224`) ranking.<br>
+!>              In Standard Competition ranking, items that compare equal receive the same ranking number,
+!>              and then a gap is left in the ranking numbers. The number of ranking numbers that are left out
+!>              in this gap is one less than the number of items that compared equal.<br>
+!>              Equivalently, the ranking number of each item is `1` plus the number of items ranked above it.<br>
+!>              This ranking strategy is frequently adopted for competitions, as it means that if two (or more) competitors
+!>              tie for a position in the ranking, and the position of all those ranked below them is unaffected
+!>              (i.e., a competitor only comes second if exactly one person scores better than them,
+!>              third if exactly two people score better than them, fourth if exactly three people score better than them, etc.).<br>
+!>              Thus if *A* ranks ahead of *B* and *C* (which compare equal) which are both ranked ahead of *D*, then *A* gets ranking number `1` (*first*),
+!>              *B* gets ranking number `2` (*joint second*), *C* also gets ranking number `2` (*joint second*) and *D* gets ranking number `4` (*fourth*).<br>
+!>              That is, if `A < B == C < D`, then the sequence `ABCD` has the Standard Competition ranking `1224`.<br>
+!>  
+!>      <li>    <b>Modified competition (`1334`) ranking:</b> [getRankModified](@ref pm_arrayRank::getRankModified) or [setRankModified](@ref pm_arrayRank::setRankModified)<br>
+!>              This kind of ranking of values is widely known as Modified Competition (`1334`) ranking.<br>
+!>              Sometimes, competition ranking is done by leaving the gaps in the ranking numbers before the sets of equal-ranking items
+!>              (rather than after them as in Standard Competition ranking).<br>
+!>              The number of ranking numbers that are left out in this gap
+!>              remains one less than the number of items that compared equal.<br>
+!>              Equivalently, the ranking number of each item is equal to the number of items ranked equal to it or above it.<br>
+!>              This ranking ensures that a competitor only comes second if they score higher than all but one of their opponents,
+!>              third if they score higher than all but two of their opponents, etc.<br>
+!>              Thus if *A* ranks ahead of *B* and *C* (which compare equal) which are both ranked head of *D*, then *A* gets ranking
+!>              number `1` (*first*), *B* gets ranking number `3` (*joint third*), *C* also gets ranking number `3` (*joint third*)
+!>              and *D* gets ranking number `4` (*fourth*). In this case, nobody would get ranking number `2` (*second*) (left as a gap).<br>
+!>              That is, if `A < B == C < D`, then the sequence `ABCD` has the Modified Competition ranking `1334`.<br>
+!>  
+!>      <li>    <b>Dense (`1223`) ranking:</b> [getRankDense](@ref pm_arrayRank::getRankDense) or [setRankDense](@ref pm_arrayRank::setRankDense)<br>
+!>              This kind of ranking of values is widely known as dense (`1223`) ranking.<br>
+!>              In Dense ranking, items that compare equally receive the same ranking number, and the next items receive the immediately following ranking number.<br>
+!>              Equivalently, the ranking number of each item is `1` plus the number of items ranked above it that are distinct with respect to the ranking order.<br>
+!>              Thus if *A* ranks ahead of *B* and *C* (which compare equal) which are both ranked ahead of *D*, then *A* gets ranking number 1 (*first*), *B* gets
+!>              ranking number `2` (*joint second*), *C* also gets ranking number `2` (*joint second*) and *D* gets ranking number `3` (*Third*).<br>
+!>              That is, if `A < B == C < D`, then the sequence `ABCD` has the Dense ranking `1223`.<br>
+!>              Dense ranking effective factorizes the array into classes of unique values.<br>
+!>              Therefore, the Dense rank of each element of the array is simply its class <b>level</b>.
+!>  
+!>      <li>    <b>Fractional (`1 2.5 2.5 4`) ranking:</b> [getRankFractional](@ref pm_arrayRank::getRankFractional) or [setRankFractional](@ref pm_arrayRank::setRankFractional)<br>
+!>              This kind of ranking of values is widely known as fractional (`1 2.5 2.5 4`) ranking.<br>
+!>              In Fractional ranking, items that compare equal receive the same ranking number, which is the mean of what they would have under ordinal rankings;<br>
+!>              Equivalently, the ranking number of 1 plus the number of items ranked above it plus half the number of items equal to it.<br>
+!>              This strategy has the property that the sum of the ranking numbers is the same as under ordinal ranking.<br>
+!>              For this reason, it is used in computing Borda counts and ranking statistics (e.g., Spearman Correlation).<br>
+!>              Thus if *A* ranks ahead of *B* and *C* (which compare equal) which are both ranked ahead of *D*, then *A* gets ranking number `1` (*first*),
+!>              *B* and *C* each get ranking number `2.5` (average of *joint second/third*) and *D* gets ranking number `4` (*fourth*).<br>
+!>              That is, if `A < B == C < D`, then the sequence `ABCD` has the Fractional ranking `1223`.<br>
+!>              <b>Example:</b><br>
+!>              Suppose the data set is `1.0, 1.0, 2.0, 3.0, 3.0, 4.0, 5.0, 5.0, 5.0`.<br>
+!>              The ordinal ranks are `1, 2, 3, 4, 5, 6, 7, 8, 9`.<br>
+!>              For `v = 1.0`, the Fractional rank is the average of the ordinal ranks: `(1 + 2) / 2 = 1.5`.<br>
+!>              In a similar manner, for `v = 5.0`, the Fractional rank is `(7 + 8 + 9) / 3 = 8.0`.<br>
+!>              Thus the Fractional ranks are: `1.5, 1.5, 3.0, 4.5, 4.5, 6.0, 8.0, 8.0, 8.0`<br>
 !>  </ol>
 !>
 !>  \warning
 !>  The support for ranking of string containers is disabled when the library is built with
-!>  the GNU Fortran compiler because of the lack of support for Parameterized Derived Types (PDTs) in gfortran.
+!>  the GNU Fortran compiler because of the lack of support for Parameterized Derived Types (PDTs) in \gfortran.
 !>
 !>  \note
 !>  Obtaining the **ordinal ranking** of an array is very similar to obtaining the sorted indices of the array.<br>
@@ -101,7 +99,7 @@
 !>
 !>  \todo
 !>  \pvhigh
-!>  Support for ranking of arrays of PDTs must be enabled again as soon as gfortran supports PDTs.<br>
+!>  Support for ranking of arrays of PDTs must be enabled again as soon as \gfortran supports PDTs.<br>
 !>
 !>  \todo
 !>  \phigh

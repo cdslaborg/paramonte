@@ -7,7 +7,7 @@
 %>                                      function logFunc = getLogFunc(state)
 %>                                          ...
 %>                                      end<br>
-%>                                  where,<br>  
+%>                                  where,<br>
 %>                                      1.  the input argument ``state`` is a vector of type MATLAB ``double``
 %>                                          of size ``ndim`` representing a single point from within the ``ndim``
 %>                                          dimensional domain of the mathematical object function to be explored.<br>
@@ -27,15 +27,21 @@ function run(self, getLogFunc, ndim)
     if ~pm.introspection.istype(self.silent, "logical", 1)
         help("pm.sampling.Sampler.silent");
         disp("self.silent =");
-        disp(self.mpiname);
+        disp(self.silent);
         error   ( newline ...
-                + "The sampler attribute ``mpiname`` must be a scalar of type ``char`` or ``string``." + newline ...
+                + "The sampler attribute ``silent`` must be a scalar of type ``logical``." + newline ...
                 + "For more information, see the documentation displayed above." + newline ...
                 + newline ...
                 );
     end
 
     % Sanitize parallelism method to set reporting permission.
+
+    % global mpiname;
+    % ismember('mpiname', who('global'));
+    % if  pm.array.len(self.mpiname) == 0 && ~isempty(mpiname) && pm.introspection.istype(mpiname, "string", 1) % MPI enabled by a global definition of ``mpiname``.
+    %     self.mpiname = mpiname;
+    % end
 
     if ~pm.introspection.istype(self.mpiname, "string", 1) % Sanitize ``mpiname``.
         help("pm.sampling.Sampler.mpiname");
