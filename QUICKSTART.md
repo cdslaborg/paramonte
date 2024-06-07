@@ -30,15 +30,19 @@
 5.  Using a Unix `Bash` terminal, type,
     +   For the ParaMonte C library build,
         ```bash
-        install.sh --lang c
+        ./install.sh --lang c
         ```
     +   For the ParaMonte C++ library build,
         ```bash
-        install.sh --lang cpp
+        ./install.sh --lang cpp
         ```
     +   For the ParaMonte Fortran library build,
         ```bash
         install.sh --lang fortran
+        ```
+    +   For the ParaMonte MATLAB library build,
+        ```bash
+        install.sh --lang matlab
         ```
     See more on the relevant installation instructions in [install.sh.md](./install.sh.md).    
 
