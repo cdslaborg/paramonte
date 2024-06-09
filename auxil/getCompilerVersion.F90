@@ -18,75 +18,93 @@ program getCompilerVersion
 
     use iso_fortran_env, only: compiler_version
     implicit none
-    !integer(IK) , parameter    :: INTEL_VERSION(3) = [21_IK,0_IK,0_IK]
-    !integer(IK) , parameter    :: GNU_VERSION(3) = [10_IK,3_IK,0_IK]
-    !integer(IK) , allocatable  :: MinVersion(:)
-    integer, parameter          :: IK = kind(0)
-    integer(IK)                 :: fileunit, startindex, endindex, status
-    logical                     :: isIntel = .false.
-    logical                     :: isGNU = .false.
-    character(:), allocatable   :: string, outfile
-    character(:), allocatable   :: isParaMonteCompatibleCompiler, isGfortran10
+
+    !integer    , allocatable   :: MinVersion(:)
+    !integer    , parameter     :: GNU_VERSION(3) = [10,3,0]
+    !integer    , parameter     :: INTEL_VERSION(3) = [21,0,0]
+   !logical                     :: isIntel = .false., isGNU = .false.
+   !integer                     :: fileunit, startindex, endindex, status, ipart, isep
+   !character(:), allocatable   :: isParaMonteCompatibleCompiler, isGfortran10
+    integer                     :: fileunit, ipart, isep, iostat
+    character(:), allocatable   :: comver, outfile
+    logical                     :: tripletFound
 
     type :: css_type
-        character(:), allocatable :: record
-    end type css_type
-    type(css_type), allocatable :: VersionParts(:)
+        character(:), allocatable :: val
+    end type
+
+    type(css_type), allocatable :: verlist(:)
+    type(css_type), allocatable :: seplist(:)
+
+    ! Set the output file name.
 
     if (command_argument_count() > 0) then
         allocate(character(1000) :: outfile)
-        call get_command_argument(1, value = outfile, status = status)
-        if (status == -1) error stop "Failed to fetch the output file name from the command line argument."
+        call get_command_argument(1, value = outfile, status = iostat)
+        if (iostat == -1) error stop "Failed to fetch the output file name from the command line argument."
         outfile = trim(adjustl(outfile))
     else
         outfile = "getCompilerVersion.F90.tmp"
     end if
-    string = trim(adjustl(compiler_version()))
+    comver = trim(adjustl(compiler_version()))
 
-    if (index(string,"GCC") > 0) then ! it is Gfortran
-        startindex = index(string,"version") + 8
-        isGNU = .true.
-    elseif (index(string,"Intel") > 0) then ! it is Intel
-        startindex = index(string,"Version") + 8
-        endindex = index(string,"Build") - 2
-        isIntel = .true.
-    else ! skip
-        startindex = len(string, kind = IK) + 1_IK
-    end if
+    ! Split the compiler version information to find the compiler version triplet.
 
-    ! find the end of the version number
-    endindex = startindex
-    do
-        if (endindex >= len(string, kind = IK)) exit
-        if (string(endindex + 1_IK : endindex + 1_IK) == " ") exit
-        endindex = endindex + 1_IK
-    end do
+    verlist = [css_type(comver)]
+    seplist =   [ css_type(" ") &
+                , css_type(".") &
+                , css_type(":") &
+                , css_type("(") &
+                , css_type(")") &
+                , css_type("v") &
+                , css_type("V") &
+                ]
 
-    ! this is hopefully the pure compiler version.
+    ipart = 0
+    loopOverParts: do
+        ipart = ipart + 1
+        if (size(verlist) < ipart) exit loopOverParts
+        loopOverSeps: do isep = 1, size(seplist)
+            if (index(verlist(ipart)%val, seplist(isep)%val) == 0) cycle loopOverSeps
+            verlist =   [ verlist(1 : ipart - 1) &
+                        , getSplit(verlist(ipart)%val, seplist(isep)%val) &
+                        , verlist(ipart + 1 :) &
+                        ]
+            ipart = ipart - 1
+            exit loopOverSeps
+        end do loopOverSeps
+    end do loopOverParts
 
-    string = trim(adjustl(string(startindex : endindex)))
+    ! The three consecutive all-digit parts are the compiler version.
 
     open(newunit = fileunit, file = outfile)
-    write(fileunit, "(A)") string
+    loopTripletSearch: do ipart = 2, size(verlist) - 1
+        tripletFound = isStrDigitAll(verlist(ipart)%val)
+        tripletFound = tripletFound .and. isStrDigitAll(verlist(ipart - 1)%val)
+        tripletFound = tripletFound .and. isStrDigitAll(verlist(ipart + 1)%val)
+        if (.not. tripletFound) cycle loopTripletSearch
+        write(fileunit, "(A)") verlist(ipart - 1)%val//"."//verlist(ipart)%val//"."//verlist(ipart + 1)%val
+        exit loopTripletSearch
+    end do loopTripletSearch
     close(fileunit)
 
     ! check for ParaMonteCompatibleCompiler
 
     !isParaMonteCompatibleCompiler = "false"
 
-    !!if (lge(string(1:3),"7.3") ) isParaMonteCompatibleCompiler = "true"
-    !!if (lge(string(1:6),"18.0.0") ) isParaMonteCompatibleCompiler = "true"
+    !!if (lge(comver(1:3),"7.3") ) isParaMonteCompatibleCompiler = "true"
+    !!if (lge(comver(1:6),"18.0.0") ) isParaMonteCompatibleCompiler = "true"
 
-    !VersionParts = splitStr(string, ".")
+    !verlist = getSplit(comver, ".")
     !isGfortran10 = "false"
     !if (isIntel) then
     !    MinVersion = INTEL_VERSION
     !elseif (isGNU) then
     !    MinVersion = GNU_VERSION
-    !    if (str2int(VersionParts(1)%record) > 9 ) isGfortran10 = "true"
+    !    if (str2int(verlist(1)%val) > 9 ) isGfortran10 = "true"
     !end if
-    !if  ( str2int(VersionParts(1)%record) > MinVersion(1) .or. &
-    !    ( str2int(VersionParts(1)%record)== MinVersion(1) .and. str2int(VersionParts(2)%record) >= MinVersion(2) ) &
+    !if  ( str2int(verlist(1)%val) > MinVersion(1) .or. &
+    !    ( str2int(verlist(1)%val)== MinVersion(1) .and. str2int(verlist(2)%val) >= MinVersion(2) ) &
     !    ) isParaMonteCompatibleCompiler = "true"
     !
     !open(newunit=fileunit,file=outdir//"isParaMonteCompatibleCompiler.tmp")
@@ -99,50 +117,65 @@ program getCompilerVersion
 
 contains
 
-    function splitStr(string,sep,nPart) result(field)
+    pure elemental function isCharDigit(chr) result(charIsDigit)
+        character(1), intent(in) :: chr
+        logical :: charIsDigit
+        charIsDigit = "0" <= chr .and. chr <= "9"
+    end function
 
-        implicit none
-        character(len=*)    , intent(in)            :: string, sep
-        integer(IK)         , intent(out), optional :: nPart
-        character(len=:)    , allocatable           :: dummyStr
-        type(css_type)  , allocatable           :: field(:)
-        integer(IK)                                 :: maxNumSplit
-        integer(IK)                                 :: stringLen, sepLen, splitCounter, currentPos
+    pure elemental function isStrDigitAll(str) result(strIsDigitAll)
+        character(1), intent(in) :: str
+        logical :: strIsDigitAll
+        integer :: i
+        if (len(str) > 0) then
+            loopOverStr: do i = 1, len(str)
+                if (isCharDigit(str(i : i))) cycle loopOverStr
+                strIsDigitAll = .false.
+                return
+            end do loopOverStr
+            strIsDigitAll = .true.
+        else
+            strIsDigitAll = .false.
+        end if
+    end function
 
-        dummyStr  = string
-        sepLen  = len(sep)
+    pure function getSplit(comver, sep) result(parts)
+        character(*)    , intent(in)    :: comver, sep
+        character(:)    , allocatable   :: dummyStr
+        type(css_type)  , allocatable   :: parts(:)
+        integer                         :: maxNumSplit, stringLen, sepLen, splitCounter, currentPos
+        dummyStr = comver
+        sepLen = len(sep)
         stringLen = len(dummyStr)
-
-        if (sepLen==0) then
-            allocate(field(1))
-            field(1)%record = string
+        if (sepLen == 0) then
+            allocate(parts(1))
+            parts(1)%val = comver
             return
         end if
-
         maxNumSplit = 1 + stringLen / sepLen
-        allocate(field(maxNumSplit))
+        allocate(parts(maxNumSplit))
         splitCounter = 1
         loopParseString: do
-            if (stringLen<sepLen) then
-                field(splitCounter)%record = dummyStr
+            if (stringLen < sepLen) then
+                parts(splitCounter)%val = dummyStr
                 exit loopParseString
-            elseif (stringLen==sepLen) then
-                if (dummyStr==sep) then
-                    field(splitCounter)%record = ""
+            elseif (stringLen == sepLen) then
+                if (dummyStr == sep) then
+                    parts(splitCounter)%val = ""
                 else
-                    field(splitCounter)%record = dummyStr
+                    parts(splitCounter)%val = dummyStr
                 end if
                 exit loopParseString
-            elseif (dummyStr(1:sepLen)==sep) then
-                dummyStr = dummyStr(sepLen+1:stringLen)
+            elseif (dummyStr(1 : sepLen) == sep) then
+                dummyStr = dummyStr(sepLen + 1 : stringLen)
                 stringLen = len(dummyStr)
                 cycle loopParseString
             else
                 currentPos = 2
                 loopSearchString: do
-                    if (dummyStr(currentPos:currentPos+sepLen-1)==sep) then
-                        field(splitCounter)%record = dummyStr(1:currentPos-1)
-                        if (currentPos+sepLen>stringLen) then
+                    if (dummyStr(currentPos:currentPos + sepLen - 1) == sep) then
+                        parts(splitCounter)%val = dummyStr(1 : currentPos - 1)
+                        if (currentPos + sepLen > stringLen) then
                             exit loopParseString
                         else
                             splitCounter = splitCounter + 1
@@ -152,8 +185,8 @@ contains
                         end if
                     else
                         currentPos = currentPos + 1
-                        if (stringLen<currentPos+sepLen-1) then
-                            field(splitCounter)%record = dummyStr
+                        if (stringLen < currentPos + sepLen - 1) then
+                            parts(splitCounter)%val = dummyStr
                             exit loopParseString
                         end if
                         cycle loopSearchString
@@ -161,22 +194,19 @@ contains
                 end do loopSearchString
             end if
         end do loopParseString
-        field = field(1:splitCounter)
-        if (present(nPart)) nPart = splitCounter
+        parts = parts(1 : splitCounter)
+    end function
 
-    end function splitStr
-
-    function str2int(str,iostat)
-        implicit none
+    function str2int(str, iostat)
         character(*), intent(in)        :: str
         integer, optional, intent(out)  :: iostat
-        integer(IK)                     :: str2int
+        integer                         :: str2int
         if (present(iostat)) then
             iostat = 0
-            read(str,*,iostat=iostat) str2int
+            read(str, *, iostat = iostat) str2int
         else
-            read(str,*) str2int
+            read(str, *) str2int
         endif
     end function str2int
 
-end program getCompilerVersion
+end
