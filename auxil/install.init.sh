@@ -621,7 +621,8 @@ getCSVS() {
                 }
             fi
             if [ "${versionExtractionFailed}" = "true" ]; then
-                echo >&2 "${pmwarn} Failed to fetch the compiler suite name and version. Proceeding with no guarantee of build success..."
+                echo >&2 "${pmwarn} Failed to fetch the compiler suite name and version."
+                echo >&2 "${pmwarn} Proceeding with no guarantee of build success..."
             fi
             #echo >&2 "${pmnote} Changing directory to: ${paramonte_dir}"
             cd "${paramonte_dir}"
