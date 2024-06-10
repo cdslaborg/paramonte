@@ -881,6 +881,8 @@ if (MATLAB_ENABLED AND Matlab_FOUND)
     message(NOTICE "${pmattn} Matlab_INCLUDE_DIRS=${Matlab_INCLUDE_DIRS}")
     target_include_directories("${libname}" PUBLIC "${Matlab_INCLUDE_DIRS}")
     target_link_libraries("${libname}" PUBLIC "${Matlab_MEX_LIBRARY}" "${Matlab_MX_LIBRARY}")# "${Matlab_LIBRARIES}"
+    message(NOTICE "${pmattn} Matlab_MEX_LIBRARY=${Matlab_MEX_LIBRARY}")
+    message(NOTICE "${pmattn} Matlab_MX_LIBRARY=${Matlab_MX_LIBRARY}")
     #if (NOT CAF_ENABLED AND NOT MPI_ENABLED)
         #allow matlab console print only in serial MATLAB applications.
         target_compile_definitions("${libname}" PUBLIC "MEXPRINT_ENABLED=1")
