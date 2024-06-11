@@ -2,16 +2,16 @@
 
 This file contains information about the ParaMonte library build configuration flags.
 
-The ParaMonte library build scripts accept a large number of 
+The ParaMonte library build scripts accept a large number of
 optional flags that can be used to configure the library build.
 
 Nearly all configuration flags can be specified as command line arguments
-to the [install.bat](./install.bat.md), [install.sh](./install.sh.md), or 
+to the [install.bat](./install.bat.md), [install.sh](./install.sh.md), or
 the [CMake binary executable](./CMakeLists.md). Some flags may be essential
 to directly call the CMake executable binary, while others are available
 only as optional arguments to the library install scripts mentioned above.
 
-Due to the sheer number of available optional flags, they are categorized 
+Due to the sheer number of available optional flags, they are categorized
 in tiers sorted by their relevance and importance to the end users.
 
 1.  [TIER-1 ParaMonte library build configuration flags](#TIER-1-ParaMonte-library-build-configuration-flags)
@@ -22,7 +22,7 @@ in tiers sorted by their relevance and importance to the end users.
 ## TIER-1 ParaMonte library build configuration flags
 
 The ParaMonte TIER-1 build flags set the most important and useful build configurations.
-Assuming the required compilers and external (e.g., Coarray, MPI parallel) libraries are 
+Assuming the required compilers and external (e.g., Coarray, MPI parallel) libraries are
 available on the system, these flags can readily customized the library build.
 
 ### `build`
@@ -192,8 +192,8 @@ list of possible values for which the library will be built in the specified ord
 
 ## TIER-2 ParaMonte library build configuration flags
 
-The ParaMonte TIER-2 build flags set the additional optional arguments that 
-run library benchmarks, examples, or tests, or are critical for the correct 
+The ParaMonte TIER-2 build flags set the additional optional arguments that
+run library benchmarks, examples, or tests, or are critical for the correct
 selection of compilers or external compilation libraries, or customize the
 build and installation folders.
 
@@ -238,17 +238,17 @@ where
 +   `${mem}`    is replaced with the specified value for the `mem` configuration flag (`stack`, `heap`, ...),
 +   `${par}`    is replaced with a value determined from the `mem` configuration flag:
 
-    Value               | Scenario  
-    --------------------|--------------------------------------------------------------  
-    `cafsingle`         | If the library is built for Coarray single-image parallelism.  
-    `cafshared`         | If the library is built for Coarray shared-memory parallelism.  
-    `cafdist`           | If the library is built for Coarray distributed-memory parallelism.  
-    `mpi`               | If the library is built for MPI parallelism using an unknown MPI distribution.  
-    `impi`              | If the library is built for MPI parallelism using an Intel MPI distribution.  
-    `mpich`             | If the library is built for MPI parallelism using an MPICH MPI distribution.  
-    `openmpi`           | If the library is built for MPI parallelism using an OpenMPI distribution.  
-    `openmp`            | If the library is built for OpenMP parallelism.  
-    `serial`            | If the library is built for serial applications.  
+    Value               | Scenario
+    --------------------|--------------------------------------------------------------
+    `cafsingle`         | If the library is built for Coarray single-image parallelism.
+    `cafshared`         | If the library is built for Coarray shared-memory parallelism.
+    `cafdist`           | If the library is built for Coarray distributed-memory parallelism.
+    `mpi`               | If the library is built for MPI parallelism using an unknown MPI distribution.
+    `impi`              | If the library is built for MPI parallelism using an Intel MPI distribution.
+    `mpich`             | If the library is built for MPI parallelism using an MPICH MPI distribution.
+    `openmpi`           | If the library is built for MPI parallelism using an OpenMPI distribution.
+    `openmp`            | If the library is built for OpenMP parallelism.
+    `serial`            | If the library is built for serial applications.
 
 ### `bench`
 
@@ -474,26 +474,26 @@ vendor              | Any vendor name recognized by the CMake `BLA_VENDOR`.
 
 ### `matlabdir`
 
-Specifies the path to the **directory** of MATLAB binary executable against which the library will be linked.
+Specifies the path to the root **directory** of MATLAB against which the library will be linked.
+Within a MATLAB session, this directory path is returned by the MATLAB intrinsic function `matlabroot`.
 
 +   Usage (with `install.bat` or `install.sh`)
     ```bash
-    --matlabdir "matlab_executable_dir_path"
+    --matlabdir "matlab_root_dir_path"
     ```
 +   Usage (with `cmake` binary executable)
     ```cmake
-    -Dmatlabdir="matlab_executable_dir_path"
+    -Dmatlabdir="matlab_root_dir_path"
     ```
 
-where `matlab_executable_dir_path` is the path to the directory containing the
-MATLAB executable binary file (virtually always named `matlab` or `matlab.exe`).
-
-> Beware this MATLAB binary directory almost always ends with `/bin`.
+where `matlab_root_dir_path` is the path to the root directory of MATLAB.
 
 > This option is relevant only to builds where the `lang` configuration flag is set to `matlab`.
 > The specified value is ignored for all language builds of the ParaMonte library.
 
 > Specifying this option helps CMake find the MATLAB library dependencies.
+
+> If specified, it sets the value of the CMake configuration variable `Matlab_ROOT_DIR`.
 
 > This option is essential when the library is to be linked against
 > a particular installation of MATLAB among multiple installations.
@@ -501,8 +501,7 @@ MATLAB executable binary file (virtually always named `matlab` or `matlab.exe`).
 > We highly recommend to specify the MATLAB choice explicitly via this argument
 as CMake often has difficultly choosing the right MATLAB version among several options.
 
-**optional**. The default value for `matlab_executable_dir_path`
-is determined automatically by CMake.
+**optional**. The default value for `matlab_root_dir_path` is set automatically by CMake.
 
 ### `me`
 
@@ -559,9 +558,9 @@ Value               | Usage
 > **WARNING**
 > The ParaMonte extended precision tests are prone to failure.
 > This is due to GNU compiler bugs for extended precision arithmetic.
-> To avoid bug-induced test failures when using GNU compilers, 
-> you can additionally specify the [`--rki "1;2"`](#rki) build 
-> to build the library and its test for only the 
+> To avoid bug-induced test failures when using GNU compilers,
+> you can additionally specify the [`--rki "1;2"`](#rki) build
+> to build the library and its test for only the
 > single and double `real` type precisions.
 
 **optional**. The default value for `testing_type` is `none`.
@@ -569,8 +568,8 @@ Value               | Usage
 ## TIER-3 ParaMonte library build configuration flags
 
 The ParaMonte TIER-3 build flags are mostly relevant to the ParaMonte library developers
-or advanced users who wish to further customize the library configurations for their needs.  
-Some of the available options with intricate implications require careful attention before usage.  
+or advanced users who wish to further customize the library configurations for their needs.
+Some of the available options with intricate implications require careful attention before usage.
 
 ### `benchpp`
 
@@ -835,7 +834,7 @@ non-portable compiler-specific extensions to the standard Fortran commands and s
 
 ### `fresh`
 
-Specifies the subdirectories of the build and deployment directories 
+Specifies the subdirectories of the build and deployment directories
 that must be deleted before starting the new CMake configuration and build.
 
 +   Usage (with `install.bat` or `install.sh`)
@@ -889,7 +888,7 @@ other               | Any build generator supported by CMake.
 
 > This build flag **must be explicitly set** when CMake executable is directly invoked.
 
-**optional**. Only when specified for the install scripts. 
+**optional**. Only when specified for the install scripts.
 The default value for `cmake_build_generator` is
 1.  `Unix Makefiles` on Unix systems (macOS, Linux).
 2.  `MSYS Makefiles` on Windows systems within MSYS environments (e.g., MSYS terminal).
@@ -1068,13 +1067,13 @@ otherwise `impure` if `checking` is set to `checked`.
 
 ## TIER-4 ParaMonte library build configuration flags
 
-The ParaMonte TIER-4 build flags set the additional optional arguments that 
-change the behavior of the library at the lowest level by setting the types.  
-These build flags are mostly relevant to the ParaMonte library developers or 
-advanced users who wish to reduce the final library size or supported types.  
+The ParaMonte TIER-4 build flags set the additional optional arguments that
+change the behavior of the library at the lowest level by setting the types.
+These build flags are mostly relevant to the ParaMonte library developers or
+advanced users who wish to reduce the final library size or supported types.
 
-The values of these build options are automatically set by the CMake scripts.  
-Changing the default behavior requires careful attention to the consequences.  
+The values of these build options are automatically set by the CMake scripts.
+Changing the default behavior requires careful attention to the consequences.
 
 The Fortran language 2023 supports five intrinsic types:
 
