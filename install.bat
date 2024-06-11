@@ -171,7 +171,7 @@ set flag_fresh=
 set flag_G=
 set flag_j=
 set flag_lapack=
-set flag_matlabroot=
+set flag_matlabdir=
 set flag_me=
 set flag_mod=
 set flag_nproc=
@@ -392,11 +392,11 @@ if not "%1"=="" (
         shift
     )
 
-    REM --matlabroot
+    REM --matlabdir
 
-    if "!FLAG!"=="--matlabroot" (
+    if "!FLAG!"=="--matlabdir" (
         set FLAG_SUPPORTED=true
-        set "flag_matlabroot=-Dmatlabroot=!VALUE!"
+        set "flag_matlabdir=-Dmatlabdir=!VALUE!"
         if "!VALUE!"=="" set "VALUE_SUPPORTED=false"
         if /i "!VALUE:~0,2!"=="--" set "VALUE_SUPPORTED=false"
         shift
@@ -905,12 +905,12 @@ for %%C in ("!list_fc:;=" "!") do (
 
                             echo.cd "!paramonte_bld_dir!"
                             echo.cmake !paramonte_dir! !flag_G! -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON !flag_build! !flag_checking! !flag_lib! !flag_mem! !flag_par! !flag_fc!
-                            echo.!flag_ddir! !flag_bench! !flag_benchpp! !flag_blas! !flag_codecov! !flag_cfi! !flag_deps! !flag_exam! !flag_exampp! !flag_fpp! !flag_fresh! !flag_lapack! !flag_matlabroot!
+                            echo.!flag_ddir! !flag_bench! !flag_benchpp! !flag_blas! !flag_codecov! !flag_cfi! !flag_deps! !flag_exam! !flag_exampp! !flag_fpp! !flag_fresh! !flag_lapack! !flag_matlabdir!
                             echo.!flag_lang! !flag_me! !flag_mod! !flag_nproc! !flag_perfprof! !flag_pdt! !flag_purity! !flag_test! !flag_ski! !flag_iki! !flag_lki! !flag_cki! !flag_rki!
 
                             cd "!paramonte_bld_dir!"
                             cmake !paramonte_dir! !flag_G! -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON !flag_build! !flag_checking! !flag_lib! !flag_mem! !flag_par! !flag_fc! ^
-                            !flag_ddir! !flag_bench! !flag_benchpp! !flag_blas! !flag_codecov! !flag_cfi! !flag_deps! !flag_exam! !flag_exampp! !flag_fpp! !flag_fresh! !flag_lapack! !flag_matlabroot! ^
+                            !flag_ddir! !flag_bench! !flag_benchpp! !flag_blas! !flag_codecov! !flag_cfi! !flag_deps! !flag_exam! !flag_exampp! !flag_fpp! !flag_fresh! !flag_lapack! !flag_matlabdir! ^
                             !flag_lang! !flag_me! !flag_mod! !flag_nproc! !flag_perfprof! !flag_pdt! !flag_purity! !flag_test! !flag_ski! !flag_iki! !flag_lki! !flag_cki! !flag_rki! ^
                             && (
                                 echo.

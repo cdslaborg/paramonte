@@ -72,7 +72,7 @@ if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
     unset flag_fresh
     unset flag_j
     unset flag_lapack
-    unset flag_matlabroot
+    unset flag_matlabdir
     unset flag_me
     unset flag_mod
     unset flag_nproc
@@ -202,10 +202,10 @@ if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
                             flag_lapack="-Dlapack=$1"
                             ;;
 
-            --matlabroot )   shift
-                            verifyArgNotKey "$1" --matlabroot
-                            #verifyArgNotEmpty "$1" --matlabroot
-                            flag_matlabroot="-Dmatlabroot=\"$1\""
+            --matlabdir )   shift
+                            verifyArgNotKey "$1" --matlabdir
+                            #verifyArgNotEmpty "$1" --matlabdir
+                            flag_matlabdir="-Dmatlabdir=\"$1\""
                             ;;
 
             --me )          shift
@@ -627,7 +627,7 @@ for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
                                 ${flag_fpp} \
                                 ${flag_fresh} \
                                 ${flag_lapack} \
-                                ${flag_matlabroot} \
+                                ${flag_matlabdir} \
                                 ${flag_me} \
                                 ${flag_mod} \
                                 ${flag_nproc} \
