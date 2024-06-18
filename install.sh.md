@@ -10,34 +10,37 @@
 
 ### Building via `install.sh` script in Bash terminal - quick start
 
-Run the script `install.sh` on an Intel-aware Command Prompt for Windows as:
+Run the script `install.sh` on a Bash terminal as:
 
 ```bash  
 ./install.sh --lang TARGET_LANAGUAGE
 ```  
 
-and to redirect the `install.sh` script output to a file named `install.sh.out`, try:
+> **Note**
+> 
+> To redirect the `install.sh` script output to a file named `install.sh.out`, try:
+> 
+> ```bash  
+> ./install.sh --lang TARGET_LANAGUAGE > install.sh.out 2>&1
+> ```  
+> 
+> To redirect and run the `install.sh` script in the background, try:
+>
+> ```bash  
+> ./install.sh --lang TARGET_LANAGUAGE > install.sh.out 2>&1 &
+> ```  
+>
+> To redirect and run the `install.sh` script and disown the process, try:
+> 
+> ```bash  
+> ./install.sh --lang TARGET_LANAGUAGE > install.sh.out 2>&1 & jobs; disown
+> ```  
+> 
+> where you must replace `TARGET_LANAGUAGE` with your choice of programming
+> language from which you intend to access the ParaMonte library. 
 
-```bash  
-./install.sh --lang TARGET_LANAGUAGE > install.sh.out 2>&1
-```  
-
-and to redirect and run the `install.sh` script in the background, try:
-
-```bash  
-./install.sh --lang TARGET_LANAGUAGE > install.sh.out 2>&1 &
-```  
-
-and to redirect and run the `install.sh` script and disown the process, try:
-
-```bash  
-./install.sh --lang TARGET_LANAGUAGE > install.sh.out 2>&1 & jobs; disown
-```  
-
-where you must replace `TARGET_LANAGUAGE` with your choice of programming
-language from which you intend to access the ParaMonte library. See the
-command-line configuration flag descriptions below for a list of
-supported programming languages and other build options.
+See the command-line configuration flag descriptions below for a 
+list of supported programming languages and other build options.
 
 ### Building via `install.sh` script in Bash terminal - prerequisites
 
