@@ -300,10 +300,21 @@ function run(self, getLogFunc, ndim)
         mexcall = string(self.mexname + "(convertStringsToChars(self.method), @getLogFuncConcurrent, ndim, convertStringsToChars(self.nml))");
         if ~self.silent
             delete(gcp("nocreate"));
-            pool = parpool("threads", abs(self.spec.parallelismNumThread));
+            % The following works only in MATLAB 2022b and beyond.
+            if  pm.matlab.release() < "2022b"
+                pool = parpool("threads");
+                maxNumCompThreads(abs(self.spec.parallelismNumThread));
+            else
+                pool = parpool("threads", abs(self.spec.parallelismNumThread));
+            end
         else
             evalc('delete(gcp("nocreate")');
-            evalc('pool = parpool("threads", abs(self.spec.parallelismNumThread))');
+            if  pm.matlab.release() < "2022b"
+                evalc('pool = parpool("threads")');
+                evalc('maxNumCompThreads(abs(self.spec.parallelismNumThread))');
+            else
+                evalc('pool = parpool("threads", abs(self.spec.parallelismNumThread))');
+            end
         end
     else
         mexcall = string(self.mexname + "(convertStringsToChars(self.method), @getLogFuncWrapped, ndim, convertStringsToChars(self.nml))");

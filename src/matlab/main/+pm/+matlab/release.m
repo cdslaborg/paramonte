@@ -3,10 +3,10 @@
 %>  MATLAB release version, year, or season as requested.
 %>
 %>  \param[in]  type    :   The input scalar MATLAB string that can be either:
-%>                          1.  ``"year"``, implying that the
-%>                              MATLAB release year must be returned.<br>
-%>                          2.  ``"season"`` or ``"minor"``, implying
-%>                              that the MATLAB release year must be returned..<br>
+%>                          <ol>
+%>                              <li>    the string ``"year"``, implying that the MATLAB release year must be returned.<br>
+%>                              <li>    the string ``"season"`` or ``"minor"``, implying that the MATLAB release year must be returned..<br>
+%>                          </ol>
 %>                          (**optional**. default = ``""`` implying the full version.)
 %>
 %>  \return
