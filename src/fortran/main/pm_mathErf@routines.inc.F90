@@ -24,13 +24,20 @@
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        !%%%%%%%%%%%%%%%%
 #if     getErfInv_ENABLED
+        !%%%%%%%%%%%%%%%%
+
         if (present(abserr)) then
             call setErfInv(erfinv, x, abserr)
         else
             call setErfInv(erfinv, x, 100 * epsilon(0._RKG))
         end if
+
+        !%%%%%%%%%%%%%%%%
 #elif   setErfInv_ENABLED
+        !%%%%%%%%%%%%%%%%
+
         real(RKG) :: temp, absx
         real(RKG), parameter :: TWO_OVER_SQRTPI = 2._RKG / sqrt(acos(-1._RKG))
         ! Chebyshev declarations.
@@ -285,7 +292,9 @@
             erfinv = sign(huge(x), x)
         end if
 #else
+        !%%%%%%%%%%%%%%%%%%%%%%%%
 #error  "Unrecognized interface."
+        !%%%%%%%%%%%%%%%%%%%%%%%%
 #endif
 #undef  strecok_ENABLED
 #undef  halley_ENABLED

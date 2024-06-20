@@ -23,11 +23,13 @@
 !>  \f{equation}{
 !>      \ms{erf}(x) = {\frac{2}{\sqrt{\pi}}} \int_{0}^{x} e^{-t^{2}} ~ \mathrm{d}t ~.
 !>  \f}
-!>  This integral is a special (non-elementary) Sigmoid function that occurs in probability, statistics, and partial differential equations.<br>
+!>  This integral is a special (non-elementary) Sigmoid function that
+!>  occurs in probability, statistics, and partial differential equations.<br>
 !>  In many of these applications, the function argument is however a real number.<br>
 !>  If the function argument is real, then the function value is also real.<br>
 !>  For non-negative values of \f$x\f$, the error function has the following interpretation:
-!>  For a random variable \f$Y\f$ that is [normally distributed](@ref pm_distNorm) with mean \f$0\f$ and standard deviation \f$\frac{1}{\sqrt{2}}\f$,
+!>  For a random variable \f$Y\f$ that is [normally distributed](@ref pm_distNorm)
+!>  with mean \f$0\f$ and standard deviation \f$\frac{1}{\sqrt{2}}\f$,
 !>  \f$\ms{erf}(x)\f$ is the probability that \f$Y\f$ falls in the range \f$[−x, x]\f$.<br>
 !>  Two closely related functions are the **complementary error function (erfc)** defined as,
 !>  \f{equation}{
@@ -46,7 +48,8 @@
 !>  \f{equation}{
 !>      \ms{erf}\left(\ms{erf}^{-1}(x)\right) = x ~.
 !>  \f}
-!>  The inverse error function is usually defined with domain \f$(−1, 1)\f$ and it is restricted to this domain in many computer algebra systems.<br>
+!>  The inverse error function is usually defined with domain \f$(−1, 1)\f$
+!>  and it is restricted to this domain in many computer algebra systems.<br>
 !>  However, it can be extended to the disk \f$|x| < 1\f$ of the complex plane, using the Maclaurin series,
 !>  \f{equation}{
 !>      \ms{erf}^{-1}(x) = \sum_{k=0}^{\infty} \frac{c_{k}}{2k+1} \left({\frac{\sqrt{\pi}}{2}} x \right)^{2k+1} ~,
@@ -73,24 +76,26 @@
 !>
 !>  <b>Numerical computation</b><br>
 !>
-!>  The `erf()` and `erfc()` intrinsic Fortran functions readily return the value of the Error function at any given input value with arbitrary `real` type and kind.<br>
-!>  Theoretically, for any real \f$x\f$, the [Newton root-finding method](@ref pm_mathRoot) can be used to compute the **inverse error function** \f$\ms{erfi}^{−1}(x)\f$
+!>  The `erf()` and `erfc()` intrinsic Fortran functions readily return the value of
+!>  the Error function at any given input value with arbitrary `real` type and kind.<br>
+!>  Theoretically, for any real \f$x\f$, the [Newton root-finding method](@ref pm_mathRoot)
+!>  can be used to compute the **inverse error function** \f$\ms{erfi}^{−1}(x)\f$
 !>  and for −1 ≤ x ≤ 1, the following Maclaurin series converges:
 !>  \f{equation}{
 !>      \ms{erfi}^{-1}(x) = \sum_{k=0}^{\infty}{\frac{(-1)^{k}c_{k}}{2k+1}}\left({\frac{\sqrt{\pi}}{2}}(x)\right)^{2k+1} ~,
 !>  \f}
 !>  where \f$c_k\f$ is defined as above.
 !>
-!>  The procedures of this module combine multiple varying-precision approaches to make a decision at compile-time about the best strategy for computing the inverse error function.<br>
+!>  The procedures of this module combine multiple varying-precision approaches to make a
+!>  decision at compile-time about the best strategy for computing the inverse error function.<br>
 !>
 !>  \see
 !>  [pm_mathBeta](@ref pm_mathBeta)<br>
-!>  [pm_mathGamma](@ref pm_mathGamma)<br>
 !>  [pm_mathErf](@ref pm_mathErf)<br>
+!>  [pm_mathGamma](@ref pm_mathGamma)<br>
 !>  [pm_distNorm](@ref pm_distNorm)<br>
-!>  [pm_distNorm](@ref pm_distNorm)<br>
-!>  [pm_distNorm](@ref pm_distNorm)<br>
-!>  [pm_distNorm](@ref pm_distNorm)<br>
+!>  [getNormQuan](@ref pm_distNorm::getNormQuan)<br>
+!>  [setNormQuan](@ref pm_distNorm::setNormQuan)<br>
 !>
 !>  \test
 !>  [test_pm_mathErf](@ref test_pm_mathErf)
@@ -271,7 +276,7 @@ module pm_mathErf
     !>                          If present, the output approximate value for the inverse error function is guaranteed to be at most `abserr` away from the true value \f$\ms{erf}^{-1}(x)\f$.<br>
     !>                          This guarantee is currently tested and validated up to \f$2\times10^{-26}\f$.<br>
     !>                          A reasonable value could be `epsilon(x)**0.66`.<br>
-    !>                          The current implementation of this generic interface contains three methods of 
+    !>                          The current implementation of this generic interface contains three methods of
     !>                          computing the inverse error function corresponding to three levels of increasing accuracy,
     !>                          <ol>
     !>                              <li>    For any `1.e-7 < abserr`, the output `erfinv` will have at most an absolute error `1.e-7` with respect to theoretical value.<br>
