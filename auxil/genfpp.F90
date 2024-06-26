@@ -27,9 +27,9 @@ allocate(character(4096) :: inn_file, out_file)
 call get_command_argument(number = 1, value = inn_file, length = lenarg); inn_file = trim(adjustl(inn_file(1 : lenarg)))
 call get_command_argument(number = 2, value = out_file, length = lenarg); out_file = trim(adjustl(out_file(1 : lenarg)))
 open(newunit = out_unit, file = out_file, status = "replace", action = "write", iostat = iostat, iomsg = iomsg)
-if (isFailed(iostat, "Failed to open the output destination file ("//trim(out_file)//") with `write` access: "//trim(iomsg))) return
+if (isFailed(iostat, "Failed to open the output destination file ("//trim(out_file)//") with `write` access: "//trim(iomsg))) stop
 open(newunit = inn_unit, file = inn_file, status = "old", action = "read", iostat = iostat, iomsg = iomsg)
-if (isFailed(iostat, "Failed to open the output destination file ("//trim(inn_file)//") with `write` access: "//trim(iomsg))) return
+if (isFailed(iostat, "Failed to open the output destination file ("//trim(inn_file)//") with `write` access: "//trim(iomsg))) stop
 allocate(character(511) :: record)
 
 ! add license.
@@ -38,12 +38,12 @@ do i = 1, size(LICENSE)
 end do
 write(out_unit, "(A)")
 
-block
+blockReadContents: block
     use iso_fortran_env, only: iostat_end
-    do
+    loopReadContents: do
         call setRecordFrom(inn_unit, record, lenrec, iostat, iomsg)
-        if (iostat == iostat_end) exit
-        if (isFailed(iostat, "Failed to read the source file contents: "//trim(iomsg))) return
+        if (iostat == iostat_end) exit loopReadContents
+        if (isFailed(iostat, "Failed to read the source file contents: "//trim(iomsg))) exit blockReadContents
         i = getLocNB(record(1 : lenrec))
         if (0 < i) then
             valuable = record(i : i) /= "#"
@@ -58,8 +58,8 @@ block
                 end if
             end if
         end if
-    end do
-end block
+    end do loopReadContents
+end block blockReadContents
 
 close(inn_unit)
 close(out_unit)
