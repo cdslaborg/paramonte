@@ -602,12 +602,13 @@ for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
                                 echo >&2 "${pmnote} Invoking CMake as:"
                                 echo >&2 ""
 
+                                set -x
+
                                 #### The following loop temporarily bypasses an existing bug where the first fresh installation
                                 #### does not copy the FPP source files to the deployment and installation directories.
 
                                 for ((n=0; n<2; n++)); do
 
-                                    set -x
                                     (cd "${paramonte_bld_dir}" && \
                                     cmake \
                                     "${paramonte_dir}" \
@@ -648,23 +649,23 @@ for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
                                     )
                                     verify $? "configuration with cmake"
 
+                                    echo >&2 ""
+                                    echo >&2 "########################################################################################%%"
+                                    echo >&2 ""
+
+                                   #(cd "${paramonte_bld_dir}" && $makename ${flag_j})
+                                    (cd "${paramonte_bld_dir}" && cmake --build "${paramonte_bld_dir}" ${flag_j})
+                                    verify $? "build with make"
+
+                                   #(cd "${paramonte_bld_dir}" && $makename install)
+                                    (cd "${paramonte_bld_dir}" && cmake --build "${paramonte_bld_dir}" --target install ${flag_j})
+                                    verify $? "installation"
+
+                                   #(cd "${paramonte_bld_dir}" && $makename deploy)
+                                    (cd "${paramonte_bld_dir}" && cmake --build "${paramonte_bld_dir}" --target deploy ${flag_j})
+                                    verify $? "deployment"
+
                                 done
-
-                                echo >&2 ""
-                                echo >&2 "########################################################################################%%"
-                                echo >&2 ""
-
-                               #(cd "${paramonte_bld_dir}" && $makename ${flag_j})
-                                (cd "${paramonte_bld_dir}" && cmake --build "${paramonte_bld_dir}" ${flag_j})
-                                verify $? "build with make"
-
-                               #(cd "${paramonte_bld_dir}" && $makename install)
-                                (cd "${paramonte_bld_dir}" && cmake --build "${paramonte_bld_dir}" --target install ${flag_j})
-                                verify $? "installation"
-
-                               #(cd "${paramonte_bld_dir}" && $makename deploy)
-                                (cd "${paramonte_bld_dir}" && cmake --build "${paramonte_bld_dir}" --target deploy ${flag_j})
-                                verify $? "deployment"
 
                                #(cd "${paramonte_bld_dir}" && $makename test && echo)
                                 (cd "${paramonte_bld_dir}" && cmake --build "${paramonte_bld_dir}" --target test)

@@ -926,44 +926,44 @@ for %%C in ("!list_fc:;=" "!") do (
                                     goto LABEL_ERR
                                 )
 
-                            )
+                                echo.
+                                echo.****************************************************************************************************
+                                echo.
 
-                            echo.
-                            echo.****************************************************************************************************
-                            echo.
+                                set PATH=!PATH!;!paramonte_bld_dir!\lib
+                                cd "!paramonte_bld_dir!" && cmake --build "!paramonte_bld_dir!" !flag_j! && (
+                                    echo.
+                                    echo.!pmnote! !BoldGreen!ParaMonte build appears to have succeeded.!ColorReset!
+                                    echo.
+                                ) || (
+                                    echo.
+                                    echo.!pmnote! !BoldRed!ParaMonte build appears to have failed.!ColorReset!
+                                    echo.
+                                    goto LABEL_ERR
+                                )
 
-                            set PATH=!PATH!;!paramonte_bld_dir!\lib
-                            cd "!paramonte_bld_dir!" && cmake --build "!paramonte_bld_dir!" !flag_j! && (
-                                echo.
-                                echo.!pmnote! !BoldGreen!ParaMonte build appears to have succeeded.!ColorReset!
-                                echo.
-                            ) || (
-                                echo.
-                                echo.!pmnote! !BoldRed!ParaMonte build appears to have failed.!ColorReset!
-                                echo.
-                                goto LABEL_ERR
-                            )
+                                cd "!paramonte_bld_dir!" && cmake --build "!paramonte_bld_dir!" --target install !flag_j! && (
+                                    echo.
+                                    echo.!pmnote! !BoldGreen!ParaMonte installation appears to have succeeded.!ColorReset!
+                                    echo.
+                                ) || (
+                                    echo.
+                                    echo.!pmnote! !BoldRed!ParaMonte installation appears to have failed.!ColorReset!
+                                    echo.
+                                    goto LABEL_ERR
+                                )
 
-                            cd "!paramonte_bld_dir!" && cmake --build "!paramonte_bld_dir!" --target install !flag_j! && (
-                                echo.
-                                echo.!pmnote! !BoldGreen!ParaMonte installation appears to have succeeded.!ColorReset!
-                                echo.
-                            ) || (
-                                echo.
-                                echo.!pmnote! !BoldRed!ParaMonte installation appears to have failed.!ColorReset!
-                                echo.
-                                goto LABEL_ERR
-                            )
+                                cd "!paramonte_bld_dir!" && cmake --build "!paramonte_bld_dir!" --target deploy !flag_j! && (
+                                    echo.
+                                    echo.!pmnote! !BoldGreen!ParaMonte deploy appears to have succeeded.!ColorReset!
+                                    echo.
+                                ) || (
+                                    echo.
+                                    echo.!pmnote! !BoldRed!ParaMonte deploy appears to have failed.!ColorReset!
+                                    echo.
+                                    goto LABEL_ERR
+                                )
 
-                            cd "!paramonte_bld_dir!" && cmake --build "!paramonte_bld_dir!" --target deploy !flag_j! && (
-                                echo.
-                                echo.!pmnote! !BoldGreen!ParaMonte deploy appears to have succeeded.!ColorReset!
-                                echo.
-                            ) || (
-                                echo.
-                                echo.!pmnote! !BoldRed!ParaMonte deploy appears to have failed.!ColorReset!
-                                echo.
-                                goto LABEL_ERR
                             )
 
                             cd "!paramonte_bld_dir!" && cmake --build "!paramonte_bld_dir!" --target test && (
