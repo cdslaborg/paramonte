@@ -602,46 +602,53 @@ for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
                                 echo >&2 "${pmnote} Invoking CMake as:"
                                 echo >&2 ""
 
-                                set -x
-                                (cd "${paramonte_bld_dir}" && \
-                                cmake \
-                                "${paramonte_dir}" \
-                                ${flag_g} "${cmakeBuildGenerator}" \
-                                "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON" \
-                                "${flag_ddir}" \
-                                "${flag_build}" \
-                                "${flag_checking}" \
-                                "${flag_lang}" \
-                                "${flag_lib}" \
-                                "${flag_mem}" \
-                                "${flag_par}" \
-                                ${flag_fc} \
-                                ${flag_bench} \
-                                ${flag_benchpp} \
-                                ${flag_blas} \
-                                ${flag_codecov} \
-                                ${flag_cfi} \
-                                ${flag_deps} \
-                                ${flag_exam} \
-                                ${flag_exampp} \
-                                ${flag_fpp} \
-                                ${flag_fresh} \
-                                ${flag_lapack} \
-                                ${flag_matlabdir} \
-                                ${flag_me} \
-                                ${flag_mod} \
-                                ${flag_nproc} \
-                                ${flag_perfprof} \
-                                ${flag_pdt} \
-                                ${flag_purity} \
-                                ${flag_test} \
-                                ${flag_ski} \
-                                ${flag_iki} \
-                                ${flag_lki} \
-                                ${flag_cki} \
-                                ${flag_rki} \
-                                )
-                                verify $? "configuration with cmake"
+                                #### The following loop temporarily bypasses an existing bug where the first fresh installation
+                                #### does not copy the FPP source files to the deployment and installation directories.
+
+                                for ((n=0; n<2; n++)); do
+
+                                    set -x
+                                    (cd "${paramonte_bld_dir}" && \
+                                    cmake \
+                                    "${paramonte_dir}" \
+                                    ${flag_g} "${cmakeBuildGenerator}" \
+                                    "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON" \
+                                    "${flag_ddir}" \
+                                    "${flag_build}" \
+                                    "${flag_checking}" \
+                                    "${flag_lang}" \
+                                    "${flag_lib}" \
+                                    "${flag_mem}" \
+                                    "${flag_par}" \
+                                    ${flag_fc} \
+                                    ${flag_bench} \
+                                    ${flag_benchpp} \
+                                    ${flag_blas} \
+                                    ${flag_codecov} \
+                                    ${flag_cfi} \
+                                    ${flag_deps} \
+                                    ${flag_exam} \
+                                    ${flag_exampp} \
+                                    ${flag_fpp} \
+                                    ${flag_fresh} \
+                                    ${flag_lapack} \
+                                    ${flag_matlabdir} \
+                                    ${flag_me} \
+                                    ${flag_mod} \
+                                    ${flag_nproc} \
+                                    ${flag_perfprof} \
+                                    ${flag_pdt} \
+                                    ${flag_purity} \
+                                    ${flag_test} \
+                                    ${flag_ski} \
+                                    ${flag_iki} \
+                                    ${flag_lki} \
+                                    ${flag_cki} \
+                                    ${flag_rki} \
+                                    )
+                                    verify $? "configuration with cmake"
+
+                                done
 
                                 echo >&2 ""
                                 echo >&2 "########################################################################################%%"

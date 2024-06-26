@@ -38,11 +38,11 @@
         ```
     +   For the ParaMonte Fortran library build,
         ```bash
-        install.sh --lang fortran
+        ./install.sh --lang fortran
         ```
     +   For the ParaMonte MATLAB library build,
         ```bash
-        install.sh --lang matlab
+        ./install.sh --lang matlab
         ```
     See more on the relevant installation instructions in [install.sh.md](./install.sh.md).    
 
