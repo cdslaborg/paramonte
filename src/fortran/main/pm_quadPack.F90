@@ -5606,6 +5606,8 @@ module pm_quadPack
     !>  Alternatively, one should consider using the adaptive integration routines [isFailedQuad](@ref pm_quadPack::isFailedQuad) or [getQuadErr](@ref pm_quadPack::getQuadErr)
     !>  while setting their input `help` arguments to the points of difficulties of the integrand.<br>
     !>
+    !>  \impure
+    !>
     !>  \note
     !>  **semi/fully-infinite intervals**<br>
     !>  If the integration range is semi or fully infinite, the recommended quadrature rule is [GK21](@ref pm_quadPack::GK21).<br>
