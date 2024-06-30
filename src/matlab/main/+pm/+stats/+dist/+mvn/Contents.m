@@ -1,12 +1,13 @@
+%>  \dir
+%>
 %>  \brief
-%>  pm.stats.dist.mvn - This ParaMonte MATLAB module contains
-%>  routines and data related to the Multivariate Normal (MVN)
-%>  statistical distributions.
+%>  The ParaMonte MATLAB package ``pm.stats.dist.mvn`` contains
+%>  a set of routines and data related to the Multivariate Normal (MVN)
+%>  statistical distribution.
 %>
-%>  Contents
-%>  --------
-%>
-%>      pm.stats.dist.mvn.rand - function.
+%>  \note
+%>  For more information on the existing functionalities,
+%>  see the documentations of the package members.
 %>
 %>  \final{pm.stats.dist.mvn}
 %>

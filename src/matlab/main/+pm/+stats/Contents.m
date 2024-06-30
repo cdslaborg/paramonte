@@ -1,14 +1,12 @@
+%>  \dir
+%>
 %>  \brief
-%>  pm.stats - This ParaMonte MATLAB module contains
-%>  routines and data related to statistical tasks.
+%>  The ParaMonte MATLAB package ``pm.stats`` contains
+%>  a set of routines and data related to statistical tasks.
 %>
-%>  Contents
-%>  --------
-%>
-%>      pm.stats.dist - module.
-%>      pm.stats.AutoCorr - class.
-%>      pm.stats.Cor - class.
-%>      pm.stats.Cov - class.
+%>  \note
+%>  For more information on the existing functionalities,
+%>  see the documentations of the package members.
 %>
 %>  \final{pm.stats}
 %>

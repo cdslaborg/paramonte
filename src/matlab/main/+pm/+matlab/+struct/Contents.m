@@ -1,9 +1,12 @@
-%>  \brief
-%>  pm.matlab.struct - This ParaMonte MATLAB module contains routines
-%>  and data related to the presence of MATLAB language structs.
+%>  \dir
 %>
-%>  \details
-%>      pm.matlab.struct.copy - function.
+%>  \brief
+%>  The ParaMonte MATLAB package ``pm.matlab.struct`` contains
+%>  a set of routines related to the MATLAB language struct objects.
+%>
+%>  \note
+%>  For more information on the existing functionalities,
+%>  see the documentations of the package members.
 %>
 %>  \final{pm.matlab.struct}
 %>

@@ -6,7 +6,7 @@
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members.
+%>  see the documentations of the package members (source files).
 %>
 %>  \final{pm.array}
 %>

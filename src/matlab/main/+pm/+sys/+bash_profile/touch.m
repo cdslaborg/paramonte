@@ -6,8 +6,6 @@
 %>  contents of the ``.bashrc`` file, then add it to
 %>  the ``.bash_profile`` and return its contents.
 %>
-%>  \param[in]  `None`
-%>
 %>  \return
 %>  `str`   :   The output scalar MATLAB string containing
 %>              the contents of the ``.bash_profile``.

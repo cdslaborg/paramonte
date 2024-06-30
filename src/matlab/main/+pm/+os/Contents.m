@@ -1,13 +1,12 @@
-%>  \brief
-%>  pm.os - This ParaMonte MATLAB module contains
-%>  routines and data related to the Operating System.
+%>  \dir
 %>
-%>  \details
-%>  pm.os.is - module.
-%>  pm.os.list - function.
-%>  pm.os.listl - function.
-%>  pm.os.name - function.
-%>  pm.os.namel - function.
+%>  \brief
+%>  The ParaMonte MATLAB package ``pm.os`` contains
+%>  a set of routines and data related to the Operating System.
+%>
+%>  \note
+%>  For more information on the existing functionalities,
+%>  see the documentations of the package members.
 %>
 %>  \final{pm.os}
 %>

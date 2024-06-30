@@ -1,12 +1,12 @@
+%>  \dir
+%>
 %>  \brief
-%>  pm.stats.dist - This ParaMonte MATLAB module contains
-%>  routines and data related to statistical distributions.
+%>  The ParaMonte MATLAB package ``pm.stats.dist`` contains
+%>  a set of routines and data related to statistical distributions.
 %>
-%>  Contents
-%>  --------
-%>
-%>      pm.stats.dist.mvn - module.
-%>      pm.stats.dist.mvu - module.
+%>  \note
+%>  For more information on the existing functionalities,
+%>  see the documentations of the package members.
 %>
 %>  \final{pm.stats.dist}
 %>

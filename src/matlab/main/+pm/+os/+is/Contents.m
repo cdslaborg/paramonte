@@ -1,11 +1,12 @@
-%>  \brief
-%>  pm.os.is - This ParaMonte MATLAB module contains
-%>  routines and data related to the Operating System type.
+%>  \dir
 %>
-%>  \details
-%>  pm.os.is.lin - function.
-%>  pm.os.is.mac - function.
-%>  pm.os.is.win - function.
+%>  \brief
+%>  The ParaMonte MATLAB package ``pm.os.is`` contains
+%>  a set of routines and data related to the Operating System type checking.
+%>
+%>  \note
+%>  For more information on the existing functionalities,
+%>  see the documentations of the package members.
 %>
 %>  \final{pm.os.is}
 %>

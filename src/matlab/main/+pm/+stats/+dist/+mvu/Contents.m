@@ -1,12 +1,13 @@
+%>  \dir
+%>
 %>  \brief
-%>  pm.stats.dist.mvu - This ParaMonte MATLAB module contains
-%>  routines and data related to the Multivariate Uniform
-%>  Ellipsoidal (MVU) statistical distributions.
+%>  The ParaMonte MATLAB package ``pm.stats.dist.mvu`` contains
+%>  a set of routines and data related to the Multivariate Uniform (MVU)
+%>  Ellipsoidal distribution.
 %>
-%>  Contents
-%>  --------
-%>
-%>      pm.stats.dist.mvu.rand - function.
+%>  \note
+%>  For more information on the existing functionalities,
+%>  see the documentations of the package members.
 %>
 %>  \final{pm.stats.dist.mvu}
 %>

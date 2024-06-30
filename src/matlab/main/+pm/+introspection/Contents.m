@@ -1,13 +1,19 @@
-%>  pm.introspection - This ParaMonte MATLAB module contains routines and data related to type introspection.
+%>  \dir
 %>
-%>  Contents
-%>  --------
+%>  \brief
+%>  The ParaMonte MATLAB package ``pm.introspection`` contains
+%>  a set of routines and data related to type introspection.
 %>
-%>      pm.introspection.getEntryNML - function.
-%>      pm.introspection.istype - function.
-%>      pm.introspection.verify - function.
+%>  \note
+%>  For more information on the existing functionalities,
+%>  see the documentations of the package members.
 %>
-%>  \final{}
+%>  \see
+%>  [pm.introspection.getEntryNML](@ref getEntryNML)<br>
+%>  [pm.introspection.istype](@ref istype)<br>
+%>  [pm.introspection.verify](@ref verify)<br>
+%>
+%>  \final{pm.introspection}
 %>
 %>  \author
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>

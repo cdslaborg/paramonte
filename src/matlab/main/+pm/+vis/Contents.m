@@ -1,14 +1,20 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.sys`` contains
-%>  a set of routines and data related to system tasks.
+%>  The ParaMonte MATLAB package ``pm.vis`` contains
+%>  a set of routines and data related to data visualization tasks.
+%>
+%>  \details
+%>  Specifically, the main goal of the routines and classes of
+%>  this package is to simplify and automate much of the
+%>  complexities of massive data visualization tasks,
+%>  such as those encountered in statistical sampling.
 %>
 %>  \note
 %>  For more information on the existing functionalities,
 %>  see the documentations of the package members.
 %>
-%>  \final{pm.sys}
+%>  \final{pm.vis}
 %>
 %>  \author
 %>  \JoshuaOsborne, May 21 2024, 5:32 AM, University of Texas at Arlington<br>

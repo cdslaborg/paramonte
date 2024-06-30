@@ -1,13 +1,12 @@
-%>  \brief
-%>  pm.matlab.hashmap - This ParaMonte MATLAB module contains
-%>  routines and data related to the MATLAB language hash maps.
+%>  \dir
 %>
-%>  \details
-%>  pm.matlab.hashmap.addKeyVal - function.
-%>  pm.matlab.hashmap.repKeyVal - function.
-%>  pm.matlab.hashmap.getKeyVal - function.
-%>  pm.matlab.hashmap.hash2comp - function.
-%>  pm.matlab.hashmap.struct2hash - function.
+%>  \brief
+%>  The ParaMonte MATLAB package ``pm.matlab.hashmap`` contains
+%>  a set of routines related to the MATLAB language hashmaps.
+%>
+%>  \note
+%>  For more information on the existing functionalities,
+%>  see the documentations of the package members.
 %>
 %>  \final{pm.matlab.hashmap}
 %>

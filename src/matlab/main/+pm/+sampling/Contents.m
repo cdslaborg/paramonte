@@ -1,22 +1,18 @@
+%>  \dir
+%>
 %>  \brief
-%>  pm.sampling - This ParaMonte MATLAB module contains routines
-%>  and data related to the sampling mathematical density functions.<br>
-%>  Of all available classes and functions in this module,
-%>  only the ``pm.sampling.Paradram`` class is relevant and
-%>  useful to the end users of the ParaMonte library.
+%>  The ParaMonte MATLAB package ``pm.sampling`` contains
+%>  a set of routines and data types related to sampling
+%>  mathematical density functions.<br>
 %>
 %>  \details
-%>  pm.sampling.Paradram - class.
-%>  pm.sampling.Sampler - class.
-%>  pm.sampling.FileContentsChain - class.
-%>  pm.sampling.FileContentsProgress - class.
-%>  pm.sampling.FileContentsReport - class.
-%>  pm.sampling.FileContentsRestart - class.
-%>  pm.sampling.FileContentsRestartDRAM - class.
-%>  pm.sampling.FileContentsSample - class.
-%>  pm.sampling.SpecBase - class.
-%>  pm.sampling.SpecDRAM - class.
-%>  pm.sampling.SpecMCMC - class.
+%>  Of all available classes and functions in this package,
+%>  the ``pm.sampling.Paradram`` class is the most relevant
+%>  and useful to the end users of the ParaMonte library.
+%>
+%>  \note
+%>  For more information on the existing functionalities,
+%>  see the documentations of the package members.
 %>
 %>  \final{pm.sampling}
 %>
