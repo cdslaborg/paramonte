@@ -137,433 +137,428 @@ if (EXISTS "${origin}")
     unset(collection_cmakelists_batch_contents)
     set(collection_bld_bash_path "${CMAKE_CURRENT_BINARY_DIR}/build.sh")
     set(collection_bld_batch_path "${CMAKE_CURRENT_BINARY_DIR}/build.bat")
-    if (${lang_is_dynamic})
 
+    #### Build the contents of the collection CMakeList.txt.
+
+    if ("${lang}" STREQUAL "c")
+        set(binary_lang "C")
+    elseif ("${lang}" STREQUAL "cpp")
+        set(binary_lang "CXX")
+    elseif ("${lang}" STREQUAL "fortran")
+        set(binary_lang "Fortran")
     else()
+        message(FATAL_ERROR "${pmfatal} Internal ParaMonte-CMake error: Unrecognized compiled language: lang=${lang}")
+    endif()
 
-        #### Build the contents of the collection CMakeList.txt.
+    #### get the compiler name.
 
-        if ("${lang}" STREQUAL "c")
-            set(binary_lang "C")
-        elseif ("${lang}" STREQUAL "cpp")
-            set(binary_lang "CXX")
-        elseif ("${lang}" STREQUAL "fortran")
-            set(binary_lang "Fortran")
-        else()
-            message(FATAL_ERROR "${pmfatal} Internal ParaMonte-CMake error: Unrecognized compiled language: lang=${lang}")
-        endif()
+    #get_filename_component(binary_compiler "${CMAKE_${binary_lang}_COMPILER}" NAME)
+    set(binary_compiler "${CMAKE_${binary_lang}_COMPILER}")
 
-        #### get the compiler name.
+    #### Build the contents of CMakeLists.
 
-        #get_filename_component(binary_compiler "${CMAKE_${binary_lang}_COMPILER}" NAME)
-        set(binary_compiler "${CMAKE_${binary_lang}_COMPILER}")
+    # WARNING
+    # The first paramonet library path search option below in `find_library` is
+    # essential for correct (original) library identification in code coverage builds.
 
-        #### Build the contents of CMakeLists.
+    string(CONCAT collection_cmakelists_contents "${collection_cmakelists_contents}"
+        "cmake_minimum_required(VERSION 3.14)\n"
+        "set(CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE})\n"
+        "if (\"\${CMAKE_Fortran_COMPILER}\" STREQUAL \"\")\n"
+        "    set(CMAKE_Fortran_COMPILER \"${binary_compiler}\")\n"
+        "endif()\n"
+        "project(main LANGUAGES ${binary_lang})\n"
+        "set(CMAKE_MACOSX_RPATH ON)\n"
+        "set(CMAKE_INSTALL_RPATH_USE_LINK_PATH ON)\n"
+        "add_executable(binary main${lang_ext})\n"
+        "set_target_properties(binary PROPERTIES OUTPUT_NAME \"main\" SUFFIX \".exe\")\n"
+        "target_include_directories(binary PUBLIC \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../inc\")\n"
+        "find_library(pmlib NAMES ${libname} ${libname}.a ${libname}.dll ${libname}.dylib ${libname}.lib ${libname}.so PATHS\n"
+        "            \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../../lib\" # library directory for code coverage.\n"
+        "            \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../lib\" # library directory for examples/benchmarks.\n"
+        "            )\n"
+        "target_link_libraries(binary PUBLIC \"\${pmlib}\")\n"
+        "target_link_libraries(binary PUBLIC \"\${pmlib}\")\n"
+        "if (APPLE)\n"
+        "    set(rpath_prop \"@loader_path\")\n"
+        "elseif(UNIX)\n"
+        "    set(rpath_prop \"$ORIGIN\")\n"
+        "endif()\n"
+        "set_target_properties(binary PROPERTIES INSTALL_RPATH \"${rpath_prop}\")\n"
+    )
+    #if (${csid_is_gnu} AND ${codecov_enabled})
+    #    string(CONCAT collection_cmakelists_contents "${collection_cmakelists_contents}"
+    #    "find_library(pmlib NAMES ${libname} ${libname}.a ${libname}.dll ${libname}.dylib ${libname}.lib ${libname}.so PATHS \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../../lib\" \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../lib\")\n"
+    #    )
+    #else()
+    #    string(CONCAT collection_cmakelists_contents "${collection_cmakelists_contents}"
+    #    "find_library(pmlib NAMES ${libname} ${libname}.a ${libname}.dll ${libname}.dylib ${libname}.lib ${libname}.so PATHS \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../lib\")\n"
+    #    )
+    #endif()
 
-        # WARNING
-        # The first paramonet library path search option below in `find_library` is
-        # essential for correct (original) library identification in code coverage builds.
+        #set(CMAKE_MACOSX_RPATH 1)
+        #set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
 
-        string(CONCAT collection_cmakelists_contents "${collection_cmakelists_contents}"
-            "cmake_minimum_required(VERSION 3.14)\n"
-            "set(CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE})\n"
-            "if (\"\${CMAKE_Fortran_COMPILER}\" STREQUAL \"\")\n"
-            "    set(CMAKE_Fortran_COMPILER \"${binary_compiler}\")\n"
-            "endif()\n"
-            "project(main LANGUAGES ${binary_lang})\n"
-            "set(CMAKE_MACOSX_RPATH ON)\n"
-            "set(CMAKE_INSTALL_RPATH_USE_LINK_PATH ON)\n"
-            "add_executable(binary main${lang_ext})\n"
-            "set_target_properties(binary PROPERTIES OUTPUT_NAME \"main\" SUFFIX \".exe\")\n"
-            "target_include_directories(binary PUBLIC \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../inc\")\n"
-            "find_library(pmlib NAMES ${libname} ${libname}.a ${libname}.dll ${libname}.dylib ${libname}.lib ${libname}.so PATHS\n"
-            "            \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../../lib\" # library directory for code coverage.\n"
-            "            \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../lib\" # library directory for examples/benchmarks.\n"
-            "            )\n"
-            "target_link_libraries(binary PUBLIC \"\${pmlib}\")\n"
-            "target_link_libraries(binary PUBLIC \"\${pmlib}\")\n"
-            "if (APPLE)\n"
-            "    set(rpath_prop \"@loader_path\")\n"
-            "elseif(UNIX)\n"
-            "    set(rpath_prop \"$ORIGIN\")\n"
-            "endif()\n"
-            "set_target_properties(binary PROPERTIES INSTALL_RPATH \"${rpath_prop}\")\n"
-        )
-        #if (${csid_is_gnu} AND ${codecov_enabled})
-        #    string(CONCAT collection_cmakelists_contents "${collection_cmakelists_contents}"
-        #    "find_library(pmlib NAMES ${libname} ${libname}.a ${libname}.dll ${libname}.dylib ${libname}.lib ${libname}.so PATHS \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../../lib\" \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../lib\")\n"
-        #    )
-        #else()
-        #    string(CONCAT collection_cmakelists_contents "${collection_cmakelists_contents}"
-        #    "find_library(pmlib NAMES ${libname} ${libname}.a ${libname}.dll ${libname}.dylib ${libname}.lib ${libname}.so PATHS \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../lib\")\n"
-        #    )
-        #endif()
+    unset(mkl_flag_bash)
+    unset(mkl_flag_batch)
+    unset(binary_ipo_options)
+    unset(binary_link_options)
+    unset(binary_compile_options)
+    unset(binary_compile_definitions)
+    #if (${csid_is_gnu} OR ${csid_is_intel})
+        #set(binary_link_options "-Wl,-rpath,../../../lib")
+    #endif()
 
-            #set(CMAKE_MACOSX_RPATH 1)
-            #set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
+    if ("${lang}" STREQUAL "c" OR "${lang}" STREQUAL "cpp")
 
-        unset(mkl_flag_bash)
-        unset(mkl_flag_batch)
-        unset(binary_ipo_options)
-        unset(binary_link_options)
-        unset(binary_compile_options)
-        unset(binary_compile_definitions)
-        #if (${csid_is_gnu} OR ${csid_is_intel})
-            #set(binary_link_options "-Wl,-rpath,../../../lib")
-        #endif()
+        string( CONCAT
+                collection_cmakelists_contents
+                "${collection_cmakelists_contents}"
+                "if (\"\${CMAKE_${binary_lang}_COMPILER_ID}\" STREQUAL \"GNU\")\n"
+                "    target_link_libraries(binary PUBLIC m)\n"
+                "endif()\n"
+                )
 
-        if ("${lang}" STREQUAL "c" OR "${lang}" STREQUAL "cpp")
+    elseif ("${lang}" STREQUAL "fortran")
 
-            string( CONCAT
-                    collection_cmakelists_contents
-                    "${collection_cmakelists_contents}"
-                    "if (\"\${CMAKE_${binary_lang}_COMPILER_ID}\" STREQUAL \"GNU\")\n"
-                    "    target_link_libraries(binary PUBLIC m)\n"
-                    "endif()\n"
-                    )
+        if (${csid_is_gnu})
 
-        elseif ("${lang}" STREQUAL "fortran")
+            set(binary_ipo_options -flto=3)
+            set(binary_compile_options "${binary_compile_options}" -cpp -ffree-line-length-none)
+            if ("${build}" STREQUAL "testing")
+                set(binary_compile_options "${binary_compile_options}" -O2)
+            elseif ("${build}" STREQUAL "debug")
+                set(binary_compile_options "${binary_compile_options}" -O0 -g -fcheck=all -fbacktrace)
+            else()
+                set(binary_compile_options "${binary_compile_options}" -O3)
+            endif()
 
-            if (${csid_is_gnu})
+            if (${codecov_enabled})
+                set(binary_link_options "${binary_link_options}" "--coverage")
+                set(binary_compile_options "${binary_compile_options}" "--coverage")
+            endif()
 
-                set(binary_ipo_options -flto=3)
-                set(binary_compile_options "${binary_compile_options}" -cpp -ffree-line-length-none)
+        elseif (${csid_is_intel})
+
+            if (WIN32)
+                set(binary_ipo_options /Qipo)
+                set(mkl_compile_options /Qmkl:sequential)
+                set(mkl_compile_definitions /DMKL_ENABLED=1)
+                #set(binary_link_options "${binary_link_options}" /F0x1000000000) The intel /F flag does not seem to work anymore.
+                set(binary_compile_options "${binary_compile_options}" /standard-semantics /fpp) # /F0x1000000000 /heap-arrays We use editbin software now to increase stack size.
+                if ("${build}" STREQUAL "testing")
+                    set(binary_compile_options "${binary_compile_options}" /O2)
+                elseif ("${build}" STREQUAL "debug")
+                    set(binary_compile_options "${binary_compile_options}" /Od /debug:full /CB /Qinit:snan,arrays /warn:all /gen-interfaces /traceback /check:all /fpe-all:0 /Qtrapuv)
+                else()
+                    set(binary_compile_options "${binary_compile_options}" /O3)
+                endif()
+            else()
+                set(binary_ipo_options -ipo)
+                set(mkl_compile_options -qmkl=sequential)
+                set(mkl_compile_definitions -DMKL_ENABLED=1)
+                set(binary_compile_options "${binary_compile_options}" -fpp -standard-semantics)
                 if ("${build}" STREQUAL "testing")
                     set(binary_compile_options "${binary_compile_options}" -O2)
                 elseif ("${build}" STREQUAL "debug")
-                    set(binary_compile_options "${binary_compile_options}" -O0 -g -fcheck=all -fbacktrace)
+                    set(binary_compile_options "${binary_compile_options}" -O0 -g3 -CB -debug full -traceback -check all -fpe0)
                 else()
                     set(binary_compile_options "${binary_compile_options}" -O3)
                 endif()
-
-                if (${codecov_enabled})
-                    set(binary_link_options "${binary_link_options}" "--coverage")
-                    set(binary_compile_options "${binary_compile_options}" "--coverage")
-                endif()
-
-            elseif (${csid_is_intel})
-
-                if (WIN32)
-                    set(binary_ipo_options /Qipo)
-                    set(mkl_compile_options /Qmkl:sequential)
-                    set(mkl_compile_definitions /DMKL_ENABLED=1)
-                    #set(binary_link_options "${binary_link_options}" /F0x1000000000) The intel /F flag does not seem to work anymore.
-                    set(binary_compile_options "${binary_compile_options}" /standard-semantics /fpp) # /F0x1000000000 /heap-arrays We use editbin software now to increase stack size.
-                    if ("${build}" STREQUAL "testing")
-                        set(binary_compile_options "${binary_compile_options}" /O2)
-                    elseif ("${build}" STREQUAL "debug")
-                        set(binary_compile_options "${binary_compile_options}" /Od /debug:full /CB /Qinit:snan,arrays /warn:all /gen-interfaces /traceback /check:all /fpe-all:0 /Qtrapuv)
-                    else()
-                        set(binary_compile_options "${binary_compile_options}" /O3)
-                    endif()
-                else()
-                    set(binary_ipo_options -ipo)
-                    set(mkl_compile_options -qmkl=sequential)
-                    set(mkl_compile_definitions -DMKL_ENABLED=1)
-                    set(binary_compile_options "${binary_compile_options}" -fpp -standard-semantics)
-                    if ("${build}" STREQUAL "testing")
-                        set(binary_compile_options "${binary_compile_options}" -O2)
-                    elseif ("${build}" STREQUAL "debug")
-                        set(binary_compile_options "${binary_compile_options}" -O0 -g3 -CB -debug full -traceback -check all -fpe0)
-                    else()
-                        set(binary_compile_options "${binary_compile_options}" -O3)
-                    endif()
-                endif()
-
             endif()
 
         endif()
 
-        if (DEFINED binary_ipo_options AND ("${build}" STREQUAL "ipo" OR "${build}" STREQUAL "tuned" OR "${build}" STREQUAL "native"))
-            set(binary_compile_options "${binary_compile_options}" "${binary_ipo_options}")
-            set(binary_link_options "${binary_link_options}" "${binary_ipo_options}")
-        endif()
+    endif()
 
-        if (OpenBLAS_ENABLED)
-            # Warning: The following openblas library name will have to updated to `openblas_64`
-            # if the compiler options for long integer kinds for array size are enabled.
-            string( CONCAT
-                    collection_cmakelists_contents
-                    "${collection_cmakelists_contents}"
-                    "find_library(oblib NAMES openblas libopenblas PATHS \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../lib\")\n"
-                    "set_property(TARGET binary APPEND PROPERTY LINK_LIBRARIES \"${oblib}\")\n"
-                    )
-        elseif (BLAS_ENABLED OR LAPACK_ENABLED)
-            if ("${lang}" STREQUAL "fortran" AND ${csid_is_intel})
-                set(binary_compile_options "${binary_compile_options} ${mkl_compile_options}")
-                set(binary_compile_definitions "${binary_compile_definitions} ${mkl_compile_definitions}")
-            else()
-                if (BLAS_ENABLED AND BLAS_FOUND AND DEFINED BLAS_LIBRARIES)
-                    string( CONCAT
-                            collection_cmakelists_contents
-                            "${collection_cmakelists_contents}"
-                            "set_property(TARGET binary APPEND PROPERTY LINK_LIBRARIES \"${BLAS_LIBRARIES}\")\n"
-                            )
-                elseif (LAPACK_ENABLED AND LAPACK_FOUND AND DEFINED LAPACK_LIBRARIES)
-                    string( CONCAT
-                            collection_cmakelists_contents
-                            "${collection_cmakelists_contents}"
-                            "set_property(TARGET binary APPEND PROPERTY LINK_LIBRARIES \"${LAPACK_LIBRARIES}\")\n"
-                            )
-                endif()
-            endif()
-        endif()
+    if (DEFINED binary_ipo_options AND ("${build}" STREQUAL "ipo" OR "${build}" STREQUAL "tuned" OR "${build}" STREQUAL "native"))
+        set(binary_compile_options "${binary_compile_options}" "${binary_ipo_options}")
+        set(binary_link_options "${binary_link_options}" "${binary_ipo_options}")
+    endif()
 
-        if (DEFINED binary_compile_definitions)
-            string( CONCAT
-                    collection_cmakelists_contents
-                    "${collection_cmakelists_contents}"
-                    "set_property(TARGET binary APPEND PROPERTY COMPILE_DEFINITIONS \"${binary_compile_definitions}\")\n"
-                    )
-        endif()
-
-        if (DEFINED binary_compile_options)
-            string( CONCAT
-                    collection_cmakelists_contents
-                    "${collection_cmakelists_contents}"
-                    "set_property(TARGET binary APPEND PROPERTY COMPILE_OPTIONS \"${binary_compile_options}\")\n"
-                    )
-        endif()
-
-        if (DEFINED binary_link_options)
-            string( CONCAT
-                    collection_cmakelists_contents
-                    "${collection_cmakelists_contents}"
-                    "set_property(TARGET binary APPEND PROPERTY LINK_OPTIONS \"${binary_link_options}\")\n"
-                    )
-        endif()
-
-        #### Add parallelism instructions and libraries to the CMakeLists file if needed.
-
-        if(WIN32)
-            set(bincmd "main.exe")
+    if (OpenBLAS_ENABLED)
+        # Warning: The following openblas library name will have to updated to `openblas_64`
+        # if the compiler options for long integer kinds for array size are enabled.
+        string( CONCAT
+                collection_cmakelists_contents
+                "${collection_cmakelists_contents}"
+                "find_library(oblib NAMES openblas libopenblas PATHS \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../lib\")\n"
+                "set_property(TARGET binary APPEND PROPERTY LINK_LIBRARIES \"${oblib}\")\n"
+                )
+    elseif (BLAS_ENABLED OR LAPACK_ENABLED)
+        if ("${lang}" STREQUAL "fortran" AND ${csid_is_intel})
+            set(binary_compile_options "${binary_compile_options} ${mkl_compile_options}")
+            set(binary_compile_definitions "${binary_compile_definitions} ${mkl_compile_definitions}")
         else()
-            set(bincmd "./main.exe")
-        endif()
-        if(MPI_ENABLED)
-            string( CONCAT
-                    collection_cmakelists_contents
-                    "${collection_cmakelists_contents}"
-                    "find_package(MPI)\n"
-                    "if(MPI_${binary_lang}_FOUND)\n"
-                    "    target_link_libraries(binary PUBLIC MPI::MPI_${binary_lang})\n"
-                    "else()\n"
-                    "    message(WARNING \"CMake could not find an MPI library in the current environment.\")\n"
-                    "    message(WARNING \"The example build & run may fail.\")\n"
-                    "endif()\n"
-                    )
-            if (WIN32 AND ("${CMAKE_${binary_lang}_COMPILER_ID}" MATCHES ".*Intel.*"))
-                set(bincmd "mpiexec -localonly -n ${nproc} ${bincmd}")
-            else()
-                set(bincmd "mpiexec -n ${nproc} ${bincmd}")
+            if (BLAS_ENABLED AND BLAS_FOUND AND DEFINED BLAS_LIBRARIES)
+                string( CONCAT
+                        collection_cmakelists_contents
+                        "${collection_cmakelists_contents}"
+                        "set_property(TARGET binary APPEND PROPERTY LINK_LIBRARIES \"${BLAS_LIBRARIES}\")\n"
+                        )
+            elseif (LAPACK_ENABLED AND LAPACK_FOUND AND DEFINED LAPACK_LIBRARIES)
+                string( CONCAT
+                        collection_cmakelists_contents
+                        "${collection_cmakelists_contents}"
+                        "set_property(TARGET binary APPEND PROPERTY LINK_LIBRARIES \"${LAPACK_LIBRARIES}\")\n"
+                        )
             endif()
-        elseif(OMP_ENABLED)
-            string( CONCAT
-                    collection_cmakelists_contents
-                    "${collection_cmakelists_contents}"
-                    "find_package(OpenMP)\n"
-                    "if(OpenMP_${binary_lang}_FOUND)\n"
-                    "    target_link_libraries(binary PUBLIC OpenMP::OpenMP_${binary_lang})\n"
-                    "else()\n"
-                    "    message(WARNING \"CMake could not find an OpenMP library in the current environment.\")\n"
-                    "    message(WARNING \"The example build & run may fail.\")\n"
-                    "endif()\n"
-                    )
         endif()
+    endif()
 
-        #### Add the example execution make rule.
+    if (DEFINED binary_compile_definitions)
+        string( CONCAT
+                collection_cmakelists_contents
+                "${collection_cmakelists_contents}"
+                "set_property(TARGET binary APPEND PROPERTY COMPILE_DEFINITIONS \"${binary_compile_definitions}\")\n"
+                )
+    endif()
 
-        string(CONCAT
-            collection_cmakelists_contents
-            "${collection_cmakelists_contents}"
-            "add_custom_target(run COMMAND ${bincmd} DEPENDS binary WORKING_DIRECTORY \"\$\{CMAKE_CURRENT_SOURCE_DIR\}\")\n"
-            )
-        set(collection_cmakelists_bash_name "build.sh") # cmake.sh
-        set(collection_cmakelists_batch_name "build.bat") # cmake.bat
-        set(collection_cmakelists_path "${CMAKE_CURRENT_BINARY_DIR}/CMakeLists.txt")
-        set(collection_cmakelists_bash_path "${CMAKE_CURRENT_BINARY_DIR}/${collection_cmakelists_bash_name}")
-        set(collection_cmakelists_batch_path "${CMAKE_CURRENT_BINARY_DIR}/${collection_cmakelists_batch_name}")
+    if (DEFINED binary_compile_options)
+        string( CONCAT
+                collection_cmakelists_contents
+                "${collection_cmakelists_contents}"
+                "set_property(TARGET binary APPEND PROPERTY COMPILE_OPTIONS \"${binary_compile_options}\")\n"
+                )
+    endif()
 
-        set(binary_cmake_build "cmake . -G \"${CMAKE_GENERATOR}\" && ${CMAKE_MAKE_PROGRAM}")
+    if (DEFINED binary_link_options)
+        string( CONCAT
+                collection_cmakelists_contents
+                "${collection_cmakelists_contents}"
+                "set_property(TARGET binary APPEND PROPERTY LINK_OPTIONS \"${binary_link_options}\")\n"
+                )
+    endif()
 
-        set(collection_cmakelists_bash_contents "#!/bin/bash\n")
-        if (WIN32)
-            string( CONCAT
-                    collection_cmakelists_bash_contents
-                    "${collection_cmakelists_bash_contents}"
-                    "# Add the library path to the\n"
-                    "# PATH environment variable.\n"
-                    "export PATH=../../../lib:$PATH\n"
-                    )
+    #### Add parallelism instructions and libraries to the CMakeLists file if needed.
+
+    if(WIN32)
+        set(bincmd "main.exe")
+    else()
+        set(bincmd "./main.exe")
+    endif()
+    if(MPI_ENABLED)
+        string( CONCAT
+                collection_cmakelists_contents
+                "${collection_cmakelists_contents}"
+                "find_package(MPI)\n"
+                "if(MPI_${binary_lang}_FOUND)\n"
+                "    target_link_libraries(binary PUBLIC MPI::MPI_${binary_lang})\n"
+                "else()\n"
+                "    message(WARNING \"CMake could not find an MPI library in the current environment.\")\n"
+                "    message(WARNING \"The example build & run may fail.\")\n"
+                "endif()\n"
+                )
+        if (WIN32 AND ("${CMAKE_${binary_lang}_COMPILER_ID}" MATCHES ".*Intel.*"))
+            set(bincmd "mpiexec -localonly -n ${nproc} ${bincmd}")
+        else()
+            set(bincmd "mpiexec -n ${nproc} ${bincmd}")
         endif()
+    elseif(OMP_ENABLED)
+        string( CONCAT
+                collection_cmakelists_contents
+                "${collection_cmakelists_contents}"
+                "find_package(OpenMP)\n"
+                "if(OpenMP_${binary_lang}_FOUND)\n"
+                "    target_link_libraries(binary PUBLIC OpenMP::OpenMP_${binary_lang})\n"
+                "else()\n"
+                "    message(WARNING \"CMake could not find an OpenMP library in the current environment.\")\n"
+                "    message(WARNING \"The example build & run may fail.\")\n"
+                "endif()\n"
+                )
+    endif()
+
+    #### Add the example execution make rule.
+
+    string(CONCAT
+        collection_cmakelists_contents
+        "${collection_cmakelists_contents}"
+        "add_custom_target(run COMMAND ${bincmd} DEPENDS binary WORKING_DIRECTORY \"\$\{CMAKE_CURRENT_SOURCE_DIR\}\")\n"
+        )
+    set(collection_cmakelists_bash_name "build.sh") # cmake.sh
+    set(collection_cmakelists_batch_name "build.bat") # cmake.bat
+    set(collection_cmakelists_path "${CMAKE_CURRENT_BINARY_DIR}/CMakeLists.txt")
+    set(collection_cmakelists_bash_path "${CMAKE_CURRENT_BINARY_DIR}/${collection_cmakelists_bash_name}")
+    set(collection_cmakelists_batch_path "${CMAKE_CURRENT_BINARY_DIR}/${collection_cmakelists_batch_name}")
+
+    set(binary_cmake_build "cmake . -G \"${CMAKE_GENERATOR}\" && ${CMAKE_MAKE_PROGRAM}")
+
+    set(collection_cmakelists_bash_contents "#!/bin/bash\n")
+    if (WIN32)
         string( CONCAT
                 collection_cmakelists_bash_contents
                 "${collection_cmakelists_bash_contents}"
-                "${binary_cmake_build}\n"
-                "${CMAKE_MAKE_PROGRAM} run"
+                "# Add the library path to the\n"
+                "# PATH environment variable.\n"
+                "export PATH=../../../lib:$PATH\n"
                 )
-
-        string( CONCAT
-                collection_cmakelists_batch_contents
-                "REM Add the library path to the\n"
-                "REM PATH environment variable.\n"
-                "setlocal EnableDelayedExpansion\n"
-                "set \"PATH=..\\..\\..\\lib;%PATH%\"\n"
-                "REM Enlarge the library stack size.\n"
-                "editbin ..\\..\\..\\lib\\*.dll /stack:1000000000\n"
-                "REM Generate build scripts.\n"
-                "${binary_cmake_build}\n"
-                "REM Enlarge the binary stack size.\n"
-                "editbin *.exe /stack:1000000000\n"
-                "REM Run the binary.\n"
-                "${CMAKE_MAKE_PROGRAM} run"
-                )
-
-        #### Write the files.
-
-        if (DEFINED collection_cmakelists_path AND DEFINED collection_cmakelists_contents)
-            file(WRITE "${collection_cmakelists_path}" "${collection_cmakelists_contents}")
-            message(NOTICE "${pmattn} ${collection} CMakeLists.txt script:")
-            message(NOTICE "${collection_cmakelists_contents}")
-        endif()
-        if (DEFINED collection_cmakelists_bash_path AND DEFINED collection_cmakelists_bash_contents)
-            file(WRITE "${collection_cmakelists_bash_path}" "${collection_cmakelists_bash_contents}")
-            message(NOTICE "${pmattn} ${collection} CMakeLists Bash build script:")
-            message(NOTICE "${collection_cmakelists_bash_contents}")
-        endif()
-        if (WIN32 AND DEFINED collection_cmakelists_batch_path AND DEFINED collection_cmakelists_batch_contents)
-            file(WRITE "${collection_cmakelists_batch_path}" "${collection_cmakelists_batch_contents}")
-            message(NOTICE "${pmattn} ${collection} CMakeLists Batch build script:")
-            message(NOTICE "${collection_cmakelists_batch_contents}")
-        endif()
-
-        unset(collection_cmakelists_batch_contents)
-        unset(collection_cmakelists_bash_contents)
-        unset(collection_cmakelists_contents)
-
-        #if ("${lang}" STREQUAL "c" OR "${lang}" STREQUAL "cpp")
-        #
-        #    #set(collection_bld_bash_path "${CMAKE_CURRENT_BINARY_DIR}/${collection_cmakelists_bash_name}")
-        #    #set(collection_bld_batch_path "${CMAKE_CURRENT_BINARY_DIR}/${collection_cmakelists_batch_name}")
-        #
-        #elseif ("${lang}" STREQUAL "fortran")
-        #
-        #    if (${csid_is_gnu} OR ${csid_is_intel})
-        #
-        #        # Rather than copying the build script files from the ${collection}/auxil folder, generate the files on the fly.
-        #
-        #        # Set the first line of the build scripts.
-        #        set(collection_bld_bash_pre "#!/bin/bash")
-        #        set(collection_bld_batch_pre "set PATH=..\\..\\..\\lib;%PATH%")
-        #
-        #        # Set the library name for ${collection} build scripts.
-        #        set(collection_bld_bash_compile "-o main.exe main${lang_ext} ../../../lib/${libname}*")
-        #        if (OpenBLAS_ENABLED)
-        #            set(collection_bld_bash_compile "${collection_bld_bash_compile} ../../../lib/openblas*")
-        #        endif()
-        #        if (WIN32 AND "${lib}" STREQUAL "shared" AND ${csid_is_intel})
-        #            set(collection_bld_batch_compile "/exe:main.exe main${lang_ext} ..\\..\\..\\lib\\${libname}*.lib")
-        #        else()
-        #            set(collection_bld_batch_compile "/exe:main.exe main${lang_ext} ..\\..\\..\\lib\\${libname}*")
-        #        endif()
-        #        unset(libname)
-        #
-        #        # Generate the generic build scripts.
-        #
-        #        unset(mkl_flag_bash)
-        #        unset(mkl_flag_batch)
-        #
-        #        # Set the last line of the build scripts.
-        #
-        #        if (${MPI_ENABLED})
-        #            set(collection_bld_bash_post "mpiexec -n ${nproc} ./main.exe")
-        #            if (${csid_is_intel})
-        #                set(collection_bld_batch_post "mpiexec -localonly -n ${nproc} ./main.exe") #${MPIEXEC_EXECUTABLE}
-        #                set(fcname "mpiifort")
-        #            else()
-        #                set(collection_bld_batch_post "mpiexec -n ${nproc} main.exe")
-        #                set(fcname "mpifort")
-        #            endif()
-        #        else()
-        #            get_filename_component(fcname "${CMAKE_Fortran_COMPILER}" NAME)
-        #            set(collection_bld_bash_post "./main.exe")
-        #            set(collection_bld_batch_post "main.exe")
-        #        endif()
-        #
-        #        if (isCollectionBench)
-        #            set(collection_bld_bash_compile "-DBLAS_ENABLED=${BLAS_ENABLED} -DLAPACK_ENABLED=${LAPACK_ENABLED} ${collection_bld_bash_compile}")
-        #            set(collection_bld_batch_compile "/DBLAS_ENABLED=${BLAS_ENABLED} /DLAPACK_ENABLED=${LAPACK_ENABLED} ${collection_bld_batch_compile}")
-        #        endif()
-        #
-        #        if (${csid_is_gnu})
-        #
-        #            set(collection_bld_bash_compile "-cpp -ffree-line-length-none -Wl,-rpath,../../../lib -I../../../inc ${collection_bld_bash_compile}")
-        #            if ("${build}" STREQUAL "debug")
-        #                set(collection_bld_bash_compile "${fcname} -O0 -g -fcheck=all -fbacktrace ${collection_bld_bash_compile}")
-        #            elseif ("${build}" STREQUAL "testing")
-        #                set(collection_bld_bash_compile "${fcname} -O2 ${collection_bld_bash_compile}")
-        #            else()
-        #                set(collection_bld_bash_compile "${fcname} -O3 -flto=3 ${collection_bld_bash_compile}")
-        #            endif()
-        #
-        #        elseif (${csid_is_intel})
-        #
-        #            # \todo
-        #            # The windows case needs to be tested and configured on Windows system.
-        #            set(mkl_flag_bash " -qmkl=sequential -DMKL_ENABLED=1") # The initial white space is essential.
-        #            set(mkl_flag_batch " /Qmkl:sequential /DMKL_ENABLED=1") # The initial white space is essential.
-        #
-        #            set(collection_bld_bash_compile "-standard-semantics -fpp -Wl,-rpath,../../../lib -I../../../inc ${collection_bld_bash_compile}")
-        #            if ("${build}" STREQUAL "debug")
-        #                set(collection_bld_bash_compile "${fcname} -O0 -g3 -CB -debug full -traceback -check all -fpe0 ${collection_bld_bash_compile}")
-        #            elseif ("${build}" STREQUAL "testing")
-        #                set(collection_bld_bash_compile "${fcname} -O2 ${collection_bld_bash_compile}")
-        #            else()
-        #                set(collection_bld_bash_compile "${fcname} -O3 -ipo ${collection_bld_bash_compile}")
-        #            endif()
-        #
-        #            set(collection_bld_batch_compile "/standard-semantics /fpp /I:..\\..\\..\\inc  ${collection_bld_batch_compile}")
-        #            if ("${build}" STREQUAL "debug")
-        #                set(collection_bld_batch_compile "${fcname} /Od /debug:full /CB /Qinit:snan,arrays /warn:all /gen-interfaces /traceback /check:all /fpe-all:0 /Qtrapuv ${collection_bld_batch_compile}")
-        #            elseif ("${build}" STREQUAL "testing")
-        #                set(collection_bld_batch_compile "${fcname} /O2 ${collection_bld_batch_compile}")
-        #            else()
-        #                set(collection_bld_batch_compile "${fcname} /O3 /Qipo ${collection_bld_batch_compile}")
-        #            endif()
-        #
-        #        endif()
-        #        unset(fcname)
-        #
-        #        # Generate the full ${collection} build scripts.
-        #
-        #        if (isCollectionBench)
-        #            # Generate the full ${collection} build scripts with BLAS/LAPACK linking.
-        #            file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/BLAPACK")
-        #            set(collection_bld_bash_contents "${collection_bld_bash_compile}")
-        #            if (OpenBLAS_ENABLED)
-        #                set(collection_bld_bash_contents "${collection_bld_bash_pre}\n${collection_bld_bash_compile}\n${collection_bld_bash_post}")
-        #            elseif (BLAS_ENABLED AND LAPACK_ENABLED)
-        #                set(collection_bld_bash_contents "${collection_bld_bash_pre}\n${collection_bld_bash_compile} ${mkl_flag_bash} -llapack -lblas\n${collection_bld_bash_post}")
-        #            elseif (BLAS_ENABLED)
-        #                set(collection_bld_bash_contents "${collection_bld_bash_pre}\n${collection_bld_bash_compile} ${mkl_flag_bash} -lblas\n${collection_bld_bash_post}")
-        #            else()
-        #                set(collection_bld_bash_contents "${collection_bld_bash_pre}\n${collection_bld_bash_compile}\n${collection_bld_bash_post}")
-        #            endif()
-        #        else()
-        #            set(collection_bld_bash_contents "${collection_bld_bash_pre}\n${collection_bld_bash_compile}\n${collection_bld_bash_post}")
-        #        endif()
-        #        set(collection_bld_batch_contents "${collection_bld_batch_pre}\n${collection_bld_batch_compile}\n${collection_bld_batch_post}")
-        #
-        #    else()
-        #
-        #        # \todo XXX this needs improvement.
-        #        message(WARNING "${pmwarn} Unrecognized unsupported compiler detected. ParaMonte ${collection} build scripts will not function.")
-        #
-        #    endif()
-        #
-        #endif()
-
     endif()
+    string( CONCAT
+            collection_cmakelists_bash_contents
+            "${collection_cmakelists_bash_contents}"
+            "${binary_cmake_build}\n"
+            "${CMAKE_MAKE_PROGRAM} run"
+            )
+
+    string( CONCAT
+            collection_cmakelists_batch_contents
+            "REM Add the library path to the\n"
+            "REM PATH environment variable.\n"
+            "setlocal EnableDelayedExpansion\n"
+            "set \"PATH=..\\..\\..\\lib;%PATH%\"\n"
+            "REM Enlarge the library stack size.\n"
+            "editbin ..\\..\\..\\lib\\*.dll /stack:1000000000\n"
+            "REM Generate build scripts.\n"
+            "${binary_cmake_build}\n"
+            "REM Enlarge the binary stack size.\n"
+            "editbin *.exe /stack:1000000000\n"
+            "REM Run the binary.\n"
+            "${CMAKE_MAKE_PROGRAM} run"
+            )
+
+    #### Write the files.
+
+    if (DEFINED collection_cmakelists_path AND DEFINED collection_cmakelists_contents)
+        file(WRITE "${collection_cmakelists_path}" "${collection_cmakelists_contents}")
+        message(NOTICE "${pmattn} ${collection} CMakeLists.txt script:")
+        message(NOTICE "${collection_cmakelists_contents}")
+    endif()
+    if (DEFINED collection_cmakelists_bash_path AND DEFINED collection_cmakelists_bash_contents)
+        file(WRITE "${collection_cmakelists_bash_path}" "${collection_cmakelists_bash_contents}")
+        message(NOTICE "${pmattn} ${collection} CMakeLists Bash build script:")
+        message(NOTICE "${collection_cmakelists_bash_contents}")
+    endif()
+    if (WIN32 AND DEFINED collection_cmakelists_batch_path AND DEFINED collection_cmakelists_batch_contents)
+        file(WRITE "${collection_cmakelists_batch_path}" "${collection_cmakelists_batch_contents}")
+        message(NOTICE "${pmattn} ${collection} CMakeLists Batch build script:")
+        message(NOTICE "${collection_cmakelists_batch_contents}")
+    endif()
+
+    unset(collection_cmakelists_batch_contents)
+    unset(collection_cmakelists_bash_contents)
+    unset(collection_cmakelists_contents)
+
+    #if ("${lang}" STREQUAL "c" OR "${lang}" STREQUAL "cpp")
+    #
+    #    #set(collection_bld_bash_path "${CMAKE_CURRENT_BINARY_DIR}/${collection_cmakelists_bash_name}")
+    #    #set(collection_bld_batch_path "${CMAKE_CURRENT_BINARY_DIR}/${collection_cmakelists_batch_name}")
+    #
+    #elseif ("${lang}" STREQUAL "fortran")
+    #
+    #    if (${csid_is_gnu} OR ${csid_is_intel})
+    #
+    #        # Rather than copying the build script files from the ${collection}/auxil folder, generate the files on the fly.
+    #
+    #        # Set the first line of the build scripts.
+    #        set(collection_bld_bash_pre "#!/bin/bash")
+    #        set(collection_bld_batch_pre "set PATH=..\\..\\..\\lib;%PATH%")
+    #
+    #        # Set the library name for ${collection} build scripts.
+    #        set(collection_bld_bash_compile "-o main.exe main${lang_ext} ../../../lib/${libname}*")
+    #        if (OpenBLAS_ENABLED)
+    #            set(collection_bld_bash_compile "${collection_bld_bash_compile} ../../../lib/openblas*")
+    #        endif()
+    #        if (WIN32 AND "${lib}" STREQUAL "shared" AND ${csid_is_intel})
+    #            set(collection_bld_batch_compile "/exe:main.exe main${lang_ext} ..\\..\\..\\lib\\${libname}*.lib")
+    #        else()
+    #            set(collection_bld_batch_compile "/exe:main.exe main${lang_ext} ..\\..\\..\\lib\\${libname}*")
+    #        endif()
+    #        unset(libname)
+    #
+    #        # Generate the generic build scripts.
+    #
+    #        unset(mkl_flag_bash)
+    #        unset(mkl_flag_batch)
+    #
+    #        # Set the last line of the build scripts.
+    #
+    #        if (${MPI_ENABLED})
+    #            set(collection_bld_bash_post "mpiexec -n ${nproc} ./main.exe")
+    #            if (${csid_is_intel})
+    #                set(collection_bld_batch_post "mpiexec -localonly -n ${nproc} ./main.exe") #${MPIEXEC_EXECUTABLE}
+    #                set(fcname "mpiifort")
+    #            else()
+    #                set(collection_bld_batch_post "mpiexec -n ${nproc} main.exe")
+    #                set(fcname "mpifort")
+    #            endif()
+    #        else()
+    #            get_filename_component(fcname "${CMAKE_Fortran_COMPILER}" NAME)
+    #            set(collection_bld_bash_post "./main.exe")
+    #            set(collection_bld_batch_post "main.exe")
+    #        endif()
+    #
+    #        if (isCollectionBench)
+    #            set(collection_bld_bash_compile "-DBLAS_ENABLED=${BLAS_ENABLED} -DLAPACK_ENABLED=${LAPACK_ENABLED} ${collection_bld_bash_compile}")
+    #            set(collection_bld_batch_compile "/DBLAS_ENABLED=${BLAS_ENABLED} /DLAPACK_ENABLED=${LAPACK_ENABLED} ${collection_bld_batch_compile}")
+    #        endif()
+    #
+    #        if (${csid_is_gnu})
+    #
+    #            set(collection_bld_bash_compile "-cpp -ffree-line-length-none -Wl,-rpath,../../../lib -I../../../inc ${collection_bld_bash_compile}")
+    #            if ("${build}" STREQUAL "debug")
+    #                set(collection_bld_bash_compile "${fcname} -O0 -g -fcheck=all -fbacktrace ${collection_bld_bash_compile}")
+    #            elseif ("${build}" STREQUAL "testing")
+    #                set(collection_bld_bash_compile "${fcname} -O2 ${collection_bld_bash_compile}")
+    #            else()
+    #                set(collection_bld_bash_compile "${fcname} -O3 -flto=3 ${collection_bld_bash_compile}")
+    #            endif()
+    #
+    #        elseif (${csid_is_intel})
+    #
+    #            # \todo
+    #            # The windows case needs to be tested and configured on Windows system.
+    #            set(mkl_flag_bash " -qmkl=sequential -DMKL_ENABLED=1") # The initial white space is essential.
+    #            set(mkl_flag_batch " /Qmkl:sequential /DMKL_ENABLED=1") # The initial white space is essential.
+    #
+    #            set(collection_bld_bash_compile "-standard-semantics -fpp -Wl,-rpath,../../../lib -I../../../inc ${collection_bld_bash_compile}")
+    #            if ("${build}" STREQUAL "debug")
+    #                set(collection_bld_bash_compile "${fcname} -O0 -g3 -CB -debug full -traceback -check all -fpe0 ${collection_bld_bash_compile}")
+    #            elseif ("${build}" STREQUAL "testing")
+    #                set(collection_bld_bash_compile "${fcname} -O2 ${collection_bld_bash_compile}")
+    #            else()
+    #                set(collection_bld_bash_compile "${fcname} -O3 -ipo ${collection_bld_bash_compile}")
+    #            endif()
+    #
+    #            set(collection_bld_batch_compile "/standard-semantics /fpp /I:..\\..\\..\\inc  ${collection_bld_batch_compile}")
+    #            if ("${build}" STREQUAL "debug")
+    #                set(collection_bld_batch_compile "${fcname} /Od /debug:full /CB /Qinit:snan,arrays /warn:all /gen-interfaces /traceback /check:all /fpe-all:0 /Qtrapuv ${collection_bld_batch_compile}")
+    #            elseif ("${build}" STREQUAL "testing")
+    #                set(collection_bld_batch_compile "${fcname} /O2 ${collection_bld_batch_compile}")
+    #            else()
+    #                set(collection_bld_batch_compile "${fcname} /O3 /Qipo ${collection_bld_batch_compile}")
+    #            endif()
+    #
+    #        endif()
+    #        unset(fcname)
+    #
+    #        # Generate the full ${collection} build scripts.
+    #
+    #        if (isCollectionBench)
+    #            # Generate the full ${collection} build scripts with BLAS/LAPACK linking.
+    #            file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/BLAPACK")
+    #            set(collection_bld_bash_contents "${collection_bld_bash_compile}")
+    #            if (OpenBLAS_ENABLED)
+    #                set(collection_bld_bash_contents "${collection_bld_bash_pre}\n${collection_bld_bash_compile}\n${collection_bld_bash_post}")
+    #            elseif (BLAS_ENABLED AND LAPACK_ENABLED)
+    #                set(collection_bld_bash_contents "${collection_bld_bash_pre}\n${collection_bld_bash_compile} ${mkl_flag_bash} -llapack -lblas\n${collection_bld_bash_post}")
+    #            elseif (BLAS_ENABLED)
+    #                set(collection_bld_bash_contents "${collection_bld_bash_pre}\n${collection_bld_bash_compile} ${mkl_flag_bash} -lblas\n${collection_bld_bash_post}")
+    #            else()
+    #                set(collection_bld_bash_contents "${collection_bld_bash_pre}\n${collection_bld_bash_compile}\n${collection_bld_bash_post}")
+    #            endif()
+    #        else()
+    #            set(collection_bld_bash_contents "${collection_bld_bash_pre}\n${collection_bld_bash_compile}\n${collection_bld_bash_post}")
+    #        endif()
+    #        set(collection_bld_batch_contents "${collection_bld_batch_pre}\n${collection_bld_batch_compile}\n${collection_bld_batch_post}")
+    #
+    #    else()
+    #
+    #        # \todo XXX this needs improvement.
+    #        message(WARNING "${pmwarn} Unrecognized unsupported compiler detected. ParaMonte ${collection} build scripts will not function.")
+    #
+    #    endif()
+    #
+    #endif()
 
     #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
     # Copy the build scripts to the ${collection} folders.
@@ -742,7 +737,7 @@ if (EXISTS "${origin}")
     # Build and run the ParaMonte ${collection} postprocessing (PP).
     #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-    if(${collection}PPEnabled AND NOT lang_is_dynamic)
+    if(${collection}PPEnabled)
 
         if(Python3_Interpreter_FOUND)
 

@@ -24,4 +24,10 @@ set(${collection}PP "${benchpp}")
 set(origin "${paramonte_benchmark_dir}/${lang}/") # The ending forward slash is essential for copying the contents of the ${collection} language folder.
 set(destin "${paramonte_bld_pkg_benchmark_dir}")
 
-include(setParaMonteCollection)
+if (${lang_is_dynamic})
+    include(setParaMonteCollectionDynamic)
+elseif ("${lang}" STREQUAL "c" OR "${lang}" STREQUAL "cpp" OR "${lang}" STREQUAL "fortran")
+    include(setParaMonteCollectionStatic)
+else()
+    message(FATAL_ERROR "${pmfatal} Internal ParaMonte-CMake error: Unrecognized compiled language: lang=${lang}")
+endif()

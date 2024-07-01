@@ -5,15 +5,21 @@ cd(rootdir); % Change working directory to source code directory.
 defpath = path; % startup path search list.
 
 % Glob all example files to run.
-if ~exist("examlist", "var")
+if ~isfile("exam.list")
     addpath('../'); % Add the ParaMonte library package to the MATLAB search list.
     examlist = pm.sys.path.glob(rootdir + "**main.m");
 else
-    % This is supposed to be passed to the routine 
-    % through CMake call to ``matlab`` command.
-    examlist = string(examlist);
-    if  length(examlist) == 1
-        examlist = strsplit(examlist, ";");
+    % The file is supposed to be created by CMake
+    % or other tools (or human) and placed in the
+    % root directory of the example folder.
+    examdirs = readlines("exam.list");
+    % Prepend the base directory to all directory paths.
+    examlist = strings(length(examdirs), 1);
+    for idir = 1 : length(examdirs)
+        examlist(idir) = rootdir + "/" + string(examdirs(idir)) + "main.m";
+        if ~isdir(examlist(idir))
+            warning("The specified example directory does not exist: """ + examlist(idir) + """")
+        end
     end
 end
 
@@ -23,7 +29,7 @@ for ipath = 1 : length(examlist)
     if ~strcmp(exampath, srcpath)
         cd(fileparts(exampath));
         outfile = "main.out.m";
-        if isfile(outfile)
+        if  isfile(outfile)
             delete(outfile);
         end
         diary main.out.m;
