@@ -4,24 +4,17 @@
 %>
 %>  \param[in]  cmat    :   The input compact MATLAB double, cell, or table
 %>                          matrix that is to be unrolled along an axis.
-%>
 %>  \param[in]  dim     :   The input scalar MATLAB integer
 %>                          that can be either ``1`` or ``2``
 %>                          representing the axis along with the
-%>                          array must be unrolled. <br>
+%>                          array must be unrolled.<br>
 %>                          An input value of ``1`` implies unrolling
 %>                          along the columns of the input ``cmat``,
 %>                          that is, unrolling the ``cmat`` rows.
-%>
 %>  \param[in]  weight  :   The input MATLAB matrix of integer values
 %>                          of size ``size(cmat, dim)`` containing the
 %>                          set of weights to used for unrolling the
 %>                          input ``cmat``.
-%>
-%>  \warning
-%>  Negative weights lead to a runtime error.
-%>  Any entry corresponding to a zero weight
-%>  is ignored in the output ``vmat``.
 %>
 %>  \return
 %>  `vmat`              :   The output MATLAB matrix of the same type and kind
@@ -35,6 +28,15 @@
 %>      vmat = pm.array.verbose(cmat, dim, weight)
 %>
 %>  \endcode
+%>
+%>  \warning
+%>  Negative weights lead to a runtime error.<br>
+%>  Any entry corresponding to a zero weight is ignored in the output ``vmat``.<br>
+%>
+%>  \example{verbose}
+%>  \include{lineno} example/array/verbose/main.m
+%>  \output{verbose}
+%>  \include{lineno} example/array/verbose/main.out.m
 %>
 %>  \final{verbose}
 %>

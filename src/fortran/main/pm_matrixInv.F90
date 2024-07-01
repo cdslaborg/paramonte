@@ -33,7 +33,7 @@
 !>  **Singular matrices are rare** in the sense that if a square matrix entries are randomly selected from any bounded region on the number line or complex plane,
 !>  the probability that the matrix is singular is \f$0\f$, that is, it will *almost never* be singular.<br>
 !>  **Non-square matrices do not have an inverse**.<br>
-!>  However, in some cases such a matrix may have a **left inverse** or **right inverse**. <br>
+!>  However, in some cases such a matrix may have a **left inverse** or **right inverse**.<br>
 !>  If \f$A\f$ is \f$m\f$-by-\f$n\f$ and the rank of \f$A\f$ is equal to \f$n\f$ (\f$n \leq m\f$),
 !>  then \f$A\f$ has a **left inverse**, an \f$n\f$-by-\f$m\f$ matrix \f$B\f$ such that \f$BA = I_n\f$.<br>
 !>  If \f$A\f$ has rank \f$m\f$ (\f$m \leq n\f$), then it has a **right inverse**, an \f$n\f$-by-\f$m\f$ matrix \f$B\f$ such that \f$AB = I_m\f$.<br>

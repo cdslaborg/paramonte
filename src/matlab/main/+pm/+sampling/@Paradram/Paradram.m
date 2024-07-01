@@ -44,6 +44,7 @@
 %>
 %>  \example{himmelblau}
 %>  \include{lineno} example/sampling/Paradram/himmelblau/main.m
+%>  \include{lineno} example/sampling/Paradram/himmelblau/main.out.m
 %>  \vis{himmelblau}
 %>  \image html example/sampling/Paradram/himmelblau/domain.png width=700
 %>  \image html example/sampling/Paradram/himmelblau/traceplot.png width=700

@@ -4,17 +4,14 @@
 %>  between the specified lower and upper bounds.
 %>
 %>  \param[in]  loglb   :   See the documentation of the corresponding argument of ``pm.array.logspace``.
-%>
 %>  \param[in]  logub   :   See the documentation of the corresponding argument of ``pm.array.logspace``.
-%>
 %>  \param[in]  logskip :   See the documentation of the corresponding argument of ``pm.array.logspace``.
-%>
 %>  \param[in]  base    :   See the documentation of the corresponding argument of ``pm.array.logspace``.
 %>
 %>  \return
-%>   `array`                :   The output vector of MATLAB real values containing
-%>                              the set of logarithmically-spaced integer values in
-%>                              the specified input range with the specified ``base``.
+%>   `array`            :   The output vector of MATLAB real values containing
+%>                          the set of logarithmically-spaced integer values in
+%>                          the specified input range with the specified ``base``.
 %>
 %>  \interface{logspaceint}
 %>  \code{.m}
@@ -26,11 +23,9 @@
 %>  \endcode
 %>
 %>  \example{logspaceint}
-%>
-%>      array = pm.array.logspaceint(log(10), log(20)) % 10 11 12 13 14 15 16 17 18 19 20
-%>      array = pm.array.logspaceint(log(10), log(20), log(1.5)) % 10  15
-%>      array = pm.array.logspaceint(log(10), log(20), [], 2) % 10 11 12 13 14 15 16 17 18 19 20
-%>      array = pm.array.logspaceint(log(10), log(100), log(1.5)) % 10 15 23 34 51 76
+%>  \include{lineno} example/array/logspaceint/main.m
+%>  \output{logspaceint}
+%>  \include{lineno} example/array/logspaceint/main.out.m
 %>
 %>  \final{logspaceint}
 %>

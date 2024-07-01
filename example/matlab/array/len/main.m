@@ -8,3 +8,12 @@ assert(pm.array.len('paramonte') == 1);
 assert(pm.array.len("paramonte") == 1);
 assert(pm.array.len(["pm", 'array']) == 2);
 assert(pm.array.len(["pm", 'array', []]) == 2);
+
+disp('pm.array.len("paramonte")')
+disp( pm.array.len("paramonte") )
+
+disp("pm.array.len('paramonte') == length('paramonte')")
+disp( pm.array.len('paramonte') == length('paramonte') )
+
+disp('pm.array.len("paramonte") == length("paramonte")')
+disp( pm.array.len("paramonte") == length("paramonte") )

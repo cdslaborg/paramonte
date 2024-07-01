@@ -1,19 +1,38 @@
 %>  \brief
 %>  This is the abstract class for generating instances of objects
 %>  that can contain basic attributes required for tabular read-only
-%>  access to a MATLAB table-compatible data stored externally.
+%>  access to a MATLAB table-compatible data stored externally.<br>
 %>
 %>  \details
 %>  This class is merely a convenience read-only wrapper
 %>  to reference external tabular data as table.<br>
 %>  This class primarily exist to facilitate bypassing
-%>  the lack of references and pointers in MATLAB.
+%>  the lack of references and pointers in MATLAB.<br>
+%>
+%>  \remark
+%>  See the constructor documentation for example usage.<br>
+%>
+%>  \see
+%>  [DataRef](@ref DataRef)<br>
+%>
+%>  \final
+%>
+%>  \author
+%>  \JoshuaOsborne, May 21 2024, 4:45 PM, University of Texas at Arlington<br>
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef DataFrame < pm.data.DataRef
 
     methods(Access = public)
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        %>  \brief
+        %>  Generate an return an object of class [DataFrame](pm.data.DataFrame)
+        %>  from the input dataframe or its specified input reference.<br>
+        %>
+        %>  \details
+        %>  This is the constructor of the class [DataFrame](pm.data.DataFrame).<br>
         %>
         %>  \param[in]  dfref   :   The input MATLAB 2D matrix or table containing the target dataset
         %>                          or function handle that takes no arguments and returns the dataset.<br>
@@ -32,14 +51,17 @@ classdef DataFrame < pm.data.DataRef
         %>
         %>  \endcode
         %>
-        %>  \note
-        %>  See the class attributes descriptions below.
+        %>  \example{DataFrame}
+        %>  \include{lineno} example/data/DataFrame/main.m
+        %>  \output{DataFrame}
+        %>  \include{lineno} example/data/DataFrame/main.out.m
         %>
         %>  \final{DataFrame}
         %>
         %>  \author
-        %>  \JoshuaOsborne, May 21 2024, 4:45 PM, University of Texas at Arlington<br>
-        %>
+        %>  \JoshuaOsborne, May 21 2024, 4:54 PM, University of Texas at Arlington<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = DataFrame(dfref)
             if  nargin < 1
                 dfref = [];
@@ -54,20 +76,18 @@ classdef DataFrame < pm.data.DataRef
 
         %>  \brief
         %>  Generate and return a table copy of the dataframe contained in the
-        %>  user-specified input ``dfref`` to the constructor of the parent object.
+        %>  user-specified input ``dfref`` to the constructor of the parent object.<br>
         %>
         %>  \details
         %>  This class method offers the only way to access the user-specified dataframe.<br>
         %>  The underlying logic behind the use of function to access the dataframe
         %>  originates from the lack of the concept of references (pointers)
-        %>  in the MATLAB computing language.
-        %>
-        %>   \param[in] `None`
+        %>  in the MATLAB computing language.<br>
         %>
         %>  \return
         %>  `df`    :   The output scalar MATLAB table a full copy of the dataframe
         %>              contained in the user-specified input ``dfref`` passed
-        %>              to the constructor of the parent object.
+        %>              to the constructor of the parent object.<br>
         %>
         %>  \interface{copy}
         %>  \code{.m}
@@ -76,6 +96,10 @@ classdef DataFrame < pm.data.DataRef
         %>      df = pm.data.DataFrame.copy()
         %>
         %>  \endcode
+        %>
+        %>  \remark
+        %>  See the constructor documentation for example usage.<br>
+        %>
         %>  \final{copy}
         %>
         %>  \author
@@ -93,13 +117,11 @@ classdef DataFrame < pm.data.DataRef
 
         %>  \brief
         %>  Generate and return the number of columns in the user-specified
-        %>  dataframe ``dfref`` at the time of constructing the parent object.
+        %>  dataframe ``dfref`` at the time of constructing the parent object.<br>
         %>
         %>  \details
         %>  This class method is a handy shorthand for ``size(self.dfref, 2)``, particularly
-        %>  useful for specifying a range of indices of columns in visualization tasks.
-        %>
-        %>  \param[in] `None`
+        %>  useful for specifying a range of indices of columns in visualization tasks.<br>
         %>
         %>  \return
         %>  `count` :   The output scalar MATLAB whole-number representing the number
@@ -107,11 +129,15 @@ classdef DataFrame < pm.data.DataRef
         %>
         %>  \interface{ncol}
         %>  \code{.m}
-        %> 
+        %>
         %>
         %>      count = pm.data.DataFrame.ncol()
         %>
         %>  \endcode
+        %>
+        %>  \remark
+        %>  See the constructor documentation for example usage.<br>
+        %>
         %>  \final{ncol}
         %>
         %>  \author
@@ -126,17 +152,17 @@ classdef DataFrame < pm.data.DataRef
 
         %>  \brief
         %>  Generate and return the number of rows in the user-specified
-        %>  dataframe ``dfref`` at the time of constructing the parent object.
+        %>  dataframe ``dfref`` at the time of constructing the parent object.<br>
         %>
         %>  \details
         %>  This class method is a handy shorthand for ``size(self.dfref, 2)``,
-        %>  particularly useful for specifying a range of indices of rows to visualize.
+        %>  particularly useful for specifying a range of indices of rows to visualize.<br>
         %>
         %>  \param[in] `None`
         %>
         %>  \return
         %>  `count` :   The output scalar MATLAB whole-number representing the number
-        %>              of rows in the ``dfref`` component of the parent object.
+        %>              of rows in the ``dfref`` component of the parent object.<br>
         %>
         %>  \interface{nrow}
         %>  \code{.m}
@@ -144,6 +170,10 @@ classdef DataFrame < pm.data.DataRef
         %>      count = pm.data.DataFrame.nrow()
         %>
         %>  \endcode
+        %>
+        %>  \remark
+        %>  See the constructor documentation for example usage.<br>
+        %>
         %>  \final{nrow}
         %>
         %>  \author
@@ -159,15 +189,15 @@ classdef DataFrame < pm.data.DataRef
         %>  \brief
         %>  Generate and return a natural logarithmically-spaced
         %>  range of indices from the row indices of the input
-        %>  dataframe ``dfref`` to the parent object.
+        %>  dataframe ``dfref`` to the parent object.<br>
         %>
         %>  \details
         %>  This method is a convenience wrapper
-        %>  around function ``pm.array.logrange()``.
+        %>  around function ``pm.array.logrange()``.<br>
         %>
         %>  \warning
         %>  Beware of the different order of the input arguments
-        %>  between this method and ``pm.array.logrange()``.
+        %>  between this method and ``pm.array.logrange()``.<br>
         %>
         %>  \param[in]  count   :   The input scalar MATLAB whole-number (integer)
         %>                          representing the maximum size of the output range.<br>
@@ -191,7 +221,7 @@ classdef DataFrame < pm.data.DataRef
         %>  \return
         %>  `indices`           :   The output vector of MATLAB real values containing
         %>                          the set of naturally logarithmically-spaced integer
-        %>                          values in the specified input range.
+        %>                          values in the specified input range.<br>
         %>
         %>  \interface{rowslog}
         %>  \code{.m}
@@ -214,6 +244,10 @@ classdef DataFrame < pm.data.DataRef
         %>      indices = pm.data.DataFrame(count, start, stop)
         %>
         %>  \endcode
+        %>
+        %>  \remark
+        %>  See the constructor documentation for example usage.<br>
+        %>
         %>  \final{rowslog}
         %>
         %>  \author

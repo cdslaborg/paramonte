@@ -1,4 +1,5 @@
 warning off;
+format compact;
 srcpath = string(mfilename('fullpath')) + ".m";
 rootdir = string(fileparts(srcpath));
 cd(rootdir); % Change working directory to source code directory.
@@ -32,8 +33,8 @@ for ipath = 1 : length(examlist)
         if  isfile(outfile)
             delete(outfile);
         end
-        diary main.out.m;
         disp("Running example: " + exampath);
+        diary main.out.m;
         path(defpath);
         run(exampath);
         diary off;

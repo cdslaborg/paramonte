@@ -11,12 +11,10 @@
 %>                          containing the Gramian matrices of the ``nell`` 2D ellipsoids
 %>                          whose boundary points are to be returned.<br>
 %>                          (**optional**, default = ``eye(2, 2, 1)``)
-%>
 %>  \param[in]  center  :   The input matrix of MATLAB doubles of shape ``[2, nell]`` containing
 %>                          the 2D coordinates of the centers of the ``nell`` 2D ellipsoids
 %>                          whose boundary points are to be returned.<br>
 %>                          (**optional**, default = ``zeros(2, 1)``)
-%>
 %>  \param[in]  zval    :   The input scalar (or matrix of shape ``[npnt, nell]`` of) MATLAB double(s)
 %>                          containing the z-axis coordinates of the points on the borders of the ``nell`` 2D ellipsoids.<br>
 %>                          If present, the specified value(s) will occupy the ``[1 : 2 : 3 * nell]`` columns of the output ``bcrd``.<br>

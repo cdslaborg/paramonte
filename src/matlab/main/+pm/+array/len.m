@@ -7,17 +7,17 @@
 %>  <ol>
 %>      <li>    If the input ``obj`` is a scalar object of type ``char``
 %>              or ``string`` and empty, then the output ``val`` is ``0``.
-%>      
+%>
 %>      <li>    If the input ``obj`` is a scalar object of type ``char``
 %>              or ``string`` and non-empty, then the output ``val`` is ``1``.
-%>      
+%>
 %>      <li>    If the input ``obj`` is a scalar object of type other
 %>              than ``char`` or ``string``, then the output ``val`` is ``1``.
 %>              This is similar to the behavior of the MATLAB intrinsic ``length()``.
-%>      
+%>
 %>      <li>    If the input ``obj`` is a vector and empty, then the output ``val`` is ``0``.
 %>              This is similar to the behavior of the MATLAB intrinsic ``length()``.
-%>      
+%>
 %>      <li>    If the input ``obj`` is a vector and non-empty,
 %>              then the output ``val`` is the vector length as returned
 %>              by ``length(obj)`` minus the number of empty elements.
@@ -33,19 +33,14 @@
 %>  \interface{len}
 %>  \code{.m}
 %>
-%>      pm.array.len(obj)
+%>      val = pm.array.len(obj);
 %>
 %>  \endcode
 %>
 %>  \example{len}
-%>
-%>      pm.array.len(1) % = 1
-%>      pm.array.len("") % = 0
-%>      pm.array.len([]) % = 0
-%>      pm.array.len('paramonte') % = 1
-%>      pm.array.len("paramonte") % = 1
-%>      pm.array.len(["pm", 'array']) % = 2
-%>      pm.array.len(["pm", 'array', []]) % = 2
+%>  \include{lineno} example/array/len/main.m
+%>  \output{len}
+%>  \include{lineno} example/array/len/main.out.m
 %>
 %>  \final{len}
 %>

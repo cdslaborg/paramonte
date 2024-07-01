@@ -16,7 +16,7 @@
 %>                          the name of the simulation to which the progress file belongs.
 %>                          For example, specifying ``"./mydir/mysim"`` as input will
 %>                          lead to a search for file(s) beginning with "mysim" and
-%>                          ending with ``"_progress.txt"`` inside the directory ``"./mydir/"``. <br>
+%>                          ending with ``"_progress.txt"`` inside the directory ``"./mydir/"``.<br>
 %>                          If there are multiple files matching in the input ``pattern``,
 %>                          then all such files will be read and returned as elements of a list.<br>        
 %>                          If the specified pattern is a valid existing URL, the file will be

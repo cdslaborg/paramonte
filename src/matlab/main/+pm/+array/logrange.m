@@ -1,24 +1,22 @@
 %>  \brief
 %>  Return a set of maximum ``sizemax`` unique integer spacings almost
-%>  linearly spaced in the natural logarithmic scale between the 
+%>  linearly spaced in the natural logarithmic scale between the
 %>  specified ``start`` and ``stop`` of the output range.
 %>
 %>  \param[in]  start   :   The input scalar MATLAB whole-number (integer)
 %>                          representing the starting point of the output range.
-%>
 %>  \param[in]  stop    :   The input scalar MATLAB whole-number (integer)
 %>                          representing the stopping point of the output range.
-%>
 %>  \param[in]  sizemax :   The input scalar MATLAB whole-number (integer)
-%>                          representing the maximum size of the output range. <br>
+%>                          representing the maximum size of the output range.<br>
 %>                          Due to rounding operation involved in creating the
 %>                          output range, it is impossible to prespecify the
-%>                          output range size, only the maximum. <br>
+%>                          output range size, only the maximum.<br>
 %>                          (**optional**, default = ``100``)
 %>
 %>  \return
 %>  `array`             :   The output vector of MATLAB real values containing
-%>                          the set of naturally logarithmically-spaced integer 
+%>                          the set of naturally logarithmically-spaced integer
 %>                          values in the specified input range.
 %>
 %>  \interface{logrange}
@@ -31,11 +29,9 @@
 %>  \endcode
 %>
 %>  \example{logrange}
-%>
-%>      array = pm.array.logrange(1, 1000) % 10 11 12 13 14 15 16 17 18 19 20
-%>      array = pm.array.logrange(1, 1000, 10) % 1 2 4 8 16 32 63 126 251 501 1000
-%>      array = pm.array.logrange(1, 1000, 20) % 10  15
-%>      array = pm.array.logrange(1, 1000, [])
+%>  \include{lineno} example/array/logrange/main.m
+%>  \output{logrange}
+%>  \include{lineno} example/array/logrange/main.out.m
 %>
 %>  \final{logrange}
 %>

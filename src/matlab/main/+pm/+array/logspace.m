@@ -6,18 +6,15 @@
 %>  \param[in]  loglb   :   The input scalar MATLAB real containing
 %>                          the natural logarithm of the lower bound
 %>                          of the output logarithmically-linear spaced vector.
-%>
 %>  \param[in]  logub   :   The input scalar MATLAB real containing
 %>                          the natural logarithm of the upper bound
 %>                          of the output logarithmically-linear spaced vector.
-%>
 %>  \param[in]  logskip :   The input scalar MATLAB real of value larger than ``1``
 %>                          containing the natural logarithm of the spacing between
 %>                          the natural logarithm of the output values.<br>
 %>                          (**optional**, default = ``(logub - loglb) / 100``)
-%>
 %>  \param[in]  base    :   The input scalar MATLAB real
-%>                          containing the base of the logarithmic space.
+%>                          containing the base of the logarithmic space.<br>
 %>                          (**optional**, default = ``exp(1)``)
 %>
 %>  \return
@@ -34,13 +31,11 @@
 %>      array = pm.array.logspace(loglb, logub, logskip, base)
 %>
 %>  \endcode
-%>  
-%>  \example{logspace}
 %>
-%>      array = pm.array.logspace(log(10), log(20))
-%>      array = pm.array.logspace(log(10), log(20), log(1.5)) % 10.000000000000002  15.000000000000007
-%>      array = pm.array.logspace(log(10), log(20), [], 2)
-%>      array = pm.array.logspace(log(10), log(20), log(1.5), 3) % 10.000000000000004  15.000000000000012
+%>  \example{logspace}
+%>  \include{lineno} example/array/logspace/main.m
+%>  \output{logspace}
+%>  \include{lineno} example/array/logspace/main.out.m
 %>
 %>  \final{logspace}
 %>
