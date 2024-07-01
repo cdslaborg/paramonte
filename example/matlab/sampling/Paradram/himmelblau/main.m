@@ -25,7 +25,7 @@ p.savefig("domain.png", "-m4");
 
 p = pm.vis.tile.Line(chain.df, "tileshape", [2, 1]);
 p.make("coly", chain.sampleLogFuncColIndex + [1 : 2], "colc", "sampleLogFunc");
-p.savefig("trace.png", "-m4");
+p.savefig("traceplot.png", "-m4");
 
 restart = sampler.readRestart();
 restart = restart{1};
