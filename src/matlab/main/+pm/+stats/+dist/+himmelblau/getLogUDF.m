@@ -63,7 +63,6 @@
 %>
 %>  \example{getLogUDF}
 %>  \include{lineno} example/stats/himmelblau/getLogUDF/main.m
-%>  \matlabrun{getLogUDF}
 %>  \vis{getLogUDF}
 %>  \image html example/stats/himmelblau/getLogUDF/getLogUDF.2d.png width=700
 %>  \image html example/stats/himmelblau/getLogUDF/getLogUDF.3d.png width=700

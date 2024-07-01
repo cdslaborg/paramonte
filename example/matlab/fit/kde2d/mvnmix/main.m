@@ -12,6 +12,7 @@ data = [ randn(500, 2) ...
 [bandwidth, density, meshx, meshy] = pm.fit.kde2d(data);
 
 % Plot the data and the density estimate.
+figure("color", "white");
 contour3(meshx, meshy, density, 50); hold on;
 plot(data(:, 1), data(:, 2), 'r.', 'MarkerSize', 5);
-pm.vis.figure.savefig("kde2d.png", "-m4");
+pm.vis.figure.savefig("pm.fit.kde2d.mvnmix.png", "-m4");

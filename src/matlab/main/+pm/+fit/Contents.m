@@ -1,8 +1,8 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.fit`` contains a set
-%>  of packages and functionalities for data fitting.
+%>  The ParaMonte MATLAB package ``pm.fit`` contains 
+%>  a set of packages and functionalities for data fitting.
 %>
 %>  \note
 %>  For more information on the existing functionalities,

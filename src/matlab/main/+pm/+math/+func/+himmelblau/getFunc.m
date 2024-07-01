@@ -49,7 +49,6 @@
 %>
 %>  \example{getFunc}
 %>  \include{lineno} example/stats/himmelblau/getFunc/main.m
-%>  \matlabrun{getFunc}
 %>  \vis{getFunc}
 %>  \image html example/stats/himmelblau/getFunc/getFunc.2d.png width=700
 %>  \image html example/stats/himmelblau/getFunc/getFunc.3d.png width=700
