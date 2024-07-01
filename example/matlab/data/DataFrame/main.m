@@ -4,7 +4,7 @@ addpath('../../../'); % Add the ParaMonte library root directory to the search p
 df = pm.data.DataFrame()
 df.copy()
 
-data = randi([0, 9], 100, 5)
+data = randi([0, 9], 10, 5)
 df = pm.data.DataFrame(data)
 df.copy()
 
