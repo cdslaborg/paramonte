@@ -23,6 +23,7 @@
 %>      indx = pm.sort.index(array)
 %>
 %>  \endcode
+%>
 %>  \example{index}
 %>
 %>      indx = pm.sort.index([2.5, 4, 1.5, -3])

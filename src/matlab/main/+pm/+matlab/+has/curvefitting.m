@@ -7,13 +7,10 @@
 %>  This function searches the MATLAB license
 %>  for an installation of the Toolbox.
 %>
-%>  \param[in]  `None`
-%>
 %>  \return
-%>  hasit
-%>      The output scalar MATLAB logical that is ``true`` if and
-%>      only if the current installation of MATLAB contains
-%>      the required MATLAB Toolbox.
+%>  ``hasit``   :   The output scalar MATLAB logical that is ``true`` if and
+%>                  only if the current installation of MATLAB contains
+%>                  the required MATLAB Toolbox.
 %>
 %>  \interface{curvefitting}
 %>  \code{.m}
@@ -21,6 +18,12 @@
 %>      hasit = pm.matlab.has.curvefitting();
 %>
 %>  \endcode
+%>
+%>  \example{curvefitting}
+%>  \include{lineno} example/matlab/has/main.m
+%>  \output{curvefitting}
+%>  \include{lineno} example/matlab/has/main.out.m
+%>
 %>  \final{curvefitting}
 %>
 %>  \author

@@ -28,6 +28,7 @@
 %>      spec = pm.sampling.SpecBase(method, silent)
 %>
 %>  \endcode
+%>
 %>  \final{SpecBase}
 %>
 %>  \author

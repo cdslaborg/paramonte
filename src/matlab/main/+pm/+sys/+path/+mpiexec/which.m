@@ -33,6 +33,7 @@
 %>      path = pm.sys.path.mpiexec.which(vendor)
 %>
 %>  \endcode
+%>
 %>  \final{which}
 %>
 %>  \author

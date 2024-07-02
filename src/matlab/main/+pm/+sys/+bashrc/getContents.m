@@ -14,6 +14,7 @@
 %>      str = pm.sys.bashrc.getContents()
 %>
 %>  \endcode
+%>
 %>  \final{getContents}
 %>
 %>  \author

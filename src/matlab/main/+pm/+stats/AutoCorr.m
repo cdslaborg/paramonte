@@ -27,6 +27,7 @@
 %>      acf = pm.stats.AutoCorr(df, numlags, numstd)
 %>
 %>  \endcode
+%>
 %>  \final{AutoCorr}
 %>
 %>  \author

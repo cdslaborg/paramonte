@@ -22,6 +22,7 @@
 %>      self = pm.timing.Spinner()
 %>
 %>  \endcode
+%>
 %>  \final{Spinner}
 %>
 %>  \author

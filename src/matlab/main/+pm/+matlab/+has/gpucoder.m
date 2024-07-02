@@ -7,8 +7,6 @@
 %>  This function searches the MATLAB license
 %>  for an installation of the Toolbox.
 %>
-%>  \param[in]  `None`
-%>
 %>  \return
 %>      hasit
 %>
@@ -22,6 +20,12 @@
 %>      hasit = pm.matlab.has.gpucoder();
 %>
 %>  \endcode
+%>
+%>  \example{gpucoder}
+%>  \include{lineno} example/matlab/has/main.m
+%>  \output{gpucoder}
+%>  \include{lineno} example/matlab/has/main.out.m
+%>
 %>  \final{gpucoder}
 %>
 %>  \author

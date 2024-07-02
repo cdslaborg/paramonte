@@ -2,8 +2,6 @@
 %>  Return a list of MATLAB strings containing the names of
 %>  OS platforms supported by the ParaMonte MATLAB library.
 %>
-%>  \param[in]  `None`
-%>
 %>  \return
 %>  `names` :   The output MATLAB string list containing:
 %>              ``["Windows", "Linux", "Darwin"]``
@@ -14,6 +12,7 @@
 %>      names = pm.os.list()
 %>
 %>  \endcode
+%>
 %>  \final{list}
 %>
 %>  \author

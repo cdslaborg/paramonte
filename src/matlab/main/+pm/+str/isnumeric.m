@@ -21,6 +21,7 @@
 %>      itis = pm.str.isnumeric(str)
 %>
 %>  \endcode
+%>
 %>  \final{isnumeric}
 %>
 %>  \author

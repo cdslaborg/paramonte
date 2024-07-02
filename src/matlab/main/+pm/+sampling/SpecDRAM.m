@@ -28,6 +28,7 @@
 %>      spec = pm.sampling.SpecDRAM(method, silent)
 %>
 %>  \endcode
+%>
 %>  \final{SpecDRAM}
 %>
 %>  \author

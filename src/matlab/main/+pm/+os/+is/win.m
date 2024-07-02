@@ -1,8 +1,6 @@
 %>  \brief
 %>  Return ``true`` if the current OS is Windows.
 %>
-%>  \param[in]  `None`
-%>
 %>  \return
 %>  `itis`  :   The output MATLAB logical scalar value that is ``true``
 %>              if and only if the OS is Windows, otherwise ``false``.
@@ -13,6 +11,7 @@
 %>      itis = pm.os.is.win()
 %>
 %>  \endcode
+%>
 %>  \final{win}
 %>
 %>  \author

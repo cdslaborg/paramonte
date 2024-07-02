@@ -1,8 +1,6 @@
 %>  \brief
 %>  Return a MATLAB string containing the current system information.
 %>
-%>  \param[in]  `None`
-%>
 %>  \return
 %>  `str`   :   The output scalar MATLAB string containing the current system information.<br>
 %>  `cache` :   The output scalar MATLAB string representing the path to
@@ -23,6 +21,7 @@
 %>      [str, cache] = pm.sys.info()
 %>
 %>  \endcode
+%>
 %>  \final{info}
 %>
 %>  \author

@@ -34,6 +34,7 @@
 %>      failed = pm.sys.path.rmfile(file, desc)
 %>
 %>  \endcode
+%>
 %>  \final{rmfile}
 %>
 %>  \author

@@ -23,6 +23,7 @@
 %>      hashnew = pm.matlab.hashmap.addKeyVal(key, val, hashmap)
 %>
 %>  \endcode
+%>
 %>  \example{addKeyVal}
 %>
 %>      hashmap = {"key1", 1, "key2", "val2"};

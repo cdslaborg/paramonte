@@ -1,8 +1,6 @@
 %>  \brief
 %>  Finalize the ParaMonte MATLAB sampler simulation run.
 %>
-%>  \param[in]  `None`
-%>
 %>  \return
 %>  `None`
 %>  \final{getBorder}

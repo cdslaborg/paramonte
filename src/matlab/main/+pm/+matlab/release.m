@@ -20,6 +20,7 @@
 %>      matlabRelease = pm.matlab.release(type)
 %>
 %>  \endcode
+%>
 %>  \example{release}
 %>
 %>      matlabReleaseSeason = pm.matlab.release("minor");

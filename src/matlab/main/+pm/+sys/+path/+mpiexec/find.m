@@ -33,6 +33,7 @@
 %>      pathList = pm.sys.path.mpiexec.find(vendor)
 %>
 %>  \endcode
+%>
 %>  \final{find}
 %>
 %>  \author

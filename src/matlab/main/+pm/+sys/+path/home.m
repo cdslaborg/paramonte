@@ -2,8 +2,6 @@
 %>  Return a MATLAB string containing the
 %>  absolute path to the system home directory.
 %>
-%>  \param[in]  `None`
-%>
 %>  \return
 %>  A MATLAB string containing the
 %>  absolute path to the system home directory.
@@ -14,6 +12,7 @@
 %>      path = pm.sys.path.home()
 %>
 %>  \endcode
+%>
 %>  \final{home}
 %>
 %>  \author

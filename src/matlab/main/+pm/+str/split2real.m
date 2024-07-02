@@ -17,6 +17,7 @@
 %>      real = pm.str.split2real()
 %>
 %>  \endcode
+%>
 %>  \final{split2real}
 %>
 %>  \author

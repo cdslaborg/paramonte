@@ -3,8 +3,6 @@
 %>  subclass of MATLAB ``handle`` superclass whose annoying
 %>  methods are forcefully hidden from the user view.
 %>
-%>  \param[in]  `None`
-%>
 %>  \return
 %>  `None`
 %>
@@ -14,6 +12,7 @@
 %>      Handle = pm.matlab.Handle()
 %>
 %>  \endcode
+%>
 %>  \final{Handle}
 %>
 %>  \author

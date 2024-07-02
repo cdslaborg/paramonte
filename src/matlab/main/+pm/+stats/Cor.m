@@ -26,6 +26,7 @@
 %>      mat = pm.stats.Cor(df, method)
 %>
 %>  \endcode
+%>
 %>  \final{Cor}
 %>
 %>  \author

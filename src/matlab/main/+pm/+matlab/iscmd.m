@@ -13,8 +13,6 @@
 %>  This function relies on functionalities
 %>  that are supported only in MATLAB > 2019a.
 %>
-%>  \param[in]  `None`
-%>
 %>  \return
 %>  `itis`  :   The output scalar MATLAB logical that is ``true``
 %>              if and only if ParaMonte MATLAB library is being called
@@ -26,6 +24,7 @@
 %>      itis = pm.matlab.iscmd()
 %>
 %>  \endcode
+%>
 %>  \final{iscmd}
 %>
 %>  \author

@@ -25,6 +25,7 @@
 %>      contents = pm.sampling.FileContentsChain(file, silent, sep)
 %>
 %>  \endcode
+%>
 %>  \final{FileContentsChain}
 %>
 %>  \author

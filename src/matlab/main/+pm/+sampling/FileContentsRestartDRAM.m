@@ -30,6 +30,7 @@
 %>      contents = pm.sampling.FileContentsRestartDRAM(file, silent)
 %>
 %>  \endcode
+%>
 %>  \final{FileContentsRestartDRAM}
 %>
 %>  \author

@@ -25,6 +25,7 @@
 %>      hashnew = pm.matlab.hashmap.repKeyVal(key, val, hashmap)
 %>
 %>  \endcode
+%>
 %>  \example{repKeyVal}
 %>
 %>      hashmap = {"key1", 1, "key2", "val2"};

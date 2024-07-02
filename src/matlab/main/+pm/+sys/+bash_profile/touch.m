@@ -16,6 +16,7 @@
 %>      str = pm.sys.bash_profile.touch()
 %>
 %>  \endcode
+%>
 %>  \final{touch}
 %>
 %>  \author

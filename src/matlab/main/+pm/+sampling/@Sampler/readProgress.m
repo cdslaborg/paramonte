@@ -48,6 +48,7 @@
 %>      progressList = sampler.readProgress(pattern, sep);
 %>
 %>  \endcode
+%>
 %>  \final{readProgress}
 %>
 %>  \example{getBorder}

@@ -15,6 +15,7 @@
 %>      strQuoted = pm.str.quote(str)
 %>
 %>  \endcode
+%>
 %>  \final{quote}
 %>
 %>  \author

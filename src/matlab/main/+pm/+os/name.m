@@ -1,8 +1,6 @@
 %>  \brief
 %>  Return a MATLAB string containing the name of the current OS.
 %>
-%>  \param[in]  `None`
-%>
 %>  \return
 %>  `str`   :   The output MATLAB string that is either:
 %>              ``"Linux"`` if the OS is Linux.
@@ -15,6 +13,7 @@
 %>      str = pm.os.name()
 %>
 %>  \endcode
+%>
 %>  \final{name}
 %>
 %>  \author

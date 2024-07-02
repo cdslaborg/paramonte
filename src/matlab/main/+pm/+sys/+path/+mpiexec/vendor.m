@@ -22,6 +22,7 @@
 %>      name = pm.sys.path.mpiexec.vendor(path)
 %>
 %>  \endcode
+%>
 %>  \final{vendor}
 %>
 %>  \author

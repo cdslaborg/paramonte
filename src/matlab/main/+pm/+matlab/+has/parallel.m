@@ -8,13 +8,10 @@
 %>  for an installation of the Parallel Computing Toolbox.
 %>  If the search fails, a parallel code section will be tested.
 %>
-%>  \param[in]  `None`
-%>
 %>  \return
-%>  hasit
-%>      The output scalar MATLAB logical that is ``true`` if and
-%>      only if the current installation of MATLAB contains
-%>      the required MATLAB Toolbox.
+%>  ``hasit``   :   The output scalar MATLAB logical that is ``true`` if and
+%>                  only if the current installation of MATLAB contains
+%>                  the required MATLAB Toolbox.
 %>
 %>  \interface{parallel}
 %>  \code{.m}
@@ -22,6 +19,12 @@
 %>      hasit = pm.matlab.has.parallel();
 %>
 %>  \endcode
+%>
+%>  \example{parallel}
+%>  \include{lineno} example/matlab/has/main.m
+%>  \output{parallel}
+%>  \include{lineno} example/matlab/has/main.out.m
+%>
 %>  \final{parallel}
 %>
 %>  \author

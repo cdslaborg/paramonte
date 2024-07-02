@@ -3,8 +3,6 @@
 %>  the current system on which MATLAB is running,
 %>  which is also supported by the ParaMonte MATLAB library.
 %>
-%>  \param[in]  `None`
-%>
 %>  \return
 %>  `str`   :   The output scalar MATLAB string containing the processor architecture.
 %>              The output value can be either:<br>
@@ -19,6 +17,7 @@
 %>      str = pm.sys.arch()
 %>
 %>  \endcode
+%>
 %>  \final{arch}
 %>
 %>  \author

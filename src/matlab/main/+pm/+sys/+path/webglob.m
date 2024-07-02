@@ -51,6 +51,7 @@
 %>      [pathList, isdirList] = pm.sys.path.webglob(pattern, anycase)
 %>
 %>  \endcode
+%>
 %>  \final{webglob}
 %>
 %>  \author

@@ -43,6 +43,7 @@
 %>      hashmap = pm.matlab.hashmap.struct2hash(object, [], [], [])
 %>
 %>  \endcode
+%>
 %>  \example{struct2hash}
 %>
 %>      s = struct("key1", 1, "key2", "val2", "Key2", "val2duplicate", "key3", false, "key4", []);

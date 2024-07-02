@@ -60,6 +60,7 @@
 %>      objnew = pm.matlab.hashmap.hash2comp(hashmap, object, insensitive, extensible, recursive)
 %>
 %>  \endcode
+%>
 %>  \example{hash2comp}
 %>
 %>      hashmap = {"key1", 2, "key2", "hash", "key3", true, "key4", 0};

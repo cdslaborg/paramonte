@@ -28,6 +28,7 @@
 %>      namelist = pm.sys.path.list(path)
 %>
 %>  \endcode
+%>
 %>  \final{list}
 %>
 %>  \author

@@ -35,6 +35,7 @@
 %>      fileList = sampler.findfile(ftype, pattern, silent)
 %>
 %>  \endcode
+%>
 %>  \final{findfile}
 %>
 %>  \author

@@ -1,8 +1,6 @@
 %>  \brief
 %>  Return ``true`` if the current OS is MacOS (Darwin).
 %>
-%>  \param[in]  `None`
-%>
 %>  \return
 %>  `itis`  :   The output MATLAB logical scalar value that is ``true`` 
 %>              if and only if the OS is MacOS (Darwin), otherwise ``false``.

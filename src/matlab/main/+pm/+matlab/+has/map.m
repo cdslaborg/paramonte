@@ -7,13 +7,10 @@
 %>  This function searches the MATLAB license
 %>  for an installation of the Toolbox.
 %>
-%>  \param[in]  `None`
-%>
 %>  \return
-%>  hasit
-%>      The output scalar MATLAB logical that is ``true`` if and
-%>      only if the current installation of MATLAB contains
-%>      the required MATLAB Toolbox.
+%>  ``hasit``   :   The output scalar MATLAB logical that is ``true`` if and
+%>                  only if the current installation of MATLAB contains
+%>                  the required MATLAB Toolbox.
 %>
 %>  \interface{map}
 %>  \code{.m}
@@ -21,6 +18,12 @@
 %>      hasit = pm.matlab.has.map();
 %>
 %>  \endcode
+%>
+%>  \example{map}
+%>  \include{lineno} example/matlab/has/main.m
+%>  \output{map}
+%>  \include{lineno} example/matlab/has/main.out.m
+%>
 %>  \final{map}
 %>
 %>  \author

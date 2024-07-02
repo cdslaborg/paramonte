@@ -26,6 +26,7 @@
 %>      mat = pm.stats.Cov(df, method)
 %>
 %>  \endcode
+%>
 %>  \final{Cov}
 %>
 %>  \author

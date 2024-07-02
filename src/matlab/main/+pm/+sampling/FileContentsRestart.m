@@ -26,6 +26,7 @@
 %>      contents = pm.sampling.FileContentsRestart(file, silent, method)
 %>
 %>  \endcode
+%>
 %>  \final{FileContentsRestart}
 %>
 %>  \author

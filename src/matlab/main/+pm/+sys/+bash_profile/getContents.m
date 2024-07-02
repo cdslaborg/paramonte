@@ -2,8 +2,6 @@
 %>  Return the contents of the ``.bash_profile`` file 
 %>  in the system home folder as a scalar MATLAB string.
 %>
-%>  \param[in]  `None`
-%>
 %>  \return
 %>  `str`   :   The output scalar MATLAB string containing the contents
 %>              of the ``.bash_profile`` file if it exists or an empty string.
@@ -14,6 +12,7 @@
 %>      str = pm.sys.bash_profile.getContents()
 %>
 %>  \endcode
+%>
 %>  \final{getContents}
 %>
 %>  \author
