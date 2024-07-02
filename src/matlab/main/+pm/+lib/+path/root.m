@@ -2,8 +2,6 @@
 %>  Return a scalar MATLAB string containing the
 %>  root directory of the ParaMonte library package.
 %>
-%>  \param  `None`
-%>
 %>  \return
 %>  `path`  :   A scalar MATLAB string containing the root
 %>              directory of the ParaMonte library package.
@@ -14,6 +12,12 @@
 %>      path = pm.lib.path.root()
 %>
 %>  \endcode
+%>
+%>  \example{root}
+%>  \include{lineno} example/lib/path/root/main.m
+%>  \output{root}
+%>  \include{lineno} example/lib/path/root/main.out.m
+%>
 %>  \final{root}
 %>
 %>  \author

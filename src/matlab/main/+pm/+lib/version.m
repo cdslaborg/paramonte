@@ -5,16 +5,18 @@
 %>
 %>  \param[in]  current :   The input scalar MATLAB string containing the
 %>                          current Semantic version of the library in
-%>                          triplet format (e.g., ``"1.2.3"``).
+%>                          triplet format (e.g., ``"1.2.3"``).<br>
 %>
 %>  \return
 %>  `vernum`            :   The output scalar MATLAB string containing either:
-%>                          1.  the ParaMonte MATLAB version if
-%>                              the input argument ``current`` is missing.
-%>                          2.  the semantically-previous version of the library
-%>                              if the input argument ``current`` is present.
-%>                              The output version may not necessarily exist
-%>                              as a version of the ParaMonte library.
+%>                          <ol>
+%>                              <li>    the ParaMonte MATLAB version if
+%>                                      the input argument ``current`` is missing.<br>
+%>                              <li>    the semantically-previous version of the library
+%>                                      if the input argument ``current`` is present.<br>
+%>                                      The output version **may not necessarily exist**
+%>                                      as a version of the ParaMonte library.<br>
+%>                          </ol>
 %>
 %>  \interface{version}
 %>  \code{.m}
@@ -23,10 +25,11 @@
 %>      vernum = pm.lib.version(current)
 %>
 %>  \endcode
-%>  \example{version}
 %>
-%>      vernum = pm.lib.version("1.1.1") % 1.1.0
-%>      vernum = pm.lib.version("1.1.0") % 1.0.0
+%>  \example{version}
+%>  \include{lineno} example/lib/version/main.m
+%>  \output{version}
+%>  \include{lineno} example/lib/version/main.out.m
 %>
 %>  \final{version}
 %>

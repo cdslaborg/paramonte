@@ -3,19 +3,20 @@
 %>  naming the ParaMonte MATLAB shared libraries.
 %>
 %>  \param[in]  vendor  :   The input scalar MATLAB string, containing the MPI
-%>                          library vendor supported by the ParaMonte library.
-%>                          Possible values are:
-%>                          -   ``Intel``, representing the Intel MPI library.
-%>                          -   ``MPICH``, representing the MPICH MPI library.
-%>                          -   ``OpenMPI``, representing the OpenMPI library.
-%>                          \note
-%>                          All values are case-insensitive.
+%>                          library vendor supported by the ParaMonte library.<br>
+%>                          Possible values are:<br>
+%>                          <ol>
+%>                              <li>    ``Intel``, representing the Intel MPI library.
+%>                              <li>    ``MPICH``, representing the MPICH MPI library.
+%>                              <li>    ``OpenMPI``, representing the OpenMPI library.
+%>                          </ol>
+%>                          Note that **all values are case-insensitive**.<br>
 %>
 %>  \return
 %>  `str`               :   The output scalar MATLAB string containing the MPI
 %>                          library name corresponding to the input MPI ``vendor``.<br>
 %>                          If the input ``vendor`` is not supported, the default
-%>                          string ``"mpi"`` is returned as the value ``str``.
+%>                          string ``"mpi"`` is returned as the value ``str``.<br>
 %>
 %>  \interface{name}
 %>  \code{.m}
@@ -23,6 +24,12 @@
 %>      str = pm.lib.mpi.name(vendor)
 %>
 %>  \endcode
+%>
+%>  \example{name}
+%>  \include{lineno} example/lib/mpi/name/main.m
+%>  \output{name}
+%>  \include{lineno} example/lib/mpi/name/main.out.m
+%>
 %>  \final{name}
 %>
 %>  \author

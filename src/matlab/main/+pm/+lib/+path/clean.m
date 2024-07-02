@@ -6,17 +6,13 @@
 %>  This action is particularly vital for correct handling
 %>  of MATLAB MEX files for different build configurations.
 %>
-%>  \param  `None`
-%>
-%>  \return
-%>  `None`
-%>
 %>  \interface{clean}
 %>  \code{.m}
 %>
 %>      pm.lib.path.clean()
 %>
 %>  \endcode
+%>
 %>  \final{clean}
 %>
 %>  \author

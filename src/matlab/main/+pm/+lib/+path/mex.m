@@ -1,20 +1,20 @@
 %>  \brief
 %>  Return the vector of MATLAB strings containing the
-%>  path(s) to the ParaMonte library mex shared files.
+%>  path(s) to the ParaMonte library MEX shared files.
 %>
 %>  \param[in]  mexname :   The input scalar MATLAB string containing
-%>                          the (partial) name of a MEX file name without MEX extension.
+%>                          the (partial) name of a MEX file name without MEX extension.<br>
 %>                          (**optional**. If missing, all detected paths will be returned.)
 %>
 %>  \param[in]  config  :   The input scalar (or vector of) MATLAB string(s) containing the
-%>                          (set of) keyword(s) to match in the identified MEX files paths.
+%>                          (set of) keyword(s) to match in the identified MEX files paths.<br>
 %>                          (**optional**. If missing, all detected paths will be returned.)
 %>
 %>  \return
 %>  `mexpaths`          :   The output vector of MATLAB strings containing the
 %>                          path(s) to the ParaMonte library MEX shared files.<br>
 %>                          The output ``mexpaths`` will be an empty list
-%>                          if no such paths are found.
+%>                          if no such paths are found.<br>
 %>
 %>  \interface{mex}
 %>  \code{.m}
@@ -28,6 +28,12 @@
 %>      mexpaths = pm.lib.path.mex(mexname, config)
 %>
 %>  \endcode
+%>
+%>  \example{mex}
+%>  \include{lineno} example/lib/path/mex/main.m
+%>  \output{mex}
+%>  \include{lineno} example/lib/path/mex/main.out.m
+%>
 %>  \final{mex}
 %>
 %>  \author

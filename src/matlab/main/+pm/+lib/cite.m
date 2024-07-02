@@ -3,18 +3,21 @@
 %>  containing the weblink to ParaMonte library publications.
 %>
 %>  \param[in]  format  :   The input scalar MATLAB string indicating
-%>                          the format of the output we address.
-%>                              1.  An input value of ``"raw"`` will return a raw web address.
-%>                              2.  An input value of ``"html"`` will return an HTML style web address.
+%>                          the format of the output we address.<br>
+%>                          <ol>
+%>                              <li>    An input value of ``"raw"`` will return a raw web address.
+%>                              <li>    An input value of ``"html"`` will return an HTML style web address.
+%>                          </ol>
 %>                          (**optional**, default = ``"html"``)
 %>
 %>  \return
 %>  `str`               :   The output scalar MATLAB string containing either,
-%>                          -   a raw weblink to the ParaMonte library publications
-%>                              if the library is used outside the MATLAB GUI interface, or,
-%>
-%>                          -   an HTML-style hyperlink to the ParaMonte library publications
-%>                              if the library is used within the MATLAB GUI interface.
+%>                          <ol>
+%>                              <li>    a raw weblink to the ParaMonte library publications
+%>                                      if the library is used outside the MATLAB GUI interface, or,
+%>                              <li>    an HTML-style hyperlink to the ParaMonte library publications
+%>                                      if the library is used within the MATLAB GUI interface.
+%>                          </ol>
 %>
 %>  \interface{cite}
 %>  \code{.m}
@@ -23,6 +26,12 @@
 %>      str = pm.lib.cite(format)
 %>
 %>  \endcode
+%>
+%>  \example{cite}
+%>  \include{lineno} example/lib/cite/main.m
+%>  \output{cite}
+%>  \include{lineno} example/lib/cite/main.out.m
+%>
 %>  \final{cite}
 %>
 %>  \author

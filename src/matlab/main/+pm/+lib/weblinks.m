@@ -12,6 +12,11 @@
 %>
 %>  \endcode
 %>
+%>  \example{weblinks}
+%>  \include{lineno} example/lib/weblinks/main.m
+%>  \output{weblinks}
+%>  \include{lineno} example/lib/weblinks/main.out.m
+%>
 %>  \final{weblinks}
 %>
 %>  \author
@@ -19,7 +24,9 @@
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function tree = weblinks()
-    persistent stree
+
+    persistent stree;
+
     if ~isempty(stree)
         tree = stree;
         return

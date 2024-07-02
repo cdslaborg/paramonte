@@ -13,7 +13,7 @@
 %>                          latest available ParaMonte MATLAB version newer
 %>                          than the existing version on the current system.<br>
 %>                          The output ``str`` will be set to empty string ``""``
-%>                          if there is no newer version or the function fails.
+%>                          if there is no newer version or the function fails.<br>
 %>
 %>  \interface{version}
 %>  \code{.m}
@@ -21,6 +21,12 @@
 %>      str = pm.lib.update.version()
 %>
 %>  \endcode
+%>
+%>  \example{version}
+%>  \include{lineno} example/lib/update/version/main.m
+%>  \output{version}
+%>  \include{lineno} example/lib/update/version/main.out.m
+%>
 %>  \final{version}
 %>
 %>  \author

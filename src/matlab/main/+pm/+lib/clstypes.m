@@ -18,6 +18,11 @@
 %>  regularly updated with the latest CS names
 %>  available in the ParaMonte installation guide.<br>
 %>
+%>  \example{clstypes}
+%>  \include{lineno} example/lib/clstypes/main.m
+%>  \output{clstypes}
+%>  \include{lineno} example/lib/clstypes/main.out.m
+%>
 %>  \final{clstypes}
 %>
 %>  \author

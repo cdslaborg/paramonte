@@ -11,6 +11,11 @@
 %>
 %>  \endcode
 %>
+%>  \example{banner}
+%>  \include{lineno} example/lib/banner/main.m
+%>  \output{banner}
+%>  \include{lineno} example/lib/banner/main.out.m
+%>
 %>  \final{banner}
 %>
 %>  \author

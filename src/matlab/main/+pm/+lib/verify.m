@@ -11,6 +11,11 @@
 %>
 %>  \endcode
 %>
+%>  \example{verify}
+%>  \include{lineno} example/lib/verify/main.m
+%>  \output{verify}
+%>  \include{lineno} example/lib/verify/main.out.m
+%>
 %>  \final{verify}
 %>
 %>  \author

@@ -1,24 +1,23 @@
 %>  \brief
 %>  Return the vector of MATLAB strings containing the directory
-%>  path(s) containing the specified ParaMonte library mex shared file.
+%>  path(s) containing the specified ParaMonte library MEX shared file.<br>
 %>
 %>  \param[in]  mexname :   The input scalar MATLAB string containing
-%>                          the (partial) name of a MEX file name without MEX extension.
+%>                          the (partial) name of a MEX file name without MEX extension.<br>
 %>                          (**optional**. If missing, all detected paths will be returned.)
 %>
 %>  \param[in]  config  :   The input scalar (or vector of) MATLAB string(s) containing the
-%>                          (set of) keyword(s) to match in the identified MEX files paths.
+%>                          (set of) keyword(s) to match in the identified MEX files paths.<br>
 %>                          (**optional**. If missing, all detected paths will be returned.)
 %>
 %>  \return
 %>  `mexdirs`           :   The output vector of MATLAB strings containing the **unique**
 %>                          directory path(s) to the ParaMonte library MEX shared files.<br>
 %>                          The output ``mexdirs`` will be an empty list
-%>                          if no such paths are found.
+%>                          if no such paths are found.<br>
 %>
 %>  \interface{mexdir}
 %>  \code{.m}
-%>  \endcode
 %>
 %>      mexdirs = pm.lib.path.mexdir()
 %>      mexdirs = pm.lib.path.mexdir([])
@@ -27,6 +26,13 @@
 %>      mexdirs = pm.lib.path.mexdir([], config)
 %>      mexdirs = pm.lib.path.mexdir(mexname, [])
 %>      mexdirs = pm.lib.path.mexdir(mexname, config)
+%>
+%>  \endcode
+%>
+%>  \example{mexdir}
+%>  \include{lineno} example/lib/path/mexdir/main.m
+%>  \output{mexdir}
+%>  \include{lineno} example/lib/path/mexdir/main.out.m
 %>
 %>  \final{mexdir}
 %>

@@ -2,8 +2,6 @@
 %>  Return a scalar MATLAB string containing the path to
 %>  the ``auxil`` directory of the ParaMonte library package.
 %>
-%>  \param  `None`
-%>
 %>  \return
 %>  `path`  :   The output scalar MATLAB string containing the path to
 %>              the ``auxil`` directory of the ParaMonte library package.
@@ -14,6 +12,12 @@
 %>      path = pm.lib.path.auxil()
 %>
 %>  \endcode
+%>
+%>  \example{auxil}
+%>  \include{lineno} example/lib/path/auxil/main.m
+%>  \output{auxil}
+%>  \include{lineno} example/lib/path/auxil/main.out.m
+%>
 %>  \final{auxil}
 %>
 %>  \author

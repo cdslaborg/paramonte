@@ -1,10 +1,9 @@
 %>  \brief
-%>  Return a list of MATLAB strings containing the names of
-%>  all currently possible builds of the ParaMonte MATLAB
-%>  shared libraries.
+%>  Return a list of MATLAB strings containing the names of all
+%>  currently possible builds of the ParaMonte MATLAB shared libraries.
 %>
 %>  \return
-%>  ``typelist``    :   The output MATLAB string list containing the 
+%>  ``typelist``    :   The output MATLAB string list containing the
 %>                      value ``["native", "tuned", "ipo", "release", "testing", "debug"]``.
 %>
 %>  \interface{bldtypes}
@@ -18,6 +17,11 @@
 %>  The build names within this function must be
 %>  regularly updated with the latest build names
 %>  available in the ParaMonte installation guide.
+%>
+%>  \example{bldtypes}
+%>  \include{lineno} example/lib/bldtypes/main.m
+%>  \output{bldtypes}
+%>  \include{lineno} example/lib/bldtypes/main.out.m
 %>
 %>  \final{bldtypes}
 %>

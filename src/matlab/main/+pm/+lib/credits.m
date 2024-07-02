@@ -1,17 +1,21 @@
 %>  \brief
 %>  Return a  MATLAB string containing the ParaMonte MATLAB library acknowledgment statement.
 %>
-%>  params  `None`
-%>
 %>  \return
 %>  A MATLAB string containing the ParaMonte MATLAB library acknowledgment statement.
 %>
 %>  \interface{credits}
 %>  \code{.m}
 %>
-%>      pm.lib.credits()
+%>      result = pm.lib.credits()
 %>
 %>  \endcode
+%>
+%>  \example{credits}
+%>  \include{lineno} example/lib/credits/main.m
+%>  \output{credits}
+%>  \include{lineno} example/lib/credits/main.out.m
+%>
 %>  \final{credits}
 %>
 %>  \author
