@@ -247,7 +247,7 @@ classdef SpecBase < pm.matlab.Handle
         function entries = getEntriesNML(self, ndim)
             if  isempty(self.outputFileName)
                 % First define ``outputFileName`` if it is empty.
-                self.outputFileName = fullfile(string(pwd), pm.io.filename(self.method));
+                self.outputFileName = fullfile(string(pwd), pm.io.getFileName(self.method));
             elseif pm.introspection.istype(self.outputFileName, "string", 1)
                 if ~self.silent && contains(self.outputFileName, " ")
                     warning ( newline ...
@@ -258,7 +258,7 @@ classdef SpecBase < pm.matlab.Handle
                             );
                 end
                 if  endsWith(self.outputFileName, "\") || endsWith(self.outputFileName, "/")
-                    self.outputFileName = fullfile(string(pm.sys.path.abs(self.outputFileName, "lean")), pm.io.filename(self.method));
+                    self.outputFileName = fullfile(string(pm.sys.path.abs(self.outputFileName, "lean")), pm.io.getFileName(self.method));
                 end
             end
             entries = "";
