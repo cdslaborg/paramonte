@@ -1732,7 +1732,8 @@ if (TRUE)
     add_dependencies(package copyFileVERSION)
 
     if ("${lang}" STREQUAL "julia" OR "${lang}" STREQUAL "matlab" OR "${lang}" STREQUAL "python" OR "${lang}" STREQUAL "r")
-        set(origin "${paramonte_dir}/VERSION.md")
+        #set(origin "${paramonte_dir}/VERSION.md")
+        set(origin "${paramonte_src_${lang}_dir}/VERSION.md")
         set(destin "${paramonte_bld_pkg_paramonte_dir}/auxil/VERSION.md")
         message(NOTICE  "${pmattn} Setting the rule for copying the paramonte::${lang} library VERSION.md file to the package directory...\n"
                         "${pmattn}      - from: ${origin}\n"

@@ -22,12 +22,12 @@
 %>
 %>  \endcode
 %>
-%>  \final{weblink}
-%>
 %>  \example{weblink}
 %>  \include{lineno} example/lib/update/weblink/main.m
 %>  \output{weblink}
 %>  \include{lineno} example/lib/update/weblink/main.out.m
+%>
+%>  \final{weblink}
 %>
 %>  \author
 %>  \JoshuaOsborne, May 21 2024, 7:54 PM, University of Texas at Arlington<br>

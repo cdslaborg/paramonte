@@ -39,7 +39,7 @@
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function vernum = version(current)
     persistent vernum_persistent;
-    if nargin < 1
+    if  nargin < 1
         if isempty(vernum_persistent)
             try
                 fid = fopen(fullfile(pm.lib.path.auxil(), "VERSION.md"));
