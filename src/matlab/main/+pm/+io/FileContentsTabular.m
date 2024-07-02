@@ -75,9 +75,9 @@ classdef FileContentsTabular < pm.io.FileContents
         %>
         %>  This is the constructor of the class ``pm.io.FileContentsTabular``.
         %>
-        %>  \param[in]  file    :   See the documentation of the corresponding argument of ``pm.io.FileContents``.
+        %>  \param[in]  file    :   See the documentation of the corresponding argument of [pm.io.FileContents](@ref FileContents).
         %>
-        %>  \param[in]  silent  :   See the documentation of the corresponding argument of ``pm.io.FileContents``.
+        %>  \param[in]  silent  :   See the documentation of the corresponding argument of [pm.io.FileContents](@ref FileContents).
         %>
         %>  \param[in]  sep     :   The input scalar MATLAB string
         %>                          containing the field separator used in the file.

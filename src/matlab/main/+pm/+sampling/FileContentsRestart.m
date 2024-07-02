@@ -75,8 +75,8 @@ classdef FileContentsRestart < pm.io.FileContents
         %>  \param[in]  file    :   The input scalar MATLAB string
         %>                          containing the path to an external restart file.
         %>  
-        %>  \param[in]  silent  :   See the corresponding argument of ``pm.io.FileContents`` class.
-        %>                          (**optional**. The default is set by ``pm.io.FileContents``.)
+        %>  \param[in]  silent  :   See the corresponding argument of [pm.io.FileContents](@ref FileContents) class.
+        %>                          (**optional**. The default is set by [pm.io.FileContents](@ref FileContents).)
         %>  
         %>  \param[in]  method  :   The input scalar MATLAB string
         %>                          containing the sampling method name.

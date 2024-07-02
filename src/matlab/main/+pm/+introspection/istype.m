@@ -6,9 +6,7 @@
 %>  \param[in]  varval  :   The input value to be converted to namelist-compatible value.
 %>
 %>  \param[in]  vartype :   The input scalar MATLAB string containing the
-%>                          expected type of the value given by the input ``varval``.
-%>
-%>                          \note
+%>                          expected type of the value given by the input ``varval``.<br>
 %>                          The following type-conformance rules apply:<br>
 %>                              -   if ``vartype`` is ``"string"``, then ``varval`` can be
 %>                                  either a MATLAB ``string`` or ``char``.<br>
@@ -26,7 +24,7 @@
 %>                                  or a MATLAB ``real`` value (e.g., ``float``, ``single``, ``double``).<br>
 %>                                  For all other object types, the type-conformance is verified by
 %>                                  passing the input ``varval`` and ``vartype`` directly to the
-%>                                  MATLAB intrinsic function ``isa()``<br>
+%>                                  MATLAB intrinsic function ``isa()``.<br>
 %>
 %>
 %>  \param[in]  varsize :   The input scalar MATLAB integer representing the
@@ -42,9 +40,16 @@
 %>  \interface{istype}
 %>  \code{.m}
 %>
+%>      itis = pm.introspection.istype(varval, vartype)
 %>      itis = pm.introspection.istype(varval, vartype, varsize)
 %>
 %>  \endcode
+%>
+%>  \example{istype}
+%>  \include{lineno} example/introspection/istype/main.m
+%>  \output{istype}
+%>  \include{lineno} example/introspection/istype/main.out.m
+%>
 %>  \final{istype}
 %>
 %>  \author
@@ -54,9 +59,11 @@
 function itis = istype(varval, vartype, varsize)
     varvalen = numel(varval);
     itis = false;
-    if 2 < nargin
+    if  2 < nargin
         itis = varvalen <= varsize;
-        return;
+        if ~itis
+            return;
+        end
     end
     for i = 1 : varvalen
         if isa(varval(i), "cell")
@@ -64,7 +71,7 @@ function itis = istype(varval, vartype, varsize)
         else
             value = varval(i);
         end
-        if strcmpi(vartype, "string")
+        if  strcmpi(vartype, "string")
             itis = isa(value, "string") || isa(value, "char");
         elseif strcmpi(vartype, "integer")
             itis = isa(value, "int8") || isa(value, "int16") || isa(value, "int32") || isa(value, "int64");

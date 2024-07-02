@@ -74,11 +74,6 @@
 %>
 %>  \endcode
 %>
-%>  [⛓](#ParaMonteLangDocumentation)
-%>  \section ParaMonteLangDocumentation ParaMonte MATLAB Documentation Website
-%>
-%>  The documentation for the latest version of the ParaMonte MATLAB library is always <a href="../../matlab/latest/html/index.html" target="_blank"><b>available on this page</b></a>.<br>
-%>
 %>  [⛓](#ParaMonteLangModules)
 %>  \section ParaMonteLangModules ParaMonte MATLAB Library Modules
 %>

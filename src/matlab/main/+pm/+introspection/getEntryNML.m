@@ -14,10 +14,10 @@
 %>  \param[in]  varval  :   The input value to be converted to namelist-compatible value.
 %>
 %>  \param[in]  vartype :   See the documentation of the corresponding
-%>                          argument of ``pm.introspection.istype()``.
+%>                          argument of [pm.introspection.istype()](@ref istype).
 %>
 %>  \param[in]  varsize :   See the documentation of the corresponding
-%>                          argument of ``pm.introspection.istype()``.
+%>                          argument of [pm.introspection.istype()](@ref istype).
 %>
 %>  \return
 %>  `entry`             :   The output scalar MATLAB string containing the namelist-compatible

@@ -308,5 +308,5 @@ function root = getRoot(getFunc, nobs)
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  \endcond excluded
+%>  \endcond
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
