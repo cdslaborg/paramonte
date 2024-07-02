@@ -69,9 +69,6 @@ classdef Heatmap < pm.vis.subplot.Subplot
         %>                      Its value is completely ignored if the input ``lb`` argument is a vector of size ``2``.
         %>                      (**optional**. If missing, the current value will remain intact.)
         %>
-        %>  \return
-        %>  `None`
-        %>
         %>  \interface{setcl}
         %>  \code{.m}
         %>

@@ -75,8 +75,6 @@ classdef Timer < pm.matlab.Handle
         %>  Return a scalar object of class ``pm.timing.Timer``.<br>
         %>  This is the constructor of the class ``pm.timing.Timer``.
         %>
-        %>  \param[in]  `None`
-        %>
         %>  \return
         %>  `self`  :   The output scalar object of class ``pm.timing.Timer``.
         %>
@@ -86,6 +84,7 @@ classdef Timer < pm.matlab.Handle
         %>      self = pm.timing.Timer()
         %>
         %>  \endcode
+        %>
         %>  \final{Timer}
         %>
         %>  \author
@@ -100,11 +99,6 @@ classdef Timer < pm.matlab.Handle
         %>  Reset the timer, equivalent to reconstructing the timer object.<br>
         %>  This is a dynamic method of the class ``pm.timing.Timer()``.
         %>
-        %>  \param[in]  `None`
-        %>
-        %>  \return
-        %>  `None`
-        %>
         %>  \interface{tic}
         %>  \code{.m}
         %>
@@ -112,6 +106,7 @@ classdef Timer < pm.matlab.Handle
         %>      timer.tic()
         %>
         %>  \endcode
+        %>
         %>  \final{tic}
         %>
         %>  \author
@@ -129,8 +124,6 @@ classdef Timer < pm.matlab.Handle
         %>  Also, set the ``clock`` attribute of the parent object.<br>
         %>  This is a dynamic method of the class ``pm.timing.Timer()``.
         %>
-        %>  \param[in]  `None`
-        %>
         %>  \return
         %>  `clock` :   The output scalar MATLAB ``real`` containing the time
         %>              past since the (re)construction of the timer object.
@@ -142,6 +135,7 @@ classdef Timer < pm.matlab.Handle
         %>      clock = timer.toc()
         %>
         %>  \endcode
+        %>
         %>  \final{toc}
         %>
         %>  \author

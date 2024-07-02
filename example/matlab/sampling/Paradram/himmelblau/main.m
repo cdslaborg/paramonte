@@ -9,6 +9,7 @@ sampler.spec.randomSeed = 28457353; % make sampling reproducible.
 sampler.spec.outputChainSize = 30000; % Use a small chain size for illustration.
 sampler.spec.parallelismNumThread = []; % Use these many parallel threads.
 sampler.spec.outputRestartFileFormat = "ascii";
+sampler.silent = true;
 sampler.run ( @(x) pm.stats.dist.himmelblau.getLogUDF(x(1), x(2)) ...
             , 2 ...
             );

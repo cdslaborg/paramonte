@@ -5,12 +5,12 @@
 %>  \param[in]  type    :   The input scalar MATLAB string that can be either:
 %>                          <ol>
 %>                              <li>    the string ``"year"``, implying that the MATLAB release year must be returned.<br>
-%>                              <li>    the string ``"season"`` or ``"minor"``, implying that the MATLAB release year must be returned..<br>
+%>                              <li>    the string ``"season"`` or ``"minor"``, implying that the MATLAB release season must be returned.<br>
 %>                          </ol>
 %>                          (**optional**. default = ``""`` implying the full version.)
 %>
 %>  \return
-%>  `matlabRelease`     :   The output scalar MATLAB string containing the
+%>  ``matlabRelease``   :   The output scalar MATLAB string containing the
 %>                          MATLAB release version, year, or season as requested.
 %>
 %>  \interface{release}
@@ -22,10 +22,9 @@
 %>  \endcode
 %>
 %>  \example{release}
-%>
-%>      matlabReleaseSeason = pm.matlab.release("minor");
-%>      matlabReleaseSeason = pm.matlab.release("season");
-%>      matlabReleaseYear = str2double(pm.matlab.release("year"));
+%>  \include{lineno} example/matlab/release/main.m
+%>  \output{release}
+%>  \include{lineno} example/matlab/release/main.out.m
 %>
 %>  \final{release}
 %>

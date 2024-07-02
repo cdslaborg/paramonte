@@ -83,6 +83,7 @@ classdef Cov < pm.matlab.Handle
         %>      mat = pm.stats.Cov(df, method)
         %>
         %>  \endcode
+        %>
         %>  \final{Cov}
         %>
         %>  \author
@@ -129,6 +130,7 @@ classdef Cov < pm.matlab.Handle
         %>      mat.val = mat.get(df, method)
         %>
         %>  \endcode
+        %>
         %>  \final{get}
         %>
         %>  \author

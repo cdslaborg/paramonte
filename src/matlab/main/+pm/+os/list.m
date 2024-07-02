@@ -3,8 +3,8 @@
 %>  OS platforms supported by the ParaMonte MATLAB library.
 %>
 %>  \return
-%>  `names` :   The output MATLAB string list containing:
-%>              ``["Windows", "Linux", "Darwin"]``
+%>  ``names``   :   The output MATLAB string list containing:
+%>                  ``["Windows", "Linux", "Darwin"]``.
 %>
 %>  \interface{list}
 %>  \code{.m}
@@ -12,6 +12,11 @@
 %>      names = pm.os.list()
 %>
 %>  \endcode
+%>
+%>  \example{list}
+%>  \include{lineno} example/os/list/main.m
+%>  \output{list}
+%>  \include{lineno} example/os/list/main.out.m
 %>
 %>  \final{list}
 %>

@@ -1,28 +1,26 @@
 %>  \brief
 %>  Copy the contents of the struct/object ``from``
 %>  to the struct/object ``to`` recursively and without
-%>  destroying the existing components in ``to``.
+%>  destroying the existing components in ``to``.<br>
 %>
 %>  \param[in]  from    :   The input scalar MATLAB struct whose (select)
 %>                          components must be copy/merged with the components
-%>                          of the input struct ``to``.
-%>  
+%>                          of the input struct ``to``.<br>
 %>  \param[in]  to      :   The input scalar MATLAB struct to which the
-%>                          components of ``from`` struct must be copied.
+%>                          components of ``from`` struct must be copied.<br>
 %>                          (**optional**, default = ``struct()``)
-%>  
 %>  \param[in]  fields  :   The input vector of MATLAB strings each element
 %>                          of which is a field name in ``from`` whose value
-%>                          has to be copied to the struct ``to``.
+%>                          has to be copied to the struct ``to``.<br>
 %>                          (**optional**, default = ``fieldnames(from)`` or ``properties(from)``)
 %>
 %>  \return
 %>  `tonew`             :   The output MATLAB struct containing the
-%>                          merger of the two input MATLAB structs.
+%>                          merger of the two input MATLAB structs.<br>
 %>                          If a field name in ``fields`` is common between
 %>                          ``from`` and ``to``, the field value of ``from`` will
 %>                          overwrite the corresponding field value of ``to``
-%>                          in the output ``tonew``.
+%>                          in the output ``tonew``.<br>
 %>
 %>  \interface{copy}
 %>  \code{.m}
@@ -33,6 +31,11 @@
 %>      tonew = pm.matlab.struct.copy(from, to, fields)
 %>
 %>  \endcode
+%>
+%>  \example{copy}
+%>  \include{lineno} example/matlab/struct/copy/main.m
+%>  \output{copy}
+%>  \include{lineno} example/matlab/struct/copy/main.out.m
 %>
 %>  \final{copy}
 %>

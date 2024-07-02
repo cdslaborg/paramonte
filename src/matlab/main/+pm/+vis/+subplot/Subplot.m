@@ -241,9 +241,6 @@ classdef Subplot < pm.vis.axes.Axes
         %>                          Note that all of these property-value pairs can be also directly set via the
         %>                          parent object attributes, before calling the ``make()`` method.
         %>
-        %>  \return
-        %>  `None`
-        %>
         %>  \interface{make}
         %>  \code{.m}
         %>
@@ -856,9 +853,6 @@ classdef Subplot < pm.vis.axes.Axes
         %>                          Note that all of these property-value pairs can be also directly set via the
         %>                          parent object attributes, before calling the ``premake()`` method.
         %>
-        %>  \return
-        %>  `None`
-        %>
         %>  \interface{premake}
         %>  \code{.m}
         %>
@@ -894,9 +888,6 @@ classdef Subplot < pm.vis.axes.Axes
         %>                          with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %>                          Note that all of these property-value pairs can be also directly set via the
         %>                          parent object attributes, before calling the ``make()`` method.
-        %>
-        %>  \return
-        %>  `None`
         %>
         %>  \interface{reset}
         %>  \code{.m}

@@ -72,6 +72,7 @@ classdef FileContentsProgress < pm.io.FileContentsTabular
         %>      contents = pm.sampling.FileContentsProgress(file, silent, sep)
         %>
         %>  \endcode
+        %>
         %>  \final{FileContentsProgress}
         %>
         %>  \author

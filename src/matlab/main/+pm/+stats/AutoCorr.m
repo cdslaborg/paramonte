@@ -116,6 +116,7 @@ classdef AutoCorr < pm.matlab.Handle
         %>      acf = pm.stats.AutoCorr(df, numlags, numstd)
         %>
         %>  \endcode
+        %>
         %>  \final{AutoCorr}
         %>
         %>  \author
@@ -194,6 +195,7 @@ classdef AutoCorr < pm.matlab.Handle
         %>      [acf.val, acf.lag, acf.bnd] = acf.get(df, numlags, numstd)
         %>
         %>  \endcode
+        %>
         %>  \final{get}
         %>
         %>  \author

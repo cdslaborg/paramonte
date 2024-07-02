@@ -33,6 +33,7 @@ classdef Contour < pm.vis.cascade.Cascade
         %>      p = pm.vis.cascade.Contour(dfref, varargin);
         %>
         %>  \endcode
+        %>
         %>  \final{Contour}
         %>
         %>  \author

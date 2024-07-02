@@ -114,6 +114,7 @@ classdef FileContentsReport < pm.io.FileContents
         %>      contents = pm.sampling.FileContentsReport(file, silent, method)
         %>
         %>  \endcode
+        %>
         %>  \final{FileContentsReport}
         %>
         %>  \author

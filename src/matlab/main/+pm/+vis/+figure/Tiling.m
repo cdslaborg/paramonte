@@ -117,9 +117,6 @@ classdef Tiling < pm.vis.figure.Figure
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``make()`` method.
         %>
-        %>  \return
-        %>  `None`
-        %>
         %>  \interface{make}
         %>  \code{.m}
         %>
@@ -208,9 +205,6 @@ classdef Tiling < pm.vis.figure.Figure
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``make()`` method.
         %>
-        %>  \return
-        %>  `None`
-        %>
         %>  \interface{reset}
         %>  \code{.m}
         %>
@@ -258,9 +252,6 @@ classdef Tiling < pm.vis.figure.Figure
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``make()`` method.
-        %>
-        %>  \return
-        %>  `None`
         %>
         %>  %>  \interface{premake}
         %>  \example{premake}

@@ -146,9 +146,6 @@ classdef Corner < pm.vis.figure.Tiling
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``make()`` method.
         %>
-        %>  \return
-        %>  `None`
-        %>
         %>  \interface{make}
         %>  \code{.m}
         %>
@@ -291,9 +288,6 @@ classdef Corner < pm.vis.figure.Tiling
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``make()`` method.
         %>
-        %>  \return
-        %>  `None`
-        %>
         %>  \interface{reset}
         %>  \code{.m}
         %>
@@ -346,9 +340,6 @@ classdef Corner < pm.vis.figure.Tiling
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``make()`` method.
-        %>
-        %>  \return
-        %>  `None`
         %>
         %>  \example{premake}
         %>

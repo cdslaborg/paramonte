@@ -33,6 +33,7 @@ classdef Scatter3 < pm.vis.cascade.Cascade
         %>      s = pm.vis.cascade.Scatter3(dfref, varargin);
         %>
         %>  \endcode
+        %>
         %>  \final{Scatter3}
         %>
         %>  \author

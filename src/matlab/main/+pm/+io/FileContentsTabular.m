@@ -81,6 +81,7 @@ classdef FileContentsTabular < pm.io.FileContents
         %>      contents = pm.io.FileContentsTabular(file, silent, sep)
         %>
         %>  \endcode
+        %>
         %>  \final{FileContentsTabular}
         %>
         %>  \author

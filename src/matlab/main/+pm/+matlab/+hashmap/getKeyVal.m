@@ -26,14 +26,14 @@
 %>
 %>  \endcode
 %>
-%>  \example{getKeyVal}
+%>  \warning
+%>  The length of the input ``hashmap`` must be even.<br>
+%>  Ann odd length of the input cell array will lead to a runtime call to the MATLAB intrinsic ``error()``.<br>
 %>
-%>      hashmap = {"key1", 1, "key2", "val2", "key3", false};
-%>      [val, failed] = pm.matlab.hashmap.getKeyVal("key2", hashmap) % = "val2"
-%>      [val, failed] = pm.matlab.hashmap.getKeyVal("key3", hashmap) % = false
-%>      [val, failed] = pm.matlab.hashmap.getKeyVal("key3", hashmap(1:4)) % = {}
-%>      [val, failed] = pm.matlab.hashmap.getKeyVal("key2", hashmap(1:4)) % = "val2"
-%>      [val, failed] = pm.matlab.hashmap.getKeyVal("key2", hashmap(1:3)) % error
+%>  \example{getKeyVal}
+%>  \include{lineno} example/matlab/hashmap/getKeyVal/main.m
+%>  \output{getKeyVal}
+%>  \include{lineno} example/matlab/hashmap/getKeyVal/main.out.m
 %>
 %>  \final{getKeyVal}
 %>
@@ -53,7 +53,7 @@ function [val, failed] = getKeyVal(key, hashmap)
                 );
     end
     val = [];
-    if 1 < nargout
+    if  1 < nargout
         failed = true;
     end
     for i = 1 : vararginLen - 1

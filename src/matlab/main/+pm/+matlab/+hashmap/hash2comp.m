@@ -1,10 +1,10 @@
 %>  \brief
 %>  Return a copy of the input ``object``
 %>  whose property (or field) values are overwritten
-%>  with the corresponding (key, val) pairs in the
+%>  with the corresponding ``(key, val)`` pairs in the
 %>  input ``hashmap`` cell array.
 %>
-%>  \note
+%>  \details
 %>  This functionality is useful for converting
 %>  the variadic arguments of functions to the
 %>  corresponding property values of objects
@@ -12,38 +12,34 @@
 %>
 %>  \param[in]  hashmap     :   The input cell array of even number of elements
 %>                              containing the field names and values of the input ``object``
-%>                              as ``(key, val)`` pairs stored sequentially as the cell elements.
+%>                              as ``(key, val)`` pairs stored sequentially as the cell elements.<br>
 %>                              All keys in the input ``hashmap`` must already exist as
-%>                              fields/properties of the input object.
-%>  
+%>                              fields/properties of the input object.<br>
 %>  \param[in]  object      :   The input scalar MATLAB struct
 %>                              or object whose property/field values
 %>                              are to be overwritten with the corresponding
-%>                              values from the input hashmap cell.
-%>  
+%>                              values from the input ``hashmap`` cell.<br>
 %>  \param[in]  insensitive :   The input scalar MATLAB logical.
 %>                              If ``false``, then keys within the input ``hashmap`` will be matched
-%>                              against the input ``object`` properties(or fields) case-sensitively.
+%>                              against the input ``object`` properties(or fields) case-sensitively.<br>
 %>                              (**optional**, default = ``false``)
-%>  
-%>  \param[in]  extensible  :   The input scalar MATLAB logical.
+%>  \param[in]  extensible  :   The input scalar MATLAB logical.<br>
 %>                              If ``true``, then keys in the input ``hashmap`` that are missing in the
-%>                              input ``object`` properties(or fields) will be added to output ``objnew``.
+%>                              input ``object`` properties(or fields) will be added to output ``objnew``.<br>
 %>                              This functionality requires the input ``object`` to be either a MATLAB ``struct``
 %>                              or an object whose ultimate superclass is the MATLAB ``handle`` class,
-%>                              which allows adding new properties via ``addprop()`` method.
+%>                              which allows adding new properties via ``addprop()`` method.<br>
 %>                              (**optional**, default = ``false``)
-%>  
-%>  \param[in]  recursive   :   The input scalar MATLAB logical.
+%>  \param[in]  recursive   :   The input scalar MATLAB logical.<br>
 %>                              If ``true``, then key-val pairs in the input ``hashmap`` that match struct-cell
 %>                              or match object-cell pattern will be also converted recursively like the parent
-%>                              input ``object`` until all sub-components are obtained recursively.
+%>                              input ``object`` until all sub-components are obtained recursively.<br>
 %>                              (**optional**, default = ``false``)
 %>  
 %>  \return
 %>  objnew                  :   The output copy of the input object whose
 %>                              property/field values are overwritten with the
-%>                              corresponding values from the input hashmap cell.
+%>                              corresponding values from the input ``hashmap`` cell.<br>
 %>
 %>  \interface{hash2comp}
 %>  \code{.m}
@@ -62,10 +58,9 @@
 %>  \endcode
 %>
 %>  \example{hash2comp}
-%>
-%>      hashmap = {"key1", 2, "key2", "hash", "key3", true, "key4", 0};
-%>      object = struct("key1", 1, "key2", "val2", "Key2", "val2duplicate", "key3", false, "key4", []);
-%>      objnew = pm.matlab.hashmap.hash2comp(hashmap, object)
+%>  \include{lineno} example/matlab/hashmap/hash2comp/main.m
+%>  \output{hash2comp}
+%>  \include{lineno} example/matlab/hashmap/hash2comp/main.out.m
 %>
 %>  \final{hash2comp}
 %>

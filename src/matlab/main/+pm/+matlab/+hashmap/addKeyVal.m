@@ -25,11 +25,9 @@
 %>  \endcode
 %>
 %>  \example{addKeyVal}
-%>
-%>      hashmap = {"key1", 1, "key2", "val2"};
-%>      hashnew = pm.matlab.hashmap.addKeyVal("key3", false, {})
-%>      hashnew = pm.matlab.hashmap.addKeyVal("key2", "val2", hashmap) % = hashmap
-%>      hashnew = pm.matlab.hashmap.addKeyVal("key3", false, hashmap)
+%>  \include{lineno} example/matlab/hashmap/addKeyVal/main.m
+%>  \output{addKeyVal}
+%>  \include{lineno} example/matlab/hashmap/addKeyVal/main.out.m
 %>
 %>  \final{addKeyVal}
 %>

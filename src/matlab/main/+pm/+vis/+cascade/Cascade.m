@@ -82,15 +82,13 @@ classdef Cascade < pm.matlab.Handle
         %>  The input ``varargin`` can also contain the components
         %>  of the ``template`` component of the parent object.
         %>
-        %>  \return
-        %>  `None`
-        %>
         %>  \interface{reset}
         %>  \code{.m}
         %>
         %>      pm.vis.cascade.Cascade.reset() # reset the plot to the default settings.
         %>
         %>  \endcode
+        %>
         %>  \final{reset}
         %>
         %>  \author
@@ -139,9 +137,6 @@ classdef Cascade < pm.matlab.Handle
         %>  \note
         %>  The input ``varargin`` can also contain the components
         %>  of the ``template`` component of the parent object.
-        %>
-        %>  \return
-        %>  `None`
         %>
         %>  \interface{make}
         %>  \code{.m}
@@ -258,9 +253,6 @@ classdef Cascade < pm.matlab.Handle
         %>                              the ``savefig`` method of class ``pm.vis.figure.Figure``.
         %>                              For more information, see the ``savefig`` method of class ``pm.vis.figure.Figure``.
         %>
-        %>  \return
-        %>  `None`
-        %>
         %>  \interface{savefigs}
         %>  \code{.m}
         %>
@@ -322,9 +314,6 @@ classdef Cascade < pm.matlab.Handle
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``premake()`` method.
-        %>
-        %>  \return
-        %>  `None`
         %>
         %>  \interface{premake}
         %>  \code{.m}

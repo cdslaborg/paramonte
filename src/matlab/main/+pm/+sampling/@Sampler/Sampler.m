@@ -154,6 +154,7 @@ classdef Sampler < pm.matlab.Handle
         %>      sampler = pm.sampling.Sampler(method);
         %>
         %>  \endcode
+        %>
         %>  \final{Sampler}
         %>
         %>  \author

@@ -80,6 +80,7 @@ classdef SpecDRAM < pm.sampling.SpecMCMC
         %>      spec = pm.sampling.SpecDRAM(method, silent)
         %>
         %>  \endcode
+        %>
         %>  \final{SpecDRAM}
         %>
         %>  \author
@@ -120,6 +121,7 @@ classdef SpecDRAM < pm.sampling.SpecMCMC
         %>      entries = self.getEntriesNML(ndim)
         %>
         %>  \endcode
+        %>
         %>  \final{getEntriesNML}
         %>
         %>  \author

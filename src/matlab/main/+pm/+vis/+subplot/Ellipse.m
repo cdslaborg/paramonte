@@ -113,9 +113,6 @@ classdef Ellipse < pm.vis.subplot.Ellipse3
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``make()`` method.
         %>
-        %>  \return
-        %>  `None`
-        %>
         %>  \interface{make}
         %>  \code{.m}
         %>  \endcode

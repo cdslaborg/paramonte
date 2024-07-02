@@ -101,6 +101,7 @@ classdef FileContentsRestart < pm.io.FileContents
         %>      contents = pm.sampling.FileContentsRestart(file, silent, method)
         %>
         %>  \endcode
+        %>
         %>  \final{FileContentsRestart}
         %>
         %>  \author

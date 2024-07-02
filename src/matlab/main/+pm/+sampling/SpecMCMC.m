@@ -85,6 +85,7 @@ classdef SpecMCMC < pm.sampling.SpecBase
         %>      spec = pm.sampling.SpecMCMC(method, silent)
         %>
         %>  \endcode
+        %>
         %>  \final{SpecMCMC}
         %>
         %>  \author

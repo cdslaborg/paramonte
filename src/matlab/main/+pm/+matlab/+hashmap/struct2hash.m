@@ -1,27 +1,24 @@
 %>  \brief
-%>  Return a hashmap cell array containing all field names
-%>  and field values of input scalar MATLAB ``object`` as (key, val)
-%>  stored sequentially in the cell array.
+%>  Return a ``hashmap`` cell array containing all field names
+%>  and field values of input scalar MATLAB ``object`` as ``(key, val)``
+%>  stored sequentially in the cell array.<br>
 %>
 %>  \param[in]  object      :   The input scalar MATLAB struct
 %>                              whose field names and values are
-%>                              to be converted to a hashmap cell.
-%>  
+%>                              to be converted to a ``hashmap`` cell.<br>
 %>  \param[in]  exkeys      :   The input vector of MATLAB strings
 %>                              containing a list of field names of the input ``object``
-%>                              that must be excluded from the output hashmap cell.
+%>                              that must be excluded from the output ``hashmap`` cell.<br>
 %>                              (**optional**, default = ``[]``)
-%>  
-%>  \param[in]  unique      :   The input scalar MATLAB logical.
+%>  \param[in]  unique      :   The input scalar MATLAB logical.<br>
 %>                              If ``true``, only the first instance of occurrence
 %>                              of any field name is added to the output cell array
-%>                              without considering case-sensitivity of the field names.
+%>                              without considering case-sensitivity of the field names.<br>
 %>                              (**optional**, default = ``false``)
-%>  
 %>  \param[in]  onlyfull    :   The input scalar MATLAB logical.
 %>                              If ``true``, only the structure field names field values
 %>                              are nonempty (as assessed by the MATLAB intrinsic ``isempty()``)
-%>                              are included in the output hashmap.
+%>                              are included in the output ``hashmap``.<br>
 %>                              (**optional**, default = ``false``)
 %>
 %>  \return
@@ -45,13 +42,9 @@
 %>  \endcode
 %>
 %>  \example{struct2hash}
-%>
-%>      s = struct("key1", 1, "key2", "val2", "Key2", "val2duplicate", "key3", false, "key4", []);
-%>      hashmap = pm.matlab.hashmap.struct2hash(s)
-%>      hashmap = pm.matlab.hashmap.struct2hash(s, "key1")
-%>      hashmap = pm.matlab.hashmap.struct2hash(s, [], true)
-%>      hashmap = pm.matlab.hashmap.struct2hash(s, "key1", true)
-%>      hashmap = pm.matlab.hashmap.struct2hash(s, "key1", [], true)
+%>  \include{lineno} example/matlab/hashmap/struct2hash/main.m
+%>  \output{struct2hash}
+%>  \include{lineno} example/matlab/hashmap/struct2hash/main.out.m
 %>
 %>  \final{struct2hash}
 %>

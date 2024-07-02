@@ -298,15 +298,13 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``make()`` method.
         %>
-        %>  \return
-        %>  `None`
-        %>
         %>  \interface{reset}
         %>  \code{.m}
         %>
         %>      pm.vis.subplot.Ellipse3.reset() # reset the plot to the default settings.
         %>
         %>  \endcode
+        %>
         %>  \final{len}
         %>
         %>  \author
@@ -343,9 +341,6 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``premake()`` method.
-        %>
-        %>  \return
-        %>  `None`
         %>
         %>  \interface{premake}
         %>  \code{.m}
@@ -778,9 +773,6 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``make()`` method.
-        %>
-        %>  \return
-        %>  `None`
         %>
         %>  \interface{make}
         %>  \code{.m}

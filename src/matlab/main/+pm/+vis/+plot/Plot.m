@@ -75,9 +75,6 @@ classdef Plot < pm.vis.figure.Figure
         %>  The input ``varargin`` can also contain the components
         %>  of the ``subplot`` component of the parent object.
         %>
-        %>  \return
-        %>  `None`
-        %>
         %>  \interface{reset}
         %>  \code{.m}
         %>
@@ -128,9 +125,6 @@ classdef Plot < pm.vis.figure.Figure
         %>  The input ``varargin`` can also contain the components
         %>  of the ``subplot`` component of the parent object.
         %>
-        %>  \return
-        %>  `None`
-        %>
         %>  \interface{make}
         %>  \code{.m}
         %>
@@ -180,9 +174,6 @@ classdef Plot < pm.vis.figure.Figure
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``premake()`` method.
-        %>
-        %>  \return
-        %>  `None`
         %>
         %>  \interface{premake}
         %>  \code{.m}

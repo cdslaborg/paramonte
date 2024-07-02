@@ -1,10 +1,7 @@
 %>  \brief
-%>  This is the ``Abstract`` base class for generating
+%>  This is the base class for generating
 %>  subclass of MATLAB ``handle`` superclass whose annoying
-%>  methods are forcefully hidden from the user view.
-%>
-%>  \return
-%>  `None`
+%>  methods are forcefully hidden from the user view.<br>
 %>
 %>  \interface{Handle}
 %>  \code{.m}
@@ -13,13 +10,18 @@
 %>
 %>  \endcode
 %>
+%>  \example{Handle}
+%>  \include{lineno} example/matlab/Handle/main.m
+%>  \output{Handle}
+%>  \include{lineno} example/matlab/Handle/main.out.m
+%>
 %>  \final{Handle}
 %>
 %>  \author
 %>  \JoshuaOsborne, May 21 2024, 11:31 PM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
-classdef (Abstract) Handle < dynamicprops%handle
+classdef Handle < dynamicprops%handle
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -29,23 +31,22 @@ classdef (Abstract) Handle < dynamicprops%handle
         %>  of the parent object on MATLAB display.
         %>
         %>  \details
-        %>  This is a dynamic method of the class ``pm.matlab.Handle``.
-        %>
-        %>  \param[in]  `None`
-        %>
-        %>  \return
-        %>  `None`
+        %>  This is a dynamic method of the class [pm.matlab.Handle](@ref Handle).
         %>
         %>  \interface{doc}
         %>  \code{.m}
         %>
-        %>      self.doc()
+        %>      h = pm.matlab.Handle();
+        %>      h.doc();
         %>
         %>  \endcode
+        %>
         %>  \final{doc}
         %>
         %>  \author
         %>  \JoshuaOsborne, May 21 2024, 11:34 PM, University of Texas at Arlington<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function doc(self)
             doc(class(self));
         end
@@ -59,12 +60,7 @@ classdef (Abstract) Handle < dynamicprops%handle
         %>  the parent object on MATLAB display.
         %>
         %>  \details
-        %>  This is a dynamic method of the class ``pm.matlab.Handle``.
-        %>
-        %>  \param[in]  `None`
-        %>
-        %>  \return
-        %>  `None`
+        %>  This is a dynamic method of the class [pm.matlab.Handle](@ref Handle).
         %>
         %>  \interface{help}
         %>  \code{.m}
@@ -72,6 +68,7 @@ classdef (Abstract) Handle < dynamicprops%handle
         %>      self.help()
         %>
         %>  \endcode
+        %>
         %>  \final{help}
         %>
         %>  \author
@@ -151,6 +148,8 @@ classdef (Abstract) Handle < dynamicprops%handle
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    %>  \cond excluded
+
     methods(Access = public, Hidden)
         function lh = addlistener(varargin)
             lh = addlistener@handle(varargin{:});
@@ -192,6 +191,8 @@ classdef (Abstract) Handle < dynamicprops%handle
         %    TF = isvalid@handle(varargin{:});
         %end
     end
+
+    %>  \endcond excluded
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

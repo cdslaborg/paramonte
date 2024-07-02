@@ -126,6 +126,7 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
         %>      contents = pm.sampling.FileContentsRestartDRAM(file, silent, method)
         %>
         %>  \endcode
+        %>
         %>  \final{FileContentsRestartDRAM}
         %>
         %>  \author

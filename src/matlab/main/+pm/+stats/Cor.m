@@ -84,6 +84,7 @@ classdef Cor < pm.matlab.Handle
         %>      mat = pm.stats.Cor(df, method)
         %>
         %>  \endcode
+        %>
         %>  \final{Cor}
         %>
         %>  \author
@@ -131,6 +132,7 @@ classdef Cor < pm.matlab.Handle
         %>      mat.val = mat.get(df, method)
         %>
         %>  \endcode
+        %>
         %>  \final{get}
         %>
         %>  \author

@@ -11,7 +11,7 @@
 %>                                      recursively show the ``obj`` name, its fieldnames, and their contents.
 %>                              <li>    If the input ``obj`` is a cell array, the contents of each cell are displayed.
 %>                          </ol>
-%>                          (**optional**. default = ``[]``)
+%>                          (**optional**. default = ``[]``, effectively adding a new line to the command line.)
 %>  \param[in]  name    :   The input scalar MATLAB string, representing the actual name of the input ``obj``.<br>
 %>                          (**optional**. If missing, the ``obj`` variable name from the caller workspace is used.)
 %>  \param[in]  hidden  :   The input scalar MATLAB ``logical``.<br>
@@ -49,7 +49,7 @@ function show(obj, name, hidden)
         name = [];
     end
     if  nargin < 1
-        disp([]);
+        fprintf('\n');
         return;
     end
 
@@ -141,6 +141,8 @@ function show(obj, name, hidden)
 
 end
 
+%>  \cond excluded
+
 function str = ind2str(siz, ndx)
     %%%% Treat vectors and scalars correctly.
     n = length(siz);
@@ -166,3 +168,5 @@ function str = ind2str(siz, ndx)
         ndx = rem(ndx, k(i));
     end
 end
+
+%>  \endcond excluded

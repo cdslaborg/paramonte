@@ -106,6 +106,7 @@ classdef FileContentsSample < pm.io.FileContentsTabular
         %>      contents = pm.sampling.FileContentsSample(file, silent, sep)
         %>
         %>  \endcode
+        %>
         %>  \final{FileContentsSample}
         %>
         %>  \author

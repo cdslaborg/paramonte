@@ -109,6 +109,7 @@ classdef SpecBase < pm.matlab.Handle
         %>      spec = pm.sampling.SpecBase(method, silent)
         %>
         %>  \endcode
+        %>
         %>  \final{SpecBase}
         %>
         %>  \author
@@ -239,6 +240,7 @@ classdef SpecBase < pm.matlab.Handle
         %>      entries = self.getEntriesNML(ndim)
         %>
         %>  \endcode
+        %>
         %>  \final{getEntriesNML}
         %>
         %>  \author
