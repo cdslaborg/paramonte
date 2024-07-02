@@ -18,7 +18,7 @@
 %>  \return
 %>  ``nrow``            :   The output scalar MATLAB whole-number
 %>                          representing the number of rows of the rectangle.<br>
-%>
+%>                          <br>
 %>  ``ncol``            :   The output scalar MATLAB whole-number
 %>                          representing the number of columns of the rectangle.
 %>
