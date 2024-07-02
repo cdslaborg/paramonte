@@ -2,17 +2,17 @@
 %>  Return ``log(exp(logLarger) - exp(logSmaller))`` more accurately.
 %>
 %>  \warning
-%>  The onus is on the user to ensure ``smaller < larger``.
+%>  The onus is on the user to ensure ``logSmaller < logLarger``.
 %>
-%>  \param[in]  smaller :   The input scalar MATLAB ``real`` representing
-%>                          the natural logarithm of the smaller value.
+%>  \param[in]  logSmaller  :   The input scalar MATLAB ``real`` representing
+%>                              the natural logarithm of the smaller value.
 %>
-%>  \param[in]  smaller :   The input scalar MATLAB ``real`` representing
-%>                          the natural logarithm of the larger value.
+%>  \param[in]  logLarger   :   The input scalar MATLAB ``real`` representing
+%>                              the natural logarithm of the larger value.
 %>
 %>  \return
-%>  ``logDiff``         :   The output scalar MATLAB ``real`` containing the
-%>                          result of ``log(exp(logLarger) - exp(logSmaller))`` accurately.
+%>  ``logDiff``             :   The output scalar MATLAB ``real`` containing the
+%>                              result of ``log(exp(logLarger) - exp(logSmaller))`` accurately.
 %>
 %>  \interface{logsubexp}
 %>  \code{.m}
