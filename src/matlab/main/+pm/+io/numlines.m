@@ -3,12 +3,14 @@
 %>  the number of lines in the specified input ``idname``.
 %>
 %>  \param[in]  idname  :   The input scalar MATLAB object that can be either:<br>
-%>                          1.  a MATLAB string containing the path
-%>                              to a record-based external file whose
-%>                              number of records (lines) must be returned.<br>
-%>                          2.  a MATLAB integer, representing the file
-%>                              ID of an opened record-based file whose
-%>                              number of records (lines) must be returned.<br>
+%>                          <ol>
+%>                              <li>    a MATLAB string containing the path
+%>                                      to a record-based external file whose
+%>                                      number of records (lines) must be returned.<br>
+%>                              <li>    a MATLAB integer, representing the file
+%>                                      ID of an opened record-based file whose
+%>                                      number of records (lines) must be returned.<br>
+%>                          </ol>
 %>
 %>  \return
 %>  `nlines`            :   The output scalar MATLAB integer containing the
@@ -18,7 +20,16 @@
 %>  \code{.m}
 %>
 %>      nlines = pm.io.numlines(idname);
+%>
 %>  \endcode
+%>
+%>  \warning
+%>  The input file (ID) will be closed even if it is open upon entry to the function.
+%>
+%>  \example{numlines}
+%>  \include{lineno} example/io/numlines/main.m
+%>  \output{numlines}
+%>  \include{lineno} example/io/numlines/main.out.m
 %>
 %>  \final{numlines}
 %>

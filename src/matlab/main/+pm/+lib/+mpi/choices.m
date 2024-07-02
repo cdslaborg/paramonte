@@ -4,10 +4,8 @@
 %>  in the order of preference on the current platform.
 %>
 %>  \note
-%>  Only the default (first) mpi library name is guaranteed to be
+%>  Only the default (first) MPI library name is guaranteed to be
 %>  supported in any pre-built distribution of the ParaMonte library.
-%>
-%>  \param  'None'
 %>
 %>  \return
 %>  names   :   The output vector of MATLAB strings containing the
@@ -21,6 +19,12 @@
 %>      names = pm.lib.mpi.choices()
 %>
 %>  \endcode
+%>
+%>  \example{choices}
+%>  \include{lineno} example/lib/mpi/choices/main.m
+%>  \output{choices}
+%>  \include{lineno} example/lib/mpi/choices/main.out.m
+%>
 %>  \final{choices}
 %>
 %>  \author

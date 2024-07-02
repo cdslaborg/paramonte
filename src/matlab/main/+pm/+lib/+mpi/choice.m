@@ -1,10 +1,10 @@
 %>  \brief
 %>  Return the ParaMonte-preferred MPI library vendor name
 %>  as used in naming the ParaMonte MATLAB shared libraries.
-%>  Support for the output MPI library name by this routine is
-%>  guaranteed on the current platform.
 %>
-%>  \param 'None'
+%>  \details
+%>  Support for the output MPI library name by this
+%>  routine is guaranteed on the current platform.
 %>
 %>  \return
 %>  `name`  :   The output scalar MATLAB string containing the
@@ -17,6 +17,12 @@
 %>      name = pm.lib.mpi.choice()
 %>
 %>  \endcode
+%>
+%>  \example{choice}
+%>  \include{lineno} example/lib/mpi/choice/main.m
+%>  \output{choice}
+%>  \include{lineno} example/lib/mpi/choice/main.out.m
+%>
 %>  \final{choice}
 %>
 %>  \author

@@ -6,8 +6,6 @@
 %>  This function primarily exists to bring
 %>  consistency to the ParaMonte library IO tasks.
 %>
-%>  \param[in]  'None'
-%>
 %>  \return
 %>  `str`   :   The output scalar MATLAB string containing ``4``
 %>              blank characters equivalent to a tab character.
@@ -15,9 +13,10 @@
 %>  \interface{tab}
 %>  \code{.m}
 %>
-%>      pm.io.tab()
+%>      str = pm.io.tab()
 %>
 %>  \endcode
+%>
 %>  \final{tab}
 %>
 %>  \author

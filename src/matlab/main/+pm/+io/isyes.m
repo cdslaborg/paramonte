@@ -5,11 +5,12 @@
 %>  if the user response is ``N`` or ``n``.
 %>
 %>  \details
-%>  Continues asking for as long as the user response
-%>  is not among the accepted answers mentioned above.
+%>  This function continues asking the input question for as long as
+%>  the user response is not among the accepted answers mentioned above.
 %>
 %>  \param[in]  question    :   The input scalar MATLAB string containing the
-%>                              question to be displayed on the MATLAB prompt.
+%>                              question to be displayed on the MATLAB prompt.<br>
+%>                              (**optional**, default = ``""``)
 %>
 %>  \return
 %>  `itis`                  :   The output scalar MATLAB logical that is ``true`` if the
@@ -24,6 +25,7 @@
 %>      pm.io.isyes(question)
 %>
 %>  \endcode
+%>
 %>  \final{isyes}
 %>
 %>  \author
