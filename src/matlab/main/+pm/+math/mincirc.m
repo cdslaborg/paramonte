@@ -8,28 +8,31 @@
 %>  the number of axes columns and rows in a single figure
 %>  that yield the most square-like rectangle.
 %>
+%>  \note
+%>  The function name stands for *minimum circumference*.<br>
+%>
 %>  \param[in]  area    :   The input scalar MATLAB whole number
 %>                          representing the number of axes (subplots)
-%>                          to arrange in a single figure.
+%>                          to arrange in a single figure.<br>
 %>
 %>  \return
-%>  `nrow`
-%>      The output scalar MATLAB whole-number
-%>      representing the number of rows of the rectangle.<br>
-%>  `ncol`
-%>      The output scalar MATLAB whole-number
-%>      representing the number of columns of the rectangle.
+%>  ``nrow``            :   The output scalar MATLAB whole-number
+%>                          representing the number of rows of the rectangle.<br>
+%>
+%>  ``ncol``            :   The output scalar MATLAB whole-number
+%>                          representing the number of columns of the rectangle.
 %>
 %>  \interface{mincirc}
 %>  \code{.m}
 %>
-%>      [nrow, ncol] = pm.math.mincirc(area); 
+%>      [nrow, ncol] = pm.math.mincirc(area);
 %>
 %>  \endcode
-%>  \example{mincirc}
 %>
-%>      [nrow, ncol] = pm.math.mincirc(5); % 3, 2
-%>      [nrow, ncol] = pm.math.mincirc(21); % 7, 3
+%>  \example{mincirc}
+%>  \include{lineno} example/math/mincirc/main.m
+%>  \output{mincirc}
+%>  \include{lineno} example/math/mincirc/main.out.m
 %>
 %>  \final{mincirc}
 %>
@@ -38,7 +41,7 @@
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function [nrow, ncol] = mincirc(area)
-    ncol = 1:ceil(sqrt(area));
+    ncol = 1 : ceil(sqrt(area));
     nrow = ceil(area ./ ncol);
     [~, minloc] = min(nrow + ncol);
     nrow = nrow(minloc);
