@@ -1,15 +1,15 @@
 %>  \brief
-%>  Return a Fortran-namelist-compatible conversion of the input ``varval``.
+%>  Return a Fortran-namelist-compatible conversion of the input ``varval``.<br>
 %>
 %>  \details
 %>  This functionality is primarily used by the ParaMonte MATLAB internal
-%>  routines to communicate information with Fortran shared libraries.
-%>  As such, it is of limited to most end users of the library.
+%>  routines to communicate information with Fortran shared libraries.<br>
+%>  As such, it is of limited to most end users of the library.<br>
 %>
 %>  \param[in]  varname :   The input scalar MATLAB string containing the label to assign
 %>                          to the namelist-converted value in the output ``entry``.<br>
 %>                          The specified value of ``varname`` will be trimmed
-%>                          (to remove leading and trailing blanks).
+%>                          (to remove leading and trailing blanks).<br>
 %>
 %>  \param[in]  varval  :   The input value to be converted to namelist-compatible value.
 %>
@@ -22,11 +22,7 @@
 %>  \return
 %>  `entry`             :   The output scalar MATLAB string containing the namelist-compatible
 %>                          conversion of the input value ``varval`` and the given ``varname``
-%>                          in the following format:    varname=namelist-compatible-varval
-%>
-%>                          \note
-%>                          If the input ``varval`` is an array, its elements will be comma-separated.
-%>                          If the input value is string, it will be quoted properly.
+%>                          in the following format: ``varname=namelist-compatible-varval``.
 %>
 %>  \interface{getEntryNML}
 %>  \code{.m}
@@ -34,17 +30,28 @@
 %>      entry = pm.introspection.getEntryNML(varname, varval, vartype, varsize)
 %>
 %>  \endcode
+%>
+%>  \note
+%>  If the input value is string, it will be quoted properly.<br>
+%>  If the input ``varval`` is an array, its elements will be comma-separated.<br>
+%>
+%>  \example{getEntryNML}
+%>  \include{lineno} example/introspection/getEntryNML/main.m
+%>  \output{getEntryNML}
+%>  \include{lineno} example/introspection/getEntryNML/main.out.m
+%>
 %>  \final{getEntryNML}
 %>
 %>  \author
 %>  \JoshuaOsborne, May 21 2024, 5:38 PM, University of Texas at Arlington<br>
-%>
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function entry = getEntryNML(varname, varval, vartype, varsize)
     varval = varval(:);
     varvalen = numel(varval);
     %varname = string(inputname(2));
     varname = string(strtrim(varname));
-    if pm.introspection.istype(varval, vartype, varsize)
+    if  pm.introspection.istype(varval, vartype, varsize)
         entry = varname + "=";
         delim = " ";
         vartype = lower(vartype);
@@ -70,8 +77,16 @@ function entry = getEntryNML(varname, varval, vartype, varsize)
                 end
             elseif strcmp(vartype, "complex")
                 entry = entry + "(" + string(real(value)) + "," + string(imag(value)) + ")" + delim;
-            elseif strcmp(vartype, "real")
+            elseif strcmp(vartype, "real") || strcmpi(vartype, "float") || strcmpi(vartype, "single") || strcmpi(vartype, "double")
                 entry = entry + value + delim;
+            else
+                help("pm.introspection.getEntryNML");
+                disp("vartype");
+                disp( vartype );
+                error   ( newline ...
+                        + "Unrecognized input ``vartype`` value." + newline ...
+                        + newline ...
+                        );
             end
         end
     else
@@ -84,6 +99,7 @@ function entry = getEntryNML(varname, varval, vartype, varsize)
                 + "The specified value has the class:" + newline ...
                 + newline ...
                 + "    class(" + varname + ") = " + string(class(varval)) + newline ...
+                + newline ...
                 + "with size:" + newline ...
                 + newline ...
                 + "    size(" + varname + ") = [" + join(string(size(varval)), ", ") + "]" + newline ...

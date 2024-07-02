@@ -121,6 +121,8 @@
 %>  contract, strict liability, or tort (including negligence or otherwise)
 %>  arising in any way out of the use of this software, even if advised of the
 %>  possibility of such damage.
+%>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function [bandwidth, density, meshx, meshy] = kde2d(data, resol, xymin, xymax)
 
     %global nobs asq rangesq

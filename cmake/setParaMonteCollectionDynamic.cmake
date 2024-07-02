@@ -109,24 +109,25 @@ if (EXISTS "${origin}")
 
         unset(paramonte_${collection}BR_dir_list)
         if (DEFINED paramonte_${collection}BR_file)
+
             message(NOTICE "${pmattn} The specified ${collection} file list detected at: ${paramonte_${collection}BR_file}")
             file(STRINGS "${paramonte_${collection}BR_file}" paramonte_${collection}BR_dir_list)
             # Prepend the build directory to all supplied ${collection} folders to run.
             #list(TRANSFORM paramonte_${collection}BR_dir_list PREPEND "${destin}/")
+
         else()
+
             string(REPLACE "." ";" ${collection}List "${${collection}BR}")
             string(REPLACE "," ";" ${collection}List "${${collection}List}")
             string(REPLACE " " ";" ${collection}List "${${collection}List}")
             message(NOTICE "${pmattn} Enabling the requested paramonte::${lang} library ${collection} as outlined by the flag value \"${${collection}BR}\"")
             unset(paramonte_${collection}BR_path_list)
-            file(GLOB_RECURSE paramonte_${collection}BR_path_list
-                LIST_DIRECTORIES false
-                RELATIVE "${origin}"
-                "${origin}/"*main${lang_ext}
-                )
+            file(GLOB_RECURSE paramonte_${collection}BR_path_list LIST_DIRECTORIES false RELATIVE "${origin}" "${origin}/*main${lang_ext}")
+
             ####
             #### Refine the list to include only those requested.
             ####
+
             foreach(paramonte_collection_inc_path ${paramonte_${collection}BR_path_list})
                 # We don't want to keep track of the ``main.m`` in the ${collection}s root directory.
                 if (NOT "${paramonte_collection_inc_path}" STREQUAL "main${lang_ext}")
@@ -150,6 +151,7 @@ if (EXISTS "${origin}")
                     endif()
                 endif()
             endforeach()
+
         endif()
 
         ####
@@ -181,7 +183,7 @@ if (EXISTS "${origin}")
 
 else()
 
-    message(WARNING
+    message(NOTICE
             "\n"
             "${pmwarn} The ParaMonte::${lang} ${collection} directory in the root directory of the ParaMonte library ${collection} is missing.\n"
             "${pmwarn} paramonte_collection_${lang}_dir=${origin}\n"

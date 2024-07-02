@@ -47,7 +47,7 @@
 %>  \final{getBorder}
 %>
 %>  \author
-%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function bcrd = getBorder(gramian, center, npnt)
     if  nargin < 3
         npnt = [];

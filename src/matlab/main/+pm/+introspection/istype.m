@@ -9,7 +9,7 @@
 %>                          expected type of the value given by the input ``varval``.
 %>
 %>                          \note
-%>                          The following type-conformance rules apply:<br>             
+%>                          The following type-conformance rules apply:<br>
 %>                              -   if ``vartype`` is ``"string"``, then ``varval`` can be
 %>                                  either a MATLAB ``string`` or ``char``.<br>
 %>                              -   if ``vartype`` is ``"integer"``, then ``varval`` can be
@@ -23,11 +23,11 @@
 %>                                  a MATLAB ``real``, or a MATLAB ``complex`` value.<br>
 %>                              -   if ``vartype`` is ``"real"``, then ``varval`` can be
 %>                                  either a MATLAB ``int8``, ``int16``, ``int32``, ``int64``,
-%>                                  or a MATLAB ``real`` value<br>
+%>                                  or a MATLAB ``real`` value (e.g., ``float``, ``single``, ``double``).<br>
 %>                                  For all other object types, the type-conformance is verified by
 %>                                  passing the input ``varval`` and ``vartype`` directly to the
 %>                                  MATLAB intrinsic function ``isa()``<br>
-%>              
+%>
 %>
 %>  \param[in]  varsize :   The input scalar MATLAB integer representing the
 %>                          maximum allowed size of the input value ``varval``.<br>
@@ -37,7 +37,7 @@
 %>  \return
 %>  `itis`              :   The output scalar MATLAB logical that is ``true`` if and only if
 %>                          the input ``varval`` conforms with the specified input type ``vartype``
-%>                          and the specified maximum size ``varsize``. Otherwise, it is ``false``.
+%>                          and the specified maximum size ``varsize``, otherwise, it is ``false``.
 %>
 %>  \interface{istype}
 %>  \code{.m}
@@ -75,7 +75,7 @@ function itis = istype(varval, vartype, varsize)
             itis = isa(value, "logical") || isreal(value) || isa(value, "int8") || isa(value, "int16") || isa(value, "int32") || isa(value, "int64");
         elseif strcmpi(vartype, "complex")
             itis = isnumeric(value);
-        elseif strcmpi(vartype, "real")
+        elseif strcmpi(vartype, "real") || strcmpi(vartype, "float") || strcmpi(vartype, "single") || strcmpi(vartype, "double")
             itis = isreal(value) || isa(value, "int8") || isa(value, "int16") || isa(value, "int32") || isa(value, "int64");
         else
             itis = isa(value, vartype);

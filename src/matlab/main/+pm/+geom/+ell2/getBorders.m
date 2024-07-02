@@ -4,6 +4,8 @@
 %>  containing the 2D (or 3D) coordinates of a set of points on the boundary
 %>  of a set of 2D ellipsoids whose Gramian matrices and centers are specified
 %>  as input argument.<br>
+%>
+%>  \details
 %>  Here ``nell`` refers to the number of ellipsoids which
 %>  is equal to ``2 * max(1, size(gramian, 3), size(center, 2))``.
 %>
@@ -18,19 +20,10 @@
 %>  \param[in]  zval    :   The input scalar (or matrix of shape ``[npnt, nell]`` of) MATLAB double(s)
 %>                          containing the z-axis coordinates of the points on the borders of the ``nell`` 2D ellipsoids.<br>
 %>                          If present, the specified value(s) will occupy the ``[1 : 2 : 3 * nell]`` columns of the output ``bcrd``.<br>
+%>                          This argument is present for the sake of convenience and better performance of the algorithm to avoid further reallocations.<br>
 %>                          (**optional**. If not present or empty, it will not be present in the output.)
-%>
-%>      \note
-%>      This argument is present for the sake of convenience and
-%>      better performance of the algorithm to avoid further reallocations.
-%>
-%>  \param[in]  npnt    :   The input scalar MATLAB whole number containing the number of
-%>                          points to return on the boundary of the target 2D ellipsoid.<br>
+%>  \param[in]  npnt    :   The input scalar MATLAB whole number containing the number of points to return on the boundary of the target 2D ellipsoid.<br>
 %>                          (**optional**, default = ``50``)
-%>
-%>          \warning
-%>           The condition ``npnt == size(zval, 1)``
-%>           must hold for the corresponding input arguments.
 %>
 %>  \return
 %>  `bcrd`              :   The output matrix of MATLAB doubles of shape ``[npnt, 2 * nell]``
@@ -48,27 +41,21 @@
 %>      pm.geom.ell2.getBorders(gramian, center, zval, npnt)
 %>
 %>  \endcode
+%>
+%>  \warning
+%>  The condition ``npnt == size(zval, 1)`` must hold for the corresponding input arguments.
+%>
 %>  \example{getBorders}
-%>
-%>      bcrd = pm.geom.ell2.getBorders();
-%>      figure; h = plot(bcrd(:, 1), bcrd(:, 2), '-');
-%>
-%>      bcrd = pm.geom.ell2.getBorders([], [], 20);
-%>      figure; h = plot3(bcrd(:, 1), bcrd(:, 2), bcrd(:, 3), '-');
-%>
-%>      npnt = 50;
-%>      figure; hold on; view(3);
-%>      bcrd = pm.geom.ell2.getBorders([], [], repmat([1 : 20], npnt, 1));
-%>      for iell = 1 : 2 : size(bcrd, 2) / 3
-%>          icol = (iell - 1) * 3 + 1;
-%>          plot3(bcrd(:, icol), bcrd(:, icol + 1), bcrd(:, icol + 2), '-');
-%>      end
+%>  \include{lineno} example/geom/ell2/getBorders/main.m
+%>  \vis{getBorders}
+%>  \image html example/geom/ell2/getBorders/getBorders.2d.png width=700
+%>  \image html example/geom/ell2/getBorders/getBorders.3d.png width=700
 %>
 %>  \final{getBorders}
 %>
 %>  \author
-%>  %>  \JoshuaOsborne, May 21 2024, 5:33 PM, University of Texas at Arlington<br>
-%
+%>  \JoshuaOsborne, May 21 2024, 5:33 PM, University of Texas at Arlington<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function bcrd = getBorders(gramian, center, zval, npnt)
     if  nargin < 4
         npnt = [];
