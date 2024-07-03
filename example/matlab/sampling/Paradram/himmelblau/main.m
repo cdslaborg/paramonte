@@ -18,19 +18,19 @@ chain = sampler.readChain();
 chain = chain{1};
 p = pm.vis.plot.Scatter(chain.df, "coly", "proposalAdaptation");
 p.make("axes", {"yscale", "log"});
-p.savefig("proposalAdaptation.png", "-m4");
+p.savefig("Paradram.himmelblau.proposalAdaptation.png", "-m4");
 
 p = pm.vis.plot.LineScatter(chain.df, "colx", chain.sampleLogFuncColIndex + 1, "coly", chain.sampleLogFuncColIndex + 2);
 p.make("colc", "sampleLogFunc");
-p.savefig("domain.png", "-m4");
+p.savefig("Paradram.himmelblau.domain.png", "-m4");
 
 p = pm.vis.tile.Line(chain.df, "tileshape", [2, 1]);
 p.make("coly", chain.sampleLogFuncColIndex + [1 : 2], "colc", "sampleLogFunc");
-p.savefig("traceplot.png", "-m4");
+p.savefig("Paradram.himmelblau.traceplot.png", "-m4");
 
 restart = sampler.readRestart();
 restart = restart{1};
 
 p = pm.vis.plot.Ellipse3(restart.proposalCov, restart.proposalMean, restart.uniqueStateVisitCount');
 p.make("axes", {"zscale", "log"});
-p.savefig("proposalAdaptation.png", "-m4");
+p.savefig("Paradram.himmelblau.proposalCov.png", "-m4");

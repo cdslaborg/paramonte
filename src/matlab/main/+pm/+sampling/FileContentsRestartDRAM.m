@@ -165,7 +165,7 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
 
                 if ~strcmp(self.lineList{self.ilast + istart}, self.lineList{self.ilast + istart + 2})
                     icount = icount + 1;
-                    if mod(icount, 10) == 0
+                    if ~self.silent && mod(icount, 10) == 0
                         self.spinner.spin(icount / self.count);
                     end
                     self.meanAcceptanceRateSinceStart   (icount) = str2double(self.lineList(self.ilast + istart + 1));
@@ -209,8 +209,10 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
 
             end
 
-            self.spinner.spin(1);
-            self.checkpoint([]);
+            if ~self.silent
+                self.spinner.spin(1);
+                self.checkpoint([]);
+            end
 
         end % constructor
 

@@ -51,8 +51,9 @@
 %>  \include{lineno} example/sampling/Paradram/readChainMarkov/main.m
 %>  \include{lineno} example/sampling/Paradram/readChainMarkov/main.out.m
 %>  \vis{readChainMarkov}
-%>  \image html example/sampling/Paradram/readChainMarkov/domain.png width=700
-%>  \image html example/sampling/Paradram/readChainMarkov/traceplot.png width=700
+%>  \image html example/sampling/Paradram/readChainMarkov/readChainMarkov.domain.png width=700
+%>  \image html example/sampling/Paradram/readChainMarkov/readChainMarkov.traceplot.png width=700
+%>  \image html example/sampling/Paradram/readChainMarkov/readChainMarkov.proposalAdaptation.png width=700
 %>
 %>  \final{readChainMarkov}
 %>

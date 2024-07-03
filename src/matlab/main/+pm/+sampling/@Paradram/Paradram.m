@@ -241,9 +241,10 @@ classdef Paradram < pm.sampling.Sampler
         %>  \include{lineno} example/sampling/Paradram/himmelblau/main.m
         %>  \include{lineno} example/sampling/Paradram/himmelblau/main.out.m
         %>  \vis{himmelblau}
-        %>  \image html example/sampling/Paradram/himmelblau/domain.png width=700
-        %>  \image html example/sampling/Paradram/himmelblau/traceplot.png width=700
-        %>  \image html example/sampling/Paradram/himmelblau/proposalAdaptation.png width=700
+        %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.domain.png width=700
+        %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.traceplot.png width=700
+        %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.proposalCov.png width=700
+        %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.proposalAdaptation.png width=700
         %>
         %>  \final{Paradram}
         %>

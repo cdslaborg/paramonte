@@ -116,6 +116,8 @@ classdef FileContents < pm.matlab.Handle
         %>
         %>  \details
         %>  This is a ``Hidden`` method of the class [pm.io.FileContents](@ref FileContents).<br>
+        %>  The messaging within this routine occurs only if the ``silent`` attribute of the parent object
+        %>  is set to ``false`` at the time of constructing the parent object of class [pm.io.FileContents](@ref FileContents).<br>
         %>
         %>  \param[in]  line    :   The input scalar MATLAB string or whole number,
         %>                          representing the line number within the file about which the warning message should be printed.<br>
@@ -142,32 +144,34 @@ classdef FileContents < pm.matlab.Handle
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function warn(self, line, msg)
-            if  nargin < 3
-                msg = [];
+            if ~self.silent
+                if  nargin < 3
+                    msg = [];
+                end
+                if  nargin < 2
+                    line = [];
+                end
+                if ~isempty(msg)
+                    msg = string(msg) + newline;
+                else
+                    msg = "";
+                end
+                if ~isempty(line)
+                    line = string(line);
+                else
+                    line = "UNKNOWN";
+                end
+                warning ( newline ...
+                        + "The structure of the input file:" + newline ...
+                        + newline ...
+                        + pm.io.tab + self.file + newline ...
+                        + newline ...
+                        + "appears compromised around line: " + line + newline ...
+                        + msg ...
+                        + "The file parsing will proceed with no guarantee of success." + newline ...
+                        + newline ...
+                        );
             end
-            if  nargin < 2
-                line = [];
-            end
-            if ~isempty(msg)
-                msg = string(msg) + newline;
-            else
-                msg = "";
-            end
-            if ~isempty(line)
-                line = string(line);
-            else
-                line = "UNKNOWN";
-            end
-            warning ( newline ...
-                    + "The structure of the input file:" + newline ...
-                    + newline ...
-                    + pm.io.tab + self.file + newline ...
-                    + newline ...
-                    + "appears compromised around line: " + line + newline ...
-                    + msg ...
-                    + "The file parsing will proceed with no guarantee of success." + newline ...
-                    + newline ...
-                    );
         end
 
         %>  \brief

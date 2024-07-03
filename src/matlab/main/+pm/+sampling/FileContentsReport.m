@@ -211,7 +211,9 @@ classdef FileContentsReport < pm.io.FileContents
             while true
 
                 item = self.lineList{iend};
-                self.spinner.spin(iend / self.lineListLen);
+                if ~self.silent
+                    self.spinner.spin(iend / self.lineListLen);
+                end
                 if  strcmp(item(1 : min(6, length(item))), 'stats.')
 
                     % first non-empty line.
