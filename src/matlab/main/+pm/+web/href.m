@@ -1,18 +1,18 @@
 %>  \brief
 %>  Return an HTML-style decoration of the input URL
 %>  if the ParaMonte MATLAB library is used in GUI,
-%>  otherwise, return the input URL as is.
+%>  otherwise, return the input URL as is.<br>
 %>
 %>  \details
 %>  This functionality is important for properly displaying
 %>  hyperlinks within the MATLAB command-prompt while avoiding
-%>  the unnecessary HTML syntax clutter where it is not recognized.
+%>  the unnecessary HTML syntax clutter where it is not recognized.<br>
 %>
-%>  \param[in]  url :   The input scalar MATLAB string containing a bare url.
+%>  \param[in]  url :   The input scalar MATLAB string containing a bare url.<br>
 %>
 %>  \return
-%>  `hlink`         :   The output scalar MATLAB string containing the
-%>                      hyperlink (HTML-style-decorated) version of the input ``url``.
+%>  ``hlink``       :   The output scalar MATLAB string containing the
+%>                      hyperlink (HTML-style-decorated) version of the input ``url``.<br>
 %>
 %>  \interface{href}
 %>  \code{.m}

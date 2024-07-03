@@ -1,19 +1,16 @@
 %>  \brief
 %>  Alters the figure size corresponding to the input figure
 %>  handle ``fig`` such that it has the minimum size necessary to
-%>  enclose all axes in the figure without excess space around them.
+%>  enclose all axes in the figure without excess space around them.<br>
 %>
 %>  \note
-%>  This function expands the figure to completely encompass all
-%>  axes if necessary. If any 3D axes are present which have been zoomed,
-%>  the procedure will produce an error, as these cannot easily be dealt with.
+%>  This function expands the figure to completely encompass all axes if necessary.<br>
+%>  If any 3D axes are present which have been zoomed, the procedure will produce an error,
+%>  as these cannot easily be dealt with.<br>
 %>
 %>  \param[in]  fig :   The input scalar MATLAB object representing the
-%>                      handle to the figure whose axes must be tightly fit.
+%>                      handle to the figure whose axes must be tightly fit.<br>
 %>                      (**optional**. If missing, the current figure will be used.)
-%>
-%>  \return
-%>  `None`
 %>
 %>  \interface{fitaxes}
 %>  \code{.m}

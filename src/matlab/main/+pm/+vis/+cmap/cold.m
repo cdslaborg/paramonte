@@ -1,14 +1,14 @@
 %>  \brief
 %>  Return a black-blue-cyan-white colormap matrix
-%>  of shape ``(nell, 3)`` containing a **cold** colormap.
+%>  of shape ``(nell, 3)`` containing a **cold** colormap.<br>
 %>
 %>  \param[in]  nell    :   The input scalar MATLAB integer representing
-%>                          the number of rows of the output colormap matrix.
+%>                          the number of rows of the output colormap matrix.<br>
 %>                          (**optional**, default = ``size(get(gcf, 'colormap'), 1)``)
 %>
 %>  \return
-%>  `cmap`              :   The output black-blue-cyan-white colormap matrix
-%>                          of shape ``[nell, 3]`` containing a **cold** colormap.
+%>  ``cmap``            :   The output black-blue-cyan-white colormap matrix
+%>                          of shape ``[nell, 3]`` containing a **cold** colormap.<br>
 %>
 %>  \interface{cold}
 %>  \code{.m}

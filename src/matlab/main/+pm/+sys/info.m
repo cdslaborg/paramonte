@@ -1,19 +1,23 @@
 %>  \brief
-%>  Return a MATLAB string containing the current system information.
+%>  Return a MATLAB string containing the current system information.<br>
 %>
 %>  \return
-%>  `str`   :   The output scalar MATLAB string containing the current system information.<br>
-%>  `cache` :   The output scalar MATLAB string representing the path to
-%>              the cache file containing the current system information.
-%>              The returned cache file path has the form:<br>
-%>                  <DIR>/.info<YEAR><MONTH>.cache<br>
-%>          where,<br>
-%>              <DIR> is replaced by the directory containing the function ``pm.sys.info.cache()``,
-%>              <YEAR> is replaced by the current year,
-%>              <MONTH> is replaced by the current month.<br>
-%>          This means that the cache file contents are supposed to be updated only every month if necessary.
-%>          A cache file is generated because retrieving system information is an expensive shell command-line operation.
-%>          The time expense is particularly notable on Windows systems.
+%>  ``str``     :   The output scalar MATLAB string containing the current system information.<br>
+%>  ``cache``   :   The output scalar MATLAB string representing the path to the
+%>                  cache file containing the current system information.<br>
+%>                  The returned cache file path has the form:<br>
+%>                  \code{.m}
+%>                      <DIR>/.info<YEAR><MONTH>.cache<br>
+%>                  \endcode
+%>                  where,<br>
+%>                  <ol>
+%>                      <li>    ``<DIR>`` is replaced by the directory containing the function [pm.sys.info.cache](@ref cache),
+%>                      <li>    ``<YEAR>`` is replaced by the current year,
+%>                      <li>    ``<MONTH>`` is replaced by the current month.
+%>                  </ol>
+%>                  This means that the cache file contents are supposed to be updated only every month if necessary.<br>
+%>                  A cache file is generated because retrieving system information is an expensive shell command-line operation.<br>
+%>                  The time expense is particularly notable on Windows systems.<br>
 %>
 %>  \interface{info}
 %>  \code{.m}

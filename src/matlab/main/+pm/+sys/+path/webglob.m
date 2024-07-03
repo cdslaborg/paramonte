@@ -1,48 +1,51 @@
 %>  \brief
 %>  Return a scalar MATLAB string or vector of MATLAB strings
-%>  containing the fully-resolved paths matching the input pattern.
+%>  containing the fully-resolved paths matching the input pattern.<br>
 %>
 %>  \details
-%>  This function is very similar to ``pm.sys.path.glob()``.
-%>  However, unlike ``pm.sys.path.glob()``, if the input
+%>  This function is very similar to [pm.sys.path.glob](@ref glob).<br>
+%>  However, unlike [pm.sys.path.glob](@ref glob), if the input
 %>  pattern matches a World Wide Web link, it will also
 %>  download the file to a temporary path on the system
-%>  and the temporary download path as the output.
+%>  and the temporary download path as the output.<br>
 %>
 %>  \param[in]  pattern :   The input scalar MATLAB string containing either:<br>
-%>                          1.  the pattern to search for paths on the current system.
-%>                              Wildcards may be used for basenames and for the directory parts.
-%>                              If pattern contains directory parts, then these will
-%>                              be included in the output ``pathList``.<br>
-%>                              Following wildcards can be used:
-%>                                  *        match zero or more characters
-%>                                  ?        match any single character
-%>                                  [ab12]   match one of the specified characters
-%>                                  [^ab12]  match none of the specified characters
-%>                                  [a-z]    match one character in range of characters
-%>                                  {a,b,c}  matches any one of strings a, b or c
-%>                                  All above wildcards do not match a file separator.
-%>                                  **       match zero or more characters including file separators.
-%>                                           This can be used to match zero or more directory parts
-%>                                           and will recursively list matching names.<br>
-%>                              2.  the weblink to download and save locally on the system temporary folder.
+%>                          <ol>
+%>                              <li>    the pattern to search for paths on the current system.
+%>                                      Wildcards may be used for basenames and for the directory parts.
+%>                                      If pattern contains directory parts, then these will
+%>                                      be included in the output ``pathList``.<br>
+%>                                      Following wildcards can be used:
+%>                                      <ol>
+%>                                          <li>    ``*`` match zero or more characters
+%>                                          <li>    ``?`` match any single character
+%>                                          <li>    ``[ab12]`` match one of the specified characters
+%>                                          <li>    ``[^ab12]`` match none of the specified characters
+%>                                          <li>    ``[a-z]`` match one character in range of characters
+%>                                          <li>    ``{a,b,c}`` matches any one of strings a, b or c
+%>                                          <li>    All above wildcards do not match a file separator.
+%>                                          <li>    ``**`` match zero or more characters including file separators.<br>
+%>                                                  This can be used to match zero or more directory parts
+%>                                                  and will recursively list matching names.<br>
+%>                                      </ol>
+%>                              <li>    the weblink to download and save locally on the system temporary folder.<br>
+%>                          </ol>
 %>
-%>                              \warning
-%>                              Symbolic linked directories or junctions may
-%>                              cause an infinite loop when using the ``**``.
-%>  
-%>  \param[in]  anycase :   The input scalar MATLAB logical.
-%>                          If ``true``, the search will be case-sensitive.
-%>                          If ``false``, the search will be case-insensitive.
-%>                          On Windows, ``anycase`` is always reset to ``true`` even if user-specified.
+%>  \param[in]  anycase :   The input scalar MATLAB logical.<br>
+%>                          If ``true``, the search will be case-sensitive.<br>
+%>                          If ``false``, the search will be case-insensitive.<br>
+%>                          On Windows, ``anycase`` is always reset to ``true`` even if user-specified.<br>
 %>                          (**optional**. default = ``false`` on Unix and ``true`` on Windows.)
 %>
 %>  \return
-%>  `pathList`          :   The output MATLAB cell array of strings containing the files
+%>  ``pathList``        :   The output MATLAB cell array of strings containing the files
 %>                          or directories that match the path specified by string ``pattern``.<br>
-%>  `isdirList`         :   The output MATLAB cell array of the same size as ``pathList``,
+%>  ``isdirList``       :   The output MATLAB cell array of the same size as ``pathList``,
 %>                          each element of which is a MATLAB logical value that is ``true`` if
-%>                          and only if the corresponding element of ``pathList`` is a directory.
+%>                          and only if the corresponding element of ``pathList`` is a directory.<br>
+%>
+%>  \warning
+%>  Symbolic linked directories or junctions may cause an infinite loop when using the ``**``.<br>
 %>
 %>  \interface{webglob}
 %>  \code{.m}

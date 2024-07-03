@@ -1,13 +1,13 @@
 %>  \brief
 %>  Return a scalar MATLAB logical that is ``true`` if and
-%>  only if the input URL string exists in the world wide web.
+%>  only if the input URL string exists in the world wide web.<br>
 %>
 %>  \param[in]  url :   The input scalar MATLAB string
-%>                      whose existence as a URL is to be tested.
+%>                      whose existence as a URL is to be tested.<br>
 %>
 %>  \return
-%>  `itis`          :   The output scalar MATLAB logical that is ``true`` if and
-%>                      only if the input URL string exists in the world wide web.
+%>  ``itis``        :   The output scalar MATLAB logical that is ``true`` if and
+%>                      only if the input URL string exists in the world wide web.<br>
 %>
 %>  \interface{isurl}
 %>  \code{.m}

@@ -582,14 +582,13 @@ classdef Figure < pm.matlab.Handle
         %>                                          The input name (title) of the figure to export (e.g. ``'Figure 1'`` or ``'My fig'``).<br>
         %>                                          Overridden by handle (if specified)<br>
         %>                                          The default is the current figure.<br>
-        %>
         %>                              </ol>
         %>
         %>  \return
-        %>  `imageData`         :   The output image cube of type ``uint8`` of
+        %>  ``imageData``       :   The output image cube of type ``uint8`` of
         %>                          shape ``[M, N, C]`` containing the exported figure data.<br>
-        %>  `alpha`             :   The output image matrix of shape ``[M, N]`` of alpha-matte
-        %>                          values in the range ``[0, 1]`` for the case of transparent background.
+        %>  ``alpha``           :   The output image matrix of shape ``[M, N]`` of alpha-matte
+        %>                          values in the range ``[0, 1]`` for the case of transparent background.<br>
         %>
         %>  \interface{savefig}
         %>  \code{.m}

@@ -1,20 +1,20 @@
 %>  \brief
 %>  Return a blue-red colormap matrix
-%>  of shape ``(nell, 3)`` containing a **redblue** colormap.
+%>  of shape ``(nell, 3)`` containing a **redblue** colormap.<br>
 %>
 %>  \details
 %>  The colors begin with bright blue, range through shades of
-%>  blue to white, and then through shades of red to bright red.
-%>  The output is the same length as the current figure colormap.
-%>  If no figure exists, MATLAB will create one.
+%>  blue to white, and then through shades of red to bright red.<br>
+%>  The output is the same length as the current figure colormap.<br>
+%>  If no figure exists, MATLAB will create one.<br>
 %>
 %>  \param[in]  nell    :   The input scalar MATLAB integer representing
-%>                          the number of rows of the output colormap matrix.
+%>                          the number of rows of the output colormap matrix.<br>
 %>                          (**optional**, default = ``size(get(gcf, 'colormap'), 1)``)
 %>
 %>  \return
-%>  `cmap`              :   The output blue-red colormap matrix
-%>                          of shape ``[nell, 3]`` containing a **redblue** colormap.
+%>  ``cmap``            :   The output blue-red colormap matrix
+%>                          of shape ``[nell, 3]`` containing a **redblue** colormap.<br>
 %>
 %>  \interface{redblue}
 %>  \code{.m}

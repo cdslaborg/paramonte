@@ -1,16 +1,16 @@
 %>  \brief
 %>  Return a scalar MATLAB string containing
 %>  the basename part of an input ``url``, defined as
-%>  the segment of the ``url`` after the last separator ``/``.
+%>  the segment of the ``url`` after the last separator ``/``.<br>
 %>
-%>  \param[in]  url :   The input scalar MATLAB string containing a bare URL.
+%>  \param[in]  url :   The input scalar MATLAB string containing a bare URL.<br>
 %>
 %>  \return
-%>  `name`          :   The output scalar MATLAB string containing
+%>  ``name``        :   The output scalar MATLAB string containing
 %>                      the basename part of an input ``url``, defined as
-%>                      the segment of the ``url`` after the last separator ``/``.
+%>                      the segment of the ``url`` after the last separator ``/``.<br>
 %>                      If the input ``url`` ends with ``/``, then the output
-%>                      basename is set to the default ``index.html``.
+%>                      basename is set to the default ``index.html``.<br>
 %>
 %>
 %>  \interface{basename}

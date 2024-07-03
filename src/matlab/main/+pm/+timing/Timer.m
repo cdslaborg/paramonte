@@ -97,7 +97,7 @@ classdef Timer < pm.matlab.Handle
 
         %>  \brief
         %>  Reset the timer, equivalent to reconstructing the timer object.<br>
-        %>  This is a dynamic method of the class ``pm.timing.Timer()``.
+        %>  This is a dynamic method of the class [pm.timing.Timer](@ref Timer).
         %>
         %>  \interface{tic}
         %>  \code{.m}
@@ -120,13 +120,15 @@ classdef Timer < pm.matlab.Handle
 
         %>  \brief
         %>  Return a scalar MATLAB ``real`` containing the time
-        %>  past since the (re)construction of the timer object.
+        %>  past since the (re)construction of the timer object.<br>
+        %>
+        %>  \details
         %>  Also, set the ``clock`` attribute of the parent object.<br>
-        %>  This is a dynamic method of the class ``pm.timing.Timer()``.
+        %>  This is a dynamic method of the class [pm.timing.Timer](@ref Timer).<br>
         %>
         %>  \return
-        %>  `clock` :   The output scalar MATLAB ``real`` containing the time
-        %>              past since the (re)construction of the timer object.
+        %>  ``clock``   :   The output scalar MATLAB ``real`` containing the time
+        %>                  past since the (re)construction of the timer object.<br>
         %>
         %>  \interface{toc}
         %>  \code{.m}
@@ -148,16 +150,14 @@ classdef Timer < pm.matlab.Handle
         end
 
         %>  \brief
-        %>  Return a scalar MATLAB ``real`` containing the time
-        %>  past since the last time measurement by the timer object.
+        %>  Return a scalar MATLAB ``real`` containing the time past
+        %>  since the last time measurement by the timer object.<br>
         %>  Also, set the ``clock`` attribute of the parent object.<br>
-        %>  This is a dynamic method of the class ``pm.timing.Timer()``.
-        %>
-        %>  \param[in]  None
+        %>  This is a dynamic method of the class [pm.timing.Timer](@ref Timer).<br>
         %>
         %>  \return
-        %>  `delta` :   The output scalar MATLAB ``real`` containing the time
-        %>              past since the last time measurement by the timer object.
+        %>  ``delta``   :   The output scalar MATLAB ``real`` containing the time
+        %>                  past since the last time measurement by the timer object.<br>
         %>
         %>  \interface{del}
         %>  \code{.m}

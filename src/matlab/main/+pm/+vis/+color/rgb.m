@@ -1,24 +1,24 @@
 %>  \brief
-%>  Return the RGB triplet corresponding to the input color name ``cname``.
+%>  Return the RGB triplet corresponding to the input color name ``cname``.<br>
 %>
 %>  \note
 %>  The RGB names and triplets are derived from:<br>
-%>  http://en.wikipedia.org/wiki/List_of_colors colormap matrix
+%>  http://en.wikipedia.org/wiki/List_of_colors colormap matrix.<br>
 %>
 %>  \param[in]  cname   :   The input scalar MATLAB string or char vector
-%>                          containing the color name whose RGB triplet is to be returned.
+%>                          containing the color name whose RGB triplet is to be returned.<br>
 %>                          If ``cname`` is missing or set to an empty object then the an object
 %>                          of class ``containers.Map()`` will be returned containing all color
-%>                          names in the database and the corresponding RGB triplets.
-%>                          All input values are case-insensitive.
+%>                          names in the database and the corresponding RGB triplets.<br>
+%>                          All input values are case-insensitive.<br>
 %>                          (**optional**, default = ``[]``)
 %>
 %>  \return
-%>  `triplet`           :   The output vector of length ``3`` of MATLAB doubles
-%>                          containing the RGB triplet corresponding to the input color name.
+%>  ``triplet``         :   The output vector of length ``3`` of MATLAB doubles
+%>                          containing the RGB triplet corresponding to the input color name.<br>
 %>                          If ``cname`` is missing or set to an empty object then the an object
 %>                          of class ``containers.Map()`` will be returned containing all color
-%>                          names in the database and the corresponding RGB triplets.
+%>                          names in the database and the corresponding RGB triplets.<br>
 %>
 %>
 %>  \interface{rgb}

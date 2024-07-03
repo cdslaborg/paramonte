@@ -1,22 +1,21 @@
 %>  \brief
 %>  Return a blue-white-red colormap matrix
 %>  of shape ``(nell, 3)`` containing the RGB values with
-%>  white corresponding to the CAXIS value closest to zero.
+%>  white corresponding to the CAXIS value closest to zero.<br>
 %>
 %>  \note
 %>  This colormap is most useful for images and surface plots
-%>  with positive and negative values.
+%>  with positive and negative values.<br>
 %>
 %>  \param[in]  nell    :   The input scalar MATLAB integer representing
-%>                          the number of rows of the output colormap matrix.
+%>                          the number of rows of the output colormap matrix.<br>
 %>                          (**optional**, default = ``size(get(gcf, 'colormap'), 1)``)
-%>
 %>  \param[in]  clim    :   The input vector length ``2`` of MATLAB doubles
-%>                          representing the color limits of the output colormap.
+%>                          representing the color limits of the output colormap.<br>
 %>                          (**optional**, default = ``get(gca, 'CLim')``)
 %>
 %>  \return
-%>  `cmap`              :   The output blue-white-red colormap matrix
+%>  ``cmap``            :   The output blue-white-red colormap matrix
 %>                          of shape ``[nell, 3]`` containing a **cold** colormap.
 %>
 %>  \interface{bwr}

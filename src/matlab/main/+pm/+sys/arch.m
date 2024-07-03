@@ -1,15 +1,15 @@
 %>  \brief
 %>  Return the processor architecture name of
 %>  the current system on which MATLAB is running,
-%>  which is also supported by the ParaMonte MATLAB library.
+%>  which is also supported by the ParaMonte MATLAB library.<br>
 %>
 %>  \return
-%>  `str`   :   The output scalar MATLAB string containing the processor architecture.
+%>  ``str`` :   The output scalar MATLAB string containing the processor architecture.<br>
 %>              The output value can be either:<br>
-%>  'arm64' :   This can be currently true only if the OS is Darwin.<br>
-%>  `amd64` :   This can be currently true for either Darwin, Linux, or Windows.<br> 
-%>  If the function cannot detect any of the above,
-%>  the system-returned value will be output as is.
+%>              <ol>
+%>                  <li>    ``"arm64"`` :   This can be currently true only if the OS is Darwin.<br>
+%>                  <li>    ``"amd64"`` :   This can be currently true for either Darwin, Linux, or Windows.<br> 
+%>              </ol>
 %>
 %>  \interface{arch}
 %>  \code{.m}
@@ -17,6 +17,9 @@
 %>      str = pm.sys.arch()
 %>
 %>  \endcode
+%>
+%>  \note
+%>  If the function cannot detect any of the above, the system-returned value will be output as is.<br>
 %>
 %>  \final{arch}
 %>
