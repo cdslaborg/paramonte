@@ -3,7 +3,7 @@
 %>  of the input scalar MATLAB string ``pattern`` in
 %>  the input scalar MATLAB string ``str``, otherwise,
 %>  return ``0`` to indicate the lack of the ``pattern``
-%>  in the input ``str``.
+%>  in the input ``str``.<br>
 %>
 %>  \details
 %>  This function partially replicates the functionality
@@ -11,19 +11,18 @@
 %>  This function uses the MATLAB intrinsic ``strfind()``
 %>  to achieve the goal. However, unlike ``strfind()``
 %>  it always returns a number such that the function
-%>  can be directly used in string slicing.
+%>  can be directly used in string slicing.<br>
 %>
 %>  \param[in]  str     :   The input scalar MATLAB string to be searched
-%>                          for the presence of the input pattern.
-%>  
+%>                          for the presence of the input pattern.<br>
 %>  \param[in]  pattern :   The input scalar MATLAB string to be
-%>                          searched for within the input ``str``.
+%>                          searched for within the input ``str``.<br>
 %>
 %>  \return
-%>  `loc`               :   The output scalar MATLAB integer
+%>  ``loc``             :   The output scalar MATLAB integer
 %>                          containing the location of the first occurrence of the
 %>                          input ``pattern`` in the input ``str`` or ``0`` if no such
-%>                          pattern exists.
+%>                          pattern exists.<br>
 %>
 %>  \interface{index}
 %>  \code{.m}

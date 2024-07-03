@@ -1,59 +1,60 @@
 %>  \brief
-%>  Expand wildcards for files and directory names.
+%>  Expand wildcards for files and directory names.<br>
 %>
 %>  \details
-%>  Pattern matching of file and directory names, based on wildcard
-%>  characters. This function is similar to wildcard expansion performed
-%>  by the Unix shell and Python glob.glob function, but it can handle
-%>  more types of wildcards.<br>
-%>  The following list highlights the key differences
-%>  between this function and the MATLAB intrinsic ``dir()``.<br>
-%>      -   ``glob()`` supports wildcards for directories.
-%>      -   ``glob()`` returns the directory part of ``pattern``.
-%>      -   ``glob()`` returns a cell array of matching names.
-%>      -   ``glob()`` does not return hidden files and directories that
-%>          start with ``'.'`` unless explicitly specified in ``pattern``.
-%>      -   ``glob()`` does not return ``'.'`` and ``'..'`` unless explicitly specified in ``pattern``.
-%>      -   ``glob()`` adds a trailing file separator to directory names.
-%>      -   ``glob()`` does not return the contents of a directory when a directory
-%>          is specified. To return contents of a directory, add a trailing ``'/*'``.
-%>      -   ``glob()`` returns only directory names when a trailing file separator is specified.
-%>      -   On Windows, ``glob()`` is not case sensitive, but it returns matching
-%>          names exactly in the case as they are defined on the filesystem.
-%>          Case of host and sharename of a UNC path and case of drive
-%>          letters will be returned as specified in ``pattern``.
+%>  Pattern matching of file and directory names, based on wildcard characters.<br>
+%>  This function is similar to wildcard expansion performed by the Unix shell
+%>  and Python glob.glob function, but it can handle by the Unix shell and
+%>  Python glob.glob function, but it can handle more types of wildcards.<br>
+%>  The following list highlights the key differences between
+%>  this function and the MATLAB intrinsic ``dir()``.<br>
+%>  <ol>
+%>      <li>    ``glob()`` supports wildcards for directories.
+%>      <li>    ``glob()`` returns the directory part of ``pattern``.
+%>      <li>    ``glob()`` returns a cell array of matching names.
+%>      <li>    ``glob()`` does not return hidden files and directories that
+%>              start with ``'.'`` unless explicitly specified in ``pattern``.
+%>      <li>    ``glob()`` does not return ``'.'`` and ``'..'`` unless explicitly specified in ``pattern``.
+%>      <li>    ``glob()`` adds a trailing file separator to directory names.
+%>      <li>    ``glob()`` does not return the contents of a directory when a directory is specified.<br>
+%>              To return contents of a directory, add a trailing ``'/*'``.
+%>      <li>    ``glob()`` returns only directory names when a trailing file separator is specified.
+%>      <li>    On Windows, ``glob()`` is not case sensitive, but it returns matching
+%>              names exactly in the case as they are defined on the filesystem.<br>
+%>              Case of host and sharename of a UNC path and case of drive
+%>              letters will be returned as specified in ``pattern``.<br>
+%>  </ol>
 %>
-%>  \param[in]  pattern :   The input scalar MATLAB string, containing the search pattern.
-%>                          Wildcards may be used for basenames and for the directory parts.
+%>  \param[in]  pattern :   The input scalar MATLAB string, containing the search pattern.<br>
+%>                          Wildcards may be used for basenames and for the directory parts.<br>
 %>                          If pattern contains directory parts, then these will be included in the output ``pathList``.<br>
 %>                          Following wildcards can be used:<br>
-%>                              *        match zero or more characters
-%>                              ?        match any single character
-%>                              [ab12]   match one of the specified characters
-%>                              [^ab12]  match none of the specified characters
-%>                              [a-z]    match one character in range of characters
-%>                              {a,b,c}  matches any one of strings a, b or c<br>
-%>                              All above wildcards do not match a file separator.<br>
-%>                              **       match zero or more characters including file separators.
-%>                                       This can be used to match zero or more directory parts
-%>                                       and will recursively list matching names.
-%>  
-%>                              \warning
-%>                              Symbolic linked directories or junctions may
-%>                              cause an infinite loop when using the ``**``.
-%>  
-%>  \param[in]  anycase :   The input scalar MATLAB logical.
-%>                          If ``true``, the search will be case-sensitive.
-%>                          If ``false``, the search will be case-insensitive.
-%>                          On Windows, ``anycase`` is always reset to ``true`` even if user-specified.
+%>                          <ol>
+%>                              <li>    ``*`` match zero or more characters.
+%>                              <li>    ``?`` match any single character.
+%>                              <li>    ``[ab12]`` match one of the specified characters.
+%>                              <li>    ``[^ab12]`` match none of the specified characters
+%>                              <li>    ``[a-z]`` match one character in range of characters
+%>                              <li>    ``{a,b,c}`` matches any one of strings a, b or c<br>
+%>                              <li>    All above wildcards do not match a file separator.<br>
+%>                              <li>    ``**`` match zero or more characters including file separators.<br>
+%>                                      This can be used to match zero or more directory parts
+%>                                      and will recursively list matching names.<br>
+%>                                      Beware that **symbolic linked directories or
+%>                                      junctions may cause an infinite loop** when using the ``**``.<br>
+%>                          </ol>
+%>  \param[in]  anycase :   The input scalar MATLAB logical.<br>
+%>                          If ``true``, the search will be case-sensitive.<br>
+%>                          If ``false``, the search will be case-insensitive.<br>
+%>                          On Windows, ``anycase`` is always reset to ``true`` even if user-specified.<br>
 %>                          (**optional**. default = ``false`` on Unix and ``true`` on Windows.)
-%>  
+%>
 %>  \return
-%>  `pathList`          :   The output MATLAB cell array of strings containing the files
+%>  ``pathList``        :   The output MATLAB cell array of strings containing the files
 %>                          or directories that match the path specified by string ``pattern``.<br>
-%>  `isdirList`         :   The output MATLAB cell array of the same size as ``pathList``,
+%>  ``isdirList``       :   The output MATLAB cell array of the same size as ``pathList``,
 %>                          each element of which is a MATLAB logical value that is ``true`` if
-%>                          and only if the corresponding element of ``pathList`` is a directory.
+%>                          and only if the corresponding element of ``pathList`` is a directory.<br>
 %>
 %>  \interface{glob}
 %>  \code{.m}
@@ -64,57 +65,57 @@
 %>  \endcode
 %>
 %>  \example{getBorder}
+%>  \code{.m}
 %>
-%>      glob *.m        list all .m files in current directory.
+%>      glob *.m                % list all .m files in current directory.
 %>
-%>      glob baz/*      list all files and directories in subdirectory 'baz'.
+%>      glob baz/*              % list all files and directories in subdirectory 'baz'.
 %>
-%>      glob b*/*.m     list all .m files in subdirectory names starting
-%>                      with 'b'. The list will include the names of the
-%>                      matching subdirectories.
+%>      glob b*/*.m             % list all .m files in subdirectory names starting
+%>                              % with 'b'. The list will include the names of the
+%>                              % matching subdirectories.
 %>
-%>      glob ?z*.m      list all .m files where the second character
-%>                      is 'z'.
+%>      glob ?z*.m              % list all .m files where the second character
+%>                              % is 'z'.
 %>
-%>      glob baz.[ch]   matches baz.c and baz.h
+%>      glob baz.[ch]           % matches baz.c and baz.h
 %>
-%>      glob test.[^ch] matches test.a but not test.c or test.h
+%>      glob test.[^ch]         % matches test.a but not test.c or test.h
 %>
-%>      glob demo.[a-c] matches demo.a, demo.b, and demo.c
+%>      glob demo.[a-c]         % matches demo.a, demo.b, and demo.c
 %>
-%>      glob test.{foo,bar,baz} matches test.foo, test.bar, and test.baz
+%>      glob test.{foo,bar,baz} % matches test.foo, test.bar, and test.baz
 %>
-%>      glob .*         list all hidden files in current directory,
-%>                      excluding '.' and '..'
+%>      glob .*                 % list all hidden files in current directory,
+%>                              % excluding '.' and '..'
 %>
-%>      glob */         list all subdirectories.
+%>      glob */                 % list all subdirectories.
 %>
-%>      glob **         recursively list all files and directories,
-%>                      starting in current directory (current directory
-%>                      name, hidden files and hidden directories are
-%>                      excluded).
+%>      glob **                 % recursively list all files and directories,
+%>                              % starting in current directory (current directory
+%>                              % name, hidden files and hidden directories are
+%>                              % excluded).
 %>
-%>      glob **.m       list all m-files anywhere in directory tree,
-%>                      including m-files in current directory. This
-%>                      is equivalent with '**/*.m'.
+%>      glob **.m               % list all m-files anywhere in directory tree,
+%>                              % including m-files in current directory. This
+%>                              % is equivalent with '**/*.m'.
 %>
-%>      glob foo/**/    recursively list all directories, starting in
-%>                      directory 'foo'.
+%>      glob foo/**/            % recursively list all directories, starting in
+%>                              % directory 'foo'.
 %>
-%>      glob **/.svn/   list all .svn directories in directory tree.
+%>      glob **/.svn/           % list all .svn directories in directory tree.
 %>
-%>      glob **/.*/**   recursively list all files in hidden directories
-%>                      only.
+%>      glob **/.*/**           % recursively list all files in hidden directories only.
 %>
 %>      [r,d]=glob('**')
-%>      r(~d)           get all files in directory tree.
+%>      r(~d)                   % get all files in directory tree.
+%>
+%>  \endcode
 %>
 %>  \final{glob}
 %>
-%>  \author
-%>  \JoshuaOsborne, May 21 2024, 5:24 AM, University of Texas at Arlington<br>
-%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
-%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
+%>  \verbatim
+%>
 %>      Copyright (c) 2013, Peter van den Biggelaar
 %>      All rights reserved.
 %>
@@ -140,6 +141,12 @@
 %>      ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 %>      POSSIBILITY OF SUCH DAMAGE.
 %>
+%>  \endverbatim
+%>
+%>  \author
+%>  \JoshuaOsborne, May 21 2024, 5:24 AM, University of Texas at Arlington<br>
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function [pathList, isdirList] = glob(pattern, anycase)
     if isstring(pattern)
         pattern = convertStringsToChars(pattern);

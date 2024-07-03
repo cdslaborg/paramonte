@@ -7,9 +7,9 @@
 %>  routine is guaranteed on the current platform.
 %>
 %>  \return
-%>  `name`  :   The output scalar MATLAB string containing the
-%>              the ParaMonte-preferred MPI library vendor name as
-%>              used in naming the ParaMonte MATLAB shared libraries.
+%>  ``name``    :   The output scalar MATLAB string containing the
+%>                  the ParaMonte-preferred MPI library vendor name as
+%>                  used in naming the ParaMonte MATLAB shared libraries.<br>
 %>
 %>  \interface{choice}
 %>  \code{.m}

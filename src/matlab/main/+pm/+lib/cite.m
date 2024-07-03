@@ -11,7 +11,7 @@
 %>                          (**optional**, default = ``"html"``)
 %>
 %>  \return
-%>  `str`               :   The output scalar MATLAB string containing either,
+%>  ``str``             :   The output scalar MATLAB string containing either,
 %>                          <ol>
 %>                              <li>    a raw weblink to the ParaMonte library publications
 %>                                      if the library is used outside the MATLAB GUI interface, or,

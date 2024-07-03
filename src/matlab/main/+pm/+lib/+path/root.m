@@ -3,8 +3,8 @@
 %>  root directory of the ParaMonte library package.
 %>
 %>  \return
-%>  `path`  :   A scalar MATLAB string containing the root
-%>              directory of the ParaMonte library package.
+%>  ``path``    :   A scalar MATLAB string containing the root
+%>                  directory of the ParaMonte library package.<br>
 %>
 %>  \interface{root}
 %>  \code{.m}

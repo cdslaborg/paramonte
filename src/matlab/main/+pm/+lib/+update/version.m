@@ -9,7 +9,7 @@
 %>                          (**optional**, default = ``false``)
 %>
 %>  \return
-%>  `str`               :   The output scalar MATLAB string containing the
+%>  ``str``             :   The output scalar MATLAB string containing the
 %>                          latest available ParaMonte MATLAB version newer
 %>                          than the existing version on the current system.<br>
 %>                          The output ``str`` will be set to empty string ``""``

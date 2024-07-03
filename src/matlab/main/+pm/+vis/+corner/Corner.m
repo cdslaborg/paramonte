@@ -98,7 +98,7 @@ classdef Corner < pm.vis.figure.Tiling
         %>                              parent object attributes, before calling the ``make()`` method.
         %>
         %>  \return
-        %>  `self`                  :   The output scalar object of class ``pm.vis.corner.Corner``.
+        %>  ``self``                :   The output scalar object of class ``pm.vis.corner.Corner``.
         %>
         %>  \interface{Corner}
         %>  \code{.m}

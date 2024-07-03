@@ -1,19 +1,19 @@
 %>  \brief
-%>  Return a list of objects of class ``pm.sampling.FileContentsReport``
+%>  Return a list of objects of class [pm.sampling.FileContentsReport](@ref FileContentsReport)
 %>  containing the content(s) of the ParaMonte simulation output report
 %>  file(s) whose path(s) match the specified input ``pattern`` or the
-%>  simulation specification ``sampler.spec.outputFileName``.
+%>  simulation specification ``sampler.spec.outputFileName``.<br>
 %>
 %>  \warning
 %>  This method is to be only used for post-processing of the output
 %>  report file(s) of an already finished simulation. Although possible,
 %>  this method is NOT meant to be called by all processes
-%>  in MPI-parallel simulations.
+%>  in MPI-parallel simulations.<br>
 %>
 %>  \param[in]  pattern :   The input scalar MATLAB string containing the pattern matching
-%>                          the desired report file(s) whose contents is to be read.
+%>                          the desired report file(s) whose contents is to be read.<br>
 %>                          The specified ``pattern`` only needs to partially identify
-%>                          the name of the simulation to which the report file belongs.
+%>                          the name of the simulation to which the report file belongs.<br>
 %>                          For example, specifying ``"./mydir/mysim"`` as input will
 %>                          lead to a search for file(s) beginning with "mysim" and
 %>                          ending with ``"_report.txt"`` inside the directory ``"./mydir/"``.<br>
@@ -28,10 +28,10 @@
 %>                          (optional, default = ``sampler.spec.outputFileName`` or ``"./"``)
 %>
 %>  \return
-%>  `reportList`        :   The output MATLAB cell array of objects
-%>                          of class ``pm.sampling.FileContentsReport``,
+%>  ``reportList``      :   The output MATLAB cell array of objects
+%>                          of class [pm.sampling.FileContentsReport](@ref FileContentsReport),
 %>                          each of which corresponds to the contents
-%>                          of a unique report file.
+%>                          of a unique report file.<br>
 %>
 %>  \interface{readReport}
 %>  \code{.m}
@@ -43,7 +43,12 @@
 %>
 %>  \endcode
 %>
-%>  \example{getBorder}
+%>  \note
+%>  See the documentation of the sampler subclasses
+%>  (e.g., [pm.sampling.Paradram](@ref Paradram)) for example usage in action.<br>
+%>
+%>  \example{readReport}
+%>  \code{.m}
 %>
 %>      sampler.readReport("./out/test_run_");
 %>
@@ -59,13 +64,14 @@
 %>      sampler.spec.outputSeparator = ",";
 %>      sampler.readReport();
 %>
+%>  \endcode
+%>
 %>  \final{readReport}
 %>
 %>  \author
 %>  \JoshuaOsborne, May 21 2024, 12:30 AM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
-%>
 function reportList = readReport(self, pattern)
     if nargin < 2
         if 0 < pm.array.len(self.spec.outputFileName)

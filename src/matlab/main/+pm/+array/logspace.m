@@ -18,7 +18,7 @@
 %>                          (**optional**, default = ``exp(1)``)
 %>
 %>  \return
-%>  `array`             :   The output vector of MATLAB real values containing
+%>  ``array``           :   The output vector of MATLAB real values containing
 %>                          the set of logarithmically-spaced values in the
 %>                          specified input range with the specified ``base``.
 %>

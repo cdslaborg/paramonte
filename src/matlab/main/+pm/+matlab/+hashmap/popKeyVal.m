@@ -11,14 +11,13 @@
 %>                          ``hashmap`` in sequence as element of the cell array.
 %>  
 %>  \return
-%>  `keyval`            :   The output cell array of even number of elements
+%>  ``keyval``          :   The output cell array of even number of elements
 %>                          containing the ``(key, val)`` pairs of the keys
-%>                          in the input argument ``keys``.
-%>  
-%>  `hashout`           :   The output cell array of even number of elements
+%>                          in the input argument ``keys``.<br>
+%>  ``hashout``         :   The output cell array of even number of elements
 %>                          containing the ``(key, val)`` pairs of the input
 %>                          ``hashmap`` while all instances of keys matching
-%>                          the input ``keys`` along with their values are deleted.
+%>                          the input ``keys`` along with their values are deleted.<br>
 %>
 %>  \interface{popKeyVal}
 %>  \code{.m}

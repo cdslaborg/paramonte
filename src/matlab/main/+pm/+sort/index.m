@@ -1,21 +1,21 @@
 %>  \brief
 %>  Given ``array(1 : n)``, return the array index ``indx(1:n)``
-%>  such that ``array(indx)`` is in ascending order.
+%>  such that ``array(indx)`` is in ascending order.<br>
 %>
 %>  \details
 %>  This is a simple convenience wrapper around
-%>  the MATLAB intrinsic function ``sort()``.
+%>  the MATLAB intrinsic function ``sort()``.<br>
 %>
 %>  \note
 %>  The output ``indx`` is NOT the rank
-%>  of the elements of the input array.S
+%>  of the elements of the input array.<br>
 %>
 %>  \param[in]  array   :   The input MATLAB vector of sortable values
-%>                          (that can be passed to the MATLAB intrinsic function ``sort()``).
+%>                          (that can be passed to the MATLAB intrinsic function ``sort()``).<br>
 %>
 %>  \return
-%>  `indx`              :   The output MATLAB integer vector of the same size as the
-%>                          input ``array`` such that ``array(indx)`` is in ascending order.
+%>  ``indx``            :   The output MATLAB integer vector of the same size as the
+%>                          input ``array`` such that ``array(indx)`` is in ascending order.<br>
 %>
 %>  \interface{index}
 %>  \code{.m}

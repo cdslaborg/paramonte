@@ -1,15 +1,15 @@
 %>  \brief
-%>  Return an integer triplet list from the input dot-separated string.
+%>  Return an integer triplet list from the input dot-separated string.<br>
 %>  This function is primarily used for splitting a dot-separated version string
-%>  into a double vector of whole-number version.
+%>  into a double vector of whole-number version.<br>
 %>
 %>  \param[in]  str :   The input MATLAB string containing a dot-separated string,
-%>                      such as software version corresponding to major, minor, and patch versions.
+%>                      such as software version corresponding to major, minor, and patch versions.<br>
 %>  
 %>  \return
-%>  `real`          :   The output MATLAB vector of size ``ndot + 1`` containing the
+%>  ``real``        :   The output MATLAB vector of size ``ndot + 1`` containing the
 %>                      whole-number versions retrieved from the input version string,
-%>                      where ``ndot`` represents the number of dots in the input string.
+%>                      where ``ndot`` represents the number of dots in the input string.<br>
 %>
 %>  \interface{split2real}
 %>  \code{.m}

@@ -15,7 +15,7 @@
 %>                          (**optional**, default = ``fieldnames(from)`` or ``properties(from)``)
 %>
 %>  \return
-%>  `tonew`             :   The output MATLAB struct containing the
+%>  ``tonew``           :   The output MATLAB struct containing the
 %>                          merger of the two input MATLAB structs.<br>
 %>                          If a field name in ``fields`` is common between
 %>                          ``from`` and ``to``, the field value of ``from`` will

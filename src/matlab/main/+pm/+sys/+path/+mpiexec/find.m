@@ -1,30 +1,32 @@
 %>  \brief
 %>  Return a list of scalar MATLAB strings containing the paths to
 %>  all detected ``mpiexec`` binaries installed on the system and
-%>  available in the environment path variable.
+%>  available in the environment path variable.<br>
 %>
 %>  \details
 %>  The search strategy is to parse and search the paths in the environmental
-%>  `PATH` variable of the runtime processor shell and return all mpiexec paths.
-%>  Also, all ``mpiexec`` paths found via ``pm.sys.path.mpiexec.which(vendor)`` are returned.
+%>  ``PATH`` variable of the runtime processor shell and return all ``mpiexec`` paths.<br>
+%>  Also, all ``mpiexec`` paths found via [pm.sys.path.mpiexec.which(vendor)](@ref which) are returned.<br>
 %>  Additionally, if ``vendor`` is missing or is set to ``"Intel"``, also search the default
 %>  installation directories of Intel MPI libraries on all operating systems.<br>
-%>  Think of this functionality ``pm.sys.path.mpiexec.find(vendor)``
-%>  as a more comprehensive of what ``pm.sys.path.mpiexec.which(vendor)`` does.
+%>  Think of this functionality ``pm.sys.path.mpiexec.find(vendor)`` as a more
+%>  comprehensive of what [pm.sys.path.mpiexec.which(vendor)](@ref which) does.<br>
 %>
 %>  \param[in]  vendor  :   The input scalar MATLAB string, containing the MPI
 %>                          library vendor that should match the ``mpiexec`` binary.
 %>                          Possible values are:<br>
-%>                          -   ``Intel``, representing the Intel MPI library.
-%>                          -   ``MPICH``, representing the MPICH MPI library.
-%>                          -   ``OpenMPI``, representing the OpenMPI library.
+%>                          <ol>
+%>                              <li>    ``Intel``, representing the Intel MPI library.
+%>                              <li>    ``MPICH``, representing the MPICH MPI library.
+%>                              <li>    ``OpenMPI``, representing the OpenMPI library.
+%>                          </ol>
 %>                          (**optional**,  default = ``""``)
 %>
 %>  \return
-%>  `pathList`          :   A list of scalar MATLAB strings containing the paths to
-%>                          all detected ``mpiexec`` binaries installed on the system.
+%>  ``pathList``        :   A list of scalar MATLAB strings containing the paths to
+%>                          all detected ``mpiexec`` binaries installed on the system.<br>
 %>                          If the ``mpiexec`` is not found or does not match the specified ``vendor``,
-%>                          the output will be an empty list ``[]``.
+%>                          the output will be an empty list ``[]``.<br>
 %>
 %>  \interface{find}
 %>  \code{.m}

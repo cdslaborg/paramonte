@@ -67,7 +67,7 @@ classdef FileContentsTabular < pm.io.FileContents
         %>                          (**optional**. The default is inferred from the contents of the specified input ``file``.)
         %>
         %>  \return
-        %>  `self`              :   The output scalar object of class [pm.io.FileContentsTabular](@ref FileContentsTabular).
+        %>  ``self``            :   The output scalar object of class [pm.io.FileContentsTabular](@ref FileContentsTabular).
         %>
         %>  \interface{FileContentsTabular}
         %>  \code{.m}

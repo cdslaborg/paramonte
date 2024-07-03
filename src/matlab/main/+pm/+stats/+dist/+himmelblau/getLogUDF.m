@@ -45,8 +45,8 @@
 %>                          (**optional**, default = ``1``)
 %>
 %>  \return
-%>  `logUDF`            :   The output Unnormalized Density Function (UDF) of the
-%>                          Himmelblau density at the specified input ``state``.
+%>  ``logUDF``          :   The output Unnormalized Density Function (UDF) of the
+%>                          Himmelblau density at the specified input ``state``.<br>
 %>
 %>  \interface{getLogUDF}
 %>  \code{.m}

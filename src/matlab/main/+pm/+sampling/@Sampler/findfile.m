@@ -2,27 +2,34 @@
 %>  Return a vector of MATLAB strings containing the
 %>  fully-resolved paths matching the input ``pattern``.
 %>
+%>  \details
+%>  This is a ``Hidden`` method of the class [pm.sampling.Sampler](@ref Sampler).
+%>
 %>  \param[in]  ftype   :   The input scalar MATLAB string containing the sampler file type,
 %>                          which can be one of the following:
-%>                          -   "chain"
-%>                          -   "sample"
-%>                          -   "report"
-%>                          -   "restart"
-%>                          -   "progress"
-%>  
-%>  \param[in]  pattern :   The input scalar MATLAB string containing either:
-%>                          1.  a pattern to search for paths on the current system.
-%>                              Wildcards may be used for basenames and for the directory parts.
-%>                              If pattern contains directory parts, then these will
-%>                              be included in the output ``fileList``.<br>
-%>                              Following wildcards can be used within the specified ``pattern``:
-%>                                  ``*``   :   match zero or more characters.<br>
-%>                          2.  a full weblink to download and save locally on the system temporary folder.
-%>                              (**optional**, default = ``pwd()``)
+%>                          <ol>
+%>                              <li>    ``"chain"``
+%>                              <li>    ``"sample"``
+%>                              <li>    ``"report"``
+%>                              <li>    ``"restart"``
+%>                              <li>    ``"progress"``
+%>                          </ol>
+%>
+%>  \param[in]  pattern :   The input scalar MATLAB string containing either:<br>
+%>                          <ol>
+%>                              <li>    a pattern to search for paths on the current system.<br>
+%>                                      Wildcards may be used for basenames and for the directory parts.<br>
+%>                                      If pattern contains directory parts, then these will
+%>                                      be included in the output ``fileList``.<br>
+%>                                      Following wildcards can be used within the specified ``pattern``:
+%>                                      ``*``   :   match zero or more characters.<br>
+%>                              <li>    a full weblink to download and save locally on the system temporary folder.<br>
+%>                                      (**optional**, default = ``pwd()``)
+%>                          </ol>
 %>
 %>  \return
-%>  `fileList`          :   The output vector of MATLAB strings containing the
-%>                          fully-resolved paths matching the input ``pattern``.
+%>  ``fileList``        :   The output vector of MATLAB strings containing the
+%>                          fully-resolved paths matching the input ``pattern``.<br>
 %>
 %>  \interface{findfile}
 %>  \code{.m}

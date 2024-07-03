@@ -10,17 +10,14 @@
 %>                          to the namelist-converted value in the output ``entry``.<br>
 %>                          The specified value of ``varname`` will be trimmed
 %>                          (to remove leading and trailing blanks).<br>
-%>
 %>  \param[in]  varval  :   The input value to be converted to namelist-compatible value.
-%>
 %>  \param[in]  vartype :   See the documentation of the corresponding
 %>                          argument of [pm.introspection.istype()](@ref istype).
-%>
 %>  \param[in]  varsize :   See the documentation of the corresponding
 %>                          argument of [pm.introspection.istype()](@ref istype).
 %>
 %>  \return
-%>  `entry`             :   The output scalar MATLAB string containing the namelist-compatible
+%>  ``entry``           :   The output scalar MATLAB string containing the namelist-compatible
 %>                          conversion of the input value ``varval`` and the given ``varname``
 %>                          in the following format: ``varname=namelist-compatible-varval``.
 %>

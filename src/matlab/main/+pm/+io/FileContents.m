@@ -66,7 +66,7 @@ classdef FileContents < pm.matlab.Handle
         %>                          (**optional**, default = ``false``)
         %>
         %>  \return
-        %>  `self`              :   The output scalar object of class [pm.io.FileContents](@ref FileContents).
+        %>  ``self``            :   The output scalar object of class [pm.io.FileContents](@ref FileContents).
         %>
         %>  \interface{FileContents}
         %>  \code{.m}
@@ -241,11 +241,11 @@ classdef FileContents < pm.matlab.Handle
         %%>
         %%>  \param[in]  field   :   The input scalar MATLAB string containing the
         %%>                          name of a field (component/attribute) of the parent
-        %%>                          object whose value will have to be returned.
+        %%>                          object whose value will have to be returned.<br>
         %%>
         %%>  \return
-        %%>  `val`               :   The output object containing the value of the
-        %%>                          specified ``field`` of the parent object.
+        %%>  ``val``             :   The output object containing the value of the
+        %%>                          specified ``field`` of the parent object.<br>
         %%>
         %%>  \interface{getVal}
         %%>  \code{.m}

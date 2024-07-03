@@ -36,7 +36,7 @@ classdef Plot < pm.vis.figure.Figure
         %>  of the ``subplot`` component of the parent object.
         %>
         %>  \return
-        %>  `self`                  :   The output scalar object of class ``pm.vis.plot.Plot``.
+        %>  ``self``                :   The output scalar object of class ``pm.vis.plot.Plot``.
         %>
         %>  \interface{Plot}
         %>  \code{.m}

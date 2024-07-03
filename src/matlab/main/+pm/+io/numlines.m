@@ -13,7 +13,7 @@
 %>                          </ol>
 %>
 %>  \return
-%>  `nlines`            :   The output scalar MATLAB integer containing the
+%>  ``nlines``          :   The output scalar MATLAB integer containing the
 %>                          number of records (lines) in the specified input ``idname``.
 %>
 %>  \interface{numlines}

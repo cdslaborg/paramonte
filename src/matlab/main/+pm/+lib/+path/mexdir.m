@@ -11,7 +11,7 @@
 %>                          (**optional**. If missing, all detected paths will be returned.)
 %>
 %>  \return
-%>  `mexdirs`           :   The output vector of MATLAB strings containing the **unique**
+%>  ``mexdirs``         :   The output vector of MATLAB strings containing the **unique**
 %>                          directory path(s) to the ParaMonte library MEX shared files.<br>
 %>                          The output ``mexdirs`` will be an empty list
 %>                          if no such paths are found.<br>

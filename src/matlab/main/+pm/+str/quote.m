@@ -4,10 +4,10 @@
 %>  marks while escaping any instances of double quote in the Fortran/MATLAB style,
 %>  by duplicating every quotation mark within the string.
 %>
-%>  \param[in]  str :   The input scalar MATLAB string to be doubly quoted.
+%>  \param[in]  str :   The input scalar MATLAB string to be doubly quoted.<br>
 %>
 %>  \return
-%>  `strQuoted`     :   The output scalar MATLAB string containing the doubly-quoted escaped input string.
+%>  ``strQuoted``   :   The output scalar MATLAB string containing the doubly-quoted escaped input string.<br>
 %>
 %>  \interface{quote}
 %>  \code{.m}

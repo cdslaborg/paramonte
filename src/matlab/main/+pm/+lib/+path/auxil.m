@@ -3,8 +3,8 @@
 %>  the ``auxil`` directory of the ParaMonte library package.
 %>
 %>  \return
-%>  `path`  :   The output scalar MATLAB string containing the path to
-%>              the ``auxil`` directory of the ParaMonte library package.
+%>  ``path``    :   The output scalar MATLAB string containing the path to
+%>                  the ``auxil`` directory of the ParaMonte library package.
 %>
 %>  \interface{auxil}
 %>  \code{.m}

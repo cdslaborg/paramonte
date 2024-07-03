@@ -1,12 +1,14 @@
 %>  \brief
-%>  Finalize the ParaMonte MATLAB sampler simulation run.
+%>  Finalize the ParaMonte MATLAB sampler simulation run and return nothing.
 %>
-%>  \return
-%>  `None`
-%>  \final{getBorder}
+%>  \note
+%>  This is an internal method of the class [pm.sampling.Sampler](@ref Sampler).
+%>
+%>  \final{finalize}
 %>
 %>  \author
 %>  \JoshuaOsborne, May 21 2024, 12:10 AM, University of Texas at Arlington<br>
+%>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin%>
 function finalize(self)
     if  self.partype == "openmp"
         if ~self.silent

@@ -11,7 +11,7 @@
 %>                              parent object attributes, before calling the ``make()`` method.
 %>
 %>  \return
-%>  `self`                  :   The output scalar object of class ``pm.vis.figure.Tiling``.
+%>  ``self``                :   The output scalar object of class ``pm.vis.figure.Tiling``.
 %>
 %>  \interface{Tiling}
 %>  \code{.m}

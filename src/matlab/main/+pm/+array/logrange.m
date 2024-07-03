@@ -15,7 +15,7 @@
 %>                          (**optional**, default = ``100``)
 %>
 %>  \return
-%>  `array`             :   The output vector of MATLAB real values containing
+%>  ``array``           :   The output vector of MATLAB real values containing
 %>                          the set of naturally logarithmically-spaced integer
 %>                          values in the specified input range.
 %>

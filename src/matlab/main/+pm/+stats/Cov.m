@@ -73,7 +73,7 @@ classdef Cov < pm.matlab.Handle
         %>                          (**optional**, default = ``"pearson"``)
         %>
         %>  \return
-        %>  `self`              :   The output object of class ``pm.stats.Cov``.
+        %>  ``self``            :   The output object of class ``pm.stats.Cov``.
         %>
         %>  \interface{Cov}
         %>  \code{.m}
@@ -103,24 +103,23 @@ classdef Cov < pm.matlab.Handle
         %>  Return the covariance matrix of the input data.
         %>
         %>  \details
-        %>  This is a dynamic method of the ``pm.stats.Cov`` class.
+        %>  This is a dynamic method of the ``pm.stats.Cov`` class.<br>
         %>  This method automatically stores any input information
-        %>  in the corresponding components of the parent object.
+        %>  in the corresponding components of the parent object.<br>
         %>  However, any components of the parent object
         %>  corresponding to the output of this method
-        %>  must be set explicitly manually.
+        %>  must be set explicitly manually.<br>
         %>
         %>  \param[in]  df      :   The input MATLAB matrix or table of rank ``2``
         %>                          containing the data as ``ncol`` columns of ``nrow``
-        %>                          observations whose covariance matrix must be computed.
-        %>  
+        %>                          observations whose covariance matrix must be computed.<br>
         %>  \param[in]  method  :   The input scalar MATLAB string that can be either:<br>
-        %>                          "pearson"   : for computing the Pearson covariance matrix of the input data.
+        %>                          "pearson"   : for computing the Pearson covariance matrix of the input data.<br>
         %>                          "spearman"  : for computing the Spearman rank covariance matrix of the input data.<br>
         %>                          (**optional**, default = ``"pearson"``)
         %>
         %>  \return
-        %>  `val`               :   The output MATLAB ``table`` containing the covariance matrix.
+        %>  ``val``             :   The output MATLAB ``table`` containing the covariance matrix.<br>
         %>
         %>  \interface{get}
         %>  \code{.m}

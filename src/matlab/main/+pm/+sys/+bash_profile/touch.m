@@ -4,11 +4,11 @@
 %>  If the file does not exist, create it. and add to it
 %>  If the file does not contain the Bash to source the
 %>  contents of the ``.bashrc`` file, then add it to
-%>  the ``.bash_profile`` and return its contents.
+%>  the ``.bash_profile`` and return its contents.<br>
 %>
 %>  \return
-%>  `str`   :   The output scalar MATLAB string containing
-%>              the contents of the ``.bash_profile``.
+%>  ``str`` :   The output scalar MATLAB string containing
+%>              the contents of the ``.bash_profile``.<br>
 %>
 %>  \interface{touch}
 %>  \code{.m}

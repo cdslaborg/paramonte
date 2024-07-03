@@ -13,7 +13,7 @@
 %>                          (**optional**, default = ``""``)
 %>
 %>  \return
-%>  `str`               :   The output scalar MATLAB string containing
+%>  ``str``             :   The output scalar MATLAB string containing
 %>                          an output file name based on the current date and time.<br>
 %>                          The following represents the template used across
 %>                          all programming language environments:<br>

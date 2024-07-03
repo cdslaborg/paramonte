@@ -1,35 +1,38 @@
 %>  \brief
-%>  Return a list of objects of class ``pm.sampling.FileContentsRestartDRAM``
+%>  Return a list of objects of class [pm.sampling.FileContentsRestartDRAM](@ref FileContentsRestartDRAM)
 %>  containing the content(s) of the ParaMonte simulation output restart
 %>  file(s) whose path(s) match the specified input ``pattern`` or the
-%>  simulation specification ``sampler.spec.outputFileName``.
+%>  simulation specification ``sampler.spec.outputFileName``.<br>
 %>
 %>  \warning
 %>  This method is to be only used for post-processing of the output
-%>  restart file(s) of an already finished simulation. Although possible,
-%>  this method is NOT meant to be called by all processes
-%>  in MPI-parallel simulations.
+%>  restart file(s) of an already finished simulation.<br>
+%>  Although possible, this method is NOT meant
+%>  to be called by all processes in
+%>  MPI-parallel simulations.<br>
 %>
 %>  \warning
-%>  Currently, only the restart output files in ASCII format can be read via this method.
-%>  The binary restart files are not meant to be parsed via this method.
+%>  Currently, only the restart output files in ASCII format can be read via this method.<br>
+%>  The binary restart files are not meant to be parsed via this method.<br>
 %>  To request for ASCII restart output files in simulations,
 %>  set the input simulation specification,
-%>  
-%>      SAMPLER.spec.restartFileFormat = "ascii",
-%>  
-%>  where SAMPLER can be an instance of any one of the ParaMonte
-%>  sampler classes, such as ParaDRAM().
+%>
+%>  \code{.m}
+%>      sampler.spec.restartFileFormat = "ascii"
+%>  \endcode
+%>
+%>  where ``sampler`` can be an instance of any one of the ParaMonte
+%>  sampler classes, such as [pm.sampling.Paradram](@ref Paradram).<br>
 %>
 %>  \warning
-%>  Avoid using this routine for very large long simulations.
+%>  Avoid using this routine for very large long simulations.<br>
 %>  Reading the full restart file of a large-scale simulation problem
-%>  can be extremely memory-intensive.
+%>  can be extremely memory-intensive.<br>
 %>
 %>  \param[in]  pattern :   The input scalar MATLAB string containing the pattern matching
-%>                          the desired restart file(s) whose contents is to be read.
+%>                          the desired restart file(s) whose contents is to be read.<br>
 %>                          The specified ``pattern`` only needs to partially identify
-%>                          the name of the simulation to which the restart file belongs.
+%>                          the name of the simulation to which the restart file belongs.<br>
 %>                          For example, specifying ``"./mydir/mysim"`` as input will
 %>                          lead to a search for file(s) beginning with "mysim" and
 %>                          ending with ``"_restart.txt"`` inside the directory ``"./mydir/"``.<br>
@@ -42,12 +45,12 @@
 %>                          for any possible candidate files with the appropriate suffix
 %>                          in the current working directory.<br>
 %>                          (optional, default = ``sampler.spec.outputFileName`` or ``"./"``)
-%>  
+%>
 %>  \return
-%>  `restartList`       :   The output MATLAB cell array of objects
-%>                          of class ``pm.sampling.FileContentsRestart``,
+%>  ``restartList``     :   The output MATLAB cell array of objects
+%>                          of class [pm.sampling.FileContentsRestart](@ref FileContentsRestart),
 %>                          each of which corresponds to the contents
-%>                          of a unique restart file.
+%>                          of a unique restart file.<br>
 %>
 %>  \interface{readRestart}
 %>  \code{.m}
@@ -59,7 +62,12 @@
 %>
 %>  \endcode
 %>
+%>  \note
+%>  See the documentation of the sampler subclasses
+%>  (e.g., [pm.sampling.Paradram](@ref Paradram)) for example usage in action.<br>
+%>
 %>  \example{readRestart}
+%>  \code{.m}
 %>
 %>      sampler.readRestart("./out/test_run_");
 %>
@@ -74,6 +82,8 @@
 %>      sampler.spec.outputFileName = "./out/test_run_";
 %>      sampler.spec.outputSeparator = ",";
 %>      sampler.readRestart();
+%>
+%>  \endcode
 %>
 %>  \final{readRestart}
 %>

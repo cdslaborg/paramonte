@@ -1,19 +1,19 @@
 %>  \brief
-%>  Return a list of objects of class ``pm.sampling.FileContentsSample``
+%>  Return a list of objects of class [pm.sampling.FileContentsSample](@ref FileContentsSample)
 %>  containing the content(s) of the ParaMonte simulation output sample
 %>  file(s) whose path(s) match the specified input ``pattern`` or the
-%>  simulation specification ``sampler.spec.outputFileName``.
+%>  simulation specification ``sampler.spec.outputFileName``.<br>
 %>
 %>  \warning
-%>  This method is to be only used for post-processing of the output
-%>  sample file(s) of an already finished simulation. Although possible,
-%>  this method is NOT meant to be called by all processes
-%>  in MPI-parallel simulations.
-%>  
+%>  This method is to be only used for post-processing of the
+%>  output sample file(s) of an already finished simulation.<br>
+%>  Although possible, this method is NOT meant to be called
+%>  by all processes in MPI-parallel simulations.<br>
+%>
 %>  \param[in]  pattern :   The input scalar MATLAB string containing the pattern matching
-%>                          the desired sample file(s) whose contents is to be read.
+%>                          the desired sample file(s) whose contents is to be read.<br>
 %>                          The specified ``pattern`` only needs to partially identify
-%>                          the name of the simulation to which the sample file belongs.
+%>                          the name of the simulation to which the sample file belongs.<br>
 %>                          For example, specifying ``"./mydir/mysim"`` as input will
 %>                          lead to a search for file(s) beginning with "mysim" and
 %>                          ending with ``"_sample.txt"`` inside the directory ``"./mydir/"``.<br>
@@ -26,15 +26,15 @@
 %>                          for any possible candidate files with the appropriate suffix
 %>                          in the current working directory.<br>
 %>                          (optional, default = ``sampler.spec.outputFileName`` or ``"./"``)
-%>  
-%>  \param[in]  sep     :   The input MATLAB string containing the field separator used in the file(s).
+%>
+%>  \param[in]  sep     :   The input MATLAB string containing the field separator used in the file(s).<br>
 %>                          (optional, default = ``sampler.spec.outputSeparator`` or automatically inferred.)
 %>
 %>  \return
-%>  `sampleList`        :   The output MATLAB cell array of objects
-%>                          of class ``pm.sampling.FileContentsSample``,
+%>  ``sampleList``      :   The output MATLAB cell array of objects
+%>                          of class [pm.sampling.FileContentsSample](@ref FileContentsSample),
 %>                          each of which corresponds to the contents
-%>                          of a unique sample file.
+%>                          of a unique sample file.<br>
 %>
 %>  \interface{readSample}
 %>  \code{.m}
@@ -49,7 +49,12 @@
 %>
 %>  \endcode
 %>
+%>  \note
+%>  See the documentation of the sampler subclasses
+%>  (e.g., [pm.sampling.Paradram](@ref Paradram)) for example usage in action.<br>
+%>
 %>  \example{readSample}
+%>  \code{.m}
 %>
 %>      sampler.readSample("./out/test_run_");
 %>
@@ -65,13 +70,14 @@
 %>      sampler.spec.outputSeparator = ",";
 %>      sampler.readSample();
 %>
+%>  \endcode
+%>
 %>  \final{readSample}
 %>
 %>  \author
 %>  \JoshuaOsborne, May 21 2024, 12:38 AM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
-%>
 function sampleList = readSample(self, pattern, sep)
     if nargin < 3
         if 0 < pm.array.len(self.spec.outputSeparator)

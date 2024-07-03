@@ -8,24 +8,22 @@
 %>                          representing the mean of a Multivariate Uniform
 %>                          distribution in ``size(mean)`` dimensional space.
 %>                          (**optional**. default = ``[]``. It must be present if ``cholow`` is missing.)
-%>  
 %>  \param[in]  cholow  :   The input square matrix of MATLAB ``real``,
 %>                          representing the lower-triangle of the Cholesky
 %>                          factorization of the Gramian matrix of the target
 %>                          Multivariate Uniform distribution in ``numel(mean)`` dimensional space.
 %>                          This argument can be obtained by passing the Gramian matrix ``gramian``
-%>                          of the distribution to the MATLAB intrinsic function ``chol(gramian, "lower")``.
+%>                          of the distribution to the MATLAB intrinsic function ``chol(gramian, "lower")``.<br>
 %>                          (**optional**. default = ``[]``. It must be present if ``mean`` is missing.)
-%>  
 %>  \param[in]  s1      :   The input vector of MATLAB ``real``,
 %>                          representing the mean of a Multivariate Uniform
-%>                          distribution in ``size(mean)`` dimensional space.
+%>                          distribution in ``size(mean)`` dimensional space.<br>
 %>                          (**optional**. default = ``1``)
 %>
 %>  \return
-%>  `rand`              :   The output vector of MATLAB ``real`` of
+%>  ``rand``            :   The output vector of MATLAB ``real`` of
 %>                          size ``(size(mean), 1)`` containing a random vector
-%>                          from the specified Multivariate Uniform distribution.
+%>                          from the specified Multivariate Uniform distribution.<br>
 %>
 %>  \interface{rand}
 %>  \code{.m}

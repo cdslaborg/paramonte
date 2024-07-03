@@ -1,22 +1,22 @@
 %>  \brief
 %>  Return the lists of values and indices of elements
 %>  of the input ``strlist`` that match the input scalar
-%>  (or vector of) string(s) or integer(s) index ``keylist``.
+%>  (or vector of) string(s) or integer(s) index ``keylist``.<br>
 %>
-%>  \param[in]  strlist :   The input scalar (or vector of) MATLAB string(s).
+%>  \param[in]  strlist :   The input scalar (or vector of) MATLAB string(s).<br>
 %>  
 %>  \param[in]  keylist :   The input scalar (or vector of) MATLAB string(s)
 %>                          or cell array of char vectors or vector of MATLAB
 %>                          integers or a cell array of mix of the element
-%>                          types to match the input ``strlist``.
+%>                          types to match the input ``strlist``.<br>
 %>
 %>  \return
-%>  `loclist`           :   The output scalar (or vector of same size as ``keylist`` of)
+%>  ``loclist``         :   The output scalar (or vector of same size as ``keylist`` of)
 %>                          MATLAB integer(s) containing the location(s) of the occurrence(s)
 %>                          of the input ``keylist``.<br>
-%>  `namlist`           :   The output scalar (or vector of same size as ``keylist`` of)
+%>  ``namlist``         :   The output scalar (or vector of same size as ``keylist`` of)
 %>                          MATLAB string(s) containing the name(s) of the occurrence(s)
-%>                          of the input ``keylist``.
+%>                          of the input ``keylist``.<br>
 %>
 %>  \interface{locname}
 %>  \code{.m}

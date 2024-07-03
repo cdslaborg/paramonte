@@ -33,7 +33,7 @@
 %>                              parent object attributes, before calling the ``premake()`` method.<br>
 %>
 %>  \return
-%>  `self`                  :   The output scalar object of class ``pm.vis.axes.Axes``.
+%>  ``self``                :   The output scalar object of class ``pm.vis.axes.Axes``.
 %>
 %>  \interface{Axes}
 %>  \code{.m}

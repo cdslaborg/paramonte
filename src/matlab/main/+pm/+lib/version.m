@@ -8,7 +8,7 @@
 %>                          triplet format (e.g., ``"1.2.3"``).<br>
 %>
 %>  \return
-%>  `vernum`            :   The output scalar MATLAB string containing either:
+%>  ``vernum``          :   The output scalar MATLAB string containing either:
 %>                          <ol>
 %>                              <li>    the ParaMonte MATLAB version if
 %>                                      the input argument ``current`` is missing.<br>

@@ -11,7 +11,7 @@
 %>                          (**optional**. If missing, all detected paths will be returned.)
 %>
 %>  \return
-%>  `mexpaths`          :   The output vector of MATLAB strings containing the
+%>  ``mexpaths``        :   The output vector of MATLAB strings containing the
 %>                          path(s) to the ParaMonte library MEX shared files.<br>
 %>                          The output ``mexpaths`` will be an empty list
 %>                          if no such paths are found.<br>

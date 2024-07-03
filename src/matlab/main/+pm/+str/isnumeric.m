@@ -1,19 +1,19 @@
 %>  \brief
 %>  Return a scalar MATLAB logical that is ``true`` if and
-%>  only if the input string can be converted to a number.
+%>  only if the input string can be converted to a number.<br>
 %>
 %>  \details
-%>  The returned result is ``~isnan(str2double(str))``.
+%>  The returned result is ``~isnan(str2double(str))``.<br>
 %>  This is different from the result returned by
-%>  the MATLAB intrinsic ``isnumeric()``.
+%>  the MATLAB intrinsic ``isnumeric()``.<br>
 %>
 %>  \param[in]  str :   The input scalar MATLAB string
-%>                      whose conversion to numeric value is to be tested.
+%>                      whose conversion to numeric value is to be tested.<br>
 %>
 %>  \return
-%>  `itis`          :   The output scalar MATLAB logical that is ``true`` if and
+%>  ``itis``        :   The output scalar MATLAB logical that is ``true`` if and
 %>                      only if the input ``str`` contains text that is convertible
-%>                      to number(s), e.g., integer, real, complex.
+%>                      to number(s), e.g., integer, real, complex.<br>
 %>
 %>  \interface{isnumeric}
 %>  \code{.m}

@@ -76,7 +76,7 @@ classdef Timer < pm.matlab.Handle
         %>  This is the constructor of the class ``pm.timing.Timer``.
         %>
         %>  \return
-        %>  `self`  :   The output scalar object of class ``pm.timing.Timer``.
+        %>  ``self``:   The output scalar object of class ``pm.timing.Timer``.
         %>
         %>  \interface{Timer}
         %>  \code{.m}

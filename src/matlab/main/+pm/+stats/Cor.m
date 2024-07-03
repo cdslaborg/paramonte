@@ -74,7 +74,7 @@ classdef Cor < pm.matlab.Handle
         %>                          (**optional**, default = ``"pearson"``)
         %>
         %>  \return
-        %>  `self`              :   The output object of class ``pm.stats.Cor``.
+        %>  ``self``            :   The output object of class ``pm.stats.Cor``.
         %>
         %>  \interface{Cor}
         %>  \code{.m}
@@ -116,13 +116,15 @@ classdef Cor < pm.matlab.Handle
         %>                          observations whose correlation matrix must be computed.
         %>  
         %>  \param[in]  method  :   The input scalar MATLAB string that can be either:<br>
-        %>                          "pearson"   : for computing the Pearson correlation matrix of the input data.
-        %>                          "kendall"   : for computing the kendall rank correlation matrix of the input data.
-        %>                          "spearman"  : for computing the Spearman rank correlation matrix of the input data.<br>
+        %>                          <ol>
+        %>                              <li>    ``"pearson"``   : for computing the Pearson correlation matrix of the input data.
+        %>                              <li>    ``"kendall"``   : for computing the kendall rank correlation matrix of the input data.
+        %>                              <li>    ``"spearman"``  : for computing the Spearman rank correlation matrix of the input data.<br>
+        %>                          </ol>
         %>                          (**optional**, default = ``pm.stats.Cor.method``)
         %>
         %>  \return
-        %>  `val`               :   The output MATLAB ``table`` containing the correlation matrix.
+        %>  ``val``             :   The output MATLAB ``table`` containing the correlation matrix.<br>
         %>
         %>  \interface{get}
         %>  \code{.m}

@@ -104,7 +104,7 @@ classdef AutoCorr < pm.matlab.Handle
         %>                          (**optional**, default = ``1``)
         %>
         %>  \return
-        %>  `self`              :   The output object of class ``pm.stats.AutoCorr``.
+        %>  ``self``            :   The output object of class ``pm.stats.AutoCorr``.
         %>
         %>  \interface{AutoCorr}
         %>  \code{.m}
@@ -172,17 +172,15 @@ classdef AutoCorr < pm.matlab.Handle
         %>                          (**optional**, default = ``1``)
         %>
         %>  \return
-        %>  `val`               :   The output MATLAB ``table`` of size ``numlags + 1``
-        %>                          containing the autocorrelation from lag ``0`` to ``numlags``.
-        %>  
-        %>  `lag`               :   The output MATLAB ``table`` of size ``numlags + 1``
-        %>                          containing the autocorrelation lags from ``0`` to ``numlags``.
-        %>  
-        %>  `bnd`               :   The output MATLAB ``table`` of ``size(df, 2)`` rows by one column
+        %>  ``val``             :   The output MATLAB ``table`` of size ``numlags + 1``
+        %>                          containing the autocorrelation from lag ``0`` to ``numlags``.<br>
+        %>  ``lag``             :   The output MATLAB ``table`` of size ``numlags + 1``
+        %>                          containing the autocorrelation lags from ``0`` to ``numlags``.<br>
+        %>  ``bnd``             :   The output MATLAB ``table`` of ``size(df, 2)`` rows by one column
         %>                          containing the absolute ``numstd``-significance level of the
         %>                          computed autocorrelations. Any autocorrelation value whose
         %>                          magnitude is smaller than the corresponding ``bnd`` element
-        %>                          can be considered insignificant and mere fluctuation.
+        %>                          can be considered insignificant and mere fluctuation.<br>
         %>
         %>  \interface{get}
         %>  \code{.m}

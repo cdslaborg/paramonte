@@ -13,10 +13,10 @@
 %>                              (**optional**, default = ``""``)
 %>
 %>  \return
-%>  `itis`                  :   The output scalar MATLAB logical that is ``true`` if the
+%>  ``itis``                :   The output scalar MATLAB logical that is ``true`` if the
 %>                              user response to a question on the MATLAB command prompt
 %>                              is ``Y`` or ``y``, representing YES, otherwise `false`
-%>                              if the user response is ``N`` or ``n``.
+%>                              if the user response is ``N`` or ``n``.<br>
 %>
 %>  \interface{isyes}
 %>  \code{.m}

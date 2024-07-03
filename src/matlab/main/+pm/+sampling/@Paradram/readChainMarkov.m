@@ -12,7 +12,7 @@
 %>                          (**optional**, The default is set by [pm.sampling.Sampler.readChain](@ref Sampler::readChain))
 %>
 %>  \return
-%>  `chainMarkovList`   :   The output cell array of objects of class
+%>  ``chainMarkovList`` :   The output cell array of objects of class
 %>                          [pm.sampling.FileContentsChain](@ref FileContentsChain),
 %>                          each of which corresponds to the contents of a unique chain file.<br>
 %>                          Try ``doc pm.sampling.FileContentsChain`` to see the documentation

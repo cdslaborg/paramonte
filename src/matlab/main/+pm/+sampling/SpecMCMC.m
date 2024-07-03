@@ -14,7 +14,7 @@
 %>  See below for information on the methods.
 %>
 %>  \return
-%>  An object of class ``pm.sampling.SpecMCMC``.
+%>  An object of class [pm.sampling.SpecMCMC](@ref SpecMCMC).
 %>
 %>  \interface{SpecMCMC}
 %>  \code{.m}
@@ -58,7 +58,7 @@ classdef SpecMCMC < pm.sampling.SpecBase
 
     methods(Access = public)
         %>  \brief
-        %>  Construct and return an object of class ``pm.sampling.SpecMCMC``.
+        %>  Construct and return an object of class [pm.sampling.SpecMCMC](@ref SpecMCMC).
         %>
         %>  \param[in]  method  :   The input scalar MATLAB string containing
         %>                          the name of the specific ParaMonte sampler
@@ -71,7 +71,7 @@ classdef SpecMCMC < pm.sampling.SpecBase
         %>                          (**optional**, default = ``false``)
         %>  
         %>  \return
-        %>  The output scalar object of class ``pm.sampling.SpecMCMC``.
+        %>  The output scalar object of class [pm.sampling.SpecMCMC](@ref SpecMCMC).
         %>
         %>  \interface{SpecMCMC}
         %>  \code{.m}
@@ -107,16 +107,16 @@ classdef SpecMCMC < pm.sampling.SpecBase
     methods(Hidden)
         %>  \brief
         %>  Ensure all specification properties of the parent object are sensible.
-        %>  This is a dynamic method of the class ``pm.sampling.SpecMCMC``.
+        %>  This is a dynamic method of the class [pm.sampling.SpecMCMC](@ref SpecMCMC).
         %>
-        %>  \param[in]  ndim    :   The input scalar MATLAB integer containing the
-        %>                          number of dimensions of the domain of the
-        %>                          object function that is to be explored.
+        %>  \param[in]  ndim    :   The input scalar MATLAB integer containing
+        %>                          the number of dimensions of the domain of the
+        %>                          object function that is to be explored.<br>
         %>
         %>  \return
-        %>  `entries`           :   The output scalar MATLAB string containing
+        %>  ``entries``         :   The output scalar MATLAB string containing
         %>                          the simulation specifications converted to
-        %>                          a Fortran-namelist-compatible entry.
+        %>                          a Fortran-namelist-compatible entry.<br>
         %>
         %>  \interface{getEntriesNML}
         %>  \code{.m}

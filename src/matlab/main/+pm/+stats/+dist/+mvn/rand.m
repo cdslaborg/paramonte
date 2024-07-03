@@ -11,18 +11,18 @@
 %>                          factorization of the covariance matrix of the target 
 %>                          Multivariate Normal distribution in ``numel(mean)`` dimensional space.
 %>                          This argument can be obtained by passing the covariance matrix ``covmat``
-%>                          of the distribution to the MATLAB intrinsic function ``chol(covmat, "lower")``.
+%>                          of the distribution to the MATLAB intrinsic function ``chol(covmat, "lower")``.<br>
 %>                          (**optional**. default = ``[]``. It must be present if ``mean`` is missing.)
 %>  
 %>  \param[in]  s1      :   The input vector of MATLAB ``real``,
 %>                          representing the mean of a Multivariate Normal
-%>                          distribution in ``size(mean)`` dimensional space.
+%>                          distribution in ``size(mean)`` dimensional space.<br>
 %>                          (**optional**. default = ``1``)
 %>  
 %>  \return
-%>  `rand`              :   The output vector of MATLAB ``real`` of
+%>  ``rand``            :   The output vector of MATLAB ``real`` of
 %>                          size ``(size(mean), 1)`` containing a random vector
-%>                          from the specified Multivariate Normal distribution.
+%>                          from the specified Multivariate Normal distribution.<br>
 %>
 %>  \interface{rand}
 %>  \code{.m}

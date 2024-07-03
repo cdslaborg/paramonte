@@ -5,25 +5,27 @@
 %>  \details
 %>  The output of this function is what is typically returned
 %>  by the Unix command ``command -v mpiexec`` or the Windows CMD
-%>  command ``where mpiexec``.
+%>  command ``where mpiexec``.<br>
 %>
 %>  \warning
 %>  Note that this function intentionally skips any ``mpiexec``
-%>  path that is installed by and within the MATLAB binary directory.
+%>  path that is installed by and within the MATLAB binary directory.<br>
 %>
 %>  \param[in]  vendor  :   The input scalar MATLAB string, containing the MPI
-%>                          library vendor that should match the ``mpiexec`` binary.
+%>                          library vendor that should match the ``mpiexec`` binary.<br>
 %>                          Possible values are:<br>
-%>                          -   "Intel"     :   representing the Intel MPI library.
-%>                          -   "MPICH"     :   representing the MPICH MPI library.
-%>                          -   "OpenMPI"   :   representing the OpenMPI library.
+%>                          <ol>
+%>                              <li>    ``"Intel"``     :   representing the Intel MPI library.
+%>                              <li>    ``"MPICH"``     :   representing the MPICH MPI library.
+%>                              <li>    ``"OpenMPI"``   :   representing the OpenMPI library.
+%>                          </ol>
 %>                          (**optional**,  default = ``""`` representing all possible vendors.)
 %>
 %>  \return
-%>  `path`              :   The output MATLAB string containing the paths to
-%>                          the first ``mpiexec`` executable binary found in system path.
+%>  ``path``            :   The output MATLAB string containing the paths to
+%>                          the first ``mpiexec`` executable binary found in system path.<br>
 %>                          If the ``mpiexec`` does not exist or match the specified ``vendor``,
-%>                          the output will be an empty string ``""``.
+%>                          the output will be an empty string ``""``.<br>
 %>
 %>
 %>  \interface{which}

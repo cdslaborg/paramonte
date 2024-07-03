@@ -42,7 +42,7 @@ classdef Cascade < pm.matlab.Handle
         %>  of the ``plot`` component of the parent object.
         %>
         %>  \return
-        %>  `self`                  :   The output scalar object of class ``pm.vis.cascade.Cascade``.
+        %>  ``self``                :   The output scalar object of class ``pm.vis.cascade.Cascade``.
         %>
         %>  \interface{Cascade}
         %>  \code{.m}

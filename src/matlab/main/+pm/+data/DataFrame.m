@@ -42,7 +42,7 @@ classdef DataFrame < pm.data.DataRef
         %>                          (**optional**. default = ``table(zeros(0, 0))``)
         %>
         %>  \return
-        %>  `self`              :   The output scalar object of class ``pm.data.DataFrame``.
+        %>  ``self``            :   The output scalar object of class ``pm.data.DataFrame``.
         %>
         %>  \interface{DataFrame}
         %>  \code{.m}
@@ -85,7 +85,7 @@ classdef DataFrame < pm.data.DataRef
         %>  in the MATLAB computing language.<br>
         %>
         %>  \return
-        %>  `df`    :   The output scalar MATLAB table a full copy of the dataframe
+        %>  ``df``  :   The output scalar MATLAB table a full copy of the dataframe
         %>              contained in the user-specified input ``dfref`` passed
         %>              to the constructor of the parent object.<br>
         %>
@@ -124,8 +124,8 @@ classdef DataFrame < pm.data.DataRef
         %>  useful for specifying a range of indices of columns in visualization tasks.<br>
         %>
         %>  \return
-        %>  `count` :   The output scalar MATLAB whole-number representing the number
-        %>              of columns in the ``dfref`` component of the parent object.
+        %>  ``count``   :   The output scalar MATLAB whole-number representing the number
+        %>                  of columns in the ``dfref`` component of the parent object.
         %>
         %>  \interface{ncol}
         %>  \code{.m}
@@ -161,8 +161,8 @@ classdef DataFrame < pm.data.DataRef
         %>  \param[in] `None`
         %>
         %>  \return
-        %>  `count` :   The output scalar MATLAB whole-number representing the number
-        %>              of rows in the ``dfref`` component of the parent object.<br>
+        %>  ``count``   :   The output scalar MATLAB whole-number representing the number
+        %>                  of rows in the ``dfref`` component of the parent object.<br>
         %>
         %>  \interface{nrow}
         %>  \code{.m}
@@ -219,7 +219,7 @@ classdef DataFrame < pm.data.DataRef
         %>                          (**optional**, default = ``1``)
         %>
         %>  \return
-        %>  `indices`           :   The output vector of MATLAB real values containing
+        %>  ``indices``         :   The output vector of MATLAB real values containing
         %>                          the set of naturally logarithmically-spaced integer
         %>                          values in the specified input range.<br>
         %>

@@ -1,18 +1,20 @@
 %>  \brief
 %>  Return the a MATLAB string containing the MPI library vendor
-%>  name corresponding to the input ``mpiexec`` system path.
+%>  name corresponding to the input ``mpiexec`` system path.<br>
 %>
 %>  \param[in]  path    :   The input scalar MATLAB string,
 %>                          containing the path to the ``mpiexec``
-%>                          binary whose vendor is to be determined.
+%>                          binary whose vendor is to be determined.<br>
 %>                          (**optional**,  default = ``pm.sys.path.mpiexec.which()``)
 %>
 %>  \return
-%>  `name`              :   The output MATLAB string containing the MPI library vendor name ALL in lower-case.
+%>  ``name``            :   The output MATLAB string containing the MPI library vendor name ALL in lower-case.<br>
 %>                          Possible values are:<br>
-%>                          -   ``"Intel"``     :   representing the Intel MPI library.
-%>                          -   ``"MPICH"``     :   representing the MPICH MPI library.
-%>                          -   ``"OpenMPI"``   :   representing the OpenMPI library.
+%>                          <ol>
+%>                              <li>    ``"Intel"``     :   representing the Intel MPI library.
+%>                              <li>    ``"MPICH"``     :   representing the MPICH MPI library.
+%>                              <li>    ``"OpenMPI"``   :   representing the OpenMPI library.
+%>                          </ol>
 %>                          If the vendor name cannot be identified, the output will be empty ``[]``.
 %>
 %>  \interface{vendor}

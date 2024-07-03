@@ -17,10 +17,10 @@
 %>                          input ``cmat``.
 %>
 %>  \return
-%>  `vmat`              :   The output MATLAB matrix of the same type and kind
+%>  ``vmat``            :   The output MATLAB matrix of the same type and kind
 %>                          as the input ``cmat``, containing the ``cmat`` that
 %>                          is unrolled along the specified axis ``dim`` using
-%>                          the input weights.
+%>                          the input weights.<br>
 %>
 %>  \interface{verbose}
 %>  \code{.m}

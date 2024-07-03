@@ -13,7 +13,7 @@
 %>                          Note that **all values are case-insensitive**.<br>
 %>
 %>  \return
-%>  `str`               :   The output scalar MATLAB string containing the MPI
+%>  ``str``             :   The output scalar MATLAB string containing the MPI
 %>                          library name corresponding to the input MPI ``vendor``.<br>
 %>                          If the input ``vendor`` is not supported, the default
 %>                          string ``"mpi"`` is returned as the value ``str``.<br>

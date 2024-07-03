@@ -28,7 +28,7 @@
 %>                          (**optional**. If missing, all possibilities are considered and the largest inferred ``count`` is returned.)
 %>
 %>  \return
-%>  `count`             :   The output MATLAB scalar integer containing the number of
+%>  ``count``           :   The output MATLAB scalar integer containing the number of
 %>                          MPI processes launched by the ``mpiexec`` command or ``1``
 %>                          if no ``mpiexec`` invocation has occurred or the routine
 %>                          fails to load any MPI-enabled ParaMonte library.<br>

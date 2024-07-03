@@ -12,10 +12,10 @@
 %>                          in sequence as element of the cell array.
 %>
 %>  \return
-%>  `hashnew`           :   The output cell array of even number of elements
+%>  ``hashnew``         :   The output cell array of even number of elements
 %>                          containing the input pair list and ``(key, val)`` pair.<br>
 %>                          If the input ``key`` exists in the input ``hashmap``,
-%>                          the input ``(key, val)`` pair will not be added.
+%>                          the input ``(key, val)`` pair will not be added.<br>
 %>
 %>  \interface{repKeyVal}
 %>  \code{.m}

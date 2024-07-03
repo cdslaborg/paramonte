@@ -22,9 +22,9 @@
 %>                              (**optional**, default = ``false``)
 %>
 %>  \return
-%>  `hashmap`               :   The output cell array of even number of elements
+%>  ``hashmap``             :   The output cell array of even number of elements
 %>                              containing the field names and values of the input ``object``
-%>                              as ``(key, val)`` pairs stored sequentially as the cell elements.
+%>                              as ``(key, val)`` pairs stored sequentially as the cell elements.<br>
 %>
 %>  \interface{struct2hash}
 %>  \code{.m}

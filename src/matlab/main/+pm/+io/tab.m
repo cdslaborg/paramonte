@@ -7,7 +7,7 @@
 %>  consistency to the ParaMonte library IO tasks.
 %>
 %>  \return
-%>  `str`   :   The output scalar MATLAB string containing ``4``
+%>  ``str`` :   The output scalar MATLAB string containing ``4``
 %>              blank characters equivalent to a tab character.
 %>
 %>  \interface{tab}

@@ -27,7 +27,7 @@ classdef Paradram < pm.sampling.Sampler
         %>  all ParaDRAM simulation specifications can be set after creating the object.
         %>
         %>  \return
-        %>  `sampler`   :   The output scalar object of class [pm.sampling.Paradram](@ref Paradram).
+        %>  ``sampler`` :   The output scalar object of class [pm.sampling.Paradram](@ref Paradram).
         %>
         %>  \interface{Paradram}
         %>  \code{.m}

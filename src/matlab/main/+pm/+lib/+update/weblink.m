@@ -9,7 +9,7 @@
 %>                          (**optional**, default = ``false``)
 %>
 %>  \return
-%>  `str`               :   The output scalar MATLAB string containing the weblink to the latest
+%>  ``str``             :   The output scalar MATLAB string containing the weblink to the latest
 %>                          available version of the ParaMonte library that is newer than the
 %>                          existing ParaMonte library version on the current system.<br>
 %>                          The output ``str`` will be set to empty string ``""``

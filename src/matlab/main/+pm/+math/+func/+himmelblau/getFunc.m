@@ -31,7 +31,7 @@
 %>                      of Himmelblau function at which the function value must be computed.
 %>
 %>  \return
-%>  `func`          :   The output scalar or array of the same rank and shape
+%>  ``func``        :   The output scalar or array of the same rank and shape
 %>                      as the input array-like arguments representing the value
 %>                      of the Himmelblau function at the specified input ``x`` and ``y``.
 %>

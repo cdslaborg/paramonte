@@ -53,7 +53,7 @@ classdef Tile < pm.vis.figure.Tiling
         %>  of the ``template`` component of the parent object.
         %>
         %>  \return
-        %>  `self`                  :   The output scalar object of class ``pm.vis.tile.Tile``.
+        %>  ``self``                :   The output scalar object of class ``pm.vis.tile.Tile``.
         %>
         %>  \interface{Tile}
         %>  \code{.m}

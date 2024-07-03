@@ -15,7 +15,7 @@
 %>                          (**optional**, default = ``50``.)
 %>
 %>  \return
-%>  `bcrd`              :   The output matrix of MATLAB doubles of shape ``[npnt, 2]``
+%>  ``bcrd``            :   The output matrix of MATLAB doubles of shape ``[npnt, 2]``
 %>                          containing the coordinates of a set of ``npnt`` points on
 %>                          the boundary of the target 2D ellipsoid.<br>
 %>

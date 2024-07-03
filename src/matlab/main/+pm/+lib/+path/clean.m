@@ -1,6 +1,6 @@
 %>  \brief
 %>  Remove all paths that contain the ParaMonte
-%>  `lib` directory from the MATLAB ``path`` variable.
+%>  ``lib`` directory from the MATLAB ``path`` variable.
 %>
 %>  \details
 %>  This action is particularly vital for correct handling

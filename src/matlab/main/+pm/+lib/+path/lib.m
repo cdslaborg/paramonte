@@ -3,8 +3,8 @@
 %>  the ``lib`` directory of the ParaMonte library package.
 %>
 %>  \return
-%>  `path`  :   The output scalar MATLAB string containing the path to
-%>              the ``lib`` directory of the ParaMonte library package.
+%>  ``path``    :   The output scalar MATLAB string containing the path to
+%>                  the ``lib`` directory of the ParaMonte library package.
 %>
 %>  \interface{lib}
 %>  \code{.m}

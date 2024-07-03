@@ -54,7 +54,7 @@ classdef DataRef < pm.matlab.Handle
         %>                          (**optional**. default = ``[]``)
         %>
         %>  \return
-        %>  `self`              :   The output scalar object of class ``pm.data.DataRef``.
+        %>  ``self``            :   The output scalar object of class ``pm.data.DataRef``.
         %>
         %>  \interface{DataRef}
         %>  \code{.m}
@@ -93,7 +93,7 @@ classdef DataRef < pm.matlab.Handle
         %>  in the MATLAB computing language.<br>
         %>
         %>  \return
-        %>  `df`    :   The output scalar MATLAB table a full copy of the data (reference)
+        %>  ``df``  :   The output scalar MATLAB table a full copy of the data (reference)
         %>              contained in the user-specified input ``dfref`` passed
         %>              to the constructor of the parent object.<br>
         %>

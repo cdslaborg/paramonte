@@ -1,50 +1,57 @@
 %>  \brief
-%>  Return the Get absolute canonical path of a file or folder.
+%>  Return the Get absolute canonical path of a file or folder.<br>
+%>
+%>  \details
 %>  Absolute path names are safer than relative paths, e.g. when
 %>  a GUI or TIMER callback changes the current directory.
 %>  Only canonical paths without ``"."`` and ``".."``
 %>  can be recognized uniquely.<br>
 %>  Long path names (>259 characters) require a magic initial
 %>  key ``"\\?\"`` to be handled by Windows API functions, e.g. for
-%>  MATLAB intrinsic routines ``fopen()``, ``dir()`` and ``exist()``.
+%>  MATLAB intrinsic routines ``fopen()``, ``dir()`` and ``exist()``.<br>
 %>
 %>  \note
-%>  Some functions of the Windows-API still do not support long file names.
-%>  E.g. the Recycler and the Windows Explorer fail even with the magic ``'\\?\'`` prefix.
-%>  Some functions of MATLAB accept 260 characters (value of MAX_PATH), some at 259 already.
+%>  Some functions of the Windows-API still do not support long file names.<br>
+%>  E.g. the Recycler and the Windows Explorer fail even with the magic ``'\\?\'`` prefix.<br>
+%>  Some functions of MATLAB accept 260 characters (value of MAX_PATH), some at 259 already.<br>
 %>  The ``'fat'`` style is useful e.g., when MATLAB ``dir()`` command is called for a folder
-%>  with less than ``260`` characters, but together with the file name this limit is exceeded.
-%>  Then, ``"dir(pm.sys.path.abs([folder, '\*.*'], 'fat'))"`` helps.
+%>  with less than ``260`` characters, but together with the file name this limit is exceeded.<br>
+%>  Then, ``"dir(pm.sys.path.abs([folder, '\*.*'], 'fat'))"`` helps.<br>
 %>
 %>  \devnote
-%>  A MEX version of this function developed by Jan Simon performs much faster on Windows.
+%>  A MEX version of this function developed by Jan Simon performs much faster on Windows.<br>
 %>  Difference between M- and Mex-version:<br>
-%>      - Mex does not work under MacOS/Unix.
-%>      - Mex calls Windows API function pm.sys.path.abs.
-%>      - Mex is much faster.
+%>  <ol>
+%>      <li>    Mex does not work under MacOS/Unix.
+%>      <li>    Mex calls Windows API function pm.sys.path.abs.
+%>      <li>    Mex is much faster.
+%>  </ol>
 %>
 %>  \param[in]  path    :   The input argument that can be either,<br>
-%>                              -   a scalar MATLAB string or character, or,
-%>                              -   a MATLAB cell array of strings or character values,
-%>                          containing the absolute or relative name(s) of a file(s) or folder(s).
+%>                          <ol>
+%>                              <li>    a scalar MATLAB string or character, or,
+%>                              <li>    a MATLAB cell array of strings or character values,
+%>                          </ol>
+%>                          containing the absolute or relative name(s) of a file(s) or folder(s).<br>
 %>                          The path need not exist. Unicode strings, UNC paths and long
-%>                          names are supported.
-%>  
+%>                          names are supported.<br>
 %>  \param[in]  style   :   The optional input scalar MATLAB string or character,
-%>                          containing the style of the output as string.
+%>                          containing the style of the output as string.<br>
 %>                          The following values are possible:<br>
-%>                              -   'auto'  :   Add '\\?\' or '\\?\UNC\' for long names on demand.
-%>                              -   'lean'  :   Magic string is not added.
-%>                              -   'fat'   :   Magic string is added for short names also.
-%>                          The input ``style`` is ignored when not running under Windows.
+%>                          <ol>
+%>                              <li>    ``'auto'``  :   Add ``'\\?\'`` or ``'\\?\UNC\'`` for long names on demand.
+%>                              <li>    ``'lean'``  :   Magic string is not added.
+%>                              <li>    ``'fat'``   :   Magic string is added for short names also.
+%>                          </ol>
+%>                          The input ``style`` is ignored when not running under Windows.<br>
 %>                          (**optional**, default = 'auto')
 %>
 %>  \return
-%>  `path`              :   The output scalar MATLAB character string
-%>                          containing the absolute path corresponding to the input path.
-%>                          If the input ``path`` is empty, ``pathAbs`` is the current directory.
+%>  ``path``            :   The output scalar MATLAB character string
+%>                          containing the absolute path corresponding to the input path.<br>
+%>                          If the input ``path`` is empty, ``pathAbs`` is the current directory.<br>
 %>                          The optional prefixes ``'\\?\'`` or ``'\\?\UNC'`` are added on demand
-%>                          as requested by the optional input argument ``style``.
+%>                          as requested by the optional input argument ``style``.<br>
 %>
 %>  \interface{abs}
 %>  \code{.m}

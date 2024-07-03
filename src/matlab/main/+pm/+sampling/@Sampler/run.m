@@ -1,28 +1,43 @@
 %>  \brief
 %>  Perform the basic runtime checks for the sampler and return nothing.
 %>
-%>  \param[in]  getLogFunc()    :   The input MATLAB function handle or anonymous (lambda) function
-%>                                  containing the implementation of the objective function to be sampled.
-%>                                  This user-specified function must have the following interface,<br>
-%>                                      function logFunc = getLogFunc(state)
-%>                                          ...
-%>                                      end<br>
-%>                                  where,<br>
-%>                                      1.  the input argument ``state`` is a vector of type MATLAB ``double``
+%>  \param[in]  getLogFunc  :   The input MATLAB function handle or anonymous (lambda) function
+%>                              containing the implementation of the objective function to be sampled.<br>
+%>                              This user-specified function must have the following interface,<br>
+%>                              \code{.m}
+%>                                  function logFunc = getLogFunc(state)
+%>                                      ...
+%>                                  end<br>
+%>                              \endcode
+%>                              where,<br>
+%>                              <ol>
+%>                                  <li>    the input argument ``state`` is a vector of type MATLAB ``double``
 %>                                          of size ``ndim`` representing a single point from within the ``ndim``
 %>                                          dimensional domain of the mathematical object function to be explored.<br>
-%>                                      2.  the output argument `logFunc` is a scalar of the same type as the
+%>                                  <li>    the output argument `logFunc` is a scalar of the same type as the
 %>                                          input ``state`` containing the natural logarithm of the objective
-%>                                          function at the specified input ``state`` within its domain.
-%>  \param[in]  ndim            :   The input scalar positive-valued whole-number representing the number of dimensions
-%>                                  of the domain of the user-specified objective function in the input ``getLogFunc()``.
+%>                                          function at the specified input ``state`` within its domain.<br>
+%>                              </ol>
+%>  \param[in]  ndim        :   The input scalar positive-valued whole-number representing the number of dimensions
+%>                              of the domain of the user-specified objective function in the input ``getLogFunc()``.<br>
 %>
-%>  \return
-%>  `None`
+%>  \interface{run}
+%>  \code{.m}
 %>
+%>      sampler = pm.sampling.Sampler();
+%>      sampleList = sampler.run(getLogFunc, ndim);
+%>
+%>  \endcode
+%>
+%>  \final{run}
+%>
+%>  \author
+%>  \JoshuaOsborne, May 21 2024, 12:38 AM, University of Texas at Arlington<br>
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function run(self, getLogFunc, ndim)
 
-    % Sanitize ``sampler.silent``.
+    %%%% Sanitize ``sampler.silent``.
 
     if ~pm.introspection.istype(self.silent, "logical", 1)
         help("pm.sampling.Sampler.silent");
@@ -35,7 +50,7 @@ function run(self, getLogFunc, ndim)
                 );
     end
 
-    % Sanitize parallelism method to set reporting permission.
+    %%%% Sanitize parallelism method to set reporting permission.
 
     % global mpiname;
     % ismember('mpiname', who('global'));
@@ -107,7 +122,7 @@ function run(self, getLogFunc, ndim)
         end
     end
 
-    % Sanitize ``getLogFunc``.
+    %%%% Sanitize ``getLogFunc``.
 
     if ~isa(getLogFunc, "function_handle")
         help("pm.sampling.Sampler.run");
@@ -123,7 +138,7 @@ function run(self, getLogFunc, ndim)
                 );
     end
 
-    % Sanitize ``ndim``.
+    %%%% Sanitize ``ndim``.
 
     failed = ~pm.introspection.istype(ndim, "integer", 1);
     if ~failed
@@ -144,7 +159,7 @@ function run(self, getLogFunc, ndim)
                 );
     end
 
-    % Sanitize ``input`` specifications/file string.
+    %%%% Sanitize ``input`` specifications/file string.
 
     if ~pm.introspection.istype(self.input, "string", 1)
         help("pm.sampling.Sampler.input");
@@ -180,7 +195,7 @@ function run(self, getLogFunc, ndim)
         end
     end
 
-    % Sanitize ``checked``.
+    %%%% Sanitize ``checked``.
 
     if ~isempty(self.checked)
         if ~pm.introspection.istype(self.checked, "logical", 1)
@@ -201,7 +216,7 @@ function run(self, getLogFunc, ndim)
         chktypes = ["nocheck", "checked"];
     end
 
-    % Setup the ParaMonter sampler library name.
+    %%%% Setup the ParaMonter sampler library name.
 
     libspecs = [pm.os.namel(), pm.sys.arch(), self.libtype, self.memtype, self.partype];
     mexdirs = pm.lib.path.mexdir(self.mexname, libspecs);
@@ -272,7 +287,7 @@ function run(self, getLogFunc, ndim)
                 );
     end
 
-    % Add the identified mex path to the MATLAB pat list, only temporarily.
+    %%%% Add the identified MEX path to the MATLAB pat list, only temporarily.
 
     pm.lib.path.clean();
     self.matpath = path;
