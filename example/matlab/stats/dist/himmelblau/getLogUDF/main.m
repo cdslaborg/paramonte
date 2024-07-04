@@ -5,7 +5,7 @@ range = -6 : 0.01 : 6;
 [x, y] = meshgrid(range, range);
 z = exp(pm.stats.dist.himmelblau.getLogUDF(x, y, 1));
 for dim = 2 : 3
-    figure;
+    figure("color", "white");
     if  dim == 2
         contourf(x, y, log(z), 50, "EdgeColor", "none");
     else
@@ -18,5 +18,5 @@ for dim = 2 : 3
     cbar = colorbar();
     ylabel(cbar, "Function Value")
     set(gca, "fontsize", 13);
-    pm.vis.figure.savefig("getLogUDF." + string(dim) + "d.png", "-m4");
+    pm.vis.figure.savefig("himmelblau.getLogUDF." + string(dim) + "d.png", "-m4");
 end

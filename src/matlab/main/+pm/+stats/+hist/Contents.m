@@ -1,14 +1,14 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.fit`` contains 
-%>  a set of packages and functionalities for data fitting.
+%>  The ParaMonte MATLAB package ``pm.stats.hist`` contains 
+%>  a set of packages and functionalities for data fitting.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members (source files).
+%>  see the documentations of the package members (source files).<br>
 %>
-%>  \final{pm.fit}
+%>  \final{pm.stats.hist}
 %>
 %>  \author
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>

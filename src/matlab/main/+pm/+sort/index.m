@@ -1,5 +1,5 @@
 %>  \brief
-%>  Given ``array(1 : n)``, return the array index ``indx(1:n)``
+%>  Given ``array(1 : n)``, return the array index ``indx(1 : n)``
 %>  such that ``array(indx)`` is in ascending order.<br>
 %>
 %>  \details
@@ -7,8 +7,8 @@
 %>  the MATLAB intrinsic function ``sort()``.<br>
 %>
 %>  \note
-%>  The output ``indx`` is NOT the rank
-%>  of the elements of the input array.<br>
+%>  Beware the output ``indx`` is **not** the
+%>  rank of the elements of the input array.<br>
 %>
 %>  \param[in]  array   :   The input MATLAB vector of sortable values
 %>                          (that can be passed to the MATLAB intrinsic function ``sort()``).<br>
@@ -25,8 +25,9 @@
 %>  \endcode
 %>
 %>  \example{index}
-%>
-%>      indx = pm.sort.index([2.5, 4, 1.5, -3])
+%>  \include{lineno} example/sort/index/main.m
+%>  \output{index}
+%>  \include{lineno} example/sort/index/main.out.m
 %>
 %>  \final{index}
 %>

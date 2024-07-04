@@ -13,21 +13,8 @@
 %>  \note
 %>  See below for information on the methods.<br>
 %>
-%>  \return
-%>  An object of class [pm.sampling.SpecBase](@ref SpecBase).<br>
-%>
-%>  \interface{SpecBase}
-%>  \code{.m}
-%>
-%>      spec = pm.sampling.SpecBase()
-%>      spec = pm.sampling.SpecBase([])
-%>      spec = pm.sampling.SpecBase([], [])
-%>      spec = pm.sampling.SpecBase(method)
-%>      spec = pm.sampling.SpecBase(method, [])
-%>      spec = pm.sampling.SpecBase([], silent)
-%>      spec = pm.sampling.SpecBase(method, silent)
-%>
-%>  \endcode
+%>  \see
+%>  [ParaDRAM simulation specifications listing](\pmdoc_usage_sampling/paradram/specifications/)<br>
 %>
 %>  \final{SpecBase}
 %>
@@ -71,7 +58,7 @@ classdef SpecBase < pm.matlab.Handle
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     properties(Hidden, Access = protected)
-        url = "https://www.cdslab.org/paramonte/notes/usage/paradram/specifications/";
+        url = "https://www.cdslab.org/paramonte/generic/" + pm.lib.version("generic", "major") + "/usage/sampling/paradram/specifications/";
         method = "sampler";
         silent = false;
         nmlsep = " ";
@@ -95,6 +82,9 @@ classdef SpecBase < pm.matlab.Handle
         %>
         %>  \return
         %>  The output scalar object of class [pm.sampling.SpecBase](@ref SpecBase).<br>
+        %>
+        %>  \see
+        %>  [ParaDRAM simulation specifications listing](\pmdoc_usage_sampling/paradram/specifications/)<br>
         %>
         %>  \interface{SpecBase}
         %>  \code{.m}
@@ -176,10 +166,13 @@ classdef SpecBase < pm.matlab.Handle
         %>      weblink = self.doc(specification)
         %>
         %>  \endcode
-        %>  \example{getBorder}
+        %>  \example{doc}
+        %>  \code{.m}
         %>
         %>      pmpd.spec.doc()                 % return help for all specifications.
         %>      pmpd.spec.doc("outputFileName") % return help for the specification ``outputFileName``.
+        %>
+        %>  \endcode
         %>
         %>  \final{doc}
         %>
@@ -224,7 +217,7 @@ classdef SpecBase < pm.matlab.Handle
 
         %>  \brief
         %>  Ensure all specification properties of the parent object are sensible.<br>
-        %>  This is a dynamic method of the class [pm.sampling.SpecBase](@ref SpecBase).
+        %>  This is a dynamic method of the class [pm.sampling.SpecBase](@ref SpecBase).<br>
         %>
         %>  \param[in]  ndim    :   The input scalar MATLAB integer containing
         %>                          the number of dimensions of the domain of the

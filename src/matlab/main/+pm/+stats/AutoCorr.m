@@ -1,32 +1,18 @@
 %>  \brief
 %>  This is the base class for generating objects containing
-%>  information about autocorrelation of the input data.
+%>  information about autocorrelation of the input data.<br>
 %>
 %>  \note
 %>  This is convenience class for easy computation
-%>  of autocorrelation and its storage all in one place.
+%>  of autocorrelation and its storage all in one place.<br>
 %>  The primary advantage of this class over the MATLAB
 %>  intrinsic functions is in the ability of this class
 %>  to compute the result for input dataframe table and
-%>  return the results always in MATLAB ``table`` format.
-%>  See the documentation of the class constructor below.
+%>  return the results always in MATLAB ``table`` format.<br>
+%>  See the documentation of the class constructor below.<br>
 %>
 %>  \note
-%>  See the documentation of the class constructor below.
-%>
-%>  \return
-%>  See the documentation of the class constructor below.
-%>
-%>  \interface{AutoCorr}
-%>  \code{.m}
-%>
-%>      acf = pm.stats.AutoCorr()
-%>      acf = pm.stats.AutoCorr(df)
-%>      acf = pm.stats.AutoCorr(df, numlags)
-%>      acf = pm.stats.AutoCorr(df, [], numstd)
-%>      acf = pm.stats.AutoCorr(df, numlags, numstd)
-%>
-%>  \endcode
+%>  See the documentation of the class constructor below.<br>
 %>
 %>  \final{AutoCorr}
 %>
@@ -38,49 +24,49 @@ classdef AutoCorr < pm.matlab.Handle
 
     properties(Access = public)
         %>
-        %>  \param[in]  numstd  :   The positive scalar MATLAB double representing the
-        %>                          number of lags for which the autocorrelation must be computed.
-        %>                          This argument is directly passed to the corresponding argument
-        %>                          of the MATLAB intrinsic ``autocorr()`` in the Econometrics Toolbox.
+        %>  numlag  :   The positive scalar MATLAB whole number representing the
+        %>              number of lags for which the autocorrelation must be computed.<br>
+        %>              This argument is directly passed to the corresponding argument
+        %>              of the MATLAB intrinsic ``autocorr()`` in the Econometrics Toolbox.<br>
         %>
-        numlags = [];
+        numlag = [];
         %>
-        %>  \param[in]  numstd  :   The positive scalar MATLAB double representing the
-        %>                          number of standard deviations to be used in computing the
-        %>                          lower and upper significance levels of the autocorrelation.
-        %>                          This argument is directly passed to the corresponding argument
-        %>                          of the MATLAB intrinsic ``autocorr()`` in the Econometrics Toolbox.
+        %>  numstd  :   The positive scalar MATLAB double representing the
+        %>              number of standard deviations to be used in computing the
+        %>              lower and upper significance levels of the autocorrelation.<br>
+        %>              This argument is directly passed to the corresponding argument
+        %>              of the MATLAB intrinsic ``autocorr()`` in the Econometrics Toolbox.<br>
         %>
         numstd = 1;
         %>
-        %>  \param[in]  bnd     :   The MATLAB table of rank ``2`` serving as a convenient
-        %>                          storage component each column of which corresponds to the
-        %>                          absolute ``numstd``-significance bound for the corresponding
-        %>                          computed autocorrelations of the input data (that is optionally
-        %>                          stored in the ``val`` component of the parent object).
-        %>                          The values represent the ``numstd``-sigma standard
-        %>                          errors on the computed autocorrelations.
-        %>                          Any autocorrelation value bound within these limits can be
-        %>                          considered random fluctuations at ``numstd``-sigma confidence level.
-        %>                          This component is automatically populated at the time
-        %>                          of constructing an object of class ``pm.stats.AutoCorr``.
-        %>                          It must be populated manually at all other times.
+        %>  bnd     :   The MATLAB table of rank ``2`` serving as a convenient
+        %>              storage component each column of which corresponds to the
+        %>              absolute ``numstd``-significance bound for the corresponding
+        %>              computed autocorrelations of the input data (that is optionally
+        %>              stored in the ``val`` component of the parent object).<br>
+        %>              The values represent the ``numstd``-sigma standard
+        %>              errors on the computed autocorrelations.<br>
+        %>              Any autocorrelation value bound within these limits can be
+        %>              considered random fluctuations at ``numstd``-sigma confidence level.<br>
+        %>              This component is automatically populated at the time
+        %>              of constructing an object of class ``pm.stats.AutoCorr``.<br>
+        %>              It must be populated manually at all other times.<br>
         %>
         bnd = [];
         %>
-        %>  \param[in]  lag     :   The MATLAB vector integers representing the
-        %>                          lags for which the autocorrelation is computed.
-        %>                          This component is automatically populated at the time
-        %>                          of constructing an object of class ``pm.stats.AutoCorr``.
-        %>                          It must be populated manually at all other times.
+        %>  lag     :   The MATLAB vector integers representing the
+        %>              lags for which the autocorrelation is computed.<br>
+        %>              This component is automatically populated at the time
+        %>              of constructing an object of class ``pm.stats.AutoCorr``.<br>
+        %>              It must be populated manually at all other times.<br>
         %>
         lag = [];
         %>
-        %>  \param[in]  val     :   The MATLAB table of rank ``2`` serving as a
-        %>                          convenient storage component for the autocorrelation.
-        %>                          This component is automatically populated at the time
-        %>                          of constructing an object of class ``pm.stats.AutoCorr``.
-        %>                          It must be populated manually at all other times.
+        %>  val     :   The MATLAB table of rank ``2`` serving as a
+        %>              convenient storage component for the autocorrelation.
+        %>              This component is automatically populated at the time
+        %>              of constructing an object of class ``pm.stats.AutoCorr``.<br>
+        %>              It must be populated manually at all other times.<br>
         %>
         val = [];
     end
@@ -89,33 +75,41 @@ classdef AutoCorr < pm.matlab.Handle
 
         %>  \brief
         %>  Return an object of class ``pm.stats.AutoCorr``.<br>
-        %>  This is the constructor of the ``pm.stats.AutoCorr`` class.
+        %>  This is the constructor of the ``pm.stats.AutoCorr`` class.<br>
         %>
         %>  \param[in]  df      :   The input MATLAB matrix or table of rank ``2``
         %>                          containing the data as ``ncol`` columns of ``nrow``
-        %>                          observations whose autocorrelation must be computed.
+        %>                          observations whose autocorrelation must be computed.<br>
         %>                          (**optional**. If missing, the autocorrelation will not be computed.)
-        %>  
+        %>  \param[in]  numlag  :   The input scalar MATLAB positive whole number representing the number
+        %>                          of lags for which the autocorrelation must be computed.<br>
+        %>                          This argument is directly passed to the corresponding argument
+        %>                          of the MATLAB intrinsic ``autocorr()`` in the Econometrics Toolbox.<br>
         %>  \param[in]  numstd  :   The input positive scalar MATLAB double representing the
         %>                          number of standard deviations to be used in computing the
-        %>                          lower and upper significance levels of the autocorrelation.
+        %>                          lower and upper significance levels of the autocorrelation.<br>
         %>                          This argument is directly passed to the corresponding argument
-        %>                          of the MATLAB intrinsic ``autocorr()`` in the Econometrics Toolbox.
+        %>                          of the MATLAB intrinsic ``autocorr()`` in the Econometrics Toolbox.<br>
         %>                          (**optional**, default = ``1``)
         %>
         %>  \return
-        %>  ``self``            :   The output object of class ``pm.stats.AutoCorr``.
+        %>  ``self``            :   The output object of class ``pm.stats.AutoCorr``.<br>
         %>
         %>  \interface{AutoCorr}
         %>  \code{.m}
         %>
         %>      acf = pm.stats.AutoCorr()
         %>      acf = pm.stats.AutoCorr(df)
-        %>      acf = pm.stats.AutoCorr(df, numlags)
+        %>      acf = pm.stats.AutoCorr(df, numlag)
         %>      acf = pm.stats.AutoCorr(df, [], numstd)
-        %>      acf = pm.stats.AutoCorr(df, numlags, numstd)
+        %>      acf = pm.stats.AutoCorr(df, numlag, numstd)
         %>
         %>  \endcode
+        %>
+        %>  \example{AutoCorr}
+        %>  \include{lineno} example/stats/AutoCorr/main.m
+        %>  \vis{AutoCorr}
+        %>  \image html example/stats/AutoCorr/AutoCorr.unifrnd.png width=700
         %>
         %>  \final{AutoCorr}
         %>
@@ -123,27 +117,27 @@ classdef AutoCorr < pm.matlab.Handle
         %>  \JoshuaOsborne, May 21 2024, 4:10 AM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
-        function self = AutoCorr(df, numlags, numstd)
+        function self = AutoCorr(df, numlag, numstd)
             if nargin < 3
                 numstd = 1;
             end
             if nargin < 2
-                numlags = [];
+                numlag = [];
             end
             if 0 < nargin
-                if  isempty(numlags)
-                    numlags = size(df, 1) - 1;
+                if  isempty(numlag)
+                    numlag = size(df, 1) - 1;
                 end
-                [self.val, self.lag, self.bnd] = self.get(df, numlags, numstd);
+                [self.val, self.lag, self.bnd] = self.get(df, numlag, numstd);
             else
-                self.numlags = numlags;
+                self.numlag = numlag;
                 self.numstd = numstd;
             end
         end
 
         %>  \brief
         %>  Return the autocorrelation of the input
-        %>  data from a lag of ``0`` to ``numlags``.
+        %>  data from a lag of ``0`` to ``numlag``.<br>
         %>
         %>  \details
         %>  This is a dynamic method of the ``pm.stats.AutoCorr`` class.<br>
@@ -151,18 +145,18 @@ classdef AutoCorr < pm.matlab.Handle
         %>  in the corresponding components of the parent object.<br>
         %>  However, any components of the parent object
         %>  corresponding to the output of this method
-        %>  must be set explicitly manually.
+        %>  must be set explicitly manually.<br>
         %>
         %>  \param[in]  df      :   The input MATLAB matrix or table of rank ``2``
         %>                          containing the data as ``ncol`` columns of ``nrow``
-        %>                          observations whose autocorrelation must be computed.
-        %>  
-        %>  \param[in]  numlags :   The input positive scalar MATLAB integer representing the
+        %>                          observations whose autocorrelation must be computed.<br>
+        %>
+        %>  \param[in]  numlag :   The input positive scalar MATLAB integer representing the
         %>                          number of lags to be used in computing the autocorrelation.<br>
-        %>                          The default value will be used if the input ``numlags``
+        %>                          The default value will be used if the input ``numlag``
         %>                          is unspecified or empty ``[]``.<br>
         %>                          (**optional**, default = ``size(df, 1) - 1``)
-        %>  
+        %>
         %>  \param[in]  numstd  :   The input positive scalar MATLAB double representing the
         %>                          number of standard deviations to be used in computing the
         %>                          lower and upper significance levels of the autocorrelation.<br>
@@ -172,10 +166,10 @@ classdef AutoCorr < pm.matlab.Handle
         %>                          (**optional**, default = ``1``)
         %>
         %>  \return
-        %>  ``val``             :   The output MATLAB ``table`` of size ``numlags + 1``
-        %>                          containing the autocorrelation from lag ``0`` to ``numlags``.<br>
-        %>  ``lag``             :   The output MATLAB ``table`` of size ``numlags + 1``
-        %>                          containing the autocorrelation lags from ``0`` to ``numlags``.<br>
+        %>  ``val``             :   The output MATLAB ``table`` of size ``numlag + 1``
+        %>                          containing the autocorrelation from lag ``0`` to ``numlag``.<br>
+        %>  ``lag``             :   The output MATLAB ``table`` of size ``numlag + 1``
+        %>                          containing the autocorrelation lags from ``0`` to ``numlag``.<br>
         %>  ``bnd``             :   The output MATLAB ``table`` of ``size(df, 2)`` rows by one column
         %>                          containing the absolute ``numstd``-significance level of the
         %>                          computed autocorrelations. Any autocorrelation value whose
@@ -188,9 +182,9 @@ classdef AutoCorr < pm.matlab.Handle
         %>      acf = pm.stats.AutoCorr()
         %>      [acf.val, acf.lag, acf.bnd] = acf.get(df)
         %>      [acf.val, acf.lag, acf.bnd] = acf.get(df, [])
-        %>      [acf.val, acf.lag, acf.bnd] = acf.get(df, numlags)
+        %>      [acf.val, acf.lag, acf.bnd] = acf.get(df, numlag)
         %>      [acf.val, acf.lag, acf.bnd] = acf.get(df, [], numstd)
-        %>      [acf.val, acf.lag, acf.bnd] = acf.get(df, numlags, numstd)
+        %>      [acf.val, acf.lag, acf.bnd] = acf.get(df, numlag, numstd)
         %>
         %>  \endcode
         %>
@@ -200,7 +194,7 @@ classdef AutoCorr < pm.matlab.Handle
         %>  \JoshuaOsborne, May 21 2024, 4:14 AM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
-        function [val, lag, bnd] = get(self, df, numlags, numstd)
+        function [val, lag, bnd] = get(self, df, numlag, numstd)
             if nargin < 2
                 help("pm.stats.AutoCorr");
                 error   ( newline ...
@@ -212,31 +206,31 @@ classdef AutoCorr < pm.matlab.Handle
                 numstd = 1;
             end
             if  nargin < 3
-                numlags = [];
+                numlag = [];
             end
-            self.numlags = numlags;
+            self.numlag = numlag;
             self.numstd = numstd;
             if isa(df, "table")
                 data = table2array(df);
             else
                 data = df;
             end
-            if ~isempty(self.numlags)
-                numlags = self.numlags;
+            if ~isempty(self.numlag)
+                numlag = self.numlag;
             else
-                numlags = size(data, 1) - 1;
+                numlag = size(data, 1) - 1;
             end
-            val = zeros(numlags + 1, size(data, 2));
-            lag = zeros(numlags + 1, 1);
+            val = zeros(numlag + 1, size(data, 2));
+            lag = zeros(numlag + 1, 1);
             bnd = zeros(size(data, 2), 1);
             try
                 for icol = 1 : size(data, 2)
-                    [val(:, icol), lag, bounds] = autocorr(data(:, icol), numlags);
+                    [val(:, icol), lag, bounds] = autocorr(data(:, icol), numlag);
                     bnd(icol) = abs(bounds(1)) * numstd;
                 end
                 val = array2table(val);
             catch me
-                %val = NaN(numlags, size(data, 2));
+                %val = NaN(numlag, size(data, 2));
                 warning ( newline ...
                         + string(me.identifier) + " : " + string(me.message) + newline ...
                         + "skipping the autocorrelation computation..." + newline ...

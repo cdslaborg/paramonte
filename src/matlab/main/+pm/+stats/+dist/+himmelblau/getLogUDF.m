@@ -1,31 +1,33 @@
 %>  \brief
 %>  Return the natural logarithm of the Unnormalized Density Function (UDF)
-%>  of the inverse of the 2-dimensional modified Himmelblau function.
+%>  of the inverse of the 2-dimensional modified Himmelblau function.<br>
 %>
 %>  \details
 %>  Himmelblau's function is a multi-modal function, used to test
-%>  the performance of optimization algorithms. The function is defined by:
+%>  the performance of optimization algorithms. The function is defined by:<br>
 %>  \f{equation}
 %>      H(x, y) = (x^{2} + y - 11)^{2} + (x + y^{2} - 7)^{2} ~.
 %>  \f}
 %>
 %>  It has one local maximum at \f$x = -0.270845\f$ and \f$y = -0.923039\f$ where \f$H(x, y) = 181.617\f$,
-%>  and four identical local minima:
-%>  \f{equation}
-%>      H(3.0,2.0) = 0.0 ~,
-%>      H(-2.805118, 3.131312)=0.0 ~,
-%>      H(-3.779310, -3.283186)=0.0 ~,
-%>      H(3.584428, -1.848126)=0.0 ~.
+%>  and four identical local minima:<br>
+%>  \f{eqnarray}
+%>      H(3.0,2.0) &=& 0.0 ~,\\
+%>      H(-2.805118, 3.131312) &=& 0.0 ~,\\
+%>      H(-3.779310, -3.283186) &=& 0.0 ~,\\
+%>      H(3.584428, -1.848126) &=& 0.0 ~.
 %>  \f}
 %>
 %>  The function is named after David Mautner Himmelblau (1924–2011), who introduced it.<br>
 %>  The locations of all the minima can be found analytically.<br>
 %>
 %>  This MATLAB function returns a modification of the Himmelblau function as a density
-%>  function suitable for testing sampling algorithms (or stochastic maximizers):
+%>  function suitable for testing sampling algorithms (or stochastic maximizers):<br>
 %>  \f{equation}
 %>      f(x, y, \epsilon) = \frac{1}{H(x, y) + \epsilon} ~.
 %>  \f}
+%>  where \f$\epsilon\f$ is an arbitrary positive real number
+%>  which determines the sharpness of the function four peaks.<br>
 %>
 %>  \param[in]  x       :   The input scalar or array of the same rank and shape as
 %>                          other input array-like arguments of type MATLAB ``double``,
@@ -62,10 +64,10 @@
 %>  [pm.sampling.Paradram](@ref Paradram)<br>
 %>
 %>  \example{getLogUDF}
-%>  \include{lineno} example/stats/himmelblau/getLogUDF/main.m
+%>  \include{lineno} example/stats/dist/himmelblau/getLogUDF/main.m
 %>  \vis{getLogUDF}
-%>  \image html example/stats/himmelblau/getLogUDF/getLogUDF.2d.png width=700
-%>  \image html example/stats/himmelblau/getLogUDF/getLogUDF.3d.png width=700
+%>  \image html example/stats/dist/himmelblau/getLogUDF/himmelblau.getLogUDF.2d.png width=700
+%>  \image html example/stats/dist/himmelblau/getLogUDF/himmelblau.getLogUDF.3d.png width=700
 %>
 %>  \final{getLogUDF}
 %>

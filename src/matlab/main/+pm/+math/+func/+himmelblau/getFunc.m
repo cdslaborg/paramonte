@@ -50,8 +50,8 @@
 %>  \example{getFunc}
 %>  \include{lineno} example/math/func/himmelblau/getFunc/main.m
 %>  \vis{getFunc}
-%>  \image html example/math/func/himmelblau/getFunc/getFunc.2d.png width=700
-%>  \image html example/math/func/himmelblau/getFunc/getFunc.3d.png width=700
+%>  \image html example/math/func/himmelblau/getFunc/himmelblau.getFunc.2d.png width=700
+%>  \image html example/math/func/himmelblau/getFunc/himmelblau.getFunc.3d.png width=700
 %>
 %>  \final{getFunc}
 %>

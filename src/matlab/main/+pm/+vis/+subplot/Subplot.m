@@ -442,7 +442,7 @@ classdef Subplot < pm.vis.axes.Axes
             if  self.type.is.diffusion
                 kde2d = struct();
                 if ~kde2dUpdateNeeded
-                    [kde2d.bandwidth, kde2d.density, kde2d.crdx, kde2d.crdy] = pm.fit.kde2d([coldatx(:), coldaty(:)], self.resolution);
+                    [kde2d.bandwidth, kde2d.density, kde2d.crdx, kde2d.crdy] = pm.stats.hist.kde2d([coldatx(:), coldaty(:)], self.resolution);
                     kde2d.density(kde2d.density < self.maxnoise) = NaN;
                 end
             end
@@ -565,7 +565,7 @@ classdef Subplot < pm.vis.axes.Axes
                             kws.(self.type.name) = pm.matlab.hashmap.repKeyVal("color", coldatc, kws.(self.type.name));
                         end
                         if  kde2dUpdateNeeded
-                            [kde2d.bandwidth, kde2d.density, kde2d.crdx, kde2d.crdy] = pm.fit.kde2d([coldatx(:), coldaty(:)], self.resolution);
+                            [kde2d.bandwidth, kde2d.density, kde2d.crdx, kde2d.crdy] = pm.stats.hist.kde2d([coldatx(:), coldaty(:)], self.resolution);
                             kde2d.density(kde2d.density < self.maxnoise) = NaN;
                         end
                     end

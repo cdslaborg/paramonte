@@ -1,33 +1,13 @@
 %>  \brief
-%>  This is the base class for the ParaMonte sampler MCMC specifications.
-%>  This is an abstract class that is not meant to be used by the user.
-%>  See the class constructor.
+%>  This is the base class for the ParaMonte sampler MCMC specifications.<br>
+%>  This is an abstract class that is not meant to be used by the user.<br>
+%>  See the class constructor.<br>
 %>
 %>  \note
-%>  All class attributes can be set after constructing an instance of this class.
+%>  All class attributes can be set after constructing an instance of this class.<br>
 %>
 %>  \note
-%>  The MCMC simulation specifications are all described on this page:
-%>  https://www.cdslab.org/paramonte/notes/usage/paradram/specifications/
-%>
-%>  \note
-%>  See below for information on the methods.
-%>
-%>  \return
-%>  An object of class [pm.sampling.SpecMCMC](@ref SpecMCMC).
-%>
-%>  \interface{SpecMCMC}
-%>  \code{.m}
-%>
-%>      spec = pm.sampling.SpecMCMC()
-%>      spec = pm.sampling.SpecMCMC([])
-%>      spec = pm.sampling.SpecMCMC([], [])
-%>      spec = pm.sampling.SpecMCMC(method)
-%>      spec = pm.sampling.SpecMCMC(method, [])
-%>      spec = pm.sampling.SpecMCMC([], silent)
-%>      spec = pm.sampling.SpecMCMC(method, silent)
-%>
-%>  \endcode
+%>  See below for information on the methods.<br>
 %>
 %>  \final{SpecMCMC}
 %>
@@ -58,20 +38,19 @@ classdef SpecMCMC < pm.sampling.SpecBase
 
     methods(Access = public)
         %>  \brief
-        %>  Construct and return an object of class [pm.sampling.SpecMCMC](@ref SpecMCMC).
+        %>  Construct and return an object of class [pm.sampling.SpecMCMC](@ref SpecMCMC).<br>
         %>
         %>  \param[in]  method  :   The input scalar MATLAB string containing
         %>                          the name of the specific ParaMonte sampler
         %>                          whose simulation specifications are to be
-        %>                          stored in the output of this constructor.
-        %>  
-        %>  \param[in]  silent  :   The input scalar MATLAB logical.
+        %>                          stored in the output of this constructor.<br>
+        %>  \param[in]  silent  :   The input scalar MATLAB logical.<br>
         %>                          If ``true``, all descriptive messages on
-        %>                          the MATLAB command line will be suppressed.
+        %>                          the MATLAB command line will be suppressed.<br>
         %>                          (**optional**, default = ``false``)
         %>  
         %>  \return
-        %>  The output scalar object of class [pm.sampling.SpecMCMC](@ref SpecMCMC).
+        %>  The output scalar object of class [pm.sampling.SpecMCMC](@ref SpecMCMC).<br>
         %>
         %>  \interface{SpecMCMC}
         %>  \code{.m}
@@ -106,8 +85,10 @@ classdef SpecMCMC < pm.sampling.SpecBase
 
     methods(Hidden)
         %>  \brief
-        %>  Ensure all specification properties of the parent object are sensible.
-        %>  This is a dynamic method of the class [pm.sampling.SpecMCMC](@ref SpecMCMC).
+        %>  Ensure all specification properties of the parent object are sensible.<br>
+        %>
+        %>  \details
+        %>  This is a dynamic method of the class [pm.sampling.SpecMCMC](@ref SpecMCMC).<br>
         %>
         %>  \param[in]  ndim    :   The input scalar MATLAB integer containing
         %>                          the number of dimensions of the domain of the

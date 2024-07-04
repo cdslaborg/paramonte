@@ -123,10 +123,10 @@ fclose('all');
 
 % for i = 1 : ndim
 % 
-%     figure;
+%     figure("color", "white");
 %     histfit(pmpd.Chain.State(i,:));
 %     
-%     figure;
+%     figure("color", "white");
 %     plot(pmpd.Chain.State(i,:));
 %     set(gca,'xscale','log')
 %   

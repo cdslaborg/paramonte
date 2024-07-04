@@ -2,11 +2,11 @@
 %>
 %>  \brief
 %>  The ParaMonte MATLAB package ``pm.stats.dist`` contains
-%>  a set of routines and data related to statistical distributions.
+%>  a set of routines and data related to statistical distributions.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members.
+%>  see the documentations of the package members.<br>
 %>
 %>  \final{pm.stats.dist}
 %>

@@ -1721,25 +1721,36 @@ if (TRUE)
     add_custom_target(copyFileCHANGES COMMAND ${CMAKE_COMMAND} -E copy "${origin}" "${destin}")
     add_dependencies(package copyFileCHANGES)
 
-    #   VERSION
+    #   VERSION generic
 
-    set(origin "${paramonte_src_${lang}_dir}/VERSION.md")
-    set(destin "${paramonte_bld_pkg_dir}/VERSION.md")
+    set(origin "${paramonte_dir}/VERSION.md")
+    set(destin "${paramonte_bld_pkg_dir}/VERSION.generic.md")
     message(NOTICE  "${pmattn} Setting the rule for copying the paramonte::${lang} library VERSION.md file to the package directory...\n"
                     "${pmattn}      - from: ${origin}\n"
                     "${pmattn}      -   to: ${destin}")
-    add_custom_target(copyFileVERSION COMMAND ${CMAKE_COMMAND} -E copy "${origin}" "${destin}")
-    add_dependencies(package copyFileVERSION)
+    add_custom_target(copyFileVersionGeneric COMMAND ${CMAKE_COMMAND} -E copy "${origin}" "${destin}")
+    add_dependencies(package copyFileVersionGeneric)
+
+    #   VERSION language
+
+    set(origin "${paramonte_src_${lang}_dir}/VERSION.md")
+    set(destin "${paramonte_bld_pkg_dir}/VERSION.${lang}.md")
+    message(NOTICE  "${pmattn} Setting the rule for copying the paramonte::${lang} library VERSION.md file to the package directory...\n"
+                    "${pmattn}      - from: ${origin}\n"
+                    "${pmattn}      -   to: ${destin}")
+    add_custom_target(copyFileVersionLang COMMAND ${CMAKE_COMMAND} -E copy "${origin}" "${destin}")
+    add_dependencies(package copyFileVersionLang)
 
     if ("${lang}" STREQUAL "julia" OR "${lang}" STREQUAL "matlab" OR "${lang}" STREQUAL "python" OR "${lang}" STREQUAL "r")
-        #set(origin "${paramonte_dir}/VERSION.md")
-        set(origin "${paramonte_src_${lang}_dir}/VERSION.md")
-        set(destin "${paramonte_bld_pkg_paramonte_dir}/auxil/VERSION.md")
+
+        set(origin "${paramonte_bld_pkg_dir}/VERSION.*.md")
+        set(destin "${paramonte_bld_pkg_paramonte_dir}/auxil/")
         message(NOTICE  "${pmattn} Setting the rule for copying the paramonte::${lang} library VERSION.md file to the package directory...\n"
                         "${pmattn}      - from: ${origin}\n"
                         "${pmattn}      -   to: ${destin}")
-        add_custom_target(copyFileAuxilVERSION COMMAND ${CMAKE_COMMAND} -E copy "${origin}" "${destin}")
-        add_dependencies(package copyFileAuxilVERSION)
+        add_custom_target(copyFileAuxilVersion COMMAND ${CMAKE_COMMAND} -E copy ${origin} "${destin}")
+        add_dependencies(package copyFileAuxilVersion)
+
     endif()
 
     # Copy examples/benchmarks folder to the package folder.

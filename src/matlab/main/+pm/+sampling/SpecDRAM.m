@@ -1,33 +1,19 @@
 %>  \brief
 %>  This is the base class for the ParaMonte sampler DRAM specifications.<br>
+%>
+%>  \details
 %>  This is an abstract class that is not meant to be used by the user.<br>
-%>  See the class constructor.
+%>  See the class constructor documentation.<br>
 %>
 %>  \note
-%>  All class attributes can be set after constructing an instance of this class.
+%>  All class attributes can be set after constructing an instance of this class.<br>
 %>
 %>  \note
 %>  The DRAM simulation specifications are all described on this page:
-%>  https://www.cdslab.org/paramonte/notes/usage/paradram/specifications/
+%>  [ParaDRAM simulation specifications listing](\pmdoc_usage_sampling/paradram/specifications/)<br>
 %>
 %>  \note
-%>  See below for information on the methods.
-%>
-%>  \return
-%>  An object of class [pm.sampling.SpecDRAM](@ref SpecDRAM).
-%>
-%>  \interface{SpecDRAM}
-%>  \code{.m}
-%>
-%>      spec = pm.sampling.SpecDRAM()
-%>      spec = pm.sampling.SpecDRAM([])
-%>      spec = pm.sampling.SpecDRAM([], [])
-%>      spec = pm.sampling.SpecDRAM(method)
-%>      spec = pm.sampling.SpecDRAM(method, [])
-%>      spec = pm.sampling.SpecDRAM([], silent)
-%>      spec = pm.sampling.SpecDRAM(method, silent)
-%>
-%>  \endcode
+%>  See below for information on the methods.<br>
 %>
 %>  \final{SpecDRAM}
 %>
@@ -53,20 +39,20 @@ classdef SpecDRAM < pm.sampling.SpecMCMC
     methods(Access = public)
 
         %>  \brief
-        %>  Construct and return an object of class [pm.sampling.SpecDRAM](@ref SpecDRAM).
+        %>  Construct and return an object of class [pm.sampling.SpecDRAM](@ref SpecDRAM).<br>
         %>
         %>  \param[in]  method  :   The input scalar MATLAB string containing
         %>                          the name of the specific ParaMonte sampler
         %>                          whose simulation specifications are to be
-        %>                          stored in the output of this constructor.
-        %>  
-        %>  \param[in]  silent  :   The input scalar MATLAB logical.
+        %>                          stored in the output of this constructor.<br>
+        %>
+        %>  \param[in]  silent  :   The input scalar MATLAB logical.<br>
         %>                          If ``true``, all descriptive messages on
-        %>                          the MATLAB command line will be suppressed.
+        %>                          the MATLAB command line will be suppressed.<br>
         %>                          (**optional**, default = ``false``)
         %>
         %>  \return
-        %>  The output scalar object of class [pm.sampling.SpecDRAM](@ref SpecDRAM).
+        %>  The output scalar object of class [pm.sampling.SpecDRAM](@ref SpecDRAM).<br>
         %>
         %>  \interface{SpecDRAM}
         %>  \code{.m}
@@ -95,7 +81,7 @@ classdef SpecDRAM < pm.sampling.SpecMCMC
                 method = "ParaDRAM";
             end
             self = self@pm.sampling.SpecMCMC(method, silent);
-            self.url = "https://www.cdslab.org/paramonte/notes/usage/paradram/specifications/";
+            self.url = "https://www.cdslab.org/paramonte/generic/" + pm.lib.version("generic", "major") + "/usage/sampling/paradram/specifications/";
         end
 
     end
@@ -104,12 +90,14 @@ classdef SpecDRAM < pm.sampling.SpecMCMC
 
         %>  \brief
         %>  Ensure all specification properties of the parent object are sensible.<br>
-        %>  This is a dynamic method of the class [pm.sampling.SpecMCMC](@ref SpecMCMC).
+        %>
+        %>  \details
+        %>  This is a dynamic method of the class [pm.sampling.SpecDRAM](@ref SpecDRAM).<br>
         %>
         %>  \param[in]  ndim    :   The input scalar MATLAB integer containing
         %>                          the number of dimensions of the domain of the
         %>                          object function that is to be explored.<br>
-        %>  
+        %>
         %>  \return
         %>  ``entries``         :   The output scalar MATLAB string containing
         %>                          the simulation specifications converted to

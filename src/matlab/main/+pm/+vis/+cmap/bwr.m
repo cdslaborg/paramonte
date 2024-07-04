@@ -30,22 +30,22 @@
 %>
 %>  \example{bwr}
 %>
-%>      figure;
+%>      figure("color", "white");
 %>      imagesc(peaks(500));
 %>      colormap(pm.vis.cmap.bwr(256));
 %>      colorbar;
 %>
-%>      figure;
+%>      figure("color", "white");
 %>      imagesc(peaks(500), [0, 8]);
 %>      colormap(pm.vis.cmap.bwr());
 %>      colorbar;
 %>
-%>      figure;
+%>      figure("color", "white");
 %>      imagesc(peaks(250), [-6, 0]);
 %>      colormap(pm.vis.cmap.bwr());
 %>      colorbar;
 %>
-%>      figure;
+%>      figure("color", "white");
 %>      surf(peaks);
 %>      colormap(pm.vis.cmap.bwr());
 %>      axis("tight");

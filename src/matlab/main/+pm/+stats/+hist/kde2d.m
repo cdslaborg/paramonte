@@ -43,10 +43,10 @@
 %>  \interface{kde2d}
 %>  \code{.m}
 %>
-%>      [bandwidth, density, meshx, meshy] = pm.fit.kde2d(data);
-%>      [bandwidth, density, meshx, meshy] = pm.fit.kde2d(data, resol);
-%>      [bandwidth, density, meshx, meshy] = pm.fit.kde2d(data, resol, xymin);
-%>      [bandwidth, density, meshx, meshy] = pm.fit.kde2d(data, resol, xymin, xymax);
+%>      [bandwidth, density, meshx, meshy] = pm.stats.hist.kde2d(data);
+%>      [bandwidth, density, meshx, meshy] = pm.stats.hist.kde2d(data, resol);
+%>      [bandwidth, density, meshx, meshy] = pm.stats.hist.kde2d(data, resol, xymin);
+%>      [bandwidth, density, meshx, meshy] = pm.stats.hist.kde2d(data, resol, xymin, xymax);
 %>
 %>  \endcode
 %>
@@ -78,19 +78,19 @@
 %>  [pm.vis.tile.Contour3](@ref Contour3)<br>
 %>
 %>  \example{mvnmix}
-%>  \include{lineno} example/fit/kde2d/mvnmix/main.m
+%>  \include{lineno} example/stats/hist/kde2d/mvnmix/main.m
 %>  \vis{mvnmix}
-%>  \image html example/fit/kde2d/mvnmix/pm.fit.kde2d.mvnmix.png width=700
+%>  \image html example/stats/hist/kde2d/mvnmix/pm.stats.hist.kde2d.mvnmix.png width=700
 %>
 %>  \example{mvnmixfar}
-%>  \include{lineno} example/fit/kde2d/mvnmixfar/main.m
+%>  \include{lineno} example/stats/hist/kde2d/mvnmixfar/main.m
 %>  \vis{mvnmixfar}
-%>  \image html example/fit/kde2d/mvnmixfar/pm.fit.kde2d.mvnmixfar.png width=700
+%>  \image html example/stats/hist/kde2d/mvnmixfar/pm.stats.hist.kde2d.mvnmixfar.png width=700
 %>
 %>  \example{sincos}
-%>  \include{lineno} example/fit/kde2d/sincos/main.m
+%>  \include{lineno} example/stats/hist/kde2d/sincos/main.m
 %>  \vis{sincos}
-%>  \image html example/fit/kde2d/sincos/pm.fit.kde2d.sincos.png width=700
+%>  \image html example/stats/hist/kde2d/sincos/pm.stats.hist.kde2d.sincos.png width=700
 %>
 %>  \final{kde2d}
 %>
