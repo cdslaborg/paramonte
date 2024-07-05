@@ -1,10 +1,10 @@
 %>  \brief
 %>  Return a MATLAB string containing the
-%>  absolute path to the system home directory.
+%>  absolute path to the system home directory.<br>
 %>
 %>  \return
-%>  A MATLAB string containing the
-%>  absolute path to the system home directory.
+%>  ``path``    :   A MATLAB string containing the
+%>                  absolute path to the system home directory.<br>
 %>
 %>  \interface{home}
 %>  \code{.m}
@@ -13,13 +13,18 @@
 %>
 %>  \endcode
 %>
+%>  \example{home}
+%>  \include{lineno} example/sys/path/home/main.m
+%>  \output{home}
+%>  \include{lineno} example/sys/path/home/main.out.m
+%>
 %>  \final{home}
 %>
 %>  \author
 %>  \JoshuaOsborne, May 21 2024, 5:25 AM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
-function path = home(varargin)
+function path = home()
     persistent homePathPersistent
     %freshRequested = false;
     %if nargin==0

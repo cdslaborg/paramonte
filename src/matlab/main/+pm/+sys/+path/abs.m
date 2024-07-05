@@ -66,7 +66,7 @@
 %>  \see
 %>  [A collection of MATLAB mex files for system path manipulation](http://www.n-simon.de/mex)<br>
 %>
-%>  \example{abs}
+%>  \example{abs-raw}
 %>  \code{.m}
 %>
 %>      cd(tempdir);                                        % Assumed as 'C:\Temp' here

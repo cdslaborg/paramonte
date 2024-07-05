@@ -1,24 +1,24 @@
 %>  \brief
-%>  Expand wildcards for files and directory names.<br>
+%>  Find all files and directory names matching the input pattern by expanding wildcards.<br>
 %>
 %>  \details
-%>  Pattern matching of file and directory names, based on wildcard characters.<br>
+%>  This function performs pattern matching of file and directory names, based on wildcard characters.<br>
 %>  This function is similar to wildcard expansion performed by the Unix shell
 %>  and Python ``glob.glob`` function, but it can handle by the Unix shell and
 %>  Python glob.glob function, but it can handle more types of wildcards.<br>
 %>  The following list highlights the key differences between
 %>  this function and the MATLAB intrinsic ``dir()``.<br>
 %>  <ol>
-%>      <li>    ``glob()`` supports wildcards for directories.
-%>      <li>    ``glob()`` returns the directory part of ``pattern``.
-%>      <li>    ``glob()`` returns a cell array of matching names.
+%>      <li>    ``glob()`` supports wildcards for directories.<br>
+%>      <li>    ``glob()`` returns the directory part of ``pattern``.<br>
+%>      <li>    ``glob()`` returns a cell array of matching names.<br>
 %>      <li>    ``glob()`` does not return hidden files and directories that
-%>              start with ``'.'`` unless explicitly specified in ``pattern``.
-%>      <li>    ``glob()`` does not return ``'.'`` and ``'..'`` unless explicitly specified in ``pattern``.
-%>      <li>    ``glob()`` adds a trailing file separator to directory names.
+%>              start with ``'.'`` unless explicitly specified in ``pattern``.<br>
+%>      <li>    ``glob()`` does not return ``'.'`` and ``'..'`` unless explicitly specified in ``pattern``.<br>
+%>      <li>    ``glob()`` adds a trailing file separator to directory names.<br>
 %>      <li>    ``glob()`` does not return the contents of a directory when a directory is specified.<br>
-%>              To return contents of a directory, add a trailing ``'/*'``.
-%>      <li>    ``glob()`` returns only directory names when a trailing file separator is specified.
+%>              To return contents of a directory, add a trailing ``'/*'``.<br>
+%>      <li>    ``glob()`` returns only directory names when a trailing file separator is specified.<br>
 %>      <li>    On Windows, ``glob()`` is not case sensitive, but it returns matching
 %>              names exactly in the case as they are defined on the filesystem.<br>
 %>              Case of host and sharename of a UNC path and case of drive
@@ -64,7 +64,7 @@
 %>
 %>  \endcode
 %>
-%>  \example{getBorder}
+%>  \example{glob-raw}
 %>  \code{.m}
 %>
 %>      pm.sys.path.glob("*.m")                 % list all .m files in current directory.
@@ -87,9 +87,14 @@
 %>      pm.sys.path.glob("foo/**/")             % recursively list all directories, starting in directory 'foo'.
 %>      pm.sys.path.glob("**/.svn/")            % list all .svn directories in directory tree.
 %>      pm.sys.path.glob("**/.*/**")            % recursively list all files in hidden directories only.
-%>      [r, d] = pm.sys.path.glob('**'); r(~d)  % get all files in directory tree.
+%>      [paths, isdir] = pm.sys.path.glob('**'); paths(~isdir) % get all files in directory tree.
 %>
 %>  \endcode
+%>
+%>  \example{glob}
+%>  \include{lineno} example/sys/path/glob/main.m
+%>  \output{glob}
+%>  \include{lineno} example/sys/path/glob/main.out.m
 %>
 %>  \final{glob}
 %>
@@ -122,10 +127,15 @@
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function [pathList, isdirList] = glob(pattern, anycase)
+
     if isstring(pattern)
         pattern = convertStringsToChars(pattern);
     end
-    % check pattern input
+
+    %%%%
+    %%%% check pattern input
+    %%%%
+
     if ischar(pattern)
         if isempty(pattern)
             % return when pattern is empty
@@ -138,7 +148,11 @@ function [pathList, isdirList] = glob(pattern, anycase)
     else
         error('glob:invalidInput', 'pattern must be a string.')
     end
-    % check anycase option
+
+    %%%%
+    %%%% check anycase option
+    %%%%
+
     if nargin == 2
         pm.introspection.verify(anycase, "logical", 1, "anycase");
     else
@@ -146,15 +160,27 @@ function [pathList, isdirList] = glob(pattern, anycase)
         % Unix is case sensitive
         anycase = ispc;
     end
-    % define function handle to regular expression function for the specified case sensitivity
+
+    %%%%
+    %%%% define function handle to regular expression function for the specified case sensitivity
+    %%%%
+
     if anycase
         regexp_fhandle = @regexpi;
     else
         regexp_fhandle = @regexp;
     end
-    % only use forward slashes as file separator to prevent escaping backslashes in regular expressions
+
+    %%%%
+    %%%% only use forward slashes as file separator to prevent escaping backslashes in regular expressions
+    %%%%
+
     filespec = strrep(pattern, '\', '/');
-    % split pathroot part from pattern
+
+    %%%%
+    %%%% split pathroot part from pattern
+    %%%%
+
     if strncmp(filespec, '//',2)
         if ispc
             % pattern specifies a UNC path
@@ -183,24 +209,38 @@ function [pathList, isdirList] = glob(pattern, anycase)
         % pattern specifies a relative path
         pathroot = './';
     end
-    % replace multiple file separators by a single file separator
+
+    %%%% replace multiple file separators by a single file separator
+
     filespec = regexprep(filespec, '/+', '/');
-    % replace 'a**' with 'a*/**', where 'a' can be any character but not '/'
+
+    %%%% replace 'a**' with 'a*/**', where 'a' can be any character but not '/'
+
     filespec = regexprep(filespec, '([^/])(\.\*\.\*)', '$1\*/$2');
-    % replace '**a' with '**/*a', where a can be any character but not '/'
+
+    %%%% replace '**a' with '**/*a', where a can be any character but not '/'
+
     filespec = regexprep(filespec, '(\.\*\.\*)([^/])', '$1/\*$2');
-    % split filespec into chunks at file separator
+
+    %%%% split filespec into chunks at file separator
+
     chunks = strread(filespec, '%s', 'delimiter', '/'); %#ok<FPARK>
-    % add empty chunk at the end when filespec ends with a file separator
+
+    %%%% add empty chunk at the end when filespec ends with a file separator
+
     if ~isempty(filespec) && filespec(end)=='/'
         chunks{end+1} = '';
     end
-    % translate chunks to regular expressions
+
+    %%%% translate chunks to regular expressions
+
     for i=1:numel(chunks)
         chunks{i} = glob2regexp(chunks{i});
     end
-    % determine file list using LS_REGEXP
-    % this function requires that PATHROOT does not to contain any wildcards
+
+    %%%% determine file list using LS_REGEXP
+    %%%% this function requires that PATHROOT does not to contain any wildcards
+
     if ~isempty(chunks)
         list = ls_regexp(regexp_fhandle, pathroot, chunks{1:end});
     else
@@ -215,11 +255,19 @@ function [pathList, isdirList] = glob(pattern, anycase)
         I = regexp(list', '/$');
         isdirList = ~cellfun('isempty', I);
     end
-    % convert to standard file separators for PC
+
+    %%%%
+    %%%% convert to standard file separators for PC
+    %%%%
+
     if ispc
         list = strrep(list, '/', '\');
     end
-    % return output
+
+    %%%%
+    %%%% return output
+    %%%%
+
     if nargout == 0
         if ~isempty(list)
             % display list
@@ -234,11 +282,14 @@ function [pathList, isdirList] = glob(pattern, anycase)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function regexp_str = glob2regexp(glob_str)
-        % translate glob_str to regular expression string
-        % initialize
+        %%%%
+        %%%% translate glob_str to regular expression string initialize
+        %%%%
         regexp_str  = '';
         in_curlies  = 0;        % is > 0 within curly braces
-        % handle characters in glob_str one-by-one
+        %%%%
+        %%%% handle characters in glob_str one-by-one
+        %%%%
         for c = glob_str
 
             if any(c=='.()|+^$@%')
@@ -411,4 +462,5 @@ function [pathList, isdirList] = glob(pattern, anycase)
             end
         end
     end
+
 end

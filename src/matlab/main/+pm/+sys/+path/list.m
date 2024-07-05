@@ -1,6 +1,6 @@
 %>  \brief
 %>  Return a cell vector of MATLAB string values each of which
-%>  corresponds to one non-default file or folder path
+%>  corresponds to one **non-default** file or folder path
 %>  in the specified input directory path.<br>
 %>
 %>  \note
@@ -29,6 +29,11 @@
 %>
 %>  \endcode
 %>
+%>  \example{list}
+%>  \include{lineno} example/sys/path/list/main.m
+%>  \output{list}
+%>  \include{lineno} example/sys/path/list/main.out.m
+%>
 %>  \final{list}
 %>
 %>  \author
@@ -36,7 +41,7 @@
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function namelist = list(path)
-    if nargin < 1
+    if  nargin < 1
         path = ".";
     end
     namelist = [];
