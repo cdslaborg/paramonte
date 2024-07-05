@@ -17,9 +17,14 @@
 %>  \interface{href}
 %>  \code{.m}
 %>
-%>      hlink = pm.web.href()
+%>      hlink = pm.web.href(url)
 %>
 %>  \endcode
+%>
+%>  \example{href}
+%>  \include{lineno} example/web/href/main.m
+%>  \output{href}
+%>  \include{lineno} example/web/href/main.out.m
 %>
 %>  \final{href}
 %>

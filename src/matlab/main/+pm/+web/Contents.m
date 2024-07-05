@@ -2,11 +2,11 @@
 %>
 %>  \brief
 %>  The ParaMonte MATLAB package ``pm.web`` contains
-%>  a set of routines and data related to URL and web address manipulation tasks.
+%>  a set of routines and data related to URL and web address manipulation tasks.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members.
+%>  see the documentations of the package members.<br>
 %>
 %>  \final{pm.web}
 %>

@@ -20,6 +20,11 @@
 %>
 %>  \endcode
 %>
+%>  \example{basename}
+%>  \include{lineno} example/web/basename/main.m
+%>  \output{basename}
+%>  \include{lineno} example/web/basename/main.out.m
+%>
 %>  \final{basename}
 %>
 %>  \author
