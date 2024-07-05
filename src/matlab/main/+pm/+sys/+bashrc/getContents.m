@@ -13,6 +13,11 @@
 %>
 %>  \endcode
 %>
+%>  \example{getContents}
+%>  \include{lineno} example/sys/bashrc/getContents/main.m
+%>  \output{getContents}
+%>  \include{lineno} example/sys/bashrc/getContents/main.out.m
+%>
 %>  \final{getContents}
 %>
 %>  \author

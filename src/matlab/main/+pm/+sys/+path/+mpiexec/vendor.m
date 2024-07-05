@@ -5,7 +5,7 @@
 %>  \param[in]  path    :   The input scalar MATLAB string,
 %>                          containing the path to the ``mpiexec``
 %>                          binary whose vendor is to be determined.<br>
-%>                          (**optional**,  default = ``pm.sys.path.mpiexec.which()``)
+%>                          (**optional**,  default = [pm.sys.path.mpiexec.which()](@ref which))
 %>
 %>  \return
 %>  ``name``            :   The output MATLAB string containing the MPI library vendor name ALL in lower-case.<br>
@@ -15,7 +15,7 @@
 %>                              <li>    ``"MPICH"``     :   representing the MPICH MPI library.
 %>                              <li>    ``"OpenMPI"``   :   representing the OpenMPI library.
 %>                          </ol>
-%>                          If the vendor name cannot be identified, the output will be empty ``[]``.
+%>                          If the vendor name cannot be identified, the output will be empty ``""``.<br>
 %>
 %>  \interface{vendor}
 %>  \code{.m}
@@ -25,6 +25,11 @@
 %>
 %>  \endcode
 %>
+%>  \example{vendor}
+%>  \include{lineno} example/sys/path/mpiexec/vendor/main.m
+%>  \output{vendor}
+%>  \include{lineno} example/sys/path/mpiexec/vendor/main.out.m
+%>
 %>  \final{vendor}
 %>
 %>  \author
@@ -33,7 +38,7 @@
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function name = vendor(path)
     name = "";
-    if 0 == nargin
+    if  0 == nargin
         path = pm.sys.path.mpiexec.which();
         if  path == ""
             return;
@@ -50,9 +55,12 @@ function name = vendor(path)
         if isunix()
             path = strrep(path, """", "\""");
         end
-        [failed, version] = system("""" + path + """" + " --version");
-        versionLower = lower(version);
+        failed = pm.os.is.lin() && startsWith(path, "/mnt/"); % A Windows-path application in WSL freezes MATLAB.
         if ~failed
+            [failed, version] = system("""" + path + """" + " --version");
+        end
+        if ~failed
+            versionLower = lower(version);
             if contains(version, "Intel")
                 name = "Intel";
             elseif contains(versionLower, "openmpi") || contains(versionLower, "open-mpi") || contains(versionLower, "openrte")

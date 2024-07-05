@@ -36,6 +36,11 @@
 %>
 %>  \endcode
 %>
+%>  \example{which}
+%>  \include{lineno} example/sys/path/mpiexec/which/main.m
+%>  \output{which}
+%>  \include{lineno} example/sys/path/mpiexec/which/main.out.m
+%>
 %>  \final{which}
 %>
 %>  \author

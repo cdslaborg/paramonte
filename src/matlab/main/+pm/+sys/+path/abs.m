@@ -62,6 +62,9 @@
 %>  \endcode
 %>
 %>  \example{abs}
+%>  \include{lineno} example/sys/path/abs/main.m
+%>  \output{abs}
+%>  \include{lineno} example/sys/path/abs/main.out.m
 %>
 %>      cd(tempdir);                                        % Assumed as 'C:\Temp' here
 %>      pm.sys.path.abs('File.Ext')                         % 'C:\Temp\File.Ext'

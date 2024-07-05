@@ -49,6 +49,11 @@
 %>
 %>  \endcode
 %>
+%>  \example{find}
+%>  \include{lineno} example/sys/path/mpiexec/find/main.m
+%>  \output{find}
+%>  \include{lineno} example/sys/path/mpiexec/find/main.out.m
+%>
 %>  \final{find}
 %>
 %>  \author
@@ -83,7 +88,7 @@ function pathList = find(vendor)
         for icell = 1 : length(apps)
             app = apps(icell);
             if  contains(app, "mpiexec") && isfile(app)
-                if 0 < nargin
+                if  0 < nargin
                     name = lower(pm.sys.path.mpiexec.vendor(app));
                     if  name ~= ""
                         if  contains(name, vendorLower)

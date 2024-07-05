@@ -4,11 +4,11 @@
 %>  The ParaMonte MATLAB package ``pm.sys.bash_profile`` contains
 %>  a set of routines and data related to retrieving or manipulating
 %>  the contents of the ``bash_profile`` file in the home
-%>  directory of systems with Bash terminal.
+%>  directory of systems with Bash terminal.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members.
+%>  see the documentations of the package members.<br>
 %>
 %>  \final{pm.sys.bash_profile}
 %>

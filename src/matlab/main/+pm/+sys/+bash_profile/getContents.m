@@ -1,5 +1,5 @@
 %>  \brief
-%>  Return the contents of the ``.bash_profile`` file 
+%>  Return the contents of the ``.bash_profile`` file
 %>  in the system home folder as a scalar MATLAB string.<br>
 %>
 %>  \return
@@ -12,6 +12,11 @@
 %>      str = pm.sys.bash_profile.getContents()
 %>
 %>  \endcode
+%>
+%>  \example{getContents}
+%>  \include{lineno} example/sys/bash_profile/getContents/main.m
+%>  \output{getContents}
+%>  \include{lineno} example/sys/bash_profile/getContents/main.out.m
 %>
 %>  \final{getContents}
 %>
