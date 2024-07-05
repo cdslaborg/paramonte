@@ -8,7 +8,7 @@
 %>              The output value can be either:<br>
 %>              <ol>
 %>                  <li>    ``"arm64"`` :   This can be currently true only if the OS is Darwin.<br>
-%>                  <li>    ``"amd64"`` :   This can be currently true for either Darwin, Linux, or Windows.<br> 
+%>                  <li>    ``"amd64"`` :   This can be currently true for either Darwin, Linux, or Windows.<br>
 %>              </ol>
 %>
 %>  \interface{arch}
@@ -19,7 +19,13 @@
 %>  \endcode
 %>
 %>  \note
-%>  If the function cannot detect any of the above, the system-returned value will be output as is.<br>
+%>  If the function cannot detect any of the above,
+%>  the system-returned value will be output as is.<br>
+%>
+%>  \example{arch}
+%>  \include{lineno} example/sys/arch/main.m
+%>  \output{arch}
+%>  \include{lineno} example/sys/arch/main.out.m
 %>
 %>  \final{arch}
 %>

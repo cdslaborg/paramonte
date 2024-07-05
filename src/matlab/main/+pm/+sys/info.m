@@ -26,6 +26,11 @@
 %>
 %>  \endcode
 %>
+%>  \example{info}
+%>  \include{lineno} example/sys/info/main.m
+%>  \output{info}
+%>  \include{lineno} example/sys/info/main.out.m
+%>
 %>  \final{info}
 %>
 %>  \author
