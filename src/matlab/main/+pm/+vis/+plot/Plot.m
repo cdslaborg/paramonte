@@ -9,7 +9,7 @@ classdef Plot < pm.vis.figure.Figure
 
     properties(Access = public)
         %>
-        %>  \param[in]  subplot :   The scalar object of superclass ``pm.vis.subplot.Subplot``
+        %>  \param[in]  subplot :   The scalar object of superclass [pm.vis.subplot.Subplot](@ref Subplot)
         %>                          representing the set of subplots to display in the figure.
         %>  
         subplot = [];
@@ -22,7 +22,7 @@ classdef Plot < pm.vis.figure.Figure
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         %>
-        %>  \param[in]  subplot     :   The input scalar object of superclass ``pm.vis.subplot.Subplot``.
+        %>  \param[in]  subplot     :   The input scalar object of superclass [pm.vis.subplot.Subplot](@ref Subplot).
         %>                              The input ``subplot`` object must minimally have the ``make()`` and ``reset()`` methods.
         %>  
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.

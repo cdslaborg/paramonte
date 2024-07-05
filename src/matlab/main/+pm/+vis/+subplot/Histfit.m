@@ -7,11 +7,11 @@ classdef Histfit < pm.vis.subplot.Subplot
     methods(Access = public)
         %>
         %>  \param[in]  dfref   :   See the documentation of the corresponding input
-        %>                          argument of the superclass ``pm.vis.subplot.Subplot``.
+        %>                          argument of the superclass [pm.vis.subplot.Subplot](@ref Subplot).
         %>
         %>  \note
         %>  See the documentation of the attributes
-        %>  of the superclass ``pm.vis.subplot.Subplot``.
+        %>  of the superclass [pm.vis.subplot.Subplot](@ref Subplot).
         %>
         %>  \return
         %>  An object of ``pm.vis.subplot.Histfit`` class.

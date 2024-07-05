@@ -27,16 +27,16 @@
 %>
 %>  \final{fitaxes}
 %>
+%>  This function build upon the work of,
+%>
+%>  Richard Crozier (2024). tightfig (hfig)
+%>  (https://www.mathworks.com/matlabcentral/fileexchange/34055-tightfig-hfig),
+%>  MATLAB Central File Exchange. Retrieved May 12, 2024.
+%>
 %>  \author
 %>  \JoshuaOsborne, May 21 2024, 6:12 AM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
-%>      This function build upon the work of,
-%>
-%>      Richard Crozier (2024). tightfig(hfig)
-%>      (https://www.mathworks.com/matlabcentral/fileexchange/34055-tightfig-hfig),
-%>      MATLAB Central File Exchange. Retrieved May 12, 2024.
-%>
 function fitaxes(fig)
 
     if nargin == 0
@@ -46,15 +46,15 @@ function fitaxes(fig)
         fig = gcf;
     end
 
-    % There can be an issue with tightfig when the user has been modifying
-    % the contents manually, the code below is an attempt to resolve this,
-    % but it has not yet been satisfactorily fixed
-    % origwindowstyle = get(fig, 'WindowStyle');
+    %%%% There can be an issue with tightfig when the user has been modifying
+    %%%% the contents manually, the code below is an attempt to resolve this,
+    %%%% but it has not yet been satisfactorily fixed
+    %%%% origwindowstyle = get(fig, 'WindowStyle');
 
     set(fig, 'WindowStyle', 'normal');
 
-    % 1 point is 0.3528 mm for future use get all the axes handles
-    % note this will also fetch legends and color bars as well.
+    %%%% 1 point is 0.3528 mm for future use get all the axes handles
+    %%%% note this will also fetch legends and color bars as well.
 
     hax = findall(fig, 'type', 'axes');
 

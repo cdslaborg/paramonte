@@ -621,8 +621,14 @@ classdef Axes < pm.matlab.Handle
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     properties(Access = protected, Hidden)
-        type = struct(); % auxiliary struct containing plot type information.
-        cenabled = []; % auxiliary logical scalar that is true if plot is color-mapped.
+        %>
+        %>  ``type``        :   auxiliary struct containing plot type information.
+        %>
+        type = struct();
+        %>
+        %>  ``cenabled``    :   auxiliary logical scalar that is true if plot is color-mapped.
+        %>
+        cenabled = [];
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -741,12 +747,13 @@ classdef Axes < pm.matlab.Handle
         %>
         %>  \interface{reset}
         %>  \code{.m}
-        %>  \endcode
         %>
         %>      a = pm.vis.axes.Axes(ptype)
         %>
-        %>      a.reset(varargin) # reset the plot to settings in ``varargin`` and the rest to default.
-        %>      a.reset() # reset the plot to the default settings.
+        %>      a.reset(varargin) % reset the plot to settings in ``varargin`` and the rest to default.
+        %>      a.reset() % reset the plot to the default settings.
+        %>
+        %>  \endcode
         %>
         %>  \final{reset}
         %>
@@ -1102,7 +1109,7 @@ classdef Axes < pm.matlab.Handle
         %>  \example{premake}
         %>  \code{.m}
         %>
-        %>      a = pm.vis.axes.Axes(ptype);
+        %>      a = pm.vis.axes.Axes("line");
         %>      a.premake("xlim", [0, 1])
         %>
         %>  \endcode
@@ -1364,10 +1371,49 @@ classdef Axes < pm.matlab.Handle
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        %
-        %   Convert the components of the input component ``comp``
-        %   of the parent object into a cell array of key-val pairs.
-        %
+        %>  \brief
+        %>  Convert the components of the input component ``comp``
+        %>  of the parent object into a cell array of key-val pairs.<br>
+        %>
+        %>  \details
+        %>  This is a dynamic method of the class [pm.vis.axes.Axes](@ref Axes).<br>
+        %>  This method is used internally by the subclasses to convert the parent object
+        %>  attributes to input arguments of MATLAB intrinsic visualization functions.<br>
+        %>
+        %>  \param[in]  comp    :   The input scalar MATLAB string representing the name of a ``struct``
+        %>                          component of the parent object, whose fields names and values are to
+        %>                          be returned as subsequent pairs in the output ``hash`` cell array.<br>
+        %>
+        %>  \return
+        %>  ``hash``            :   The output cell array containing the pairs of ``field-name, field-value``
+        %>                          of the input MATLAB struct ``comp``.<br>
+        %>
+        %>  \interface{comp2hash}
+        %>  \code{.m}
+        %>
+        %>      a = pm.vis.axes.Axes(ptype);
+        %>
+        %>      hash = a.comp2hash(comp);
+        %>
+        %>  \endcode
+        %>
+        %>  \warning
+        %>  This method has side-effects by manipulating
+        %>  the existing attributes of the parent object.<br>
+        %>
+        %>  \example{comp2hash}
+        %>  \code{.m}
+        %>
+        %>      a = pm.vis.axes.Axes("histogram", "histogram", {"nbins", 5});
+        %>      hash = a.comp2hash(a.histogram)
+        %>
+        %>  \endcode
+        %>
+        %>  \final{comp2hash}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function hash = comp2hash(self, comp)
 
             excludes = {"enabled"};

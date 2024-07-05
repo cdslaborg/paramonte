@@ -61,7 +61,7 @@ classdef Corner < pm.vis.figure.Tiling
         %>
         cols = [];
         %>
-        %>  \param[in]  diag    :   The scalar object of superclass ``pm.vis.subplot.Subplot``
+        %>  \param[in]  diag    :   The scalar object of superclass [pm.vis.subplot.Subplot](@ref Subplot)
         %>                          representing the template of the diagonal subplots to display.
         %>                          Note that only the visualization properties of the template are used.
         %>                          The data properties of the template are set by the ``make()`` method.
@@ -69,14 +69,14 @@ classdef Corner < pm.vis.figure.Tiling
         %>
         diag = [];
         %>
-        %>  \param[in]  lower   :   The scalar object of superclass ``pm.vis.subplot.Subplot``
+        %>  \param[in]  lower   :   The scalar object of superclass [pm.vis.subplot.Subplot](@ref Subplot)
         %>                          representing the template of the lower-triangle subplots to display.
         %>                          The data properties of the template are set by the ``make()`` method.
         %>                          (**optional**. The default value is ``pm.vis.subplot.Contour([])``.)
         %>
         lower = [];
         %>
-        %>  \param[in]  upper   :   The scalar object of superclass ``pm.vis.subplot.Subplot``
+        %>  \param[in]  upper   :   The scalar object of superclass [pm.vis.subplot.Subplot](@ref Subplot)
         %>                          representing the template of the upper-triangle subplots to display.
         %>                          The data properties of the template are set by the ``make()`` method.
         %>                          (**optional**. The default value is ``pm.vis.subplot.LineScatter([])``.)

@@ -9,7 +9,7 @@ classdef Tile < pm.vis.figure.Tiling
 
     properties(Access = public)
         %>
-        %>  \param  template    :   The scalar object of superclass ``pm.vis.subplot.Subplot``
+        %>  \param  template    :   The scalar object of superclass [pm.vis.subplot.Subplot](@ref Subplot)
         %>                          representing the template of the set of subplots to display.
         %>
         template = [];
@@ -39,7 +39,7 @@ classdef Tile < pm.vis.figure.Tiling
         %>  This class is not meant to be used directly by the end users.
         %>  Instead, use the subclasses of this abstract class for visualizations.
         %>
-        %>  \param[in]  template    :   The input scalar object of superclass ``pm.vis.subplot.Subplot``.
+        %>  \param[in]  template    :   The input scalar object of superclass [pm.vis.subplot.Subplot](@ref Subplot).
         %>                              It serves as the template based upon which all subplots are constructed.
         %>
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.

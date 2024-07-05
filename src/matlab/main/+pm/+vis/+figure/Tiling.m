@@ -2,7 +2,7 @@
 %>  This is the abstract class for generating instances
 %>  of figures containing a tile of subplots.
 %>
-%>  \param[in]  subplot     :   The input cell matrix of MATLAB objects of superclass ``pm.vis.subplot.Subplot``.
+%>  \param[in]  subplot     :   The input cell matrix of MATLAB objects of superclass [pm.vis.subplot.Subplot](@ref Subplot).
 %>  
 %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
 %>                              If the property is a ``struct()``, then its value must be given as a cell array,
@@ -39,7 +39,7 @@ classdef Tiling < pm.vis.figure.Figure
         %>
         tiledlayout = [];
         %>
-        %>  \param[in]  subplot     :   The MATLAB cell matrix containing objects of superclass ``pm.vis.subplot.Subplot``
+        %>  \param[in]  subplot     :   The MATLAB cell matrix containing objects of superclass [pm.vis.subplot.Subplot](@ref Subplot)
         %>                              each of which represents one subplot axes to display in the figure.
         %>
         subplot = cell(0, 0);
@@ -51,13 +51,13 @@ classdef Tiling < pm.vis.figure.Figure
     %    %
     %    %       ncol
     %    %
-    %    %           The MATLAB scalar whole-number whose value represents ``size(self.suplot, 2)``.
+    %    %           The MATLAB scalar whole-number whose value represents ``size(self.subplot, 2)``.
     %    %
     %    ncol = [];
     %    %
     %    %       nrow
     %    %
-    %    %           The MATLAB scalar whole-number whose value represents ``size(self.suplot, 1)``.
+    %    %           The MATLAB scalar whole-number whose value represents ``size(self.subplot, 1)``.
     %    %
     %    nrow = [];
     %end
@@ -92,7 +92,7 @@ classdef Tiling < pm.vis.figure.Figure
                 help("pm.vis.figure.Tiling");
                 error   ( newline ...
                         + "The input argument ``subplot`` must be a MATLAB cell matrix of " + newline ...
-                        + "empty objects or objects of superclass ``pm.vis.subplot.Subplot``." + newline ...
+                        + "empty objects or objects of superclass [pm.vis.subplot.Subplot](@ref Subplot)." + newline ...
                         + "For more information, see the class documentation displayed above." + newline ...
                         + newline ...
                         );
