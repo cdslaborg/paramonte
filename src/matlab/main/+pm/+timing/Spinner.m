@@ -1,29 +1,21 @@
 %>  \brief
 %>  This is the base class for generating objects
-%>  that can display the time spinner on the console.
+%>  that can display the time spinner on the console.<br>
 %>
 %>  \devnote
 %>  The ``handle`` superclass is essential to allow
-%>  object modification by the object methods.
-%>  See the documentation of the class constructor.
+%>  object modification by the object methods.<br>
 %>
 %>  \note
-%>  See below for information on the attributes (properties).
+%>  See the documentation of the class constructor.<br>
 %>
 %>  \note
-%>  See below for information on the methods.
+%>  See below for information on the attributes (properties).<br>
 %>
-%>  \return
-%>  An object of class ``pm.timing.Spinner``.
+%>  \note
+%>  See below for information on the methods.<br>
 %>
-%>  \interface{Spinner}
-%>  \code{.m}
-%>
-%>      self = pm.timing.Spinner()
-%>
-%>  \endcode
-%>
-%>  \final{Spinner}
+%>  \final
 %>
 %>  \author
 %>  \JoshuaOsborne, May 21 2024, 5:39 AM, University of Texas at Arlington<br>
@@ -33,23 +25,31 @@ classdef Spinner < pm.matlab.Handle
 
     properties(Access = protected)
         %>
-        %>  \param[in]  tickmarks   :   The MATLAB ``char`` vector containing the set of
-        %>                              characters that represent the passage of time in the spinner.
+        %>  ``tickmarks``
+        %>
+        %>  The MATLAB ``char`` vector containing the set of
+        %>  characters that represent the passage of time in the spinner.
         %>
         tickmarks = '|/-\';
     end
 
     properties(Hidden)
         %>
-        %>  \param  tickCount   :   The MATLAB integer containing the length of ``tickmarks``.
+        %>  ``tickCount``
+        %>
+        %>  The MATLAB integer containing the length of ``tickmarks``.
         %>
         tickCount = 4;
         %>
-        %>  \param  format      :   The MATLAB ``char`` vector containing the spinner display format.
+        %>  ``format``
+        %>
+        %>  The MATLAB ``char`` vector containing the spinner display format.
         %>
         format = [repmat('\b', 1, 4 + 1), '%s'];
         %>
-        %>  \param  clock       :   The scalar integer representing the index of the ``tickmarks`` attribute.
+        %>  ``clock``
+        %>
+        %>  The scalar integer representing the index of the ``tickmarks`` attribute.
         %>
         clock = 0;
     end
@@ -60,15 +60,17 @@ classdef Spinner < pm.matlab.Handle
     methods(Access = public)
 
         %>  \brief
-        %>  Return a scalar object of class ``pm.timing.Spinner``.<br>
-        %>  This is the constructor of the class ``pm.timing.Spinner``.
+        %>  Return a scalar object of class [pm.timing.Spinner](@ref Spinner).<br>
+        %>
+        %>  \details
+        %>  This is the constructor of the class [pm.timing.Spinner](@ref Spinner).<br>
         %>
         %>  \param[in]  tickmarks   :   The input MATLAB ``char`` vector containing the set of
-        %>                              characters that represent the passage of time in the spinner.
+        %>                              characters that represent the passage of time in the spinner.<br>
         %>                              (**optional**, default = ``'|/-\'``)
         %>
         %>  \return
-        %>  ``self``:   The output scalar object of class ``pm.timing.Spinner``.
+        %>  ``self``                :   The output scalar object of class [pm.timing.Spinner](@ref Spinner).<br>
         %>
         %>  \interface{Spinner}
         %>  \code{.m}
@@ -76,6 +78,11 @@ classdef Spinner < pm.matlab.Handle
         %>      self = pm.timing.Spinner()
         %>
         %>  \endcode
+        %>
+        %>  \example{Spinner}
+        %>  \include{lineno} example/timing/Spinner/main.m
+        %>  \output{Spinner}
+        %>  \include{lineno} example/timing/Spinner/main.out.m
         %>
         %>  \final{Spinner}
         %>
@@ -93,10 +100,10 @@ classdef Spinner < pm.matlab.Handle
         %>  \brief
         %>  Rotate the tick mark of the spinner
         %>  and display the percentage value of the input fraction.<br>
-        %>  This is a dynamic method of the class ``pm.timing.Spinner()``.
+        %>  This is a dynamic method of the class [pm.timing.Spinner](@ref Spinner).<br>
         %>
         %>  \param[in]  fraction    :   The input scalar MATLAB fractional real (``0 <= fraction <= 1``)
-        %>                              representing the fraction of work so far accomplished.
+        %>                              representing the fraction of work so far accomplished.<br>
         %>
         %>  \interface{spin}
         %>  \code{.m}

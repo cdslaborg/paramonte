@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the base class for generating objects
-%>  that can time interval consecutively.
+%>  that can time interval consecutively.<br>
 %>
 %>  \details
 %>  The main utility of this timer class
@@ -11,36 +11,17 @@
 %>  \devnote
 %>  The ``handle`` superclass is essential to allow
 %>  object modification by the object methods.<br>
-%>  See the documentation of the class constructor.
 %>
 %>  \note
-%>  See below for information on the attributes (properties).
+%>  See the documentation of the class constructor.<br>
 %>
 %>  \note
-%>  See below for information on the methods.
+%>  See below for information on the attributes (properties).<br>
 %>
-%>  \return
-%>  An object of class ``pm.timing.Timer``.
+%>  \note
+%>  See below for information on the methods.<br>
 %>
-%>  \interface{Timer}
-%>  \code{.m}
-%>
-%>      timer = pm.timing.Timer()
-%>
-%>  \endcode
-%>
-%>  \example{Timer}
-%>
-%>      timer = pm.timing.Timer()
-%>      timer.tic();
-%>      pause(1);
-%>      timer.toc()
-%>      pause(.5);
-%>      timer.toc()
-%>      pause(.2);
-%>      timer.del()
-%>
-%>  \final{Timer}
+%>  \final
 %>
 %>  \author
 %>  \JoshuaOsborne, May 21 2024, 5:47 AM, University of Texas at Arlington<br>
@@ -51,19 +32,23 @@ classdef Timer < pm.matlab.Handle
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     properties(Access = protected)
-        %
-        %   \param[in]  clock   :   The scalar MATLAB real containing the most recent
-        %                           timing since the construction of the timer.
-        %
+        %>
+        %>  ``clock``
+        %>
+        %>  The scalar MATLAB real containing the most recent
+        %>  timing since the construction of the timer.<br>
+        %>
         clock = 0;
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     properties(Hidden)
-        %
-        %   \param[in]  start:  The scalar MATLAB real containing the timer start.
-        %
+        %>
+        %>  ``start``
+        %>
+        %>  The scalar MATLAB real containing the timer start.<br>
+        %>
         start;
     end
 
@@ -72,11 +57,13 @@ classdef Timer < pm.matlab.Handle
     methods(Access = public)
 
         %>  \brief
-        %>  Return a scalar object of class ``pm.timing.Timer``.<br>
-        %>  This is the constructor of the class ``pm.timing.Timer``.
+        %>  Return a scalar object of class [pm.timing.Timer](@ref Timer).<br>
+        %>
+        %>  \details
+        %>  This is the constructor of the class [pm.timing.Timer](@ref Timer).<br>
         %>
         %>  \return
-        %>  ``self``:   The output scalar object of class ``pm.timing.Timer``.
+        %>  ``self``    :   The output scalar object of class [pm.timing.Timer](@ref Timer).<br>
         %>
         %>  \interface{Timer}
         %>  \code{.m}
@@ -84,6 +71,11 @@ classdef Timer < pm.matlab.Handle
         %>      self = pm.timing.Timer()
         %>
         %>  \endcode
+        %>
+        %>  \example{Timer}
+        %>  \include{lineno} example/timing/Timer/main.m
+        %>  \output{Timer}
+        %>  \include{lineno} example/timing/Timer/main.out.m
         %>
         %>  \final{Timer}
         %>
