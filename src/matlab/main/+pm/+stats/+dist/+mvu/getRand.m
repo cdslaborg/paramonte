@@ -1,6 +1,8 @@
 %>  \brief
 %>  Return a (set of) multivariate Uniform random vector(s),
 %>  from within a hyper-ellipsoidal domain.<br>
+%>
+%>  \details
 %>  The returned random vectors are uniformly distributed
 %>  within the hyper-ellipsoidal domain of the Uniform distribution.<br>
 %>

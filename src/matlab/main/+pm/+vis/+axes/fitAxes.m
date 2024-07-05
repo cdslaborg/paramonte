@@ -12,20 +12,20 @@
 %>                      handle to the figure whose axes must be tightly fit.<br>
 %>                      (**optional**. If missing, the current figure will be used.)
 %>
-%>  \interface{fitaxes}
+%>  \interface{fitAxes}
 %>  \code{.m}
 %>
-%>      pm.vis.fitaxes()
-%>      pm.vis.fitaxes([])
-%>      pm.vis.fitaxes(fig)
+%>      pm.vis.fitAxes()
+%>      pm.vis.fitAxes([])
+%>      pm.vis.fitAxes(fig)
 %>
 %>  \endcode
 %>
-%>  \example{fitaxes}
+%>  \example{fitAxes}
 %>
-%>      pm.vis.fitaxes()
+%>      pm.vis.fitAxes()
 %>
-%>  \final{fitaxes}
+%>  \final{fitAxes}
 %>
 %>  This function build upon the work of,
 %>
@@ -37,7 +37,7 @@
 %>  \JoshuaOsborne, May 21 2024, 6:12 AM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
-function fitaxes(fig)
+function fitAxes(fig)
 
     if nargin == 0
         fig = [];
@@ -136,7 +136,7 @@ function fitaxes(fig)
         is2d = all(bsxfun(@eq, [az,el], views2d), 2);
 
         if iszoomed && ~any(is2d)
-           error('fitaxes:haszoomed3d', 'Cannot make figures containing zoomed 3D axes tight.')
+           error('fitAxes:haszoomed3d', 'Cannot make figures containing zoomed 3D axes tight.')
         end
 
     end

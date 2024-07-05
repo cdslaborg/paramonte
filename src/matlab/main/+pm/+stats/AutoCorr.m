@@ -48,24 +48,24 @@ classdef AutoCorr < pm.matlab.Handle
         %>              errors on the computed autocorrelations.<br>
         %>              Any autocorrelation value bound within these limits can be
         %>              considered random fluctuations at ``numstd``-sigma confidence level.<br>
-        %>              This component is automatically populated at the time
-        %>              of constructing an object of class ``pm.stats.AutoCorr``.<br>
+        %>              This component is automatically populated when constructing
+        %>              an object of class [pm.stats.AutoCorr](@ref AutoCorr).<br>
         %>              It must be populated manually at all other times.<br>
         %>
         bnd = [];
         %>
         %>  lag     :   The MATLAB vector integers representing the
         %>              lags for which the autocorrelation is computed.<br>
-        %>              This component is automatically populated at the time
-        %>              of constructing an object of class ``pm.stats.AutoCorr``.<br>
+        %>              This component is automatically populated when constructing
+        %>              an object of class [pm.stats.AutoCorr](@ref AutoCorr).<br>
         %>              It must be populated manually at all other times.<br>
         %>
         lag = [];
         %>
         %>  val     :   The MATLAB table of rank ``2`` serving as a
-        %>              convenient storage component for the autocorrelation.
-        %>              This component is automatically populated at the time
-        %>              of constructing an object of class ``pm.stats.AutoCorr``.<br>
+        %>              convenient storage component for the autocorrelation.<br>
+        %>              This component is automatically populated when constructing
+        %>              an object of class [pm.stats.AutoCorr](@ref AutoCorr).<br>
         %>              It must be populated manually at all other times.<br>
         %>
         val = [];
@@ -74,8 +74,8 @@ classdef AutoCorr < pm.matlab.Handle
     methods(Access=public)
 
         %>  \brief
-        %>  Return an object of class ``pm.stats.AutoCorr``.<br>
-        %>  This is the constructor of the ``pm.stats.AutoCorr`` class.<br>
+        %>  Return an object of class [pm.stats.AutoCorr](@ref AutoCorr).<br>
+        %>  This is the constructor of the [pm.stats.AutoCorr](@ref AutoCorr) class.<br>
         %>
         %>  \param[in]  df      :   The input MATLAB matrix or table of rank ``2``
         %>                          containing the data as ``ncol`` columns of ``nrow``
@@ -93,7 +93,7 @@ classdef AutoCorr < pm.matlab.Handle
         %>                          (**optional**, default = ``1``)
         %>
         %>  \return
-        %>  ``self``            :   The output object of class ``pm.stats.AutoCorr``.<br>
+        %>  ``self``            :   The output object of class [pm.stats.AutoCorr](@ref AutoCorr).<br>
         %>
         %>  \interface{AutoCorr}
         %>  \code{.m}
@@ -140,7 +140,7 @@ classdef AutoCorr < pm.matlab.Handle
         %>  data from a lag of ``0`` to ``numlag``.<br>
         %>
         %>  \details
-        %>  This is a dynamic method of the ``pm.stats.AutoCorr`` class.<br>
+        %>  This is a dynamic method of the [pm.stats.AutoCorr](@ref AutoCorr) class.<br>
         %>  This method automatically stores any input information
         %>  in the corresponding components of the parent object.<br>
         %>  However, any components of the parent object
