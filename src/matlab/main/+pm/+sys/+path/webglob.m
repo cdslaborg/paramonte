@@ -11,19 +11,19 @@
 %>
 %>  \param[in]  pattern :   The input scalar MATLAB string containing either:<br>
 %>                          <ol>
-%>                              <li>    the pattern to search for paths on the current system.
-%>                                      Wildcards may be used for basenames and for the directory parts.
+%>                              <li>    the pattern to search for paths on the current system.<br>
+%>                                      Wildcards may be used for basenames and for the directory parts.<br>
 %>                                      If pattern contains directory parts, then these will
 %>                                      be included in the output ``pathList``.<br>
-%>                                      Following wildcards can be used:
+%>                                      Following wildcards can be used:<br>
 %>                                      <ol>
-%>                                          <li>    ``*`` match zero or more characters
-%>                                          <li>    ``?`` match any single character
-%>                                          <li>    ``[ab12]`` match one of the specified characters
-%>                                          <li>    ``[^ab12]`` match none of the specified characters
-%>                                          <li>    ``[a-z]`` match one character in range of characters
-%>                                          <li>    ``{a,b,c}`` matches any one of strings a, b or c
-%>                                          <li>    All above wildcards do not match a file separator.
+%>                                          <li>    ``*`` match zero or more characters.<br>
+%>                                          <li>    ``?`` match any single character.<br>
+%>                                          <li>    ``[ab12]`` match one of the specified characters.<br>
+%>                                          <li>    ``[^ab12]`` match none of the specified characters.<br>
+%>                                          <li>    ``[a-z]`` match one character in range of characters.<br>
+%>                                          <li>    ``{a,b,c}`` matches any one of strings ``a``, ``b``, or ``c``.<br>
+%>                                          <li>    All above wildcards do not match a file separator.<br>
 %>                                          <li>    ``**`` match zero or more characters including file separators.<br>
 %>                                                  This can be used to match zero or more directory parts
 %>                                                  and will recursively list matching names.<br>
@@ -55,6 +55,11 @@
 %>
 %>  \endcode
 %>
+%>  \example{webglob}
+%>  \include{lineno} example/sys/path/webglob/main.m
+%>  \output{webglob}
+%>  \include{lineno} example/sys/path/webglob/main.out.m
+%>
 %>  \final{webglob}
 %>
 %>  \author
@@ -66,10 +71,14 @@ function [pathList, isdirList] = webglob(pattern, anycase)
         anycase = [];
     end
     [pathList, isdirList] = pm.sys.path.glob(pattern, anycase);
-    if isempty(pathList)
-        % check if the input path is a weblink.
+    if  isempty(pathList)
+        %%%%
+        %%%% check if the input path is a weblink.
+        %%%%
         if pm.web.isurl(pattern)
-            % Extract the weblink file name.
+            %%%%
+            %%%% Extract the weblink file name.
+            %%%%
             parts = split(pattern, "/");
             if parts(end) ~= ""
                 pathtmp = fullfile(tempdir(), parts(end));

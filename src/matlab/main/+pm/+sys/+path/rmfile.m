@@ -34,6 +34,11 @@
 %>
 %>  \endcode
 %>
+%>  \example{rmfile}
+%>  \include{lineno} example/sys/path/rmfile/main.m
+%>  \output{rmfile}
+%>  \include{lineno} example/sys/path/rmfile/main.out.m
+%>
 %>  \final{rmfile}
 %>
 %>  \author
@@ -44,8 +49,8 @@ function failed = rmfile(file, desc)
     try
         delete(file);
     catch me
-        if nargin == 2
-            if isempty(desc) || desc == ""
+        if  nargin == 2
+            if  isempty(desc) || desc == ""
                 desc = "the requested file";
             end
             warning ( newline ...
@@ -59,4 +64,5 @@ function failed = rmfile(file, desc)
                     );
         end
     end
+    failed = isfile(file);
 end
