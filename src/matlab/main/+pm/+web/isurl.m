@@ -16,6 +16,11 @@
 %>
 %>  \endcode
 %>
+%>  \example{isurl}
+%>  \include{lineno} example/web/isurl/main.m
+%>  \output{isurl}
+%>  \include{lineno} example/web/isurl/main.out.m
+%>
 %>  \final{isurl}
 %>
 %>  \author
@@ -26,15 +31,21 @@ function itis = isurl(url)
     itis = false;
     try
         urlobj = java.net.URL(url); %create the url object
-        % Get the proxy information using the MATLAB proxy API.
+        %%%%
+        %%%% Get the proxy information using the MATLAB proxy API.
+        %%%%
         proxy = com.mathworks.webproxy.WebproxyFactory.findProxyForURL(urlobj);
-        % Open a connection to the urlobj.
+        %%%%
+        %%%% Open a connection to the urlobj.
+        %%%%
         if isempty(proxy)
             urlConnection = urlobj.openConnection;
         else
             urlConnection = urlobj.openConnection(proxy);
         end
-        % Try to start the input stream.
+        %%%%
+        %%%% Try to start the input stream.
+        %%%%
         inputStream = urlConnection.getInputStream;
         itis = true;
     end
