@@ -301,7 +301,7 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
         %>  \interface{reset}
         %>  \code{.m}
         %>
-        %>      pm.vis.subplot.Ellipse3.reset() # reset the plot to the default settings.
+        %>      pm.vis.subplot.Ellipse3.reset() % reset the plot to the default settings.
         %>
         %>  \endcode
         %>

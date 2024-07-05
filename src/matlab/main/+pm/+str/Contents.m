@@ -2,11 +2,11 @@
 %>
 %>  \brief
 %>  The ParaMonte MATLAB package ``pm.str`` contains
-%>  a set of routines and data related to string manipulation.
+%>  a set of routines and data related to string manipulation.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members.
+%>  see the documentations of the package members.<br>
 %>
 %>  \final{pm.str}
 %>

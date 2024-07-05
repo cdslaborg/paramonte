@@ -58,18 +58,18 @@ classdef Heatmap < pm.vis.subplot.Subplot
         %>  the existing attributes of the parent object.
         %>
         %>  \param[in]  lb  :   The input MATLAB object that can be either:
-        %>          <ol>  
+        %>          <ol>
         %>              <li>    a scalar of type double representing the lower bound of the Heatmap colormap range.
         %>              <li>    a vector of type double of size ``2`` representing the
         %>                      lower and upper bounds of the Heatmap colormap range.
         %>          </ol>
         %>                      (**optional**. If missing, the current value will remain intact.)
-        %>  
+        %>
         %>  \param[in]  ub  :   The input MATLAB scalar double representing the upper bound of the Heatmap colormap limits.
         %>                      Its value is completely ignored if the input ``lb`` argument is a vector of size ``2``.
         %>                      (**optional**. If missing, the current value will remain intact.)
         %>
-        %>  \interface{setcl}
+        %>  \interface{setColorLim}
         %>  \code{.m}
         %>
         %>      h = pm.vis.subplot.Subplot.make();
@@ -81,23 +81,27 @@ classdef Heatmap < pm.vis.subplot.Subplot
         %>
         %>  \endcode
         %>
-        %>  \example{setcl}
+        %>  \example{setColorLim}
+        %>  \code{.m}
         %>
         %>      h = pm.vis.subplot.Heatmap(dfref);
         %>      h.make()
-        %>      h.setcl() % symmetrize the current range.
-        %>      h.setcl(1) % set the lower bound to 1.
-        %>      h.setcl([], 1) % set the upper bound to 1.
-        %>      h.setcl(1, 2) % set the lower and upper bounds to 1 and 2.
-        %>      h.setcl([1, 2]) % set the lower and upper bounds to 1 and 2.
         %>
-        %>  \final{setcl}
+        %>      h.setColorLim()       % symmetrize the current range.
+        %>      h.setColorLim(1)      % set the lower bound to 1.
+        %>      h.setColorLim([], 1)  % set the upper bound to 1.
+        %>      h.setColorLim(1, 2)   % set the lower and upper bounds to 1 and 2.
+        %>      h.setColorLim([1, 2]) % set the lower and upper bounds to 1 and 2.
+        %>
+        %>  \endcode
+        %>
+        %>  \final{setColorLim}
         %>
         %>  \author
         %>  \JoshuaOsborne, May 21 2024, 5:54 PM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
-        function setcl(self, lb, ub)
+        function setColorLim(self, lb, ub)
 
             if  isfield(self.fout, "heatmap") && isprop(self.fout.heatmap, "ColorLimits")
                 if  nargin < 3

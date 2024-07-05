@@ -291,7 +291,7 @@ classdef Corner < pm.vis.figure.Tiling
         %>  \interface{reset}
         %>  \code{.m}
         %>
-        %>      pm.vis.corner.Corner.reset() # reset all object properties to the default settings.
+        %>      pm.vis.corner.Corner.reset() % reset all object properties to the default settings.
         %>
         %>  \endcode
         %>

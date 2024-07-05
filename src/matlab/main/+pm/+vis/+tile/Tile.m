@@ -99,7 +99,7 @@ classdef Tile < pm.vis.figure.Tiling
         %>  \interface{reset}
         %>  \code{.m}
         %>
-        %>      pm.vis.tile.Tile.reset() # reset the tile to the default settings.
+        %>      pm.vis.tile.Tile.reset() % reset the tile to the default settings.
         %>
         %>  \endcode
         %>

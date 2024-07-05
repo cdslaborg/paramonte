@@ -85,7 +85,7 @@ classdef Cascade < pm.matlab.Handle
         %>  \interface{reset}
         %>  \code{.m}
         %>
-        %>      pm.vis.cascade.Cascade.reset() # reset the plot to the default settings.
+        %>      pm.vis.cascade.Cascade.reset() % reset the plot to the default settings.
         %>
         %>  \endcode
         %>

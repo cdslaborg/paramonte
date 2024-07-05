@@ -281,7 +281,7 @@ classdef Subplot < pm.vis.axes.Axes
         %>
         %>  \author
         %>  \JoshuaOsborne, May 22 2024, 6:45 PM, University of Texas at Arlington<br>
-        %>  \AmirShahmoradi, July 4 2024, 1:07 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, July 5 2024, 1:07 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         function self = Subplot(ptype, dfref, varargin)
             if  nargin < 2
                 dfref = [];
@@ -605,7 +605,7 @@ classdef Subplot < pm.vis.axes.Axes
 
             %%%% Make plots.
 
-            if self.type.is.heatmap && self.heatmap.enabled
+            if  self.type.is.heatmap && self.heatmap.enabled
 
                 if ~isempty(self.precision)
                     self.fout.heatmap = heatmap(colnamx, colnamy, round(dfcopy{colnamy, colnamx}, self.precision), kws.heatmap{:});
@@ -971,7 +971,7 @@ classdef Subplot < pm.vis.axes.Axes
         %>  \interface{reset}
         %>  \code{.m}
         %>
-        %>      pm.vis.subplot.Subplot.reset() # reset the plot to the default settings.
+        %>      pm.vis.subplot.Subplot.reset() % reset the plot to the default settings.
         %>
         %>  \endcode
         %>

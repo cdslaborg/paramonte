@@ -1,6 +1,6 @@
 %>  \brief
 %>  Return a scalar MATLAB logical that is ``true`` if and
-%>  only if the input string can be converted to a number.<br>
+%>  only if the input string can be converted to a **scalar** number.<br>
 %>
 %>  \details
 %>  The returned result is ``~isnan(str2double(str))``.<br>
@@ -13,7 +13,7 @@
 %>  \return
 %>  ``itis``        :   The output scalar MATLAB logical that is ``true`` if and
 %>                      only if the input ``str`` contains text that is convertible
-%>                      to number(s), e.g., integer, real, complex.<br>
+%>                      to a **scalar** number, e.g., integer, real, complex.<br>
 %>
 %>  \interface{isnumeric}
 %>  \code{.m}
@@ -21,6 +21,11 @@
 %>      itis = pm.str.isnumeric(str)
 %>
 %>  \endcode
+%>
+%>  \example{isnumeric}
+%>  \include{lineno} example/str/isnumeric/main.m
+%>  \output{isnumeric}
+%>  \include{lineno} example/str/isnumeric/main.out.m
 %>
 %>  \final{isnumeric}
 %>

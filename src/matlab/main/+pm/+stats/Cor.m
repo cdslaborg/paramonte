@@ -1,33 +1,20 @@
 %>  \brief
 %>  This is the base class for generating objects with methods
 %>  and storage components for computing and storing the
-%>  correlation matrix of an input data.
+%>  correlation matrix of an input data.<br>
 %>
-%>  \note
+%>  \details
 %>  This is convenience class for easy computation
 %>  of correlation and its storage all in one place.<br>
 %>  The primary advantage of this class over the MATLAB
 %>  intrinsic functions is in the ability of this class
 %>  to compute the result for input dataframe table and
 %>  return the results always in MATLAB ``table`` format.<br>
-%>  See the documentation of the class constructor below.
 %>
 %>  \note
-%>  See the documentation of the class constructor below.
+%>  See the documentation of the class constructor below.<br>
 %>
-%>  \return
-%>  See the documentation of the class constructor below.
-%>
-%>  \interface{Cor}
-%>  \code{.m}
-%>
-%>      mat = pm.stats.Cor()
-%>      mat = pm.stats.Cor(df)
-%>      mat = pm.stats.Cor(df, method)
-%>
-%>  \endcode
-%>
-%>  \final{Cor}
+%>  \final
 %>
 %>  \author
 %>  \JoshuaOsborne, May 21 2024, 4:16 AM, University of Texas at Arlington<br>
@@ -36,22 +23,27 @@
 classdef Cor < pm.matlab.Handle
 
     properties(Access = public)
-        %>  
-        %>  \param  method  :   The scalar MATLAB string containing the
-        %>                      method of computing the correlation matrix.
-        %>                      It can be either:<br>
-        %>                      "pearson"   : for computing the Pearson correlation matrix of the input data.
-        %>                      "kendall"   : for computing the kendall rank correlation matrix of the input data.
-        %>                      "spearman"  : for computing the Spearman rank correlation matrix of the input data.
-        %>  
-        %>  
+        %>
+        %>  ``method``
+        %>
+        %>  The scalar MATLAB string containing the
+        %>  method of computing the correlation matrix.<br>
+        %>  It can be either:<br>
+        %>  <ol>
+        %>      <li>    ``"pearson"``   : for computing the Pearson correlation matrix of the input data.
+        %>      <li>    ``"kendall"``   : for computing the kendall rank correlation matrix of the input data.
+        %>      <li>    ``"spearman"``  : for computing the Spearman rank correlation matrix of the input data.
+        %>  </ol>
+        %>
         method = "pearson";
         %>
-        %>  \param  val     :   The MATLAB table of rank ``2`` serving as a
-        %>                      convenient storage component for the correlation matrix.<br>
-        %>                      This component is automatically populated at the time of
-        %>                      constructing an object of class ``pm.stats.Cor``.<br>
-        %>                      It must be populated manually at all other times.
+        %>  ``val``
+        %>
+        %>  The MATLAB table of rank ``2`` serving as a
+        %>  convenient storage component for the correlation matrix.<br>
+        %>  This component is automatically populated at the time of
+        %>  constructing an object of class [pm.stats.Cor](@ref Cor).<br>
+        %>  It must be populated manually at all other times.<br>
         %>
         val = [];
     end
@@ -60,13 +52,15 @@ classdef Cor < pm.matlab.Handle
 
         %>  \brief
         %>  Return an object of class ``Cor``.<br>
-        %>  This is the constructor of the ``Cor`` class.
+        %>
+        %>  \details
+        %>  This is the constructor of the ``Cor`` class.<br>
         %>
         %>  \param[in]  df      :   The input MATLAB matrix or table of rank ``2``
         %>                          containing the data as ``ncol`` columns of ``nrow``
         %>                          observations whose correlation matrix must be computed.<br>
         %>                          (**optional**. If missing, the correlation matrix will not be computed.)
-        %>  
+        %>
         %>  \param[in]  method  :   The input scalar MATLAB string that can be either:<br>
         %>                          "pearson"   : for computing the Pearson correlation matrix of the input data.<br>
         %>                          "kendall"   : for computing the kendall rank correlation matrix of the input data.<br>
@@ -74,7 +68,7 @@ classdef Cor < pm.matlab.Handle
         %>                          (**optional**, default = ``"pearson"``)
         %>
         %>  \return
-        %>  ``self``            :   The output object of class ``pm.stats.Cor``.
+        %>  ``self``            :   The output object of class [pm.stats.Cor](@ref Cor).
         %>
         %>  \interface{Cor}
         %>  \code{.m}
@@ -84,6 +78,13 @@ classdef Cor < pm.matlab.Handle
         %>      mat = pm.stats.Cor(df, method)
         %>
         %>  \endcode
+        %>
+        %>  \example{Cor}
+        %>  \include{lineno} example/stats/Cor/main.m
+        %>  \output{Cor}
+        %>  \include{lineno} example/stats/Cor/main.out.m
+        %>  \vis{Cor}
+        %>  \image html example/stats/Cor/Cor.unifrnd.png width=700
         %>
         %>  \final{Cor}
         %>
@@ -95,30 +96,30 @@ classdef Cor < pm.matlab.Handle
             if nargin == 2
                 self.method = method;
             end
-            if 0 < nargin
+            if  0 < nargin
                 self.val = self.get(df, self.method);
             end
         end
 
         %>  \brief
-        %>  Return the correlation matrix of the input data.
+        %>  Return the correlation matrix of the input data.<br>
         %>
         %>  \details
         %>  This is a dynamic method of the ``Cor`` class.
         %>  This method automatically stores any input information
-        %>  in the corresponding components of the parent object.
+        %>  in the corresponding components of the parent object.<br>
         %>  However, any components of the parent object
         %>  corresponding to the output of this method
-        %>  must be set explicitly manually.
+        %>  must be set explicitly manually.<br>
         %>
         %>  \param[in]  df      :   The input MATLAB matrix or table of rank ``2``
         %>                          containing the data as ``ncol`` columns of ``nrow``
-        %>                          observations whose correlation matrix must be computed.
-        %>  
+        %>                          observations whose correlation matrix must be computed.<br>
+        %>
         %>  \param[in]  method  :   The input scalar MATLAB string that can be either:<br>
         %>                          <ol>
-        %>                              <li>    ``"pearson"``   : for computing the Pearson correlation matrix of the input data.
-        %>                              <li>    ``"kendall"``   : for computing the kendall rank correlation matrix of the input data.
+        %>                              <li>    ``"pearson"``   : for computing the Pearson correlation matrix of the input data.<br>
+        %>                              <li>    ``"kendall"``   : for computing the kendall rank correlation matrix of the input data.<br>
         %>                              <li>    ``"spearman"``  : for computing the Spearman rank correlation matrix of the input data.<br>
         %>                          </ol>
         %>                          (**optional**, default = ``pm.stats.Cor.method``)
@@ -135,6 +136,10 @@ classdef Cor < pm.matlab.Handle
         %>
         %>  \endcode
         %>
+        %>  \note
+        %>  See the documentation of the class constructor
+        %>  [pm.stats.Cor](@ref Cor::Cor) for example usage.<br>
+        %>
         %>  \final{get}
         %>
         %>  \author
@@ -142,7 +147,7 @@ classdef Cor < pm.matlab.Handle
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function val = get(self, df, method)
-            if nargin < 2
+            if  nargin < 2
                 help("pm.stats.Cor");
                 error   ( newline ...
                         + "The input ``df`` argument is required for computing the correlation matrix." + newline ...
@@ -171,6 +176,7 @@ classdef Cor < pm.matlab.Handle
             if isa(df, "table")
                 val.Properties.VariableNames = df.Properties.VariableNames;
             end
+            val.Properties.RowNames = val.Properties.VariableNames;
         end
 
     end

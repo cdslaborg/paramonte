@@ -32,10 +32,9 @@
 %>  \endcode
 %>
 %>  \example{index}
-%>
-%>      loc = pm.str.index("paramonte", "") % 1
-%>      loc = pm.str.index("paramonte", "M") % 0
-%>      loc = pm.str.index("paramonte", "mont") % 5
+%>  \include{lineno} example/str/index/main.m
+%>  \output{index}
+%>  \include{lineno} example/str/index/main.out.m
 %>
 %>  \final{index}
 %>

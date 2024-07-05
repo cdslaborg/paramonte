@@ -151,7 +151,7 @@ classdef Figure < pm.matlab.Handle
             end
 
             self.fout.figure = figure(kws.figure{:});
-            hold on;
+            %hold on; This interferes with Heatmap plots.
 
             %%%%
             %%%% Resize the figure to allow good default visualization.
@@ -182,7 +182,7 @@ classdef Figure < pm.matlab.Handle
         %>  \interface{reset}
         %>  \code{.m}
         %>
-        %>      pm.vis.figure.Figure.reset() # reset the plot to the default settings.
+        %>      pm.vis.figure.Figure.reset() % reset the plot to the default settings.
         %>
         %>  \endcode
         %>

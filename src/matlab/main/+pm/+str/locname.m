@@ -26,9 +26,9 @@
 %>  \endcode
 %>
 %>  \example{locname}
-%>
-%>      [loclist, namlist] = pm.str.locname(["library", "paramonte"], "paramonte") % 2, "paramonte"
-%>      [loclist, namlist] = pm.str.locname(["library", "paramonte"], ["paramonte", 1]) % [2, 1] ["paramonte" "library"]
+%>  \include{lineno} example/str/locname/main.m
+%>  \output{locname}
+%>  \include{lineno} example/str/locname/main.out.m
 %>
 %>  \final{locname}
 %>

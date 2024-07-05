@@ -208,7 +208,7 @@ classdef Tiling < pm.vis.figure.Figure
         %>  \interface{reset}
         %>  \code{.m}
         %>
-        %>      pm.vis.figure.Tiling.reset() # reset all object properties to the default settings.
+        %>      pm.vis.figure.Tiling.reset() % reset all object properties to the default settings.
         %>
         %>  \endcode
         %>
