@@ -1,12 +1,12 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.array`` contains a set
-%>  of packages and functionalities for array operations and manipulations.
+%>  The ParaMonte MATLAB package [pm.array](@ref \psldir/main/+pm/+array) contains 
+%>  a set of packages and functionalities for array operations and manipulations.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members (source files).
+%>  see the documentations of the package members (source files).<br>
 %>
 %>  \final{pm.array}
 %>

@@ -55,7 +55,7 @@ classdef Plot < pm.vis.figure.Figure
         %>
         %>  \note
         %>  See the list of class attributes below,
-        %>  also those of the superclass ``pm.vis.figure.Figure``.<br>
+        %>  also those of the superclass [pm.vis.figure.Figure](@ref Figure).<br>
         %>
         %>  \final{Plot}
         %>

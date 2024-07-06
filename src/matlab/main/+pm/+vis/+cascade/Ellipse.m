@@ -24,7 +24,7 @@ classdef Ellipse < pm.vis.cascade.Cascade
         %>
         %>  \note
         %>  See below and also the documentation of the
-        %>  attributes of the superclass ``pm.vis.figure.Figure``.
+        %>  attributes of the superclass [pm.vis.figure.Figure](@ref Figure).
         %>
         %>  \return
         %>  An object of class ``pm.vis.cascade.Ellipse``.

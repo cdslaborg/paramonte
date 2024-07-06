@@ -27,11 +27,13 @@ classdef DataRef < pm.matlab.Handle
 
     properties(Access = protected, Hidden)
         %>
+        %>  ``dfref``
+        %>
         %>  A ``protected`` and ``Hidden`` copy of the user-specified
-        %>  input data (or its handle) ``dfref`` to the class constructor.
-        %>  This is an exact copy of the user-specified function handle or data.
-        %>  Users are supposed to access this component only
-        %>  via the class method ``pm.data.DataRef.copy()``.
+        %>  input data (or its handle) ``dfref`` to the class constructor.<br>
+        %>  This is an exact copy of the user-specified function handle or data.<br>
+        %>  Users are supposed to access this component only via the class
+        %>  method [pm.data.DataRef.copy()](@ref DataRef::copy).<br>
         %>
         dfref;
     end
@@ -54,7 +56,7 @@ classdef DataRef < pm.matlab.Handle
         %>                          (**optional**. default = ``[]``)
         %>
         %>  \return
-        %>  ``self``            :   The output scalar object of class ``pm.data.DataRef``.
+        %>  ``self``            :   The output scalar object of class [pm.data.DataRef](@ref DataRef).
         %>
         %>  \interface{DataRef}
         %>  \code{.m}

@@ -1,17 +1,17 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.geom.ell2`` contains
-%>  a set of functionalities for 2D-ellipse computational geometry.
+%>  The ParaMonte MATLAB package [pm.geom.ell2](@ref \psldir/main/+pm/+geom/+ell2)
+%>  contains a set of functionalities for 2D-ellipse computational geometry.<br>
 %>
 %>  \details
 %>  While the current functionalities primarily revolve around
 %>  enabling the visualization tasks of the ParaMonte library,
-%>  further additions are planned for to this package.
+%>  further additions are planned for to this package.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members.
+%>  see the documentations of the package members.<br>
 %>
 %>  \see
 %>  [pm.geom.ell2.getBorder](@ref getBorder)<br>

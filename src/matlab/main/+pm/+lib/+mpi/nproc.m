@@ -17,12 +17,12 @@
 %>  \param[in]  config  :   The input scalar (or array of) MATLAB string(s)
 %>                          containing the ParaMonte-preferred MPI library vendor/name
 %>                          or other configurations as used in naming the ParaMonte MATLAB shared libraries.<br>
-%>                          This argument is passed directly to the corresponding argument of ``pm.lib.path.mexdir``.<br>
+%>                          This argument is passed directly to the corresponding argument of [pm.lib.path.mexdir](@ref mexdir).<br>
 %>                          Possible values of outmost interest to MPI applications are:<br>
 %>                          <ol>
-%>                              <li>    ``Intel`` or ``impi``, representing the Intel MPI library.<br>
-%>                              <li>    ``MPICH`` or `mmpi``, representing the MPICH MPI library.<br>
-%>                              <li>    ``OpenMPI`` or ``ompi``, representing the OpenMPI library.<br>
+%>                              <li>    the value ``"Intel"`` or ``"impi"``, representing the Intel MPI library.<br>
+%>                              <li>    the value ``"MPICH"`` or ``"mmpi"``, representing the MPICH MPI library.<br>
+%>                              <li>    the value ``"OpenMPI"`` or ``"ompi"``, representing the OpenMPI library.<br>
 %>                          </ol>
 %>                          Note that **all values are case-insensitive**.<br>
 %>                          (**optional**. If missing, all possibilities are considered and the largest inferred ``count`` is returned.)

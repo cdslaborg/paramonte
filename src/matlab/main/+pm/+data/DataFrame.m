@@ -42,7 +42,7 @@ classdef DataFrame < pm.data.DataRef
         %>                          (**optional**. default = ``table(zeros(0, 0))``)
         %>
         %>  \return
-        %>  ``self``            :   The output scalar object of class ``pm.data.DataFrame``.
+        %>  ``self``            :   The output scalar object of class [pm.data.DataFrame](@ref DataFrame).<br>
         %>
         %>  \interface{DataFrame}
         %>  \code{.m}
@@ -193,11 +193,11 @@ classdef DataFrame < pm.data.DataRef
         %>
         %>  \details
         %>  This method is a convenience wrapper
-        %>  around function ``pm.array.logrange()``.<br>
+        %>  around function [pm.array.logrange](@ref logrange).<br>
         %>
         %>  \warning
         %>  Beware of the different order of the input arguments
-        %>  between this method and ``pm.array.logrange()``.<br>
+        %>  between this method and [pm.array.logrange](@ref logrange).<br>
         %>
         %>  \param[in]  count   :   The input scalar MATLAB whole-number (integer)
         %>                          representing the maximum size of the output range.<br>

@@ -1,12 +1,12 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.lib.path`` contains routines and data
-%>  related to retrieving information about the ParaMonte MATLAB library paths.
+%>  The ParaMonte MATLAB package [pm.lib.path](@ref \psldir/main/+pm/+lib/+path) contains routines
+%>  and data related to retrieving information about the ParaMonte MATLAB library paths.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members.
+%>  see the documentations of the package members.<br>
 %>
 %>  \final{pm.lib.path}
 %>

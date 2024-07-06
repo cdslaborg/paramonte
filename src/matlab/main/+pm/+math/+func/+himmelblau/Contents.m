@@ -1,12 +1,12 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.math.func.himmelblau`` contains
-%>  a set of routines related to the Himmelblau mathematical function.
+%>  The ParaMonte MATLAB package [pm.math.func.himmelblau](@ref \psldir/+pm/+math/+func/+himmelblau)
+%>  contains a set of routines related to the Himmelblau mathematical function.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members.
+%>  see the documentations of the package members.<br>
 %>
 %>  \final{pm.math.func.himmelblau}
 %>

@@ -1,12 +1,12 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.lib.update`` contains routines and data
-%>  related to retrieving information about the ParaMonte MATLAB library updates.
+%>  The ParaMonte MATLAB package [pm.lib.update](@ref \psldir/+pm/+lib/+update) contains routines
+%>  and data related to retrieving information about the ParaMonte MATLAB library updates.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members.
+%>  see the documentations of the package members.<br>
 %>
 %>  \final{pm.lib.update}
 %>

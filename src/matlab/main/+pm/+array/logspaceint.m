@@ -1,12 +1,12 @@
 %>  \brief
-%>  Return a set of unique integer spacings almost linearly 
+%>  Return a set of unique integer spacings almost linearly
 %>  spaced in the logarithmic scale in the input given base,
 %>  between the specified lower and upper bounds.
 %>
-%>  \param[in]  loglb   :   See the documentation of the corresponding argument of ``pm.array.logspace``.
-%>  \param[in]  logub   :   See the documentation of the corresponding argument of ``pm.array.logspace``.
-%>  \param[in]  logskip :   See the documentation of the corresponding argument of ``pm.array.logspace``.
-%>  \param[in]  base    :   See the documentation of the corresponding argument of ``pm.array.logspace``.
+%>  \param[in]  loglb   :   See the documentation of the corresponding argument of [pm.array.logspace](@ref logspace).
+%>  \param[in]  logub   :   See the documentation of the corresponding argument of [pm.array.logspace](@ref logspace).
+%>  \param[in]  logskip :   See the documentation of the corresponding argument of [pm.array.logspace](@ref logspace).
+%>  \param[in]  base    :   See the documentation of the corresponding argument of [pm.array.logspace](@ref logspace).
 %>
 %>  \return
 %>   `array`            :   The output vector of MATLAB real values containing

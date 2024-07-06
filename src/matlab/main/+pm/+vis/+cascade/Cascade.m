@@ -244,14 +244,14 @@ classdef Cascade < pm.matlab.Handle
         %>                          of the same length as the length of the ``window`` component of the parent object.
         %>                          containing the paths to the external files to contain the visualizations.
         %>                          For more information, see the corresponding argument of the ``savefig``
-        %>                          method of class ``pm.vis.figure.Figure``.
+        %>                          method of class [pm.vis.figure.Figure](@ref Figure).
         %>                          (**optional**.  If ``files`` or any elements of it are is missing or empty,
         %>                          the default will be set by the ``savefig`` method of the corresponding
         %>                          cascade figure in the ``window`` component.)
         %>  
         %>  \param[in]  varargin    :   Any optional key-val pair that is accepted by
-        %>                              the ``savefig`` method of class ``pm.vis.figure.Figure``.
-        %>                              For more information, see the ``savefig`` method of class ``pm.vis.figure.Figure``.
+        %>                              the ``savefig`` method of class [pm.vis.figure.Figure](@ref Figure).
+        %>                              For more information, see the ``savefig`` method of class [pm.vis.figure.Figure](@ref Figure).
         %>
         %>  \interface{savefigs}
         %>  \code{.m}

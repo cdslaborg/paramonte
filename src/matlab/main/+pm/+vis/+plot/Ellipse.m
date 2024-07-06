@@ -24,7 +24,7 @@ classdef Ellipse < pm.vis.plot.Plot
         %>
         %>  \note
         %>  See below and also the documentation of the
-        %>  attributes of the superclass ``pm.vis.figure.Figure``.
+        %>  attributes of the superclass [pm.vis.figure.Figure](@ref Figure).
         %>
         %>  \return
         %>  An object of class ``pm.vis.plot.Ellipse``.

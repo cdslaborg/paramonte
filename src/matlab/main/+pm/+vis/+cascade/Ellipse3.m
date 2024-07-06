@@ -18,18 +18,18 @@ classdef Ellipse3 < pm.vis.cascade.Cascade
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %>                              Note that all of these property-value pairs can be also directly set via the
-        %>                              parent object attributes, before calling the ``make()`` method.
+        %>                              parent object attributes, before calling the ``make()`` method.<br>
         %>
         %>  \note
         %>  The input ``varargin`` can also contain the components
-        %>  of the ``template`` component of the parent object.
+        %>  of the ``template`` component of the parent object.<br>
         %>
         %>  \note
         %>  See below and also the documentation of the
-        %>  attributes of the superclass ``pm.vis.figure.Figure``.
+        %>  attributes of the superclass [pm.vis.figure.Figure](@ref Figure).<br>
         %>
         %>  \return
-        %>  An object of class ``pm.vis.cascade.Ellipse3``.
+        %>  An object of class [pm.vis.cascade.Ellipse3](@ref Ellipse3).<br>
         %>
         %>  \interface{Ellipse3}
         %>  \code{.m}

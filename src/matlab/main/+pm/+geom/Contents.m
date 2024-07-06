@@ -1,17 +1,17 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.geom`` contains a set
-%>  of packages and functionalities for computational geometry.
+%>  The ParaMonte MATLAB package [pm.geom](@ref \psldir/main/+pm/+geom)
+%>  contains a set of packages and functionalities for computational geometry.<br>
 %>
 %>  \details
 %>  While the current functionalities primarily revolve around
 %>  enabling the visualization tasks of the ParaMonte library,
-%>  further additions are planned for to this package.
+%>  further additions are planned for to this package.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members.
+%>  see the documentations of the package members.<br>
 %>
 %>  \final{pm.geom}
 %>

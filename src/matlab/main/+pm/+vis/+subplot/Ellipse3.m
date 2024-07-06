@@ -27,22 +27,22 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
         %>
         ellindex = [];
         %>
-        %>  \param  gramian     :   A scalar object of class ``pm.data.DataRef``
+        %>  \param  gramian     :   A scalar object of class [pm.data.DataRef](@ref DataRef)
         %>                          containing the user-specified Gramian data to visualize.
         %>
         gramian = [];
         %>
-        %>  \param  center      :   A scalar object of class ``pm.data.DataRef``
+        %>  \param  center      :   A scalar object of class [pm.data.DataRef](@ref DataRef)
         %>                          containing the user-specified center data to visualize.
         %>
         center = [];
         %>
-        %>  \param  zval        :   A scalar object of class ``pm.data.DataRef``
+        %>  \param  zval        :   A scalar object of class [pm.data.DataRef](@ref DataRef)
         %>                          containing the user-specified z-axis data to visualize.
         %>
         zval = [];
         %>
-        %>  \param  cval        :   A scalar object of class ``pm.data.DataRef``
+        %>  \param  cval        :   A scalar object of class [pm.data.DataRef](@ref DataRef)
         %>                          containing the user-specified color data in colormap.
         %>                          If empty or unspecified, it will be set to ``zval`` component.
         %>

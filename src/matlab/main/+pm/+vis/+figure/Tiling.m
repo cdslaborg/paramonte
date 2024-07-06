@@ -22,7 +22,7 @@
 %>
 %>  \note
 %>  See the list of class attributes below,
-%>  also those of the superclass ``pm.vis.figure.Figure``.
+%>  also those of the superclass [pm.vis.figure.Figure](@ref Figure).
 %>
 %>  \final{Tiling}
 %>

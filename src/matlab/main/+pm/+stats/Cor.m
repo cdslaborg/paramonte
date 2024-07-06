@@ -62,9 +62,11 @@ classdef Cor < pm.matlab.Handle
         %>                          (**optional**. If missing, the correlation matrix will not be computed.)
         %>
         %>  \param[in]  method  :   The input scalar MATLAB string that can be either:<br>
-        %>                          "pearson"   : for computing the Pearson correlation matrix of the input data.<br>
-        %>                          "kendall"   : for computing the kendall rank correlation matrix of the input data.<br>
-        %>                          "spearman"  : for computing the Spearman rank correlation matrix of the input data.<br>
+        %>                          <ol>
+        %>                              <li>    ``"pearson"``   : for computing the Pearson correlation matrix of the input data.<br>
+        %>                              <li>    ``"kendall"``   : for computing the kendall rank correlation matrix of the input data.<br>
+        %>                              <li>    ``"spearman"``  : for computing the Spearman rank correlation matrix of the input data.<br>
+        %>                          </ol>
         %>                          (**optional**, default = ``"pearson"``)
         %>
         %>  \return
@@ -122,7 +124,7 @@ classdef Cor < pm.matlab.Handle
         %>                              <li>    ``"kendall"``   : for computing the kendall rank correlation matrix of the input data.<br>
         %>                              <li>    ``"spearman"``  : for computing the Spearman rank correlation matrix of the input data.<br>
         %>                          </ol>
-        %>                          (**optional**, default = ``pm.stats.Cor.method``)
+        %>                          (**optional**, default = [pm.stats.Cor.method](@ref Cor::method))
         %>
         %>  \return
         %>  ``val``             :   The output MATLAB ``table`` containing the correlation matrix.<br>

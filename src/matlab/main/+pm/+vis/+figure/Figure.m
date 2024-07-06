@@ -75,7 +75,7 @@ classdef Figure < pm.matlab.Handle
         %>                              parent object attributes, before calling the ``make()`` method.
         %>
         %>  \return
-        %>  ``self``                :   The output scalar object of class ``pm.vis.figure.Figure``.
+        %>  ``self``                :   The output scalar object of class [pm.vis.figure.Figure](@ref Figure).
         %>
         %>  \interface{Figure}
         %>  \code{.m}

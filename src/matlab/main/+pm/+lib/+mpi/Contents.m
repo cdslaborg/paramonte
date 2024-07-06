@@ -1,12 +1,12 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.lib.mpi`` contains routines and data
-%>  related to retrieving information about the ParaMonte MATLAB library MPI parallelism.
+%>  The ParaMonte MATLAB package [pm.lib.mpi](@ref \psldir/main/+pm/+lib/+mpi) contains routines
+%>  and data related to retrieving information about the ParaMonte MATLAB library MPI parallelism.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members.
+%>  see the documentations of the package members.<br>
 %>
 %>  \final{pm.lib.mpi}
 %>
