@@ -622,11 +622,15 @@ classdef Axes < pm.matlab.Handle
 
     properties(Access = protected, Hidden)
         %>
-        %>  ``type``        :   auxiliary struct containing plot type information.
+        %>  ``type``
+        %>
+        %>  An auxiliary MATLAB ``struct`` containing plot type information.
         %>
         type = struct();
         %>
-        %>  ``cenabled``    :   auxiliary logical scalar that is true if plot is color-mapped.
+        %>  ``cenabled``
+        %>
+        %>  An auxiliary scalar MATLAB ``logical`` that is true if plot is color-mapped.
         %>
         cenabled = [];
     end
@@ -678,6 +682,11 @@ classdef Axes < pm.matlab.Handle
         %>      axes = pm.vis.axes.Axes(ptype);
         %>
         %>  \endcode
+        %>
+        %>  \example{Axes}
+        %>  \include{lineno} example/vis/axes/Axes/main.m
+        %>  \output{Axes}
+        %>  \include{lineno} example/vis/axes/Axes/main.out.m
         %>
         %>  \final{Axes}
         %>
@@ -1406,8 +1415,8 @@ classdef Axes < pm.matlab.Handle
         %>  \example{comp2hash}
         %>  \code{.m}
         %>
-        %>      a = pm.vis.axes.Axes("histogram", "histogram", {"nbins", 5});
-        %>      hash = a.comp2hash(a.histogram)
+        %>      a = pm.vis.axes.Axes("line", "plot", {"linewidth", 2})
+        %>      hash = a.comp2hash("plot")
         %>
         %>  \endcode
         %>

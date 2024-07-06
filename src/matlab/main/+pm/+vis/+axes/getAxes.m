@@ -1,39 +1,70 @@
-%>  SUBAXIS Create axes in tiled positions. (just like subplot)
-%>      Usage:
-%>         h=getAxes(rows,cols,cellno[,settings])
-%>         h=getAxes(rows,cols,cellx,celly[,settings])
-%>         h=getAxes(rows,cols,cellx,celly,spanx,spany[,settings])
+%>  \brief
+%>  Create axes in the specified input tiled position and return its handle.<br>
 %>
-%>  SETTINGS: Spacing,SpacingHoriz,SpacingVert
-%>            Padding,PaddingRight,PaddingLeft,PaddingTop,PaddingBottom
-%>            Margin,MarginRight,MarginLeft,MarginTop,MarginBottom
-%>            Holdaxis
+%>  \param[in]  rows        :   The input scalar MATLAB whole number,
+%>                              representing the number of rows of subplots in the figure.<br>
+%>  \param[in]  cols        :   The input scalar MATLAB whole number,
+%>                              representing the number of columns of subplots in the figure.<br>
+%>  \param[in]  cellx       :   The input scalar MATLAB whole number,
+%>                              representing the row at which the new axes must be placed in the figure.<br>
+%>  \param[in]  celly       :   The input scalar MATLAB whole number,
+%>                              representing the column at which the new axes must be placed in the figure.<br>
+%>  \param[in]  spanx       :   The input scalar MATLAB whole number in the range ``[0, 1]``,
+%>                              representing the X-span of the current axes in the figure.<br>
+%>  \param[in]  spany       :   The input scalar MATLAB whole number in the range ``[0, 1]``,
+%>                              representing the Y-span of the current axes in the figure.<br>
+%>  \param[in]  varargin    :   Any other attributes of the axes, specified as pairs of scalar ``char``,
+%>                              followed by the specifications value in the range ``[0, 1]``.<br>
+%>                              The following attributes are acceptable:<br>
+%>                              <ol>
+%>                                  <li>    ``'Spacing'``       , also ``'s'``
+%>                                  <li>    ``'SpacingHoriz'``  , also ``'sh'``
+%>                                  <li>    ``'SpacingVert'``   , also ``'sv'``
+%>                                  <li>    ``'Padding'``       , also ``'p'``
+%>                                  <li>    ``'PaddingRight'``  , also ``'pr'``
+%>                                  <li>    ``'PaddingLeft'``   , also ``'pl'``
+%>                                  <li>    ``'PaddingTop'``    , also ``'pt'``
+%>                                  <li>    ``'PaddingBottom'`` , also ``'pb'``
+%>                                  <li>    ``'Margin'``        , also ``'m'``
+%>                                  <li>    ``'MarginRight'``   , also ``'mr'``
+%>                                  <li>    ``'MarginLeft'``    , also ``'ml'``
+%>                                  <li>    ``'MarginTop'``     , also ``'mt'``
+%>                                  <li>    ``'MarginBottom'``  , also ``'mb'``
+%>                                  <li>    ``'Holdaxis'``      , also ``'h'`` : If ``true``, any axes below the current will not be deleted.
+%>                              </ol>
+%>                              (**optional**. If missing, a fedault value will be used.)
 %>
-%>          all units are relative (i.e. from 0 to 1)
+%>  \interface{getAxes}
+%>  \code{.m}
 %>
-%>          Abbreviations of parameters can be used.. (Eg MR instead of MarginRight)
-%>          (holdaxis means that it wont delete any axes below.)
+%>      h = getAxes(rows, cols, cellno, varargin)
+%>      h = getAxes(rows, cols, cellx, celly, varargin)
+%>      h = getAxes(rows, cols, cellx, celly, spanx, spany, varargin)
 %>
-%>
+%>  \endcode
 %>
 %>  \example{getAxes}
+%>  \include{lineno} example/vis/axes/getAxes/main.m
+%>  \vis{getAxes}
+%>  \image html example/vis/axes/getAxes/getAxes.png width=700
 %>
-%>  >> getAxes(2,1,1,'SpacingVert',0,'MR',0);
-%>  >> imagesc(magic(3))
-%>  >> getAxes(2,'p',.02);
-%>  >> imagesc(magic(4))
+%>  \final{getAxes}
 %>
-%>  2001-2014 / Aslak Grinsted  (Feel free to modify this code.)
+%>  This code builds upon the works of 2001-2014 / Aslak Grinsted.<br>
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function h = getAxes(varargin)
-    f=gcf;
-    UserDataArgsOK=0;
-    args=get(f,'UserData');
+    f = gcf;
+    userDataArgsOK = 0;
+    args = get(f, 'UserData');
     if isstruct(args)
-        UserDataArgsOK=isfield(args, 'SpacingHorizontal')& isfield(args,'Holdaxis')&isfield(args,'rows')&isfield(args,'cols');
+        userDataArgsOK = isfield(args, 'SpacingHorizontal') & isfield(args, 'Holdaxis') & isfield(args, 'rows') & isfield(args, 'cols');
     end
-    OKToStoreArgs=isempty(args)|UserDataArgsOK;
-    if isempty(args)&&(~UserDataArgsOK)
-        args=struct('Holdaxis',0, ...
+    OKToStoreArgs = isempty(args) | userDataArgsOK;
+    if isempty(args) && (~userDataArgsOK)
+        args = struct('Holdaxis',0, ...
             'SpacingVertical',0.05,'SpacingHorizontal',0.05, ...
             'PaddingLeft',0,'PaddingRight',0,'PaddingTop',0,'PaddingBottom',0, ...
             'MarginLeft',.1,'MarginRight',.1,'MarginTop',.1,'MarginBottom',.1, ...
@@ -90,16 +121,16 @@ function h = getAxes(varargin)
     if (nargout==0), clear h; end;
 end
 
+%>  \cond excluded
+
 function argStruct = parseArgs(args, argStruct, varargin)
     % Helper function for parsing varargin.
-    %
     %
     % argStruct=parseArgs(varargin,argStruct[,FlagtypeParams[,Aliases]])
     %
     % * argStruct is the structure full of named arguments with default values.
     % * Flagtype params is params that don't require a value. (the value will be set to 1 if it is present)
     % * Aliases can be used to map one argument-name to several argstruct fields
-    %
     %
     % example usage:
     % --------------
@@ -240,3 +271,5 @@ function argStruct = parseArgs(args, argStruct, varargin)
         end
     end
 end
+
+%>  \endcond
