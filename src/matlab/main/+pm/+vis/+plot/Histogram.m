@@ -24,7 +24,7 @@ classdef Histogram < pm.vis.plot.Plot
         %>  of the superclass [pm.vis.plot.Plot](@ref Plot).
         %>
         %>  \return
-        %>  An object of ``pm.vis.plot.Histogram`` class.
+        %>  An object of [pm.vis.plot.Histogram](@ref Histogram) class.
         %>
         %>  \interface{Histogram}
         %>  \code{.m}

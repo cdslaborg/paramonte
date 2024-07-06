@@ -1,19 +1,22 @@
 %>  \brief
 %>  Create axes in the specified input tiled position and return its handle.<br>
 %>
-%>  \param[in]  rows        :   The input scalar MATLAB whole number,
-%>                              representing the number of rows of subplots in the figure.<br>
-%>  \param[in]  cols        :   The input scalar MATLAB whole number,
-%>                              representing the number of columns of subplots in the figure.<br>
-%>  \param[in]  cellx       :   The input scalar MATLAB whole number,
-%>                              representing the row at which the new axes must be placed in the figure.<br>
-%>  \param[in]  celly       :   The input scalar MATLAB whole number,
-%>                              representing the column at which the new axes must be placed in the figure.<br>
-%>  \param[in]  spanx       :   The input scalar MATLAB whole number in the range ``[0, 1]``,
-%>                              representing the X-span of the current axes in the figure.<br>
-%>  \param[in]  spany       :   The input scalar MATLAB whole number in the range ``[0, 1]``,
-%>                              representing the Y-span of the current axes in the figure.<br>
-%>  \param[in]  varargin    :   Any other attributes of the axes, specified as pairs of scalar ``char``,
+%>  \param[in]  varargin    :   Any attributes of the axes, which can be one of the following positional arguments:<br>
+%>                              <ol>
+%>                                  <li>    ``rows ``   :   The input scalar MATLAB whole number,
+%>                                                          representing the number of rows of subplots in the figure.<br>
+%>                                  <li>    ``cols ``   :   The input scalar MATLAB whole number,
+%>                                                          representing the number of columns of subplots in the figure.<br>
+%>                                  <li>    ``cellx``   :   The input scalar MATLAB whole number,
+%>                                                          representing the row at which the new axes must be placed in the figure.<br>
+%>                                  <li>    ``celly``   :   The input scalar MATLAB whole number,
+%>                                                          representing the column at which the new axes must be placed in the figure.<br>
+%>                                  <li>    ``spanx``   :   The input scalar MATLAB whole number in the range ``[0, 1]``,
+%>                                                          representing the X-span of the current axes in the figure.<br>
+%>                                  <li>    ``spany``   :   The input scalar MATLAB whole number in the range ``[0, 1]``,
+%>                                                          representing the Y-span of the current axes in the figure.<br>
+%>                              </ol>
+%>                              or specified as pairs of scalar ``char``,
 %>                              followed by the specifications value in the range ``[0, 1]``.<br>
 %>                              The following attributes are acceptable:<br>
 %>                              <ol>

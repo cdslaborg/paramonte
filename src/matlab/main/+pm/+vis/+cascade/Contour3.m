@@ -2,7 +2,20 @@
 %>  This is the Contour3 class for generating
 %>  instances of 3-dimensional Contour3 plots
 %>  based on the relevant MATLAB
-%>  intrinsic functions.
+%>  intrinsic functions.<br>
+%>
+%>  \note
+%>  See the list of class attributes below,
+%>  also those of the superclass [pm.vis.cascade.Cascade](@ref Cascade).<br>
+%>
+%>  \see
+%>  [pm.vis.cascade.Cascade](@ref Cascade)<br>
+%>
+%>  \final
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef Contour3 < pm.vis.cascade.Cascade
     methods(Access = public)
         %>
@@ -15,16 +28,8 @@ classdef Contour3 < pm.vis.cascade.Cascade
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``make()`` method.
         %>
-        %>  \note
-        %>  The input ``varargin`` can also contain the components
-        %>  of the ``template`` component of the parent object.
-        %>
-        %>  \note
-        %>  See the documentation of the attributes
-        %>  of the superclass [pm.vis.cascade.Cascade](@ref Cascade).
-        %>
         %>  \return
-        %>  An object of ``pm.vis.cascade.Contour3`` class.
+        %>  ``self``                :   The output scalar object of class [pm.vis.cascade.Contour3](@ref Contour3).
         %>
         %>  \interface{Contour3}
         %>  \code{.m}
@@ -33,6 +38,14 @@ classdef Contour3 < pm.vis.cascade.Cascade
         %>      p = pm.vis.cascade.Contour3(dfref, varargin);
         %>
         %>  \endcode
+        %>
+        %>  \note
+        %>  The input ``varargin`` can also contain the components
+        %>  of the ``template`` component of the parent object.
+        %>
+        %>  \note
+        %>  See the documentation of the attributes
+        %>  of the superclass [pm.vis.cascade.Cascade](@ref Cascade).
         %>
         %>  \final{Contour3}
         %>

@@ -2,21 +2,35 @@
 %>  This is the Ellipse class for generating
 %>  instances of 2-dimensional Ellipse plots
 %>  based on the relevant MATLAB
-%>  intrinsic functions.
+%>  intrinsic functions.<br>
+%>
+%>  \note
+%>  See the list of class attributes below,
+%>  also those of the superclass [pm.vis.cascade.Cascade](@ref Cascade).<br>
+%>
+%>  \see
+%>  [pm.vis.cascade.Cascade](@ref Cascade)<br>
+%>
+%>  \final
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef Ellipse < pm.vis.cascade.Cascade
     methods(Access = public)
+        %>  \brief
         %>
-        %>  \param[in]  gramian     :   See the corresponding input argument to the class ``pm.vis.plot.Ellipse``.
-        %>
-        %>  \param[in]  center      :   See the corresponding input argument to the class ``pm.vis.plot.Ellipse``.
-        %>
-        %>  \param[in]  cval        :   See the corresponding input argument to the class ``pm.vis.plot.Ellipse``.
-        %>
+        %>  \param[in]  gramian     :   See the corresponding input argument to the class [pm.vis.plot.Ellipse](@ref Ellipse).
+        %>  \param[in]  center      :   See the corresponding input argument to the class [pm.vis.plot.Ellipse](@ref Ellipse).
+        %>  \param[in]  cval        :   See the corresponding input argument to the class [pm.vis.plot.Ellipse](@ref Ellipse).
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``make()`` method.
+        %>
+        %>  \return
+        %>  ``self``                :   The output scalar object of class [pm.vis.cascade.Ellipse](@ref Ellipse).<br>
         %>
         %>  \note
         %>  The input ``varargin`` can also contain the components

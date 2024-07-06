@@ -180,7 +180,7 @@ classdef Subplot < pm.vis.axes.Axes
         %>
         %>  ``df``
         %>
-        %>  A scalar object of class ``pm.data.DataFrame``
+        %>  A scalar object of class [pm.data.DataFrame](@ref DataFrame)
         %>  containing the user-specified data to visualize.<br>
         %>
         df = [];

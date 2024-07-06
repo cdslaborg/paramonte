@@ -24,7 +24,7 @@ classdef Histfit < pm.vis.plot.Plot
         %>  of the ``subplot`` component of the parent object.
         %>
         %>  \return
-        %>  An object of ``pm.vis.plot.Histfit`` class.
+        %>  An object of [pm.vis.plot.Histfit](@ref Histfit) class.
         %>
         %>  \interface{Histfit}
         %>  \code{.m}

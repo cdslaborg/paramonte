@@ -2,7 +2,20 @@
 %>  This is the LineScatter3 class for generating
 %>  instances of 3-dimensional LineScatter3 plots
 %>  based on the relevant MATLAB
-%>  intrinsic functions.
+%>  intrinsic functions.<br>
+%>
+%>  \note
+%>  See the list of class attributes below,
+%>  also those of the superclass [pm.vis.cascade.Cascade](@ref Cascade).<br>
+%>
+%>  \see
+%>  [pm.vis.cascade.Cascade](@ref Cascade)<br>
+%>
+%>  \final
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef LineScatter3 < pm.vis.cascade.Cascade
     methods(Access = public)
         %>
@@ -14,6 +27,9 @@ classdef LineScatter3 < pm.vis.cascade.Cascade
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``make()`` method.
+        %>
+        %>  \return
+        %>  ``self``                :   The output scalar object of class [pm.vis.cascade.LineScatter3](@ref LineScatter3).<br>
         %>
         %>  \note
         %>  The input ``varargin`` can also contain the components

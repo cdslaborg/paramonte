@@ -1,7 +1,7 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.web`` contains
+%>  The ParaMonte MATLAB package [pm.vis.web](@ref \psldir/main/+pm/+web) contains
 %>  a set of routines and data related to URL and web address manipulation tasks.<br>
 %>
 %>  \note

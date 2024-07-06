@@ -157,34 +157,34 @@ classdef AutoCorr < pm.matlab.Handle
         %>  corresponding to the output of this method
         %>  must be set explicitly manually.<br>
         %>
-        %>  \param[in]  df      :   The input MATLAB matrix or table of rank ``2``
-        %>                          containing the data as ``ncol`` columns of ``nrow``
-        %>                          observations whose autocorrelation must be computed.<br>
-        %>
-        %>  \param[in]  numlag :   The input positive scalar MATLAB integer representing the
-        %>                          number of lags to be used in computing the autocorrelation.<br>
-        %>                          The default value will be used if the input ``numlag``
-        %>                          is unspecified or empty ``[]``.<br>
-        %>                          (**optional**, default = ``size(df, 1) - 1``)
-        %>
-        %>  \param[in]  numstd  :   The input positive scalar MATLAB double representing the
-        %>                          number of standard deviations to be used in computing the
-        %>                          lower and upper significance levels of the autocorrelation.<br>
-        %>                          This argument is directly passed to the corresponding argument
-        %>                          of the MATLAB intrinsic ``autocorr()`` in the Econometrics Toolbox.<br>
-        %>                          The default value will be used if the input ``numstd`` is empty ``[]``.<br>
-        %>                          (**optional**, default = ``1``)
+        %>  \param[inout]   self    :   The input/output parent object of class [pm.stats.AutoCorr](@ref AutoCorr)
+        %>                              which is **implicitly** passed to this dynamic method (not by the user).<br>
+        %>  \param[in]      df      :   The input MATLAB matrix or table of rank ``2``
+        %>                              containing the data as ``ncol`` columns of ``nrow``
+        %>                              observations whose autocorrelation must be computed.<br>
+        %>  \param[in]      numlag  :   The input positive scalar MATLAB integer representing the
+        %>                              number of lags to be used in computing the autocorrelation.<br>
+        %>                              The default value will be used if the input ``numlag``
+        %>                              is unspecified or empty ``[]``.<br>
+        %>                              (**optional**, default = ``size(df, 1) - 1``)
+        %>  \param[in]      numstd  :   The input positive scalar MATLAB double representing the
+        %>                              number of standard deviations to be used in computing the
+        %>                              lower and upper significance levels of the autocorrelation.<br>
+        %>                              This argument is directly passed to the corresponding argument
+        %>                              of the MATLAB intrinsic ``autocorr()`` in the Econometrics Toolbox.<br>
+        %>                              The default value will be used if the input ``numstd`` is empty ``[]``.<br>
+        %>                              (**optional**, default = ``1``)
         %>
         %>  \return
-        %>  ``val``             :   The output MATLAB ``table`` of size ``numlag + 1``
-        %>                          containing the autocorrelation from lag ``0`` to ``numlag``.<br>
-        %>  ``lag``             :   The output MATLAB ``table`` of size ``numlag + 1``
-        %>                          containing the autocorrelation lags from ``0`` to ``numlag``.<br>
-        %>  ``bnd``             :   The output MATLAB ``table`` of ``size(df, 2)`` rows by one column
-        %>                          containing the absolute ``numstd``-significance level of the
-        %>                          computed autocorrelations. Any autocorrelation value whose
-        %>                          magnitude is smaller than the corresponding ``bnd`` element
-        %>                          can be considered insignificant and mere fluctuation.<br>
+        %>  ``val``                 :   The output MATLAB ``table`` of size ``numlag + 1``
+        %>                              containing the autocorrelation from lag ``0`` to ``numlag``.<br>
+        %>  ``lag``                 :   The output MATLAB ``table`` of size ``numlag + 1``
+        %>                              containing the autocorrelation lags from ``0`` to ``numlag``.<br>
+        %>  ``bnd``                 :   The output MATLAB ``table`` of ``size(df, 2)`` rows by one column
+        %>                              containing the absolute ``numstd``-significance level of the
+        %>                              computed autocorrelations. Any autocorrelation value whose
+        %>                              magnitude is smaller than the corresponding ``bnd`` element
+        %>                              can be considered insignificant and mere fluctuation.<br>
         %>
         %>  \interface{get}
         %>  \code{.m}

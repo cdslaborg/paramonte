@@ -24,7 +24,7 @@ classdef Contourf < pm.vis.plot.Plot
         %>  of the superclass [pm.vis.plot.Plot](@ref Plot).
         %>
         %>  \return
-        %>  An object of ``pm.vis.plot.Contourf`` class.
+        %>  An object of [pm.vis.plot.Contourf](@ref Contourf) class.
         %>
         %>  \interface{Contourf}
         %>  \code{.m}

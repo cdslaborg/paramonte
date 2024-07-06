@@ -24,7 +24,7 @@ classdef Scatter3 < pm.vis.plot.Plot
         %>  of the superclass [pm.vis.plot.Plot](@ref Plot).
         %>
         %>  \return
-        %>  An object of ``pm.vis.subplot.Scatter3`` class.
+        %>  An object of [pm.vis.plot.Scatter3](@ref Scatter3) class.
         %>
         %>  \interface{Scatter3}
         %>  \code{.m}

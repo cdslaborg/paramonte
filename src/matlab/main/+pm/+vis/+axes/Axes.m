@@ -748,11 +748,13 @@ classdef Axes < pm.matlab.Handle
         %>  Use this method when you change many attributes of the plot and
         %>  you want to clean up and go back to the default settings.<br>
         %>
-        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
-        %>                              If the property is a ``struct()``, then its value must be given as a cell array,
-        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
-        %>                              Note that all of these property-value pairs can be also directly set via the
-        %>                              parent object attributes.<br>
+        %>  \param[inout]   self        :   The input/output parent object of class [pm.vis.axes.Axes](@ref Axes)
+        %>                                  which is **implicitly** passed to this dynamic method (not by the user).<br>
+        %>  \param[in]      varargin    :   Any ``property, value`` pair of the parent object.<br>
+        %>                                  If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                                  with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
+        %>                                  Note that all of these property-value pairs can be also directly set via the
+        %>                                  parent object attributes.<br>
         %>
         %>  \interface{reset}
         %>  \code{.m}
@@ -1097,11 +1099,13 @@ classdef Axes < pm.matlab.Handle
         %>  \brief
         %>  Configure the plot settings and specifications and return nothing.<br>
         %>
-        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
-        %>                              If the property is a ``struct()``, then its value must be given as a cell array,
-        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
-        %>                              Note that all of these property-value pairs can be also directly set via the
-        %>                              parent object attributes, before calling the ``premake()`` method.<br>
+        %>  \param[inout]   self        :   The input/output parent object of class [pm.vis.axes.Axes](@ref Axes)
+        %>                                  which is **implicitly** passed to this dynamic method (not by the user).<br>
+        %>  \param[in]      varargin    :   Any ``property, value`` pair of the parent object.<br>
+        %>                                  If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                                  with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
+        %>                                  Note that all of these property-value pairs can be also directly set via the
+        %>                                  parent object attributes, before calling the ``premake()`` method.<br>
         %>
         %>  \interface{premake}
         %>  \code{.m}
@@ -1391,13 +1395,15 @@ classdef Axes < pm.matlab.Handle
         %>  This method is used internally by the subclasses to convert the parent object
         %>  attributes to input arguments of MATLAB intrinsic visualization functions.<br>
         %>
-        %>  \param[in]  comp    :   The input scalar MATLAB string representing the name of a ``struct``
-        %>                          component of the parent object, whose fields names and values are to
-        %>                          be returned as subsequent pairs in the output ``hash`` cell array.<br>
-        %>
-        %>  \return
-        %>  ``hash``            :   The output cell array containing the pairs of ``field-name, field-value``
-        %>                          of the input MATLAB struct ``comp``.<br>
+        %>  \param[inout]   self    :   The input/output parent object of class [pm.vis.axes.Axes](@ref Axes)
+        %>                              which is **implicitly** passed to this dynamic method (not by the user).<br>
+        %>  \param[in]      comp    :   The input scalar MATLAB string representing the name of a ``struct``
+        %>                              component of the parent object, whose fields names and values are to
+        %>                              be returned as subsequent pairs in the output ``hash`` cell array.<br>
+        %>  
+        %>  \return 
+        %>  ``hash``                :   The output cell array containing the pairs of ``field-name, field-value``
+        %>                              of the input MATLAB struct ``comp``.<br>
         %>
         %>  \interface{comp2hash}
         %>  \code{.m}

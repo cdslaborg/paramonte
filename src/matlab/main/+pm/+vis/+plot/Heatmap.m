@@ -24,7 +24,7 @@ classdef Heatmap < pm.vis.plot.Plot
         %>  of the superclass [pm.vis.plot.Plot](@ref Plot).
         %>
         %>  \return
-        %>  An object of ``pm.vis.plot.Heatmap`` class.
+        %>  An object of [pm.vis.plot.Heatmap](@ref Heatmap) class.
         %>
         %>  \interface{Heatmap}
         %>  \code{.m}

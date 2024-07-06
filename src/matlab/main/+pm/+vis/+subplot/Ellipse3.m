@@ -218,7 +218,7 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
         %>
         %>  \note
         %>  The input value for ``cval`` is used only if ``colormap.enabled``
-        %>  component of the output object of class ``pm.vis.subplot.Ellipse3``
+        %>  component of the output object of class [pm.vis.subplot.Ellipse3](@ref Ellipse3)
         %>  is set to ``true``.
         %>
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the object.
@@ -229,10 +229,10 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
         %>
         %>  \note
         %>  See below and also the documentation of the attributes
-        %>  of the superclass ``pm.vis.subplot.LineScatter3``.
+        %>  of the superclass [pm.vis.subplot.LineScatter3](@ref LineScatter3).<br>
         %>
         %>  \return
-        %>  An object of class ``pm.vis.subplot.Ellipse3``.
+        %>  An object of class [pm.vis.subplot.Ellipse3](@ref Ellipse3).<br>
         %>
         %>  \interface{Ellipse3}
         %>  \code{.m}

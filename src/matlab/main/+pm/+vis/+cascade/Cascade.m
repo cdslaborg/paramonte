@@ -1,8 +1,32 @@
 %>  \brief
 %>  This is the abstract class for generating instances of objects
-%>  that contain the specifications of a cascade of plots.<br>
+%>  that contain the specifications of a cascade of figures (plots).<br>
+%>
+%>  \details
 %>  This is a generic class for generating multiple separate
-%>  cascading figures each containing a single plot (axes).
+%>  cascading figures each containing a single plot (axes).<br>
+%>
+%>  \devnote
+%>  While dynamic addition of class attributes is not ideal, the current
+%>  design was deemed unavoidable and best, given the constraints of the
+%>  MATLAB language and visualization tools.<br>
+%>
+%>  \note
+%>  See the list of class attributes below,
+%>  also those of the superclass [pm.matlab.Handle](@ref Handle).<br>
+%>
+%>  \see
+%>  [pm.vis.plot.Plot](@ref Plot)<br>
+%>  [pm.vis.figure.Figure](@ref Figure)<br>
+%>  [pm.vis.subplot.Subplot](@ref Subplot)<br>
+%>  [pm.vis.corner.Corner](@ref Corner)<br>
+%>  [pm.vis.tile.Tile](@ref Tile)<br>
+%>
+%>  \final
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef Cascade < pm.matlab.Handle
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -11,14 +35,14 @@ classdef Cascade < pm.matlab.Handle
         %>
         %>  ``window``
         %>
-        %>  The scalar object of superclass [pm.vis.cascade.Cascade](@ref Cascade)
+        %>  The cell array of scalar objects of superclass [pm.vis.plot.Plot](@ref Plot)
         %>  representing the cascade of plots to display.<br>
         %>
         window = [];
         %>
         %>  ``template``
         %>
-        %>  The scalar object of superclass [pm.vis.cascade.Cascade](@ref Cascade)
+        %>  The scalar object of superclass [pm.vis.plot.Plot](@ref Plot)
         %>  representing the template of the cascade of plots to display.<br>
         %>
         template = [];
@@ -30,40 +54,48 @@ classdef Cascade < pm.matlab.Handle
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        %>  \brief
+        %>  Construct and return an object of class [pm.vis.cascade.Cascade](@ref Cascade).<br>
         %>
-        %>  \param[in]  template    :   The input scalar object of superclass [pm.vis.cascade.Cascade](@ref Cascade).
-        %>                              It serves as the template based upon which
-        %>                              the cascade of plots are constructed.
+        %>  \details
+        %>  This is the custom constructor of the class [pm.vis.cascade.Cascade](@ref Cascade).<br>
         %>
-        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
+        %>  \param[in]  template    :   The input scalar object of superclass [pm.vis.plot.Plot](@ref Plot).<br>
+        %>                              It serves as the template based upon which the cascade of plots are constructed.<br>
+        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
-        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
         %>                              Note that all of these property-value pairs can be also directly set via the
-        %>                              parent object attributes, before calling the ``make()`` method.
-        %>
-        %>  \note
-        %>  The input ``varargin`` can also contain the components
-        %>  of the ``plot`` component of the parent object.
+        %>                              parent object attributes, before calling the [pm.vis.cascade.Cascade.make()](@ref Cascade::make) method.<br>
         %>
         %>  \return
-        %>  ``self``                :   The output scalar object of class [pm.vis.cascade.Cascade](@ref Cascade).
+        %>  ``self``                :   The scalar output object of class [pm.vis.cascade.Cascade](@ref Cascade).<br>
         %>
         %>  \interface{Cascade}
         %>  \code{.m}
         %>
         %>      plot = pm.vis.cascade.Cascade(template);
+        %>      plot = pm.vis.cascade.Cascade(template, varargin);
         %>
         %>  \endcode
         %>
         %>  \note
-        %>  See the list of class attributes below,
-        %>  also those of the superclass ``pm.vis.figure.Handle``.
+        %>  The input ``varargin`` can also contain the components
+        %>  of the ``plot`` component of the parent object.<br>
+        %>
+        %>  \example{Cascade}
+        %>  \code{.m}
+        %>
+        %>      cv = pm.vis.cascade.Cascade(pm.vis.plot.Line(rand(100, 10)));
+        %>      cv.make("coly", 1:3)
+        %>
+        %>  \endcode
         %>
         %>  \final{Cascade}
         %>
         %>  \author
         %>  \JoshuaOsborne, May 21 2024, 6:20 AM, University of Texas at Arlington<br>
-
+        %>  \AmirShahmoradi, July 5 2024, 1:07 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
         function self = Cascade(template, varargin)
             self.template = template;
             self.reset(varargin{:});
@@ -72,15 +104,19 @@ classdef Cascade < pm.matlab.Handle
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         %>  \brief
-        %>  Reset the properties of the cascade of plots to the original default settings.
-        %>  Use this method when you change many attributes of the plot and
-        %>  you want to clean up and go back to the default settings.
+        %>  Reset the properties of the cascade of plots to the original default settings.<br>
         %>
-        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
-        %>                              If the property is a ``struct()``, then its value must be given as a cell array,
-        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
-        %>                              Note that all of these property-value pairs can be also directly set via the
-        %>                              parent object attributes, before calling the ``make()`` method.
+        %>  \details
+        %>  Use this method when you change many attributes of the plot and
+        %>  you want to clean up and go back to the default settings.<br>
+        %>
+        %>  \param[inout]   self        :   The input/output parent object of class [pm.vis.cascade.Cascade](@ref Cascade)
+        %>                                  which is **implicitly** passed to this dynamic method (not by the user).<br>
+        %>  \param[in]      varargin    :   Any ``property, value`` pair of the parent object.<br>
+        %>                                  If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                                  with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
+        %>                                  Note that all of these property-value pairs can be also directly set via the
+        %>                                  parent object attributes, before calling the [pm.vis.cascade.Cascade.make()](@ref Cascade::make) method.<br>
         %>
         %>  \note
         %>  The input ``varargin`` can also contain the components
@@ -121,26 +157,24 @@ classdef Cascade < pm.matlab.Handle
 
         %>  \brief
         %>  Configure the cascade settings and specifications,
-        %>  make the cascade of plots, and return nothing.
+        %>  make the cascade of plots, and return nothing.<br>
         %>
         %>  \details
-        %>  In making the figure, this method we call the ``make()``
+        %>  In making the figure, this method calls the ``make()``
         %>  methods of each of the plot objects stored in the
-        %>  ``window`` component.
+        %>  ``window`` component.<br>
         %>
         %>  \warning
         %>  This method has side-effects by manipulating
-        %>  the existing attributes of the parent object.
+        %>  the existing attributes of the parent object.<br>
         %>
-        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
-        %>                              If the property is a ``struct()``, then its value must be given as a cell array,
-        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
-        %>                              Note that all of these property-value pairs can be also directly set via the
-        %>                              parent object attributes, before calling the ``make()`` method.
-        %>
-        %>  \note
-        %>  The input ``varargin`` can also contain the components
-        %>  of the ``template`` component of the parent object.
+        %>  \param[inout]   self        :   The input/output parent object of class [pm.vis.cascade.Cascade](@ref Cascade)
+        %>                                  which is **implicitly** passed to this dynamic method (not by the user).<br>
+        %>  \param[in]      varargin    :   Any ``property, value`` pair of the parent object.<br>
+        %>                                  If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                                  with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
+        %>                                  Note that all of these property-value pairs can be also directly set via the parent object attributes,
+        %>                                  before calling the [pm.vis.cascade.Cascade.make()](@ref Cascade::make) method.<br>
         %>
         %>  \interface{make}
         %>  \code{.m}
@@ -149,10 +183,17 @@ classdef Cascade < pm.matlab.Handle
         %>
         %>  \endcode
         %>
-        %>  \example{make}
+        %>  \note
+        %>  The input ``varargin`` can also contain the components
+        %>  of the ``template`` component of the parent object.<br>
         %>
-        %>      p = pm.vis.cascade.Cascade("coly", 1:3);
-        %>      p.make()
+        %>  \example{make}
+        %>  \code{.m}
+        %>
+        %>      cv = pm.vis.cascade.Cascade(pm.vis.plot.Line(rand(100, 10)));
+        %>      cv.make("coly", 1:3)
+        %>
+        %>  \endcode
         %>
         %>  \final{make}
         %>
@@ -237,25 +278,27 @@ classdef Cascade < pm.matlab.Handle
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         %>  \brief
-        %>  Export the current cascade of figures to the specified external files.
+        %>  Export the current cascade of figures to the specified external files.<br>
         %>
-        %>  \note
+        %>  \details
         %>  This method is merely a wrapper around
         %>  all ``savefig`` methods of the figure objects in
-        %>  the ``window`` component of the parent cascade object.
+        %>  the ``window`` component of the parent cascade object.<br>
         %>
-        %>  \param[in]  files   :   The input vector of MATLAB strings or cell array of char vectors that must be
-        %>                          of the same length as the length of the ``window`` component of the parent object.
-        %>                          containing the paths to the external files to contain the visualizations.
-        %>                          For more information, see the corresponding argument of the ``savefig``
-        %>                          method of class [pm.vis.figure.Figure](@ref Figure).
-        %>                          (**optional**.  If ``files`` or any elements of it are is missing or empty,
-        %>                          the default will be set by the ``savefig`` method of the corresponding
-        %>                          cascade figure in the ``window`` component.)
+        %>  \param[inout]   self    :   The input/output parent object of class [pm.vis.cascade.Cascade](@ref Cascade)
+        %>                              which is **implicitly** passed to this dynamic method (not by the user).<br>
+        %>  \param[in]      files   :   The input vector of MATLAB strings or cell array of char vectors that must be
+        %>                              of the same length as the length of the ``window`` component of the parent object.<br>
+        %>                              containing the paths to the external files to contain the visualizations.<br>
+        %>                              For more information, see the corresponding argument of the ``savefig``
+        %>                              method of class [pm.vis.figure.Figure](@ref Figure).<br>
+        %>                              (**optional**.  If ``files`` or any elements of it are is missing or empty,
+        %>                              the default will be set by the ``savefig`` method of the corresponding
+        %>                              cascade figure in the ``window`` component.)
         %>
         %>  \param[in]  varargin    :   Any optional key-val pair that is accepted by
-        %>                              the ``savefig`` method of class [pm.vis.figure.Figure](@ref Figure).
-        %>                              For more information, see the ``savefig`` method of class [pm.vis.figure.Figure](@ref Figure).
+        %>                              the ``savefig`` method of class [pm.vis.figure.Figure](@ref Figure).<br>
+        %>                              For more information, see the ``savefig`` method of class [pm.vis.figure.Figure](@ref Figure).<br>
         %>
         %>  \interface{savefigs}
         %>  \code{.m}
@@ -265,13 +308,14 @@ classdef Cascade < pm.matlab.Handle
         %>      c.savefigs(files, varargin{:});
         %>  \endcode
         %>
+        %>  \example{savefigs}
+        %>  \code{.m}
         %>
-        %>  \example{getBorder}
+        %>      cv = pm.vis.cascade.Cascade(pm.vis.plot.Line(rand(100, 10)));
+        %>      cv.make("coly", 1:3)
+        %>      cv.savefigs([], "-m4 -transparent"); % export the figures with the default names.
         %>
-        %>      c = pm.vis.cascade.Cascade(pm.vis.plot.Line());
-        %>      c.savefigs(); % export the current figure with the default name.
-        %>      c.savefigs("gridplot.pdf") % export figure to the specified PDF file.
-        %>      c.savefigs("gridplot.png", "-m4 -transparent") % export a large png plot of magnitude 4 with transparency.
+        %>  \endcode
         %>
         %>  \final{savefigs}
         %>
@@ -307,17 +351,19 @@ classdef Cascade < pm.matlab.Handle
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         %>  \brief
-        %>  Configure the cascade of plots settings and specifications and return nothing.
+        %>  Configure the cascade of plots settings and specifications and return nothing.<br>
         %>
         %>  \warning
         %>  This method has side-effects by manipulating
-        %>  the existing attributes of the parent object.
+        %>  the existing attributes of the parent object.<br>
         %>
-        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
-        %>                              If the property is a ``struct()``, then its value must be given as a cell array,
-        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
-        %>                              Note that all of these property-value pairs can be also directly set via the
-        %>                              parent object attributes, before calling the ``premake()`` method.
+        %>  \param[inout]   self        :   The input/output parent object of class [pm.vis.cascade.Cascade](@ref Cascade)
+        %>                                  which is **implicitly** passed to this dynamic method (not by the user).<br>
+        %>  \param[in]      varargin    :   Any ``property, value`` pair of the parent object.<br>
+        %>                                  If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                                  with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
+        %>                                  Note that all of these property-value pairs can be also directly set via the
+        %>                                  parent object attributes, before calling the ``premake()`` method.<br>
         %>
         %>  \interface{premake}
         %>  \code{.m}
@@ -327,9 +373,13 @@ classdef Cascade < pm.matlab.Handle
         %>  \endcode
         %>
         %>  \example{premake}
+        %>  \code{.m}
         %>
-        %>      c = pm.vis.cascade.Cascade();
-        %>      c.premake("figure", {"color", "none"})
+        %>      cv = pm.vis.cascade.Cascade(pm.vis.plot.Line(rand(100, 10)));
+        %>      c.premake("figure", {"color", "white"})
+        %>      cv.make("coly", 1:3)
+        %>
+        %>  \endcode
         %>
         %>  \final{premake}
         %>

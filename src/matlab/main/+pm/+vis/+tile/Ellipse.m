@@ -6,11 +6,11 @@
 classdef Ellipse < pm.vis.tile.Tile
     methods(Access = public)
         %>
-        %>  \param[in]  gramian     :   See the corresponding input argument to the class ``pm.vis.subplot.Ellipse``.
+        %>  \param[in]  gramian     :   See the corresponding input argument to the class [pm.vis.subplot.Ellipse](@ref Ellipse).
         %>  
-        %>  \param[in]  center      :   See the corresponding input argument to the class ``pm.vis.subplot.Ellipse``.
+        %>  \param[in]  center      :   See the corresponding input argument to the class [pm.vis.subplot.Ellipse](@ref Ellipse).
         %>  
-        %>  \param[in]  cval        :   See the corresponding input argument to the class ``pm.vis.subplot.Ellipse``.
+        %>  \param[in]  cval        :   See the corresponding input argument to the class [pm.vis.subplot.Ellipse](@ref Ellipse).
         %>  
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
@@ -24,10 +24,10 @@ classdef Ellipse < pm.vis.tile.Tile
         %>
         %>  \note
         %>  See below and also the documentation of the
-        %>  attributes of the superclass ``pm.vis.tile.Tile``.
+        %>  attributes of the superclass [pm.vis.tile.Tile](@ref Tile).
         %>
         %>  \return
-        %>  An object of class ``pm.vis.tile.Ellipse``.
+        %>  An object of class [pm.vis.tile.Ellipse](@ref Ellipse).
         %>
         %>  \interface{Ellipse}
         %>  \code{.m}

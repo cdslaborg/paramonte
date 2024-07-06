@@ -2,7 +2,20 @@
 %>  This is the Scatter3 class for generating
 %>  instances of 3-dimensional Scatter3 plots
 %>  based on the relevant MATLAB
-%>  intrinsic functions.
+%>  intrinsic functions.<br>
+%>
+%>  \note
+%>  See the list of class attributes below,
+%>  also those of the superclass [pm.vis.cascade.Cascade](@ref Cascade).<br>
+%>
+%>  \see
+%>  [pm.vis.cascade.Cascade](@ref Cascade)<br>
+%>
+%>  \final
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef Scatter3 < pm.vis.cascade.Cascade
     methods(Access = public)
         %>
@@ -15,16 +28,19 @@ classdef Scatter3 < pm.vis.cascade.Cascade
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``make()`` method.
         %>
+        %>  \return
+        %>  ``self``                :   The output scalar object of class [pm.vis.cascade.Scatter3](@ref Scatter3).<br>
+        %>
         %>  \note
         %>  The input ``varargin`` can also contain the components
-        %>  of the ``template`` component of the parent object.
+        %>  of the ``template`` component of the parent object.<br>
         %>
         %>  \note
         %>  See the documentation of the attributes
-        %>  of the superclass [pm.vis.cascade.Cascade](@ref Cascade).
+        %>  of the superclass [pm.vis.cascade.Cascade](@ref Cascade).<br>
         %>
         %>  \return
-        %>  An object of ``pm.vis.cascade.Scatter3`` class.
+        %>  An object of [pm.vis.cascade.Scatter3](@ref Scatter3) class.<br>
         %>
         %>  \interface{Scatter3}
         %>  \code{.m}

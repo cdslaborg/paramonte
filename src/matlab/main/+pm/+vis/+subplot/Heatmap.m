@@ -20,7 +20,7 @@ classdef Heatmap < pm.vis.subplot.Subplot
         %>  of the superclass [pm.vis.subplot.Subplot](@ref Subplot).
         %>
         %>  \return
-        %>  An object of ``pm.vis.subplot.Heatmap`` class.
+        %>  An object of [pm.vis.subplot.Heatmap](@ref Heatmap) class.
         %>
         %>  \interface{Heatmap}
         %>  \code{.m}

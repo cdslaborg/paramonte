@@ -14,7 +14,7 @@ classdef Histogram2 < pm.vis.subplot.Subplot
         %>  of the superclass [pm.vis.subplot.Subplot](@ref Subplot).
         %>
         %>  \return
-        %>  An object of ``pm.vis.subplot.Histogram2`` class.
+        %>  An object of [pm.vis.subplot.Histogram2](@ref Histogram2) class.
         %>
         %>  \interface{Histogram2}
         %>  \code{.m}

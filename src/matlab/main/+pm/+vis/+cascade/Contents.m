@@ -1,8 +1,8 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.vis.cascade`` contains
-%>  a set of classes related to data visualization as **cascade of figures**.<br>
+%>  The ParaMonte MATLAB package [pm.vis.cascade](@ref \psldir/main/+pm/+vis/+cascade)
+%>  contains a set of classes related to data visualization as **cascade of figures**.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,

@@ -24,7 +24,7 @@ classdef LineScatter < pm.vis.plot.Plot
         %>  of the superclass [pm.vis.plot.Plot](@ref Plot).
         %>
         %>  \return
-        %>  An object of ``pm.vis.plot.LineScatter`` class.
+        %>  An object of [pm.vis.plot.LineScatter](@ref LineScatter) class.
         %>
         %>  \interface{LineScatter}
         %>  \code{.m}

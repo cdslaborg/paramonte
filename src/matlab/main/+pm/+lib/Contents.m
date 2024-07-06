@@ -1,8 +1,8 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package [pm.lib](@ref \psldir/+pm/+lib) contains
-%>  a set of routines related to the ParaMonte library settings.<br>
+%>  The ParaMonte MATLAB package [pm.lib](@ref \psldir/main/+pm/+lib)
+%>  contains a set of routines related to the ParaMonte library settings.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,

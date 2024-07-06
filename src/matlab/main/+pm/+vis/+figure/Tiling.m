@@ -11,12 +11,12 @@
 %>                              parent object attributes, before calling the ``make()`` method.
 %>
 %>  \return
-%>  ``self``                :   The output scalar object of class ``pm.vis.figure.Tiling``.
+%>  ``self``                :   The output scalar object of class [pm.vis.figure.Tiling](@ref Tiling).
 %>
 %>  \interface{Tiling}
 %>  \code{.m}
 %>
-%>      plot = pm.vis.figure.Tiling(subplot);
+%>      plot = [pm.vis.figure.Tiling](@ref Tiling)(subplot);
 %>
 %>  \endcode
 %>
@@ -89,7 +89,7 @@ classdef Tiling < pm.vis.figure.Figure
             if ~failed
                 varargin = {"subplot", subplot, varargin{:}};
             else
-                help("pm.vis.figure.Tiling");
+                help("[pm.vis.figure.Tiling](@ref Tiling)");
                 error   ( newline ...
                         + "The input argument ``subplot`` must be a MATLAB cell matrix of " + newline ...
                         + "empty objects or objects of superclass [pm.vis.subplot.Subplot](@ref Subplot)." + newline ...
@@ -120,13 +120,13 @@ classdef Tiling < pm.vis.figure.Figure
         %>  \interface{make}
         %>  \code{.m}
         %>
-        %>      f = pm.vis.figure.Tiling.make(varargin);
+        %>      f = [pm.vis.figure.Tiling](@ref Tiling).make(varargin);
         %>
         %>  \endcode
         %>
         %>  \example{make}
         %>
-        %>      f = pm.vis.figure.Tiling();
+        %>      f = [pm.vis.figure.Tiling](@ref Tiling)();
         %>      f.make()
         %>
         %>  \final{make}
@@ -208,7 +208,7 @@ classdef Tiling < pm.vis.figure.Figure
         %>  \interface{reset}
         %>  \code{.m}
         %>
-        %>      pm.vis.figure.Tiling.reset() % reset all object properties to the default settings.
+        %>      [pm.vis.figure.Tiling](@ref Tiling).reset() % reset all object properties to the default settings.
         %>
         %>  \endcode
         %>

@@ -2,7 +2,20 @@
 %>  This is the Histogram class for generating
 %>  instances of 2-dimensional Histogram plots
 %>  based on the relevant MATLAB
-%>  intrinsic functions.
+%>  intrinsic functions.<br>
+%>
+%>  \note
+%>  See the list of class attributes below,
+%>  also those of the superclass [pm.vis.cascade.Cascade](@ref Cascade).<br>
+%>
+%>  \see
+%>  [pm.vis.cascade.Cascade](@ref Cascade)<br>
+%>
+%>  \final
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef Histogram < pm.vis.cascade.Cascade
     methods(Access = public)
         %>
@@ -15,6 +28,9 @@ classdef Histogram < pm.vis.cascade.Cascade
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``make()`` method.
         %>
+        %>  \return
+        %>  ``self``                :   The output scalar object of class [pm.vis.cascade.Histogram](@ref Histogram).<br>
+        %>
         %>  \note
         %>  The input ``varargin`` can also contain the components
         %>  of the ``template`` component of the parent object.
@@ -24,7 +40,7 @@ classdef Histogram < pm.vis.cascade.Cascade
         %>  of the superclass [pm.vis.cascade.Cascade](@ref Cascade).
         %>
         %>  \return
-        %>  An object of ``pm.vis.cascade.Histogram`` class.
+        %>  An object of [pm.vis.cascade.Histogram](@ref Histogram) class.
         %>
         %>  \interface{Histogram}
         %>  \code{.m}

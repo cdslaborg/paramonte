@@ -14,7 +14,7 @@ classdef Line < pm.vis.subplot.Subplot
         %>  of the superclass [pm.vis.subplot.Subplot](@ref Subplot).
         %>
         %>  \return
-        %>  An object of ``pm.vis.subplot.Line`` class.
+        %>  An object of [pm.vis.subplot.Line](@ref Line) class.
         %>
         %>  \interface{Line}
         %>  \code{.m}

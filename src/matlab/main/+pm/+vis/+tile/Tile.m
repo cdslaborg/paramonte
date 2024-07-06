@@ -3,7 +3,7 @@
 %>  that contain the specifications of various types of tile figures.<br>
 %>  This is a generic class for generating figures
 %>  containing multiple subplots (axes) of the same class.
-classdef Tile < pm.vis.figure.Tiling
+classdef Tile < [pm.vis.figure.Tiling](@ref Tiling)
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -53,7 +53,7 @@ classdef Tile < pm.vis.figure.Tiling
         %>  of the ``template`` component of the parent object.
         %>
         %>  \return
-        %>  ``self``                :   The output scalar object of class ``pm.vis.tile.Tile``.
+        %>  ``self``                :   The output scalar object of class [pm.vis.tile.Tile](@ref Tile).
         %>
         %>  \interface{Tile}
         %>  \code{.m}
@@ -64,7 +64,7 @@ classdef Tile < pm.vis.figure.Tiling
         %>
         %>  \note
         %>  See the list of class attributes below,
-        %>  also those of the superclass ``pm.vis.figure.Tiling``.
+        %>  also those of the superclass [pm.vis.figure.Tiling](@ref Tiling).
         %>
         %>  \final{Tile}
         %>
@@ -72,7 +72,7 @@ classdef Tile < pm.vis.figure.Tiling
         %>  \JoshuaOsborne, May 22 2024, 7:39 PM, University of Texas at Arlington<br>
         function self = Tile(template, varargin)
             [varobj, vartemp] = pm.matlab.hashmap.popKeyVal(["figure", "subplot", "template", "tiledlayout", "tileshape"], varargin);
-            self = self@pm.vis.figure.Tiling(cell(0, 0), varobj{:});
+            self = self@[pm.vis.figure.Tiling](@ref Tiling)(cell(0, 0), varobj{:});
             self.template = template;
             if ~isempty(vartemp)
                 self.template.hash2comp(vartemp);
@@ -117,7 +117,7 @@ classdef Tile < pm.vis.figure.Tiling
                 self.hash2comp(vartemp);
                 %self.template.reset();
             end
-            reset@pm.vis.figure.Tiling(self, varleft{:});
+            reset@[pm.vis.figure.Tiling](@ref Tiling)(self, varleft{:});
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% RULE 0: Any non-MATLAB-default setting must be preferably set in premake() method to override user null values.
@@ -296,7 +296,7 @@ classdef Tile < pm.vis.figure.Tiling
                 end
             end
 
-            make@pm.vis.figure.Tiling(self);
+            make@[pm.vis.figure.Tiling](@ref Tiling)(self);
 
             %%%% Define a single colorbar.
 
@@ -395,7 +395,7 @@ classdef Tile < pm.vis.figure.Tiling
 
             if ~isempty(varargin)
                 [varobj, vartemp] = pm.matlab.hashmap.popKeyVal(["figure", "subplot", "template", "tiledlayout", "tileshape"], varargin);
-                premake@pm.vis.figure.Tiling(self, varobj{:});
+                premake@[pm.vis.figure.Tiling](@ref Tiling)(self, varobj{:});
                 self.template.hash2comp(vartemp);
                 %recursive = true;
                 %extensible = true;

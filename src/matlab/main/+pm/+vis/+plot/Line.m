@@ -24,7 +24,7 @@ classdef Line < pm.vis.plot.Plot
         %>  of the superclass [pm.vis.plot.Plot](@ref Plot).
         %>
         %>  \return
-        %>  An object of ``pm.vis.plot.Line`` class.
+        %>  An object of [pm.vis.plot.Line](@ref Line) class.
         %>
         %>  \interface{Line}
         %>  \code{.m}

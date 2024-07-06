@@ -540,7 +540,7 @@ classdef Figure < pm.matlab.Handle
         %>                                          Only used by PNG, TIF, JPG, GIF output formats.<br>
         %>                                          Options can also be specified as a cell array of name-value pairs,
         %>                                          e.g. ``{'BitDepth', 4, 'Author', 'Yair'}``. These options will be used
-        %>                                          by all supported output formats of the ``pm.vis.figure.savefig()`` function.<br>
+        %>                                          by all supported output formats of the [pm.vis.figure.savefig](@ref savefig) function.<br>
         %>
         %>                                  <li>    ``"-silent"``
         %>

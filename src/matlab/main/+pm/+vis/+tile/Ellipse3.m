@@ -10,13 +10,13 @@ classdef Ellipse3 < pm.vis.tile.Tile
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         %>
-        %>  \param[in]  gramian     :   See the corresponding input argument to the class ``pm.vis.subplot.Ellipse3``.
+        %>  \param[in]  gramian     :   See the corresponding input argument to the class [pm.vis.subplot.Ellipse3](@ref Ellipse3).
         %>  
-        %>  \param[in]  center      :   See the corresponding input argument to the class ``pm.vis.subplot.Ellipse3``.
+        %>  \param[in]  center      :   See the corresponding input argument to the class [pm.vis.subplot.Ellipse3](@ref Ellipse3).
         %>  
-        %>  \param[in]  zval        :   See the corresponding input argument to the class ``pm.vis.subplot.Ellipse3``.
+        %>  \param[in]  zval        :   See the corresponding input argument to the class [pm.vis.subplot.Ellipse3](@ref Ellipse3).
         %>  
-        %>  \param[in]  cval        :   See the corresponding input argument to the class ``pm.vis.subplot.Ellipse3``.
+        %>  \param[in]  cval        :   See the corresponding input argument to the class [pm.vis.subplot.Ellipse3](@ref Ellipse3).
         %>  
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
@@ -30,10 +30,10 @@ classdef Ellipse3 < pm.vis.tile.Tile
         %>
         %>  \note
         %>  See below and also the documentation of the
-        %>  attributes of the superclass ``pm.vis.tile.Tile``.
+        %>  attributes of the superclass [pm.vis.tile.Tile](@ref Tile).
         %>
         %>  \return
-        %>  An object of class ``pm.vis.tile.Ellipse3``.
+        %>  An object of class [pm.vis.tile.Ellipse3](@ref Ellipse3).
         %>
         %>  \interface{Ellipse3}
         %>  \code{.m}

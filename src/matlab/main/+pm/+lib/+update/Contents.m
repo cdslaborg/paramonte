@@ -1,7 +1,7 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package [pm.lib.update](@ref \psldir/+pm/+lib/+update) contains routines
+%>  The ParaMonte MATLAB package [pm.lib.update](@ref \psldir/main/+pm/+lib/+update) contains routines
 %>  and data related to retrieving information about the ParaMonte MATLAB library updates.<br>
 %>
 %>  \note

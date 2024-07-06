@@ -11,7 +11,7 @@
 %>                  \endcode
 %>                  where,<br>
 %>                  <ol>
-%>                      <li>    ``<DIR>`` is replaced by the directory containing the function [pm.sys.info.cache](@ref cache),
+%>                      <li>    ``<DIR>`` is replaced by the directory containing the function [pm.sys.info()](@ref info),
 %>                      <li>    ``<YEAR>`` is replaced by the current year,
 %>                      <li>    ``<MONTH>`` is replaced by the current month.
 %>                  </ol>

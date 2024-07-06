@@ -31,7 +31,7 @@ classdef Ellipse < pm.vis.subplot.Ellipse3
         %>
         %>  \note
         %>  This class is merely a simple extension of
-        %>  the superclass ``pm.vis.subplot.Ellipse3``.
+        %>  the superclass [pm.vis.subplot.Ellipse3](@ref Ellipse3).
         %>  The only difference is that all ``zval`` values for
         %>  all points of all coordinates are set to default values.
         %>  The only tangible action this class performs is
@@ -51,10 +51,10 @@ classdef Ellipse < pm.vis.subplot.Ellipse3
         %>
         %>  \note
         %>  See below and also the documentation of the attributes
-        %>  of the superclass ``pm.vis.subplot.Ellipse3``.
+        %>  of the superclass [pm.vis.subplot.Ellipse3](@ref Ellipse3).
         %>
         %>  \return
-        %>  An object of class ``pm.vis.subplot.Ellipse``.
+        %>  An object of class [pm.vis.subplot.Ellipse](@ref Ellipse).
         %>
         %>  \interface{Ellipse}
         %>  \code{.m}

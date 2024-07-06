@@ -1,12 +1,12 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.vis.axes`` contains
-%>  a set of routines and classes related to axes creation.<br>
+%>  The ParaMonte MATLAB package [pm.vis.axes](@ref \psldir/main/+pm/+vis/+axes)
+%>  contains a set of routines and classes related to axes creation.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members.
+%>  see the documentations of the package members.<br>
 %>
 %>  \final{pm.vis.axes}
 %>

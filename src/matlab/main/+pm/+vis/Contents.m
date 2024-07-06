@@ -1,7 +1,7 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.vis`` contains
+%>  The ParaMonte MATLAB package [pm.vis](@ref \psldir/main/+pm/+vis) contains
 %>  a set of routines and data related to data visualization tasks.<br>
 %>
 %>  \details

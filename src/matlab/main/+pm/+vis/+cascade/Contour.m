@@ -2,29 +2,36 @@
 %>  This is the Contour class for generating
 %>  instances of 2-dimensional Contour plots
 %>  based on the relevant MATLAB
-%>  intrinsic functions.
+%>  intrinsic functions.<br>
+%>
+%>  \note
+%>  See the list of class attributes below,
+%>  also those of the superclass [pm.vis.cascade.Cascade](@ref Cascade).<br>
+%>
+%>  \see
+%>  [pm.vis.cascade.Cascade](@ref Cascade)<br>
+%>
+%>  \final
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef Contour < pm.vis.cascade.Cascade
     methods(Access = public)
+        %>  \brief
+        %>  Construct and return an object of class [pm.vis.cascade.Contour](@ref Contour).<br>
         %>
         %>  \param[in]  dfref       :   See the documentation of the corresponding input
-        %>                              argument of the class [pm.vis.plot.Plot](@ref Plot).
-        %>  
-        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
+        %>                              argument of the class [pm.vis.plot.Plot](@ref Plot).<br>
+        %>
+        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
-        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
         %>                              Note that all of these property-value pairs can be also directly set via the
-        %>                              parent object attributes, before calling the ``make()`` method.
-        %>
-        %>  \note
-        %>  The input ``varargin`` can also contain the components
-        %>  of the ``template`` component of the parent object.
-        %>
-        %>  \note
-        %>  See the documentation of the attributes
-        %>  of the superclass [pm.vis.cascade.Cascade](@ref Cascade).
+        %>                              parent object attributes, before calling the ``make()`` method.<br>
         %>
         %>  \return
-        %>  An object of [pm.vis.cascade.Contour](@ref Contour) class.
+        %>  ``self``                :   The output scalar object of class [pm.vis.cascade.Contour](@ref Contour).
         %>
         %>  \interface{Contour}
         %>  \code{.m}
@@ -33,6 +40,14 @@ classdef Contour < pm.vis.cascade.Cascade
         %>      p = pm.vis.cascade.Contour(dfref, varargin);
         %>
         %>  \endcode
+        %>
+        %>  \note
+        %>  The input ``varargin`` can also contain the components
+        %>  of the ``template`` component of the parent object.<br>
+        %>
+        %>  \note
+        %>  See the documentation of the attributes
+        %>  of the superclass [pm.vis.cascade.Cascade](@ref Cascade).<br>
         %>
         %>  \final{Contour}
         %>

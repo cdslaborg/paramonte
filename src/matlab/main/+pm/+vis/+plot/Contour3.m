@@ -24,7 +24,7 @@ classdef Contour3 < pm.vis.plot.Plot
         %>  of the superclass [pm.vis.plot.Plot](@ref Plot).
         %>
         %>  \return
-        %>  An object of ``pm.vis.plot.Contour3`` class.
+        %>  An object of [pm.vis.plot.Contour3](@ref Contour3) class.
         %>
         %>  \interface{Contour3}
         %>  \code{.m}
