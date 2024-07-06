@@ -1,12 +1,12 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.matlab.has`` contains
-%>  a set of routines related to the checking presence of MATLAB language toolboxes.
+%>  The ParaMonte MATLAB package [pm.matlab.has](@ref \psldir/main/+pm/+matlab/+has)
+%>  contains a set of routines related to the checking presence of MATLAB language toolboxes.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members.
+%>  see the documentations of the package members.<br>
 %>
 %>  \final{pm.matlab.has}
 %>

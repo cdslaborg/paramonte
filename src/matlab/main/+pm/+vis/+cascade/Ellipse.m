@@ -7,11 +7,11 @@ classdef Ellipse < pm.vis.cascade.Cascade
     methods(Access = public)
         %>
         %>  \param[in]  gramian     :   See the corresponding input argument to the class ``pm.vis.plot.Ellipse``.
-        %>  
+        %>
         %>  \param[in]  center      :   See the corresponding input argument to the class ``pm.vis.plot.Ellipse``.
-        %>  
+        %>
         %>  \param[in]  cval        :   See the corresponding input argument to the class ``pm.vis.plot.Ellipse``.
-        %>  
+        %>
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
@@ -27,7 +27,7 @@ classdef Ellipse < pm.vis.cascade.Cascade
         %>  attributes of the superclass [pm.vis.figure.Figure](@ref Figure).
         %>
         %>  \return
-        %>  An object of class ``pm.vis.cascade.Ellipse``.
+        %>  An object of class [pm.vis.cascade.Ellipse](@ref Ellipse).
         %>
         %>  \interface{Ellipse}
         %>  \code{.m}

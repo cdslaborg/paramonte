@@ -1,12 +1,12 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.sort`` contains
-%>  a set of routines and data related to the sorting the indices of arrays.
+%>  The ParaMonte MATLAB package [pm.sort](@ref \psldir/main/+pm/+sort) contains
+%>  a set of routines and data related to the sorting the indices of arrays.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members.
+%>  see the documentations of the package members.<br>
 %>
 %>  \final{pm.sort}
 %>

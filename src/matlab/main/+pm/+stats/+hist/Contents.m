@@ -1,8 +1,8 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.stats.hist`` contains 
-%>  a set of packages and functionalities for data fitting.<br>
+%>  The ParaMonte MATLAB package [pm.stats.hist](@ref \psldir/main/+pm/+stats/+hist)
+%>  contains a set of packages and functionalities for data fitting.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,

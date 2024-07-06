@@ -7,7 +7,7 @@ classdef Scatter < pm.vis.plot.Plot
     methods(Access = public)
         %>
         %>  \param[in]  dfref       :   See the documentation of the corresponding input
-        %>                              argument of the superclass ``pm.vis.plot.Plot``.
+        %>                              argument of the superclass [pm.vis.plot.Plot](@ref Plot).
         %>  
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
@@ -21,7 +21,7 @@ classdef Scatter < pm.vis.plot.Plot
         %>
         %>  \note
         %>  See the documentation of the attributes
-        %>  of the superclass ``pm.vis.plot.Plot``.
+        %>  of the superclass [pm.vis.plot.Plot](@ref Plot).
         %>
         %>  \return
         %>  An object of ``Scatter`` class.

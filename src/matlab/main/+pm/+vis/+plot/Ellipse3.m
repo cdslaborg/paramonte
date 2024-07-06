@@ -29,7 +29,7 @@ classdef Ellipse3 < pm.vis.plot.Plot
         %>  attributes of the superclass [pm.vis.figure.Figure](@ref Figure).
         %>
         %>  \return
-        %>  An object of class ``pm.vis.plot.Ellipse3``.
+        %>  An object of class [pm.vis.plot.Ellipse3](@ref Ellipse3).
         %>
         %>  \interface{Ellipse3}
         %>  \code{.m}

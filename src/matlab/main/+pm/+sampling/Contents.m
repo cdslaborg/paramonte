@@ -1,18 +1,18 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.sampling`` contains
-%>  a set of routines and data types related to sampling
+%>  The ParaMonte MATLAB package [pm.sampling](@ref \psldir/main/+pm/+sampling)
+%>  contains a set of routines and data types related to sampling
 %>  mathematical density functions.<br>
 %>
 %>  \details
 %>  Of all available classes and functions in this package,
-%>  the ``pm.sampling.Paradram`` class is the most relevant
-%>  and useful to the end users of the ParaMonte library.
+%>  the [pm.sampling.Paradram](@ref Paradram) class is the most
+%>  relevant and useful to the end users of the ParaMonte library.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members.
+%>  see the documentations of the package members.<br>
 %>
 %>  \final{pm.sampling}
 %>

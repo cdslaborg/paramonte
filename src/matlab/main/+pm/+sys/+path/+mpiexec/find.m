@@ -9,8 +9,8 @@
 %>  Also, all ``mpiexec`` paths found via [pm.sys.path.mpiexec.which(vendor)](@ref which) are returned.<br>
 %>  Additionally, if ``vendor`` is missing or is set to ``"Intel"``, also search the default
 %>  installation directories of Intel MPI libraries on all operating systems.<br>
-%>  Think of this functionality ``pm.sys.path.mpiexec.find(vendor)`` as a more
-%>  comprehensive of what [pm.sys.path.mpiexec.which(vendor)](@ref which) does.<br>
+%>  Think of this functionality [pm.sys.path.mpiexec.find(vendor)](@ref find) as a
+%>  more comprehensive of what [pm.sys.path.mpiexec.which(vendor)](@ref which) does.<br>
 %>
 %>  \warning
 %>  In Microsoft Windows Subsystem for Linux (WSL) environments, this function

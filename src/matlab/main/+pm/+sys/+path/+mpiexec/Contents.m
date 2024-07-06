@@ -1,16 +1,16 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.sys.path.mpiexec`` contains
-%>  a set of routines and data related to the ``mpiexec`` binary path tasks.
+%>  The ParaMonte MATLAB package [pm.sys.path.mpiexec](@ref \psldir/main/+pm/+sys/+path/+mpiexec)
+%>  contains a set of routines and data related to the ``mpiexec`` binary path tasks.<br>
 %>
 %>  \details
 %>  The functionalities of this package are particularly helpful for
-%>  identifying the MPI library vendor and version available on the system.
+%>  identifying the MPI library vendor and version available on the system.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members.
+%>  see the documentations of the package members.<br>
 %>
 %>  \final{pm.sys.path.mpiexec}
 %>

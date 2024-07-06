@@ -1,12 +1,12 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.math.func`` contains
-%>  a set of routines related to mathematical (e.g., density) functions.
+%>  The ParaMonte MATLAB package [pm.math.func](@ref \psldir/main/+pm/+math/+func)
+%>  contains a set of routines related to mathematical (e.g., density) functions.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members.
+%>  see the documentations of the package members.<br>
 %>
 %>  \final{pm.math.func}
 %>

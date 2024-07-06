@@ -7,11 +7,11 @@ classdef Histfit < pm.vis.cascade.Cascade
     methods(Access = public)
         %>
         %>  \param[in]  dfref       :   See the documentation of the corresponding input
-        %>                              argument of the class ``pm.vis.plot.Plot``.
+        %>                              argument of the class [pm.vis.plot.Plot](@ref Plot).
         %>
         %>  \note
         %>  See the documentation of the attributes
-        %>  of the superclass ``pm.vis.cascade.Cascade``.
+        %>  of the superclass [pm.vis.cascade.Cascade](@ref Cascade).
         %>
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,

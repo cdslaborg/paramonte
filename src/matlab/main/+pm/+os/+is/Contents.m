@@ -1,12 +1,12 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.os.is`` contains
-%>  a set of routines and data related to the Operating System type checking.
+%>  The ParaMonte MATLAB package [pm.os.is](@ref \psldir/main/+pm/+os/+is)
+%>  contains a set of routines and data related to the Operating System type checking.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members.
+%>  see the documentations of the package members.<br>
 %>
 %>  \final{pm.os.is}
 %>

@@ -1,8 +1,8 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.sys.path`` contains
-%>  a set of routines and data related to system path manipulation tasks.<br>
+%>  The ParaMonte MATLAB package [pm.sys.path](@ref \psldir/main/+pm/+sys/+path)
+%>  contains a set of routines and data related to system path manipulation tasks.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,

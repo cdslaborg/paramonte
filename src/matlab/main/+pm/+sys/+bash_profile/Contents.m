@@ -1,8 +1,8 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.sys.bash_profile`` contains
-%>  a set of routines and data related to retrieving or manipulating
+%>  The ParaMonte MATLAB package [pm.sys.bash_profile](@ref \psldir/main/+pm/+sys/+bash_profile)
+%>  contains a set of routines and data related to retrieving or manipulating
 %>  the contents of the ``bash_profile`` file in the home
 %>  directory of systems with Bash terminal.<br>
 %>

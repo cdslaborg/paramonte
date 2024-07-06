@@ -1,8 +1,8 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.os`` contains
-%>  a set of routines and data related to the Operating System.
+%>  The ParaMonte MATLAB package [pm.os](@ref \psldir/main/+pm/+os)
+%>  contains a set of routines and data related to the Operating System.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,

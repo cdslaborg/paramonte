@@ -1,8 +1,8 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.sys`` contains
-%>  a set of routines and data related to system tasks.<br>
+%>  The ParaMonte MATLAB package [pm.sys](@ref \psldir/main/+pm/+sys)
+%>  contains a set of routines and data related to system tasks.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,

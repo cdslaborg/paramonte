@@ -1,12 +1,12 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.matlab`` contains
-%>  a set of routines related to the MATLAB programming language.
+%>  The ParaMonte MATLAB package [pm.matlab](@ref \psldir/main/+pm/+matlab)
+%>  contains a set of routines related to the MATLAB programming language.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members.
+%>  see the documentations of the package members.<br>
 %>
 %>  \final{pm.matlab}
 %>

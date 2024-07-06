@@ -9,13 +9,17 @@ classdef Cascade < pm.matlab.Handle
 
     properties(Access = public)
         %>
-        %>  \param  window      :   The scalar object of superclass ``pm.vis.cascade.Cascade``
-        %>                          representing the cascade of plots to display.
+        %>  ``window``
+        %>
+        %>  The scalar object of superclass [pm.vis.cascade.Cascade](@ref Cascade)
+        %>  representing the cascade of plots to display.<br>
         %>
         window = [];
         %>
-        %>  \param  template    :   The scalar object of superclass ``pm.vis.cascade.Cascade``
-        %>                          representing the template of the cascade of plots to display.
+        %>  ``template``
+        %>
+        %>  The scalar object of superclass [pm.vis.cascade.Cascade](@ref Cascade)
+        %>  representing the template of the cascade of plots to display.<br>
         %>
         template = [];
     end
@@ -25,24 +29,24 @@ classdef Cascade < pm.matlab.Handle
     methods(Access = public)
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
+
         %>
-        %>  \param[in]  template    :   The input scalar object of superclass ``pm.vis.cascade.Cascade``.
+        %>  \param[in]  template    :   The input scalar object of superclass [pm.vis.cascade.Cascade](@ref Cascade).
         %>                              It serves as the template based upon which
         %>                              the cascade of plots are constructed.
-        %>  
+        %>
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``make()`` method.
-        %>  
+        %>
         %>  \note
         %>  The input ``varargin`` can also contain the components
         %>  of the ``plot`` component of the parent object.
         %>
         %>  \return
-        %>  ``self``                :   The output scalar object of class ``pm.vis.cascade.Cascade``.
+        %>  ``self``                :   The output scalar object of class [pm.vis.cascade.Cascade](@ref Cascade).
         %>
         %>  \interface{Cascade}
         %>  \code{.m}
@@ -54,7 +58,7 @@ classdef Cascade < pm.matlab.Handle
         %>  \note
         %>  See the list of class attributes below,
         %>  also those of the superclass ``pm.vis.figure.Handle``.
-        %>  
+        %>
         %>  \final{Cascade}
         %>
         %>  \author
@@ -248,7 +252,7 @@ classdef Cascade < pm.matlab.Handle
         %>                          (**optional**.  If ``files`` or any elements of it are is missing or empty,
         %>                          the default will be set by the ``savefig`` method of the corresponding
         %>                          cascade figure in the ``window`` component.)
-        %>  
+        %>
         %>  \param[in]  varargin    :   Any optional key-val pair that is accepted by
         %>                              the ``savefig`` method of class [pm.vis.figure.Figure](@ref Figure).
         %>                              For more information, see the ``savefig`` method of class [pm.vis.figure.Figure](@ref Figure).

@@ -1,12 +1,12 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.matlab.hashmap`` contains
-%>  a set of routines related to the MATLAB language hashmaps.
+%>  The ParaMonte MATLAB package [pm.matlab.hashmap](@ref \psldir/main/+pm/+matlab/+hashmap)
+%>  contains a set of routines related to the MATLAB language hashmaps.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members.
+%>  see the documentations of the package members.<br>
 %>
 %>  \final{pm.matlab.hashmap}
 %>

@@ -1,8 +1,8 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.str`` contains
-%>  a set of routines and data related to string manipulation.<br>
+%>  The ParaMonte MATLAB package [pm.str](@ref \psldir/main/+pm/+str)
+%>  contains a set of routines and data related to string manipulation.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,

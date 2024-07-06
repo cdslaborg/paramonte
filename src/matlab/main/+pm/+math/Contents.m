@@ -1,12 +1,12 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.math`` contains
-%>  a set of routines related to mathematical operations and tasks.
+%>  The ParaMonte MATLAB package [pm.math](@ref \psldir/main/+pm/+math)
+%>  contains a set of routines related to mathematical operations and tasks.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members.
+%>  see the documentations of the package members.<br>
 %>
 %>  \final{pm.math}
 %>

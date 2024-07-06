@@ -1,8 +1,8 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.stats`` contains
-%>  a set of routines and data related to statistical tasks.<br>
+%>  The ParaMonte MATLAB package [pm.stats](@ref \psldir/main/+pm/+stats)
+%>  contains a set of routines and data related to statistical tasks.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,

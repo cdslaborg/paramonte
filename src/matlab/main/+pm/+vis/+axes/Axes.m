@@ -674,7 +674,7 @@ classdef Axes < pm.matlab.Handle
         %>                              parent object attributes, before calling the ``premake()`` method.<br>
         %>
         %>  \return
-        %>  ``self``                :   The output scalar object of class ``pm.vis.axes.Axes``.<br>
+        %>  ``self``                :   The output scalar object of class [pm.vis.axes.Axes](@ref Axes).<br>
         %>
         %>  \interface{Axes}
         %>  \code{.m}
@@ -1462,7 +1462,7 @@ classdef Axes < pm.matlab.Handle
                 disp( comp );
                 error   ( newline ...
                         + "Internal library error: Unrecognized MATLAB function name" + newline ...
-                        + "as ``comp`` argument of object of class ``pm.vis.axes.Axes``." + newline ...
+                        + "as ``comp`` argument of object of class [pm.vis.axes.Axes](@ref Axes)." + newline ...
                         + newline ...
                         );
             end

@@ -317,7 +317,7 @@
 %>
 %>  \brief
 %>  Once you assign the desired simulation specifications to the corresponding
-%>  attributes within the component `spec` of an object of class ``pm.sampling.Paradram``,
+%>  attributes within the component `spec` of an object of class [pm.sampling.Paradram](@ref Paradram),
 %>  call the ParaDRAM sampler via the object method ``pm.sampling.Paradram.run()``.<br>
 %>
 %>  While the constructor of this class does not take any input arguments,

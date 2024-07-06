@@ -1,12 +1,12 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.matlab.struct`` contains
-%>  a set of routines related to the MATLAB language struct objects.
+%>  The ParaMonte MATLAB package [pm.matlab.struct](@ref \psldir/main/+pm/+matlab/+struct)
+%>  contains a set of routines related to the MATLAB language struct objects.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members.
+%>  see the documentations of the package members.<br>
 %>
 %>  \final{pm.matlab.struct}
 %>

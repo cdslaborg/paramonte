@@ -1,13 +1,12 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package ``pm.stats.dist.himmelblau`` contains
-%>  a set of routines and data related to the Himmelblau
-%>  statistical distribution.
+%>  The ParaMonte MATLAB package [pm.stats.dist.himmelblau](@ref \psldir/main/+pm/+stats/+dist/+himmelblau)
+%>  contains a set of routines and data related to the Himmelblau statistical distribution.<br>
 %>
 %>  \note
 %>  For more information on the existing functionalities,
-%>  see the documentations of the package members.
+%>  see the documentations of the package members.<br>
 %>
 %>  \final{pm.stats.dist.himmelblau}
 %>
