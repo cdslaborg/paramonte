@@ -44,7 +44,7 @@ classdef Scatter < pm.vis.cascade.Cascade
         %>
         %>  \note
         %>  See the documentation of the attributes
-        %>  of the superclass [pm.vis.cascade.Cascade](@ref Cascade).
+        %>  of the superclass [pm.vis.cascade.Cascade](@ref Cascade).<br>
         %>
         %>  \interface{Scatter}
         %>  \code{.m}

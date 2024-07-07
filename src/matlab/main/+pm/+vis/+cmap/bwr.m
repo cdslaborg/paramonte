@@ -16,7 +16,7 @@
 %>
 %>  \return
 %>  ``cmap``            :   The output blue-white-red colormap matrix
-%>                          of shape ``[nell, 3]`` containing a **cold** colormap.
+%>                          of shape ``[nell, 3]`` containing a **cold** colormap.<br>
 %>
 %>  \interface{bwr}
 %>  \code{.m}
@@ -27,30 +27,10 @@
 %>
 %>  \endcode
 %>
+%>  \see 
+%>  MATLAB intrinsic functions ``hsv()``, ``hot()``, ``cool()``, ``bone()``, ``copper()``, ``pink()``, ``flag()``, ``colormap()``, ``rgbplot()``.<br>
 %>
 %>  \example{bwr}
-%>
-%>      figure("color", "white");
-%>      imagesc(peaks(500));
-%>      colormap(pm.vis.cmap.bwr(256));
-%>      colorbar;
-%>
-%>      figure("color", "white");
-%>      imagesc(peaks(500), [0, 8]);
-%>      colormap(pm.vis.cmap.bwr());
-%>      colorbar;
-%>
-%>      figure("color", "white");
-%>      imagesc(peaks(250), [-6, 0]);
-%>      colormap(pm.vis.cmap.bwr());
-%>      colorbar;
-%>
-%>      figure("color", "white");
-%>      surf(peaks);
-%>      colormap(pm.vis.cmap.bwr());
-%>      axis("tight");
-%>
-%>  See also hsv, hot, cool, bone, copper, pink, flag, colormap, rgbplot.
 %>
 %>  \final{bwr}
 %>

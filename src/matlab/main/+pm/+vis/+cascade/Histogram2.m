@@ -51,6 +51,7 @@ classdef Histogram2 < pm.vis.cascade.Cascade
         %>
         %>      p = pm.vis.cascade.Histogram2(dfref);
         %>      p = pm.vis.cascade.Histogram2(dfref, varargin);
+        %>
         %>  \endcode
         %>
         %>  \final{Histogram2}
