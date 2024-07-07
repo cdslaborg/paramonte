@@ -459,7 +459,7 @@ classdef Figure < pm.matlab.Handle
         %>                                              The input option to pad a border of width ``val`` to exported files,
         %>                                              where ``val`` is either a relative size with respect to cropped image
         %>                                              size (i.e. ``p = 0.01`` adds a ``1%`` border). For EPS & PDF formats,
-        %>                                              ``val`` can also be integer in units of ``1/72`` inch points (``abs(val) > 1``).<br>
+        %>                                              ``val`` can also be integer in units of ``1/72`` points (``abs(val) > 1``).<br>
         %>                                              ``val`` can be positive (padding) or negative (extra cropping).<br>
         %>                                              If used, the ``-nocrop`` flag will be ignored, i.e. the image will
         %>                                              always be cropped and then padded. Default: ``0`` (i.e. no padding).<br>

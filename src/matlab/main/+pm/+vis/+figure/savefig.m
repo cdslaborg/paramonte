@@ -1,395 +1,452 @@
-%EXPORT_FIG  Exports figures in a publication-quality format
-%
-% Examples:
-%   imageData = savefig
-%   [imageData, alpha] = savefig
-%   savefig filename
-%   savefig ... -<format>
-%   savefig ... -nocrop
-%   savefig ... -c[<val>,<val>,<val>,<val>]
-%   savefig ... -transparent
-%   savefig ... -native
-%   savefig ... -m<val>
-%   savefig ... -r<val>
-%   savefig ... -a<val>
-%   savefig ... -q<val>
-%   savefig ... -p<val>
-%   savefig ... -n<val>   or:  -n<val>,<val>
-%   savefig ... -x<val>   or:  -x<val>,<val>
-%   savefig ... -s<val>   or:  -s<val>,<val>
-%   savefig ... -d<gs_option>
-%   savefig ... -depsc
-%   savefig ... -metadata <metaDataInfo>
-%   savefig ... -<renderer>
-%   savefig ... -<colorspace>
-%   savefig ... -append
-%   savefig ... -bookmark
-%   savefig ... -clipboard<:format>
-%   savefig ... -update
-%   savefig ... -version
-%   savefig ... -nofontswap
-%   savefig ... -font_space <char>
-%   savefig ... -linecaps
-%   savefig ... -noinvert
-%   savefig ... -preserve_size
-%   savefig ... -options <optionsStruct>
-%   savefig ... -silent
-%   savefig ... -notify
-%   savefig ... -regexprep <pattern> <replace>
-%   savefig ... -toolbar
-%   savefig ... -menubar
-%   savefig ... -contextmenu
-%   savefig(..., handle)
-%   savefig(..., figName)
-%
-% This function saves a figure or single axes to one or more vector and/or
-% bitmap file formats, and/or outputs a rasterized version to the workspace,
-% with the following properties:
-%   - Figure/axes reproduced as it appears on screen
-%   - Cropped/padded borders (optional)
-%   - Embedded fonts (vector formats)
-%   - Improved line and grid line styles
-%   - Anti-aliased graphics (bitmap formats)
-%   - Render images at native resolution (optional for bitmap formats)
-%   - Transparent background supported (pdf, eps, png, tif, gif)
-%   - Semi-transparent patch objects supported (png, tif)
-%   - RGB, CMYK or grayscale output (CMYK only with pdf, eps, tif)
-%   - Variable image compression, including lossless (pdf, eps, jpg)
-%   - Optional rounded line-caps (pdf, eps)
-%   - Optionally append to file (pdf, tif, gif)
-%   - Vector formats: pdf, eps, emf, svg
-%   - Bitmap formats: png, tif, jpg, bmp, gif, clipboard, export to workspace
-%
-% This function is especially suited to exporting figures for use in
-% publications and presentations, because of the high quality and
-% portability of media produced.
-%
-% Note that the background color and figure dimensions are reproduced
-% (the latter approximately, and ignoring cropping & magnification) in the
-% output file. For transparent background (and semi-transparent patch
-% objects), use the -transparent option or set the figure 'Color' property
-% to 'none'. To make axes transparent set the axes 'Color' property to
-% 'none'. PDF, EPS, TIF & PNG are the only formats that support a transparent
-% background; only TIF & PNG formats support transparency of patch objects.
-%
-% The choice of renderer (opengl/zbuffer/painters) has a large impact on the
-% output quality. The default value (opengl for bitmaps, painters for vector
-% formats) generally gives good results, but if you aren't satisfied
-% then try another renderer.  Notes:
-%   1) For vector formats (EPS,PDF), only painters generates vector graphics
-%   2) For bitmap formats, only opengl correctly renders transparent patches
-%   3) For bitmap formats, only painters correctly scales line dash and dot
-%      lengths when magnifying or anti-aliasing
-%   4) Fonts may be substitued with Courier when using painters
-%
-% When exporting to vector format (PDF & EPS) and bitmap format using the
-% painters renderer, this function requires that ghostscript is installed
-% on your system. You can download this from: http://www.ghostscript.com
-% When exporting to EPS it additionally requires pdftops, from the Xpdf
-% suite of functions. You can download this from: http://xpdfreader.com
-%
-% SVG output uses Matlab's built-in SVG export if available, or otherwise the
-% fig2svg (https://github.com/kupiqu/fig2svg) or plot2svg
-% (https://github.com/jschwizer99/plot2svg) utilities, if available.
-% Note: cropping/padding are not supported in savefig's SVG and EMF output.
-%
-% Inputs:
-%   filename - string containing the name (optionally including full or
-%             relative path) of the file the figure is to be saved as. If
-%             no path is specified, the figure is saved in the current folder.
-%             If no name and no output arguments are specified, the figure's
-%             FileName property is used. If this property is empty, then the
-%             default name 'export_fig_out' is used. If neither file extension
-%             nor a format parameter are specified, a ".png" is added to the
-%             filename and the figure saved in PNG format.
-%   -<format> - string(s) containing the output file extension(s). Options:
-%             '-pdf','-eps','emf','-svg','-png','-tif','-jpg','-gif' and '-bmp'.
-%             Multiple formats can be specified, without restriction.
-%             For example: savefig('-jpg', '-pdf', '-png', ...)
-%             Note: '-tif','-tiff' are equivalent, and so are '-jpg','-jpeg'.
-%   -transparent - option indicating that the figure background is to be made
-%             transparent (PNG,PDF,TIF,EPS,EMF formats only). Implies -noinvert.
-%   -nocrop - option indicating that empty margins should not be cropped.
-%   -c[<val>,<val>,<val>,<val>] - option indicating crop amounts. Must be
-%             a 4-element vector of numeric values: [top,right,bottom,left]
-%             where NaN/Inf indicates auto-cropping, 0 means no cropping, any
-%             other value means cropping in pixel amounts. e.g. '-c7,15,0,NaN'
-%             Note: this option is not supported by SVG and EMF formats.
-%   -p<val> - option to pad a border of width val to exported files, where
-%             val is either a relative size with respect to cropped image
-%             size (i.e. p=0.01 adds a 1% border). For EPS & PDF formats,
-%             val can also be integer in units of 1/72" points (abs(val)>1).
-%             val can be positive (padding) or negative (extra cropping).
-%             If used, the -nocrop flag will be ignored, i.e. the image will
-%             always be cropped and then padded. Default: 0 (i.e. no padding).
-%             Note: this option is not supported by SVG and EMF formats.
-%   -m<val> - option val indicates the factor to magnify the figure dimensions
-%             when generating bitmap outputs (does not affect vector formats).
-%             Default: '-m1' (i.e. val=1). Note: val~=1 slows down savefig.
-%   -r<val> - option val indicates the resolution (in pixels per inch) to
-%             export bitmap and vector outputs, without changing dimensions of
-%             the on-screen figure. Default: '-r864' (for vector output only).
-%             Note: -m option overides -r option for bitmap exports only.
-%   -native - option indicating that the output resolution (when outputting
-%             a bitmap format) should be such that the vertical resolution
-%             of the first suitable image found in the figure is at the
-%             native resolution of that image. To specify a particular
-%             image to use, give it the tag 'export_fig_native'.
-%             Notes: This overrides any value set with the -m and -r options.
-%             It also assumes that the image is displayed front-to-parallel
-%             with the screen. The output resolution is approximate and
-%             should not be relied upon. Anti-aliasing can have adverse
-%             effects on image quality (disable with the -a1 option).
-%   -a1, -a2, -a3, -a4 - option indicating the amount of anti-aliasing (AA) to
-%             use for bitmap outputs, when GraphicsSmoothing is not available.
-%             '-a1'=no AA; '-a4'=max. Default: 3 for HG1, 1 for HG2.
-%   -<renderer> - option to force a particular renderer (painters, opengl or
-%             [in R2014a or older] zbuffer). Default value: opengl for bitmap
-%             formats or figures with patches and/or transparent annotations;
-%             painters for vector formats without patches/transparencies.
-%   -<colorspace> - option indicating which colorspace color figures should
-%             be saved in: RGB (default), CMYK or gray. Usage example: '-gray'.
-%             Note: CMYK is only supported in PDF, EPS and TIF formats.
-%   -q<val> - option to vary bitmap image quality (PDF, EPS, JPG formats only).
-%             A larger val, in the range 0-100, produces higher quality and
-%             lower compression. val > 100 results in lossless compression.
-%             Default: '-q95' for JPG, ghostscript prepress default for PDF,EPS.
-%             Note: lossless compression can sometimes give a smaller file size
-%             than the default lossy compression, depending on the image type.
-%   -n<val> - option to set minimum output image size (bitmap formats only).
-%             The output size can be specified as a single value (for both rows
-%             & cols, e.g. -n200) or comma-separated values (e.g. -n300,400).
-%             Use an Inf value to keep a dimension unchanged (e.g. -n50,inf).
-%             Use a NaN value to keep aspect ratio unchanged (e.g. -n50,nan).
-%   -x<val> - option to set maximum output image size (bitmap formats only).
-%             The output size can be specified as a single value (for both rows
-%             & cols, e.g. -x200) or comma-separated values (e.g. -x300,400).
-%             Use an Inf value to keep a dimension unchanged (e.g. -x50,inf).
-%             Use a NaN value to keep aspect ratio unchanged (e.g. -x50,nan).
-%   -s<val> - option to scale output image to specific size (bitmap formats only).
-%             The fixed size can be specified as a single value (for rows=cols) or
-%             comma-separated values (e.g. -s300,400). Each value can be a scalar
-%             integer (signifying pixels) or percentage (e.g. -s125%). The scaling
-%             is done last, after any other cropping/rescaling due to other params.
-%   -append - option indicating that if the file already exists the figure is to
-%             be appended as a new page, instead of being overwritten (default).
-%             PDF, TIF & GIF output formats only (multi-image GIF = animated).
-%   -bookmark - option to indicate that a bookmark with the name of the
-%             figure is to be created in the output file (PDF format only).
-%   -clipboard - option to save output as an image on the system clipboard.
-%   -clipboard<:format> - copies to clipboard in the specified format:
-%             image (default), bitmap, emf, or pdf.
-%             Notes: Only -clipboard (or -clipboard:image, which is the same)
-%                    applies savefig parameters such as cropping, padding etc.
-%             -clipboard:image  create a bitmap image using savefig processing
-%             -clipboard:bitmap create a bitmap image as-is (no auto-cropping etc.)
-%             -clipboard:emf is vector format without auto-cropping; Windows-only
-%             -clipboard:pdf is vector format without cropping; not universally supported
-%   -d<gs_option> - option to indicate a ghostscript setting. For example,
-%             -dMaxBitmap=0 or -dNoOutputFonts (Ghostscript 9.15+).
-%   -depsc -  option to use EPS level-3 rather than the default level-2 print
-%             device. This solves some bugs with Matlab's default -depsc2 device
-%             such as discolored subplot lines on images (vector formats only).
-%   -metadata <metaDataInfo> - adds the specified meta-data information to the
-%             exported file (PDF format only). metaDataInfo must be either a struct
-%             or a cell array with pairs of values: {'fieldName',fieldValue, ...}.
-%             Common metadata fields: Title,Author,Creator,Producer,Subject,Keywords
-%   -update - option to download and install the latest version of savefig
-%   -version - return the current savefig version, without any figure export
-%   -nofontswap - option to avoid font swapping. Font swapping is automatically
-%             done in vector formats (only): 11 standard Matlab fonts are
-%             replaced by the original figure fonts. This option prevents this.
-%   -font_space <char> - option to set a spacer character for font-names that
-%             contain spaces, used by EPS/PDF. Default: ''
-%   -linecaps - option to create rounded line-caps (vector formats only).
-%   -noinvert - option to avoid setting figure's InvertHardcopy property to
-%             'off' during output (this solves some problems of empty outputs).
-%   -preserve_size - option to preserve the figure's PaperSize property in output
-%             file (PDF/EPS formats only; default is to not preserve it).
-%   -options <optionsStruct> - format-specific parameters as defined in Matlab's
-%             documentation of the imwrite function, contained in a struct under
-%             the format name. For example to specify the JPG Comment parameter,
-%             pass a struct such as this: options.JPG.Comment='abc'. Similarly,
-%             options.PNG.BitDepth=4. Only used by PNG,TIF,JPG,GIF output formats.
-%             Options can also be specified as a cell array of name-value pairs,
-%             e.g. {'BitDepth',4, 'Author','Yair'} - these options will be used
-%             by all supported output formats of the savefig command.
-%   -silent - option to avoid various warning and informational messages, such
-%             as version update checks, transparency or renderer issues, etc.
-%   -notify - option to notify the user when export is done, in both a console
-%             message and a popup dialog (allow opening the exported file/folder).
-%   -regexprep <old> <new> - replaces all occurances of <old> (a regular expression
-%             string or array of strings; case-sensitive), with the corresponding
-%             <new> string(s), in EPS/PDF files (only). See regexp function's doc.
-%             Warning: invalid replacement can make your EPS/PDF file unreadable!
-%   -toolbar - adds an interactive export button to the figure's toolbar
-%   -menubar - adds an interactive export menu to the figure's menubar
-%   -contextmenu - adds interactive export menu to figure context-menu (right-click)
-%   handle -  handle of the figure, axes or uipanels (can be an array of handles
-%             but all the objects must be in the same figure) to be exported.
-%             Default: gcf (handle of current figure).
-%   figName - name (title) of the figure to export (e.g. 'Figure 1' or 'My fig').
-%             Overriden by handle (if specified); Default: current figure
-%
-% Outputs:
-%   imageData - MxNxC uint8 image array of the exported image.
-%   alpha     - MxN single array of alphamatte values in the range [0,1],
-%               for the case when the background is transparent.
-%
-%   Some helpful examples and tips can be found at:
-%      https://github.com/altmany/savefig
-%
-%   See also PRINT, SAVEAS, ScreenCapture (on the Matlab File Exchange)
-
-%{
-% Copyright (C) Oliver Woodford 2008-2014, Yair Altman 2015-
-
-% The idea of using ghostscript is inspired by Peder Axensten's SAVEFIG
-% (fex id: 10889) which is itself inspired by EPS2PDF (fex id: 5782).
-% The idea for using pdftops came from the MATLAB newsgroup (id: 168171).
-% The idea of editing the EPS file to change line styles comes from Jiro
-% Doke's FIXPSLINESTYLE (fex id: 17928).
-% The idea of changing dash length with line width came from comments on
-% fex id: 5743, but the implementation is mine :)
-% The idea of anti-aliasing bitmaps came from Anders Brun's MYAA (fex id:
-% 20979).
-% The idea of appending figures in pdfs came from Matt C in comments on the
-% FEX (id: 23629)
-
-% Thanks to Roland Martin for pointing out the colour MATLAB
-% bug/feature with colorbar axes and transparent backgrounds.
-% Thanks also to Andrew Matthews for describing a bug to do with the figure
-% size changing in -nodisplay mode. I couldn't reproduce it, but included a
-% fix anyway.
-% Thanks to Tammy Threadgill for reporting a bug where an axes is not
-% isolated from gui objects.
-%}
-%{
-% 23/02/12: Ensure that axes limits don't change during printing
-% 14/03/12: Fix bug in fixing the axes limits (thanks to Tobias Lamour for reporting it).
-% 02/05/12: Incorporate patch of Petr Nechaev (many thanks), enabling bookmarking of figures in pdf files.
-% 09/05/12: Incorporate patch of Arcelia Arrieta (many thanks), to keep tick marks fixed.
-% 12/12/12: Add support for isolating uipanels. Thanks to michael for suggesting it.
-% 25/09/13: Add support for changing resolution in vector formats. Thanks to Jan Jaap Meijer for suggesting it.
-% 07/05/14: Add support for '~' at start of path. Thanks to Sally Warner for suggesting it.
-% 24/02/15: Fix Matlab R2014b bug (issue #34): plot markers are not displayed when ZLimMode='manual'
-% 25/02/15: Fix issue #4 (using HG2 on R2014a and earlier)
-% 25/02/15: Fix issue #21 (bold TeX axes labels/titles in R2014b)
-% 26/02/15: If temp dir is not writable, use the user-specified folder for temporary EPS/PDF files (Javier Paredes)
-% 27/02/15: Modified repository URL from github.com/ojwoodford to /altmany; Indented main function; Added top-level try-catch block to display useful workarounds
-% 28/02/15: Enable users to specify optional ghostscript options (issue #36)
-% 06/03/15: Improved image padding & cropping thanks to Oscar Hartogensis
-% 26/03/15: Fixed issue #49 (bug with transparent grayscale images); fixed out-of-memory issue
-% 26/03/15: Fixed issue #42: non-normalized annotations on HG1
-% 26/03/15: Fixed issue #46: Ghostscript crash if figure units <> pixels
-% 27/03/15: Fixed issue #39: bad export of transparent annotations/patches
-% 28/03/15: Fixed issue #50: error on some Matlab versions with the fix for issue #42
-% 29/03/15: Fixed issue #33: bugs in Matlab's print() function with -cmyk
-% 29/03/15: Improved processing of input args (accept space between param name & value, related to issue #51)
-% 30/03/15: When exporting *.fig files, then saveas *.fig if figure is open, otherwise export the specified fig file
-% 30/03/15: Fixed edge case bug introduced yesterday (commit #ae1755bd2e11dc4e99b95a7681f6e211b3fa9358)
-% 09/04/15: Consolidated header comment sections; initialize output vars only if requested (nargout>0)
-% 14/04/15: Workaround for issue #45: lines in image subplots are exported in invalid color
-% 15/04/15: Fixed edge-case in parsing input parameters; fixed help section to show the -depsc option (issue #45)
-% 21/04/15: Bug fix: Ghostscript croaks on % chars in output PDF file (reported by Sven on FEX page, 15-Jul-2014)
-% 22/04/15: Bug fix: Pdftops croaks on relative paths (reported by Tintin Milou on FEX page, 19-Jan-2015)
-% 04/05/15: Merged fix #63 (Kevin Mattheus Moerman): prevent tick-label changes during export
-% 07/05/15: Partial fix for issue #65: PDF export used painters rather than opengl renderer (thanks Nguyenr)
-% 08/05/15: Fixed issue #65: bad PDF append since commit #e9f3cdf 21/04/15 (thanks Robert Nguyen)
-% 12/05/15: Fixed issue #67: exponent labels cropped in export, since fix #63 (04/05/15)
-% 28/05/15: Fixed issue #69: set non-bold label font only if the string contains symbols (\beta etc.), followup to issue #21
-% 29/05/15: Added informative error message in case user requested SVG output (issue #72)
-% 09/06/15: Fixed issue #58: -transparent removed anti-aliasing when exporting to PNG
-% 19/06/15: Added -update option to download and install the latest version of savefig
-% 07/07/15: Added -nofontswap option to avoid font-swapping in EPS/PDF
-% 16/07/15: Fixed problem with anti-aliasing on old Matlab releases
-% 11/09/15: Fixed issue #103: magnification must never become negative; also fixed reported error msg in parsing input params
-% 26/09/15: Alert if trying to export transparent patches/areas to non-PNG outputs (issue #108)
-% 04/10/15: Do not suggest workarounds for certain errors that have already been handled previously
-% 01/11/15: Fixed issue #112: use same renderer in print2eps as savefig (thanks to Jesús Pestana Puerta)
-% 10/11/15: Custom GS installation webpage for MacOS. Thanks to Andy Hueni via FEX
-% 19/11/15: Fixed clipboard export in R2015b (thanks to Dan K via FEX)
-% 21/02/16: Added -c option for indicating specific crop amounts (idea by Cedric Noordam on FEX)
-% 08/05/16: Added message about possible error reason when groot.Units~=pixels (issue #149)
-% 17/05/16: Fixed case of image YData containing more than 2 elements (issue #151)
-% 08/08/16: Enabled exporting transparency to TIF, in addition to PNG/PDF (issue #168)
-% 11/12/16: Added alert in case of error creating output PDF/EPS file (issue #179)
-% 13/12/16: Minor fix to the commit for issue #179 from 2 days ago
-% 22/03/17: Fixed issue #187: only set manual ticks when no exponent is present
-% 09/04/17: Added -linecaps option (idea by Baron Finer, issue #192)
-% 15/09/17: Fixed issue #205: incorrect tick-labels when Ticks number don't match the TickLabels number
-% 15/09/17: Fixed issue #210: initialize alpha map to ones instead of zeros when -transparent is not used
-% 18/09/17: Added -font_space option to replace font-name spaces in EPS/PDF (workaround for issue #194)
-% 18/09/17: Added -noinvert option to solve some export problems with some graphic cards (workaround for issue #197)
-% 08/11/17: Fixed issue #220: axes exponent is removed in HG1 when TickMode is 'manual' (internal Matlab bug)
-% 08/11/17: Fixed issue #221: alert if the requested folder does not exist
-% 19/11/17: Workaround for issue #207: alert when trying to use transparent bgcolor with -opengl
-% 29/11/17: Workaround for issue #206: warn if exporting PDF/EPS for a figure that contains an image
-% 11/12/17: Fixed issue #230: use OpenGL renderer when exported image contains transparency (also see issue #206)
-% 30/01/18: Updated SVG message to point to https://github.com/kupiqu/plot2svg and display user-selected filename if available
-% 27/02/18: Fixed issue #236: axes exponent cropped from output if on right-hand axes
-% 29/05/18: Fixed issue #245: process "string" inputs just like 'char' inputs
-% 13/08/18: Fixed issue #249: correct black axes color to off-black to avoid extra cropping with -transparent
-% 27/08/18: Added a possible file-open reason in EPS/PDF write-error message (suggested by "craq" on FEX page)
-% 22/09/18: Xpdf website changed to xpdfreader.com
-% 23/09/18: Fixed issue #243: only set non-bold font (workaround for issue #69) in R2015b or earlier; warn if changing font
-% 23/09/18: Workaround for issue #241: don't use -r864 in EPS/PDF outputs when -native is requested (solves black lines problem)
-% 18/11/18: Issue #261: Added informative alert when trying to export a uifigure (which is not currently supported)
-% 13/12/18: Issue #261: Fixed last commit for cases of specifying axes/panel handle as input, rather than a figure handle
-% 13/01/19: Issue #72: Added basic SVG output support
-% 04/02/19: Workaround for issues #207 and #267: -transparent implies -noinvert
-% 08/03/19: Issue #269: Added ability to specify format-specific options for PNG,TIF,JPG outputs; fixed help section
-% 21/03/19: Fixed the workaround for issues #207 and #267 from 4/2/19 (-transparent now does *NOT* imply -noinvert; -transparent output should now be ok in all formats)
-% 12/06/19: Issue #277: Enabled preservation of figure's PaperSize in output PDF/EPS file
-% 06/08/19: Remove warning message about obsolete JavaFrame in R2019b
-% 30/10/19: Fixed issue #261: added support for exporting uifigures and uiaxes (thanks to idea by @MarvinILA)
-% 12/12/19: Added warning in case user requested anti-aliased output on an aliased HG2 figure (issue #292)
-% 15/12/19: Added promo message
-% 08/01/20: (3.00) Added check for newer version online (initialized to version 3.00)
-% 15/01/20: (3.01) Clarified/fixed error messages; Added error IDs; easier -update; various other small fixes
-% 20/01/20: (3.02) Attempted fix for issue #285 (unsupported patch transparency in some Ghostscript versions); Improved suggested fixes message upon error
-% 03/03/20: (3.03) Suggest to upload problematic EPS file in case of a Ghostscript error in eps2pdf (& don't delete this file)
-% 22/03/20: (3.04) Workaround for issue #15; Alert if ghostscript file not found on Matlab path
-% 10/05/20: (3.05) Fix the generated SVG file, based on Cris Luengo's SVG_FIX_VIEWBOX; Don't generate PNG when only SVG is requested
-% 02/07/20: (3.06) Significantly improved performance (speed) and fidelity of bitmap images; Return alpha matrix for bitmap images; Fixed issue #302 (-update bug); Added EMF output; Added -clipboard formats (image,bitmap,emf,pdf); Added hints for exportgraphics/copygraphics usage in certain use-cases; Added description of new version features in the update message; Fixed issue #306 (yyaxis cropping); Fixed EPS/PDF auto-cropping with -transparent
-% 06/07/20: (3.07) Fixed issue #307 (bug in padding of bitmap images); Fixed axes transparency in -clipboard:emf with -transparent
-% 07/07/20: (3.08) Fixed issue #308 (bug in R2019a and earlier)
-% 18/07/20: (3.09) Fixed issue #310 (bug with tiny image on HG1); Fixed title cropping bug
-% 23/07/20: (3.10) Fixed issues #313,314 (figure position changes if units ~= pixels); Display multiple versions change-log, if relevant; Fixed issue #312 (PNG: only use alpha channel if -transparent was requested)
-% 30/07/20: (3.11) Fixed issue #317 (bug when exporting figure with non-pixels units); Potential solve also of issue #303 (size change upon export)
-% 14/08/20: (3.12) Fixed some exportgraphics/copygraphics compatibility messages; Added -silent option to suppress non-critical messages; Reduced promo message display rate to once a week; Added progress messages during savefig('-update')
-% 07/10/20: (3.13) Added version info and change-log links to update message (issue #322); Added -version option to return the current savefig version; Avoid JavaFrame warning message; Improved exportgraphics/copygraphics infomercial message inc. support of upcoming Matlab R2021a
-% 10/12/20: (3.14) Enabled user-specified regexp replacements in generated EPS/PDF files (issue #324)
-% 01/07/21: (3.15) Added informative message in case of setopacityalpha error (issue #285)
-% 26/08/21: (3.16) Fixed problem of white elements appearing transparent (issue #330); clarified some error messages
-% 27/09/21: (3.17) Made Matlab's builtin export the default for SVG, rather than fig2svg/plot2svg (issue #316); updated transparency error message (issues #285, #343); reduced promo message frequency
-% 03/10/21: (3.18) Fixed warning about invalid escaped character when the output folder does not exist (issue #345)
-% 25/10/21: (3.19) Fixed print error when exporting a specific subplot (issue #347); avoid duplicate error messages
-% 11/12/21: (3.20) Added GIF support, including animated & transparent-background; accept format options as cell-array, not just nested struct
-% 20/12/21: (3.21) Speedups; fixed exporting non-current figure (hopefully fixes issue #318); fixed warning when appending to animated GIF
-% 02/03/22: (3.22) Fixed small potential memory leak during screen-capture; expanded exportgraphics message for vector exports; fixed rotated tick labels on R2021a+
-% 02/03/22: (3.23) Added -toolbar and -menubar options to add figure toolbar/menubar items for interactive figure export (issue #73); fixed edge-case bug with GIF export
-% 14/03/22: (3.24) Added support for specifying figure name in addition to handle; added warning when trying to export TIF/JPG/BMP with transparency; use current figure as default handle even when its HandleVisibility is not 'on'
-% 16/03/22: (3.25) Fixed occasional empty files due to excessive cropping (issues #318, #350, #351)
-% 01/05/22: (3.26) Added -transparency option for TIFF files
-% 15/05/22: (3.27) Fixed EPS bounding box (issue #356)
-% 04/12/22: (3.28) Added -metadata option to add custom info to PDF files; fixed -clipboard export (transparent and gray-scale images; deployed apps; old Matlabs)
-% 03/01/23: (3.29) Use silent mode by default in deployed apps; suggest installing ghostscript/pdftops if required yet missing; fixed invalid chars in export filename; reuse existing figure toolbar if available
-% 03/02/23: (3.30) Added -contextmenu option to add interactive context-menu items; fixed: -menubar,-toolbar created the full default figure menubar/toolbar if not shown; enlarged toolbar icon; support adding savefig icon to custom toolbars; alert if specifying multiple or invalid handle(s)
-% 20/02/23: (3.31) Fixed PDF quality issues as suggested by @scholnik (issues #285, #368); minor fixes for MacOS/Linux; use figure's FileName property (if available) as the default export filename; added -gif optional format parameter; Display the export folder (full pathname) in menu items when using -toolbar, -menubar and/or -contextmenu
-% 21/02/23: (3.32) Fixed EPS export error handling in deployed apps; use Matlab's builtin EPS export if pdftops is not installed or fails; disabled EMF export option on MacOS/Linux; fixed some EMF warning messages; don't export PNG if only -toolbar etc were specified
-% 23/02/23: (3.33) Fixed PDF -append (issue #369); Added -notify option to notify user when the export is done; propagate all specified savefig options to -toolbar,-menubar,-contextmenu exports; -silent is no longer set by default in deployed apps (i.e. you need to call -silent explicitly)
-% 23/03/23: (3.34) Fixed error when exporting axes handle to clipboard without filename (issue #372)
-% 11/04/23: (3.35) Added -n,-x,-s options to set min, max, and fixed output image size (issue #315)
-% 13/04/23: (3.36) Reduced (hopefully fixed) unintended EPS/PDF image cropping (issues #97, #318); clarified warning in case of PDF/EPS export of transparent patches (issues #94, #106, #108)
-% 23/04/23: (3.37) Fixed run-time error with old Matlab releases (issue #374); -notify console message about exported image now displays black (STDOUT) not red (STDERR)
-% 15/05/23: (3.38) Fixed endless recursion when using savefig in Live Scripts (issue #375); don't warn about exportgraphics/copygraphics alternatives in deployed mode
-% 30/05/23: (3.39) Fixed exported bgcolor of uifigures or figures in Live Scripts (issue #377)
-% 06/07/23: (3.40) For Tiff compression, use AdobeDeflate codec (if available) instead of Deflate (issue #379)
-% 29/11/23: (3.41) Fixed error when no filename is specified nor available in the exported figure (issue #381)
-% 05/12/23: (3.42) Fixed unintended cropping of colorbar title in PDF export with -transparent (issues #382, #383)
-% 07/12/23: (3.43) Fixed unintended modification of colorbar in bitmap export (issue #385)
-%}
+%>  \brief
+%>  Export figures in a publication-quality format.<br>
+%>
+%>  \details
+%>  This function saves a figure or single axes to one or more vector and/or
+%>  bitmap file formats, and/or outputs a rasterized version to the workspace,
+%>  with the following properties:<br>
+%>  <ol>
+%>      <li>    Figure/axes reproduced as it appears on screen.
+%>      <li>    Cropped/padded borders (optional).
+%>      <li>    Embedded fonts (vector formats).
+%>      <li>    Improved line and grid line styles.
+%>      <li>    Anti-aliased graphics (bitmap formats).
+%>      <li>    Render images at native resolution (optional for bitmap formats).
+%>      <li>    Transparent background supported (pdf, eps, png, tif, gif).
+%>      <li>    Semi-transparent patch objects supported (png, tif).
+%>      <li>    RGB, CMYK or grayscale output (CMYK only with pdf, eps, tif).
+%>      <li>    Variable image compression, including lossless (pdf, eps, jpg).
+%>      <li>    Optional rounded line-caps (pdf, eps).
+%>      <li>    Optionally append to file (pdf, tif, gif).
+%>      <li>    Vector formats: pdf, eps, emf, svg.
+%>      <li>    Bitmap formats: png, tif, jpg, bmp, gif, clipboard, export to workspace.
+%>  </ol>
+%>
+%>  This function is especially suited to exporting figures for use
+%>  in publications and presentations, because of the high quality
+%>  and portability of media produced.<br>
+%>
+%>  Note that the background color and figure dimensions are reproduced
+%>  (the latter approximately, and ignoring cropping & magnification) in the output file.<br>
+%>  For transparent background (and semi-transparent patch objects), use the ``-transparent``
+%>  option or set the figure ``'Color'`` property to ``'none'``.<br>
+%>  To make axes transparent set the axes ``'Color'`` property to ``'none'``.<br>
+%>  PDF, EPS, TIF, and PNG are the only formats that support a transparent background.<br>
+%>  Only TIF and PNG formats support transparency of patch objects.<br>
+%>
+%>  The choice of renderer (opengl/zbuffer/painters) has a large impact on the output quality.<br>
+%>  The default value (opengl for bitmaps, painters for vector formats) generally gives good results,
+%>  but if you are not satisfied then try another renderer.<br>
+%>
+%>  \note
+%>  <ol>
+%>      <li>    For vector formats (EPS,PDF), only painters generates vector graphics.<br>
+%>      <li>    For bitmap formats, only opengl correctly renders transparent patches.<br>
+%>      <li>    For bitmap formats, only painters correctly scales line dash and dot
+%>              lengths when magnifying or anti-aliasing.<br>
+%>      <li>    Fonts may be substitued with Courier when using painters.<br>
+%>  </ol>
+%>
+%>  When exporting to vector format (PDF & EPS) and bitmap format using the painters
+%>  renderer, this function requires that ghostscript is installed on your system.<br>
+%>  You can download this from: http://www.ghostscript.com<br>
+%>  When exporting to EPS it additionally requires pdftops, from the Xpdf suite of functions.<br>
+%>  You can download this from: http://xpdfreader.com<br>
+%>
+%>  SVG output uses MATLAB's built-in SVG export if available, or otherwise the
+%>  fig2svg (https://github.com/kupiqu/fig2svg) or plot2svg
+%>  (https://github.com/jschwizer99/plot2svg) utilities, if available.<br>
+%>
+%>  \note
+%>  Cropping and padding are not supported in SVG and EMF output.<br>
+%>
+%>  \param[in]      varargin    :   Any ``property, value`` pair of the following set:<br>
+%>                                  <ol>
+%>                                      <li>    ``filename`` - string containing the name (optionally including full or
+%>                                              relative path) of the file the figure is to be saved as.<br>
+%>                                              If no path is specified, the figure is saved in the current folder.<br>
+%>                                              If no name and no output arguments are specified, the figure ``FileName`` property is used.<br>
+%>                                              If this property is empty, then the default name ``'export_fig_out'`` is used.<br>
+%>                                              If neither file extension nor a format parameter are specified, a ``".png"``
+%>                                              is added to the filename and the figure saved in PNG format.<br>
+%>
+%>                                      <li>    ``-<format>`` - string(s) containing the output file extension(s).<br>
+%>                                              Options are ``'-pdf'``, ``'-eps'``, ``'emf'``, ``'-svg'``, ``'-png'``, ``'-tif'``, ``'-jpg'``, ``'-gif'``, ``'-bmp'``.<br>
+%>                                              Multiple formats can be specified, without restriction.<br>
+%>                                              For example: ``savefig('-jpg', '-pdf', '-png', ...)``.<br>
+%>                                              Note that  ``'-tif'``, ``'-tiff'`` are equivalent, and so are '-jpg'``, ``'-jpeg'.<br>
+%>
+%>                                      <li>    ``-transparent`` - option indicating that the figure background is to be made
+%>                                              transparent (PNG, PDF, TIF, EPS, EMF formats only). Implies ``-noinvert``.<br>
+%>
+%>                                      <li>    ``-nocrop`` - option indicating that empty margins should not be cropped.<br>
+%>
+%>                                      <li>    ``-c[<val>,<val>,<val>,<val>]`` - option indicating crop amounts.<br>
+%>                                              It must be a 4-element vector of numeric values: ``[top, right, bottom, left]``.<br>
+%>                                              where NaN/Inf indicates auto-cropping, 0 means no cropping, any
+%>                                              other value means cropping in pixel amounts. e.g. ``'-c7,15,0,NaN'``
+%>                                              Note: this option is not supported by SVG and EMF formats.<br>
+%>
+%>                                      <li>    ``-p<val>`` - option to pad a border of width val to exported files,
+%>                                              where ``val`` is either a relative size with respect to cropped image
+%>                                              size (i.e. ``p=0.01`` adds a ``1%`` border).<br>
+%>                                              For EPS and PDF formats, ``val`` can also be integer in units of ``1/72`` points (``abs(val)>1``).<br>
+%>                                              The input ``val`` can be positive (padding) or negative (extra cropping).<br>
+%>                                              If used, the ``-nocrop`` flag will be ignored, i.e. the image will
+%>                                              always be cropped and then padded. Default: 0 (i.e. no padding).<br>
+%>                                              Note: this option is not supported by SVG and EMF formats.<br>
+%>
+%>                                      <li>    ``-m<val>`` - option val indicates the factor to magnify the figure dimensions
+%>                                              when generating bitmap outputs (does not affect vector formats).<br>
+%>                                              Default: ``'-m1'`` (i.e. ``val=1``). Note: ``val~=1`` slows down savefig.<br>
+%>
+%>                                      <li>    ``-r<val>`` - option val indicates the resolution (in pixels per inch) to
+%>                                              export bitmap and vector outputs, without changing dimensions of
+%>                                              the on-screen figure. Default: ``'-r864'`` (for vector output only).<br>
+%>                                              Note: ``-m`` option overrides ``-r`` option for bitmap exports only.<br>
+%>
+%>                                      <li>    ``-native`` - option indicating that the output resolution
+%>                                              (when outputting a bitmap format) should be such that the vertical resolution
+%>                                              of the first suitable image found in the figure is at the native resolution of that image.<br>
+%>                                              To specify a particular image to use, give it the tag ``'export_fig_native'``.<br>
+%>                                              Notes: This overrides any value set with the -m and -r options.<br>
+%>                                              It also assumes that the image is displayed front-to-parallel with the screen.<br>
+%>                                              The output resolution is approximate and should not be relied upon.<br>
+%>                                              Anti-aliasing can have adverse effects on image quality (disable with the ``-a1`` option).<br>
+%>
+%>                                      <li>    ``-a1, -a2, -a3, -a4`` - option indicating the amount of anti-aliasing (AA) to
+%>                                              use for bitmap outputs, when GraphicsSmoothing is not available.<br>
+%>                                              ``'-a1'=no AA; '-a4'=max``.<br>
+%>                                              Default: 3 for HG1, 1 for HG2.<br>
+%>
+%>                                      <li>    ``-<renderer>`` - option to force a particular renderer
+%>                                              (painters, opengl or [in R2014a or older] zbuffer).<br>
+%>                                              Default value: opengl for bitmap formats or figures with patches and/or
+%>                                              transparent annotations and painters for vector formats without patches/transparencies.<br>
+%>
+%>                                      <li>    ``-<colorspace>`` - option indicating which colorspace color figures should
+%>                                              be saved in: RGB (default), CMYK or gray. Usage example: ``'-gray'``.<br>
+%>                                              Note: CMYK is only supported in PDF, EPS and TIF formats.<br>
+%>
+%>                                      <li>    ``-q<val>`` - option to vary bitmap image quality (PDF, EPS, JPG formats only).<br>
+%>                                              A larger val, in the range ``0-100``, produces higher quality and
+%>                                              lower compression. ``val > 100`` results in lossless compression.<br>
+%>                                              Default: '-q95' for JPG, ghostscript prepress default for PDF,EPS.<br>
+%>                                              Note: lossless compression can sometimes give a smaller file size
+%>                                              than the default lossy compression, depending on the image type.<br>
+%>
+%>                                      <li>    ``-n<val>`` - option to set minimum output image size (bitmap formats only).<br>
+%>                                              The output size can be specified as a single value (for both rows
+%>                                              and cols, e.g. ``-n200``) or comma-separated values (e.g. ``-n300,400``).<br>
+%>                                              Use an Inf value to keep a dimension unchanged (e.g. ``-n50,inf``).<br>
+%>                                              Use a NaN value to keep aspect ratio unchanged (e.g. ``-n50,nan``).<br>
+%>
+%>                                      <li>    ``-x<val>`` - option to set maximum output image size (bitmap formats only).<br>
+%>                                              The output size can be specified as a single value (for both rows
+%>                                              and cols, e.g. ``-x200``) or comma-separated values (e.g. ``-x300,400``).<br>
+%>                                              Use an ``Inf`` value to keep a dimension unchanged (e.g. ``-x50,inf``).<br>
+%>                                              Use a ``NaN`` value to keep aspect ratio unchanged (e.g. ``-x50,nan``).<br>
+%>
+%>                                      <li>    ``-s<val>`` - option to scale output image to specific size (bitmap formats only).<br>
+%>                                              The fixed size can be specified as a single value (for rows=cols) or
+%>                                              comma-separated values (e.g. ``-s300,400``).<br>
+%>                                              Each value can be a scalar integer (signifying pixels) or percentage (e.g. ``-s125%``).<br>
+%>                                              The scaling is done last, after any other cropping/rescaling due to other params.<br>
+%>
+%>                                      <li>    ``-append`` - option indicating that if the file already exists the figure is to
+%>                                              be appended as a new page, instead of being overwritten (default).<br>
+%>                                              PDF, TIF & GIF output formats only (multi-image GIF = animated).<br>
+%>
+%>                                      <li>    ``-bookmark`` - option to indicate that a bookmark with the name of the
+%>                                              figure is to be created in the output file (PDF format only).<br>
+%>
+%>                                      <li>    ``-clipboard`` - option to save output as an image on the system clipboard.<br>
+%>
+%>                                      <li>    ``-clipboard<:format>`` - copies to clipboard in the specified format:
+%>                                              image (default), bitmap, emf, or pdf.<br>
+%>                                              Note that Only ``-clipboard`` (or ``-clipboard:image``, which is the same)
+%>                                              applies savefig parameters such as cropping, padding etc:<br>
+%>                                              <ol>
+%>                                                  <li>    ``-clipboard:image`` create a bitmap image using savefig processing.<br>
+%>                                                  <li>    ``-clipboard:bitmap`` create a bitmap image as-is (no auto-cropping etc.).<br>
+%>                                                  <li>    ``-clipboard:emf`` is vector format without auto-cropping; Windows-only.<br>
+%>                                                  <li>    ``-clipboard:pdf`` is vector format without cropping; not universally supported.<br>
+%>                                              </ol>
+%>
+%>                                      <li>    ``-d<gs_option>`` - option to indicate a ghostscript setting. For example,
+%>                                              ``-dMaxBitmap=0`` or ``-dNoOutputFonts`` (Ghostscript 9.15+).<br>
+%>
+%>                                      <li>    ``-depsc`` -  option to use EPS level-3 rather than the default level-2 print
+%>                                              device. This solves some bugs with MATLAB's default ``-depsc2`` device
+%>                                              such as discolored subplot lines on images (vector formats only).<br>
+%>
+%>                                      <li>    ``-metadata <metaDataInfo>`` - adds the specified meta-data information to the
+%>                                              exported file (PDF format only). metaDataInfo must be either a struct
+%>                                              or a cell array with pairs of values: {``'fieldName'``, ``fieldValue``, ...}.<br>
+%>                                              Common metadata fields: Title, Author, Creator, Producer, Subject, Keywords.<br>
+%>
+%>                                      <li>    ``-update`` - option to download and install the latest version of savefig.<br>
+%>
+%>                                      <li>    ``-version`` - return the current savefig version, without any figure export.<br>
+%>
+%>                                      <li>    ``-nofontswap`` - option to avoid font swapping. Font swapping is automatically
+%>                                              done in vector formats (only): 11 standard MATLAB fonts are
+%>                                              replaced by the original figure fonts. This option prevents this.<br>
+%>
+%>                                      <li>    ``-font_space <char>`` - option to set a spacer character for font-names that
+%>                                              contain spaces, used by EPS/PDF. Default: ``''``.<br>
+%>
+%>                                      <li>    ``-linecaps`` - option to create rounded line-caps (vector formats only).<br>
+%>
+%>                                      <li>    ``-noinvert`` - option to avoid setting figure's InvertHardcopy property to
+%>                                              'off' during output (this solves some problems of empty outputs).<br>
+%>
+%>                                      <li>    ``-preserve_size`` - option to preserve the figure's PaperSize property in output
+%>                                              file (PDF/EPS formats only; default is to not preserve it).<br>
+%>
+%>                                      <li>    ``-options <optionsStruct>`` - format-specific parameters as defined in MATLAB
+%>                                              documentation of the ``imwrite`` function, contained in a struct under
+%>                                              the format name. For example to specify the JPG Comment parameter,
+%>                                              pass a struct such as this: ``options.JPG.Comment='abc'``. Similarly,
+%>                                              ``options.PNG.BitDepth=4``. Only used by PNG,TIF,JPG,GIF output formats.<br>
+%>                                              Options can also be specified as a cell array of name-value pairs,
+%>                                              e.g. ``{'BitDepth',4, 'Author','Yair'}`` - these options will be used
+%>                                              by all supported output formats of the savefig command.<br>
+%>
+%>                                      <li>    ``-silent`` - option to avoid various warning and informational messages, such
+%>                                              as version update checks, transparency or renderer issues, etc.<br>
+%>
+%>                                      <li>    ``-notify`` - option to notify the user when export is done, in both a console
+%>                                              message and a popup dialog (allow opening the exported file/folder).<br>
+%>
+%>                                      <li>    ``-regexprep <old> <new>`` - replaces all occurances of <old> (a regular expression
+%>                                              string or array of strings; case-sensitive), with the corresponding
+%>                                              <new> string(s), in EPS/PDF files (only). See regexp function doc.<br>
+%>                                              Warning: invalid replacement can make your EPS/PDF file unreadable!<br>
+%>
+%>                                      <li>    ``-toolbar`` - adds an interactive export button to the figure toolbar.<br>
+%>
+%>                                      <li>    ``-menubar`` - adds an interactive export menu to the figure menubar.<br>
+%>
+%>                                      <li>    ``-contextmenu`` - adds interactive export menu to figure context-menu (right-click)<br>
+%>
+%>                                      <li>    ``handle`` - handle of the figure, axes or uipanels (can be an array of handles
+%>                                              but all the objects must be in the same figure) to be exported.<br>
+%>                                              Default: ``gcf`` (handle of current figure).<br>
+%>
+%>                                      <li>    ``figName`` - name (title) of the figure to export (e.g. ``'Figure 1'`` or ``'My fig'``).<br>
+%>                                              Overridden by handle (if specified); Default: current figure.<br>
+%>                                  </ol>
+%>
+%>  \return
+%>  ``imageData``               :   The output image cube of type ``uint8`` of
+%>                                  shape ``[M, N, C]`` containing the exported figure data.<br>
+%>  ``alpha``                   :   The output image matrix of shape ``[M, N]`` of alpha-matte
+%>                                  values in the range ``[0, 1]`` for the case of transparent background.<br>
+%>
+%>  \interface{savefig}
+%>  \code{.m}
+%>
+%>      imageData = pm.vis.figure.savefig(varargin)
+%>      [imageData, alpha] = pm.vis.figure.savefig(varargin)
+%>      pm.vis.figure.savefig filename
+%>      pm.vis.figure.savefig ... -<format>
+%>      pm.vis.figure.savefig ... -nocrop
+%>      pm.vis.figure.savefig ... -c[<val>,<val>,<val>,<val>]
+%>      pm.vis.figure.savefig ... -transparent
+%>      pm.vis.figure.savefig ... -native
+%>      pm.vis.figure.savefig ... -m<val>
+%>      pm.vis.figure.savefig ... -r<val>
+%>      pm.vis.figure.savefig ... -a<val>
+%>      pm.vis.figure.savefig ... -q<val>
+%>      pm.vis.figure.savefig ... -p<val>
+%>      pm.vis.figure.savefig ... -n<val>   or:  -n<val>,<val>
+%>      pm.vis.figure.savefig ... -x<val>   or:  -x<val>,<val>
+%>      pm.vis.figure.savefig ... -s<val>   or:  -s<val>,<val>
+%>      pm.vis.figure.savefig ... -d<gs_option>
+%>      pm.vis.figure.savefig ... -depsc
+%>      pm.vis.figure.savefig ... -metadata <metaDataInfo>
+%>      pm.vis.figure.savefig ... -<renderer>
+%>      pm.vis.figure.savefig ... -<colorspace>
+%>      pm.vis.figure.savefig ... -append
+%>      pm.vis.figure.savefig ... -bookmark
+%>      pm.vis.figure.savefig ... -clipboard<:format>
+%>      pm.vis.figure.savefig ... -update
+%>      pm.vis.figure.savefig ... -version
+%>      pm.vis.figure.savefig ... -nofontswap
+%>      pm.vis.figure.savefig ... -font_space <char>
+%>      pm.vis.figure.savefig ... -linecaps
+%>      pm.vis.figure.savefig ... -noinvert
+%>      pm.vis.figure.savefig ... -preserve_size
+%>      pm.vis.figure.savefig ... -options <optionsStruct>
+%>      pm.vis.figure.savefig ... -silent
+%>      pm.vis.figure.savefig ... -notify
+%>      pm.vis.figure.savefig ... -regexprep <pattern> <replace>
+%>      pm.vis.figure.savefig ... -toolbar
+%>      pm.vis.figure.savefig ... -menubar
+%>      pm.vis.figure.savefig ... -contextmenu
+%>      pm.vis.figure.savefig(..., handle)
+%>      pm.vis.figure.savefig(..., figName)
+%>
+%>  \endcode
+%>
+%>  \note
+%>  This function is a reimplementation of the MATLAB package
+%>  [export_fig](@ref https://github.com/altmany/export_fig).<br>
+%>
+%>  \final{savefig}
+%>
+%>  Copyright (C) Oliver Woodford 2008-2014, Yair Altman 2015-
+%>
+%>  \verbatim
+%>  The idea of using ghostscript is inspired by Peder Axensten's SAVEFIG
+%>  (fex id: 10889) which is itself inspired by EPS2PDF (fex id: 5782).
+%>  The idea for using pdftops came from the MATLAB newsgroup (id: 168171).
+%>  The idea of editing the EPS file to change line styles comes from Jiro
+%>  Doke's FIXPSLINESTYLE (fex id: 17928).
+%>  The idea of changing dash length with line width came from comments on
+%>  fex id: 5743, but the implementation is mine :)
+%>  The idea of anti-aliasing bitmaps came from Anders Brun's MYAA (fex id: 20979).
+%>  The idea of appending figures in pdfs came from Matt C in comments on the
+%>  FEX (id: 23629)
+%>  Thanks to Roland Martin for pointing out the colour MATLAB
+%>  bug/feature with colorbar axes and transparent backgrounds.
+%>  Thanks also to Andrew Matthews for describing a bug to do with the figure
+%>  size changing in -nodisplay mode. I couldn't reproduce it, but included a
+%>  fix anyway.
+%>  Thanks to Tammy Threadgill for reporting a bug where an axes is not
+%>  isolated from gui objects.
+%>
+%>  23/02/12: Ensure that axes limits don't change during printing
+%>  14/03/12: Fix bug in fixing the axes limits (thanks to Tobias Lamour for reporting it).
+%>  02/05/12: Incorporate patch of Petr Nechaev (many thanks), enabling bookmarking of figures in pdf files.
+%>  09/05/12: Incorporate patch of Arcelia Arrieta (many thanks), to keep tick marks fixed.
+%>  12/12/12: Add support for isolating uipanels. Thanks to michael for suggesting it.
+%>  25/09/13: Add support for changing resolution in vector formats. Thanks to Jan Jaap Meijer for suggesting it.
+%>  07/05/14: Add support for '~' at start of path. Thanks to Sally Warner for suggesting it.
+%>  24/02/15: Fix MATLAB R2014b bug (issue #34): plot markers are not displayed when ZLimMode='manual'
+%>  25/02/15: Fix issue #4 (using HG2 on R2014a and earlier)
+%>  25/02/15: Fix issue #21 (bold TeX axes labels/titles in R2014b)
+%>  26/02/15: If temp dir is not writable, use the user-specified folder for temporary EPS/PDF files (Javier Paredes)
+%>  27/02/15: Modified repository URL from github.com/ojwoodford to /altmany; Indented main function; Added top-level try-catch block to display useful workarounds
+%>  28/02/15: Enable users to specify optional ghostscript options (issue #36)
+%>  06/03/15: Improved image padding & cropping thanks to Oscar Hartogensis
+%>  26/03/15: Fixed issue #49 (bug with transparent grayscale images); fixed out-of-memory issue
+%>  26/03/15: Fixed issue #42: non-normalized annotations on HG1
+%>  26/03/15: Fixed issue #46: Ghostscript crash if figure units <> pixels
+%>  27/03/15: Fixed issue #39: bad export of transparent annotations/patches
+%>  28/03/15: Fixed issue #50: error on some MATLAB versions with the fix for issue #42
+%>  29/03/15: Fixed issue #33: bugs in MATLAB's print() function with -cmyk
+%>  29/03/15: Improved processing of input args (accept space between param name & value, related to issue #51)
+%>  30/03/15: When exporting *.fig files, then saveas *.fig if figure is open, otherwise export the specified fig file
+%>  30/03/15: Fixed edge case bug introduced yesterday (commit #ae1755bd2e11dc4e99b95a7681f6e211b3fa9358)
+%>  09/04/15: Consolidated header comment sections; initialize output vars only if requested (nargout>0)
+%>  14/04/15: Workaround for issue #45: lines in image subplots are exported in invalid color
+%>  15/04/15: Fixed edge-case in parsing input parameters; fixed help section to show the -depsc option (issue #45)
+%>  21/04/15: Bug fix: Ghostscript croaks on % chars in output PDF file (reported by Sven on FEX page, 15-Jul-2014)
+%>  22/04/15: Bug fix: Pdftops croaks on relative paths (reported by Tintin Milou on FEX page, 19-Jan-2015)
+%>  04/05/15: Merged fix #63 (Kevin Mattheus Moerman): prevent tick-label changes during export
+%>  07/05/15: Partial fix for issue #65: PDF export used painters rather than opengl renderer (thanks Nguyenr)
+%>  08/05/15: Fixed issue #65: bad PDF append since commit #e9f3cdf 21/04/15 (thanks Robert Nguyen)
+%>  12/05/15: Fixed issue #67: exponent labels cropped in export, since fix #63 (04/05/15)
+%>  28/05/15: Fixed issue #69: set non-bold label font only if the string contains symbols (\beta etc.), followup to issue #21
+%>  29/05/15: Added informative error message in case user requested SVG output (issue #72)
+%>  09/06/15: Fixed issue #58: -transparent removed anti-aliasing when exporting to PNG
+%>  19/06/15: Added -update option to download and install the latest version of savefig
+%>  07/07/15: Added -nofontswap option to avoid font-swapping in EPS/PDF
+%>  16/07/15: Fixed problem with anti-aliasing on old MATLAB releases
+%>  11/09/15: Fixed issue #103: magnification must never become negative; also fixed reported error msg in parsing input params
+%>  26/09/15: Alert if trying to export transparent patches/areas to non-PNG outputs (issue #108)
+%>  04/10/15: Do not suggest workarounds for certain errors that have already been handled previously
+%>  01/11/15: Fixed issue #112: use same renderer in print2eps as savefig (thanks to Jesús Pestana Puerta)
+%>  10/11/15: Custom GS installation webpage for MacOS. Thanks to Andy Hueni via FEX
+%>  19/11/15: Fixed clipboard export in R2015b (thanks to Dan K via FEX)
+%>  21/02/16: Added -c option for indicating specific crop amounts (idea by Cedric Noordam on FEX)
+%>  08/05/16: Added message about possible error reason when groot.Units~=pixels (issue #149)
+%>  17/05/16: Fixed case of image YData containing more than 2 elements (issue #151)
+%>  08/08/16: Enabled exporting transparency to TIF, in addition to PNG/PDF (issue #168)
+%>  11/12/16: Added alert in case of error creating output PDF/EPS file (issue #179)
+%>  13/12/16: Minor fix to the commit for issue #179 from 2 days ago
+%>  22/03/17: Fixed issue #187: only set manual ticks when no exponent is present
+%>  09/04/17: Added -linecaps option (idea by Baron Finer, issue #192)
+%>  15/09/17: Fixed issue #205: incorrect tick-labels when Ticks number don't match the TickLabels number
+%>  15/09/17: Fixed issue #210: initialize alpha map to ones instead of zeros when -transparent is not used
+%>  18/09/17: Added -font_space option to replace font-name spaces in EPS/PDF (workaround for issue #194)
+%>  18/09/17: Added -noinvert option to solve some export problems with some graphic cards (workaround for issue #197)
+%>  08/11/17: Fixed issue #220: axes exponent is removed in HG1 when TickMode is 'manual' (internal MATLAB bug)
+%>  08/11/17: Fixed issue #221: alert if the requested folder does not exist
+%>  19/11/17: Workaround for issue #207: alert when trying to use transparent bgcolor with -opengl
+%>  29/11/17: Workaround for issue #206: warn if exporting PDF/EPS for a figure that contains an image
+%>  11/12/17: Fixed issue #230: use OpenGL renderer when exported image contains transparency (also see issue #206)
+%>  30/01/18: Updated SVG message to point to https://github.com/kupiqu/plot2svg and display user-selected filename if available
+%>  27/02/18: Fixed issue #236: axes exponent cropped from output if on right-hand axes
+%>  29/05/18: Fixed issue #245: process "string" inputs just like 'char' inputs
+%>  13/08/18: Fixed issue #249: correct black axes color to off-black to avoid extra cropping with -transparent
+%>  27/08/18: Added a possible file-open reason in EPS/PDF write-error message (suggested by "craq" on FEX page)
+%>  22/09/18: Xpdf website changed to xpdfreader.com
+%>  23/09/18: Fixed issue #243: only set non-bold font (workaround for issue #69) in R2015b or earlier; warn if changing font
+%>  23/09/18: Workaround for issue #241: don't use -r864 in EPS/PDF outputs when -native is requested (solves black lines problem)
+%>  18/11/18: Issue #261: Added informative alert when trying to export a uifigure (which is not currently supported)
+%>  13/12/18: Issue #261: Fixed last commit for cases of specifying axes/panel handle as input, rather than a figure handle
+%>  13/01/19: Issue #72: Added basic SVG output support
+%>  04/02/19: Workaround for issues #207 and #267: -transparent implies -noinvert
+%>  08/03/19: Issue #269: Added ability to specify format-specific options for PNG,TIF,JPG outputs; fixed help section
+%>  21/03/19: Fixed the workaround for issues #207 and #267 from 4/2/19 (-transparent now does *NOT* imply -noinvert; -transparent output should now be ok in all formats)
+%>  12/06/19: Issue #277: Enabled preservation of figure's PaperSize in output PDF/EPS file
+%>  06/08/19: Remove warning message about obsolete JavaFrame in R2019b
+%>  30/10/19: Fixed issue #261: added support for exporting uifigures and uiaxes (thanks to idea by @MarvinILA)
+%>  12/12/19: Added warning in case user requested anti-aliased output on an aliased HG2 figure (issue #292)
+%>  15/12/19: Added promo message
+%>  08/01/20: (3.00) Added check for newer version online (initialized to version 3.00)
+%>  15/01/20: (3.01) Clarified/fixed error messages; Added error IDs; easier -update; various other small fixes
+%>  20/01/20: (3.02) Attempted fix for issue #285 (unsupported patch transparency in some Ghostscript versions); Improved suggested fixes message upon error
+%>  03/03/20: (3.03) Suggest to upload problematic EPS file in case of a Ghostscript error in eps2pdf (& don't delete this file)
+%>  22/03/20: (3.04) Workaround for issue #15; Alert if ghostscript file not found on MATLAB path
+%>  10/05/20: (3.05) Fix the generated SVG file, based on Cris Luengo's SVG_FIX_VIEWBOX; Don't generate PNG when only SVG is requested
+%>  02/07/20: (3.06) Significantly improved performance (speed) and fidelity of bitmap images; Return alpha matrix for bitmap images; Fixed issue #302 (-update bug); Added EMF output; Added -clipboard formats (image,bitmap,emf,pdf); Added hints for exportgraphics/copygraphics usage in certain use-cases; Added description of new version features in the update message; Fixed issue #306 (yyaxis cropping); Fixed EPS/PDF auto-cropping with -transparent
+%>  06/07/20: (3.07) Fixed issue #307 (bug in padding of bitmap images); Fixed axes transparency in -clipboard:emf with -transparent
+%>  07/07/20: (3.08) Fixed issue #308 (bug in R2019a and earlier)
+%>  18/07/20: (3.09) Fixed issue #310 (bug with tiny image on HG1); Fixed title cropping bug
+%>  23/07/20: (3.10) Fixed issues #313,314 (figure position changes if units ~= pixels); Display multiple versions change-log, if relevant; Fixed issue #312 (PNG: only use alpha channel if -transparent was requested)
+%>  30/07/20: (3.11) Fixed issue #317 (bug when exporting figure with non-pixels units); Potential solve also of issue #303 (size change upon export)
+%>  14/08/20: (3.12) Fixed some exportgraphics/copygraphics compatibility messages; Added -silent option to suppress non-critical messages; Reduced promo message display rate to once a week; Added progress messages during savefig('-update')
+%>  07/10/20: (3.13) Added version info and change-log links to update message (issue #322); Added -version option to return the current savefig version; Avoid JavaFrame warning message; Improved exportgraphics/copygraphics infomercial message inc. support of upcoming MATLAB R2021a
+%>  10/12/20: (3.14) Enabled user-specified regexp replacements in generated EPS/PDF files (issue #324)
+%>  01/07/21: (3.15) Added informative message in case of setopacityalpha error (issue #285)
+%>  26/08/21: (3.16) Fixed problem of white elements appearing transparent (issue #330); clarified some error messages
+%>  27/09/21: (3.17) Made MATLAB's builtin export the default for SVG, rather than fig2svg/plot2svg (issue #316); updated transparency error message (issues #285, #343); reduced promo message frequency
+%>  03/10/21: (3.18) Fixed warning about invalid escaped character when the output folder does not exist (issue #345)
+%>  25/10/21: (3.19) Fixed print error when exporting a specific subplot (issue #347); avoid duplicate error messages
+%>  11/12/21: (3.20) Added GIF support, including animated & transparent-background; accept format options as cell-array, not just nested struct
+%>  20/12/21: (3.21) Speedups; fixed exporting non-current figure (hopefully fixes issue #318); fixed warning when appending to animated GIF
+%>  02/03/22: (3.22) Fixed small potential memory leak during screen-capture; expanded exportgraphics message for vector exports; fixed rotated tick labels on R2021a+
+%>  02/03/22: (3.23) Added -toolbar and -menubar options to add figure toolbar/menubar items for interactive figure export (issue #73); fixed edge-case bug with GIF export
+%>  14/03/22: (3.24) Added support for specifying figure name in addition to handle; added warning when trying to export TIF/JPG/BMP with transparency; use current figure as default handle even when its HandleVisibility is not 'on'
+%>  16/03/22: (3.25) Fixed occasional empty files due to excessive cropping (issues #318, #350, #351)
+%>  01/05/22: (3.26) Added -transparency option for TIFF files
+%>  15/05/22: (3.27) Fixed EPS bounding box (issue #356)
+%>  04/12/22: (3.28) Added -metadata option to add custom info to PDF files; fixed -clipboard export (transparent and gray-scale images; deployed apps; old Matlabs)
+%>  03/01/23: (3.29) Use silent mode by default in deployed apps; suggest installing ghostscript/pdftops if required yet missing; fixed invalid chars in export filename; reuse existing figure toolbar if available
+%>  03/02/23: (3.30) Added -contextmenu option to add interactive context-menu items; fixed: -menubar,-toolbar created the full default figure menubar/toolbar if not shown; enlarged toolbar icon; support adding savefig icon to custom toolbars; alert if specifying multiple or invalid handle(s)
+%>  20/02/23: (3.31) Fixed PDF quality issues as suggested by @scholnik (issues #285, #368); minor fixes for MacOS/Linux; use figure's FileName property (if available) as the default export filename; added -gif optional format parameter; Display the export folder (full pathname) in menu items when using -toolbar, -menubar and/or -contextmenu
+%>  21/02/23: (3.32) Fixed EPS export error handling in deployed apps; use MATLAB's builtin EPS export if pdftops is not installed or fails; disabled EMF export option on MacOS/Linux; fixed some EMF warning messages; don't export PNG if only -toolbar etc were specified
+%>  23/02/23: (3.33) Fixed PDF -append (issue #369); Added -notify option to notify user when the export is done; propagate all specified savefig options to -toolbar,-menubar,-contextmenu exports; -silent is no longer set by default in deployed apps (i.e. you need to call -silent explicitly)
+%>  23/03/23: (3.34) Fixed error when exporting axes handle to clipboard without filename (issue #372)
+%>  11/04/23: (3.35) Added -n,-x,-s options to set min, max, and fixed output image size (issue #315)
+%>  13/04/23: (3.36) Reduced (hopefully fixed) unintended EPS/PDF image cropping (issues #97, #318); clarified warning in case of PDF/EPS export of transparent patches (issues #94, #106, #108)
+%>  23/04/23: (3.37) Fixed run-time error with old MATLAB releases (issue #374); -notify console message about exported image now displays black (STDOUT) not red (STDERR)
+%>  15/05/23: (3.38) Fixed endless recursion when using savefig in Live Scripts (issue #375); don't warn about exportgraphics/copygraphics alternatives in deployed mode
+%>  30/05/23: (3.39) Fixed exported bgcolor of uifigures or figures in Live Scripts (issue #377)
+%>  06/07/23: (3.40) For Tiff compression, use AdobeDeflate codec (if available) instead of Deflate (issue #379)
+%>  29/11/23: (3.41) Fixed error when no filename is specified nor available in the exported figure (issue #381)
+%>  05/12/23: (3.42) Fixed unintended cropping of colorbar title in PDF export with -transparent (issues #382, #383)
+%>  07/12/23: (3.43) Fixed unintended modification of colorbar in bitmap export (issue #385)
+%>  \endverbatim
+%>  <p></p>
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function [imageData, alpha] = savefig(varargin) %#ok<*STRCL1,*DATST,*TNOW1>
 
     %%%%
@@ -598,7 +655,7 @@ function [imageData, alpha] = savefig(varargin) %#ok<*STRCL1,*DATST,*TNOW1>
         end
 
         % Set all axes limit and tick modes to manual, so the limits and ticks can't change
-        % Fix Matlab R2014b bug (issue #34): plot markers are not displayed when ZLimMode='manual'
+        % Fix MATLAB R2014b bug (issue #34): plot markers are not displayed when ZLimMode='manual'
         set_manual_axes_modes(Hlims, 'X');
         set_manual_axes_modes(Hlims, 'Y');
         if ~using_hg2(fig)
@@ -630,7 +687,7 @@ function [imageData, alpha] = savefig(varargin) %#ok<*STRCL1,*DATST,*TNOW1>
         % ignore
     end
 
-    % Fix issue #42: non-normalized annotations on HG1 (internal Matlab bug)
+    % Fix issue #42: non-normalized annotations on HG1 (internal MATLAB bug)
     annotationHandles = [];
     try
         if ~using_hg2(fig)
@@ -785,7 +842,7 @@ function [imageData, alpha] = savefig(varargin) %#ok<*STRCL1,*DATST,*TNOW1>
                     end
                     %A = uint8(A);
                 else  % JPG,BMP
-                    warning('savefig:unsupported:background','Matlab cannot set transparency when exporting JPG/BMP image files (see imwrite function documentation)')
+                    warning('savefig:unsupported:background','MATLAB cannot set transparency when exporting JPG/BMP image files (see imwrite function documentation)')
                 end
             end
             % Downscale the image if its size was increased (for anti-aliasing)
@@ -931,7 +988,7 @@ function [imageData, alpha] = savefig(varargin) %#ok<*STRCL1,*DATST,*TNOW1>
                 if options.transparent && any(alpha(:) < 1) && any(isBgColor(:))
                     % Need to use low-level Tiff library since imwrite/writetif doesn't support alpha channel
                     alpha8 = uint8(alpha*255);
-                    tag = ['Matlab ' version ' savefig v' num2str(currentVersion)];
+                    tag = ['MATLAB ' version ' savefig v' num2str(currentVersion)];
                     mode = 'w'; if options.append, mode = 'a'; end
                     t = Tiff(filename,mode); %R2009a or newer
                     %See https://www.awaresystems.be/imaging/tiff/tifftags/baseline.html
@@ -1022,7 +1079,7 @@ function [imageData, alpha] = savefig(varargin) %#ok<*STRCL1,*DATST,*TNOW1>
                     if options.pdf && ~options.silent
                         warning('savefig:transparency', '%s print command: print(gcf, ''-dpdf'', ''%s.pdf'');', msg, options.name);
                     elseif ~options.png && ~options.tif && ~options.silent  % issue #168
-                        warning('savefig:transparency', '%s ScreenCapture utility on the Matlab File Exchange: http://bit.ly/1QFrBip', msg);
+                        warning('savefig:transparency', '%s ScreenCapture utility on the MATLAB File Exchange: http://bit.ly/1QFrBip', msg);
                     end
                 elseif ~isempty(hImages)
                     % Fix for issue #230: use OpenGL renderer when exported image contains transparency
@@ -1071,11 +1128,11 @@ function [imageData, alpha] = savefig(varargin) %#ok<*STRCL1,*DATST,*TNOW1>
                 printArgs{end+1} = sprintf('-r%d', options.resolution);
             end
             if options.colourspace == 1  % CMYK
-                % Issue #33: due to internal bugs in Matlab's print() function, we can't use its -cmyk option
+                % Issue #33: due to internal bugs in MATLAB's print() function, we can't use its -cmyk option
                 %printArgs{end+1} = '-cmyk';
             end
             if ~options.crop
-                % Issue #56: due to internal bugs in Matlab's print() function, we can't use its internal cropping mechanism,
+                % Issue #56: due to internal bugs in MATLAB's print() function, we can't use its internal cropping mechanism,
                 % therefore we always use '-loose' (in print2eps.m) and do our own cropping (with crop_borders.m)
                 %printArgs{end+1} = '-loose';
             end
@@ -1132,7 +1189,7 @@ function [imageData, alpha] = savefig(varargin) %#ok<*STRCL1,*DATST,*TNOW1>
                 try set(fig,'Color',originalBgColor); drawnow; catch, end
                 % Fix colorspace to CMYK, if requested (workaround for issue #33)
                 if options.colourspace == 1  % CMYK
-                    % Issue #33: due to internal bugs in Matlab's print() function, we can't use its -cmyk option
+                    % Issue #33: due to internal bugs in MATLAB's print() function, we can't use its -cmyk option
                     change_rgb_to_cmyk(tmp_nam);
                 end
                 % Add a bookmark to the PDF if desired
@@ -1252,7 +1309,7 @@ function [imageData, alpha] = savefig(varargin) %#ok<*STRCL1,*DATST,*TNOW1>
             filename = [options.name '.svg'];
             % Adapted from Dan Joshea's https://github.com/djoshea/matlab-save-figure :
             try %if ~verLessThan('matlab', '8.4')
-                % Try Matlab's built-in svg engine (from Batik Graphics2D for java)
+                % Try MATLAB's built-in svg engine (from Batik Graphics2D for java)
                 set(fig,'Units','pixels');   % All data in the svg-file is saved in pixels
                 printArgs = {renderer};
                 if ~isempty(options.resolution)
@@ -1267,9 +1324,9 @@ function [imageData, alpha] = savefig(varargin) %#ok<*STRCL1,*DATST,*TNOW1>
                     saveas(fig, filename);
                 end
                 if ~options.silent
-                    warning('savefig:SVG:print', 'savefig used Matlab''s built-in SVG output engine. Better results may be gotten via the fig2svg utility (https://github.com/kupiqu/fig2svg).');
+                    warning('savefig:SVG:print', 'savefig used MATLAB''s built-in SVG output engine. Better results may be gotten via the fig2svg utility (https://github.com/kupiqu/fig2svg).');
                 end
-            catch %else  % built-in print()/saveas() failed - maybe an old Matlab release (no -dsvg)
+            catch %else  % built-in print()/saveas() failed - maybe an old MATLAB release (no -dsvg)
                 % Try using the fig2svg/plot2svg utilities
                 try
                     try
@@ -1286,7 +1343,7 @@ function [imageData, alpha] = savefig(varargin) %#ok<*STRCL1,*DATST,*TNOW1>
                         'Try one of the following alternatives:\n' ...
                         '  1. saveas(gcf,''' filename ''')\n' ...
                         '  2. fig2svg utility: https://github.com/kupiqu/fig2svg\n' ...  % Note: replaced defunct https://github.com/jschwizer99/plot2svg with up-to-date fork on https://github.com/kupiqu/fig2svg
-                        '  3. savefig to EPS/PDF, then convert to SVG using non-Matlab tools\n'];
+                        '  3. savefig to EPS/PDF, then convert to SVG using non-MATLAB tools\n'];
                     error('savefig:SVG:error',msg);
                 end
             end
@@ -1341,7 +1398,7 @@ function [imageData, alpha] = savefig(varargin) %#ok<*STRCL1,*DATST,*TNOW1>
                         warning('savefig:EMF:Options', 'savefig cropping, padding and quality options are ignored for EMF export.');
                     end
                     if ~anythingChanged && ~isdeployed
-                        warning('savefig:EMF:print', 'For a figure without background transparency, savefig uses Matlab''s built-in print(''-dmeta'') function without any extra processing, so try using it directly.');
+                        warning('savefig:EMF:print', 'For a figure without background transparency, savefig uses MATLAB''s built-in print(''-dmeta'') function without any extra processing, so try using it directly.');
                     end
                 end
                 printArgs = {renderer};
@@ -1351,7 +1408,7 @@ function [imageData, alpha] = savefig(varargin) %#ok<*STRCL1,*DATST,*TNOW1>
                 filename = [options.name '.emf'];
                 print(fig, '-dmeta', printArgs{:}, filename);
                 if options.notify, notify(filename); end
-            catch err  % built-in print() failed - maybe an old Matlab release (no -dsvg)
+            catch err  % built-in print() failed - maybe an old MATLAB release (no -dsvg)
                 msg = ['EMF output is not supported: ' err.message '\n' ...
                        'Try to use savefig with other formats, such as PDF or EPS.\n'];
                 error('savefig:EMF:error',msg);
@@ -1534,7 +1591,7 @@ function [imageData, alpha] = savefig(varargin) %#ok<*STRCL1,*DATST,*TNOW1>
                 if ispc, options = {'Open folder'}; end
             end
             answer = questdlg(msg,'Screenshot export',options{:},'OK','OK');
-            drawnow; pause(0.05);  % avoid Matlab hang
+            drawnow; pause(0.05);  % avoid MATLAB hang
             switch answer
                 case 'Open image',  winopen(filename);
                 case 'Open folder', winopen(folder);
@@ -1645,12 +1702,16 @@ function [imageData, alpha] = savefig(varargin) %#ok<*STRCL1,*DATST,*TNOW1>
         rethrow(err)
     end
 
+    %>  \cond excluded
     % Notify user about a successful file export
     function notify(filename)
         fprintf('Exported screenshot image to %s\n', filename)
         exported_files = exported_files + 1;
     end
+    %>  \endcond
 end
+
+%>  \cond excluded
 
 function isOk = selectUtilityPath(utilName,url,msg)
     isOk = false;
@@ -1658,7 +1719,7 @@ function isOk = selectUtilityPath(utilName,url,msg)
     fprintf(2,'\n%s\n',msg);
     while ~isOk
         answer = questdlg(msg,utilName,'Use local installation','Go to website','Cancel','Cancel');
-        drawnow; pause(0.01);  % avoid Matlab hang
+        drawnow; pause(0.01);  % avoid MATLAB hang
         switch strtok(char(answer))
             case 'Go',  web(url,'-browser');
             case 'Use'
@@ -2189,7 +2250,7 @@ function [fig, options] = parse_args(nout, fig, argNames, varargin)
                 break
             end
         elseif options.resolution == 864  % don't use -r864 in vector mode if user asked for -native
-            options.resolution = []; % issue #241 (internal Matlab bug produces black lines with -r864)
+            options.resolution = []; % issue #241 (internal MATLAB bug produces black lines with -r864)
         end
     end
 end
@@ -2402,7 +2463,7 @@ function set_manual_axes_modes(Hlims, ax)
                 end
             end
         catch  % probably HG1
-            % Fix for issue #220 - exponent is removed in HG1 when TickMode is 'manual' (internal Matlab bug)
+            % Fix for issue #220 - exponent is removed in HG1 when TickMode is 'manual' (internal MATLAB bug)
             if isequal(tickVals, str2num(tickStrs)') %#ok<ST2NM>
                 set(hAxes, props{:});  % revert back to old behavior
             end
@@ -2532,11 +2593,11 @@ function isNewerVersionAvailable = checkForNewerVersion(currentVersion)
                                'A newer version (%g) is available, with the following improvements/fixes:\n' ...
                                '%s\n' ...
                                'A change-log of recent releases is available here; the complete change-log is included at the top of the savefig.m file.\n' ...  % issue #322
-                               'You can download the new version from GitHub or Matlab File Exchange, ' ...
+                               'You can download the new version from GitHub or MATLAB File Exchange, ' ...
                                'or run savefig(''-update'') to install it directly.' ...
                               ], currentVersion, latestVersion, versionDesc);
                 msg = hyperlink('https://github.com/altmany/savefig', 'GitHub', msg);
-                msg = hyperlink('https://www.mathworks.com/matlabcentral/fileexchange/23629-savefig', 'Matlab File Exchange', msg);
+                msg = hyperlink('https://www.mathworks.com/matlabcentral/fileexchange/23629-savefig', 'MATLAB File Exchange', msg);
                 msg = hyperlink('matlab:savefig(''-update'')', 'savefig(''-update'')', msg);
                 msg = hyperlink('https://github.com/altmany/savefig/releases', 'available here', msg);
                 msg = hyperlink('https://github.com/altmany/savefig/blob/master/savefig.m#L300', 'savefig.m file', msg);
@@ -2611,7 +2672,7 @@ function str = readURL(url)
     end
 end
 
-% Display a promo message in the Matlab console
+% Display a promo message in the MATLAB console
 function displayPromoMsg(msg, url)
     %msg = [msg url];
     msg = strrep(msg,'<$>',url);
@@ -2639,7 +2700,7 @@ function programsCrossCheck()
                 hasTaskList = true;
             end
             if hasIQ
-                displayPromoMsg('To connect Matlab to IQFeed, try the IQML connector <$>', 'https://UndocumentedMatlab.com/IQML');
+                displayPromoMsg('To connect MATLAB to IQFeed, try the IQML connector <$>', 'https://UndocumentedMatlab.com/IQML');
             end
         end
 
@@ -2666,7 +2727,7 @@ function programsCrossCheck()
                         ~isempty(strfind(tasksStr,'ibgateway'));  %#ok<STREMP>
             end
             if hasIB
-                displayPromoMsg('To connect Matlab to IB try the IB-Matlab connector <$>', 'https://UndocumentedMatlab.com/IB-Matlab');
+                displayPromoMsg('To connect MATLAB to IB try the IB-MATLAB connector <$>', 'https://UndocumentedMatlab.com/IB-MATLAB');
             end
         end
     catch
@@ -2828,7 +2889,7 @@ function alertForExportOrCopygraphics(options)
                 if isempty(options.handleName) % handle was either not specified, or via gca()/gcf() etc. [i.e. not by variable]
                     handleName = 'hFigure';
                 end
-                msg = ['In Matlab R2020a+ you can also use ' funcName '(' handleName filenameParam params ') for simple ' type ' export'];
+                msg = ['In MATLAB R2020a+ you can also use ' funcName '(' handleName filenameParam params ') for simple ' type ' export'];
                 if ~isempty(strfind(params,'''vector''')) %#ok<STREMP>
                     msg = [msg ', which could also improve image vectorization, solving rasterization/pixelization problems.'];
                 end
@@ -2917,7 +2978,7 @@ function addToolbarButton(hFig, options)
     props = {'CData',cdata, 'Tag','savefig', ...
              'Tooltip',tooltip, 'ClickedCallback',@(h,e)interactiveExport(hFig,options)};
     if ~isempty(hToolbar)
-        props = {props{:}, 'Parent',hToolbar}; %#ok<CCAT> %[props,...] cause a runtime-error! (internal Matlab bug)
+        props = {props{:}, 'Parent',hToolbar}; %#ok<CCAT> %[props,...] cause a runtime-error! (internal MATLAB bug)
     end
     try
         hButton = [];  % just in case we croak below
@@ -3128,7 +3189,7 @@ function interactiveExport(hObject, options)
     end
     %format
     [filename,pathname,idx] = uiputfile(format,'Save figure export as',defaultFname);
-    drawnow; pause(0.01);  % prevent a Matlab hang
+    drawnow; pause(0.01);  % prevent a MATLAB hang
     if ~isequal(filename,0)
         thisFormat = formats{idx};
         if ~any(thisFormat==':')  % export to image file
@@ -3141,3 +3202,5 @@ function interactiveExport(hObject, options)
         % User canceled the dialog - bail out silently
     end
 end
+
+%>  \endcond
