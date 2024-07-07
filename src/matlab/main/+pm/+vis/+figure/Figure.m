@@ -108,9 +108,15 @@ classdef Figure < pm.matlab.Handle
         %>  \interface{Figure}
         %>  \code{.m}
         %>
+        %>      f = pm.vis.figure.Figure();
         %>      f = pm.vis.figure.Figure(varargin);
         %>
         %>  \endcode
+        %>
+        %>  \example{Figure}
+        %>  \include{lineno} example/vis/figure/Figure/main.m
+        %>  \vis{Figure}
+        %>  \image html example/vis/figure/Figure/Figure.himmelblau.3d.png width=700
         %>
         %>  \final{Figure}
         %>
@@ -126,29 +132,32 @@ classdef Figure < pm.matlab.Handle
 
         %>  \brief
         %>  Configure the figure settings and specifications,
-        %>  make the figure, and return nothing.
+        %>  make the figure, and return nothing.<br>
         %>
         %>  \warning
         %>  This method has side-effects by manipulating
-        %>  the existing attributes of the parent object.
+        %>  the existing attributes of the parent object.<br>
         %>
-        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
-        %>                              If the property is a ``struct()``, then its value must be given as a cell array,
-        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
-        %>                              Note that all of these property-value pairs can be also directly set via the
-        %>                              parent object attributes, before calling the ``make()`` method.
+        %>  \param[inout]   self        :   The input/output parent object of class [pm.vis.figure.Figure](@ref Figure)
+        %>                                  which is **implicitly** passed to this dynamic method (not by the user).<br>
+        %>  \param[in]      varargin    :   Any ``property, value`` pair of the parent object.<br>
+        %>                                  If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                                  with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
+        %>                                  Note that all of these property-value pairs can be also directly set via the
+        %>                                  parent object attributes, before calling the ``make()`` method.<br>
         %>
         %>  \interface{make}
         %>  \code{.m}
         %>
         %>      f = pm.vis.figure.Figure.make(varargin);
+        %>      f.make()
         %>
         %>  \endcode
         %>
         %>  \example{make}
-        %>
-        %>      f = pm.vis.figure.Figure();
-        %>      f.make()
+        %>  \include{lineno} example/vis/figure/Figure/main.m
+        %>  \vis{make}
+        %>  \image html example/vis/figure/Figure/Figure.himmelblau.3d.png width=700
         %>
         %>  \final{make}
         %>
@@ -195,15 +204,19 @@ classdef Figure < pm.matlab.Handle
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         %>  \brief
-        %>  Reset the properties of the figure to the original default settings.
-        %>  Use this method when you change many attributes of the plot and
-        %>  you want to clean up and go back to the default settings.
+        %>  Reset the properties of the figure to the original default settings.<br>
         %>
-        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
-        %>                              If the property is a ``struct()``, then its value must be given as a cell array,
-        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
-        %>                              Note that all of these property-value pairs can be also directly set via the
-        %>                              parent object attributes, before calling the ``make()`` method.
+        %>  \details
+        %>  Use this method when you change many attributes of the plot and
+        %>  you want to clean up and go back to the default settings.<br>
+        %>
+        %>  \param[inout]   self        :   The input/output parent object of class [pm.vis.figure.Figure](@ref Figure)
+        %>                                  which is **implicitly** passed to this dynamic method (not by the user).<br>
+        %>  \param[in]      varargin    :   Any ``property, value`` pair of the parent object.<br>
+        %>                                  If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                                  with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
+        %>                                  Note that all of these property-value pairs can be also directly set via the
+        %>                                  parent object attributes, before calling the ``make()`` method.<br>
         %>
         %>  \interface{reset}
         %>  \code{.m}
@@ -254,30 +267,35 @@ classdef Figure < pm.matlab.Handle
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         %>  \brief
-        %>  Configure the figure settings and specifications and return nothing.
+        %>  Configure the figure settings and specifications and return nothing.<br>
         %>
         %>  \warning
         %>  This method has side-effects by manipulating
-        %>  the existing attributes of the parent object.
+        %>  the existing attributes of the parent object.<br>
         %>
-        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
-        %>                              If the property is a ``struct()``, then its value must be given as a cell array,
-        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
-        %>                              Note that all of these property-value pairs can be also directly set via the
-        %>                              parent object attributes, before calling the ``premake()`` method.
+        %>  \param[inout]   self        :   The input/output parent object of class [pm.vis.figure.Figure](@ref Figure)
+        %>                                  which is **implicitly** passed to this dynamic method (not by the user).<br>
+        %>  \param[in]      varargin    :   Any ``property, value`` pair of the parent object.<br>
+        %>                                  If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                                  with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
+        %>                                  Note that all of these property-value pairs can be also directly set via the
+        %>                                  parent object attributes, before calling the ``premake()`` method.<br>
         %>
         %>  \interface{premake}
         %>  \code{.m}
         %>
-        %>      f = pm.vis.figure.Figure.premake(varargin);
+        %>      f = pm.vis.figure.Figure(varargin);
+        %>      f.premake(varargin);
         %>
         %>  \endcode
         %>
-        %>
         %>  \example{premake}
+        %>  \code{.m}
         %>
         %>      f = pm.vis.figure.Figure();
         %>      f.premake("figure", {"color", "none"})
+        %>
+        %>  \endcode
         %>
         %>  \final{premake}
         %>
@@ -305,11 +323,51 @@ classdef Figure < pm.matlab.Handle
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        %>  \brief
+        %>  Convert the components of the input component ``comp``
+        %>  of the parent object into a cell array of key-val pairs.<br>
+        %>
+        %>  \details
+        %>  This is a dynamic method of the class [pm.vis.figure.Figure](@ref Figure).<br>
+        %>  This method is used internally by the subclasses to convert the parent object
+        %>  attributes to input arguments of MATLAB intrinsic visualization functions.<br>
+        %>
+        %>  \param[inout]   self    :   The input/output parent object of class [pm.vis.figure.Figure](@ref Figure)
+        %>                              which is **implicitly** passed to this dynamic method (not by the user).<br>
+        %>  \param[in]      comp    :   The input scalar MATLAB string representing the name of a ``struct``
+        %>                              component of the parent object, whose fields names and values are to
+        %>                              be returned as subsequent pairs in the output ``hash`` cell array.<br>
+        %>
+        %>  \return
+        %>  ``hash``                :   The output cell array containing the pairs of ``field-name, field-value``
+        %>                              of the input MATLAB struct ``comp``.<br>
+        %>
+        %>  \interface{comp2hash}
+        %>  \code{.m}
+        %>
+        %>      a = pm.vis.figure.Figure(varargin);
+        %>      hash = a.comp2hash(comp);
+        %>
+        %>  \endcode
+        %>
+        %>  \warning
+        %>  This method has side-effects by manipulating
+        %>  the existing attributes of the parent object.<br>
+        %>
+        %>  \example{comp2hash}
+        %>  \code{.m}
+        %>
+        %>      a = pm.vis.figure.Figure("figure", {"color", "white"});
+        %>      hash = a.comp2hash("figure");
+        %>
+        %>  \endcode
+        %>
+        %>  \final{comp2hash}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function hash = comp2hash(self, comp)
-            %
-            %   Convert the components of the input component ``comp``
-            %   of the parent object into a cell array of key-val pairs.
-            %
             unique = true;
             onlyfull = true;
             excludes = {"enabled"};
@@ -325,7 +383,7 @@ classdef Figure < pm.matlab.Handle
     methods(Access = public)
 
         %>  \brief
-        %>  Export the current figure to the specified external file.
+        %>  Export the current figure to the specified external file.<br>
         %>
         %>  \details
         %>  This method internally uses the venerable ``export_fig`` MATLAB package.<br>
@@ -333,288 +391,288 @@ classdef Figure < pm.matlab.Handle
         %>  If no optional argument is present, then a default set of options determined
         %>  by the ``export_fig`` library will be used.<br>
         %>
-        %>  \param[in]  file        :   The input scalar MATLAB string or char vector containing
-        %>                              the path to the external file that will contain the visualization.
-        %>                              The specified file extension determines its type (e.g., ``.pdf``, ``.png``).<br>
-        %>                              If no file extension is specified, then the default ``.png`` file extension is used.<br>
-        %>                              (**optional**.  If ``file`` is missing or empty, first, the ``fileName`` component of
-        %>                              the ``figure`` property of the parent object will be used as the filename if not empty.<br>
-        %>                              Otherwise, the figure will be exported to a file in the current working directory of
-        %>                              MATLAB with name ``figure`` suffixed by a unique number and ``.png`` extension.)
+        %>  \param[inout]   self        :   The input/output parent object of class [pm.vis.figure.Figure](@ref Figure)
+        %>                                  which is **implicitly** passed to this dynamic method (not by the user).<br>
+        %>  \param[in]      file        :   The input scalar MATLAB string or char vector containing
+        %>                                  the path to the external file that will contain the visualization.<br>
+        %>                                  The specified file extension determines its type (e.g., ``.pdf``, ``.png``).<br>
+        %>                                  If no file extension is specified, then the default ``.png`` file extension is used.<br>
+        %>                                  (**optional**.  If ``file`` is missing or empty, first, the ``fileName`` component of
+        %>                                  the ``figure`` property of the parent object will be used as the filename if not empty.<br>
+        %>                                  Otherwise, the figure will be exported to a file in the current working directory of
+        %>                                  MATLAB with name ``figure`` suffixed by a unique number and ``.png`` extension.)
+        %>  \param[in]      varargin    :   The following optional flags are also acceptable as input string arguments.<br>
+        %>                                  This method internally uses the venerable ``export_fig`` MATLAB package.<br>
+        %>                                  As such, it accepts all arguments that the ``export_fig()`` function accepts.<br>
+        %>                                  If no optional argument is present, then a default set of options determined
+        %>                                  by the ``export_fig`` library will be used.<br>
+        %>                                  The recommended set of optional flags for PNG file formats is ``"-m4 -transparent"``.<br>
+        %>                                  <ol>
+        %>                                      <li>    ``"-<format>"``
+        %>
+        %>                                              The input scalar (or variadic array of) MATLAB string(s)
+        %>                                              containing the output file extension(s). Options include:
+        %>
+        %>                                              <ol>
+        %>                                                  <li>    ``'-pdf'``
+        %>                                                  <li>    ``'-eps'``
+        %>                                                  <li>    ``'-emf'``
+        %>                                                  <li>    ``'-svg'``
+        %>                                                  <li>    ``'-png'``
+        %>                                                  <li>    ``'-tif'``
+        %>                                                  <li>    ``'-jpg'``
+        %>                                                  <li>    ``'-gif'``
+        %>                                                  <li>    ``'-bmp'``
+        %>                                              </ol>
+        %>
+        %>                                              Multiple formats can be specified, without restriction.<br>
+        %>                                              For example:
+        %>
+        %>                                              \code{.m}
+        %>
+        %>                                                  savefig('-jpg', '-pdf', '-png')
+        %>
+        %>                                              \endcode
+        %>
+        %>                                              Note that ``'-tif'`` and ``'-tiff'`` are equivalent.<br>
+        %>
+        %>                                      <li>    ``"-transparent"``
+        %>
+        %>                                              The input option indicating that the figure background is to
+        %>                                              be made transparent (PNG, PDF, TIF, EPS, EMF formats only).<br>
+        %>                                              Specifying this option also activates ``"-noinvert"``.<br>
+        %>
+        %>                                      <li>    ``"-nocrop"``
+        %>
+        %>                                              The input option indicating that empty margins should not be cropped.<br>
+        %>
+        %>                                      <li>    ``"-c[<val>,<val>,<val>,<val>]"``
+        %>
+        %>                                              The input option indicating the crop amounts. It must be
+        %>                                              a 4-element vector of numeric values: ``[top, right, bottom, left]``
+        %>                                              where NaN/Inf indicates auto-cropping, 0 means no cropping, any
+        %>                                              other value means cropping in pixel amounts. e.g. ``'-c7,15,0,NaN'``
+        %>                                              Note that this option is not supported by SVG and EMF formats.<br>
+        %>
+        %>                                      <li>    ``"-p<val>"``
+        %>
+        %>                                              The input option to pad a border of width ``val`` to exported files,
+        %>                                              where ``val`` is either a relative size with respect to cropped image
+        %>                                              size (i.e. ``p = 0.01`` adds a ``1%`` border). For EPS & PDF formats,
+        %>                                              ``val`` can also be integer in units of ``1/72`` inch points (``abs(val) > 1``).<br>
+        %>                                              ``val`` can be positive (padding) or negative (extra cropping).<br>
+        %>                                              If used, the ``-nocrop`` flag will be ignored, i.e. the image will
+        %>                                              always be cropped and then padded. Default: ``0`` (i.e. no padding).<br>
+        %>                                              Note: this option is not supported by SVG and EMF formats.<br>
+        %>
+        %>                                      <li>   ``"-m<val>"``
+        %>
+        %>                                              The input option ``val`` indicates the factor to magnify the figure
+        %>                                              dimensions when generating bitmap outputs (does not affect vector formats).<br>
+        %>                                              Default: '-m1' (i.e. val=1). Note: val~=1 slows down savefig.<br>
+        %>
+        %>                                      <li>    ``"-r<val>"``
+        %>
+        %>                                              The input option ``val`` indicates the resolution (in pixels per inch)
+        %>                                              to export bitmap and vector outputs, without changing dimensions of
+        %>                                              the on-screen figure. Default: '-r864' (for vector output only).<br>
+        %>                                              Note: -m option overides -r option for bitmap exports only.<br>
+        %>
+        %>                                      <li>    ``"-native"``
         %>
-        %>  \param[in]  varargin    :   The following optional flags are also acceptable as input string arguments.
-        %>                              This method internally uses the venerable ``export_fig`` MATLAB package.
-        %>                              As such, it accepts all arguments that the ``export_fig()`` function accepts.
-        %>                              If no optional argument is present, then a default set of options determined
-        %>                              by the ``export_fig`` library will be used.<br>
-        %>
-        %>                              The recommended set of optional flags for PNG file formats is ``"-m4 -transparent"``.<br>
-        %>                              <ol>
-        %>                                  <li>    ``"-<format>"``
-        %>
-        %>                                          The input scalar (or variadic array of) MATLAB string(s)
-        %>                                          containing the output file extension(s). Options include:
+        %>                                              The input option indicating that the output resolution (when
+        %>                                              outputting a bitmap format) should be such that the vertical
+        %>                                              resolution of the first suitable image found in the figure is
+        %>                                              at the native resolution of that image. To specify a particular
+        %>                                              image to use, give it the tag 'export_fig_native'.<br>
+        %>                                              Notes: This overrides any value set with the -m and -r options.<br>
+        %>                                              It also assumes that the image is displayed front-to-parallel
+        %>                                              with the screen. The output resolution is approximate and
+        %>                                              should not be relied upon. Anti-aliasing can have adverse
+        %>                                              effects on image quality (disable with the -a1 option).<br>
         %>
-        %>                                          <ol>
-        %>                                              <li>    ``'-pdf'``
-        %>                                              <li>    ``'-eps'``
-        %>                                              <li>    ``'-emf'``
-        %>                                              <li>    ``'-svg'``
-        %>                                              <li>    ``'-png'``
-        %>                                              <li>    ``'-tif'``
-        %>                                              <li>    ``'-jpg'``
-        %>                                              <li>    ``'-gif'``
-        %>                                              <li>    ``'-bmp'``
-        %>                                          </ol>
-        %>
-        %>                                          Multiple formats can be specified, without restriction.<br>
-        %>                                          For example:
+        %>                                      <li>    ``"-a1, -a2, -a3, -a4"``
         %>
-        %>                                          \code{.m}
+        %>                                              The input option indicating the amount of anti-aliasing (AA) to
+        %>                                              use for bitmap outputs, when GraphicsSmoothing is not available.<br>
+        %>                                              '-a1'=no AA; '-a4'=max. Default: 3 for HG1, 1 for HG2.<br>
         %>
-        %>                                              savefig('-jpg', '-pdf', '-png')
+        %>                                      <li>    ``"-<renderer>"``
         %>
-        %>                                          \endcode
-        %>
-        %>                                          Note that ``'-tif'`` and ``'-tiff'`` are equivalent.<br>
+        %>                                              The input option to force a particular renderer (painters, opengl or
+        %>                                              [in R2014a or older] zbuffer). Default value: opengl for bitmap
+        %>                                              formats or figures with patches and/or transparent annotations;
+        %>                                              painters for vector formats without patches/transparencies.<br>
         %>
-        %>                                  <li>    ``"-transparent"``
+        %>                                      <li>    ``"-<colorspace>"``
         %>
-        %>                                          The input option indicating that the figure background is to
-        %>                                          be made transparent (PNG, PDF, TIF, EPS, EMF formats only).<br>
-        %>                                          Specifying this option also activates ``"-noinvert"``.<br>
-        %>
-        %>                                  <li>    ``"-nocrop"``
+        %>                                              The input option indicating which colorspace color figures should
+        %>                                              be saved in: RGB (default), CMYK or gray. Usage example: '-gray'.<br>
+        %>                                              Note: CMYK is only supported in PDF, EPS and TIF formats.<br>
         %>
-        %>                                          The input option indicating that empty margins should not be cropped.<br>
+        %>                                      <li>    ``"-q<val>"``
         %>
-        %>                                  <li>    ``"-c[<val>,<val>,<val>,<val>]"``
+        %>                                              The input option to vary bitmap image quality (PDF, EPS, JPG formats only).<br>
+        %>                                              A larger val, in the range 0-100, produces higher quality and
+        %>                                              lower compression. val > 100 results in lossless compression.<br>
+        %>                                              Default: '-q95' for JPG, ghostscript prepress default for PDF,EPS.<br>
+        %>                                              Note: lossless compression can sometimes give a smaller file size
+        %>                                              than the default lossy compression, depending on the image type.<br>
         %>
-        %>                                          The input option indicating the crop amounts. It must be
-        %>                                          a 4-element vector of numeric values: ``[top, right, bottom, left]``
-        %>                                          where NaN/Inf indicates auto-cropping, 0 means no cropping, any
-        %>                                          other value means cropping in pixel amounts. e.g. ``'-c7,15,0,NaN'``
-        %>                                          Note that this option is not supported by SVG and EMF formats.<br>
+        %>                                      <li>    ``"-n<val>"``
         %>
-        %>                                  <li>    ``"-p<val>"``
+        %>                                              The input option to set minimum output image size (bitmap formats only).<br>
+        %>                                              The output size can be specified as a single value (for both rows
+        %>                                              & cols, e.g. ``-n200``) or comma-separated values (e.g. ``-n300,400``).<br>
+        %>                                              Use an Inf value to keep a dimension unchanged (e.g. ``-n50,inf``).<br>
+        %>                                              Use a NaN value to keep aspect ratio unchanged (e.g. ``-n50,nan``).<br>
         %>
-        %>                                          The input option to pad a border of width ``val`` to exported files,
-        %>                                          where ``val`` is either a relative size with respect to cropped image
-        %>                                          size (i.e. ``p = 0.01`` adds a ``1%`` border). For EPS & PDF formats,
-        %>                                          ``val`` can also be integer in units of ``1/72`` inch points (``abs(val) > 1``).<br>
-        %>                                          ``val`` can be positive (padding) or negative (extra cropping).<br>
-        %>                                          If used, the ``-nocrop`` flag will be ignored, i.e. the image will
-        %>                                          always be cropped and then padded. Default: ``0`` (i.e. no padding).<br>
-        %>                                          Note: this option is not supported by SVG and EMF formats.<br>
+        %>                                      <li>    ``"-x<val>"``
         %>
-        %>                                  <li>   ``"-m<val>"``
+        %>                                              The input option to set maximum output image size (bitmap formats only).<br>
+        %>                                              The output size can be specified as a single value (for both rows
+        %>                                              & cols, e.g. ``-x200``) or comma-separated values (e.g. ``-x300,400``).<br>
+        %>                                              Use an Inf value to keep a dimension unchanged (e.g. ``-x50,inf``).<br>
+        %>                                              Use a NaN value to keep aspect ratio unchanged (e.g. ``-x50,nan``).<br>
         %>
-        %>                                          The input option ``val`` indicates the factor to magnify the figure
-        %>                                          dimensions when generating bitmap outputs (does not affect vector formats).<br>
-        %>                                          Default: '-m1' (i.e. val=1). Note: val~=1 slows down savefig.<br>
+        %>                                      <li>    ``"-s<val>"``
         %>
-        %>                                  <li>    ``"-r<val>"``
+        %>                                              The input option to scale output image to specific size (bitmap formats only).<br>
+        %>                                              The fixed size can be specified as a single value (for rows=cols) or
+        %>                                              comma-separated values (e.g. ``-s300,400``). Each value can be a scalar
+        %>                                              integer (signifying pixels) or percentage (e.g. ``-s125%``). The scaling
+        %>                                              is done last, after any other cropping/rescaling due to other params.<br>
         %>
-        %>                                          The input option ``val`` indicates the resolution (in pixels per inch)
-        %>                                          to export bitmap and vector outputs, without changing dimensions of
-        %>                                          the on-screen figure. Default: '-r864' (for vector output only).<br>
-        %>                                          Note: -m option overides -r option for bitmap exports only.<br>
+        %>                                      <li>    ``"-append"``
         %>
-        %>                                  <li>    ``"-native"``
+        %>                                              The input option indicating that if the file already exists the figure is to
+        %>                                              be appended as a new page, instead of being overwritten (default).<br>
+        %>                                              PDF, TIF & GIF output formats only (multi-image GIF = animated).<br>
         %>
-        %>                                          The input option indicating that the output resolution (when
-        %>                                          outputting a bitmap format) should be such that the vertical
-        %>                                          resolution of the first suitable image found in the figure is
-        %>                                          at the native resolution of that image. To specify a particular
-        %>                                          image to use, give it the tag 'export_fig_native'.<br>
-        %>                                          Notes: This overrides any value set with the -m and -r options.<br>
-        %>                                          It also assumes that the image is displayed front-to-parallel
-        %>                                          with the screen. The output resolution is approximate and
-        %>                                          should not be relied upon. Anti-aliasing can have adverse
-        %>                                          effects on image quality (disable with the -a1 option).<br>
+        %>                                       <li>   ``"-bookmark"``
         %>
-        %>                                  <li>    ``"-a1, -a2, -a3, -a4"``
+        %>                                              The input option to indicate that a bookmark with the name of the
+        %>                                              figure is to be created in the output file (PDF format only).<br>
         %>
-        %>                                          The input option indicating the amount of anti-aliasing (AA) to
-        %>                                          use for bitmap outputs, when GraphicsSmoothing is not available.<br>
-        %>                                          '-a1'=no AA; '-a4'=max. Default: 3 for HG1, 1 for HG2.<br>
+        %>                                      <li>    ``"-clipboard"``
         %>
-        %>                                  <li>    ``"-<renderer>"``
+        %>                                              The input option to save output as an image on the system clipboard.<br>
         %>
-        %>                                          The input option to force a particular renderer (painters, opengl or
-        %>                                          [in R2014a or older] zbuffer). Default value: opengl for bitmap
-        %>                                          formats or figures with patches and/or transparent annotations;
-        %>                                          painters for vector formats without patches/transparencies.<br>
+        %>                                      <li>    ``"-clipboard<:format>"``
         %>
-        %>                                  <li>    ``"-<colorspace>"``
+        %>                                              The input copies to clipboard in the specified format:
+        %>                                              image (default), bitmap, emf, or pdf.<br>
+        %>                                              Notes that only ``-clipboard`` (or ``-clipboard:image``, which is the same)
+        %>                                              applies export_fig parameters such as cropping, padding etc.
+        %>                                              <ol>
+        %>                                                  <li>    ``-clipboard:image`` create a bitmap image using export_fig processing
+        %>                                                  <li>    ``-clipboard:bitmap`` create a bitmap image as-is (no auto-cropping etc.)
+        %>                                                  <li>    ``-clipboard:emf`` is vector format without auto-cropping; Windows-only.
+        %>                                                  <li>    ``-clipboard:pdf`` is vector format without cropping; not universally supported
+        %>                                              </ol>
         %>
-        %>                                          The input option indicating which colorspace color figures should
-        %>                                          be saved in: RGB (default), CMYK or gray. Usage example: '-gray'.<br>
-        %>                                          Note: CMYK is only supported in PDF, EPS and TIF formats.<br>
+        %>                                      <li>    ``"-d<gs_option>"``
         %>
-        %>                                  <li>    ``"-q<val>"``
+        %>                                              The input option to indicate a ghostscript setting. For example,
+        %>                                              ``-dMaxBitmap=0`` or ``-dNoOutputFonts`` (Ghostscript 9.15+).<br>
         %>
-        %>                                          The input option to vary bitmap image quality (PDF, EPS, JPG formats only).<br>
-        %>                                          A larger val, in the range 0-100, produces higher quality and
-        %>                                          lower compression. val > 100 results in lossless compression.<br>
-        %>                                          Default: '-q95' for JPG, ghostscript prepress default for PDF,EPS.<br>
-        %>                                          Note: lossless compression can sometimes give a smaller file size
-        %>                                          than the default lossy compression, depending on the image type.<br>
+        %>                                      <li>    ``"-depsc"``
         %>
-        %>                                  <li>    ``"-n<val>"``
+        %>                                              The input  option to use EPS level-3 rather than the default level-2 print
+        %>                                              device. This solves some bugs with MATLAB's default -depsc2 device
+        %>                                              such as discolored subplot lines on images (vector formats only).<br>
         %>
-        %>                                          The input option to set minimum output image size (bitmap formats only).<br>
-        %>                                          The output size can be specified as a single value (for both rows
-        %>                                          & cols, e.g. -n200) or comma-separated values (e.g. -n300,400).<br>
-        %>                                          Use an Inf value to keep a dimension unchanged (e.g. -n50,inf).<br>
-        %>                                          Use a NaN value to keep aspect ratio unchanged (e.g. -n50,nan).<br>
+        %>                                      <li>    ``"-metadata <metaDataInfo>"``
         %>
-        %>                                  <li>    ``"-x<val>"``
+        %>                                              The input adds the specified meta-data information to the
+        %>                                              exported file (PDF format only). metaDataInfo must be either a struct
+        %>                                              or a cell array with pairs of values: ``{'fieldName', fieldValue, ...}``.<br>
+        %>                                              Common metadata fields are Title, Author, Creator, Producer, Subject, Keywords.<br>
         %>
-        %>                                          The input option to set maximum output image size (bitmap formats only).<br>
-        %>                                          The output size can be specified as a single value (for both rows
-        %>                                          & cols, e.g. -x200) or comma-separated values (e.g. -x300,400).<br>
-        %>                                          Use an Inf value to keep a dimension unchanged (e.g. -x50,inf).<br>
-        %>                                          Use a NaN value to keep aspect ratio unchanged (e.g. -x50,nan).<br>
+        %>                                      <li>    ``"-nofontswap"``
         %>
-        %>                                  <li>    ``"-s<val>"``
+        %>                                              The input option to avoid font swapping. Font swapping is automatically
+        %>                                              done in vector formats (only): 11 standard MATLAB fonts are
+        %>                                              replaced by the original figure fonts. This option prevents this.<br>
         %>
-        %>                                          The input option to scale output image to specific size (bitmap formats only).
-        %>                                          The fixed size can be specified as a single value (for rows=cols) or
-        %>                                          comma-separated values (e.g. -s300,400). Each value can be a scalar
-        %>                                          integer (signifying pixels) or percentage (e.g. -s125%). The scaling
-        %>                                          is done last, after any other cropping/rescaling due to other params.<br>
+        %>                                      <li>    ``"-font_space <char>"``
         %>
-        %>                                  <li>    ``"-append"``
+        %>                                              The input option to set a spacer character for font-names that
+        %>                                              contain spaces, used by EPS/PDF. Default: ''<br>
         %>
-        %>                                          The input option indicating that if the file already exists the figure is to
-        %>                                          be appended as a new page, instead of being overwritten (default).<br>
-        %>                                          PDF, TIF & GIF output formats only (multi-image GIF = animated).<br>
+        %>                                      <li>    ``"-linecaps"``
         %>
-        %>                                   <li>   ``"-bookmark"``
+        %>                                              The input option to create rounded line-caps (vector formats only).<br>
         %>
-        %>                                          The input option to indicate that a bookmark with the name of the
-        %>                                          figure is to be created in the output file (PDF format only).<br>
+        %>                                      <li>    ``"-noinvert"``
         %>
-        %>                                  <li>    ``"-clipboard"``
+        %>                                              The input option to avoid setting figure's InvertHardcopy property to
+        %>                                              'off' during output (this solves some problems of empty outputs).<br>
         %>
-        %>                                          The input option to save output as an image on the system clipboard.<br>
+        %>                                      <li>    ``"-preserve_size"``
         %>
-        %>                                  <li>    ``"-clipboard<:format>"``
+        %>                                              The input option to preserve the figure's PaperSize property in output
+        %>                                              file (PDF/EPS formats only; default is to not preserve it).<br>
         %>
-        %>                                          The input copies to clipboard in the specified format:
-        %>                                          image (default), bitmap, emf, or pdf.<br>
-        %>                                          Notes that only ``-clipboard`` (or ``-clipboard:image``, which is the same)
-        %>                                          applies export_fig parameters such as cropping, padding etc.
-        %>                                          <ol>
-        %>                                              <li>    ``-clipboard:image`` create a bitmap image using export_fig processing
-        %>                                              <li>    ``-clipboard:bitmap`` create a bitmap image as-is (no auto-cropping etc.)
-        %>                                              <li>    ``-clipboard:emf`` is vector format without auto-cropping; Windows-only.
-        %>                                              <li>    ``-clipboard:pdf`` is vector format without cropping; not universally supported
-        %>                                          </ol>
+        %>                                      <li>    ``"-options <optionsStruct>"``
         %>
-        %>                                  <li>    ``"-d<gs_option>"``
+        %>                                              The input format-specific parameters as defined in MATLAB's
+        %>                                              documentation of the ``imwrite`` function, contained in a struct under
+        %>                                              the format name. For example to specify the JPG Comment parameter,
+        %>                                              pass a struct such as this: ``options.JPG.Comment='abc'``.<br>
+        %>                                              Similarly, ``options.PNG.BitDepth = 4``.<br>
+        %>                                              Only used by PNG, TIF, JPG, GIF output formats.<br>
+        %>                                              Options can also be specified as a cell array of name-value pairs,
+        %>                                              e.g. ``{'BitDepth', 4, 'Author', 'Yair'}``. These options will be used
+        %>                                              by all supported output formats of the [pm.vis.figure.savefig](@ref savefig) function.<br>
         %>
-        %>                                          The input option to indicate a ghostscript setting. For example,
-        %>                                          ``-dMaxBitmap=0`` or ``-dNoOutputFonts`` (Ghostscript 9.15+).<br>
+        %>                                      <li>    ``"-silent"``
         %>
-        %>                                  <li>    ``"-depsc"``
+        %>                                              The input option to avoid various warning and informational messages,
+        %>                                              such as version update checks, transparency or renderer issues, etc.<br>
         %>
-        %>                                          The input  option to use EPS level-3 rather than the default level-2 print
-        %>                                          device. This solves some bugs with MATLAB's default -depsc2 device
-        %>                                          such as discolored subplot lines on images (vector formats only).<br>
+        %>                                      <li>    ``"-notify"``
         %>
-        %>                                  <li>    ``"-metadata <metaDataInfo>"``
+        %>                                              The input option to notify the user when export is done, in both a console
+        %>                                              message and a popup dialog (allow opening the exported file/folder).<br>
         %>
-        %>                                          The input adds the specified meta-data information to the
-        %>                                          exported file (PDF format only). metaDataInfo must be either a struct
-        %>                                          or a cell array with pairs of values: ``{'fieldName', fieldValue, ...}``.<br>
-        %>                                          Common metadata fields: Title,Author,Creator,Producer,Subject,Keywords<br>
+        %>                                      <li>    ``"-regexprep <old> <new>"``
         %>
-        %>                                  <li>    ``"-nofontswap"``
+        %>                                              The input replaces all occurrences of <old> (a regular expression
+        %>                                              string or array of strings; case-sensitive), with the corresponding
+        %>                                              new string(s), in EPS/PDF files (only). See regexp function's doc.<br>
+        %>                                              Warning: invalid replacement can make your EPS/PDF file unreadable!<br>
         %>
-        %>                                          The input option to avoid font swapping. Font swapping is automatically
-        %>                                          done in vector formats (only): 11 standard MATLAB fonts are
-        %>                                          replaced by the original figure fonts. This option prevents this.<br>
+        %>                                      <li>    ``"-toolbar"``
         %>
-        %>                                  <li>    ``"-font_space <char>"``
+        %>                                              The input adds an interactive export button to the figure's toolbar<br>
         %>
-        %>                                          The input option to set a spacer character for font-names that
-        %>                                          contain spaces, used by EPS/PDF. Default: ''<br>
+        %>                                      <li>    ``"-menubar"``
         %>
-        %>                                  <li>    ``"-linecaps"``
+        %>                                              The input adds an interactive export menu to the figure's menubar<br>
         %>
-        %>                                          The input option to create rounded line-caps (vector formats only).<br>
+        %>                                      <li>    ``"-contextmenu"``
         %>
-        %>                                  <li>    ``"-noinvert"``
+        %>                                              The input adds interactive export menu to figure context-menu (right-click)<br>
         %>
-        %>                                          The input option to avoid setting figure's InvertHardcopy property to
-        %>                                          'off' during output (this solves some problems of empty outputs).<br>
+        %>                                      <li>    ``"handle"``<br>
         %>
-        %>                                  <li>    ``"-preserve_size"``
+        %>                                              The input  handle of the figure, axes or uipanels (can be an array of handles
+        %>                                              but all the objects must be in the same figure) to be exported.<br>
+        %>                                              The default is ``gcf`` (handle of current figure).<br>
         %>
-        %>                                          The input option to preserve the figure's PaperSize property in output
-        %>                                          file (PDF/EPS formats only; default is to not preserve it).<br>
+        %>                                      <li>    ``"figName"``
         %>
-        %>                                  <li>    ``"-options <optionsStruct>"``
-        %>
-        %>                                          The input format-specific parameters as defined in MATLAB's
-        %>                                          documentation of the ``imwrite`` function, contained in a struct under
-        %>                                          the format name. For example to specify the JPG Comment parameter,
-        %>                                          pass a struct such as this: ``options.JPG.Comment='abc'``.<br>
-        %>                                          Similarly, ``options.PNG.BitDepth = 4``.<br>
-        %>                                          Only used by PNG, TIF, JPG, GIF output formats.<br>
-        %>                                          Options can also be specified as a cell array of name-value pairs,
-        %>                                          e.g. ``{'BitDepth', 4, 'Author', 'Yair'}``. These options will be used
-        %>                                          by all supported output formats of the [pm.vis.figure.savefig](@ref savefig) function.<br>
-        %>
-        %>                                  <li>    ``"-silent"``
-        %>
-        %>                                          The input option to avoid various warning and informational messages,
-        %>                                          such as version update checks, transparency or renderer issues, etc.<br>
-        %>
-        %>                                  <li>    ``"-notify"``
-        %>
-        %>                                          The input option to notify the user when export is done, in both a console
-        %>                                          message and a popup dialog (allow opening the exported file/folder).<br>
-        %>
-        %>                                  <li>    ``"-regexprep <old> <new>"``
-        %>
-        %>                                          The input replaces all occurrences of <old> (a regular expression
-        %>                                          string or array of strings; case-sensitive), with the corresponding
-        %>                                          new string(s), in EPS/PDF files (only). See regexp function's doc.<br>
-        %>                                          Warning: invalid replacement can make your EPS/PDF file unreadable!<br>
-        %>
-        %>                                  <li>    ``"-toolbar"``
-        %>
-        %>                                          The input adds an interactive export button to the figure's toolbar<br>
-        %>
-        %>                                  <li>    ``"-menubar"``
-        %>
-        %>                                          The input adds an interactive export menu to the figure's menubar<br>
-        %>
-        %>                                  <li>    ``"-contextmenu"``
-        %>
-        %>                                          The input adds interactive export menu to figure context-menu (right-click)<br>
-        %>
-        %>                                  <li>    ``"handle"``<br>
-        %>
-        %>                                          The input  handle of the figure, axes or uipanels (can be an array of handles
-        %>                                          but all the objects must be in the same figure) to be exported.<br>
-        %>                                          The default is ``gcf`` (handle of current figure).<br>
-        %>
-        %>                                  <li>    ``"figName"``
-        %>
-        %>                                          The input name (title) of the figure to export (e.g. ``'Figure 1'`` or ``'My fig'``).<br>
-        %>                                          Overridden by handle (if specified)<br>
-        %>                                          The default is the current figure.<br>
-        %>                              </ol>
+        %>                                              The input name (title) of the figure to export (e.g. ``'Figure 1'`` or ``'My fig'``).<br>
+        %>                                              Overridden by handle (if specified)<br>
+        %>                                              The default is the current figure.<br>
+        %>                                  </ol>
         %>
         %>  \return
-        %>  ``imageData``       :   The output image cube of type ``uint8`` of
-        %>                          shape ``[M, N, C]`` containing the exported figure data.<br>
-        %>  ``alpha``           :   The output image matrix of shape ``[M, N]`` of alpha-matte
-        %>                          values in the range ``[0, 1]`` for the case of transparent background.<br>
+        %>  ``imageData``           :   The output image cube of type ``uint8`` of
+        %>                              shape ``[M, N, C]`` containing the exported figure data.<br>
+        %>  ``alpha``               :   The output image matrix of shape ``[M, N]`` of alpha-matte
+        %>                              values in the range ``[0, 1]`` for the case of transparent background.<br>
         %>
         %>  \interface{savefig}
         %>  \code{.m}
@@ -627,7 +685,6 @@ classdef Figure < pm.matlab.Handle
         %>  \endcode
         %>
         %>  \example{savefig}
-        %>
         %>  \code{.m}
         %>      f = pm.vis.figure.Figure();
         %>      f.savefig(); % export the current figure with the default name.
@@ -666,7 +723,9 @@ classdef Figure < pm.matlab.Handle
                 end
             end
 
+            %%%%
             %%%% Check the consistency of the file name.
+            %%%%
 
             if ~pm.introspection.istype(file, "string", 1)
                 help("pm.vis.figure.Figure");
@@ -684,7 +743,11 @@ classdef Figure < pm.matlab.Handle
             %%%% Focus on the target figure to export.
             %%%%
 
-            set(0, "CurrentFigure", self.fout.figure);
+            if  isfield(self.fout, "figure")
+                set(0, "CurrentFigure", self.fout.figure);
+            else
+                set(0, "CurrentFigure", gcf);
+            end
 
             %%%%
             %%%% Ensure transparency if figure must be transparent.
