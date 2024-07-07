@@ -9,7 +9,7 @@
 %>  If no figure exists, MATLAB will create one.<br>
 %>
 %>  \param[in]  nell    :   The input scalar MATLAB integer representing
-%>                          the number of rows of the output colormap matrix.<br>
+%>                          the number of elements (rows) of the output colormap matrix.<br>
 %>                          (**optional**, default = ``size(get(gcf, 'colormap'), 1)``)
 %>
 %>  \return

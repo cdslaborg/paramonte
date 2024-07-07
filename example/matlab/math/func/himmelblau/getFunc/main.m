@@ -16,5 +16,5 @@ for dim = 2 : 3
     ylabel("Y");
     cbar = colorbar();
     ylabel(cbar, "Function Value")
-    pm.vis.figure.savefig("himmelblau.getFunc." + string(dim) + "d.png", "-m4");
+    pm.vis.figure.savefig("himmelblau.getFunc." + string(dim) + "d.png", "-m3");
 end

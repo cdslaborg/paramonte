@@ -4,7 +4,7 @@ addpath('../../../../'); % Add the ParaMonte library root directory to the searc
 figure("color", "white"); hold on; box on;
 bcrd = pm.geom.ell2.getBorders();
 h = plot(bcrd(:, 1), bcrd(:, 2), '-');
-pm.vis.figure.savefig("getBorders.2d.png", "-m4");
+pm.vis.figure.savefig("getBorders.2d.png", "-m3");
 
 npnt = 50;
 figure("color", "white"); hold on; box on; view(3);
@@ -13,4 +13,4 @@ for iell = 1 : 2 : size(bcrd, 2) / 3
     icol = (iell - 1) * 3 + 1;
     plot3(bcrd(:, icol), bcrd(:, icol + 1), bcrd(:, icol + 2), '-');
 end
-pm.vis.figure.savefig("getBorders.3d.png", "-m4");
+pm.vis.figure.savefig("getBorders.3d.png", "-m3");

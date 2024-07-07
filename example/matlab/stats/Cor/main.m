@@ -27,5 +27,5 @@ pm.matlab.show('c = pm.stats.Cor(df, "kendall"); c.val')
 pm.matlab.show()
 pm.matlab.show('p = pm.vis.plot.Heatmap(c.val); p.make("precision", 2); p.subplot.setColorLim();')
                 p = pm.vis.plot.Heatmap(c.val); p.make("precision", 2); p.subplot.setColorLim();
-pm.matlab.show('p.savefig("Cor.unifrnd.png", "-m4");')
-                p.savefig("Cor.unifrnd.png", "-m4");
+pm.matlab.show('p.savefig("Cor.unifrnd.png", "-m3");')
+                p.savefig("Cor.unifrnd.png", "-m3");

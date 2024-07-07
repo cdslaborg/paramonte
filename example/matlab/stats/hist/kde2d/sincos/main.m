@@ -18,4 +18,4 @@ surf(meshx, meshy, density, 'LineStyle', 'none');
 %colorbar();
 %view([0, 70]); hold on; alpha(.8);
 %plot(data(:, 1), data(:, 2), 'w.', 'MarkerSize', 5);
-pm.vis.figure.savefig("pm.stats.hist.kde2d.sincos.png", "-m4");
+pm.vis.figure.savefig("pm.stats.hist.kde2d.sincos.png", "-m3");

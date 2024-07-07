@@ -1,9 +1,8 @@
 %>  \brief
 %>  Return the RGB triplet corresponding to the input color name ``cname``.<br>
 %>
-%>  \note
-%>  The RGB names and triplets are derived from:<br>
-%>  http://en.wikipedia.org/wiki/List_of_colors colormap matrix.<br>
+%>  \details
+%>  The RGB names and triplets are derived from http://en.wikipedia.org/wiki/List_of_colors colormap matrix.<br>
 %>
 %>  \param[in]  cname   :   The input scalar MATLAB string or char vector
 %>                          containing the color name whose RGB triplet is to be returned.<br>
@@ -24,16 +23,15 @@
 %>  \interface{rgb}
 %>  \code{.m}
 %>
-%>      triplet = pm.vis.color.rgb()
-%>      triplet = pm.vis.color.rgb([])
+%>      triplet = pm.vis.color.rgb() % retrieve all possible input color names and the corresponding RGBs.
 %>      triplet = pm.vis.color.rgb(cname)
 %>
 %>  \endcode
 %>
 %>  \example{rgb}
-%>      pm.vis.color.rgb()
-%>      pm.vis.color.rgb([])
-%>      pm.vis.color.rgb("amber")
+%>  \include{lineno} example/vis/color/rgb/main.m
+%>  \output{rgb}
+%>  \include{lineno} example/vis/color/rgb/main.out.m
 %>
 %>  \final{rgb}
 %>

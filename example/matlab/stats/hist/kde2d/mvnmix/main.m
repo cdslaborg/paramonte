@@ -15,4 +15,4 @@ data = [ randn(500, 2) ...
 figure("color", "white");
 contour3(meshx, meshy, density, 50); hold on;
 plot(data(:, 1), data(:, 2), 'r.', 'MarkerSize', 5);
-pm.vis.figure.savefig("pm.stats.hist.kde2d.mvnmix.png", "-m4");
+pm.vis.figure.savefig("pm.stats.hist.kde2d.mvnmix.png", "-m3");

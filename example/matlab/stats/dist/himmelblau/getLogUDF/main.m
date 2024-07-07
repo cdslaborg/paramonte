@@ -18,5 +18,5 @@ for dim = 2 : 3
     cbar = colorbar();
     ylabel(cbar, "Function Value")
     set(gca, "fontsize", 13);
-    pm.vis.figure.savefig("himmelblau.getLogUDF." + string(dim) + "d.png", "-m4");
+    pm.vis.figure.savefig("himmelblau.getLogUDF." + string(dim) + "d.png", "-m3");
 end

@@ -1,65 +1,88 @@
 %>  \brief
 %>  This is the abstract class for generating instances of objects
 %>  that contain the specifications of various types of Figures.<br>
+%>
+%>  \details
 %>  This is a generic class for generating figures containing
-%>  arbitrary number of subplots (to be added by the subclasses).
+%>  arbitrary number of subplots (to be added by the subclasses).<br>
+%>
+%>  \note
+%>  See the list of class attributes below,
+%>  also those of the superclass [pm.matlab.Handle](@ref Handle).<br>
+%>
+%>  \see
+%>  [pm.vis.cascade](@ref \psldir/main/+pm/+vis/+cascade)<br>
+%>  [pm.vis.subplot](@ref \psldir/main/+pm/+vis/+subplot)<br>
+%>  [pm.vis.figure](@ref \psldir/main/+pm/+vis/+figure)<br>
+%>  [pm.vis.corner](@ref \psldir/main/+pm/+vis/+corner)<br>
+%>  [pm.vis.plot](@ref \psldir/main/+pm/+vis/+plot)<br>
+%>  [pm.vis.tile](@ref \psldir/main/+pm/+vis/+tile)<br>
+%>
+%>  \final
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef Figure < pm.matlab.Handle
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     properties(Access = public)
-        %>  \brief
-        %>  A MATLAB ``struct`` whose fields are the outputs of
-        %>                          various plotting tools used to make the current axis.
         %>
-        %>  \param[in]  figure      :   A MATLAB ``struct`` whose fields and their values will
-        %>                              be passed as keyword arguments to the MATLAB intrinsic ``figure``.
-        %>                              The following are the default components of ``figure``:
+        %>  ``figure``
         %>
-        %>  \param[in]  name        :   Name of the figure, specified as a character vector or a string scalar.
+        %>  A MATLAB ``struct`` whose fields and their values will
+        %>  be passed as keyword arguments to the MATLAB intrinsic ``figure``.<br>
+        %>  The following are the default components of ``figure``:<br>
         %>
-        %>  \param[in]  color       :   Background color, specified as an RGB triplet, a
-        %>                              hexadecimal color code, a color name, or a short name.
-        %>                              If you specify ``'none'``, the background color appears black on screen,
-        %>                              but if you print the figure, the background prints as though the figure
-        %>                              window is transparent.
-        %>
-        %>  \param[in]  fileName    :   Character vector or string scalar containing the file name for
-        %>                              saving the figure specified as a character vector or a string scalar.
-        %>
-        %>  \param[in]  position    :   Location and size of the drawable area, specified as
-        %>                              a vector of the form ``[left bottom width height]``.
-        %>                              This area excludes the figure borders, title bar, menu bar, and tool bars.
-        %>
-        %>  \param[in]  units       :   Units of measurement, specified as one of the following values:<br>
-        %>                                  'pixels' | 'normalized' | 'inches' | 'centimeters' | 'points' | 'characters'<br>
-        %>                              The MATLAB documentation of the intrinsic ``figure``
-        %>                              for the meaning of the options.
-        %>
-        %>  \param[in]  others      :   See the acceptable keyword arguments of the MATLAB intrinsic ``figure()``.<br>
-        %>                              Example usage:<br>
-        %>                                  self.figure.units = pixels;
-        %>                                  self.figure.color = "none";
+        %>  <ol>
+        %>      <li>    ``name``        :   Name of the figure, specified as a character vector or a string scalar.<br>
+        %>      <li>    ``color``       :   Background color, specified as an RGB triplet, a hexadecimal
+        %>                                  color code, a color name, or a short name.<br>
+        %>                                  If you specify ``'none'``, the background color appears black on screen,
+        %>                                  but if you print the figure, the background prints as though the figure
+        %>                                  window is transparent.<br>
+        %>      <li>    ``fileName``    :   Character vector or string scalar containing the file name for
+        %>                                  saving the figure specified as a character vector or a string scalar.<br>
+        %>      <li>    ``position``    :   Location and size of the drawable area, specified as
+        %>                                  a vector of the form ``[left bottom width height]``.<br>
+        %>                                  This area excludes the figure borders, title bar, menu bar, and tool bars.<br>
+        %>      <li>    ``units``       :   Units of measurement, specified as one of the following values:<br>
+        %>                                  ``'pixels'`` | ``'normalized'`` | ``'inches'`` | ``'centimeters'`` | ``'points'`` | ``'characters'``.<br>
+        %>                                  The MATLAB documentation of the intrinsic ``figure`` for the meaning of the options.<br>
+        %>      <li>    ``others``      :   See the acceptable keyword arguments of the MATLAB intrinsic ``figure()``.<br>
+        %>  </ol>
         %>
         %>  \warning
-        %>  Keep in mind that MATLAB keyword arguments are case-INsensitive.
-        %>  Hence, ensure you do not add the same keyword as multiple different fields.
+        %>  Keep in mind that MATLAB keyword arguments are case-INsensitive.<br>
+        %>  Hence, ensure you do not add the same keyword as multiple different fields.<br>
         %>  For example, ``figure.color`` and ``figure.Color`` are the same,
-        %>  and only one of the two will be processed.
+        %>  and only one of the two will be processed.<br>
+        %>
+        %>  \example{colormap}
+        %>  \code{.m}
+        %>
+        %>      self.figure.units = pixels;
+        %>      self.figure.color = "none";
+        %>
+        %>  \endcode
+        %>  <br>
         %>
         figure = struct();
         %>
-        %>  \param[in]  fout    :   A MATLAB ``struct`` whose fields are the outputs of
-        %>                          various plotting tools used to make the current axis.
+        %>  ``fout``
+        %>
+        %>  A MATLAB ``struct`` whose fields are the outputs of
+        %>  various plotting tools used to make the current axis.<br>
         %>
         fout = struct();
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    properties(Access = protected, Hidden)
-        isdryrun = true; % always false after the first make() method call or reset().
-    end
+    %properties(Access = protected, Hidden)
+    %    isdryrun = true; % always false after the first make() method call or reset().
+    %end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -67,15 +90,20 @@ classdef Figure < pm.matlab.Handle
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        %>  \brief
+        %>  Construct and return an object of class [pm.vis.figure.Figure](@ref Figure).<br>
         %>
-        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
+        %>  \details
+        %>  This is the custom constructor of the class [pm.vis.figure.Figure](@ref Figure).<br>
+        %>
+        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
-        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
         %>                              Note that all of these property-value pairs can be also directly set via the
-        %>                              parent object attributes, before calling the ``make()`` method.
+        %>                              parent object attributes, before calling the ``make()`` method.<br>
         %>
         %>  \return
-        %>  ``self``                :   The output scalar object of class [pm.vis.figure.Figure](@ref Figure).
+        %>  ``self``                :   The output scalar object of class [pm.vis.figure.Figure](@ref Figure).<br>
         %>
         %>  \interface{Figure}
         %>  \code{.m}
@@ -84,13 +112,11 @@ classdef Figure < pm.matlab.Handle
         %>
         %>  \endcode
         %>
-        %>  \note
-        %>  See the list of class attributes below.
-        %>
         %>  \final{Figure}
         %>
         %>  \author
         %>  \JoshuaOsborne, May 21 2024, 12:06 AM, University of Texas at Arlington<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = Figure(varargin)
             self.figure = struct();
             self.reset(varargin{:});

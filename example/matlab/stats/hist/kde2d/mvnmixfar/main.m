@@ -17,4 +17,4 @@ figure("color", "white");
 contour3(meshx, meshy, density, 50);
 %colormap("hot"); hold on; alpha(.8); view([0, 60]);
 %plot(data(:, 1), data(:, 2), 'w.', 'MarkerSize', 5);
-pm.vis.figure.savefig("pm.stats.hist.kde2d.mvnmixfar.png", "-m4");
+pm.vis.figure.savefig("pm.stats.hist.kde2d.mvnmixfar.png", "-m3");

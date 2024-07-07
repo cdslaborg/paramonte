@@ -13,12 +13,12 @@ head(chain.df)
 
 p = pm.vis.plot.Scatter(chain.df, "coly", "proposalAdaptation");
 p.make("axes", {"yscale", "log"});
-p.savefig("readChainMarkov.proposalAdaptation.png", "-m4");
+p.savefig("readChainMarkov.proposalAdaptation.png", "-m3");
 
 p = pm.vis.plot.LineScatter(chain.df, "colx", chain.sampleLogFuncColIndex + 1, "coly", chain.sampleLogFuncColIndex + 2);
 p.make("colc", "sampleLogFunc");
-p.savefig("readChainMarkov.domain.png", "-m4");
+p.savefig("readChainMarkov.domain.png", "-m3");
 
 p = pm.vis.tile.Line(chain.df, "tileshape", [2, 1]);
 p.make("coly", chain.sampleLogFuncColIndex + [1 : 2], "colc", "sampleLogFunc");
-p.savefig("readChainMarkov.traceplot.png", "-m4");
+p.savefig("readChainMarkov.traceplot.png", "-m3");
