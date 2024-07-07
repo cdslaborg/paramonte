@@ -239,6 +239,7 @@ classdef Paradram < pm.sampling.Sampler
         %>
         %>  \example{himmelblau}
         %>  \include{lineno} example/sampling/Paradram/himmelblau/main.m
+        %>  \output{himmelblau}
         %>  \include{lineno} example/sampling/Paradram/himmelblau/main.out.m
         %>  \vis{himmelblau}
         %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.domain.png width=700

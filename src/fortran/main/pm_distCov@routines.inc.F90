@@ -34,6 +34,10 @@
             call setCovRand(rng, rand, scale)
         else
             call setCovRand(rng, rand)
+            ! Ensure all diagonals are 1.
+            do jdim = 1, ndim
+                rand(jdim, jdim) = ONE
+            end do
         end if
 #elif   S1_ENABLED
         call setCovRand(rng, rand, scale)
@@ -87,7 +91,7 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         real(TKG) :: normfac
-        real(TKG), parameter :: EPS = 2 * sqrt(epsilon(0._TKG))
+        !real(TKG), parameter :: EPS = 2 * sqrt(epsilon(0._TKG))
         ! Define the output kind.
 #if     CK_ENABLED
 #define TYPE_OF_RAND complex(TKG)
@@ -123,25 +127,32 @@
         if (ndim < 1_IK) return
         do idim = 1, ndim
             do
-                call setUnifRand(rng, upper(1 : ndim, idim), LB, UB)
-                normfac = real(sqrt(dot_product(upper(1 : ndim, idim), upper(1 : ndim, idim))), TKG) ! \todo: The performance of this expression can be improved by replacing `dot_product` with `absq()`.
+                call setUnifRand(rng, upper(1 : idim, idim), LB, UB)
+                normfac = real(sqrt(dot_product(upper(1 : idim, idim), upper(1 : idim, idim))), TKG) ! \todo: The performance of this expression can be improved by replacing `dot_product` with `absq()`.
                 if (ZERO == normfac) cycle
                 exit
             end do
             normfac = 1._TKG / normfac
-            upper(1 : ndim, idim) = upper(1 : ndim, idim) * normfac
+            upper(1 : idim, idim) = upper(1 : idim, idim) * normfac
         end do
         rand = matmul(transpose(GET_CONJG(upper)), upper)
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! Ensure the diagonals are all pure 1, free from numerical round-off errors.
-        do jdim = 1, ndim
-            rand(jdim, jdim) = ONE
-        end do
+        ! Perhaps not really essential as it is guaranteed to be 1, at least theoretically.
+        ! This is now done only within `getCovRand` above.
+        !do jdim = 1, ndim
+        !    rand(jdim, jdim) = ONE
+        !end do
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
         !block
         !   use pm_io
         !   call disp%show("rand")
         !   call disp%show( rand )
         !end block
         !call setCor(rand, uppDia, rand, uppDia)
+
         ! Rescale.
 #if     S0_ENABLED || S1_ENABLED
         do jdim = 1, ndim

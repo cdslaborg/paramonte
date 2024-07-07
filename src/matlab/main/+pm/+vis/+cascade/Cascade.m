@@ -84,12 +84,11 @@ classdef Cascade < pm.matlab.Handle
         %>  of the ``plot`` component of the parent object.<br>
         %>
         %>  \example{Cascade}
-        %>  \code{.m}
-        %>
-        %>      cv = pm.vis.cascade.Cascade(pm.vis.plot.Line(rand(100, 10)));
-        %>      cv.make("coly", 1:3)
-        %>
-        %>  \endcode
+        %>  \include{lineno} example/vis/cascade/Cascade/main.m
+        %>  \vis{Cascade}
+        %>  \image html example/vis/cascade/Cascade/Cascade.window.1.png width=700
+        %>  \image html example/vis/cascade/Cascade/Cascade.window.2.png width=700
+        %>  \image html example/vis/cascade/Cascade/Cascade.window.3.png width=700
         %>
         %>  \final{Cascade}
         %>
@@ -126,6 +125,7 @@ classdef Cascade < pm.matlab.Handle
         %>  \code{.m}
         %>
         %>      pm.vis.cascade.Cascade.reset() % reset the plot to the default settings.
+        %>      pm.vis.cascade.Cascade.reset(varargin) % reset the plot to the default settings and to those specified via ``varargin``.
         %>
         %>  \endcode
         %>
@@ -187,13 +187,12 @@ classdef Cascade < pm.matlab.Handle
         %>  The input ``varargin`` can also contain the components
         %>  of the ``template`` component of the parent object.<br>
         %>
-        %>  \example{make}
-        %>  \code{.m}
-        %>
-        %>      cv = pm.vis.cascade.Cascade(pm.vis.plot.Line(rand(100, 10)));
-        %>      cv.make("coly", 1:3)
-        %>
-        %>  \endcode
+        %>  \example{Cascade}
+        %>  \include{lineno} example/vis/cascade/Cascade/main.m
+        %>  \vis{Cascade}
+        %>  \image html example/vis/cascade/Cascade/Cascade.window.1.png width=700
+        %>  \image html example/vis/cascade/Cascade/Cascade.window.2.png width=700
+        %>  \image html example/vis/cascade/Cascade/Cascade.window.3.png width=700
         %>
         %>  \final{make}
         %>
@@ -305,17 +304,16 @@ classdef Cascade < pm.matlab.Handle
         %>
         %>      c.savefigs();
         %>      c.savefigs(files);
-        %>      c.savefigs(files, varargin{:});
-        %>  \endcode
-        %>
-        %>  \example{savefigs}
-        %>  \code{.m}
-        %>
-        %>      cv = pm.vis.cascade.Cascade(pm.vis.plot.Line(rand(100, 10)));
-        %>      cv.make("coly", 1:3)
-        %>      cv.savefigs([], "-m4 -transparent"); % export the figures with the default names.
+        %>      c.savefigs(files, varargin);
         %>
         %>  \endcode
+        %>
+        %>  \example{Cascade}
+        %>  \include{lineno} example/vis/cascade/Cascade/main.m
+        %>  \vis{Cascade}
+        %>  \image html example/vis/cascade/Cascade/Cascade.window.1.png width=700
+        %>  \image html example/vis/cascade/Cascade/Cascade.window.2.png width=700
+        %>  \image html example/vis/cascade/Cascade/Cascade.window.3.png width=700
         %>
         %>  \final{savefigs}
         %>

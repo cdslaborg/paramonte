@@ -3,14 +3,8 @@ addpath('../../../'); % Add the ParaMonte library root directory to the search p
 
 % Make a positive-definite random matrix.
 pm.matlab.show()
-pm.matlab.show('randmat = diag(unifrnd(0, .9, 5, 1), 0);')
-                randmat = diag(unifrnd(0, .9, 5, 1), 0);
-pm.matlab.show('randmat(randmat==0) = unifrnd(-.9, .9, numel(randmat) - size(randmat, 1), 1);')
-                randmat(randmat==0) = unifrnd(-.9, .9, numel(randmat) - size(randmat, 1), 1);
-pm.matlab.show("covmat = corrcov(tril(randmat)' * tril(randmat))")
-                covmat = corrcov(tril(randmat)' * tril(randmat))
-pm.matlab.show("cholow = chol(covmat, 'lower');")
-                cholow = chol(covmat, 'lower');
+pm.matlab.show("cholow = chol(pm.stats.dist.cov.getRand(5), 'lower');")
+                cholow = chol(pm.stats.dist.cov.getRand(5), 'lower');
 pm.matlab.show("df = pm.stats.dist.mvn.getRand(zeros(length(cholow), 1), cholow, 5000)';")
                 df = pm.stats.dist.mvn.getRand(zeros(length(cholow), 1), cholow, 5000)';
 
