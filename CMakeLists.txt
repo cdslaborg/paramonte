@@ -1749,7 +1749,7 @@ if (TRUE)
                         "${pmattn}      - from: ${origin}\n"
                         "${pmattn}      -   to: ${destin}")
         add_custom_target(copyFileAuxilVersion COMMAND ${CMAKE_COMMAND} -E copy ${origin} "${destin}")
-        add_dependencies(package copyFileAuxilVersion)
+        add_dependencies(copyFileAuxilVersion copyFileVersionLang)
 
     endif()
 
