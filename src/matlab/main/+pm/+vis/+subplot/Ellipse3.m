@@ -23,62 +23,80 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
         %>
         dims = [];
         %>
-        %>  \param  ellindex    :   The vector of MATLAB whole numbers representing the ellindex of the 2D
-        %>                          ellipsoids to display, represented by the input ``gramian`` and ``center``.<br>
-        %>                          The specified ellindex will serve as the visualization values on the z-axis.<br>
-        %>                          The default is ``ellindex = pm.array.logrange(start = 1, stop = nell, count = 75);``,
-        %>                          where ``nell`` represents the number of ellipsoids to visualize.<br>
+        %>  ``ellindex``
+        %>
+        %>  The vector of MATLAB whole numbers representing the ellindex of the 2D
+        %>  ellipsoids to display, represented by the input ``gramian`` and ``center``.<br>
+        %>  The specified ellindex will serve as the visualization values on the z-axis.<br>
+        %>  The default is ``ellindex = pm.array.logrange(start = 1, stop = nell, count = 75);``,
+        %>  where ``nell`` represents the number of ellipsoids to visualize.<br>
         %>
         ellindex = [];
         %>
-        %>  \param  gramian     :   A scalar object of class [pm.data.DataRef](@ref DataRef)
-        %>                          containing the user-specified Gramian data to visualize.<br>
+        %>  ``gramian``
+        %>
+        %>  A scalar object of class [pm.data.DataRef](@ref DataRef)
+        %>  containing the user-specified Gramian data to visualize.<br>
         %>
         gramian = [];
         %>
-        %>  \param  center      :   A scalar object of class [pm.data.DataRef](@ref DataRef)
-        %>                          containing the user-specified center data to visualize.<br>
+        %>  ``center``
+        %>
+        %>  A scalar object of class [pm.data.DataRef](@ref DataRef)
+        %>  containing the user-specified center data to visualize.<br>
         %>
         center = [];
         %>
-        %>  \param  zval        :   A scalar object of class [pm.data.DataRef](@ref DataRef)
-        %>                          containing the user-specified z-axis data to visualize.<br>
+        %>  ``zval``
+        %>
+        %>  A scalar object of class [pm.data.DataRef](@ref DataRef)
+        %>  containing the user-specified z-axis data to visualize.<br>
         %>
         zval = [];
         %>
-        %>  \param  cval        :   A scalar object of class [pm.data.DataRef](@ref DataRef)
-        %>                          containing the user-specified color data in colormap.<br>
-        %>                          If empty or unspecified, it will be set to ``zval`` component.<br>
+        %>  ``cval``
+        %>
+        %>  A scalar object of class [pm.data.DataRef](@ref DataRef)
+        %>  containing the user-specified color data in colormap.<br>
+        %>  If empty or unspecified, it will be set to ``zval`` component.<br>
         %>
         cval = [];
     end
 
     properties(Access = public, Hidden)
         %>
-        %>  \param  ndim        :   A scalar MATLAB whole number representing the total number of the
-        %>                          dimensions of ellipsoids identified based on the input that can be visualized.<br>
-        %>                          It is set to ``max(2, size(gramian, 2), size(center, 1))``.<br>
+        %>  ``ndim``
+        %>
+        %>  A scalar MATLAB whole number representing the total number of the
+        %>  dimensions of ellipsoids identified based on the input that can be visualized.<br>
+        %>  It is set to ``max(2, size(gramian, 2), size(center, 1))``.<br>
         %>
         ndim = [];
         %>
-        %>  \param  nell        :   A scalar MATLAB whole number representing the total number of
-        %>                          ellipsoids identified based on the input that can be visualized.<br>
-        %>                          It is set to ``max(20, size(gramian, 3), size(center, 2), size(zval, 2))``.<br>
+        %>  ``nell``
+        %>
+        %>  A scalar MATLAB whole number representing the total number of
+        %>  ellipsoids identified based on the input that can be visualized.<br>
+        %>  It is set to ``max(20, size(gramian, 3), size(center, 2), size(zval, 2))``.<br>
         %>
         nell = [];
         %>
-        %>  \param  npnt        :   The scalar MATLAB whole number representing the number of
-        %>                          points with which the 2D ellipsoid boundaries are delineated.<br>
-        %>                          It is set to ``max(size(zval, 1), size(cval, 1))`` or otherwise, ``100``.<br>
+        %>  ``npnt``
+        %>
+        %>  The scalar MATLAB whole number representing the number of
+        %>  points with which the 2D ellipsoid boundaries are delineated.<br>
+        %>  It is set to ``max(size(zval, 1), size(cval, 1))`` or otherwise, ``100``.<br>
         %>
         npnt = [];
         %>
-        %>  \param  workspace   :   A scalar MATLAB ``struct()`` containing the current visualization information.<br>
-        %>                          This information is updated with every call to the ``make()`` method.<br>
-        %>                          The contents of this component are temporary and must remain read-only.<br>
-        %>                          This component is solely provided for better insight into the internal
-        %>                          workings of the ``make()`` method of the parent object and
-        %>                          the resulting visualization.<br>
+        %>  ``workspace``
+        %>
+        %>  A scalar MATLAB ``struct()`` containing the current visualization information.<br>
+        %>  This information is updated with every call to the ``make()`` method.<br>
+        %>  The contents of this component are temporary and must remain read-only.<br>
+        %>  This component is solely provided for better insight into the internal
+        %>  workings of the ``make()`` method of the parent object and
+        %>  the resulting visualization.<br>
         %>
         workspace = [];
     end
