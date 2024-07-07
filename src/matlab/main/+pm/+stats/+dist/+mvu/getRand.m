@@ -24,7 +24,7 @@
 %>
 %>  \return
 %>  ``rand``            :   The output vector of MATLAB ``real`` of
-%>                          size ``(size(mean), 1)`` containing a random vector
+%>                          shape ``(numel(mean), 1)`` containing a random vector
 %>                          from the specified Multivariate Uniform distribution.<br>
 %>
 %>  \interface{getRand}

@@ -37,7 +37,6 @@
 %>                          other input array-like arguments of type MATLAB ``double``,
 %>                          representing the y-component of the state within the domain
 %>                          of Himmelblau density at which the density value must be computed.<br>
-%>
 %>  \param[in]  epsilon :   The input positive scalar or array of the same rank and shape as
 %>                          other array-like input arguments of type MATLAB ``double``,
 %>                          representing the value to be added to the inverse

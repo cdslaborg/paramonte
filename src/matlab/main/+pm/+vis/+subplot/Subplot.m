@@ -2,7 +2,7 @@
 %>  This is the abstract class for generating instances of axes
 %>  with various types of plots from one or more columns of data.<br>
 %>
-%>  \brief
+%>  \details
 %>  While it can be directly used for visualization tasks,
 %>  this class primarily serves as the superclass for the
 %>  visualization subclasses accessible to the end users.<br>
@@ -163,9 +163,15 @@
 %>  MATLAB language and visualization tools.<br>
 %>
 %>  \see
-%>  [pm.matlab.Handle](@ref Handle)<br>
 %>  [pm.vis.axes.Axes](@ref Axes)<br>
 %>  [pm.vis.plot.Plot](@ref Plot)<br>
+%>  [pm.matlab.Handle](@ref Handle)<br>
+%>  [pm.vis.cascade](@ref \psldir/main/+pm/+vis/+cascade)<br>
+%>  [pm.vis.subplot](@ref \psldir/main/+pm/+vis/+subplot)<br>
+%>  [pm.vis.figure](@ref \psldir/main/+pm/+vis/+figure)<br>
+%>  [pm.vis.corner](@ref \psldir/main/+pm/+vis/+corner)<br>
+%>  [pm.vis.plot](@ref \psldir/main/+pm/+vis/+plot)<br>
+%>  [pm.vis.tile](@ref \psldir/main/+pm/+vis/+tile)<br>
 %>
 %>  \final
 %>
@@ -268,12 +274,10 @@ classdef Subplot < pm.vis.axes.Axes
         %>  by a Gaussian kernel density estimator and then passed to the MATLAB intrinsic
         %>  plotting functions , ``contour``, ``contourf``, ``contour3``.<br>
         %>
-        %>  \example{make}
-        %>  \code{.m}
-        %>
-        %>      dfref = pm.stats.dist.mvu.getRand(zeros(3, 1), chol([1 .9 .9; .9 1 .9; .9 .9 1]), 10000)';
-        %>      s = pm.vis.subplot.Subplot("scatter", dfref);
-        %>      s.make("colx", 1, "coly", 2, "colc", 3);
+        %>  \example{Subplot}
+        %>  \include{lineno} example/vis/subplot/Subplot/main.m
+        %>  \vis{Subplot}
+        %>  \image html example/vis/subplot/Subplot/Subplot.1.png width=700
         %>
         %>  \endcode
         %>
@@ -331,7 +335,7 @@ classdef Subplot < pm.vis.axes.Axes
         %>  \author
         %>  \JoshuaOsborne, May 22 2024, 6:36 PM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
-        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
+        %>  \AmirShahmoradi, July 5 2024, 1:07 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         function make(self, varargin)
 
             self.premake(varargin{:});
@@ -948,7 +952,7 @@ classdef Subplot < pm.vis.axes.Axes
         %>  \author
         %>  \JoshuaOsborne, May 22 2024, 6:41 PM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
-        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
+        %>  \AmirShahmoradi, July 5 2024, 1:07 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         function premake(self, varargin)
             premake@pm.vis.axes.Axes(self, varargin{:});
         end
@@ -980,7 +984,7 @@ classdef Subplot < pm.vis.axes.Axes
         %>  \author
         %>  \JoshuaOsborne, May 22 2024, 6:43 PM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
-        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
+        %>  \AmirShahmoradi, July 5 2024, 1:07 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         function reset(self, varargin)
             self.rows = [];
             self.fout = struct();

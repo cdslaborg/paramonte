@@ -1,0 +1,21 @@
+cd(fileparts(mfilename('fullpath'))); % Change working directory to source code directory.
+addpath('../../../../../'); % Add the ParaMonte library root directory to the search path.
+
+pm.matlab.show()
+pm.matlab.show("pdf = exp(pm.stats.dist.mvn.getLogPDF([1, 2, 3]'))")
+                pdf = exp(pm.stats.dist.mvn.getLogPDF([1, 2, 3]'))
+pm.matlab.show("pdf_ref = mvnpdf([1, 2, 3]')")
+                pdf_ref = mvnpdf([1, 2, 3]')
+assert(abs(pdf - pdf_ref) < 1.e-12)
+
+pm.matlab.show()
+pm.matlab.show('mean = [-3, 3]; cholow = chol([1 .9; .9, 1], "lower")')
+                mean = [-3, 3]; cholow = chol([1 .9; .9, 1], "lower")
+pm.matlab.show('sample = pm.stats.dist.mvn.getRand(mean, cholow, 10000);')
+                sample = pm.stats.dist.mvn.getRand(mean, cholow, 10000);
+pm.matlab.show("sample = [sample; exp(pm.stats.dist.mvn.getLogPDF(sample, mean, pm.matrix.inv(cholow)))]';")
+                sample = [sample; exp(pm.stats.dist.mvn.getLogPDF(sample, mean, pm.matrix.inv(cholow)))]';
+pm.matlab.show('p = pm.vis.plot.Scatter3(sample, "colx", 1, "coly", 2, "colc", 3); p.make();')
+                p = pm.vis.plot.Scatter3(sample, "colx", 1, "coly", 2, "colc", 3); p.make();
+pm.matlab.show('pm.vis.figure.savefig("mvn.getLogPDF.scatter1.png");')
+                pm.vis.figure.savefig("mvn.getLogPDF.scatter.3d.png");
