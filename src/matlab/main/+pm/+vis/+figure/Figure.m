@@ -686,10 +686,12 @@ classdef Figure < pm.matlab.Handle
         %>
         %>  \example{savefig}
         %>  \code{.m}
+        %>
         %>      f = pm.vis.figure.Figure();
         %>      f.savefig(); % export the current figure with the default name.
         %>      f.savefig("gridplot.pdf") % export figure to the specified PDF file.
         %>      f.savefig("gridplot.png", "-m4 -transparent") % export a large png plot of magnitude 4 with transparency.
+        %>
         %>  \endcode
         %>
         %>  \final{savefig}

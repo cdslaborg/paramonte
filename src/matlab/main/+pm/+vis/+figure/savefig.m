@@ -294,6 +294,15 @@
 %>  This function is a reimplementation of the MATLAB package
 %>  [export_fig](@ref https://github.com/altmany/export_fig).<br>
 %>
+%>  \example{savefig}
+%>  \code{.m}
+%>
+%>      pm.vis.figure.savefig(); % export the current figure with the default name.
+%>      pm.vis.figure.savefig("gridplot.pdf") % export figure to the specified PDF file.
+%>      pm.vis.figure.savefig("gridplot.png", "-m4 -transparent") % export a large png plot of magnitude 4 with transparency.
+%>
+%>  \endcode
+%>
 %>  \final{savefig}
 %>
 %>  Copyright (C) Oliver Woodford 2008-2014, Yair Altman 2015-
