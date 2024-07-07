@@ -9,7 +9,12 @@
 %>  also those of the superclass [pm.vis.cascade.Cascade](@ref Cascade).<br>
 %>
 %>  \see
-%>  [pm.vis.cascade.Cascade](@ref Cascade)<br>
+%>  [pm.vis.cascade](@ref \psldir/main/+pm/+vis/+cascade)<br>
+%>  [pm.vis.subplot](@ref \psldir/main/+pm/+vis/+subplot)<br>
+%>  [pm.vis.figure](@ref \psldir/main/+pm/+vis/+figure)<br>
+%>  [pm.vis.corner](@ref \psldir/main/+pm/+vis/+corner)<br>
+%>  [pm.vis.plot](@ref \psldir/main/+pm/+vis/+plot)<br>
+%>  [pm.vis.tile](@ref \psldir/main/+pm/+vis/+tile)<br>
 %>
 %>  \final
 %>
@@ -19,29 +24,19 @@
 classdef Ellipse < pm.vis.cascade.Cascade
     methods(Access = public)
         %>  \brief
+        %>  Construct and return an object of class [pm.vis.cascade.Ellipse](@ref Ellipse).<br>
         %>
-        %>  \param[in]  gramian     :   See the corresponding input argument to the class [pm.vis.plot.Ellipse](@ref Ellipse).
-        %>  \param[in]  center      :   See the corresponding input argument to the class [pm.vis.plot.Ellipse](@ref Ellipse).
-        %>  \param[in]  cval        :   See the corresponding input argument to the class [pm.vis.plot.Ellipse](@ref Ellipse).
-        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
+        %>  \param[in]  gramian     :   See the corresponding input argument to the class [pm.vis.plot.Ellipse](@ref Ellipse).<br>
+        %>  \param[in]  center      :   See the corresponding input argument to the class [pm.vis.plot.Ellipse](@ref Ellipse).<br>
+        %>  \param[in]  cval        :   See the corresponding input argument to the class [pm.vis.plot.Ellipse](@ref Ellipse).<br>
+        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
-        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
         %>                              Note that all of these property-value pairs can be also directly set via the
-        %>                              parent object attributes, before calling the ``make()`` method.
+        %>                              parent object attributes, before calling the ``make()`` method.<br>
         %>
         %>  \return
         %>  ``self``                :   The output scalar object of class [pm.vis.cascade.Ellipse](@ref Ellipse).<br>
-        %>
-        %>  \note
-        %>  The input ``varargin`` can also contain the components
-        %>  of the ``template`` component of the parent object.
-        %>
-        %>  \note
-        %>  See below and also the documentation of the
-        %>  attributes of the superclass [pm.vis.figure.Figure](@ref Figure).
-        %>
-        %>  \return
-        %>  An object of class [pm.vis.cascade.Ellipse](@ref Ellipse).
         %>
         %>  \interface{Ellipse}
         %>  \code{.m}
@@ -54,8 +49,23 @@ classdef Ellipse < pm.vis.cascade.Cascade
         %>
         %>  \endcode
         %>
+        %>  \note
+        %>  The input ``varargin`` can also contain the components
+        %>  of the ``template`` component of the parent object.<br>
         %>
-        %>  \example{getBorder}
+        %>  \note
+        %>  See the documentation of the attributes
+        %>  of the superclass [pm.vis.cascade.Cascade](@ref Cascade).<br>
+        %>
+        %>  \example{Ellipse}
+        %>  \include{lineno} example/vis/cascade/Ellipse/main.m
+        %>  \vis{Ellipse}
+        %>  \image html example/vis/cascade/Ellipse/Ellipse.window.1.png width=700
+        %>  \image html example/vis/cascade/Ellipse/Ellipse.window.2.png width=700
+        %>  \image html example/vis/cascade/Ellipse/Ellipse.window.3.png width=700
+        %>  \image html example/vis/cascade/Ellipse/Ellipse.window.4.png width=700
+        %>
+        %>  \example{Ellipse}
         %>
         %>      p = pm.vis.cascade.Ellipse();
         %>      p.make("dims", [1, 2]);

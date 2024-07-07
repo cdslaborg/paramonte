@@ -16,11 +16,12 @@
 %>  also those of the superclass [pm.matlab.Handle](@ref Handle).<br>
 %>
 %>  \see
-%>  [pm.vis.plot.Plot](@ref Plot)<br>
-%>  [pm.vis.figure.Figure](@ref Figure)<br>
-%>  [pm.vis.subplot.Subplot](@ref Subplot)<br>
-%>  [pm.vis.corner.Corner](@ref Corner)<br>
-%>  [pm.vis.tile.Tile](@ref Tile)<br>
+%>  [pm.vis.cascade](@ref \psldir/main/+pm/+vis/+cascade)<br>
+%>  [pm.vis.subplot](@ref \psldir/main/+pm/+vis/+subplot)<br>
+%>  [pm.vis.figure](@ref \psldir/main/+pm/+vis/+figure)<br>
+%>  [pm.vis.corner](@ref \psldir/main/+pm/+vis/+corner)<br>
+%>  [pm.vis.plot](@ref \psldir/main/+pm/+vis/+plot)<br>
+%>  [pm.vis.tile](@ref \psldir/main/+pm/+vis/+tile)<br>
 %>
 %>  \final
 %>
@@ -193,6 +194,7 @@ classdef Cascade < pm.matlab.Handle
         %>  \image html example/vis/cascade/Cascade/Cascade.window.1.png width=700
         %>  \image html example/vis/cascade/Cascade/Cascade.window.2.png width=700
         %>  \image html example/vis/cascade/Cascade/Cascade.window.3.png width=700
+        %>  \image html example/vis/cascade/Cascade/Cascade.window.4.png width=700
         %>
         %>  \final{make}
         %>
@@ -206,12 +208,32 @@ classdef Cascade < pm.matlab.Handle
 
             %%%% First set the cascade dimensions.
 
+            isHeatmap = isa(self.template, "pm.vis.plot.Heatmap");
             isEllipsoid = isa(self.template, "pm.vis.plot.Ellipse") || isa(self.template, "pm.vis.plot.Ellipse3");
 
-            if  isEllipsoid
+            if  isHeatmap
+
+                nplt = max(size(self.template.subplot.rows, 1), size(self.template.subplot.colx, 1));
+                if (nplt ~= size(self.template.subplot.rows, 1) && size(self.template.subplot.rows, 1) > 1) ...
+                || (nplt ~= size(self.template.subplot.colx, 1) && size(self.template.subplot.colx, 1) > 1)
+                    help("pm.vis.cascade.Heatmap");
+                    disp("size(self.template.subplot.rows)");
+                    disp( size(self.template.subplot.rows) );
+                    disp("size(self.template.subplot.colx)");
+                    disp( size(self.template.subplot.colx) );
+                    error   ( newline ...
+                            + "The size of the ``rows`` and ``colx`` attributes of the ``subplot`` component" + newline ...
+                            + "of the input template ``Plot`` object must equal along the first dimension." + newline ...
+                            + "For more information, see the documentation displayed above." + newline ...
+                            + newline ...
+                            );
+                end
+
+            elseif isEllipsoid
+
                 nplt = size(self.template.subplot.dims, 1);
                 if  size(self.template.subplot.dims, 2) ~= 2
-                    help("pm.vis.plot.Ellipse3");
+                    help("pm.vis.cascade.Ellipse3");
                     error   ( newline ...
                             + "The condition ``size(self.template.dims, 2) == 2`` must hold." + newline ...
                             + "For more information, see the documentation displayed above." + newline ...
@@ -253,7 +275,8 @@ classdef Cascade < pm.matlab.Handle
             for iplt = 1 : nplt
                 copyStream = getByteStreamFromArray(self.template);
                 self.window{iplt} = getArrayFromByteStream(copyStream);
-                if  isEllipsoid
+                if isHeatmap
+                elseif isEllipsoid
                     self.window{iplt}.subplot.dims = self.template.subplot.dims(iplt, :);
                 else
                     if  1 < lencolx

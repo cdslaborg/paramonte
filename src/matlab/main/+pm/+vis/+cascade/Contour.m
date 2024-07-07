@@ -9,7 +9,12 @@
 %>  also those of the superclass [pm.vis.cascade.Cascade](@ref Cascade).<br>
 %>
 %>  \see
-%>  [pm.vis.cascade.Cascade](@ref Cascade)<br>
+%>  [pm.vis.cascade](@ref \psldir/main/+pm/+vis/+cascade)<br>
+%>  [pm.vis.subplot](@ref \psldir/main/+pm/+vis/+subplot)<br>
+%>  [pm.vis.figure](@ref \psldir/main/+pm/+vis/+figure)<br>
+%>  [pm.vis.corner](@ref \psldir/main/+pm/+vis/+corner)<br>
+%>  [pm.vis.plot](@ref \psldir/main/+pm/+vis/+plot)<br>
+%>  [pm.vis.tile](@ref \psldir/main/+pm/+vis/+tile)<br>
 %>
 %>  \final
 %>
@@ -23,7 +28,6 @@ classdef Contour < pm.vis.cascade.Cascade
         %>
         %>  \param[in]  dfref       :   See the documentation of the corresponding input
         %>                              argument of the class [pm.vis.plot.Plot](@ref Plot).<br>
-        %>
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
@@ -31,7 +35,7 @@ classdef Contour < pm.vis.cascade.Cascade
         %>                              parent object attributes, before calling the ``make()`` method.<br>
         %>
         %>  \return
-        %>  ``self``                :   The output scalar object of class [pm.vis.cascade.Contour](@ref Contour).
+        %>  ``self``                :   The output scalar object of class [pm.vis.cascade.Contour](@ref Contour).<br>
         %>
         %>  \interface{Contour}
         %>  \code{.m}
@@ -48,6 +52,14 @@ classdef Contour < pm.vis.cascade.Cascade
         %>  \note
         %>  See the documentation of the attributes
         %>  of the superclass [pm.vis.cascade.Cascade](@ref Cascade).<br>
+        %>
+        %>  \example{Contour}
+        %>  \include{lineno} example/vis/cascade/Contour/main.m
+        %>  \vis{Contour}
+        %>  \image html example/vis/cascade/Contour/Contour.window.1.png width=700
+        %>  \image html example/vis/cascade/Contour/Contour.window.2.png width=700
+        %>  \image html example/vis/cascade/Contour/Contour.window.3.png width=700
+        %>  \image html example/vis/cascade/Contour/Contour.window.4.png width=700
         %>
         %>  \final{Contour}
         %>

@@ -9,7 +9,12 @@
 %>  also those of the superclass [pm.vis.cascade.Cascade](@ref Cascade).<br>
 %>
 %>  \see
-%>  [pm.vis.cascade.Cascade](@ref Cascade)<br>
+%>  [pm.vis.cascade](@ref \psldir/main/+pm/+vis/+cascade)<br>
+%>  [pm.vis.subplot](@ref \psldir/main/+pm/+vis/+subplot)<br>
+%>  [pm.vis.figure](@ref \psldir/main/+pm/+vis/+figure)<br>
+%>  [pm.vis.corner](@ref \psldir/main/+pm/+vis/+corner)<br>
+%>  [pm.vis.plot](@ref \psldir/main/+pm/+vis/+plot)<br>
+%>  [pm.vis.tile](@ref \psldir/main/+pm/+vis/+tile)<br>
 %>
 %>  \final
 %>
@@ -18,18 +23,19 @@
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef Contour3 < pm.vis.cascade.Cascade
     methods(Access = public)
+        %>  \brief
+        %>  Construct and return an object of class [pm.vis.cascade.Contour3](@ref Contour3).<br>
         %>
         %>  \param[in]  dfref       :   See the documentation of the corresponding input
-        %>                              argument of the class [pm.vis.plot.Plot](@ref Plot).
-        %>  
-        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
+        %>                              argument of the class [pm.vis.plot.Plot](@ref Plot).<br>
+        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
-        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
         %>                              Note that all of these property-value pairs can be also directly set via the
-        %>                              parent object attributes, before calling the ``make()`` method.
+        %>                              parent object attributes, before calling the ``make()`` method.<br>
         %>
         %>  \return
-        %>  ``self``                :   The output scalar object of class [pm.vis.cascade.Contour3](@ref Contour3).
+        %>  ``self``                :   The output scalar object of class [pm.vis.cascade.Contour3](@ref Contour3).<br>
         %>
         %>  \interface{Contour3}
         %>  \code{.m}
@@ -41,11 +47,19 @@ classdef Contour3 < pm.vis.cascade.Cascade
         %>
         %>  \note
         %>  The input ``varargin`` can also contain the components
-        %>  of the ``template`` component of the parent object.
+        %>  of the ``template`` component of the parent object.<br>
         %>
         %>  \note
         %>  See the documentation of the attributes
-        %>  of the superclass [pm.vis.cascade.Cascade](@ref Cascade).
+        %>  of the superclass [pm.vis.cascade.Cascade](@ref Cascade).<br>
+        %>
+        %>  \example{Contour3}
+        %>  \include{lineno} example/vis/cascade/Contour3/main.m
+        %>  \vis{Contour3}
+        %>  \image html example/vis/cascade/Contour3/Contour3.window.1.png width=700
+        %>  \image html example/vis/cascade/Contour3/Contour3.window.2.png width=700
+        %>  \image html example/vis/cascade/Contour3/Contour3.window.3.png width=700
+        %>  \image html example/vis/cascade/Contour3/Contour3.window.4.png width=700
         %>
         %>  \final{Contour3}
         %>

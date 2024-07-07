@@ -9,7 +9,12 @@
 %>  also those of the superclass [pm.vis.cascade.Cascade](@ref Cascade).<br>
 %>
 %>  \see
-%>  [pm.vis.cascade.Cascade](@ref Cascade)<br>
+%>  [pm.vis.cascade](@ref \psldir/main/+pm/+vis/+cascade)<br>
+%>  [pm.vis.subplot](@ref \psldir/main/+pm/+vis/+subplot)<br>
+%>  [pm.vis.figure](@ref \psldir/main/+pm/+vis/+figure)<br>
+%>  [pm.vis.corner](@ref \psldir/main/+pm/+vis/+corner)<br>
+%>  [pm.vis.plot](@ref \psldir/main/+pm/+vis/+plot)<br>
+%>  [pm.vis.tile](@ref \psldir/main/+pm/+vis/+tile)<br>
 %>
 %>  \final
 %>
@@ -18,15 +23,17 @@
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef Scatter3 < pm.vis.cascade.Cascade
     methods(Access = public)
+        %>  \brief
+        %>  Construct and return an object of class [pm.vis.cascade.Scatter3](@ref Scatter3).<br>
         %>
         %>  \param[in]  dfref       :   See the documentation of the corresponding input
-        %>                              argument of the class [pm.vis.plot.Plot](@ref Plot).
+        %>                              argument of the class [pm.vis.plot.Plot](@ref Plot).<br>
         %>  
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
-        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
         %>                              Note that all of these property-value pairs can be also directly set via the
-        %>                              parent object attributes, before calling the ``make()`` method.
+        %>                              parent object attributes, before calling the ``make()`` method.<br>
         %>
         %>  \return
         %>  ``self``                :   The output scalar object of class [pm.vis.cascade.Scatter3](@ref Scatter3).<br>
@@ -38,9 +45,6 @@ classdef Scatter3 < pm.vis.cascade.Cascade
         %>  \note
         %>  See the documentation of the attributes
         %>  of the superclass [pm.vis.cascade.Cascade](@ref Cascade).<br>
-        %>
-        %>  \return
-        %>  An object of [pm.vis.cascade.Scatter3](@ref Scatter3) class.<br>
         %>
         %>  \interface{Scatter3}
         %>  \code{.m}
