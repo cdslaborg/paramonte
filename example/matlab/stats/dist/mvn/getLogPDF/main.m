@@ -15,9 +15,9 @@ pm.matlab.show('sample = pm.stats.dist.mvn.getRand(mean, cholow, 1000);')
                 sample = pm.stats.dist.mvn.getRand(mean, cholow, 1000);
 pm.matlab.show("sample = [sample', exp(pm.stats.dist.mvn.getLogPDF(sample, mean, pm.matrix.inv(cholow)))];")
                 sample = [sample', exp(pm.stats.dist.mvn.getLogPDF(sample, mean, pm.matrix.inv(cholow)))];
-pm.matlab.show('p.subplot.xlabel.txt = "X"; p.subplot.ylabel.txt = "Y"; p.subplot.zlabel.txt = "MVN PDF";')
-                p.subplot.xlabel.txt = "X"; p.subplot.ylabel.txt = "Y"; p.subplot.zlabel.txt = "MVN PDF";
-pm.matlab.show('p = pm.vis.plot.Scatter3(sample, "colx", 1, "coly", 2, "colz", 3, "colc", 3); p.make();')
-                p = pm.vis.plot.Scatter3(sample, "colx", 1, "coly", 2, "colz", 3, "colc", 3); p.make();
+pm.matlab.show('p = pm.vis.plot.Scatter3(sample, "colx", 1, "coly", 2, "colz", 3, "colc", 3);')
+                p = pm.vis.plot.Scatter3(sample, "colx", 1, "coly", 2, "colz", 3, "colc", 3);
+pm.matlab.show('p.subplot.xlabel.txt = "X"; p.subplot.ylabel.txt = "Y"; p.subplot.zlabel.txt = "MVN PDF"; p.make();')
+                p.subplot.xlabel.txt = "X"; p.subplot.ylabel.txt = "Y"; p.subplot.zlabel.txt = "MVN PDF"; p.make();
 pm.matlab.show('pm.vis.figure.savefig("mvn.getLogPDF.scatter.3d.png", "-m4");')
                 pm.vis.figure.savefig("mvn.getLogPDF.scatter.3d.png", "-m4");
