@@ -21,7 +21,7 @@
 %>  \final
 %>
 %>  \author
-%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef Figure < pm.matlab.Handle
 
@@ -163,7 +163,7 @@ classdef Figure < pm.matlab.Handle
         %>
         %>  \author
         %>  \JoshuaOsborne, May 21 2024, 8:09 AM, University of Texas at Arlington<br>
-        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function make(self, varargin)
 
@@ -229,7 +229,7 @@ classdef Figure < pm.matlab.Handle
         %>
         %>  \author
         %>  \JoshuaOsborne, May 21 2024, 8:11 AM, University of Texas at Arlington<br>
-        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function reset(self, varargin)
 
@@ -301,7 +301,7 @@ classdef Figure < pm.matlab.Handle
         %>
         %>  \author
         %>  \JoshuaOsborne, May 21 2024, 8:13 AM, University of Texas at Arlington<br>
-        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function premake(self, varargin)
 
@@ -365,7 +365,7 @@ classdef Figure < pm.matlab.Handle
         %>  \final{comp2hash}
         %>
         %>  \author
-        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function hash = comp2hash(self, comp)
             unique = true;
@@ -698,7 +698,7 @@ classdef Figure < pm.matlab.Handle
         %>
         %>  \author
         %>  \JoshuaOsborne, May 21 2024, 8:19 AM, University of Texas at Arlington<br>
-        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function savefig(self, file, varargin)
 

@@ -18,7 +18,7 @@
 %>
 %>  \author
 %>  \JoshuaOsborne, May 21 2024, 4:16 AM, University of Texas at Arlington<br>
-%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef Cor < pm.matlab.Handle
 
@@ -92,7 +92,7 @@ classdef Cor < pm.matlab.Handle
         %>
         %>  \author
         %>  \JoshuaOsborne, May 21 2024, 4:22 AM, University of Texas at Arlington<br>
-        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = Cor(df, method)
             if nargin == 2
@@ -146,7 +146,7 @@ classdef Cor < pm.matlab.Handle
         %>
         %>  \author
         %>  \JoshuaOsborne, May 21 2024, 4:24 AM, University of Texas at Arlington<br>
-        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function val = get(self, df, method)
             if  nargin < 2

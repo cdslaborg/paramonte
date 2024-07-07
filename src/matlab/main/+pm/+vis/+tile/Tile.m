@@ -107,7 +107,7 @@ classdef Tile < [pm.vis.figure.Tiling](@ref Tiling)
         %>
         %>  \author
         %>  \JoshuaOsborne, May 22 2024, 7:42 PM, University of Texas at Arlington<br>
-        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function reset(self, varargin)
 
@@ -166,7 +166,7 @@ classdef Tile < [pm.vis.figure.Tiling](@ref Tiling)
         %>
         %>  \author
         %>  \JoshuaOsborne, May 22 2024, 7:44 PM, University of Texas at Arlington<br>
-        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function make(self, varargin)
 
@@ -389,7 +389,7 @@ classdef Tile < [pm.vis.figure.Tiling](@ref Tiling)
         %>
         %>  \author
         %>  \JoshuaOsborne, May 22 2024, 7:46 PM, University of Texas at Arlington<br>
-        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function premake(self, varargin)
 

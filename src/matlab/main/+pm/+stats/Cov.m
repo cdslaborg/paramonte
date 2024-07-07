@@ -18,8 +18,8 @@
 %>
 %>  \author
 %>  \JoshuaOsborne, May 21 2024, 4:25 AM, University of Texas at Arlington<br>
-%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
-%>  \AmirShahmoradi, July 5 2024, 1:07 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
+%>  \AmirShahmoradi, July 5 2024, 1:07 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 classdef Cov < pm.matlab.Handle
 
     properties(Access = public)
@@ -89,7 +89,7 @@ classdef Cov < pm.matlab.Handle
         %>
         %>  \author
         %>  \JoshuaOsborne, May 21 2024, 4:29 AM, University of Texas at Arlington<br>
-        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = Cov(df, method)
             if  1 < nargin
@@ -135,7 +135,7 @@ classdef Cov < pm.matlab.Handle
         %>
         %>  \author
         %>  \JoshuaOsborne, May 21 2024, 4:31 AM, University of Texas at Arlington<br>
-        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function val = get(self, df, method)
             if nargin < 2

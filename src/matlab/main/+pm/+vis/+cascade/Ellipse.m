@@ -19,7 +19,7 @@
 %>  \final
 %>
 %>  \author
-%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef Ellipse < pm.vis.cascade.Cascade
     methods(Access = public)
@@ -74,7 +74,7 @@ classdef Ellipse < pm.vis.cascade.Cascade
         %>
         %>  \author
         %>  \JoshuaOsborne, May 21 2024, 7:18 AM, University of Texas at Arlington<br>
-        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = Ellipse(gramian, center, cval, varargin)
             %%%% Define the missing optional values as empty with the right rank.

@@ -33,7 +33,7 @@ classdef Heatmap < pm.vis.subplot.Subplot
         %>
         %>  \author
         %>  \JoshuaOsborne, May 22 2024, 5:49 PM, University of Texas at Arlington<br>
-        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = Heatmap(dfref, varargin)
             if nargin < 1
@@ -99,7 +99,7 @@ classdef Heatmap < pm.vis.subplot.Subplot
         %>
         %>  \author
         %>  \JoshuaOsborne, May 21 2024, 5:54 PM, University of Texas at Arlington<br>
-        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function setColorLim(self, lb, ub)
 

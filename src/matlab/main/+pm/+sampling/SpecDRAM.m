@@ -19,7 +19,7 @@
 %>
 %>  \author
 %>  \JoshuaOsborne, May 21 2024, 3:45 AM, University of Texas at Arlington<br>
-%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef SpecDRAM < pm.sampling.SpecMCMC
 
@@ -71,7 +71,7 @@ classdef SpecDRAM < pm.sampling.SpecMCMC
         %>
         %>  \author
         %>  \JoshuaOsborne, May 21 2024, 3:46 AM, University of Texas at Arlington<br>
-        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = SpecDRAM(method, silent)
             if  nargin < 2
@@ -114,7 +114,7 @@ classdef SpecDRAM < pm.sampling.SpecMCMC
         %>
         %>  \author
         %>  \JoshuaOsborne, May 21 2024, 3:48 AM, University of Texas at Arlington<br>
-        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function entries = getEntriesNML(self, ndim)
             entries = getEntriesNML@pm.sampling.SpecMCMC(self, ndim);

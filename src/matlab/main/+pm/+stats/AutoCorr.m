@@ -18,7 +18,7 @@
 %>
 %>  \author
 %>  \JoshuaOsborne, May 21 2024, 4:06 AM, University of Texas at Arlington<br>
-%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef AutoCorr < pm.matlab.Handle
 
@@ -125,7 +125,7 @@ classdef AutoCorr < pm.matlab.Handle
         %>
         %>  \author
         %>  \JoshuaOsborne, May 21 2024, 4:10 AM, University of Texas at Arlington<br>
-        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = AutoCorr(df, numlag, numstd)
             if nargin < 3
@@ -206,7 +206,7 @@ classdef AutoCorr < pm.matlab.Handle
         %>
         %>  \author
         %>  \JoshuaOsborne, May 21 2024, 4:14 AM, University of Texas at Arlington<br>
-        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function [val, lag, bnd] = get(self, df, numlag, numstd)
             if nargin < 2

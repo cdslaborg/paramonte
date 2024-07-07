@@ -4,7 +4,7 @@
 %>
 %>  \note
 %>  See the list of class attributes below,
-%>  also those of the superclass [pm.vis.figure.Figure](@ref Figure).
+%>  also those of the superclass [pm.vis.figure.Figure](@ref Figure).<br>
 %>
 %>  \note
 %>  See also the documentation of the constructor of the class [pm.vis.figure.Tiling::Tiling](@ref Tiling::Tiling).<br>
@@ -13,8 +13,8 @@
 %>
 %>  \author
 %>  \JoshuaOsborne, May 21 2024, 9:20 AM, University of Texas at Arlington<br>
-%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
-%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
+%>  \AmirShahmoradi, July 7 2024, 12:53 AM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 classdef Tiling < pm.vis.figure.Figure
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -35,23 +35,6 @@ classdef Tiling < pm.vis.figure.Figure
         %>
         subplot = cell(0, 0);
     end
-
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    %properties(Access = public, Hidden)
-    %    %
-    %    %       ncol
-    %    %
-    %    %           The MATLAB scalar whole-number whose value represents ``size(self.subplot, 2)``.
-    %    %
-    %    ncol = [];
-    %    %
-    %    %       nrow
-    %    %
-    %    %           The MATLAB scalar whole-number whose value represents ``size(self.subplot, 1)``.
-    %    %
-    %    nrow = [];
-    %end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -154,8 +137,8 @@ classdef Tiling < pm.vis.figure.Figure
         %>
         %>  \author
         %>  \JoshuaOsborne, May 21 2024, 9:24 AM, University of Texas at Arlington<br>
-        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
-        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
+        %>  \AmirShahmoradi, July 7 2024, 12:53 AM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         function make(self, varargin)
 
             make@pm.vis.figure.Figure(self, varargin{:});
@@ -240,8 +223,8 @@ classdef Tiling < pm.vis.figure.Figure
         %>
         %>  \author
         %>  \JoshuaOsborne, May 21 2024, 9:25 AM, University of Texas at Arlington<br>
-        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
-        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
+        %>  \AmirShahmoradi, July 7 2024, 12:53 AM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         function reset(self, varargin)
 
             self.tiledlayout.innerPosition = [];
@@ -291,8 +274,8 @@ classdef Tiling < pm.vis.figure.Figure
         %>
         %>  \author
         %>  \JoshuaOsborne, May 21 2024, 9:28 AM, University of Texas at Arlington<br>
-        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
-        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
+        %>  \AmirShahmoradi, July 7 2024, 12:53 AM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         function premake(self, varargin)
 
             premake@pm.vis.figure.Figure(self, varargin{:});

@@ -43,8 +43,8 @@
 %>  \final{getRand}
 %>
 %>  \author
-%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
-%>  \AmirShahmoradi, July 6 2024, 7:07 PM, NASA Goddard Space Flight Center, Washington, D.C.<br>
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
+%>  \AmirShahmoradi, July 6 2024, 7:07 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 function rand = getRand(ndim, scale)
     rand = zeros(ndim, ndim);
     for idim = 1 : ndim
