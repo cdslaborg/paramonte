@@ -8,7 +8,7 @@
 %>  with positive and negative values.<br>
 %>
 %>  \param[in]  nell    :   The input scalar MATLAB integer representing
-%>                          the number of rows of the output colormap matrix.<br>
+%>                          the number of elements (rows) of the output colormap matrix.<br>
 %>                          (**optional**, default = ``size(get(gcf, 'colormap'), 1)``)
 %>  \param[in]  clim    :   The input vector length ``2`` of MATLAB doubles
 %>                          representing the color limits of the output colormap.<br>
