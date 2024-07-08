@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Histfit class for generating
-%>  instances of 2-dimensional Histfit tiles
+%>  instances of 2-dimensional Histfit [Tile visualizations](@ref Tile)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 classdef Histfit < pm.vis.tile.Tile

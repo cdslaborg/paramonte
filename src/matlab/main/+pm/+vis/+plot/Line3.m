@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Line3 class for generating
-%>  instances of 3-dimensional Line3 plots
+%>  instances of 3-dimensional Line3 [Plot visualizations](@ref Plot)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 classdef Line3 < pm.vis.plot.Plot

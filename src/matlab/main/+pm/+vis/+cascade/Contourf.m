@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Contourf class for generating
-%>  instances of 2-dimensional Contourf plots
+%>  instances of 2-dimensional Contourf [Cascade visualizations](@ref Cascade)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.<br>
 %>

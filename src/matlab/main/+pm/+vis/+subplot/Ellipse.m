@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Ellipse class for generating
-%>  instances of 2-dimensional Ellipse plots
+%>  instances of 2-dimensional Ellipse [Subplot visualizations](@ref Subplot)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 classdef Ellipse < pm.vis.subplot.Ellipse3

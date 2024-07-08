@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Histfit class for generating
-%>  instances of 2-dimensional Histfit plots
+%>  instances of 2-dimensional Histfit [Plot visualizations](@ref Plot)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 classdef Histfit < pm.vis.plot.Plot

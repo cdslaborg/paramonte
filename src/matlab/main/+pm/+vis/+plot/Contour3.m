@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Contour3 class for generating
-%>  instances of 3-dimensional Contour plots
+%>  instances of 3-dimensional Contour [Plot visualizations](@ref Plot)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 classdef Contour3 < pm.vis.plot.Plot

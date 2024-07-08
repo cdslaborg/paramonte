@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Scatter3 class for generating
-%>  instances of 3-dimensional Scatter3 tiles
+%>  instances of 3-dimensional Scatter3 [Tile visualizations](@ref Tile)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 classdef Scatter3 < pm.vis.tile.Tile

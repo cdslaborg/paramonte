@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Histogram2 class for generating
-%>  instances of 3-dimensional Histogram2 plots
+%>  instances of 3-dimensional Histogram2 [Cascade visualizations](@ref Cascade)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.<br>
 %>

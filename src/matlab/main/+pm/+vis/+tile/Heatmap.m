@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Heatmap class for generating
-%>  instances of 2-dimensional Heatmap tiles
+%>  instances of 2-dimensional Heatmap [Tile visualizations](@ref Tile)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 classdef Heatmap < pm.vis.tile.Tile

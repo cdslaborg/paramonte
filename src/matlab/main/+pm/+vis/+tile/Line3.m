@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Line3 class for generating
-%>  instances of 3-dimensional Line3 tiles
+%>  instances of 3-dimensional Line3 [Tile visualizations](@ref Tile)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 classdef Line3 < pm.vis.tile.Tile

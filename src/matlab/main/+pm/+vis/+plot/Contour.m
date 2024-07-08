@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Contour class for generating
-%>  instances of 2-dimensional Contour plots
+%>  instances of 2-dimensional Contour [Plot visualizations](@ref Plot)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 classdef Contour < pm.vis.plot.Plot

@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the LineScatter class for generating
-%>  instances of 2-dimensional LineScatter tiles
+%>  instances of 2-dimensional LineScatter [Tile visualizations](@ref Tile)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 classdef LineScatter < pm.vis.tile.Tile

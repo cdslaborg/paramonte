@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Scatter3 class for generating
-%>  instances of 3-dimensional Scatter3 plots
+%>  instances of 3-dimensional Scatter3 [Plot visualizations](@ref Plot)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 classdef Scatter3 < pm.vis.plot.Plot

@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Ellipse class for generating
-%>  instances of 2-dimensional Ellipse tiles
+%>  instances of 2-dimensional Ellipse [Tile visualizations](@ref Tile)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 classdef Ellipse < pm.vis.tile.Tile

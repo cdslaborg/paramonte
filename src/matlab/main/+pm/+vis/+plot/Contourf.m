@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Contourf class for generating
-%>  instances of 2-dimensional Contourf plots
+%>  instances of 2-dimensional Contourf [Plot visualizations](@ref Plot)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 classdef Contourf < pm.vis.plot.Plot

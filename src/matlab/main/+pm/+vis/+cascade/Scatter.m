@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Scatter class for generating
-%>  instances of 2-dimensional Scatter plots
+%>  instances of 2-dimensional Scatter [Cascade visualizations](@ref Cascade)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.<br>
 %>

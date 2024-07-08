@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Ellipse3 class for generating
-%>  instances of 3-dimensional Ellipse3 plots
+%>  instances of 3-dimensional Ellipse3 [Subplot visualizations](@ref Subplot)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.<br>
 %>

@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Contour class for generating
-%>  instances of 2-dimensional Contour plots
+%>  instances of 2-dimensional Contour [Cascade visualizations](@ref Cascade)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.<br>
 %>

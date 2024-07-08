@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Line class for generating
-%>  instances of 2-dimensional Line tiles
+%>  instances of 2-dimensional Line [Tile visualizations](@ref Tile)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 classdef Line < pm.vis.tile.Tile

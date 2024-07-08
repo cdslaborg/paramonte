@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Heatmap class for generating
-%>  instances of 2-dimensional Heatmap plots
+%>  instances of 2-dimensional Heatmap [Plot visualizations](@ref Plot)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 classdef Heatmap < pm.vis.plot.Plot

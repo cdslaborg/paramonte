@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Scatter class for generating
-%>  instances of 2-dimensional Scatter tiles
+%>  instances of 2-dimensional Scatter [Tile visualizations](@ref Tile)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 classdef Scatter < pm.vis.tile.Tile

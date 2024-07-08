@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the LineScatter3 class for generating
-%>  instances of 3-dimensional LineScatter3 tiles
+%>  instances of 3-dimensional LineScatter3 [Tile visualizations](@ref Tile)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 classdef LineScatter3 < pm.vis.tile.Tile

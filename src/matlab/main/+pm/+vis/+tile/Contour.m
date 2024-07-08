@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Contour class for generating
-%>  instances of 2-dimensional Contour tiles
+%>  instances of 2-dimensional Contour [Tile visualizations](@ref Tile)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 %>

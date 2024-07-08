@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Histogram2 class for generating
-%>  instances of 3-dimensional Histogram2 plots
+%>  instances of 3-dimensional Histogram2 [Plot visualizations](@ref Plot)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 classdef Histogram2 < pm.vis.plot.Plot

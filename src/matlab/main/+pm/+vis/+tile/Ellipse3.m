@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Ellipse3 class for generating
-%>  instances of 3-dimensional Ellipse3 tiles
+%>  instances of 3-dimensional Ellipse3 [Tile visualizations](@ref Tile)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 classdef Ellipse3 < pm.vis.tile.Tile

@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Line3 class for generating
-%>  instances of 3-dimensional Line3 plots
+%>  instances of 3-dimensional Line3 [Cascade visualizations](@ref Cascade)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.<br>
 %>

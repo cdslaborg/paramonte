@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Contourf class for generating
-%>  instances of 2-dimensional Contourf tiles
+%>  instances of 2-dimensional Contourf [Tile visualizations](@ref Tile)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 classdef Contourf < pm.vis.tile.Tile

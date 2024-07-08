@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Histogram2 class for generating
-%>  instances of 3-dimensional Histogram2 tiles
+%>  instances of 3-dimensional Histogram2 [Tile visualizations](@ref Tile)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 classdef Histogram2 < pm.vis.tile.Tile

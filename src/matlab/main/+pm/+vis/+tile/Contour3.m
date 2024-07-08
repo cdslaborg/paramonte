@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Contour3 class for generating
-%>  instances of 3-dimensional Contour3 tiles
+%>  instances of 3-dimensional Contour3 [Tile visualizations](@ref Tile)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 %>

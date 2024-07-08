@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Line class for generating
-%>  instances of 2-dimensional Line plots
+%>  instances of 2-dimensional Line [Plot visualizations](@ref Plot)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 classdef Line < pm.vis.plot.Plot

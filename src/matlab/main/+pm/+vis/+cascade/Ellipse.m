@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the Ellipse class for generating
-%>  instances of 2-dimensional Ellipse plots
+%>  instances of 2-dimensional Ellipse [Cascade visualizations](@ref Cascade)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.<br>
 %>

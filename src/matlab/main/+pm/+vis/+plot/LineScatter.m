@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the LineScatter class for generating
-%>  instances of 2-dimensional LineScatter plots
+%>  instances of 2-dimensional LineScatter [Plot visualizations](@ref Plot)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.
 classdef LineScatter < pm.vis.plot.Plot
