@@ -566,12 +566,12 @@
 %>              A MATLAB ``struct`` whose fields and values are passed
 %>              as keyword arguments to the MATLAB intrinsic ``zlabel()``.<br>
 %>
-%>      <li>    ``xlim`` (available for all axes types)
+%>      <li>    ``xlim`` (available for all axes types, except [pm.vis.subplot.Heatmap](@ref Heatmap))
 %>
 %>              A MATLAB vector of length ``2`` whose fields and values are
 %>              passed as keyword arguments to the MATLAB intrinsic ``xlim()``.<br>
 %>
-%>      <li>    ``ylim`` (available for all axes types)
+%>      <li>    ``ylim`` (available for all axes types, except [pm.vis.subplot.Heatmap](@ref Heatmap))
 %>
 %>              A MATLAB vector of length ``2`` whose fields and values are
 %>              passed as keyword arguments to the MATLAB intrinsic ``ylim()``.<br>
@@ -581,14 +581,14 @@
 %>              A MATLAB vector of length ``2`` whose fields and values are
 %>              passed as keyword arguments to the MATLAB intrinsic ``zlim()``.<br>
 %>
-%>      <li>    ``xscale`` (available for all axes types)
+%>      <li>    ``xscale`` (available for all axes types, except [pm.vis.subplot.Heatmap](@ref Heatmap))
 %>
 %>              A MATLAB string whose value is passed directly to the MATLAB intrinsic
 %>              ``xscale()`` to set the axis scale to either logarithmic or linear.<br>
 %>              Possible values are: ``"log"``, ``"linear"``.<br>
 %>              The default behavior is set by MATLAB.<br>
 %>
-%>      <li>    ``yscale`` (available for all axes types)
+%>      <li>    ``yscale`` (available for all axes types, except [pm.vis.subplot.Heatmap](@ref Heatmap))
 %>
 %>              A MATLAB string whose value is passed directly to the MATLAB intrinsic
 %>              ``yscale()`` to set the axis scale to either logarithmic or linear.<br>
@@ -824,18 +824,20 @@ classdef Axes < pm.matlab.Handle
                 self.xlabel.fontWeight = [];
                 self.xlabel.interpreter = [];
                 self.xlabel.rotation = [];
+                self.newprop("xscale", []);
+                self.newprop("xlim", []);
             end
             self.xlabel.enabled = [];
             self.xlabel.txt = [];
 
-            self.newprop("xlim", []);
-            self.newprop("xscale", []);
 
             %%%% ylabel, ylim
 
-            self.newprop("ylim", []);
             self.newprop("ylabel", self.xlabel);
-            self.newprop("yscale", []);
+            if ~self.type.is.heatmap
+                self.newprop("yscale", []);
+                self.newprop("ylim", []);
+            end
 
             %%%% zlabel, zlim
 
@@ -1400,8 +1402,8 @@ classdef Axes < pm.matlab.Handle
         %>  \param[in]      comp    :   The input scalar MATLAB string representing the name of a ``struct``
         %>                              component of the parent object, whose fields names and values are to
         %>                              be returned as subsequent pairs in the output ``hash`` cell array.<br>
-        %>  
-        %>  \return 
+        %>
+        %>  \return
         %>  ``hash``                :   The output cell array containing the pairs of ``field-name, field-value``
         %>                              of the input MATLAB struct ``comp``.<br>
         %>

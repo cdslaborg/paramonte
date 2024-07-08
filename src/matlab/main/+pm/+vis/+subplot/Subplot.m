@@ -8,10 +8,10 @@
 %>  visualization subclasses accessible to the end users.<br>
 %>
 %>  \note
-%>  In case of [Contour](@ref Contour)/[Contourf](@ref Contourf)/[Contour3](@ref Contour3)
-%>  visualization objects, the density of the input data is first computed and smoothed
-%>  by a Gaussian kernel density estimator and then passed to the MATLAB intrinsic
-%>  plotting functions , ``contour``, ``contourf``, ``contour3``.<br>
+%>  In case of [pm.vis.subplot.Contour](@ref Contour), [pm.vis.subplot.Contour3](@ref Contour3), and
+%>  [pm.vis.subplot.Contourf](@ref Contourf) visualization objects, the density of the input data
+%>  is first computed and smoothed by a Gaussian kernel density estimator and then passed to the
+%>  MATLAB intrinsic plotting functions ``contour``, ``contourf``, ``contour3``.<br>
 %>
 %>  Dynamic class attributes
 %>  ------------------------
@@ -157,6 +157,10 @@
 %>              <br>
 %>  </ol>
 %>
+%>  \note
+%>  For example usage, see the documentation of the constructor of
+%>  the class [pm.vis.subplot.Subplot::Subplot](@ref Subplot::Subplot).<br>
+%>
 %>  \devnote
 %>  While dynamic addition of class attributes is not ideal, the current
 %>  design was deemed unavoidable and best, given the constraints of the
@@ -241,8 +245,8 @@ classdef Subplot < pm.vis.axes.Axes
         %>  \details
         %>  This is the custom constructor of the class [pm.vis.subplot.Subplot](@ref Subplot).<br>
         %>
-        %>  \param[in]  ptype   :   See the documentation of the corresponding
-        %>                          component of the superclass constructor.<br>
+        %>  \param[in]  ptype   :   See the documentation of the corresponding component of the
+        %>                          superclass constructor [pm.vis.axes.Axes::Axes](@ref Axes::Axes).<br>
         %>  \param[in]  dfref   :   The input MATLAB matrix or table containing the data to plot or
         %>                          a function handle that returns such a MATLAB matrix or table.<br>
         %>                          Specifying a function handle is superior to specifying the
@@ -277,7 +281,19 @@ classdef Subplot < pm.vis.axes.Axes
         %>  \example{Subplot}
         %>  \include{lineno} example/vis/subplot/Subplot/main.m
         %>  \vis{Subplot}
-        %>  \image html example/vis/subplot/Subplot/Subplot.1.png width=700
+        %>  \image html example/vis/subplot/Subplot/Subplot.Line.1.png width=700
+        %>  \image html example/vis/subplot/Subplot/Subplot.Line3.1.png width=700
+        %>  \image html example/vis/subplot/Subplot/Subplot.Scatter.1.png width=700
+        %>  \image html example/vis/subplot/Subplot/Subplot.Scatter3.1.png width=700
+        %>  \image html example/vis/subplot/Subplot/Subplot.LineScatter.1.png width=700
+        %>  \image html example/vis/subplot/Subplot/Subplot.LineScatter3.1.png width=700
+        %>  \image html example/vis/subplot/Subplot/Subplot.Histfit.1.png width=700
+        %>  \image html example/vis/subplot/Subplot/Subplot.Histogram.1.png width=700
+        %>  \image html example/vis/subplot/Subplot/Subplot.Histogram2.1.png width=700
+        %>  \image html example/vis/subplot/Subplot/Subplot.Contour.1.png width=700
+        %>  \image html example/vis/subplot/Subplot/Subplot.Contourf.1.png width=700
+        %>  \image html example/vis/subplot/Subplot/Subplot.Contour3.1.png width=700
+        %>  \image html example/vis/subplot/Subplot/Subplot.Heeatmap.1.png width=700
         %>
         %>  \endcode
         %>
