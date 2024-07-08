@@ -245,7 +245,7 @@ classdef Subplot < pm.vis.axes.Axes
         %>  \details
         %>  This is the custom constructor of the class [pm.vis.subplot.Subplot](@ref Subplot).<br>
         %>
-        %>  \param[in]  ptype   :   See the documentation of the corresponding component of the
+        %>  \param[in]  ptype   :   See the documentation of the corresponding input argument of the
         %>                          superclass constructor [pm.vis.axes.Axes::Axes](@ref Axes::Axes).<br>
         %>  \param[in]  dfref   :   The input MATLAB matrix or table containing the data to plot or
         %>                          a function handle that returns such a MATLAB matrix or table.<br>
@@ -281,19 +281,19 @@ classdef Subplot < pm.vis.axes.Axes
         %>  \example{Subplot}
         %>  \include{lineno} example/vis/subplot/Subplot/main.m
         %>  \vis{Subplot}
-        %>  \image html example/vis/subplot/Subplot/Subplot.Line.1.png width=700
-        %>  \image html example/vis/subplot/Subplot/Subplot.Line3.1.png width=700
-        %>  \image html example/vis/subplot/Subplot/Subplot.Scatter.1.png width=700
-        %>  \image html example/vis/subplot/Subplot/Subplot.Scatter3.1.png width=700
-        %>  \image html example/vis/subplot/Subplot/Subplot.LineScatter.1.png width=700
-        %>  \image html example/vis/subplot/Subplot/Subplot.LineScatter3.1.png width=700
-        %>  \image html example/vis/subplot/Subplot/Subplot.Histfit.1.png width=700
-        %>  \image html example/vis/subplot/Subplot/Subplot.Histogram.1.png width=700
-        %>  \image html example/vis/subplot/Subplot/Subplot.Histogram2.1.png width=700
-        %>  \image html example/vis/subplot/Subplot/Subplot.Contour.1.png width=700
-        %>  \image html example/vis/subplot/Subplot/Subplot.Contourf.1.png width=700
-        %>  \image html example/vis/subplot/Subplot/Subplot.Contour3.1.png width=700
-        %>  \image html example/vis/subplot/Subplot/Subplot.Heeatmap.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.Line.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.Line3.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.Scatter.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.Scatter3.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.LineScatter.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.LineScatter3.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.Histfit.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.Histogram.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.Histogram2.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.Contour.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.Contourf.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.Contour3.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.Heatmap.1.png width=700
         %>
         %>  \endcode
         %>
@@ -319,17 +319,21 @@ classdef Subplot < pm.vis.axes.Axes
         %>  Generate a plot from the selected columns
         %>  of the parent object component ``df``.<br>
         %>
-        %>  \param  varargin    :   Any ``property, value`` pair of the parent object.<br>
-        %>                          If the property is a ``struct()``, then its value must be given as a cell array,
-        %>                          with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
-        %>                          Note that all of these property-value pairs can be also directly set via the
-        %>                          parent object attributes, before calling the ``make()`` method.<br>
+        %>  \param[inout]   self        :   The input/output parent object of class [pm.vis.subplot.Subplot](@ref Subplot)
+        %>                                  which is **implicitly** passed to this dynamic method (not by the user).<br>
+        %>  \param[in]      varargin    :   Any ``property, value`` pair of the parent object.<br>
+        %>                                  If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                                  with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
+        %>                                  Note that all of these property-value pairs can be also directly set via the
+        %>                                  parent object attributes, before calling the ``make()`` method.<br>
         %>
         %>  \interface{make}
         %>  \code{.m}
         %>
         %>      s = pm.vis.subplot.Subplot(ptype, dfref)
+        %>
         %>      s.make(varargin);
+        %>      s.make();
         %>
         %>  \endcode
         %>
@@ -345,6 +349,23 @@ classdef Subplot < pm.vis.axes.Axes
         %>      s.make("colx", 1, "coly", 2, "colc", 3)
         %>
         %>  \endcode
+        %>
+        %>  \example{Subplot}
+        %>  \include{lineno} example/vis/subplot/Subplot/main.m
+        %>  \vis{Subplot}
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.Line.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.Line3.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.Scatter.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.Scatter3.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.LineScatter.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.LineScatter3.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.Histfit.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.Histogram.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.Histogram2.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.Contour.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.Contourf.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.Contour3.1.png width=700
+        %>  <br>\image html example/vis/subplot/Subplot/Subplot.Heatmap.1.png width=700
         %>
         %>  \final{make}
         %>
@@ -606,7 +627,7 @@ classdef Subplot < pm.vis.axes.Axes
 
             %%%%
             %%%% Ensure points and lines are scaled properly.
-            %%%% It's not clear whether it's worth doing so because
+            %%%% It is not clear whether it's worth doing so because
             %%%% most figure resizing happen after making it,
             %%%% which makes the following solution useless.
             %%%%
@@ -884,11 +905,12 @@ classdef Subplot < pm.vis.axes.Axes
                 end
                 if ~isempty(titletxt)
                     if ~self.type.is.heatmap
-                        if ~isempty(kws)
-                            kws.title = [titletxt(:); kws.title(:)];
-                        end
-                        self.fout.title = title(self.fout.axes, kws.title{:});
+                        %if ~isempty(kws)
+                        %    kws.title = {titletxt{:}, kws.title(:)};
+                        %end
+                        self.fout.title = title(self.fout.axes, titletxt{:}, kws.title{:});
                     else
+                        %%%% Neither input nor output arguments are not supported when using title with heatmap.
                         title(titletxt);
                     end
                 end
@@ -917,9 +939,9 @@ classdef Subplot < pm.vis.axes.Axes
             end
 
             if ~self.type.is.heatmap
-                %box on;
-                %grid on;
                 hold off;
+                %grid on;
+                %box on;
             end
 
         end % function
@@ -937,16 +959,21 @@ classdef Subplot < pm.vis.axes.Axes
         %>  \brief
         %>  Prepare the subplot for visualization.<br>
         %>
-        %>  \param  varargin    :   Any ``property, value`` pair of the parent object.
-        %>                          If the property is a ``struct()``, then its value must be given as a cell array,
-        %>                          with consecutive elements representing the struct ``property-name, property-value`` pairs.
-        %>                          Note that all of these property-value pairs can be also directly set via the
-        %>                          parent object attributes, before calling the ``premake()`` method.
+        %>  \param[inout]   self        :   The input/output parent object of class [pm.vis.subplot.Subplot](@ref Subplot)
+        %>                                  which is **implicitly** passed to this dynamic method (not by the user).<br>
+        %>  \param[in]      varargin    :   Any ``property, value`` pair of the parent object.
+        %>                                  If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                                  with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>                                  Note that all of these property-value pairs can be also directly set via the
+        %>                                  parent object attributes, before calling the ``premake()`` method.
         %>
         %>  \interface{premake}
         %>  \code{.m}
         %>
-        %>      pm.vis.subplot.Subplot.premake(varargin);
+        %>      s = pm.vis.subplot.Subplot(ptype, dfref);
+        %>
+        %>      s.premake(varargin);
+        %>      s.premake();
         %>
         %>  \endcode
         %>
@@ -982,11 +1009,13 @@ classdef Subplot < pm.vis.axes.Axes
         %>  Use this method when you change many attributes of the plot and
         %>  you want to clean up and go back to the default settings.<br>
         %>
-        %>  \param  varargin    :   Any ``property, value`` pair of the parent object.<br>
-        %>                          If the property is a ``struct()``, then its value must be given as a cell array,
-        %>                          with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
-        %>                          Note that all of these property-value pairs can be also directly set via the
-        %>                          parent object attributes, before calling the ``make()`` method.<br>
+        %>  \param[inout]   self        :   The input/output parent object of class [pm.vis.subplot.Subplot](@ref Subplot)
+        %>                                  which is **implicitly** passed to this dynamic method (not by the user).<br>
+        %>  \param[in]      varargin    :   Any ``property, value`` pair of the parent object.<br>
+        %>                                  If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                                  with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
+        %>                                  Note that all of these property-value pairs can be also directly set via the
+        %>                                  parent object attributes, before calling the ``make()`` method.<br>
         %>
         %>  \interface{reset}
         %>  \code{.m}
