@@ -1743,13 +1743,21 @@ if (TRUE)
 
     if ("${lang}" STREQUAL "julia" OR "${lang}" STREQUAL "matlab" OR "${lang}" STREQUAL "python" OR "${lang}" STREQUAL "r")
 
-        set(origin "${paramonte_bld_pkg_dir}/VERSION.*.md")
-        set(destin "${paramonte_bld_pkg_paramonte_dir}/auxil/")
+        set(origin "${paramonte_dir}/VERSION.md")
+        set(destin "${paramonte_bld_pkg_paramonte_dir}/auxil/VERSION.generic.md")
         message(NOTICE  "${pmattn} Setting the rule for copying the paramonte::${lang} library VERSION.md file to the package directory...\n"
                         "${pmattn}      - from: ${origin}\n"
                         "${pmattn}      -   to: ${destin}")
-        add_custom_target(copyFileAuxilVersion COMMAND ${CMAKE_COMMAND} -E copy ${origin} "${destin}")
-        add_dependencies(copyFileAuxilVersion copyFileVersionLang)
+        add_custom_target(copyFileVersionGenericAuxil COMMAND ${CMAKE_COMMAND} -E copy "${origin}" "${destin}")
+        add_dependencies(package copyFileVersionGenericAuxil)
+
+        set(origin "${paramonte_src_${lang}_dir}/VERSION.md")
+        set(destin "${paramonte_bld_pkg_paramonte_dir}/auxil/VERSION.${lang}.md")
+        message(NOTICE  "${pmattn} Setting the rule for copying the paramonte::${lang} library VERSION.md file to the package directory...\n"
+                        "${pmattn}      - from: ${origin}\n"
+                        "${pmattn}      -   to: ${destin}")
+        add_custom_target(copyFileVersionLangAuxil COMMAND ${CMAKE_COMMAND} -E copy ${origin} "${destin}")
+        add_dependencies(package copyFileVersionLangAuxil)
 
     endif()
 
