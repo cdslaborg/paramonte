@@ -30,12 +30,20 @@
 
         type(rngf_type) :: rng
 #if     S0_ENABLED
+#if     CK_ENABLED
+        complex(TKG), parameter :: ONE = (1._TKG, 0._TKG)
+#elif   RK_ENABLED
+        real(TKG), parameter :: ONE = 1._TKG
+#else
+#error  "Unrecognized interface."
+#endif
+        integer(IK) :: jdim
         if (present(scale)) then
             call setCovRand(rng, rand, scale)
         else
             call setCovRand(rng, rand)
             ! Ensure all diagonals are 1.
-            do jdim = 1, ndim
+            do jdim = 1, sizE(rand, 1, IK)
                 rand(jdim, jdim) = ONE
             end do
         end if
