@@ -36,10 +36,16 @@ for ipath = 1 : length(examlist)
         disp("Running example: " + exampath);
         diary main.out.m;
         path(defpath);
-        run(exampath);
+        runExample(exampath);
         diary off;
         close all;
     end
 end
 
 cd(rootdir);
+
+function runExample(exampath)
+    % This function ensures all example variables remain in local scopes
+    % and do not interfere with variables and scopes of other examples.
+    run(exampath);
+end

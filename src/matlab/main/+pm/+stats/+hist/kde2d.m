@@ -64,18 +64,18 @@
 %>  \see
 %>  Kernel density estimation via diffusion, Z. I. Botev, J. F. Grotowski,
 %>  and D. P. Kroese (2010) Annals of Statistics, Volume 38, Number 5, pages 2916-2957.<br>
-%>  [pm.vis.subplot.Contour](@ref Contour)<br>
-%>  [pm.vis.cascade.Contour](@ref Contour)<br>
-%>  [pm.vis.plot.Contour](@ref Contour)<br>
-%>  [pm.vis.tile.Contour](@ref Contour)<br>
-%>  [pm.vis.subplot.Contourf](@ref Contourf)<br>
-%>  [pm.vis.cascade.Contourf](@ref Contourf)<br>
-%>  [pm.vis.plot.Contourf](@ref Contourf)<br>
-%>  [pm.vis.tile.Contourf](@ref Contourf)<br>
-%>  [pm.vis.subplot.Contour3](@ref Contour3)<br>
-%>  [pm.vis.cascade.Contour3](@ref Contour3)<br>
-%>  [pm.vis.plot.Contour3](@ref Contour3)<br>
-%>  [pm.vis.tile.Contour3](@ref Contour3)<br>
+%>  [pm.vis.SubplotContour](@ref SubplotContour)<br>
+%>  [pm.vis.CascadeContour](@ref CascadeContour)<br>
+%>  [pm.vis.PlotContour](@ref PlotContour)<br>
+%>  [pm.vis.TileContour](@ref TileContour)<br>
+%>  [pm.vis.SubplotContourf](@ref SubplotContourf)<br>
+%>  [pm.vis.CascadeContourf](@ref CascadeContourf)<br>
+%>  [pm.vis.PlotContourf](@ref PlotContourf)<br>
+%>  [pm.vis.TileContourf](@ref TileContourf)<br>
+%>  [pm.vis.SubplotContour3](@ref SubplotContour3)<br>
+%>  [pm.vis.CascadeContour3](@ref CascadeContour3)<br>
+%>  [pm.vis.PlotContour3](@ref PlotContour3)<br>
+%>  [pm.vis.TileContour3](@ref TileContour3)<br>
 %>
 %>  \example{mvnmix}
 %>  \include{lineno} example/stats/hist/kde2d/mvnmix/main.m

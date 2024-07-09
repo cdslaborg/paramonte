@@ -11,12 +11,12 @@
 %>  also those of the superclass [pm.matlab.Handle](@ref Handle).<br>
 %>
 %>  \see
-%>  [pm.vis.cascade](@ref \psldir/main/+pm/+vis/+cascade)<br>
-%>  [pm.vis.subplot](@ref \psldir/main/+pm/+vis/+subplot)<br>
-%>  [pm.vis.figure](@ref \psldir/main/+pm/+vis/+figure)<br>
-%>  [pm.vis.corner](@ref \psldir/main/+pm/+vis/+corner)<br>
-%>  [pm.vis.plot](@ref \psldir/main/+pm/+vis/+plot)<br>
-%>  [pm.vis.tile](@ref \psldir/main/+pm/+vis/+tile)<br>
+%>  [pm.vis.Cascade](@ref Cascade)<br>
+%>  [pm.vis.Subplot](@ref Subplot)<br>
+%>  [pm.vis.Figure](@ref Figure)<br>
+%>  [pm.vis.Corner](@ref Corner)<br>
+%>  [pm.vis.Plot](@ref Plot)<br>
+%>  [pm.vis.Tile](@ref Tile)<br>
 %>
 %>  \final
 %>

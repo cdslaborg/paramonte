@@ -1,7 +1,7 @@
 %>  \brief
 %>  This is the abstract class for generating instances
 %>  of figures containing a symmetric grid (corners) of subplots.
-classdef Corner < [pm.vis.figure.Tiling](@ref Tiling)
+classdef Corner < pm.vis.figure.Tiling
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -61,25 +61,25 @@ classdef Corner < [pm.vis.figure.Tiling](@ref Tiling)
         %>
         cols = [];
         %>
-        %>  \param[in]  diag    :   The scalar object of superclass [pm.vis.subplot.Subplot](@ref Subplot)
+        %>  \param[in]  diag    :   The scalar object of superclass [pm.vis.Subplot](@ref Subplot)
         %>                          representing the template of the diagonal subplots to display.<br>
         %>                          Note that only the visualization properties of the template are used.<br>
         %>                          The data properties of the template are set by the ``make()`` method.<br>
-        %>                          (**optional**. The default value is [pm.vis.subplot.Histogram](@ref Histogram).)
+        %>                          (**optional**. The default value is [pm.vis.SubplotHistogram](@ref SubplotHistogram).)
         %>
         diag = [];
         %>
-        %>  \param[in]  lower   :   The scalar object of superclass [pm.vis.subplot.Subplot](@ref Subplot)
+        %>  \param[in]  lower   :   The scalar object of superclass [pm.vis.Subplot](@ref Subplot)
         %>                          representing the template of the lower-triangle subplots to display.<br>
         %>                          The data properties of the template are set by the ``make()`` method.<br>
-        %>                          (**optional**. The default value is [pm.vis.subplot.Contour](@ref Contour).)
+        %>                          (**optional**. The default value is [pm.vis.SubplotContour](@ref SubplotContour).)
         %>
         lower = [];
         %>
-        %>  \param[in]  upper   :   The scalar object of superclass [pm.vis.subplot.Subplot](@ref Subplot)
+        %>  \param[in]  upper   :   The scalar object of superclass [pm.vis.Subplot](@ref Subplot)
         %>                          representing the template of the upper-triangle subplots to display.<br>
         %>                          The data properties of the template are set by the ``make()`` method.<br>
-        %>                          (**optional**. The default value is [pm.vis.subplot.LineScatter](@ref LineScatter).)
+        %>                          (**optional**. The default value is [pm.vis.SubplotLineScatter](@ref SubplotLineScatter).)
         %>
         upper = [];
     end
@@ -126,7 +126,7 @@ classdef Corner < [pm.vis.figure.Tiling](@ref Tiling)
                 diag = [];
             end
             varargin = {"diag", diag, "lower", lower, "upper", upper, varargin{:}};
-            self = self@[pm.vis.figure.Tiling](@ref Tiling)(cell(0, 0), varargin{:});
+            self = self@pm.vis.figure.Tiling(cell(0, 0), varargin{:});
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -196,10 +196,11 @@ classdef Corner < [pm.vis.figure.Tiling](@ref Tiling)
                         copyStream = getByteStreamFromArray(self.upper);
                     end
                     self.subplot{irow, icol} = getArrayFromByteStream(copyStream);
-                    isEllipsoid = isa(self.subplot{irow, icol}, "pm.vis.subplot.Ellipse") || isa(self.subplot{irow, icol}, "pm.vis.subplot.Ellipse3");
+                    isEllipsoid = isa(self.subplot{irow, icol}, "pm.vis.SubplotEllipse") || isa(self.subplot{irow, icol}, "pm.vis.SubplotEllipse3");
 
                     if  isEllipsoid
-                        self.subplot{irow, icol}.dims = [self.cols(irow), self.cols(icol)];
+                        self.subplot{irow, icol}.dimx = self.cols(irow);
+                        self.subplot{irow, icol}.dimy = self.cols(icol);
                     else
                         if  isprop(self.subplot{irow, icol}, "colx")
                             self.subplot{irow, icol}.colx = self.cols(icol);
@@ -219,7 +220,7 @@ classdef Corner < [pm.vis.figure.Tiling](@ref Tiling)
                 end
             end
 
-            make@[pm.vis.figure.Tiling](@ref Tiling)(self);
+            make@pm.vis.figure.Tiling(self);
 
             %%%% Define a single colorbar.
 
@@ -240,7 +241,7 @@ classdef Corner < [pm.vis.figure.Tiling](@ref Tiling)
                     % positions = zeros(4, nplt);
                     % for icol = 1 : ncol
                     %     for irow = 1 : nrow
-                    %         if  pm.introspection.istype(self.subplot{irow, icol}, "pm.vis.subplot.Subplot")
+                    %         if  pm.introspection.istype(self.subplot{irow, icol}, "pm.vis.Subplot")
                     %             iplt = iplt + 1;
                     %             positions(:, iplt) = self.subplot{irow, icol}.fout.axes.Position;
                     %         end
@@ -307,16 +308,16 @@ classdef Corner < [pm.vis.figure.Tiling](@ref Tiling)
             self.cols = [];
             self.rows = [];
 
-            reset@[pm.vis.figure.Tiling](@ref Tiling)(self, varargin{:});
+            reset@pm.vis.figure.Tiling(self, varargin{:});
 
             if  isempty(self.diag)
-                self.diag = pm.vis.subplot.Histogram([]);
+                self.diag = pm.vis.SubplotHistogram([]);
             end
             if  isempty(self.lower)
-                self.diag = pm.vis.subplot.Contour([]);
+                self.diag = pm.vis.SubplotContour([]);
             end
             if  isempty(self.upper)
-                self.diag = pm.vis.subplot.LineScatter([]);
+                self.diag = pm.vis.SubplotLineScatter([]);
             end
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -353,12 +354,12 @@ classdef Corner < [pm.vis.figure.Tiling](@ref Tiling)
         %>  \JoshuaOsborne, May 21 2024, 8:00 AM, University of Texas at Arlington<br>
         function premake(self, varargin)
 
-            premake@[pm.vis.figure.Tiling](@ref Tiling)(self, varargin{:});
+            premake@pm.vis.figure.Tiling(self, varargin{:});
             % if ~isa(self.diag, "self.type.is.histfit") && ~isa(self.diag, "self.type.is.histogram")
             %     help("pm.vis.corner.Corner");
             %     error   ( newline ...
             %             + "The component ``diag`` of the parent object must be of" + newline ...
-            %             + "superclass [pm.vis.subplot.Histfit](@ref Histfit) or [pm.vis.subplot.Histogram](@ref Histogram)." + newline ...
+            %             + "superclass [pm.vis.SubplotHistfit](@ref SubplotHistfit) or [pm.vis.SubplotHistogram](@ref SubplotHistogram)." + newline ...
             %             + "For more information, see the class documentation displayed above." + newline ...
             %             + newline ...
             %             );
@@ -368,10 +369,10 @@ classdef Corner < [pm.vis.figure.Tiling](@ref Tiling)
             %     help("pm.vis.corner.Corner");
             %     error   ( newline ...
             %             + "The component ``lower`` of the parent object must be of superclass" + newline ...
-            %             + "    1.  pm.vis.subplot.Line" + newline ...
-            %             + "    2.  pm.vis.subplot.Scatter" + newline ...
-            %             + "    3.  pm.vis.subplot.LineScatter" + newline ...
-            %             + "    4.  pm.vis.subplot.LineScatter" + newline ...
+            %             + "    1.  pm.vis.SubplotLine" + newline ...
+            %             + "    2.  pm.vis.SubplotScatter" + newline ...
+            %             + "    3.  pm.vis.SubplotLineScatter" + newline ...
+            %             + "    4.  pm.vis.SubplotLineScatter" + newline ...
             %             + "For more information, see the class documentation displayed above." + newline ...
             %             + newline ...
             %             );

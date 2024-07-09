@@ -32,10 +32,10 @@
 %>
 %>  \see
 %>  [pm.geom.ell2.getBorders](@ref getBorders)<br>
-%>  [pm.vis.cascade.Ellipse](@ref Ellipse)<br>
-%>  [pm.vis.subplot.Ellipse](@ref Ellipse)<br>
-%>  [pm.vis.plot.Ellipse](@ref Ellipse)<br>
-%>  [pm.vis.tile.Ellipse](@ref Ellipse)<br>
+%>  [pm.vis.CascadeEllipse](@ref CascadeEllipse)<br>
+%>  [pm.vis.SubplotEllipse](@ref SubplotEllipse)<br>
+%>  [pm.vis.PlotEllipse](@ref PlotEllipse)<br>
+%>  [pm.vis.TileEllipse](@ref TileEllipse)<br>
 %>
 %>  \example{getBorder}
 %>  \include{lineno} example/geom/ell2/getBorder/main.m

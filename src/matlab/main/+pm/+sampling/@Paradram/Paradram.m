@@ -89,7 +89,7 @@ classdef Paradram < pm.sampling.Sampler
         %>                  );
         %>      samples = sampler.readSample();
         %>      sample = samples{1};
-        %>      tile = pm.vis.tile.Line(sample.df);
+        %>      tile = pm.vis.TileLine(sample.df);
         %>      tile.make("coly", sample.sampleLogFuncColIndex + 1 : sample.sampleLogFuncColIndex + 4, "colc", "sampleLogFunc");
         %>
         %>  \endcode

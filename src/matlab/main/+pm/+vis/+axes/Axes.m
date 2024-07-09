@@ -4,7 +4,7 @@
 %>
 %>  \details
 %>  This class primarily serves as the superclass for
-%>  the visualization-ready subclass [pm.vis.subplot.Subplot](@ref Subplot)
+%>  the visualization-ready subclass [pm.vis.Subplot](@ref Subplot)
 %>  and its subclasses, all accessible to the end users.<br>
 %>
 %>  Dynamic class attributes
@@ -17,7 +17,7 @@
 %>  See also the explicit class and superclass attributes not listed below.<br>
 %>
 %>  <ol>
-%>      <li>    ``axes`` (available for all subplots except [pm.vis.subplot.Heatmap](@ref Heatmap))<br>
+%>      <li>    ``axes`` (available for all subplots except [pm.vis.SubplotHeatmap](@ref SubplotHeatmap))<br>
 %>
 %>              A MATLAB ``struct`` whose fields and values are passed as
 %>              keyword arguments to the MATLAB intrinsic ``set()`` for
@@ -94,7 +94,7 @@
 %>              \endcode
 %>              <br>
 %>
-%>      <li>    ``contour`` (available only for [pm.vis.subplot.Contour](@ref Contour) axes types)
+%>      <li>    ``contour`` (available only for [pm.vis.SubplotContour](@ref SubplotContour) axes types)
 %>
 %>              A MATLAB ``struct`` whose fields and their values will be passed
 %>              as keyword arguments to the MATLAB intrinsic ``contour``.<br>
@@ -132,7 +132,7 @@
 %>              \endcode
 %>              <br>
 %>
-%>      <li>    ``contour3`` (available only for [pm.vis.subplot.Contour3](@ref Contour3) axes types)
+%>      <li>    ``contour3`` (available only for [pm.vis.SubplotContour3](@ref SubplotContour3) axes types)
 %>
 %>              A MATLAB ``struct`` whose fields and their values will be passed
 %>              as keyword arguments to the MATLAB intrinsic ``contour3``.<br>
@@ -170,7 +170,7 @@
 %>              \endcode
 %>              <br>
 %>
-%>      <li>    ``contourf`` (available only for [pm.vis.subplot.Contourf](@ref Contourf) axes types)
+%>      <li>    ``contourf`` (available only for [pm.vis.SubplotContourf](@ref SubplotContourf) axes types)
 %>
 %>              A MATLAB ``struct`` whose fields and their values will be passed
 %>              as keyword arguments to the MATLAB intrinsic ``contourf``.<br>
@@ -208,7 +208,7 @@
 %>              \endcode
 %>              <br>
 %>
-%>      <li>    ``histfit`` (available only for [pm.vis.subplot.Histfit](@ref Histfit) axes types)
+%>      <li>    ``histfit`` (available only for [pm.vis.SubplotHistfit](@ref SubplotHistfit) axes types)
 %>
 %>              A MATLAB ``struct`` whose fields and their values will be passed
 %>              as keyword arguments to the MATLAB intrinsic ``histfit``.<br>
@@ -242,7 +242,7 @@
 %>              \endcode
 %>              <br>
 %>
-%>      <li>    ``histogram`` (available only for [pm.vis.subplot.Histogram](@ref Histogram) axes types)
+%>      <li>    ``histogram`` (available only for [pm.vis.SubplotHistogram](@ref SubplotHistogram) axes types)
 %>
 %>              A MATLAB ``struct`` whose fields and their values will be passed
 %>              as keyword arguments to the MATLAB intrinsic ``histogram``.<br>
@@ -281,7 +281,7 @@
 %>              \endcode
 %>              <br>
 %>
-%>      <li>    ``histogram2`` (available only for [pm.vis.subplot.Histogram2](@ref Histogram2) axes types)
+%>      <li>    ``histogram2`` (available only for [pm.vis.SubplotHistogram2](@ref SubplotHistogram2) axes types)
 %>
 %>              A MATLAB ``struct`` whose fields and their values will be passed
 %>              as keyword arguments to the MATLAB intrinsic ``histogram2``.<br>
@@ -324,12 +324,12 @@
 %>              \endcode
 %>              <br>
 %>
-%>      <li>    ``legend`` (available for all axes types except [pm.vis.subplot.Heatmap](@ref Heatmap))
+%>      <li>    ``legend`` (available for all axes types except [pm.vis.SubplotHeatmap](@ref SubplotHeatmap))
 %>
 %>              A MATLAB ``struct`` whose fields and values are passed
 %>              as keyword arguments to the MATLAB intrinsic ``title()``.<br>
 %>
-%>      <li>    ``maxnoise`` (available only for [Contour](@ref Contour)/[Contourf](@ref Contourf)/[Contour3](@ref Contour3) axes types)
+%>      <li>    ``maxnoise`` (available only for [pm.vis.SubplotContour](@ref SuplotContour)/[pm.vis.SubplotContourf](@ref SuplotContourf)/[pm.vis.SubplotContour3](@ref SuplotContour3) axes types)
 %>
 %>              A float indicating the threshold below which the kernel density
 %>              estimate is considered to be noise and is rounded to zero.<br>
@@ -337,7 +337,7 @@
 %>              visible in the resulting contour plots.<br>
 %>              If empty, the default value is ``0.001``.<br>
 %>
-%>      <li>    ``plot`` (available only for [pm.vis.subplot.Line](@ref Line)/[pm.vis.subplot.LineScatter](@ref LineScatter) axes types)
+%>      <li>    ``plot`` (available only for [pm.vis.SubplotLine](@ref SubplotLine), [pm.vis.SubplotLineScatter](@ref SubplotLineScatter) axes types)
 %>
 %>              A MATLAB ``struct`` whose fields and their values will be passed
 %>              as keyword arguments to the MATLAB intrinsic ``plot``.<br>
@@ -371,7 +371,7 @@
 %>              \endcode
 %>              <br>
 %>
-%>      <li>    ``plot3`` (available only for [Line3](@ref Line3)/[LineScatter3](@ref LineScatter3) axes types)
+%>      <li>    ``plot3`` (available only for [pm.vis.SubplotLine3](@ref SubplotLine3)/[pm.vis.SubplotLineScatter3](@ref SubplotLineScatter3) axes types)
 %>
 %>              A MATLAB ``struct`` whose fields and their values will be passed
 %>              as keyword arguments to the MATLAB intrinsic ``plot3``.<br>
@@ -405,20 +405,21 @@
 %>              \endcode
 %>              <br>
 %>
-%>      <li>    ``precision`` (available only for [pm.vis.subplot.Heatmap](@ref Heatmap) axes types)
+%>      <li>    ``precision`` (available only for [pm.vis.SubplotHeatmap](@ref SubplotHeatmap) axes types)
 %>
 %>              A scalar integer representing the number of digits after
 %>              the decimal point for the values that appear in each cell
 %>              of the heatmap. The default value is set by MATLAB.<br>
 %>
-%>      <li>    ``resolution`` (available only for [Contour](@ref Contour)/[Contourf](@ref Contourf)/[Contour3](@ref Contour3) axes types)
+%>      <li>    ``resolution`` (available only for [pm.vis.SubplotContour](@ref SuplotContour), 
+%>              [pm.vis.SubplotContourf](@ref SuplotContourf), [pm.vis.SubplotContour3](@ref SuplotContour3) axes types)
 %>
 %>              A scalar integer indicating the grid resolution for discretization of
 %>              the data during the kernel density estimation. It must be a power of
 %>              two, otherwise it will be changed to the next power of two at the
 %>              time of using it. If empty, the default value is ``2^9``.<br>
 %>
-%>      <li>    ``scatter`` (available only for [Scatter](@ref Scatter)/[LineScatter](@ref LineScatter) axes types)
+%>      <li>    ``scatter`` (available only for [pm.vis.SubplotScatter](@ref SubplotScatter), [pm.vis.SubplotLineScatter](@ref SubplotLineScatter) axes types)
 %>
 %>              A MATLAB ``struct`` whose fields and their values will be passed
 %>              as keyword arguments to the MATLAB intrinsic ``scatter``.<br>
@@ -467,7 +468,7 @@
 %>              \endcode
 %>              <br>
 %>
-%>      <li>    ``scatter3`` (available only for [Scatter3](@ref Scatter3)/[LineScatter3](@ref LineScatter3) axes types)
+%>      <li>    ``scatter3`` (available only for [pm.vis.SubplotScatter3](@ref SubplotScatter3), [pm.vis.SubplotLineScatter3](@ref SubplotLineScatter3) axes types)
 %>
 %>              A MATLAB ``struct`` whose fields and their values will be passed
 %>              as keyword arguments to the MATLAB intrinsic ``scatter3``.<br>
@@ -516,7 +517,8 @@
 %>              \endcode
 %>              <br>
 %>
-%>      <li>    ``surface`` (available only for [Line](@ref Line)/[LineScatter](@ref LineScatter)/[Line3](@ref Line3)/[LineScatter3](@ref LineScatter3) axes types)
+%>      <li>    ``surface`` (available only for [pm.vis.SubplotLine](@ref SubplotLine), [pm.vis.SubplotLineScatter](@ref pm.vis.SubplotLineScatter), 
+%>              [pm.vis.SubplotLine3](@ref SubplotLine3)/[pm.vis.SubplotLineScatter3](@ref SubplotLineScatter3) axes types)
 %>
 %>              A MATLAB ``struct`` whose fields and their values will be passed
 %>              as keyword arguments to the MATLAB intrinsic ``surface``.<br>
@@ -566,12 +568,12 @@
 %>              A MATLAB ``struct`` whose fields and values are passed
 %>              as keyword arguments to the MATLAB intrinsic ``zlabel()``.<br>
 %>
-%>      <li>    ``xlim`` (available for all axes types, except [pm.vis.subplot.Heatmap](@ref Heatmap))
+%>      <li>    ``xlim`` (available for all axes types, except [pm.vis.SubplotHeatmap](@ref SubplotHeatmap))
 %>
 %>              A MATLAB vector of length ``2`` whose fields and values are
 %>              passed as keyword arguments to the MATLAB intrinsic ``xlim()``.<br>
 %>
-%>      <li>    ``ylim`` (available for all axes types, except [pm.vis.subplot.Heatmap](@ref Heatmap))
+%>      <li>    ``ylim`` (available for all axes types, except [pm.vis.SubplotHeatmap](@ref SubplotHeatmap))
 %>
 %>              A MATLAB vector of length ``2`` whose fields and values are
 %>              passed as keyword arguments to the MATLAB intrinsic ``ylim()``.<br>
@@ -581,14 +583,14 @@
 %>              A MATLAB vector of length ``2`` whose fields and values are
 %>              passed as keyword arguments to the MATLAB intrinsic ``zlim()``.<br>
 %>
-%>      <li>    ``xscale`` (available for all axes types, except [pm.vis.subplot.Heatmap](@ref Heatmap))
+%>      <li>    ``xscale`` (available for all axes types, except [pm.vis.SubplotHeatmap](@ref SubplotHeatmap))
 %>
 %>              A MATLAB string whose value is passed directly to the MATLAB intrinsic
 %>              ``xscale()`` to set the axis scale to either logarithmic or linear.<br>
 %>              Possible values are: ``"log"``, ``"linear"``.<br>
 %>              The default behavior is set by MATLAB.<br>
 %>
-%>      <li>    ``yscale`` (available for all axes types, except [pm.vis.subplot.Heatmap](@ref Heatmap))
+%>      <li>    ``yscale`` (available for all axes types, except [pm.vis.SubplotHeatmap](@ref SubplotHeatmap))
 %>
 %>              A MATLAB string whose value is passed directly to the MATLAB intrinsic
 %>              ``yscale()`` to set the axis scale to either logarithmic or linear.<br>

@@ -25,7 +25,7 @@ pm.matlab.show('c = pm.stats.Cov(df, "kendall"); c.val')
                 c = pm.stats.Cov(df, "kendall"); c.val
 
 pm.matlab.show()
-pm.matlab.show('p = pm.vis.plot.Heatmap(c.val); p.make("precision", 2); p.subplot.setColorLim();')
-                p = pm.vis.plot.Heatmap(c.val); p.make("precision", 2); p.subplot.setColorLim();
+pm.matlab.show('p = pm.vis.PlotHeatmap(c.val); p.make("precision", 2); p.subplot.setColorLim();')
+                p = pm.vis.PlotHeatmap(c.val); p.make("precision", 2); p.subplot.setColorLim();
 pm.matlab.show('p.savefig("Cov.unifrnd.png", "-m3");')
                 p.savefig("Cov.unifrnd.png", "-m3");

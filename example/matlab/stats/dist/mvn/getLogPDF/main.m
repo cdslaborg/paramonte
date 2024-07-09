@@ -17,7 +17,7 @@ pm.matlab.show("sample = array2table([sample', exp(pm.stats.dist.mvn.getLogPDF(s
                 sample = array2table([sample', exp(pm.stats.dist.mvn.getLogPDF(sample, mean, pm.matrix.inv(cholow)))]);
 pm.matlab.show('sample.Properties.VariableNames = ["X", "Y", "MVN PDF"];')
                 sample.Properties.VariableNames = ["X", "Y", "MVN PDF"];
-pm.matlab.show('p = pm.vis.plot.Scatter3(sample, "colx", 1, "coly", 2, "colz", 3, "colc", 3); p.make();')
-                p = pm.vis.plot.Scatter3(sample, "colx", 1, "coly", 2, "colz", 3, "colc", 3); p.make();
+pm.matlab.show('p = pm.vis.PlotScatter3(sample, "colx", 1, "coly", 2, "colz", 3, "colc", 3); p.make();')
+                p = pm.vis.PlotScatter3(sample, "colx", 1, "coly", 2, "colz", 3, "colc", 3); p.make();
 pm.matlab.show('pm.vis.figure.savefig("mvn.getLogPDF.scatter.3d.png", "-m4");')
                 pm.vis.figure.savefig("mvn.getLogPDF.scatter.3d.png", "-m4");

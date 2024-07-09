@@ -30,7 +30,7 @@ classdef Tiling < pm.vis.figure.Figure
         %>
         %>  ``subplot``
         %>
-        %>  The MATLAB cell matrix containing objects of superclass [pm.vis.subplot.Subplot](@ref Subplot)
+        %>  The MATLAB cell matrix containing objects of superclass [pm.vis.Subplot](@ref Subplot)
         %>  each of which represents one subplot axes to display in the figure.<br>
         %>
         subplot = cell(0, 0);
@@ -48,7 +48,7 @@ classdef Tiling < pm.vis.figure.Figure
         %>  \details
         %>  This is the constructor of the class [pm.vis.figure.Tiling](@ref Tiling).<br>
         %>
-        %>  \param[in]  subplot     :   The input cell matrix of MATLAB objects of superclass [pm.vis.subplot.Subplot](@ref Subplot).<br>
+        %>  \param[in]  subplot     :   The input cell matrix of MATLAB objects of superclass [pm.vis.Subplot](@ref Subplot).<br>
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
@@ -82,7 +82,7 @@ classdef Tiling < pm.vis.figure.Figure
             if ~failed
                 for irow = 1 : size(subplot, 1)
                     for icol = 1 : size(subplot, 2)
-                        failed = ~isempty(subplot{irow, icol}) && ~pm.introspection.istype(subplot{irow, icol}, "pm.vis.subplot.Subplot");
+                        failed = ~isempty(subplot{irow, icol}) && ~pm.introspection.istype(subplot{irow, icol}, "pm.vis.Subplot");
                         if  failed
                             break;
                         end
@@ -98,7 +98,7 @@ classdef Tiling < pm.vis.figure.Figure
                 help("[pm.vis.figure.Tiling](@ref Tiling)");
                 error   ( newline ...
                         + "The input argument ``subplot`` must be a MATLAB cell matrix of " + newline ...
-                        + "empty objects or objects of superclass [pm.vis.subplot.Subplot](@ref Subplot)." + newline ...
+                        + "empty objects or objects of superclass [pm.vis.Subplot](@ref Subplot)." + newline ...
                         + "For more information, see the class documentation displayed above." + newline ...
                         + newline ...
                         );
@@ -180,7 +180,7 @@ classdef Tiling < pm.vis.figure.Figure
                 for icol = 1 : size(self.subplot, 2)
                     iplt = iplt + 1;
                     spinner.spin(iplt / numel(self.subplot));
-                    if  pm.introspection.istype(self.subplot{irow, icol}, "pm.vis.subplot.Subplot")
+                    if  pm.introspection.istype(self.subplot{irow, icol}, "pm.vis.Subplot")
                         try
                             nexttile;
                         catch
