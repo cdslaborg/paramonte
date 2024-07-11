@@ -193,9 +193,8 @@ classdef Cascade < pm.matlab.Handle
         %>  \vis{Cascade}
         %>  \image html example/vis/Cascade/Cascade.window.1.png width=700
         %>  \image html example/vis/Cascade/Cascade.window.2.png width=700
-        %>  \image html example/vis/Cascade/Cascade.window.3.png width=700
-        %>  \image html example/vis/Cascade/Cascade.window.4.png width=700
         %>
+        %>  \image html example/vis/Cascade/Cascade.window.3.png width=700
         %>  \final{make}
         %>
         %>  \author
@@ -213,7 +212,21 @@ classdef Cascade < pm.matlab.Handle
 
             if  isHeatmap
 
-                nplt = max(size(self.template.subplot.rows, 1), size(self.template.subplot.colx, 1));
+                %%%% Set the data for the Heatmap.
+
+                hdf = struct();
+                hdf.colx = self.template.subplot.colx;
+                hdf.rows = self.template.subplot.rows;
+                if ~iscell(self.template.subplot.colx) && ~isempty(self.template.subplot.colx)
+                    hdf.colx = {hdf.colx};
+                end
+                if ~iscell(self.template.subplot.rows) && ~isempty(self.template.subplot.rows)
+                    hdf.rows = {hdf.rows};
+                end
+
+                %%%% Test the data size consistency.
+
+                nplt = max(numel(hdf.colx), numel(hdf.rows));
                 if (nplt ~= size(self.template.subplot.rows, 1) && size(self.template.subplot.rows, 1) > 1) ...
                 || (nplt ~= size(self.template.subplot.colx, 1) && size(self.template.subplot.colx, 1) > 1)
                     help("pm.vis.CascadeHeatmap");
@@ -231,7 +244,7 @@ classdef Cascade < pm.matlab.Handle
 
             elseif isEllipsoid
 
-                nplt = max(1, numel(self.template.subplot.dimx), numel(self.template.subplot.dimy));
+                nplt = max([1, numel(self.template.subplot.dimx), numel(self.template.subplot.dimy)]);
 
             else
 
@@ -267,7 +280,13 @@ classdef Cascade < pm.matlab.Handle
             for iplt = 1 : nplt
                 copyStream = getByteStreamFromArray(self.template);
                 self.window{iplt} = getArrayFromByteStream(copyStream);
-                if isHeatmap
+                if  isHeatmap
+                    if ~isempty(hdf.colx)
+                        self.window{iplt}.subplot.colx = hdf.colx{min(iplt, numel(hdf.colx))};
+                    end
+                    if ~isempty(hdf.rows)
+                        self.window{iplt}.subplot.rows = hdf.rows{min(iplt, numel(hdf.rows))};
+                    end
                 elseif isEllipsoid
                     if ~isempty(self.template.subplot.dimx)
                         self.window{iplt}.subplot.dimx = self.template.subplot.dimx(min(iplt, numel(self.template.subplot.dimx)));
@@ -353,7 +372,20 @@ classdef Cascade < pm.matlab.Handle
                         + newline ...
                         );
             end
-            for iwin = 1 : length(self.window)
+            %%%%
+            %%%%    Starting from the last is important
+            %%%%    to ensure all figures have been already created,
+            %%%%    otherwise, the next figure to be generate will
+            %%%%    become active over the previous images that
+            %%%%    are being saved, corrupting the export.
+            %%%%
+            %%%%    \todo
+            %%%%    Assuming all figures are generated sequentially from the first to the last,
+            %%%%    the following fix to export figures from the last to the first should work.
+            %%%%    However, this is only a temporary fix. An ideal solution must ensure all
+            %%%%    figures have been generated before starting to export any figure.
+            %%%%
+            for iwin = length(self.window) : -1 : 1
                 self.window{iwin}.savefig(files(iwin), varargin{:});
             end
         end

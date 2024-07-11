@@ -1,8 +1,7 @@
 %>  \brief
 %>  This is the SubplotEllipse class for generating
 %>  instances of 2-dimensional Ellipse [Subplot visualizations](@ref Subplot)
-%>  based on the relevant MATLAB
-%>  intrinsic functions.<br>
+%>  based on the relevant MATLAB intrinsic functions.<br>
 %>
 %>  \note
 %>  See the documentation of the constructor of the class

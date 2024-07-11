@@ -3,7 +3,7 @@ addpath('../../../'); % Add the ParaMonte library root directory to the search p
 
 theta = linspace(0, 8 * pi, 500);
 r = 1.5 * theta;
-df = array2table([r .* cos(theta); r .* sin(theta); r(end) - r]');
+df = array2table(ctranspose([r .* cos(theta); r .* sin(theta); r(end) - r]));
 df.Properties.VariableNames = ["X = r cos(theta)", "Y = r sin(theta)", "Z = r"];
 
 figure("color", "white");
@@ -102,13 +102,13 @@ restart = restart{1};
 
 figure("color", "white");
 sv = pm.vis.SubplotEllipse(restart.proposalCov, restart.proposalMean);
-pv.subplot.title.titletext = "Ellpse Subplot";
+pv.subplot.title.titletext = "Ellipse Subplot";
 sv.make("axes", {"zscale", "log"}, "dimx", [1, 3], "dimx", [1, 3] + 1);
 pm.vis.figure.savefig("SubplotEllipse.1.png", "-m3");
 
 figure("color", "white");
 sv = pm.vis.SubplotEllipse3(restart.proposalCov, restart.proposalMean, restart.uniqueStateVisitCount');
-pv.subplot.title.titletext = "Ellpse3 Subplot";
+pv.subplot.title.titletext = "Ellipse3 Subplot";
 sv.make("axes", {"zscale", "log"}, "dimx", [1, 3], "dimx", [1, 3] + 1);
 pm.vis.figure.savefig("SubplotEllipse3.1.png", "-m3");
 

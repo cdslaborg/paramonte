@@ -61,7 +61,6 @@ classdef CascadeHeatmap < pm.vis.Cascade
         %>  \image html example/vis/CascadeHeatmap/CascadeHeatmap.window.1.png width=700
         %>  \image html example/vis/CascadeHeatmap/CascadeHeatmap.window.2.png width=700
         %>  \image html example/vis/CascadeHeatmap/CascadeHeatmap.window.3.png width=700
-        %>  \image html example/vis/CascadeHeatmap/CascadeHeatmap.window.4.png width=700
         %>
         %>  \final{CascadeHeatmap}
         %>

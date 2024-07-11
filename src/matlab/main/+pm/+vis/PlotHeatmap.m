@@ -2,11 +2,39 @@
 %>  This is the PlotHeatmap class for generating
 %>  instances of 2-dimensional Heatmap [Plot visualizations](@ref Plot)
 %>  based on the relevant MATLAB
-%>  intrinsic functions.
+%>  intrinsic functions.<br>
+%>
+%>  \note
+%>  See the documentation of the constructor of the class
+%>  [pm.vis.PlotHeatmap](@ref PlotHeatmap::PlotHeatmap) for example usage.<br>
+%>
+%>  \note
+%>  See the documentation of the attributes
+%>  of the superclass [pm.vis.Plot](@ref Plot).<br>
+%>
+%>  \see
+%>  [pm.vis.Cascade](@ref Cascade)<br>
+%>  [pm.vis.Subplot](@ref Subplot)<br>
+%>  [pm.vis.Figure](@ref Figure)<br>
+%>  [pm.vis.Corner](@ref Corner)<br>
+%>  [pm.vis.Plot](@ref Plot)<br>
+%>  [pm.vis.Tile](@ref Tile)<br>
+%>
+%>  \final
+%>
+%>  \author
+%>  \JoshuaOsborne, May 21 2024, 6:05 PM, University of Texas at Arlington<br>
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef PlotHeatmap < pm.vis.Plot
 
     methods(Access = public)
 
+        %>  \brief
+        %>  Construct and return an object of class [pm.vis.PlotHeatmap](@ref PlotHeatmap).<br>
+        %>
+        %>  \details
+        %>  This is the constructor of the class [pm.vis.PlotHeatmap](@ref PlotHeatmap).<br>
         %>
         %>  \param[in]  dfref       :   See the documentation of the corresponding input
         %>                              argument of the superclass [pm.vis.Plot](@ref Plot).<br>
@@ -16,13 +44,8 @@ classdef PlotHeatmap < pm.vis.Plot
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``make()`` method.<br>
         %>
-        %>  \note
-        %>  The input ``varargin`` can also contain the components
-        %>  of the ``subplot`` component of the parent object.
-        %>
-        %>  \note
-        %>  See the documentation of the attributes
-        %>  of the superclass [pm.vis.Plot](@ref Plot).
+        %>  \return
+        %>  ``self``                :   The output object of class [pm.vis.PlotHeatmap](@ref PlotHeatmap).<br>
         %>
         %>  \return
         %>  An object of [pm.vis.PlotHeatmap](@ref PlotHeatmap) class.
@@ -34,6 +57,19 @@ classdef PlotHeatmap < pm.vis.Plot
         %>      p = pm.vis.PlotHeatmap(dfref, varargin);
         %>
         %>  \endcode
+        %>
+        %>  \note
+        %>  The input ``varargin`` can also contain the components
+        %>  of the ``subplot`` component of the parent object.<br>
+        %>
+        %>  \note
+        %>  See the documentation of the attributes
+        %>  of the superclass [pm.vis.Plot](@ref Plot).<br>
+        %>
+        %>  \example{PlotHeatmap}
+        %>  \include{lineno} example/vis/PlotHeatmap/main.m
+        %>  \vis{PlotHeatmap}
+        %>  <br>\image html example/vis/PlotHeatmap/PlotHeatmap.1.png width=700
         %>
         %>  \final{PlotHeatmap}
         %>

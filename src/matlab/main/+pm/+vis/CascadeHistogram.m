@@ -36,17 +36,9 @@ classdef CascadeHistogram < pm.vis.Cascade
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``make()`` method.<br>
-        %><br>
+        %>
         %>  \return
         %>  ``self``                :   The output scalar object of class [pm.vis.CascadeHistogram](@ref CascadeHistogram).<br>
-        %>
-        %>  \note
-        %>  The input ``varargin`` can also contain the components
-        %>  of the ``template`` component of the parent object.<br>
-        %>
-        %>  \note
-        %>  See the documentation of the attributes
-        %>  of the superclass [pm.vis.Cascade](@ref Cascade).<br>
         %>
         %>  \interface{CascadeHistogram}
         %>  \code{.m}
@@ -55,6 +47,14 @@ classdef CascadeHistogram < pm.vis.Cascade
         %>      p = pm.vis.CascadeHistogram(dfref, varargin);
         %>
         %>  \endcode
+        %>
+        %>  \note
+        %>  The input ``varargin`` can also contain the components
+        %>  of the ``template`` component of the parent object.<br>
+        %>
+        %>  \note
+        %>  See the documentation of the attributes
+        %>  of the superclass [pm.vis.Cascade](@ref Cascade).<br>
         %>
         %>  \final{CascadeHistogram}
         %>

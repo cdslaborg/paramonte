@@ -1,6 +1,6 @@
 %>  \brief
 %>  This is the CascadeEllipse3 class for generating
-%>  instances of 3-dimensional Ellipse3 [Cascade visualizations](@ref Cascade)
+%>  instances of 3-dimensional Ellipse [Cascade visualizations](@ref Cascade)
 %>  based on the relevant MATLAB
 %>  intrinsic functions.<br>
 %>
@@ -67,7 +67,6 @@ classdef CascadeEllipse3 < pm.vis.Cascade
         %>  \image html example/vis/CascadeEllipse3/CascadeEllipse3.window.1.png width=700
         %>  \image html example/vis/CascadeEllipse3/CascadeEllipse3.window.2.png width=700
         %>  \image html example/vis/CascadeEllipse3/CascadeEllipse3.window.3.png width=700
-        %>  \image html example/vis/CascadeEllipse3/CascadeEllipse3.window.4.png width=700
         %>
         %>  \author
         %>  \JoshuaOsborne, May 21 2024, 7:21 AM, University of Texas at Arlington<br>

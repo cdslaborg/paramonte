@@ -40,14 +40,6 @@ classdef CascadeScatter3 < pm.vis.Cascade
         %>  \return
         %>  ``self``                :   The output scalar object of class [pm.vis.CascadeScatter3](@ref CascadeScatter3).<br>
         %>
-        %>  \note
-        %>  The input ``varargin`` can also contain the components
-        %>  of the ``template`` component of the parent object.<br>
-        %>
-        %>  \note
-        %>  See the documentation of the attributes
-        %>  of the superclass [pm.vis.Cascade](@ref Cascade).<br>
-        %>
         %>  \interface{CascadeScatter3}
         %>  \code{.m}
         %>
@@ -55,6 +47,14 @@ classdef CascadeScatter3 < pm.vis.Cascade
         %>      s = pm.vis.CascadeScatter3(dfref, varargin);
         %>
         %>  \endcode
+        %>
+        %>  \note
+        %>  The input ``varargin`` can also contain the components
+        %>  of the ``template`` component of the parent object.<br>
+        %>
+        %>  \note
+        %>  See the documentation of the attributes
+        %>  of the superclass [pm.vis.Cascade](@ref Cascade).<br>
         %>
         %>  \final{CascadeScatter3}
         %>

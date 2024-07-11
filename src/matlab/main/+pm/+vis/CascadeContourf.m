@@ -61,7 +61,6 @@ classdef CascadeContourf < pm.vis.Cascade
         %>  \image html example/vis/CascadeContourf/CascadeContourf.window.1.png width=700
         %>  \image html example/vis/CascadeContourf/CascadeContourf.window.2.png width=700
         %>  \image html example/vis/CascadeContourf/CascadeContourf.window.3.png width=700
-        %>  \image html example/vis/CascadeContourf/CascadeContourf.window.4.png width=700
         %>
         %>  \final{CascadeContourf}
         %>

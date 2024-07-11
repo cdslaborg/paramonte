@@ -1,5 +1,5 @@
 cd(fileparts(mfilename('fullpath'))); % Change working directory to source code directory.
-addpath('../../../../'); % Add the ParaMonte library root directory to the search path.
+addpath('../../../'); % Add the ParaMonte library root directory to the search path.
 
 cholow = chol(pm.stats.dist.cov.getRand(10), 'lower');
 df = pm.stats.dist.mvu.getRand(zeros(length(cholow), 1), cholow, 5000)';

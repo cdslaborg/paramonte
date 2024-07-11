@@ -3,7 +3,7 @@ addpath('../../../'); % Add the ParaMonte library root directory to the search p
 
 theta = linspace(0, 8 * pi, 500);
 r = 1.5 * theta;
-df = array2table([r .* cos(theta); r .* sin(theta); r(end) - r]');
+df = array2table(ctranspose([r .* cos(theta); r .* sin(theta); r(end) - r]));
 df.Properties.VariableNames = ["X = r cos(theta)", "Y = r sin(theta)", "Z = r"];
 
 figure("color", "white");

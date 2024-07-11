@@ -2,11 +2,39 @@
 %>  This is the PlotEllipse class for generating
 %>  instances of 2-dimensional Ellipse [Plot visualizations](@ref Plot)
 %>  based on the relevant MATLAB
-%>  intrinsic functions.
+%>  intrinsic functions.<br>
+%>
+%>  \note
+%>  See the documentation of the constructor of the class
+%>  [pm.vis.PlotEllipse](@ref PlotEllipse::PlotEllipse) for example usage.<br>
+%>
+%>  \note
+%>  See the documentation of the attributes
+%>  of the superclass [pm.vis.Plot](@ref Plot).<br>
+%>
+%>  \see
+%>  [pm.vis.Cascade](@ref Cascade)<br>
+%>  [pm.vis.Subplot](@ref Subplot)<br>
+%>  [pm.vis.Figure](@ref Figure)<br>
+%>  [pm.vis.Corner](@ref Corner)<br>
+%>  [pm.vis.Plot](@ref Plot)<br>
+%>  [pm.vis.Tile](@ref Tile)<br>
+%>
+%>  \final
+%>
+%>  \author
+%>  \JoshuaOsborne, May 21 2024, 6:05 PM, University of Texas at Arlington<br>
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef PlotEllipse < pm.vis.Plot
 
     methods(Access = public)
 
+        %>  \brief
+        %>  Construct and return an object of class [pm.vis.PlotEllipse](@ref PlotEllipse).<br>
+        %>
+        %>  \details
+        %>  This is the constructor of the class [pm.vis.PlotEllipse](@ref PlotEllipse).<br>
         %>
         %>  \param[in]  gramian     :   See the corresponding input argument to the class [pm.vis.SubplotEllipse](@ref SubplotEllipse).<br>
         %>  \param[in]  center      :   See the corresponding input argument to the class [pm.vis.SubplotEllipse](@ref SubplotEllipse).<br>
@@ -17,16 +45,8 @@ classdef PlotEllipse < pm.vis.Plot
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``make()`` method.<br>
         %>
-        %>  \note
-        %>  The input ``varargin`` can also contain the components
-        %>  of the ``subplot`` component of the parent object.
-        %>
-        %>  \note
-        %>  See below and also the documentation of the
-        %>  attributes of the superclass [pm.vis.figure.Figure](@ref Figure).
-        %>
         %>  \return
-        %>  An object of class [pm.vis.PlotEllipse](@ref PlotEllipse).
+        %>  ``self``                :   The output object of class [pm.vis.PlotEllipse](@ref PlotEllipse).<br>
         %>
         %>  \interface{PlotEllipse}
         %>  \code{.m}
@@ -39,10 +59,18 @@ classdef PlotEllipse < pm.vis.Plot
         %>
         %>  \endcode
         %>
-        %>  \example{PlotEllipse}
+        %>  \note
+        %>  The input ``varargin`` can also contain the components
+        %>  of the ``subplot`` component of the parent object.<br>
         %>
-        %>      p = pm.vis.PlotEllipse();
-        %>      p.make("dimx", 1, "dimy", 2);
+        %>  \note
+        %>  See the documentation of the attributes
+        %>  of the superclass [pm.vis.Plot](@ref Plot).<br>
+        %>
+        %>  \example{PlotEllipse}
+        %>  \include{lineno} example/vis/PlotEllipse/main.m
+        %>  \vis{PlotEllipse}
+        %>  <br>\image html example/vis/PlotEllipse/PlotEllipse.1.png width=700
         %>
         %>  \final{PlotEllipse}
         %>

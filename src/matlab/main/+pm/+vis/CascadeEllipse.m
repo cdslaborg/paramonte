@@ -62,15 +62,9 @@ classdef CascadeEllipse < pm.vis.Cascade
         %>  \example{CascadeEllipse}
         %>  \include{lineno} example/vis/CascadeEllipse/main.m
         %>  \vis{CascadeEllipse}
-        %>  \image html example/vis/CascadeEllipse/CascadeEllipse.window.1.png width=700
-        %>  \image html example/vis/CascadeEllipse/CascadeEllipse.window.2.png width=700
-        %>  \image html example/vis/CascadeEllipse/CascadeEllipse.window.3.png width=700
-        %>  \image html example/vis/CascadeEllipse/CascadeEllipse.window.4.png width=700
-        %>
-        %>  \example{CascadeEllipse}
-        %>
-        %>      p = pm.vis.CascadeEllipse();
-        %>      p.make("dimx", 1, "dimy", 2);
+        %>  \image html example/vis/CascadeEllipse3/CascadeEllipse.window.1.png width=700
+        %>  \image html example/vis/CascadeEllipse3/CascadeEllipse.window.2.png width=700
+        %>  \image html example/vis/CascadeEllipse3/CascadeEllipse.window.3.png width=700
         %>
         %>  \final{CascadeEllipse}
         %>

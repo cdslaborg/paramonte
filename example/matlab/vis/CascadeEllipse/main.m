@@ -1,5 +1,5 @@
 cd(fileparts(mfilename('fullpath'))); % Change working directory to source code directory.
-addpath('../../../../'); % Add the ParaMonte library root directory to the search path.
+addpath('../../../'); % Add the ParaMonte library root directory to the search path.
 
 ndim = 10;
 nell = 100;
@@ -10,4 +10,4 @@ for iell = 1 : nell
 end
 cv = pm.vis.CascadeEllipse(gramian, center, [], "dimx", 1:2:5, "dimy", 2:2:6);
 cv.make();
-cv.savefigs(["Ellipse.window.1.png", "Ellipse.window.2.png", "Ellipse.window.3.png"], "-m3");
+cv.savefigs(["CascadeEllipse.window.1.png", "CascadeEllipse.window.2.png", "CascadeEllipse.window.3.png"], "-m3");

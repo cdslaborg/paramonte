@@ -2,7 +2,30 @@
 %>  This is the PlotScatter class for generating
 %>  instances of 2-dimensional Scatter [Plot visualizations](@ref Plot)
 %>  based on the relevant MATLAB
-%>  intrinsic functions.
+%>  intrinsic functions.<br>
+%>
+%>  \note
+%>  See the documentation of the constructor of the class
+%>  [pm.vis.PlotScatter](@ref PlotScatter::PlotScatter) for example usage.<br>
+%>
+%>  \note
+%>  See the documentation of the attributes
+%>  of the superclass [pm.vis.Plot](@ref Plot).<br>
+%>
+%>  \see
+%>  [pm.vis.Cascade](@ref Cascade)<br>
+%>  [pm.vis.Subplot](@ref Subplot)<br>
+%>  [pm.vis.Figure](@ref Figure)<br>
+%>  [pm.vis.Corner](@ref Corner)<br>
+%>  [pm.vis.Plot](@ref Plot)<br>
+%>  [pm.vis.Tile](@ref Tile)<br>
+%>
+%>  \final
+%>
+%>  \author
+%>  \JoshuaOsborne, May 21 2024, 6:05 PM, University of Texas at Arlington<br>
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef PlotScatter < pm.vis.Plot
 
     methods(Access = public)
@@ -16,16 +39,8 @@ classdef PlotScatter < pm.vis.Plot
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``make()`` method.<br>
         %>
-        %>  \note
-        %>  The input ``varargin`` can also contain the components
-        %>  of the ``subplot`` component of the parent object.
-        %>
-        %>  \note
-        %>  See the documentation of the attributes
-        %>  of the superclass [pm.vis.Plot](@ref Plot).
-        %>
         %>  \return
-        %>  An object of ``PlotScatter`` class.
+        %>  ``self``                :   The output object of class [pm.vis.PlotScatter](@ref PlotScatter).<br>
         %>
         %>  \interface{PlotScatter}
         %>  \code{.m}
@@ -34,6 +49,19 @@ classdef PlotScatter < pm.vis.Plot
         %>      s = pm.vis.PlotScatter(dfref, varargin);
         %>
         %>  \endcode
+        %>
+        %>  \note
+        %>  The input ``varargin`` can also contain the components
+        %>  of the ``subplot`` component of the parent object.<br>
+        %>
+        %>  \note
+        %>  See the documentation of the attributes
+        %>  of the superclass [pm.vis.Plot](@ref Plot).<br>
+        %>
+        %>  \example{PlotScatter}
+        %>  \include{lineno} example/vis/PlotScatter/main.m
+        %>  \vis{PlotScatter}
+        %>  <br>\image html example/vis/PlotScatter/PlotScatter.1.png width=700
         %>
         %>  \final{PlotScatter}
         %>
