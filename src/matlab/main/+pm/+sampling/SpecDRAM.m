@@ -94,6 +94,8 @@ classdef SpecDRAM < pm.sampling.SpecMCMC
         %>  \details
         %>  This is a dynamic method of the class [pm.sampling.SpecDRAM](@ref SpecDRAM).<br>
         %>
+        %>  \param[in]  self    :   The input parent object of class [pm.sampling.SpecDRAM](@ref SpecDRAM)
+        %>                          which is **implicitly** passed to this dynamic method (not by the user).<br>
         %>  \param[in]  ndim    :   The input scalar MATLAB integer containing
         %>                          the number of dimensions of the domain of the
         %>                          object function that is to be explored.<br>

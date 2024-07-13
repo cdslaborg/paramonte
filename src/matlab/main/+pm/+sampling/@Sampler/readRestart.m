@@ -29,6 +29,8 @@
 %>  Reading the full restart file of a large-scale simulation problem
 %>  can be extremely memory-intensive.<br>
 %>
+%>  \param[in]  self    :   The input parent object of class [pm.sampling.Sampler](@ref Sampler)
+%>                          which is **implicitly** passed to this dynamic method (not by the user).<br>
 %>  \param[in]  pattern :   The input scalar MATLAB string containing the pattern matching
 %>                          the desired restart file(s) whose contents is to be read.<br>
 %>                          The specified ``pattern`` only needs to partially identify

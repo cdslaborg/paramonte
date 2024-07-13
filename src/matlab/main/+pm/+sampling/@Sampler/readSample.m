@@ -10,6 +10,8 @@
 %>  Although possible, this method is NOT meant to be called
 %>  by all processes in MPI-parallel simulations.<br>
 %>
+%>  \param[in]  self    :   The input parent object of class [pm.sampling.Sampler](@ref Sampler)
+%>                          which is **implicitly** passed to this dynamic method (not by the user).<br>
 %>  \param[in]  pattern :   The input scalar MATLAB string containing the pattern matching
 %>                          the desired sample file(s) whose contents is to be read.<br>
 %>                          The specified ``pattern`` only needs to partially identify

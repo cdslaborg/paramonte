@@ -8,6 +8,8 @@
 %>  This method is to be only used for post-processing of the output chain file(s) of an already finished simulation.<br>
 %>  Although possible, this method is NOT meant to be called by all processes in MPI-parallel simulations.<br>
 %>
+%>  \param[in]  self    :   The input parent object of class [pm.sampling.Sampler](@ref Sampler)
+%>                          which is **implicitly** passed to this dynamic method (not by the user).<br>
 %>  \param[in]  pattern :   The input scalar MATLAB string containing the pattern matching
 %>                          the desired chain file(s) whose contents is to be read.<br>
 %>                          The specified ``pattern`` only needs to partially identify

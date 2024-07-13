@@ -4,6 +4,8 @@
 %>  match the specified input ``pattern`` or the simulation specification 
 %>  [sampler.spec.outputFileName](\pmdoc_usage_sampling/paradram/specifications/#outputfilename).
 %>
+%>  \param[in]  self    :   The input/output parent object of class [pm.sampling.Paradram](@ref Paradram)
+%>                          which is **implicitly** passed to this dynamic method (not by the user).<br>
 %>  \param[in]  pattern :   See the documentation of the corresponding argument of
 %>                          the constructor of the method [pm.sampling.Sampler.readChain](@ref Sampler::readChain).<br>
 %>                          (**optional**, The default is set by [pm.sampling.Sampler.readChain](@ref Sampler::readChain))

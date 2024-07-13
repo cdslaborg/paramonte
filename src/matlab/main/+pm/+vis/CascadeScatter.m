@@ -56,6 +56,13 @@ classdef CascadeScatter < pm.vis.Cascade
         %>  See the documentation of the attributes
         %>  of the superclass [pm.vis.Cascade](@ref Cascade).<br>
         %>
+        %>  \example{CascadeScatter}
+        %>  \include{lineno} example/vis/CascadeScatter/main.m
+        %>  \vis{CascadeScatter}
+        %>  \image html example/vis/CascadeScatter/CascadeScatter.window.1.png width=700
+        %>  \image html example/vis/CascadeScatter/CascadeScatter.window.2.png width=700
+        %>  \image html example/vis/CascadeScatter/CascadeScatter.window.3.png width=700
+        %>
         %>  \final{CascadeScatter}
         %>
         %>  \author

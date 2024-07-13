@@ -56,6 +56,13 @@ classdef CascadeHistogram < pm.vis.Cascade
         %>  See the documentation of the attributes
         %>  of the superclass [pm.vis.Cascade](@ref Cascade).<br>
         %>
+        %>  \example{CascadeHistogram}
+        %>  \include{lineno} example/vis/CascadeHistogram/main.m
+        %>  \vis{CascadeHistogram}
+        %>  \image html example/vis/CascadeHistogram/CascadeHistogram.window.1.png width=700
+        %>  \image html example/vis/CascadeHistogram/CascadeHistogram.window.2.png width=700
+        %>  \image html example/vis/CascadeHistogram/CascadeHistogram.window.3.png width=700
+        %>
         %>  \final{CascadeHistogram}
         %>
         %>  \author

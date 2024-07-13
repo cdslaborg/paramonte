@@ -56,6 +56,13 @@ classdef CascadeLine < pm.vis.Cascade
         %>  See the documentation of the attributes
         %>  of the superclass [pm.vis.Cascade](@ref Cascade).<br>
         %>
+        %>  \example{CascadeLine}
+        %>  \include{lineno} example/vis/CascadeLine/main.m
+        %>  \vis{CascadeLine}
+        %>  \image html example/vis/CascadeLine/CascadeLine.window.1.png width=700
+        %>  \image html example/vis/CascadeLine/CascadeLine.window.2.png width=700
+        %>  \image html example/vis/CascadeLine/CascadeLine.window.3.png width=700
+        %>
         %>  \final{CascadeLine}
         %>
         %>  \author

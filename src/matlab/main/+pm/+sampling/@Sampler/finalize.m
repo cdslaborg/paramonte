@@ -1,6 +1,9 @@
 %>  \brief
 %>  Finalize the ParaMonte MATLAB sampler simulation run and return nothing.
 %>
+%>  \param[in]  self    :   The input parent object of class [pm.sampling.Sampler](@ref Sampler)
+%>                          which is **implicitly** passed to this dynamic method (not by the user).<br>
+%>
 %>  \note
 %>  This is an internal method of the class [pm.sampling.Sampler](@ref Sampler).
 %>

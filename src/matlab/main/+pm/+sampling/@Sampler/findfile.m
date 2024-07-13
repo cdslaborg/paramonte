@@ -5,6 +5,8 @@
 %>  \details
 %>  This is a ``Hidden`` method of the class [pm.sampling.Sampler](@ref Sampler).
 %>
+%>  \param[in]  self    :   The input parent object of class [pm.sampling.Sampler](@ref Sampler)
+%>                          which is **implicitly** passed to this dynamic method (not by the user).<br>
 %>  \param[in]  ftype   :   The input scalar MATLAB string containing the sampler file type,
 %>                          which can be one of the following:
 %>                          <ol>

@@ -151,6 +151,8 @@ classdef SpecBase < pm.matlab.Handle
         %>  work required for generating and maintaining such documentation across
         %>  all supported programming language environments.<br>
         %>
+        %>  \param[in]  self            :   The input parent object of class [pm.sampling.SpecBase](@ref SpecBase)
+        %>                                  which is **implicitly** passed to this dynamic method (not by the user).<br>
         %>  \param[in]  specification   :   The input scalar MATLAB string containing the
         %>                                  name of a simulation specification corresponding
         %>                                  an attribute of the parent object.<br>
@@ -219,14 +221,16 @@ classdef SpecBase < pm.matlab.Handle
         %>  Ensure all specification properties of the parent object are sensible.<br>
         %>  This is a dynamic method of the class [pm.sampling.SpecBase](@ref SpecBase).<br>
         %>
-        %>  \param[in]  ndim    :   The input scalar MATLAB integer containing
-        %>                          the number of dimensions of the domain of the
-        %>                          object function that is to be explored.<br>
-        %>
-        %>  \return
-        %>  ``entries``         :   The output scalar MATLAB string containing
-        %>                          the simulation specifications converted to
-        %>                          a Fortran-namelist-compatible entry.<br>
+        %>  \param[inout]   self        :   The input/output parent object of class [pm.sampling.SpecBase](@ref SpecBase)
+        %>                                  which is **implicitly** passed to this dynamic method (not by the user).<br>
+        %>  \param[in]      ndim        :   The input scalar MATLAB integer containing
+        %>                                  the number of dimensions of the domain of the
+        %>                                  object function that is to be explored.<br>
+        %>      
+        %>  \return     
+        %>  ``entries``                 :   The output scalar MATLAB string containing
+        %>                                  the simulation specifications converted to
+        %>                                  a Fortran-namelist-compatible entry.<br>
         %>
         %>  \interface{getEntriesNML}
         %>  \code{.m}

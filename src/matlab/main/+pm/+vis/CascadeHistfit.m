@@ -55,6 +55,13 @@ classdef CascadeHistfit < pm.vis.Cascade
         %>  The input ``varargin`` can also contain the components
         %>  of the ``template`` component of the parent object.<br>
         %>
+        %>  \example{CascadeHistfit}
+        %>  \include{lineno} example/vis/CascadeHistfit/main.m
+        %>  \vis{CascadeHistfit}
+        %>  \image html example/vis/CascadeHistfit/CascadeHistfit.window.1.png width=700
+        %>  \image html example/vis/CascadeHistfit/CascadeHistfit.window.2.png width=700
+        %>  \image html example/vis/CascadeHistfit/CascadeHistfit.window.3.png width=700
+        %>
         %>  \final{CascadeHistfit}
         %>
         %>  \author
