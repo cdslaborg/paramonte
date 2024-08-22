@@ -68,7 +68,7 @@ program example
         open(newunit = fileUnit, file = "setGeomLogPMF.IK.txt")
         do i = 1, size(stepSuccess)
             call setGeomLogPMF(logPMF, stepSuccess(i), log([.1_RKG, .2_RKG, .5_RKG, .8_RKG]))
-            write(fileUnit, "(*(g0,:,' '))" ) stepSuccess(i), exp(logPMF)
+            write(fileUnit, "(*(g0,:,' '))") stepSuccess(i), exp(logPMF)
         end do
         close(fileUnit)
 

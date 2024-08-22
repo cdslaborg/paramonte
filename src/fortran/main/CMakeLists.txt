@@ -103,6 +103,7 @@ set(grandpa
     pm_arrayMerge
     pm_arrayMinMax
     pm_arrayPad
+    pm_arrayRange
     pm_arrayRank
     pm_arrayRefine
     pm_arrayRemap
@@ -142,6 +143,7 @@ set(grandpa
     pm_distBand
     pm_distBern
     pm_distBeta
+    pm_distBinom
     pm_distCosRaised
     pm_distCov
     pm_distExp
@@ -165,7 +167,6 @@ set(grandpa
     pm_distPiwiPoweto
     pm_distPower
     pm_distPoweto
-    #pm_distPowetoTapered
     pm_distPois
     pm_distUnif
     pm_distUnifSphere
@@ -183,28 +184,30 @@ set(grandpa
     pm_mathCumPropExp
     pm_mathCumSum
     pm_mathCompare
+    pm_mathDivMul
     pm_mathErf
     pm_mathExp
     pm_mathFactorial
     pm_mathFactoring
+    pm_mathFisher
     pm_mathGamma
+    pm_mathGammaAM
+    pm_mathGammaGil
+    pm_mathGammaNR
     pm_mathLog1p
     pm_mathLogAddExp
     pm_mathLogSubExp
     pm_mathLogSumExp
     pm_mathMinMax
     pm_mathNumSys
-    pm_mathDivMul
-    pm_mathSubAdd
-    pm_polynomial
-    pm_arrayRange
-    pm_mathFisher
     pm_mathRoot
     pm_mathRootTest
+    pm_mathRound
     pm_mathSqrt
+    pm_mathSubAdd
+    pm_mathSum
     pm_matrixMulTri
     pm_mathUnsigned
-    pm_ziggurat
     pm_matrixChol
     pm_matrixClass
     pm_matrixCopy
@@ -223,6 +226,8 @@ set(grandpa
     pm_option
     pm_os
     pm_parallelism
+    pm_polynomial
+    pm_procPois
     pm_quadPack
     pm_quadRomb
     pm_quadTest
@@ -252,6 +257,7 @@ set(grandpa
     pm_val2logical
     pm_val2real
     pm_val2str
+    pm_ziggurat
     )
 set(paramonte_src_main_fortran_modlist "${paramonte_src_main_fortran_modlist}" "${grandpa}")
 foreach(modname ${grandpa})
@@ -278,7 +284,7 @@ foreach(modname ${resizes})
 endforeach()
 
 #    ${paramonte_src_fortran_main_dir}/EconomicsToolbox_pmod.F90
-#    ${paramonte_src_fortran_main_dir}/pm_processPoisson.F90
+#    ${paramonte_src_fortran_main_dir}/pm_procPois.F90
 #    ${paramonte_src_fortran_main_dir}/pm_histogram.F90
 #    ${paramonte_src_fortran_main_dir}/pm_distMultiNormGrid.F90
 #    ${paramonte_src_fortran_main_dir}/pm_distNormShellMix.F90

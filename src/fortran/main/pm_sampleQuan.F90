@@ -119,7 +119,7 @@ module pm_sampleQuan
     !>                              <li>    type `real` of the same kind as the kind of `prob`,
     !>                          </ol>
     !>                          containing the corresponding weights of individual `nsam` observations in the target sample.<br>
-    !>                          (**optional**. default = `getFilled(1, nsam)`.)
+    !>                          (**optional**. default = [getFilled(1, nsam)](@ref pm_arrayFill::getFilled).)
     !>  \param[in]  weisum  :   The input scalar of the same type and kind as `weight` containing the quantity `sum(weight)`.<br>
     !>                          (**optional**. It **can** be present **if and only if** the input argument `weight` is also present.)
     !>

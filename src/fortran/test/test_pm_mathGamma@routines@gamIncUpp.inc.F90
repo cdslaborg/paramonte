@@ -29,131 +29,131 @@
         use pm_val2str, only: getStr
 
         real(RK), parameter :: EPS = epsilon(0._RK) * 100
-        real(RK), allocatable :: Point(:), Kappa(:), GammaIncUpp(:), GammaIncUpp_ref(:), diff(:), Tol(:)
+        real(RK), allocatable :: point(:), kappa(:), gammaIncUpp(:), GammaIncUpp_ref(:), diff(:), tol(:)
 
         assertion = .true._LK
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        Tol = [real(RK)::]
-        Point = [real(RK)::]
-        Kappa = [real(RK)::]
+        tol = [real(RK)::]
+        point = [real(RK)::]
+        kappa = [real(RK)::]
         GammaIncUpp_ref = [real(RK)::]
 
-        GammaIncUpp = getGammaIncUpp(Point, Kappa)
+        gammaIncUpp = getGammaIncUpp(point, kappa)
         call report()
-        call test%assert(assertion, SK_"getGammaIncUpp() must yield an empty `GammaIncUpp` with empty input `Point` and `Kappa`.")
+        call test%assert(assertion, SK_"getGammaIncUpp() must yield an empty `gammaIncUpp` with empty input `point` and `kappa`.")
 
-        GammaIncUpp = getGammaIncUpp(Point, Kappa)
+        gammaIncUpp = getGammaIncUpp(point, kappa)
         call report()
-        call test%assert(assertion, SK_"getGammaIncUpp() must yield an empty `GammaIncUpp` with empty input `Point` and `Kappa`.")
+        call test%assert(assertion, SK_"getGammaIncUpp() must yield an empty `gammaIncUpp` with empty input `point` and `kappa`.")
 
-        GammaIncUpp = getGammaIncUpp(Point, Kappa, Tol)
+        gammaIncUpp = getGammaIncUpp(point, kappa, tol)
         call report()
-        call test%assert(assertion, SK_"getGammaIncUpp() must yield an empty `GammaIncUpp` with empty input `Point` and `Kappa` and `Tol`.")
+        call test%assert(assertion, SK_"getGammaIncUpp() must yield an empty `gammaIncUpp` with empty input `point` and `kappa` and `tol`.")
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        Tol = [EPS]
-        Point = [0._RK]
-        Kappa = [1.0_RK]
+        tol = [EPS]
+        point = [0._RK]
+        kappa = [1.0_RK]
         GammaIncUpp_ref = [1._RK]
 
-        GammaIncUpp = getGammaIncUpp(Point, Kappa)
+        gammaIncUpp = getGammaIncUpp(point, kappa)
         call report()
-        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `GammaIncUpp` with `Point = [0.0_RK], shape = [1._RK]`.")
+        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `gammaIncUpp` with `point = [0.0_RK], shape = [1._RK]`.")
 
-        GammaIncUpp = getGammaIncUpp(Point, Kappa)
+        gammaIncUpp = getGammaIncUpp(point, kappa)
         call report()
-        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `GammaIncUpp` with `Point = [0.0_RK], shape = [1._RK]`.")
+        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `gammaIncUpp` with `point = [0.0_RK], shape = [1._RK]`.")
 
-        GammaIncUpp = getGammaIncUpp(Point, Kappa, Tol)
+        gammaIncUpp = getGammaIncUpp(point, kappa, tol)
         call report()
-        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `GammaIncUpp` with `Point = [0.0_RK], shape = [1._RK], tol = EPS`.")
+        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `gammaIncUpp` with `point = [0.0_RK], shape = [1._RK], tol = EPS`.")
 
         block
             use pm_kind, only: LK
-            logical(LK) :: Failed(size(Point))
-            call setGammaIncUppContFrac(GammaIncUpp, Point, Kappa, failed, Tol)
+            logical(LK) :: Failed(size(point))
+            call setGammaIncUppContFracNR(gammaIncUpp, point, kappa, failed, tol)
             call report()
-            call test%assert(assertion, SK_"getGammaIncUppContFrac() must yield a correct `GammaIncUpp` with `Point = [0.0_RK], shape = [1._RK], tol = EPS`.")
+            call test%assert(assertion, SK_"getGammaIncUppContFrac() must yield a correct `gammaIncUpp` with `point = [0.0_RK], shape = [1._RK], tol = EPS`.")
         end block
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        Tol = [EPS]
-        Point = [1.0_RK]
-        Kappa = [1.0_RK]
+        tol = [EPS]
+        point = [1.0_RK]
+        kappa = [1.0_RK]
         GammaIncUpp_ref = 1._RK - [0.632120558828557678404476229838539224_RK]
 
-        GammaIncUpp = getGammaIncUpp(Point, Kappa)
+        gammaIncUpp = getGammaIncUpp(point, kappa)
         call report()
-        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `GammaIncUpp` with `Point = [1.0_RK], shape = [1._RK]`.")
+        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `gammaIncUpp` with `point = [1.0_RK], shape = [1._RK]`.")
 
-        GammaIncUpp = getGammaIncUpp(Point, Kappa)
+        gammaIncUpp = getGammaIncUpp(point, kappa)
         call report()
-        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `GammaIncUpp` with `Point = [1.0_RK], shape = [1._RK]`.")
+        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `gammaIncUpp` with `point = [1.0_RK], shape = [1._RK]`.")
 
-        GammaIncUpp = getGammaIncUpp(Point, Kappa, Tol)
+        gammaIncUpp = getGammaIncUpp(point, kappa, tol)
         call report()
-        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `GammaIncUpp` with `Point = [1.0_RK], shape = [1._RK], tol = EPS`.")
+        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `gammaIncUpp` with `point = [1.0_RK], shape = [1._RK], tol = EPS`.")
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        Tol = [EPS]
-        Point = [3.0_RK]
-        Kappa = [5.0_RK]
+        tol = [EPS]
+        point = [3.0_RK]
+        kappa = [5.0_RK]
         GammaIncUpp_ref = 1._RK - [0.184736755476227933713267943730238524_RK]
 
-        GammaIncUpp = getGammaIncUpp(Point, Kappa)
+        gammaIncUpp = getGammaIncUpp(point, kappa)
         call report()
-        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `GammaIncUpp` with `Point = [1.0_RK], shape = [1._RK]`.")
+        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `gammaIncUpp` with `point = [1.0_RK], shape = [1._RK]`.")
 
-        GammaIncUpp = getGammaIncUpp(Point, Kappa)
+        gammaIncUpp = getGammaIncUpp(point, kappa)
         call report()
-        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `GammaIncUpp` with `Point = [1.0_RK], shape = [1._RK]`.")
+        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `gammaIncUpp` with `point = [1.0_RK], shape = [1._RK]`.")
 
-        GammaIncUpp = getGammaIncUpp(Point, Kappa, Tol)
+        gammaIncUpp = getGammaIncUpp(point, kappa, tol)
         call report()
-        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `GammaIncUpp` with `Point = [1.0_RK], shape = [1._RK], tol = EPS`.")
+        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `gammaIncUpp` with `point = [1.0_RK], shape = [1._RK], tol = EPS`.")
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        Tol = [EPS]
-        Point = [7.0_RK]
-        Kappa = [0.5_RK]
+        tol = [EPS]
+        point = [7.0_RK]
+        kappa = [0.5_RK]
         GammaIncUpp_ref = 1._RK - [0.999817189367018164968240003449102634_RK]
 
-        GammaIncUpp = getGammaIncUpp(Point, Kappa)
+        gammaIncUpp = getGammaIncUpp(point, kappa)
         call report()
-        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `GammaIncUpp` with `Point = [1.0_RK], shape = [1._RK]`.")
+        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `gammaIncUpp` with `point = [1.0_RK], shape = [1._RK]`.")
 
-        GammaIncUpp = getGammaIncUpp(Point, Kappa)
+        gammaIncUpp = getGammaIncUpp(point, kappa)
         call report()
-        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `GammaIncUpp` with `Point = [1.0_RK], shape = [1._RK]`.")
+        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `gammaIncUpp` with `point = [1.0_RK], shape = [1._RK]`.")
 
-        GammaIncUpp = getGammaIncUpp(Point, Kappa, Tol)
+        gammaIncUpp = getGammaIncUpp(point, kappa, tol)
         call report()
-        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `GammaIncUpp` with `Point = [1.0_RK], shape = [1._RK], tol = EPS`.")
+        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `gammaIncUpp` with `point = [1.0_RK], shape = [1._RK], tol = EPS`.")
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        Tol = [EPS]
-        Point = [7.0_RK]
-        Kappa = [0.5_RK]
+        tol = [EPS]
+        point = [7.0_RK]
+        kappa = [0.5_RK]
         GammaIncUpp_ref = 1._RK - [0.999817189367018164968240003449102634_RK]
 
-        GammaIncUpp = [getGammaIncUpp(Point(1), Kappa(1))]
+        gammaIncUpp = [getGammaIncUpp(point(1), kappa(1))]
         call report()
-        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `GammaIncUpp` with `Point = 1.0_RK, shape = 1._RK`.")
+        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `gammaIncUpp` with `point = 1.0_RK, shape = 1._RK`.")
 
-        GammaIncUpp = getGammaIncUpp(Point(1), Kappa(1))
+        gammaIncUpp = getGammaIncUpp(point(1), kappa(1))
         call report()
-        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `GammaIncUpp` with `Point = 1.0_RK, shape = 1._RK`.")
+        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `gammaIncUpp` with `point = 1.0_RK, shape = 1._RK`.")
 
-        GammaIncUpp = getGammaIncUpp(Point(1), Kappa(1), Tol(1))
+        gammaIncUpp = getGammaIncUpp(point(1), kappa(1), tol(1))
         call report()
-        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `GammaIncUpp` with `Point = 1.0_RK, shape = 1._RK, tol = EPS`.")
+        call test%assert(assertion, SK_"getGammaIncUpp() must yield a correct `gammaIncUpp` with `point = 1.0_RK, shape = 1._RK, tol = EPS`.")
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -162,13 +162,13 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         subroutine report()
-            diff = abs(GammaIncUpp - GammaIncUpp_ref)
-            assertion = assertion .and. all(abs(diff) <= Tol)
+            diff = abs(gammaIncUpp - GammaIncUpp_ref)
+            assertion = assertion .and. all(abs(diff) <= tol)
             if (test%traceable .and. .not. assertion) then
                 ! LCOV_EXCL_START
                 write(test%disp%unit,"(*(g0,:,', '))")
-                write(test%disp%unit,"(*(g0,:,', '))") "Point          ", Point
-                write(test%disp%unit,"(*(g0,:,', '))") "GammaIncUpp    ", GammaIncUpp
+                write(test%disp%unit,"(*(g0,:,', '))") "point          ", point
+                write(test%disp%unit,"(*(g0,:,', '))") "gammaIncUpp    ", gammaIncUpp
                 write(test%disp%unit,"(*(g0,:,', '))") "GammaIncUpp_ref", GammaIncUpp_ref
                 write(test%disp%unit,"(*(g0,:,', '))") "diff           ", diff
                 write(test%disp%unit,"(*(g0,:,', '))")

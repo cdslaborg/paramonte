@@ -87,6 +87,13 @@ if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
     unset flag_cki
     unset flag_rki
 
+    #### Flag to skip timely production steps in development and documentation modes.
+    #### if `--dev` is specified  by the user, the macro `dev_enabled` will be set to `1`,
+    #### preventing the package copy to the final binary installation directory.
+
+    unset flag_dev
+    ntry=2
+
     while [ "$1" != "" ]; do
         case "$1" in
 
@@ -314,6 +321,10 @@ if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
                             flag_j="-j $1"
                             ;;
 
+            --dev )         flag_dev="-Ddev_enabled=1"
+                            ntry=1
+                            ;;
+
             * )             usage
                             echo >&2 ""
                             echo >&2 "-- ParaMonte - FATAL: The specified flag $1 does not exist."
@@ -410,6 +421,16 @@ if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
 
     if  [ "${flag_j}" = "" ]; then
         flag_j="-j"
+    fi
+
+    #### Optional arguments
+
+    if  [ "${flag_exampp}" = "" ] && ! [ "${flag_exam}" = "" ] ; then
+        flag_exampp="${flag_exam/-Dexam=/-Dexampp=}"
+    fi
+
+    if  [ "${flag_benchpp}" = "" ] && ! [ "${flag_bench}" = "" ] ; then
+        flag_benchpp="${flag_bench/-Dbench=/-Dbenchpp=}"
     fi
 
 fi
@@ -607,7 +628,7 @@ for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
                                 #### The following loop temporarily bypasses an existing bug where the first fresh installation
                                 #### does not copy the FPP source files to the deployment and installation directories.
 
-                                for ((n=0; n<2; n++)); do
+                                for ((n=0; n<$ntry; n++)); do
 
                                     (cd "${paramonte_bld_dir}" && \
                                     cmake \
@@ -646,6 +667,7 @@ for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
                                     ${flag_lki} \
                                     ${flag_cki} \
                                     ${flag_rki} \
+                                    ${flag_dev} \
                                     )
                                     verify $? "configuration with cmake"
 

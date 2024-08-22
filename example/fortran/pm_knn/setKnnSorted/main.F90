@@ -9,7 +9,7 @@ program example
 
     implicit none
 
-    integer(IK) :: nref, npnt, itry, ntry = 5
+    integer(IK) :: npnt, nref, itry, ntry = 5
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
 
@@ -25,12 +25,12 @@ program example
         real(RKG), allocatable :: dismat(:,:), point(:,:)
         do itry = 1, ntry
             call disp%skip()
-            call disp%show("nref = getUnifRand(1, 3); npnt = getUnifRand(5, 7)")
-                            nref = getUnifRand(1, 3); npnt = getUnifRand(5, 7)
-            call disp%show("[nref, npnt]")
-            call disp%show( [nref, npnt] )
-            call disp%show("point = getUnifRand(1._RKG, 2._RKG, nref, npnt)")
-                            point = getUnifRand(1._RKG, 2._RKG, nref, npnt)
+            call disp%show("npnt = getUnifRand(1, 3); nref = getUnifRand(5, 7)")
+                            npnt = getUnifRand(1, 3); nref = getUnifRand(5, 7)
+            call disp%show("[npnt, nref]")
+            call disp%show( [npnt, nref] )
+            call disp%show("point = getUnifRand(1._RKG, 2._RKG, npnt, nref)")
+                            point = getUnifRand(1._RKG, 2._RKG, npnt, nref)
             call disp%show("point")
             call disp%show( point )
             call disp%show("dismat = getDisMatEuclid(point)")

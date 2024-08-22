@@ -16,8 +16,8 @@ program benchmark
     integer(IK)                         :: arraySize(NARR)  !<  The sizes of the benchmark array.
     real(RK)                            :: dummySum = 0._RK !<  The dummy computation to prevent the compiler from aggressive optimizations.
     real(RK)                            :: maxArray         !<  The maximum value of the benchmark array.
-    real(RK)    , allocatable           :: Array(:)         !<  The benchmark array.
-    real(RK)                            :: logSumExp        !<  The logarithm of the sum of the exponential of the `Array`.
+    real(RK)    , allocatable           :: array(:)         !<  The benchmark array.
+    real(RK)                            :: logSumExp        !<  The logarithm of the sum of the exponential of the `array`.
     type(bench_type)                    :: bench(2,NBENCH)  !<  The Benchmark array.
     logical(LK)                         :: underflowEnabled !<  The logical flag indicating whether an array with many instances of underflow should be generated.
 
@@ -39,7 +39,7 @@ program benchmark
 
         loopOverArraySize: do iarr = 1, NARR
 
-            allocate(Array(arraySize(iarr)))
+            allocate(array(arraySize(iarr)))
             write(*,"(*(g0,:,' '))") "Benchmarking with array size", arraySize(iarr)
 
             underflowEnabled = .false._LK
@@ -55,7 +55,7 @@ program benchmark
             end do
             write(fileUnitU,"(*(g0,:,','))") arraySize(iarr), (bench(2,i)%timing%mean, i = 1, NBENCH)
 
-            deallocate(Array)
+            deallocate(array)
 
         end do loopOverArraySize
         write(*,"(*(g0,:,' '))") dummySum
@@ -76,9 +76,9 @@ contains
     end subroutine
 
     subroutine setArray()
-        call random_number(Array)
-        if (underflowEnabled) Array = Array * (maxexponent(0._RK) - minexponent(0._RK)) + minexponent(0._RK)
-        maxArray = maxval(Array)
+        call random_number(array)
+        if (underflowEnabled) array = array * (maxexponent(0._RK) - minexponent(0._RK)) + minexponent(0._RK)
+        maxArray = maxval(array)
     end subroutine
 
     subroutine getDummy()
@@ -88,20 +88,20 @@ contains
     subroutine getLogSumExpMaxSequence()
         use pm_mathLogSumExp, only: getLogSumExp
         call setArray()
-        logSumExp = getLogSumExp(Array, maxArray)
+        logSumExp = getLogSumExp(array, maxArray)
         call getDummy()
     end subroutine
 
     subroutine getLogSumExpMaxSelection()
         use pm_mathLogSumExp, only: getLogSumExp, selection
         call setArray()
-        logSumExp = getLogSumExp(Array, maxArray, selection)
+        logSumExp = getLogSumExp(array, maxArray, selection)
         call getDummy()
     end subroutine
 
     subroutine getLogSumExpDirect()
         call setArray()
-        logSumExp = maxArray + log(sum(exp(Array - maxArray)))
+        logSumExp = maxArray + log(sum(exp(array - maxArray)))
         call getDummy()
     end subroutine
 

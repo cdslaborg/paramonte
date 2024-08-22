@@ -142,7 +142,7 @@ program example
         do i = 1, NP
             call setBetaInv(betaInv, betaInc(i), alpha, beta, getLogBeta(alpha, beta), signed, infos)
             if (any(infos /= 0)) error stop "Beta inversion failed."
-            write(fileUnit, "(*(g0,:,','))" ) betaInc(i), betaInv
+            write(fileUnit, "(*(g0,:,','))") betaInc(i), betaInv
         end do
         close(fileUnit)
 

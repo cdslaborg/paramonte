@@ -105,7 +105,7 @@
         end if
         if (present(invOmega)) xnormed = xnormed * invOmega
         if (present(kappa)) then
-            call setGenExpGammaCDF(cdf, xnormed, log_gamma(kappa), kappa, info)
+            call setGenExpGammaCDF(cdf, xnormed, kappa, info)
         else
             call setGenExpGammaCDF(cdf, xnormed, info)
         end if
@@ -115,20 +115,25 @@
 #elif   setGenExpGammaCDF_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%
 
+        real(RKG) :: gamincupp
 #if     DDD_ENABLED
-        real(RKG), parameter :: kappa = 1._RKG, logGammaKappa = log_gamma(kappa)
-        call setGammaIncLow(cdf, exp(x), logGammaKappa, kappa, info)
+        real(RKG), parameter :: kappa = 1._RKG!, logGammaKappa = log_gamma(kappa)
+        !call setGammaIncLow(cdf, exp(x), logGammaKappa, kappa, info)
+        call setGammaInc(cdf, gamincupp, exp(x), kappa, info)
 #else
         CHECK_ASSERTION(__LINE__, kappa > 0._RKG, SK_"@setGenExpGammaCDF(): The condition `kappa > 0.` must hold. kappa = "//getStr(kappa)) ! fpp
-        CHECK_ASSERTION(__LINE__, abs(log_gamma(kappa) - logGammaKappa) < 100 * epsilon(0._RKG), SK_"@setGenExpGammaCDF(): The condition `abs(log_gamma(kappa) - logGammaKappa) < 100 * epsilon(0._RKG)` must hold. log_gamma(kappa), logGammaKappa = "//getStr([log_gamma(kappa), logGammaKappa])) ! fpp
+        !check_assertion(__LINE__, abs(log_gamma(kappa) - logGammaKappa) < 100 * epsilon(0._RKG), SK_"@setGenExpGammaCDF(): The condition `abs(log_gamma(kappa) - logGammaKappa) < 100 * epsilon(0._RKG)` must hold. log_gamma(kappa), logGammaKappa = "//getStr([log_gamma(kappa), logGammaKappa])) ! fpp
 #if     KDD_ENABLED
-        call setGammaIncLow(cdf, exp(x), logGammaKappa, kappa, info)
+        !call setGammaIncLow(cdf, exp(x), logGammaKappa, kappa, info)
+        call setGammaInc(cdf, gamincupp, exp(x), kappa, info)
 #else
         CHECK_ASSERTION(__LINE__, invOmega > 0._RKG, SK_"@setGenExpGammaCDF(): The condition `invOmega > 0.` must hold. invOmega = "//getStr(invOmega)) ! fpp
 #if     KOD_ENABLED
-        call setGammaIncLow(cdf, exp(x * invOmega), logGammaKappa, kappa, info)
+        !call setGammaIncLow(cdf, exp(x * invOmega), logGammaKappa, kappa, info)
+        call setGammaInc(cdf, gamincupp, exp(x * invOmega), kappa, info)
 #elif   KOS_ENABLED
-        call setGammaIncLow(cdf, exp((x - logSigma) * invOmega), logGammaKappa, kappa, info)
+        !call setGammaIncLow(cdf, exp((x - logSigma) * invOmega), logGammaKappa, kappa, info)
+        call setGammaInc(cdf, gamincupp, exp((x - logSigma) * invOmega), kappa, info)
 #else
 #error  "Unrecognized interface."
 #endif

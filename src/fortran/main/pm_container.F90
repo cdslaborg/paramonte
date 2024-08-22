@@ -106,7 +106,7 @@
 !>  \final
 !>
 !>  \author
-!>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
+!>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -186,7 +186,7 @@ module pm_container
     !>  \final{css_type}
     !>
     !>  \author
-    !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
+    !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type :: css_type
         character(:, SK), allocatable :: val
@@ -256,7 +256,7 @@ module pm_container
     !>  \final{csi_type}
     !>
     !>  \author
-    !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
+    !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type :: csi_type
         integer(IK), allocatable :: val
@@ -325,7 +325,7 @@ module pm_container
     !>  \final{csl_type}
     !>
     !>  \author
-    !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
+    !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type :: csl_type
         logical(LK), allocatable :: val
@@ -394,7 +394,7 @@ module pm_container
     !>  \final{csc_type}
     !>
     !>  \author
-    !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
+    !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type :: csc_type
         complex(CK), allocatable :: val
@@ -463,7 +463,7 @@ module pm_container
     !>  \final{csr_type}
     !>
     !>  \author
-    !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
+    !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type :: csr_type
         real(RK), allocatable :: val
@@ -528,7 +528,7 @@ module pm_container
     !>  \final{csp_type}
     !>
     !>  \author
-    !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
+    !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type :: csp_type
         class(*), allocatable :: val
@@ -597,7 +597,7 @@ module pm_container
     !>  \final{cvp_type}
     !>
     !>  \author
-    !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
+    !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
     type :: cvp_type
         class(*)            , allocatable   :: val(:)
     end type
@@ -652,7 +652,7 @@ module pm_container
     !>  \final{cmp_type}
     !>
     !>  \author
-    !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
+    !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
     type :: cmp_type
         class(*)            , allocatable   :: val(:,:)
     end type
@@ -707,7 +707,7 @@ module pm_container
     !>  \final{ccp_type}
     !>
     !>  \author
-    !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
+    !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
     type :: ccp_type
         class(*)            , allocatable   :: val(:,:,:)
     end type
@@ -778,7 +778,7 @@ module pm_container
     !>  \final{css_pdt}
     !>
     !>  \author
-    !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
+    !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type :: css_pdt(kind)
         integer             , kind          :: kind = SK
@@ -924,7 +924,7 @@ module pm_container
     !>  \final{csi_pdt}
     !>
     !>  \author
-    !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
+    !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type :: csi_pdt(kind)
         integer             , kind          :: kind = IK
@@ -1063,7 +1063,7 @@ module pm_container
     !>  \final{csl_pdt}
     !>
     !>  \author
-    !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
+    !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type :: csl_pdt(kind)
         integer             , kind          :: kind = LK
@@ -1202,7 +1202,7 @@ module pm_container
     !>  \final{csc_pdt}
     !>
     !>  \author
-    !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
+    !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type :: csc_pdt(kind)
         integer             , kind          :: kind = CK
@@ -1341,7 +1341,7 @@ module pm_container
     !>  \final{csc_pdt}
     !>
     !>  \author
-    !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
+    !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type :: csr_pdt(kind)
         integer             , kind          :: kind = RK

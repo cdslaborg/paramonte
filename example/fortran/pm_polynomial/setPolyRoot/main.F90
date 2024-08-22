@@ -30,7 +30,7 @@ complex(RKG), allocatable   :: root(:); \
 call disp%skip(); \
 coef = COEF; \
 call disp%show("coef"); \
-call disp%show( coef , format = "(sp,"//getStr(CREP)//"(g0,:,', '))" ); \
+call disp%show( coef , format = "(sp,"//getStr(CREP)//"(g0,:,', '))"); \
 call disp%show("call setResized(root, size(coef, 1, IK) - 1_IK)"); \
                 call setResized(root, size(coef, 1, IK) - 1_IK); \
 call disp%show("call setPolyRoot(root, count, coef, eigen) ! polynomial with real coefficients."); \
@@ -38,9 +38,9 @@ call disp%show("call setPolyRoot(root, count, coef, eigen) ! polynomial with rea
 call disp%show("count"); \
 call disp%show( count ); \
 call disp%show("root(1:count)"); \
-call disp%show( root(1:count) , format = "(sp,2(g0,:,', '))" ); \
+call disp%show( root(1:count) , format = "(sp,2(g0,:,', '))"); \
 call disp%show("getPolyVal(coef, root(1:count))"); \
-call disp%show( getPolyVal(coef, root(1:count)) , format = "(sp,2(g0,:,', '))" ); \
+call disp%show( getPolyVal(coef, root(1:count)) , format = "(sp,2(g0,:,', '))"); \
 call disp%skip(); \
 end block;
 
@@ -59,7 +59,7 @@ complex(RKG), allocatable   :: root(:); \
 call disp%skip(); \
 coef = COEF; \
 call disp%show("coef"); \
-call disp%show( coef , format = "(sp,"//getStr(CREP)//"(g0,:,', '))" ); \
+call disp%show( coef , format = "(sp,"//getStr(CREP)//"(g0,:,', '))"); \
 call disp%show("call setResized(root, size(coef, 1, IK) - 1_IK)"); \
                 call setResized(root, size(coef, 1, IK) - 1_IK); \
 call disp%show("call setPolyRoot(root, count, coef, jenkins) ! polynomial with real coefficients."); \
@@ -67,9 +67,9 @@ call disp%show("call setPolyRoot(root, count, coef, jenkins) ! polynomial with r
 call disp%show("count"); \
 call disp%show( count ); \
 call disp%show("root(1:count)"); \
-call disp%show( root(1:count) , format = "(sp,2(g0,:,', '))" ); \
+call disp%show( root(1:count) , format = "(sp,2(g0,:,', '))"); \
 call disp%show("getPolyVal(coef, root(1:count))"); \
-call disp%show( getPolyVal(coef, root(1:count)) , format = "(sp,2(g0,:,', '))" ); \
+call disp%show( getPolyVal(coef, root(1:count)) , format = "(sp,2(g0,:,', '))"); \
 call disp%skip(); \
 end block;
 
@@ -88,7 +88,7 @@ complex(RKG), allocatable   :: root(:); \
 call disp%skip(); \
 coef = COEF; \
 call disp%show("coef"); \
-call disp%show( coef , format = "(sp,"//getStr(CREP)//"(g0,:,', '))" ); \
+call disp%show( coef , format = "(sp,"//getStr(CREP)//"(g0,:,', '))"); \
 call disp%show("call setResized(root, size(coef, 1, IK) - 1_IK)"); \
                 call setResized(root, size(coef, 1, IK) - 1_IK); \
 call disp%show("call setPolyRoot(root, count, coef, laguerre) ! polynomial with real coefficients."); \
@@ -96,9 +96,9 @@ call disp%show("call setPolyRoot(root, count, coef, laguerre) ! polynomial with 
 call disp%show("count"); \
 call disp%show( count ); \
 call disp%show("root(1:count)"); \
-call disp%show( root(1:count) , format = "(sp,2(g0,:,', '))" ); \
+call disp%show( root(1:count) , format = "(sp,2(g0,:,', '))"); \
 call disp%show("getPolyVal(coef, root(1:count))"); \
-call disp%show( getPolyVal(coef, root(1:count)) , format = "(sp,2(g0,:,', '))" ); \
+call disp%show( getPolyVal(coef, root(1:count)) , format = "(sp,2(g0,:,', '))"); \
 call disp%skip(); \
 end block;
 

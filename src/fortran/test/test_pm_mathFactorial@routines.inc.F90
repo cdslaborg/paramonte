@@ -31,22 +31,22 @@
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        integer(IKG), allocatable   :: PosInt(:), Factorial(:), Factorial_ref(:), diff(:)
+        integer(IKG), allocatable   :: PosInt(:), factorial(:), factorial_ref(:), diff(:)
 
         assertion = .true._LK
 
         PosInt = [integer(IKG)::]
-        Factorial_ref = [integer(IKG)::]
-        Factorial = getFactorial(PosInt)
+        factorial_ref = [integer(IKG)::]
+        factorial = getFactorial(PosInt)
 
         call report()
-        call test%assert(assertion, SK_"getFactorial() must yield an empty `Factorial` with an empty input `n`.")
+        call test%assert(assertion, SK_"getFactorial() must yield an empty `factorial` with an empty input `n`.")
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         PosInt = [0_IKG]
-        Factorial_ref = [1_IKG]
-        Factorial = [getFactorial(PosInt(1))]
+        factorial_ref = [1_IKG]
+        factorial = [getFactorial(PosInt(1))]
 
         call report()
         call test%assert(assertion, SK_"getFactorial() must yield 1 for `n = 0`.")
@@ -54,8 +54,8 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         PosInt = [1_IKG]
-        Factorial_ref = [1_IKG]
-        Factorial = [getFactorial(PosInt(1))]
+        factorial_ref = [1_IKG]
+        factorial = [getFactorial(PosInt(1))]
 
         call report()
         call test%assert(assertion, SK_"getFactorial() must yield 1 for `n = 1`.")
@@ -63,8 +63,8 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         PosInt = [1_IKG, 2_IKG]
-        Factorial_ref = [1_IKG, 2_IKG]
-        Factorial = getFactorial(PosInt)
+        factorial_ref = [1_IKG, 2_IKG]
+        factorial = getFactorial(PosInt)
 
         call report()
         call test%assert(assertion, SK_"getFactorial() must yield `[1_IKG, 2_IKG]` for `n = [1_IKG, 2_IKG]`.")
@@ -72,8 +72,8 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         PosInt = [5_IKG]
-        Factorial_ref = [120_IKG]
-        Factorial = getFactorial(PosInt)
+        factorial_ref = [120_IKG]
+        factorial = getFactorial(PosInt)
 
         call report()
         call test%assert(assertion, SK_"getFactorial() must yield `[120_IKG]` for `n = [5_IKG]`.")
@@ -85,14 +85,14 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         subroutine report()
-            diff = abs(Factorial - Factorial_ref)
+            diff = abs(factorial - factorial_ref)
             assertion = assertion .and. all(diff == 0_IKG)
             if (test%traceable .and. .not. assertion) then
                 ! LCOV_EXCL_START
                 write(test%disp%unit,"(*(g0,:,', '))")
                 write(test%disp%unit,"(*(g0,:,', '))") "PosInt         ", PosInt
-                write(test%disp%unit,"(*(g0,:,', '))") "Factorial      ", Factorial
-                write(test%disp%unit,"(*(g0,:,', '))") "Factorial_ref  ", Factorial_ref
+                write(test%disp%unit,"(*(g0,:,', '))") "factorial      ", factorial
+                write(test%disp%unit,"(*(g0,:,', '))") "factorial_ref  ", factorial_ref
                 write(test%disp%unit,"(*(g0,:,', '))") "diff           ", diff
                 write(test%disp%unit,"(*(g0,:,', '))")
                 ! LCOV_EXCL_STOP
@@ -104,51 +104,51 @@
 #elif   getLogFactorial_ENABLED
 
         real(RK), parameter :: EPS = epsilon(0._RK) * 10
-        real(RK), allocatable :: WholeNumber(:), Factorial(:), Factorial_ref(:), diff(:)
+        real(RK), allocatable :: wholeNumber(:), factorial(:), factorial_ref(:), diff(:)
 
         assertion = .true._LK
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        WholeNumber = [real(RK)::]
-        Factorial_ref = log_gamma([real(RK)::])
-        Factorial = getLogFactorial(WholeNumber)
+        wholeNumber = [real(RK)::]
+        factorial_ref = log_gamma([real(RK)::])
+        factorial = getLogFactorial(wholeNumber)
 
         call report()
-        call test%assert(assertion, SK_"getLogFactorial() must yield an empty `Factorial` with an empty input `n`.")
+        call test%assert(assertion, SK_"getLogFactorial() must yield an empty `factorial` with an empty input `n`.")
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        WholeNumber = [0._RK]
-        Factorial_ref = log_gamma(WholeNumber + 1._RK)
-        Factorial = [getLogFactorial(WholeNumber(1))]
+        wholeNumber = [0._RK]
+        factorial_ref = log_gamma(wholeNumber + 1._RK)
+        factorial = [getLogFactorial(wholeNumber(1))]
 
         call report()
         call test%assert(assertion, SK_"getLogFactorial() must yield correct answer for `x = 0`.")
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        WholeNumber = [1._RK]
-        Factorial_ref = log_gamma([1._RK])
-        Factorial = [getLogFactorial(WholeNumber(1))]
+        wholeNumber = [1._RK]
+        factorial_ref = log_gamma([1._RK])
+        factorial = [getLogFactorial(wholeNumber(1))]
 
         call report()
         call test%assert(assertion, SK_"getLogFactorial() must yield correct answer for `x = 1`.")
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        WholeNumber = [1._RK, 2._RK]
-        Factorial_ref = log_gamma(WholeNumber + 1._RK)
-        Factorial = getLogFactorial(WholeNumber)
+        wholeNumber = [1._RK, 2._RK]
+        factorial_ref = log_gamma(wholeNumber + 1._RK)
+        factorial = getLogFactorial(wholeNumber)
 
         call report()
         call test%assert(assertion, SK_"getLogFactorial() must yield correct answer for `x = [1._RK, 2._RK]`.")
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        WholeNumber = [5._RK]
-        Factorial_ref = log_gamma(WholeNumber + 1._RK)
-        Factorial = getLogFactorial(WholeNumber)
+        wholeNumber = [5._RK]
+        factorial_ref = log_gamma(wholeNumber + 1._RK)
+        factorial = getLogFactorial(wholeNumber)
 
         call report()
         call test%assert(assertion, SK_"getLogFactorial() must yield correct answer for `x = [5._RK]`.")
@@ -160,14 +160,14 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         subroutine report()
-            diff = abs(Factorial - Factorial_ref)
+            diff = abs(factorial - factorial_ref)
             assertion = assertion .and. all(abs(diff) <= EPS)
             if (test%traceable .and. .not. assertion) then
                 ! LCOV_EXCL_START
                 write(test%disp%unit,"(*(g0,:,', '))")
-                write(test%disp%unit,"(*(g0,:,', '))") "WholeNumber    ", WholeNumber
-                write(test%disp%unit,"(*(g0,:,', '))") "Factorial      ", Factorial
-                write(test%disp%unit,"(*(g0,:,', '))") "Factorial_ref  ", Factorial_ref
+                write(test%disp%unit,"(*(g0,:,', '))") "wholeNumber    ", wholeNumber
+                write(test%disp%unit,"(*(g0,:,', '))") "factorial      ", factorial
+                write(test%disp%unit,"(*(g0,:,', '))") "factorial_ref  ", factorial_ref
                 write(test%disp%unit,"(*(g0,:,', '))") "diff           ", diff
                 write(test%disp%unit,"(*(g0,:,', '))")
                 ! LCOV_EXCL_STOP

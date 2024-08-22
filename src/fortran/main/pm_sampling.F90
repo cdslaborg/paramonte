@@ -473,8 +473,8 @@ module pm_sampling
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !>  Generate and return `.true.` if the procedure fails to fully accomplish the task of generating a
-    !>  Monte Carlo sample of the specified input mathematical objective function, otherwise, return `.false.`.
+    !>  Generate and return `.true.` if the procedure fails to fully accomplish the task of Monte Carlo
+    !>  sampling of the specified input mathematical objective function, otherwise, return `.false.`.<br>
     !>
     !>  \details
     !>  This generic interface is the entry point to all ParaMonte Monte Carlo samplers of mathematical density functions.<br>
@@ -545,7 +545,7 @@ module pm_sampling
     !>                                          This interface is particularly vital in higher-level programming languages such as MATLAB, Python, and R where ParaMonte thread-level
     !>                                          parallelism is impossible due to the [global interpreter lock (GIL)](https://en.wikipedia.org/wiki/Global_interpreter_lock).<br>
     !>                                          This interface is currently activated **if and only if** the preprocessors `OMP_ENABLED=1` and either `MATLAB_ENABLED=1` or `PYTHON_ENABLED=1` or `R_ENABLED=1` are set.<br>
-    !>                                  <li>    When the library is built for any build configuration other than the above with preprocessor `CDF_ENABLED=1`, particularly, for the C and C++ programming languages,
+    !>                                  <li>    When the library is built for any build configuration other than the above with preprocessor `CFI_ENABLED=1`, particularly, for the C and C++ programming languages,
     !>                                          the input `getLogFunc()` must have the following interface:<br>
     !>                                          \code{.F90}
     !>                                              function getLogFunc(state, ndim) result(logFunc)
@@ -801,8 +801,8 @@ contains
     !>  \cfi
     !>
     !>  \brief
-    !>  Generate and return a non-zero value (`1`) if the procedure fails to fully accomplish the task of generating
-    !>  a Monte Carlo sample of the specified input mathematical objective function, otherwise, return `0`.
+    !>  Generate and return a non-zero value (`1`) if the procedure fails to fully accomplish the task of Monte Carlo
+    !>  sampling of the specified input mathematical objective function, otherwise, return `0`.
     !>
     !>  \details
     !>  This interface group is the entry point to all **C-style interfaces** to the ParaDRAM samplers of mathematical density functions.<br>

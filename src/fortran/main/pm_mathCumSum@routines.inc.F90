@@ -74,16 +74,74 @@
 #elif   setCumSum_ENABLED
         !%%%%%%%%%%%%%%%%
 
+#if     CK_ENABLED
+#define TYPE_KIND complex(TKG)
+#elif   RK_ENABLED
+#define TYPE_KIND real(TKG)
+#elif   !IK_ENABLED
+#error  "Unrecognized interface."
+#endif
+
 #if     New_ENABLED || (For_ENABLED && Non_ENABLED) || (Bac_ENABLED && Rev_ENABLED)
         integer(IK) :: i
 #endif
         integer(IK) :: lenArray
+        integer(IK), parameter :: BLOCKSIZE = 128_IK
         lenArray = size(array, kind = IK)
         CHECK_ASSERTION(__LINE__, 0_IK < lenArray, SK_"@setCumSum(): The condition `0 < size(array)` must hold. size(array) = "//getStr(lenArray))
-#if     Old_ENABLED && For_ENABLED && Non_ENABLED
+#if     Old_ENABLED && For_ENABLED && Non_ENABLED && (IK_ENABLED || CK_ENABLED || RK_ENABLED)
         do i = 2, lenArray
             array(i) = array(i - 1) + array(i)
         end do
+#elif   Old_ENABLED && For_ENABLED && Non_ENABLED && (CK_ENABLED || RK_ENABLED) && 0
+        ! This recursive approach is about 4 and 5 times slower
+        ! than the naive approach for 32 and 64 bit numbers.
+        block
+            integer(IK) :: lenArrayHalf
+            if (lenArray < BLOCKSIZE) then
+                do i = 2, lenArray
+                    array(i) = array(i - 1) + array(i)
+                end do
+            else
+                lenArrayHalf = lenArray / 2_IK
+                call setCumSum(array(1 : lenArrayHalf))
+                call setCumSum(array(lenArrayHalf + 1 : lenArray))
+                array(lenArrayHalf + 1 : lenArray) = array(lenArrayHalf) + array(lenArrayHalf + 1 : lenArray)
+            end if
+        end block
+        !block
+        !    TYPE_KIND :: error, temp, y
+        !    integer(IK) :: ipart, npart, ibeg, iend
+        !    npart = (lenArray - 1) / BLOCKSIZE
+        !    error = 0._TKG
+        !    do ipart = 1, npart
+        !        iend = min(ipart * BLOCKSIZE, lenArray)
+        !        ibeg = 1 + (ipart - 1) * BLOCKSIZE
+        !        temp = array(ibeg)
+        !        array(ibeg + 1) = error
+        !        do i = ibeg + 2, iend
+        !            array(i) = array(i - 1) + array(i)
+        !        end do
+        !        y = array(iend)
+        !        array(ibeg : iend) = temp + array(ibeg : iend)
+        !        error = (temp - array(iend)) + y;
+        !    end do
+        !end block
+#elif   Old_ENABLED && For_ENABLED && Non_ENABLED && (CK_ENABLED || RK_ENABLED) && 0
+        ! This compensated summation algorithm is more accurate than naive
+        ! summation for extremely large array sizes (> 10**7 elements),
+        ! but is roughly 4X and 3X slower than the naive approach
+        ! for 32 and 64 bit arrays. Hence, we use the naive approach.
+        block
+            TYPE_KIND :: error, temp, y
+            error = 0._TKG
+            do i = 2, lenArray
+                temp = array(i - 1)
+                y = error + array(i)
+                array(i) = temp + y
+                error = (temp - array(i)) + y
+            end do
+        end block
 #elif   Old_ENABLED && For_ENABLED && Rev_ENABLED
         call setCumSum(array)
         call setReversed(array)
@@ -120,6 +178,8 @@
 #error  "Unrecognized interface."
 #endif
 #endif
+
+#undef  TYPE_KIND
 
 #else
         !%%%%%%%%%%%%%%%%%%%%%%%%

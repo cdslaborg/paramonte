@@ -51,7 +51,7 @@
 %>  [⛓](#ParaMonteLangDocumentation)
 %>  \section ParaMonteLangDocumentation ParaMonte MATLAB Documentation Website
 %>
-%>  The documentation for the latest version of the ParaMonte MATLAB library is always <a href="../../matlab/latest/html/index.html" target="_blank"><b>available on this page</b></a>.<br>
+%>  The documentation for the latest version of the ParaMonte MATLAB library is always <a href="../../matlab/latest/index.html" target="_blank"><b>available on this page</b></a>.<br>
 %>
 %>  [⛓](#ParaMonteUsage)
 %>  <!--=====================================-->
@@ -86,7 +86,7 @@
 %>  \endcode
 %>
 %>  The ParaMonte MATLAB library currently contains a myriad of MATLAB *packages*.<br>
-%>  The ParaMonte MATLAB library is currently under active development to extend the library functionalities to other tasks supported by the [ParaMonte Fortran library](../../../fortran/latest/html).<br>
+%>  The ParaMonte MATLAB library is currently under active development to extend the library functionalities to other tasks supported by the [ParaMonte Fortran library](../../../fortran/latest/index.html).<br>
 %>  For a full list of all available functionalities and modules, see the [files listing](./files.html) and [class listing](./annotated.html) of this documentation website.<br>
 %>
 %>  [⛓](#ParaMonteLangNamingConventions)

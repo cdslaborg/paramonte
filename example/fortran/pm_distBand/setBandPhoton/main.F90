@@ -50,7 +50,7 @@ program example
         do i = 1, NP
             call setBandPhoton(photons, 50._RKG, 300._RKG, 1._RKG, 0.01_RKG, 20000._RKG, alpha, beta, getBandEbreak(alpha, beta, epeak(i)), info)
             if (any(info < 0)) error stop
-            write(fileUnit, "(*(g0,:,' '))" ) epeak(i), photons
+            write(fileUnit, "(*(g0,:,' '))") epeak(i), photons
         end do
         close(fileUnit)
 

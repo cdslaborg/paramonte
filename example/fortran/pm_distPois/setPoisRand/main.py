@@ -25,7 +25,7 @@ legends =   [ r"$\lambda = 0.1$"
 
 for kind in ["IK", "CK", "RK"]:
 
-    pattern = "*."+kind+".txt"
+    pattern = "*." + kind + ".txt"
     fileList = glob.glob(pattern)
     if len(fileList) == 1:
 
@@ -34,7 +34,7 @@ for kind in ["IK", "CK", "RK"]:
         fig = plt.figure(figsize = 1.25 * np.array([6.4, 4.8]), dpi = 200)
         ax = plt.subplot()
 
-        for j in range(len(df.values[0,:]) - 1):
+        for j in range(len(df.values[0,:])):
             if kind == "CK":
                 plt.hist( df.values[:,j]
                         , histtype = "stepfilled"

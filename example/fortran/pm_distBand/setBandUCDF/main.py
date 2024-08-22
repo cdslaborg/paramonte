@@ -15,7 +15,7 @@ label = [ r"$\alpha, \beta = +0.5, -0.5, x_b = 0.5, \mathrm{lb} = .01$"
         , r"$\alpha, \beta = -1.1, -3.0, x_b = 5.0, \mathrm{lb} = .01$"
         ]
 
-pattern = "*."+kind+".txt"
+pattern = "*." + kind + ".txt"
 fileList = glob.glob(pattern)
 if len(fileList) == 1:
 

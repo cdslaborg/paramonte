@@ -91,7 +91,7 @@ module pm_sampleECDF
     !>                                  <li>    type `real` of the same kind as the kind of `ecdf`,
     !>                              </ol>
     !>                              containing the corresponding weights of individual `nsam` observations in the target sample.<br>
-    !>                              (**optional**. default = `getFilled(1, nsam)`.)
+    !>                              (**optional**. default = [getFilled(1, nsam)](@ref pm_arrayFill::getFilled).)
     !>  \param[in]      weisum  :   The input scalar of the same type and kind as `weight` containing the quantity `sum(weight)`.<br>
     !>                              (**optional**. It must be present **if and only if** the input argument `weight` is also present.)
     !>  \param[out]     lcdf    :   The output `contiguous` array of the same type, kind, rank, and size as the output `ecdf`

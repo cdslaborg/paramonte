@@ -10,7 +10,7 @@ fontsize = 17
 
 kind = "RK"
 
-pattern = "*."+kind+".txt"
+pattern = "*." + kind + ".txt"
 fileList = glob.glob(pattern)
 if len(fileList) == 1:
 

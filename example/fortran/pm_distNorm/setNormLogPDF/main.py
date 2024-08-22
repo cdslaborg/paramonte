@@ -25,7 +25,7 @@ legends =   [ r"$\mu = 0.0,~\sigma = 2.00$"
 
 for kind in ["IK", "CK", "RK"]:
 
-    pattern = "*."+kind+".txt"
+    pattern = "*." + kind + ".txt"
     fileList = glob.glob(pattern)
     if len(fileList) == 1:
 

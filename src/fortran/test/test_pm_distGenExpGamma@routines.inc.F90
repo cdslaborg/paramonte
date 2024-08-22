@@ -31,29 +31,29 @@
 #if     getGenExpGammaLogPDFNF_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(RKG)   , allocatable   :: Kappa(:), invOmega(:), LogTarget(:), LogTarget_ref(:), diff(:)
+        real(RKG)   , allocatable   :: kappa(:), invOmega(:), logTarget(:), logTarget_ref(:), diff(:)
 
         assertion = .true._LK
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         call reset()
-        Kappa = getLinSpace(0.1_RKG, 10._RKG, count = 5_IK)
-        LogTarget_ref = -log_gamma(Kappa)
+        kappa = getLinSpace(0.1_RKG, 10._RKG, count = 5_IK)
+        logTarget_ref = -log_gamma(kappa)
         invOmega = [1._RKG]
-        allocate(LogTarget, diff, mold = LogTarget_ref)
+        allocate(logTarget, diff, mold = logTarget_ref)
 
-        do i = 1_IK, size(Kappa, kind = IK)
-            LogTarget(i) = getGenExpGammaLogPDFNF(Kappa(i))
-            diff(i) = abs(LogTarget(i) - LogTarget_ref(i))
+        do i = 1_IK, size(kappa, kind = IK)
+            logTarget(i) = getGenExpGammaLogPDFNF(kappa(i))
+            diff(i) = abs(logTarget(i) - logTarget_ref(i))
             assertion = assertion .and. diff(i) <= TOL
             call report()
             call test%assert(assertion, SK_"The logPDFNF must be computed correctly for the given input scalar value of `shape` and default `invScale`.")
         end do
 
-        do i = 1_IK, size(Kappa, kind = IK)
-            LogTarget(i) = getGenExpGammaLogPDFNF(Kappa(i), invOmega(1))
-            diff(i) = abs(LogTarget(i) - LogTarget_ref(i))
+        do i = 1_IK, size(kappa, kind = IK)
+            logTarget(i) = getGenExpGammaLogPDFNF(kappa(i), invOmega(1))
+            diff(i) = abs(logTarget(i) - logTarget_ref(i))
             assertion = assertion .and. diff(i) <= TOL
             call report()
             call test%assert(assertion, SK_"The logPDFNF must be computed correctly for the given input scalar value of `shape` and `invScale = 1.`.")
@@ -62,14 +62,14 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         call reset()
-        Kappa = getLinSpace(0.1_RKG, 10._RKG, count = 5_IK)
+        kappa = getLinSpace(0.1_RKG, 10._RKG, count = 5_IK)
         invOmega = [2._RKG]
-        LogTarget_ref = -log_gamma(Kappa) + log(invOmega(1))
-        allocate(LogTarget, diff, mold = LogTarget_ref)
+        logTarget_ref = -log_gamma(kappa) + log(invOmega(1))
+        allocate(logTarget, diff, mold = logTarget_ref)
 
-        do i = 1_IK, size(Kappa, kind = IK)
-            LogTarget(i) = getGenExpGammaLogPDFNF(Kappa(i), invOmega(1))
-            diff(i) = abs(LogTarget(i) - LogTarget_ref(i))
+        do i = 1_IK, size(kappa, kind = IK)
+            logTarget(i) = getGenExpGammaLogPDFNF(kappa(i), invOmega(1))
+            diff(i) = abs(logTarget(i) - logTarget_ref(i))
             call report()
             call test%assert(assertion, SK_"The logPDFNF must be computed correctly for the given input scalar value of `shape` and `invScale = 2.`.")
         end do
@@ -77,13 +77,13 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         call reset()
-        Kappa = getLinSpace(0.1_RKG, 10._RKG, count = 5_IK)
+        kappa = getLinSpace(0.1_RKG, 10._RKG, count = 5_IK)
         invOmega = getLinSpace(10._RKG, 0.1_RKG, count = 5_IK)
-        LogTarget_ref = -log_gamma(Kappa(1)) + log(invOmega)
-        LogTarget = getGenExpGammaLogPDFNF(Kappa(1), invOmega)
-        diff = abs(LogTarget - LogTarget_ref)
+        logTarget_ref = -log_gamma(kappa(1)) + log(invOmega)
+        logTarget = getGenExpGammaLogPDFNF(kappa(1), invOmega)
+        diff = abs(logTarget - logTarget_ref)
 
-        do i = 1_IK, size(Kappa, kind = IK)
+        do i = 1_IK, size(kappa, kind = IK)
             call report()
             call test%assert(assertion, SK_"The logPDFNF must be computed correctly for the given input scalar value of `shape` and vector `invScale`.")
         end do
@@ -91,13 +91,13 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         call reset()
-        Kappa = getLinSpace(0.1_RKG, 10._RKG, count = 5_IK)
+        kappa = getLinSpace(0.1_RKG, 10._RKG, count = 5_IK)
         invOmega = getLinSpace(10._RKG, 0.1_RKG, count = 5_IK)
-        LogTarget_ref = -log_gamma(Kappa) + log(invOmega)
-        LogTarget = getGenExpGammaLogPDFNF(Kappa, invOmega)
-        diff = abs(LogTarget - LogTarget_ref)
+        logTarget_ref = -log_gamma(kappa) + log(invOmega)
+        logTarget = getGenExpGammaLogPDFNF(kappa, invOmega)
+        diff = abs(logTarget - logTarget_ref)
 
-        do i = 1_IK, size(Kappa, kind = IK)
+        do i = 1_IK, size(kappa, kind = IK)
             call report()
             call test%assert(assertion, SK_"The logPDFNF must be computed correctly for the given input vector value of `shape` and `invScale`.")
         end do
@@ -109,7 +109,7 @@
 #if     setGenExpGammaLogPDF_ENABLED
         real(RKG)                   :: kappa_current, invOmega_current, logSigma_current
 #endif
-        real(RKG)   , allocatable   :: logPDFNF(:), Kappa(:), invOmega(:), LogSigma(:), Point(:), LogTarget(:), LogTarget_ref(:), diff(:)
+        real(RKG)   , allocatable   :: logPDFNF(:), kappa(:), invOmega(:), LogSigma(:), Point(:), logTarget(:), logTarget_ref(:), diff(:)
 
         assertion = .true._LK
 
@@ -119,7 +119,7 @@
 
 #if     getGenExpGammaLogPDF_ENABLED || setGenExpGammaLogPDF_ENABLED
         Point = real([-10,-5,-1,0,2,4,8], kind = RKG)
-        LogTarget_ref = [ -10.0000453999297624848515355915155600_RKG & ! LCOV_EXCL_LINE
+        logTarget_ref = [ -10.0000453999297624848515355915155600_RKG & ! LCOV_EXCL_LINE
                         , -5.00673794699908546709663604842314809_RKG & ! LCOV_EXCL_LINE
                         , -1.36787944117144232159552377016146087_RKG & ! LCOV_EXCL_LINE
                         , -1.00000000000000000000000000000000000_RKG & ! LCOV_EXCL_LINE
@@ -128,27 +128,27 @@
                         , -2972.95798704172827474359209945288863_RKG & ! LCOV_EXCL_LINE
                         ]
 #endif
-        allocate(LogTarget, diff, mold = LogTarget_ref)
+        allocate(logTarget, diff, mold = logTarget_ref)
 
         do i = 1_IK, size(Point, kind = IK)
 #if         getGenExpGammaLogPDF_ENABLED
-            LogTarget(i) = getGenExpGammaLogPDF(Point(i))
+            logTarget(i) = getGenExpGammaLogPDF(Point(i))
 #elif       setGenExpGammaLogPDF_ENABLED
-            call setGenExpGammaLogPDF(LogTarget(i), Point(i))
+            call setGenExpGammaLogPDF(logTarget(i), Point(i))
 #endif
-            diff(i) = abs(LogTarget(i) - LogTarget_ref(i))
+            diff(i) = abs(logTarget(i) - logTarget_ref(i))
             assertion = assertion .and. diff(i) <= TOL
             call report()
             call test%assert(assertion, SK_"The `logPDF` must be computed correctly for a input scalar `x` with the default parameters.", int(__LINE__, IK))
         end do
 
 #if     getGenExpGammaLogPDF_ENABLED
-        LogTarget = getGenExpGammaLogPDF(Point)
+        logTarget = getGenExpGammaLogPDF(Point)
 #elif   setGenExpGammaLogPDF_ENABLED
-        call setGenExpGammaLogPDF(LogTarget, Point)
+        call setGenExpGammaLogPDF(logTarget, Point)
 #endif
         do i = 1_IK, size(Point, kind = IK)
-            diff(i) = abs(LogTarget(i) - LogTarget_ref(i))
+            diff(i) = abs(logTarget(i) - logTarget_ref(i))
             assertion = assertion .and. diff(i) <= TOL
             call report()
             call test%assert(assertion, SK_"The `logPDF` must be computed correctly for a input vector `x` with the default parameters.", int(__LINE__, IK))
@@ -159,10 +159,10 @@
         call reset()
 
 #if     getGenExpGammaLogPDF_ENABLED || setGenExpGammaLogPDF_ENABLED
-        Kappa = [5._RKG]
-        logPDFNF = getGenExpGammaLogPDFNF(Kappa)
+        kappa = [5._RKG]
+        logPDFNF = getGenExpGammaLogPDFNF(kappa)
         Point = real([-10,-5,-1,0,2,4,8], kind = RKG)
-        LogTarget_ref = [ -53.17809923027770810449847719281262070_RKG & ! LCOV_EXCL_LINE
+        logTarget_ref = [ -53.17809923027770810449847719281262070_RKG & ! LCOV_EXCL_LINE
                         , -28.18479177734703108674357764972020190_RKG & ! LCOV_EXCL_LINE
                         , -8.545933271519387941242465371458516020_RKG & ! LCOV_EXCL_LINE
                         , -4.178053830347945619646941601297055340_RKG & ! LCOV_EXCL_LINE
@@ -171,27 +171,27 @@
                         , -2944.136040872076220363239041054185630_RKG & ! LCOV_EXCL_LINE
                         ]
 #endif
-        allocate(LogTarget, diff, mold = LogTarget_ref)
+        allocate(logTarget, diff, mold = logTarget_ref)
 
         do i = 1_IK, size(Point, kind = IK)
 #if         getGenExpGammaLogPDF_ENABLED
-            LogTarget(i:i) = getGenExpGammaLogPDF(Point(i), Kappa)
+            logTarget(i:i) = getGenExpGammaLogPDF(Point(i), kappa)
 #elif       setGenExpGammaLogPDF_ENABLED
-            call setGenExpGammaLogPDF(LogTarget(i:i), Point(i), logPDFNF, Kappa)
+            call setGenExpGammaLogPDF(logTarget(i:i), Point(i), logPDFNF, kappa)
 #endif
-            diff(i) = abs(LogTarget(i) - LogTarget_ref(i))
+            diff(i) = abs(logTarget(i) - logTarget_ref(i))
             assertion = assertion .and. diff(i) <= TOL
             call report()
             call test%assert(assertion, SK_"The `logPDF` must be computed correctly for a input scalar `x` with `shape = [5]`.", int(__LINE__, IK))
         end do
 
 #if     getGenExpGammaLogPDF_ENABLED
-        LogTarget = getGenExpGammaLogPDF(Point, Kappa(1))
+        logTarget = getGenExpGammaLogPDF(Point, kappa(1))
 #elif   setGenExpGammaLogPDF_ENABLED
-        call setGenExpGammaLogPDF(LogTarget, Point, logPDFNF(1), Kappa(1))
+        call setGenExpGammaLogPDF(logTarget, Point, logPDFNF(1), kappa(1))
 #endif
         do i = 1_IK, size(Point, kind = IK)
-            diff(i) = abs(LogTarget(i) - LogTarget_ref(i))
+            diff(i) = abs(logTarget(i) - logTarget_ref(i))
             assertion = assertion .and. diff(i) <= TOL
             call report()
             call test%assert(assertion, SK_"The `logPDF` must be computed correctly for a input vector `x` with `shape = [5]`.", int(__LINE__, IK))
@@ -202,12 +202,12 @@
         call reset()
 
 #if     getGenExpGammaLogPDF_ENABLED || setGenExpGammaLogPDF_ENABLED
-        Kappa = [5._RKG]
+        kappa = [5._RKG]
         invOmega = [1._RKG]
         LogSigma = [0._RKG]
-        logPDFNF = getGenExpGammaLogPDFNF(Kappa)
+        logPDFNF = getGenExpGammaLogPDFNF(kappa)
         Point = real([-10,-5,-1,0,2,4,8], kind = RKG)
-        LogTarget_ref = [ -53.17809923027770810449847719281262070_RKG & ! LCOV_EXCL_LINE
+        logTarget_ref = [ -53.17809923027770810449847719281262070_RKG & ! LCOV_EXCL_LINE
                         , -28.18479177734703108674357764972020190_RKG & ! LCOV_EXCL_LINE
                         , -8.545933271519387941242465371458516020_RKG & ! LCOV_EXCL_LINE
                         , -4.178053830347945619646941601297055340_RKG & ! LCOV_EXCL_LINE
@@ -216,27 +216,27 @@
                         , -2944.136040872076220363239041054185630_RKG & ! LCOV_EXCL_LINE
                         ]
 #endif
-        allocate(LogTarget, diff, mold = LogTarget_ref)
+        allocate(logTarget, diff, mold = logTarget_ref)
 
         do i = 1_IK, size(Point, kind = IK)
 #if         getGenExpGammaLogPDF_ENABLED
-            LogTarget(i:i) = getGenExpGammaLogPDF(Point(i), Kappa, invOmega(1), LogSigma)
+            logTarget(i:i) = getGenExpGammaLogPDF(Point(i), kappa, invOmega(1), LogSigma)
 #elif       setGenExpGammaLogPDF_ENABLED
-            call setGenExpGammaLogPDF(LogTarget(i:i), Point(i), logPDFNF, Kappa, invOmega(1), LogSigma)
+            call setGenExpGammaLogPDF(logTarget(i:i), Point(i), logPDFNF, kappa, invOmega(1), LogSigma)
 #endif
-            diff(i) = abs(LogTarget(i) - LogTarget_ref(i))
+            diff(i) = abs(logTarget(i) - logTarget_ref(i))
             assertion = assertion .and. diff(i) <= TOL
             call report()
             call test%assert(assertion, SK_"The `logPDF` must be computed correctly for a input scalar `x` with `shape, invScale, loc = [5], [1], [0]`.", int(__LINE__, IK))
         end do
 
 #if     getGenExpGammaLogPDF_ENABLED
-        LogTarget = getGenExpGammaLogPDF(Point, Kappa(1), invOmega(1), LogSigma(1))
+        logTarget = getGenExpGammaLogPDF(Point, kappa(1), invOmega(1), LogSigma(1))
 #elif   setGenExpGammaLogPDF_ENABLED
-        call setGenExpGammaLogPDF(LogTarget, Point, logPDFNF(1), Kappa(1), invOmega(1), LogSigma(1))
+        call setGenExpGammaLogPDF(logTarget, Point, logPDFNF(1), kappa(1), invOmega(1), LogSigma(1))
 #endif
         do i = 1_IK, size(Point, kind = IK)
-            diff(i) = abs(LogTarget(i) - LogTarget_ref(i))
+            diff(i) = abs(logTarget(i) - logTarget_ref(i))
             assertion = assertion .and. diff(i) <= TOL
             call report()
             call test%assert(assertion, SK_"The `logPDF` must be computed correctly for a input vector `x` with `shape, invScale, loc = [5], [1], [0]`.", int(__LINE__, IK))
@@ -247,12 +247,12 @@
         call reset()
 
 #if     getGenExpGammaLogPDF_ENABLED || setGenExpGammaLogPDF_ENABLED
-        Kappa = [5._RKG]
+        kappa = [5._RKG]
         invOmega = [1._RKG/7._RKG]
         LogSigma = [0._RKG]
-        logPDFNF = getGenExpGammaLogPDFNF(Kappa, invOmega)
+        logPDFNF = getGenExpGammaLogPDFNF(kappa, invOmega)
         Point = real([-10,-5,-1,0,2,4,8], kind = RKG)
-        LogTarget_ref = [ -12.5064721587021775768864997445425634_RKG & ! LCOV_EXCL_LINE
+        logTarget_ref = [ -12.5064721587021775768864997445425634_RKG & ! LCOV_EXCL_LINE
                         , -9.18493421038878347841123612554047209_RKG & ! LCOV_EXCL_LINE
                         , -6.70512759343915483796951253560755200_RKG & ! LCOV_EXCL_LINE
                         , -6.12396397940325892475229434474023509_RKG & ! LCOV_EXCL_LINE
@@ -261,39 +261,39 @@
                         , -2.54539302868736732595888578628241702_RKG & ! LCOV_EXCL_LINE
                         ]
 #endif
-        allocate(LogTarget, diff, mold = LogTarget_ref)
+        allocate(logTarget, diff, mold = logTarget_ref)
 
         do i = 1_IK, size(Point, kind = IK)
 #if         getGenExpGammaLogPDF_ENABLED
-            LogTarget(i:i) = getGenExpGammaLogPDF(Point(i), Kappa, invOmega(1))
+            logTarget(i:i) = getGenExpGammaLogPDF(Point(i), kappa, invOmega(1))
 #elif       setGenExpGammaLogPDF_ENABLED
-            call setGenExpGammaLogPDF(LogTarget(i:i), Point(i), logPDFNF, Kappa, invOmega(1))
+            call setGenExpGammaLogPDF(logTarget(i:i), Point(i), logPDFNF, kappa, invOmega(1))
 #endif
-            diff(i) = abs(LogTarget(i) - LogTarget_ref(i))
+            diff(i) = abs(logTarget(i) - logTarget_ref(i))
             assertion = assertion .and. diff(i) <= TOL
             call report()
             call test%assert(assertion, SK_"The `logPDF` must be computed correctly for a input scalar `x` with `shape, invScale = [5], [7]`.", int(__LINE__, IK))
         end do
 
 #if     getGenExpGammaLogPDF_ENABLED
-        LogTarget = getGenExpGammaLogPDF(Point, Kappa(1), invOmega(1), LogSigma(1))
+        logTarget = getGenExpGammaLogPDF(Point, kappa(1), invOmega(1), LogSigma(1))
 #elif   setGenExpGammaLogPDF_ENABLED
-        call setGenExpGammaLogPDF(LogTarget, Point, logPDFNF(1), Kappa(1), invOmega(1), LogSigma(1))
+        call setGenExpGammaLogPDF(logTarget, Point, logPDFNF(1), kappa(1), invOmega(1), LogSigma(1))
 #endif
         do i = 1_IK, size(Point, kind = IK)
-            diff(i) = abs(LogTarget(i) - LogTarget_ref(i))
+            diff(i) = abs(logTarget(i) - logTarget_ref(i))
             assertion = assertion .and. diff(i) <= TOL
             call report()
             call test%assert(assertion, SK_"The `logPDF` must be computed correctly for a input vector `x` with `shape, invScale = [5], [1/7]`.", int(__LINE__, IK))
         end do
 
 #if     getGenExpGammaLogPDF_ENABLED
-        LogTarget = getGenExpGammaLogPDF(Point, Kappa(1), invOmega(1), LogSigma(1))
+        logTarget = getGenExpGammaLogPDF(Point, kappa(1), invOmega(1), LogSigma(1))
 #elif   setGenExpGammaLogPDF_ENABLED
-        call setGenExpGammaLogPDF(LogTarget, Point, logPDFNF(1), Kappa(1), invOmega(1), LogSigma(1))
+        call setGenExpGammaLogPDF(logTarget, Point, logPDFNF(1), kappa(1), invOmega(1), LogSigma(1))
 #endif
         do i = 1_IK, size(Point, kind = IK)
-            diff(i) = abs(LogTarget(i) - LogTarget_ref(i))
+            diff(i) = abs(logTarget(i) - logTarget_ref(i))
             assertion = assertion .and. diff(i) <= TOL
             call report()
             call test%assert(assertion, SK_"The `logPDF` must be computed correctly for a input vector `x` with `shape, invScale, loc = [5], [1/7], [0]`.", int(__LINE__, IK))
@@ -304,46 +304,46 @@
         call reset()
 
 #if     getGenExpGammaLogPDF_ENABLED || setGenExpGammaLogPDF_ENABLED
-        Kappa = [0.5_RKG]
+        kappa = [0.5_RKG]
         invOmega = [8._RKG]
         LogSigma = [3._RKG]
-        logPDFNF = getGenExpGammaLogPDFNF(Kappa, invOmega)
+        logPDFNF = getGenExpGammaLogPDFNF(kappa, invOmega)
         Point = real([-10,-5,-1,0,2,4,8], kind = RKG)
-        LogTarget_ref = getGenExpGammaLogPDF(Point - LogSigma(1), Kappa(1), invOmega(1))
+        logTarget_ref = getGenExpGammaLogPDF(Point - LogSigma(1), kappa(1), invOmega(1))
 #endif
-        allocate(LogTarget, diff, mold = LogTarget_ref)
+        allocate(logTarget, diff, mold = logTarget_ref)
 
         do i = 1_IK, size(Point, kind = IK)
 #if         getGenExpGammaLogPDF_ENABLED
-            LogTarget(i:i) = getGenExpGammaLogPDF(Point(i), Kappa, invOmega(1), LogSigma(1))
+            logTarget(i:i) = getGenExpGammaLogPDF(Point(i), kappa, invOmega(1), LogSigma(1))
 #elif       setGenExpGammaLogPDF_ENABLED
-            call setGenExpGammaLogPDF(LogTarget(i:i), Point(i), logPDFNF, Kappa, invOmega(1), LogSigma(1))
+            call setGenExpGammaLogPDF(logTarget(i:i), Point(i), logPDFNF, kappa, invOmega(1), LogSigma(1))
 #endif
-            diff(i) = abs(LogTarget(i) - LogTarget_ref(i))
+            diff(i) = abs(logTarget(i) - logTarget_ref(i))
             assertion = assertion .and. diff(i) <= TOL
             call report()
             call test%assert(assertion, SK_"The `logPDF` must be computed correctly for a input scalar `x` with `shape, invScale = [5], [7]`.", int(__LINE__, IK))
         end do
 
 #if     getGenExpGammaLogPDF_ENABLED
-        LogTarget = getGenExpGammaLogPDF(Point, Kappa(1), invOmega(1), LogSigma(1))
+        logTarget = getGenExpGammaLogPDF(Point, kappa(1), invOmega(1), LogSigma(1))
 #elif   setGenExpGammaLogPDF_ENABLED
-        call setGenExpGammaLogPDF(LogTarget, Point, logPDFNF(1), Kappa(1), invOmega(1), LogSigma(1))
+        call setGenExpGammaLogPDF(logTarget, Point, logPDFNF(1), kappa(1), invOmega(1), LogSigma(1))
 #endif
         do i = 1_IK, size(Point, kind = IK)
-            diff(i) = abs(LogTarget(i) - LogTarget_ref(i))
+            diff(i) = abs(logTarget(i) - logTarget_ref(i))
             assertion = assertion .and. diff(i) <= TOL
             call report()
             call test%assert(assertion, SK_"The `logPDF` must be computed correctly for a input vector `x` with `shape, invScale = [5], [1/7]`.", int(__LINE__, IK))
         end do
 
 #if     getGenExpGammaLogPDF_ENABLED
-        LogTarget = getGenExpGammaLogPDF(Point, Kappa(1), invOmega(1), LogSigma(1))
+        logTarget = getGenExpGammaLogPDF(Point, kappa(1), invOmega(1), LogSigma(1))
 #elif   setGenExpGammaLogPDF_ENABLED
-        call setGenExpGammaLogPDF(LogTarget, Point, logPDFNF(1), Kappa(1), invOmega(1), LogSigma(1))
+        call setGenExpGammaLogPDF(logTarget, Point, logPDFNF(1), kappa(1), invOmega(1), LogSigma(1))
 #endif
         do i = 1_IK, size(Point, kind = IK)
-            diff(i) = abs(LogTarget(i) - LogTarget_ref(i))
+            diff(i) = abs(logTarget(i) - logTarget_ref(i))
             assertion = assertion .and. diff(i) <= TOL
             call report()
             call test%assert(assertion, SK_"The `logPDF` must be computed correctly for a input vector `x` with `shape, invScale, loc = [5], [1/7], [0]`.", int(__LINE__, IK))
@@ -446,7 +446,7 @@
 #endif
         subroutine reset()
             if (allocated(diff)) deallocate(diff)
-            if (allocated(LogTarget)) deallocate(LogTarget)
+            if (allocated(logTarget)) deallocate(logTarget)
         end subroutine
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -456,10 +456,10 @@
                 assertion = assertion .and. diff(i) <= TOL
                 ! LCOV_EXCL_START
                 write(test%disp%unit,"(*(g0,:,', '))")
-                write(test%disp%unit,"(*(g0,:,', '))") "Kappa          ", Kappa
+                write(test%disp%unit,"(*(g0,:,', '))") "kappa          ", kappa
                 write(test%disp%unit,"(*(g0,:,', '))") "invOmega       ", invOmega
-                write(test%disp%unit,"(*(g0,:,', '))") "LogTarget_ref  ", LogTarget_ref
-                write(test%disp%unit,"(*(g0,:,', '))") "LogTarget      ", LogTarget
+                write(test%disp%unit,"(*(g0,:,', '))") "logTarget_ref  ", logTarget_ref
+                write(test%disp%unit,"(*(g0,:,', '))") "logTarget      ", logTarget
                 write(test%disp%unit,"(*(g0,:,', '))") "diff           ", diff
                 write(test%disp%unit,"(*(g0,:,', '))") "TOL            ", TOL
                 write(test%disp%unit,"(*(g0,:,', '))")

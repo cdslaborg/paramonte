@@ -40,7 +40,7 @@
 %>  \example{getLogPDF}
 %>  \include{lineno} example/stats/dist/mvn/getLogPDF/main.m
 %>  \output{getLogPDF}
-%>  \include{lineno} example/stats/dist/mvn/getLogPDF/main.m
+%>  \include{lineno} example/stats/dist/mvn/getLogPDF/main.out.m
 %>  \vis{getLogPDF}
 %>  \image html example/stats/dist/mvn/getLogPDF/mvn.getLogPDF.scatter.3d.png width=700
 %>

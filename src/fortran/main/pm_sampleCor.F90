@@ -685,7 +685,7 @@ module pm_sampleCor
     !>                                  <li>    type `real` of the same kind as the kind of the output `cor`,
     !>                              </ol>
     !>                              containing the corresponding weights of individual `nsam` observations in `sample`.<br>
-    !>                              (**optional**. default = `getFilled(1, nsam)`. It can be present **only if** the input arguments `cov`, `subsetv`, and `stdinv` are missing.)
+    !>                              (**optional**. default = [getFilled(1, nsam)](@ref pm_arrayFill::getFilled). It can be present **only if** the input arguments `cov`, `subsetv`, and `stdinv` are missing.)
     !>
     !>  \return
     !>  `cor`                   :   The output **positive semi-definite** square matrix of shape `(1:ndim, 1:ndim)` of,
@@ -2234,7 +2234,7 @@ module pm_sampleCor
     !>                                      <li>    type `real` of the same kind as the kind of the output `cor`,
     !>                                  </ol>
     !>                                  containing the corresponding weights of individual `nsam` observations in `sample` or the pair of vectors `x` and `y`.<br>
-    !>                                  (**optional**. default = `getFilled(1, nsam)`. It can be present **if and only if** the input arguments `sample` or `x` and `y` are present.)
+    !>                                  (**optional**. default = [getFilled(1, nsam)](@ref pm_arrayFill::getFilled). It can be present **if and only if** the input arguments `sample` or `x` and `y` are present.)
     !>  \param[in]      weisum      :   The input scalar of the same type and kind as the input `weight` containing `sum(weight)`.<br>
     !>                                  This quantity is a byproduct of computing the mean of a sample and is automatically returned by [setMean](@ref pm_sampleMean::setMean).<br>
     !>                                  (**optional**. It **must** be present **if and only if** both `mean` and `weight` arguments are present **and** the input argument `cov` is missing.)
@@ -7565,7 +7565,7 @@ module pm_sampleCor
     !>                                  containing the corresponding weights of individual `nsam` observations in `sample` or the pair of vectors `x` and `y`.<br>
     !>                                  Note that this default \RK kind type parameter requirement on input `weight` of type `real` is unlike the other `pm_sample*` modules of the ParaMonte library.<br>
     !>                                  This requirement is enforced by the default kind type parameter of the output of [setRankFractional](@ref pm_arrayRank::setRankFractional).<br>
-    !>                                  (**optional**. default = `getFilled(1, nsam)`.)
+    !>                                  (**optional**. default = [getFilled(1, nsam)](@ref pm_arrayFill::getFilled).)
     !>
     !>  \return
     !>  `rho`                       :   The output positive semi-definite scalar or square matrix of shape `(1 : ndim, 1 : ndim)` of,
@@ -9570,7 +9570,7 @@ module pm_sampleCor
     !>                                      <li>    type `real` of default kind \RK,
     !>                                  </ol>
     !>                                  containing the corresponding weights of individual `nsam` observations in `sample` or the pair of vectors `x` and `y`.<br>
-    !>                                  (**optional**. default = `getFilled(1, nsam)`.)
+    !>                                  (**optional**. default = [getFilled(1, nsam)](@ref pm_arrayFill::getFilled).)
     !>
     !>  \interface{setRho}
     !>  \code{.F90}
@@ -12734,7 +12734,7 @@ module pm_sampleCor
 !    !>                                      <li>    type `real` of default kind \RK,
 !    !>                                  </ol>
 !    !>                                  containing the corresponding weights of individual `nsam` observations in `sample` or the pair of vectors `x` and `y`.<br>
-!    !>                                  (**optional**. default = `getFilled(1, nsam)`.)
+!    !>                                  (**optional**. default = [getFilled(1, nsam)](@ref pm_arrayFill::getFilled).)
 !    !>
 !    !>  `tau`                       :   The output positive semi-definite scalar or square matrix of shape `(1 : ndim, 1 : ndim)` of,
 !    !>                                  <ol>
@@ -14724,7 +14724,7 @@ module pm_sampleCor
 !    !>                                      <li>    type `real` of default kind \RK,
 !    !>                                  </ol>
 !    !>                                  containing the corresponding weights of individual `nsam` observations in `sample` or the pair of vectors `x` and `y`.<br>
-!    !>                                  (**optional**. default = `getFilled(1, nsam)`.)
+!    !>                                  (**optional**. default = [getFilled(1, nsam)](@ref pm_arrayFill::getFilled).)
 !    !>
 !    !>  \interface{setTau}
 !    !>  \code{.F90}

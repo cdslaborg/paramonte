@@ -89,8 +89,7 @@
 #elif   setGenGammaLogPDF_ENABLED && NKOS_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(RKG) :: y
-        y = x * invSigma
+        real(RKG) :: xscaled
         CHECK_ASSERTION(__LINE__, x > 0._RKG, SK_"@getGenGammaLogPDFNF(): The condition `x > 0.` must hold. x = "//getStr(x)) ! fpp
         CHECK_ASSERTION(__LINE__, kappa > 0._RKG, SK_"@getGenGammaLogPDFNF(): The condition `kappa > 0.` must hold. kappa = "//getStr(kappa)) ! fpp
         CHECK_ASSERTION(__LINE__, invOmega > 0._RKG, SK_"@setGenGammaLogPDF(): The condition `invOmega > 0.` must hold. invOmega = "//getStr(invOmega)) ! fpp
@@ -98,7 +97,8 @@
         CHECK_ASSERTION(__LINE__, abs(getGenGammaLogPDFNF(kappa, invOmega, invSigma) - logPDFNF) <= 100 * epsilon(0._RKG), \
         SK_"@setGenGammaLogPDF(): The condition `abs(getGenGammaLogPDFNF(kappa, invOmega, invSigma) - logPDFNF) <= 100 * epsilon(0._RKG)` must hold. getGenGammaLogPDFNF(kappa, invOmega, invSigma), logPDFNF = " \
         //getStr([getGenGammaLogPDFNF(kappa, invOmega, invSigma), logPDFNF])) ! fpp
-        logPDF = logPDFNF + log(y) * (kappa * invOmega - 1._RKG) - y**invOmega
+        xscaled = x * invSigma
+        logPDF = logPDFNF + log(xscaled) * (kappa * invOmega - 1._RKG) - xscaled**invOmega
 
         !%%%%%%%%%%%%%%%%%%%%%
 #elif   getGenGammaCDF_ENABLED
@@ -113,7 +113,7 @@
         end if
         if (present(invSigma)) xnormed = xnormed ** invOmega
         if (present(kappa)) then
-            call setGenGammaCDF(cdf, xnormed, log_gamma(kappa), kappa, info)
+            call setGenGammaCDF(cdf, xnormed, kappa, info)
         else
             call setGenGammaCDF(cdf, xnormed, info)
         end if
@@ -123,28 +123,50 @@
 #elif   setGenGammaCDF_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%
 
+        real(RKG) :: gamincupp
 #if     DDD_ENABLED
-        real(RKG), parameter :: kappa = 1._RKG, logGammaKappa = log_gamma(kappa)
+        real(RKG), parameter :: kappa = 1._RKG!, logGammaKappa = log_gamma(kappa)
         CHECK_ASSERTION(__LINE__, x > 0._RKG, SK_"@setGenGammaCDF(): The condition `x > 0.` must hold. x = "//getStr(x)) ! fpp
-        call setGammaIncLow(cdf, x, logGammaKappa, kappa, info)
+        !call setGammaIncLow(cdf, x, logGammaKappa, kappa, info, tol)
+        call setGammaInc(cdf, gamincupp, x, kappa, info)
 #else
         CHECK_ASSERTION(__LINE__, x > 0._RKG, SK_"@setGenGammaCDF(): The condition `x > 0.` must hold. x = "//getStr(x)) ! fpp
         CHECK_ASSERTION(__LINE__, kappa > 0._RKG, SK_"@setGenGammaCDF(): The condition `kappa > 0.` must hold. kappa = "//getStr(kappa)) ! fpp
-        CHECK_ASSERTION(__LINE__, abs(log_gamma(kappa) - logGammaKappa) < 100 * epsilon(0._RKG), SK_"@setGenGammaCDF(): The condition `abs(log_gamma(kappa) - logGammaKappa) < 100 * epsilon(0._RKG)` must hold. log_gamma(kappa), logGammaKappa = "//getStr([log_gamma(kappa), logGammaKappa])) ! fpp
+        !check_assertion(__LINE__, abs(log_gamma(kappa) - logGammaKappa) < 100 * epsilon(0._RKG), SK_"@setGenGammaCDF(): The condition `abs(log_gamma(kappa) - logGammaKappa) < 100 * epsilon(0._RKG)` must hold. log_gamma(kappa), logGammaKappa = "//getStr([log_gamma(kappa), logGammaKappa])) ! fpp
 #if     KDD_ENABLED
-        call setGammaIncLow(cdf, x, logGammaKappa, kappa, info)
+        !call setGammaIncLow(cdf, x, logGammaKappa, kappa, info, tol)
+        call setGammaInc(cdf, gamincupp, x, kappa, info)
 #else
         CHECK_ASSERTION(__LINE__, invOmega > 0._RKG, SK_"@setGenGammaCDF(): The condition `invOmega > 0.` must hold. invOmega = "//getStr(invOmega)) ! fpp
 #if     KOD_ENABLED
-        call setGammaIncLow(cdf, x**invOmega, logGammaKappa, kappa, info)
+        !call setGammaIncLow(cdf, x**invOmega, logGammaKappa, kappa, info, tol)
+        call setGammaInc(cdf, gamincupp, x**invOmega, kappa, info)
 #elif   KOS_ENABLED
         CHECK_ASSERTION(__LINE__, invSigma > 0._RKG, SK_"@setGenGammaCDF(): The condition `invSigma > 0.` must hold. invSigma = "//getStr(invSigma)) ! fpp
-        call setGammaIncLow(cdf, (x * invSigma)**invOmega, logGammaKappa, kappa, info)
+        !call setGammaIncLow(cdf, (x * invSigma)**invOmega, logGammaKappa, kappa, info, tol)
+        call setGammaInc(cdf, gamincupp, (x * invSigma)**invOmega, kappa, info)
 #else
 #error  "Unrecognized interface."
 #endif
 #endif
 #endif
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#elif   setGenGammaRand_ENABLED && (RNGD_ENABLED || RNGF_ENABLED || RNGX_ENABLED) && KR_ENABLED
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        ! Set the URNG.
+#if     RNGD_ENABLED
+#define RNG
+#elif   RNGF_ENABLED || RNGX_ENABLED
+#define RNG rng,
+#elif   setGenGammaRand_ENABLED
+#error  "Unrecognized interface."
+#endif
+        CHECK_ASSERTION(__LINE__, omega > 0, SK_"@setGenGammaCDF(): The condition `omega > 0` must hold. omega = "//getStr(omega)) ! fpp
+        call setGammaRand(RNG rand, kappa = kappa, sigma = sigma)
+        rand = rand**omega
+#undef  RNG
 
 #else
         !%%%%%%%%%%%%%%%%%%%%%%%%

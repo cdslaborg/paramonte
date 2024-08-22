@@ -168,14 +168,14 @@
         !integer(IK)     :: lenValues
         !integer(IKG)    :: Values_(8)
         !lenValues = size(values, 1, IK)
-        !CHECK_ASSERTION(__LINE__, 0_IK < lenValues .and. lenValues < 9_IK, SK_"@getDateTime(): The input argument `values` must have a non-zero size that is less than 9. size(values) = "//getStr(lenValues)) ! fpp
+        !check_assertion(__LINE__, 0_IK < lenValues .and. lenValues < 9_IK, SK_"@getDateTime(): The input argument `values` must have a non-zero size that is less than 9. size(values) = "//getStr(lenValues)) ! fpp
         !if (lenValues > 7_IK) then
         !    call date_and_time(values = values)
         !else
         !    call date_and_time(values = Values_)
         !    values(1:lenValues) = Values_(1:lenValues)
         !end if
-        !CHECK_ASSERTION(__LINE__, all(values(1:lenValues) /= -huge(0_IKG)), SK_"@getDateTime(): The processor does not have a clock.") ! fpp
+        !check_assertion(__LINE__, all(values(1:lenValues) /= -huge(0_IKG)), SK_"@getDateTime(): The processor does not have a clock.") ! fpp
 #elif   getDateTimeValuesY_ENABLED
         values(1) = year
         values(2) = 1_IKG

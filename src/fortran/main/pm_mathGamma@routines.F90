@@ -38,6 +38,8 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
 #define CHECK_ASSERTION(LINE,ASSERTION,MSG) continue;
 #endif
 
+    use pm_mathGammaGil, only: setGammaIncGil
+
     implicit none
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -46,13 +48,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define getGammaInc_ENABLED 1
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#define Low_ENABLED 1
+#define getGammaIncLow_ENABLED 1
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -97,13 +93,11 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#undef Low_ENABLED
+#undef getGammaIncLow_ENABLED
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define Upp_ENABLED 1
+#define getGammaIncUpp_ENABLED 1
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -148,64 +142,46 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#undef Upp_ENABLED
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#undef getGammaInc_ENABLED
+#undef getGammaIncUpp_ENABLED
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #define setGammaInc_ENABLED 1
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#define Def_ENABLED 1
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#define Low_ENABLED 1
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure setGammaIncLowDef_RK5
+    module procedure setGammaInc_RK5
         use pm_kind, only: RKG => RK5
 #include "pm_mathGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure setGammaIncLowDef_RK4
+    module procedure setGammaInc_RK4
         use pm_kind, only: RKG => RK4
 #include "pm_mathGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure setGammaIncLowDef_RK3
+    module procedure setGammaInc_RK3
         use pm_kind, only: RKG => RK3
 #include "pm_mathGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure setGammaIncLowDef_RK2
+    module procedure setGammaInc_RK2
         use pm_kind, only: RKG => RK2
 #include "pm_mathGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure setGammaIncLowDef_RK1
+    module procedure setGammaInc_RK1
         use pm_kind, only: RKG => RK1
 #include "pm_mathGamma@routines.inc.F90"
     end procedure
@@ -213,215 +189,6 @@ contains
 
 #undef RK_ENABLED
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#undef Low_ENABLED
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#define Upp_ENABLED 1
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#define RK_ENABLED 1
-
-#if RK5_ENABLED
-    module procedure setGammaIncUppDef_RK5
-        use pm_kind, only: RKG => RK5
-#include "pm_mathGamma@routines.inc.F90"
-    end procedure
-#endif
-
-#if RK4_ENABLED
-    module procedure setGammaIncUppDef_RK4
-        use pm_kind, only: RKG => RK4
-#include "pm_mathGamma@routines.inc.F90"
-    end procedure
-#endif
-
-#if RK3_ENABLED
-    module procedure setGammaIncUppDef_RK3
-        use pm_kind, only: RKG => RK3
-#include "pm_mathGamma@routines.inc.F90"
-    end procedure
-#endif
-
-#if RK2_ENABLED
-    module procedure setGammaIncUppDef_RK2
-        use pm_kind, only: RKG => RK2
-#include "pm_mathGamma@routines.inc.F90"
-    end procedure
-#endif
-
-#if RK1_ENABLED
-    module procedure setGammaIncUppDef_RK1
-        use pm_kind, only: RKG => RK1
-#include "pm_mathGamma@routines.inc.F90"
-    end procedure
-#endif
-
-#undef RK_ENABLED
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#undef Upp_ENABLED
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#undef Def_ENABLED
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#undef setGammaInc_ENABLED
-
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#define setGammaInc_ENABLED 1
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#define Series_ENABLED 1
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#define Low_ENABLED 1
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#define RK_ENABLED 1
-
-#if RK5_ENABLED
-    module procedure setGammaIncLowSeries_RK5
-        use pm_kind, only: RKG => RK5
-#include "pm_mathGamma@routines.inc.F90"
-    end procedure
-#endif
-
-#if RK4_ENABLED
-    module procedure setGammaIncLowSeries_RK4
-        use pm_kind, only: RKG => RK4
-#include "pm_mathGamma@routines.inc.F90"
-    end procedure
-#endif
-
-#if RK3_ENABLED
-    module procedure setGammaIncLowSeries_RK3
-        use pm_kind, only: RKG => RK3
-#include "pm_mathGamma@routines.inc.F90"
-    end procedure
-#endif
-
-#if RK2_ENABLED
-    module procedure setGammaIncLowSeries_RK2
-        use pm_kind, only: RKG => RK2
-#include "pm_mathGamma@routines.inc.F90"
-    end procedure
-#endif
-
-#if RK1_ENABLED
-    module procedure setGammaIncLowSeries_RK1
-        use pm_kind, only: RKG => RK1
-#include "pm_mathGamma@routines.inc.F90"
-    end procedure
-#endif
-
-#undef RK_ENABLED
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#undef Low_ENABLED
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#undef Series_ENABLED
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#undef setGammaInc_ENABLED
-
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#define setGammaInc_ENABLED 1
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#define ContFrac_ENABLED 1
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#define Upp_ENABLED 1
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#define RK_ENABLED 1
-
-#if RK5_ENABLED
-    module procedure setGammaIncUppContFrac_RK5
-        use pm_kind, only: RKG => RK5
-#include "pm_mathGamma@routines.inc.F90"
-    end procedure
-#endif
-
-#if RK4_ENABLED
-    module procedure setGammaIncUppContFrac_RK4
-        use pm_kind, only: RKG => RK4
-#include "pm_mathGamma@routines.inc.F90"
-    end procedure
-#endif
-
-#if RK3_ENABLED
-    module procedure setGammaIncUppContFrac_RK3
-        use pm_kind, only: RKG => RK3
-#include "pm_mathGamma@routines.inc.F90"
-    end procedure
-#endif
-
-#if RK2_ENABLED
-    module procedure setGammaIncUppContFrac_RK2
-        use pm_kind, only: RKG => RK2
-#include "pm_mathGamma@routines.inc.F90"
-    end procedure
-#endif
-
-#if RK1_ENABLED
-    module procedure setGammaIncUppContFrac_RK1
-        use pm_kind, only: RKG => RK1
-#include "pm_mathGamma@routines.inc.F90"
-    end procedure
-#endif
-
-#undef RK_ENABLED
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#undef Upp_ENABLED
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#undef ContFrac_ENABLED
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #undef setGammaInc_ENABLED

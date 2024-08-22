@@ -23,7 +23,7 @@ xlab =  { "CK" : r"Whole Complex Number: N"
 
 for kind in ["IK", "CK", "RK"]:
 
-    pattern = "*."+kind+".txt"
+    pattern = "*." + kind + ".txt"
     fileList = glob.glob(pattern)
     if len(fileList) == 1:
 

@@ -29,7 +29,7 @@
 !>              as this gives stable results if the ranking is done multiple times.<br>
 !>              In computer data processing, ordinal ranking is also referred to as <b>row numbering</b>.
 !>              That is, if `A < B == C < D`, then the sequence `ABCD` has the <b>ordinal ranking</b> `1234`.<br>
-!>  
+!>
 !>      <li>    <b>Standard competition (`1224`) ranking:</b> [getRankStandard](@ref pm_arrayRank::getRankStandard) or [setRankStandard](@ref pm_arrayRank::setRankStandard)<br>
 !>              This kind of ranking of values is widely known as Standard Competition (`1224`) ranking.<br>
 !>              In Standard Competition ranking, items that compare equal receive the same ranking number,
@@ -43,7 +43,7 @@
 !>              Thus if *A* ranks ahead of *B* and *C* (which compare equal) which are both ranked ahead of *D*, then *A* gets ranking number `1` (*first*),
 !>              *B* gets ranking number `2` (*joint second*), *C* also gets ranking number `2` (*joint second*) and *D* gets ranking number `4` (*fourth*).<br>
 !>              That is, if `A < B == C < D`, then the sequence `ABCD` has the Standard Competition ranking `1224`.<br>
-!>  
+!>
 !>      <li>    <b>Modified competition (`1334`) ranking:</b> [getRankModified](@ref pm_arrayRank::getRankModified) or [setRankModified](@ref pm_arrayRank::setRankModified)<br>
 !>              This kind of ranking of values is widely known as Modified Competition (`1334`) ranking.<br>
 !>              Sometimes, competition ranking is done by leaving the gaps in the ranking numbers before the sets of equal-ranking items
@@ -57,7 +57,7 @@
 !>              number `1` (*first*), *B* gets ranking number `3` (*joint third*), *C* also gets ranking number `3` (*joint third*)
 !>              and *D* gets ranking number `4` (*fourth*). In this case, nobody would get ranking number `2` (*second*) (left as a gap).<br>
 !>              That is, if `A < B == C < D`, then the sequence `ABCD` has the Modified Competition ranking `1334`.<br>
-!>  
+!>
 !>      <li>    <b>Dense (`1223`) ranking:</b> [getRankDense](@ref pm_arrayRank::getRankDense) or [setRankDense](@ref pm_arrayRank::setRankDense)<br>
 !>              This kind of ranking of values is widely known as dense (`1223`) ranking.<br>
 !>              In Dense ranking, items that compare equally receive the same ranking number, and the next items receive the immediately following ranking number.<br>
@@ -67,7 +67,7 @@
 !>              That is, if `A < B == C < D`, then the sequence `ABCD` has the Dense ranking `1223`.<br>
 !>              Dense ranking effective factorizes the array into classes of unique values.<br>
 !>              Therefore, the Dense rank of each element of the array is simply its class <b>level</b>.
-!>  
+!>
 !>      <li>    <b>Fractional (`1 2.5 2.5 4`) ranking:</b> [getRankFractional](@ref pm_arrayRank::getRankFractional) or [setRankFractional](@ref pm_arrayRank::setRankFractional)<br>
 !>              This kind of ranking of values is widely known as fractional (`1 2.5 2.5 4`) ranking.<br>
 !>              In Fractional ranking, items that compare equal receive the same ranking number, which is the mean of what they would have under ordinal rankings;<br>
@@ -527,14 +527,15 @@ module pm_arrayRank
     !>                              \endcode
     !>                              where `TYPE(KIND)` represents the type and kind of the input argument `array`, which can be one of the following,
     !>                              \code{.F90}
-    !>                                      use pm_container, only: StrCon
+    !>                                      use pm_container, only: css_type, css_pdt
     !>                                      use pm_kind, only: SK, IK, LK, CK, RK
-    !>                                      character(*, SK), intent(in)    :: a, b
-    !>                                      integer(IK)     , intent(in)    :: a, b
-    !>                                      logical(LK)     , intent(in)    :: a, b
-    !>                                      complex(CK)     , intent(in)    :: a, b
-    !>                                      real(RK)        , intent(in)    :: a, b
-    !>                                      type(StrCon)    , intent(in)    :: a, b
+    !>                                      character(*, SK)    , intent(in)    :: a, b
+    !>                                      integer(IK)         , intent(in)    :: a, b
+    !>                                      logical(LK)         , intent(in)    :: a, b
+    !>                                      complex(CK)         , intent(in)    :: a, b
+    !>                                      real(RK)            , intent(in)    :: a, b
+    !>                                      type(css_type)      , intent(in)    :: a, b
+    !>                                      type(css_pdt(SK))   , intent(in)    :: a, b
     !>                              \endcode
     !>                              where the kinds `SK`, `IK`, `LK`, `CK`, `RK`, can refer to any kind type parameter that is supported by the processor.<br>
     !>                              The following illustrates the generic interface of `isSorted()` when the input `array` is a scalar string,
@@ -1570,14 +1571,15 @@ module pm_arrayRank
     !>                              \endcode
     !>                              where `TYPE(KIND)` represents the type and kind of the input argument `array`, which can be one of the following,
     !>                              \code{.F90}
-    !>                                      use pm_container, only: StrCon
+    !>                                      use pm_container, only: css_type, css_pdt
     !>                                      use pm_kind, only: SK, IK, LK, CK, RK
-    !>                                      character(*, SK), intent(in)    :: a, b
-    !>                                      integer(IK)     , intent(in)    :: a, b
-    !>                                      logical(LK)     , intent(in)    :: a, b
-    !>                                      complex(CK)     , intent(in)    :: a, b
-    !>                                      real(RK)        , intent(in)    :: a, b
-    !>                                      type(StrCon)    , intent(in)    :: a, b
+    !>                                      character(*, SK)    , intent(in)    :: a, b
+    !>                                      integer(IK)         , intent(in)    :: a, b
+    !>                                      logical(LK)         , intent(in)    :: a, b
+    !>                                      complex(CK)         , intent(in)    :: a, b
+    !>                                      real(RK)            , intent(in)    :: a, b
+    !>                                      type(css_type)      , intent(in)    :: a, b
+    !>                                      type(css_pdt(SK))   , intent(in)    :: a, b
     !>                              \endcode
     !>                              where the kinds `SK`, `IK`, `LK`, `CK`, `RK`, can refer to any kind type parameter that is supported by the processor.<br>
     !>                              The following illustrates the generic interface of `isSorted()` when the input `array` is a scalar string,
@@ -2605,14 +2607,15 @@ module pm_arrayRank
     !>                              \endcode
     !>                              where `TYPE(KIND)` represents the type and kind of the input argument `array`, which can be one of the following,
     !>                              \code{.F90}
-    !>                                      use pm_container, only: StrCon
+    !>                                      use pm_container, only: css_type, css_pdt
     !>                                      use pm_kind, only: SK, IK, LK, CK, RK
-    !>                                      character(*, SK), intent(in)    :: a, b
-    !>                                      integer(IK)     , intent(in)    :: a, b
-    !>                                      logical(LK)     , intent(in)    :: a, b
-    !>                                      complex(CK)     , intent(in)    :: a, b
-    !>                                      real(RK)        , intent(in)    :: a, b
-    !>                                      type(StrCon)    , intent(in)    :: a, b
+    !>                                      character(*, SK)    , intent(in)    :: a, b
+    !>                                      integer(IK)         , intent(in)    :: a, b
+    !>                                      logical(LK)         , intent(in)    :: a, b
+    !>                                      complex(CK)         , intent(in)    :: a, b
+    !>                                      real(RK)            , intent(in)    :: a, b
+    !>                                      type(css_type)      , intent(in)    :: a, b
+    !>                                      type(css_pdt(SK))   , intent(in)    :: a, b
     !>                              \endcode
     !>                              where the kinds `SK`, `IK`, `LK`, `CK`, `RK`, can refer to any kind type parameter that is supported by the processor.<br>
     !>                              The following illustrates the generic interface of `isSorted()` when the input `array` is a scalar string,
@@ -3654,14 +3657,15 @@ module pm_arrayRank
     !>                              \endcode
     !>                              where `TYPE(KIND)` represents the type and kind of the input argument `array`, which can be one of the following,
     !>                              \code{.F90}
-    !>                                      use pm_container, only: StrCon
+    !>                                      use pm_container, only: css_type, css_pdt
     !>                                      use pm_kind, only: SK, IK, LK, CK, RK
-    !>                                      character(*, SK), intent(in)    :: a, b
-    !>                                      integer(IK)     , intent(in)    :: a, b
-    !>                                      logical(LK)     , intent(in)    :: a, b
-    !>                                      complex(CK)     , intent(in)    :: a, b
-    !>                                      real(RK)        , intent(in)    :: a, b
-    !>                                      type(StrCon)    , intent(in)    :: a, b
+    !>                                      character(*, SK)    , intent(in)    :: a, b
+    !>                                      integer(IK)         , intent(in)    :: a, b
+    !>                                      logical(LK)         , intent(in)    :: a, b
+    !>                                      complex(CK)         , intent(in)    :: a, b
+    !>                                      real(RK)            , intent(in)    :: a, b
+    !>                                      type(css_type)      , intent(in)    :: a, b
+    !>                                      type(css_pdt(SK))   , intent(in)    :: a, b
     !>                              \endcode
     !>                              where the kinds `SK`, `IK`, `LK`, `CK`, `RK`, can refer to any kind type parameter that is supported by the processor.<br>
     !>                              The following illustrates the generic interface of `isSorted()` when the input `array` is a scalar string,
@@ -4696,14 +4700,15 @@ module pm_arrayRank
     !>                              \endcode
     !>                              where `TYPE(KIND)` represents the type and kind of the input argument `array`, which can be one of the following,
     !>                              \code{.F90}
-    !>                                      use pm_container, only: StrCon
+    !>                                      use pm_container, only: css_type, css_pdt
     !>                                      use pm_kind, only: SK, IK, LK, CK, RK
-    !>                                      character(*, SK), intent(in)    :: a, b
-    !>                                      integer(IK)     , intent(in)    :: a, b
-    !>                                      logical(LK)     , intent(in)    :: a, b
-    !>                                      complex(CK)     , intent(in)    :: a, b
-    !>                                      real(RK)        , intent(in)    :: a, b
-    !>                                      type(StrCon)    , intent(in)    :: a, b
+    !>                                      character(*, SK)    , intent(in)    :: a, b
+    !>                                      integer(IK)         , intent(in)    :: a, b
+    !>                                      logical(LK)         , intent(in)    :: a, b
+    !>                                      complex(CK)         , intent(in)    :: a, b
+    !>                                      real(RK)            , intent(in)    :: a, b
+    !>                                      type(css_type)      , intent(in)    :: a, b
+    !>                                      type(css_pdt(SK))   , intent(in)    :: a, b
     !>                              \endcode
     !>                              where the kinds `SK`, `IK`, `LK`, `CK`, `RK`, can refer to any kind type parameter that is supported by the processor.<br>
     !>                              The following illustrates the generic interface of `isSorted()` when the input `array` is a scalar string,
@@ -5742,14 +5747,15 @@ module pm_arrayRank
     !>                              \endcode
     !>                              where `TYPE(KIND)` represents the type and kind of the input argument `array`, which can be one of the following,
     !>                              \code{.F90}
-    !>                                      use pm_container, only: StrCon
+    !>                                      use pm_container, only: css_type, css_pdt
     !>                                      use pm_kind, only: SK, IK, LK, CK, RK
-    !>                                      character(*, SK), intent(in)    :: a, b
-    !>                                      integer(IK)     , intent(in)    :: a, b
-    !>                                      logical(LK)     , intent(in)    :: a, b
-    !>                                      complex(CK)     , intent(in)    :: a, b
-    !>                                      real(RK)        , intent(in)    :: a, b
-    !>                                      type(StrCon)    , intent(in)    :: a, b
+    !>                                      character(*, SK)    , intent(in)    :: a, b
+    !>                                      integer(IK)         , intent(in)    :: a, b
+    !>                                      logical(LK)         , intent(in)    :: a, b
+    !>                                      complex(CK)         , intent(in)    :: a, b
+    !>                                      real(RK)            , intent(in)    :: a, b
+    !>                                      type(css_type)      , intent(in)    :: a, b
+    !>                                      type(css_pdt(SK))   , intent(in)    :: a, b
     !>                              \endcode
     !>                              where the kinds `SK`, `IK`, `LK`, `CK`, `RK`, can refer to any kind type parameter that is supported by the processor.<br>
     !>                              The following illustrates the generic interface of `isSorted()` when the input `array` is a scalar string,
@@ -6774,14 +6780,15 @@ module pm_arrayRank
     !>                              \endcode
     !>                              where `TYPE(KIND)` represents the type and kind of the input argument `array`, which can be one of the following,
     !>                              \code{.F90}
-    !>                                      use pm_container, only: StrCon
+    !>                                      use pm_container, only: css_type, css_pdt
     !>                                      use pm_kind, only: SK, IK, LK, CK, RK
-    !>                                      character(*, SK), intent(in)    :: a, b
-    !>                                      integer(IK)     , intent(in)    :: a, b
-    !>                                      logical(LK)     , intent(in)    :: a, b
-    !>                                      complex(CK)     , intent(in)    :: a, b
-    !>                                      real(RK)        , intent(in)    :: a, b
-    !>                                      type(StrCon)    , intent(in)    :: a, b
+    !>                                      character(*, SK)    , intent(in)    :: a, b
+    !>                                      integer(IK)         , intent(in)    :: a, b
+    !>                                      logical(LK)         , intent(in)    :: a, b
+    !>                                      complex(CK)         , intent(in)    :: a, b
+    !>                                      real(RK)            , intent(in)    :: a, b
+    !>                                      type(css_type)      , intent(in)    :: a, b
+    !>                                      type(css_pdt(SK))   , intent(in)    :: a, b
     !>                              \endcode
     !>                              where the kinds `SK`, `IK`, `LK`, `CK`, `RK`, can refer to any kind type parameter that is supported by the processor.<br>
     !>                              The following illustrates the generic interface of `isSorted()` when the input `array` is a scalar string,
@@ -7815,14 +7822,15 @@ module pm_arrayRank
     !>                              \endcode
     !>                              where `TYPE(KIND)` represents the type and kind of the input argument `array`, which can be one of the following,
     !>                              \code{.F90}
-    !>                                      use pm_container, only: StrCon
+    !>                                      use pm_container, only: css_type, css_pdt
     !>                                      use pm_kind, only: SK, IK, LK, CK, RK
-    !>                                      character(*, SK), intent(in)    :: a, b
-    !>                                      integer(IK)     , intent(in)    :: a, b
-    !>                                      logical(LK)     , intent(in)    :: a, b
-    !>                                      complex(CK)     , intent(in)    :: a, b
-    !>                                      real(RK)        , intent(in)    :: a, b
-    !>                                      type(StrCon)    , intent(in)    :: a, b
+    !>                                      character(*, SK)    , intent(in)    :: a, b
+    !>                                      integer(IK)         , intent(in)    :: a, b
+    !>                                      logical(LK)         , intent(in)    :: a, b
+    !>                                      complex(CK)         , intent(in)    :: a, b
+    !>                                      real(RK)            , intent(in)    :: a, b
+    !>                                      type(css_type)      , intent(in)    :: a, b
+    !>                                      type(css_pdt(SK))   , intent(in)    :: a, b
     !>                              \endcode
     !>                              where the kinds `SK`, `IK`, `LK`, `CK`, `RK`, can refer to any kind type parameter that is supported by the processor.<br>
     !>                              The following illustrates the generic interface of `isSorted()` when the input `array` is a scalar string,
@@ -8857,14 +8865,15 @@ module pm_arrayRank
     !>                              \endcode
     !>                              where `TYPE(KIND)` represents the type and kind of the input argument `array`, which can be one of the following,
     !>                              \code{.F90}
-    !>                                      use pm_container, only: StrCon
+    !>                                      use pm_container, only: css_type, css_pdt
     !>                                      use pm_kind, only: SK, IK, LK, CK, RK
-    !>                                      character(*, SK), intent(in)    :: a, b
-    !>                                      integer(IK)     , intent(in)    :: a, b
-    !>                                      logical(LK)     , intent(in)    :: a, b
-    !>                                      complex(CK)     , intent(in)    :: a, b
-    !>                                      real(RK)        , intent(in)    :: a, b
-    !>                                      type(StrCon)    , intent(in)    :: a, b
+    !>                                      character(*, SK)    , intent(in)    :: a, b
+    !>                                      integer(IK)         , intent(in)    :: a, b
+    !>                                      logical(LK)         , intent(in)    :: a, b
+    !>                                      complex(CK)         , intent(in)    :: a, b
+    !>                                      real(RK)            , intent(in)    :: a, b
+    !>                                      type(css_type)      , intent(in)    :: a, b
+    !>                                      type(css_pdt(SK))   , intent(in)    :: a, b
     !>                              \endcode
     !>                              where the kinds `SK`, `IK`, `LK`, `CK`, `RK`, can refer to any kind type parameter that is supported by the processor.<br>
     !>                              The following illustrates the generic interface of `isSorted()` when the input `array` is a scalar string,
@@ -9904,14 +9913,15 @@ module pm_arrayRank
     !>                              \endcode
     !>                              where `TYPE(KIND)` represents the type and kind of the input argument `array`, which can be one of the following,
     !>                              \code{.F90}
-    !>                                      use pm_container, only: StrCon
+    !>                                      use pm_container, only: css_type, css_pdt
     !>                                      use pm_kind, only: SK, IK, LK, CK, RK
-    !>                                      character(*, SK), intent(in)    :: a, b
-    !>                                      integer(IK)     , intent(in)    :: a, b
-    !>                                      logical(LK)     , intent(in)    :: a, b
-    !>                                      complex(CK)     , intent(in)    :: a, b
-    !>                                      real(RK)        , intent(in)    :: a, b
-    !>                                      type(StrCon)    , intent(in)    :: a, b
+    !>                                      character(*, SK)    , intent(in)    :: a, b
+    !>                                      integer(IK)         , intent(in)    :: a, b
+    !>                                      logical(LK)         , intent(in)    :: a, b
+    !>                                      complex(CK)         , intent(in)    :: a, b
+    !>                                      real(RK)            , intent(in)    :: a, b
+    !>                                      type(css_type)      , intent(in)    :: a, b
+    !>                                      type(css_pdt(SK))   , intent(in)    :: a, b
     !>                              \endcode
     !>                              where the kinds `SK`, `IK`, `LK`, `CK`, `RK`, can refer to any kind type parameter that is supported by the processor.<br>
     !>                              The following illustrates the generic interface of `isSorted()` when the input `array` is a scalar string,

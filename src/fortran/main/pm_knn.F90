@@ -92,18 +92,18 @@ module pm_knn
 
     !>  \brief
     !>  Return the input distance matrix whose columns are sorted in ascending order on output, optionally only up to the `k`th row of each column,
-    !>  such that the `k`th row in the `i`th column is the `k`th nearest neighbor to the \f$i^{th}\f$ point.<br>
+    !>  such that the `k`th row in the `i`th column is the `k`th nearest neighbor to the \f$i^{th}\f$ reference point.<br>
     !>
     !>  \details
-    !>  The input matrix of shape `(1:nref, 1:npnt)` represents the distances of `npnt` points from `nref` reference points.<br>
+    !>  The input matrix of shape `(1:npnt, 1:nref)` represents the distances of `nref` reference points from `npnt` neighbor points.<br>
     !>  The matrix entries can be any measure of distance as long they are non-negative.<br>
     !>
-    !>  \param[inout]   distance    :   The input or input/output `contiguous` array of rank `2` of shape `(1:nref, 1:npnt)` of
+    !>  \param[inout]   distance    :   The input or input/output `contiguous` array of rank `2` of shape `(1:npnt, 1:nref)` of
     !>                                  <ol>
     !>                                      <li>    type `real` of kind \RKALL.<br>
     !>                                  </ol>
-    !>                                  each column `i` of which contains the distances of the `i`th point from
-    !>                                  the set of `nref` reference points represented by the column rows.<br>
+    !>                                  each column `i` of which contains the distances of `npnt` neighbor
+    !>                                  points stored by the column rows from the `i`th reference point.<br>
     !>                                  For example, such distance matrix can be obtained via:<br>
     !>                                  <ol>
     !>                                      <li>    [getDisMatEuclid](@ref pm_distanceEuclid::getDisMatEuclid) or [setDisMatEuclid](@ref pm_distanceEuclid::setDisMatEuclid)<br>
@@ -113,11 +113,11 @@ module pm_knn
     !>                                      <li>    If the input argument `rank` is missing, then `distance` has `intent(inout)`.<br>
     !>                                              On output, the rows of each column of `distance` are sorted separately in ascending order
     !>                                              such that the `k`th row in column `i` contains the distance of the `k`th nearest neighbor
-    !>                                              of `point(1:ndim, i)` represented by column `distance(1:nref, i)`.<br>
+    !>                                              of `reference(1:ndim, i)` represented by column `distance(1:npnt, i)`.<br>
     !>                                      <li>    If the input argument `rank` is present, then `distance` has `intent(in)`.<br>
     !>                                              On output, the rows of each column of `rank` are filled with the rank of
     !>                                              the corresponding element of `distance` ranked by its nearness to the
-    !>                                              point represented by column `distance(1:nref, i)`.<br>
+    !>                                              reference represented by column `distance(1:npnt, i)`.<br>
     !>                                  </ol>
     !>  \param[out]     rank        :   The output `contiguous` array of the same rank and shape as `distance` of type `integer` of default kind \IK
     !>                                  each element of which contains the nearest neighbor rank of the corresponding element of `distance`.<br>
@@ -134,9 +134,9 @@ module pm_knn
     !>
     !>      use pm_knn, only: setKnnSorted
     !>
-    !>      call setKnnSorted(distance(1:nref, 1:npnt))
-    !>      call setKnnSorted(distance(1:nref, 1:npnt), k)
-    !>      call setKnnSorted(distance(1:nref, 1:npnt), rank(1:nref, 1:npnt))
+    !>      call setKnnSorted(distance(1:npnt, 1:nref))
+    !>      call setKnnSorted(distance(1:npnt, 1:nref), k)
+    !>      call setKnnSorted(distance(1:npnt, 1:nref), rank(1:npnt, 1:nref))
     !>
     !>  \endcode
     !>
@@ -148,7 +148,7 @@ module pm_knn
     !>  \warnpure
     !>
     !>  \note
-    !>  To sort the neighbors of an individual point (corresponding to a single column vector), 
+    !>  To sort the neighbors of an individual point (corresponding to a single column vector),
     !>  use the generic interfaces of [pm_arrayRank](@ref pm_arrayRank) or [pm_arraySort](@ref pm_arraySort).<br>
     !>
     !>  \see

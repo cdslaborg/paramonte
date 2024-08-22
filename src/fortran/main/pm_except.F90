@@ -15,7 +15,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief
-!>  This module contains procedures and generic interfaces and generic interfaces for testing for exceptional cases at runtime.<br>
+!>  This module contains procedures and generic interfaces for testing for exceptional cases at runtime.<br>
 !>
 !>  \details
 !>  Three exceptional cases are currently handled by the procedures of this module,

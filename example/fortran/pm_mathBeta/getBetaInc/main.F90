@@ -65,7 +65,7 @@ program example
     !    call setLinSpace(x, 0._RK, 1._RK)
     !    open(newunit = fileUnit, file = "getBetaInc.RK.txt")
     !    do i = 1, nx
-    !        write(fileUnit, "(*(g0,:,' '))" ) x_RK(i), getBetaInc(x(i), 5._RK, [1.0_RK, 5.0_RK, 10._RK])
+    !        write(fileUnit, "(*(g0,:,' '))") x_RK(i), getBetaInc(x(i), 5._RK, [1.0_RK, 5.0_RK, 10._RK])
     !    end do
     !    close(fileUnit)
     !end block
@@ -82,7 +82,7 @@ program example
         open(newunit = fileUnit, file = "getBetaInc.RK.txt")
         do i = 1, nx
             betaInc = getBetaInc(x(i), alpha, beta)
-            write(fileUnit, "(*(g0,:,','))" ) x(i), merge(1 + betaInc, betaInc, betaInc < 0)
+            write(fileUnit, "(*(g0,:,','))") x(i), merge(1 + betaInc, betaInc, betaInc < 0)
         end do
         close(fileUnit)
     end block

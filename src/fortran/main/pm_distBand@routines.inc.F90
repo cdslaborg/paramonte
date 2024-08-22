@@ -104,12 +104,14 @@ CHECK_ASSERTION(__LINE__, 0._RKG < ebreak, SK_": The condition `0. < ebreak` mus
                 if (-1._RKG < alpha) then
                     ! use Gamma CDF.
                     block
-                        real(RKG) :: kappa, dumm
+                        real(RKG) :: kappa!, dumm
                         kappa = alpha + 1._RKG
-                        dumm = log_gamma(kappa)
-                        call setGammaCDF(ucdf, lb, dumm, kappa, invEfold, info)
+                        !dumm = log_gamma(kappa)
+                        !call setGammaCDF(ucdf, lb, dumm, kappa, invEfold, info)
+                        call setGammaCDF(ucdf, lb, kappa, invEfold, info)
                         if (info < 0_IK) return ! LCOV_EXCL_LINE
-                        call setGammaCDF(tmp, mb, dumm, kappa, invEfold, info)
+                        !call setGammaCDF(tmp, mb, dumm, kappa, invEfold, info)
+                        call setGammaCDF(tmp, mb, kappa, invEfold, info)
                         if (info < 0_IK) return ! LCOV_EXCL_LINE
                         ucdf = (tmp - ucdf) * gamma(kappa) / invEfold**kappa
                     end block

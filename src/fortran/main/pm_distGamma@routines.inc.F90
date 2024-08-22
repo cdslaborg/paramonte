@@ -96,7 +96,7 @@
             xnormed = x
         end if
         if (present(kappa)) then
-            call setGammaCDF(cdf, xnormed, log_gamma(kappa), kappa, info)
+            call setGammaCDF(cdf, xnormed, kappa, info)
         else
             call setGammaCDF(cdf, xnormed, info)
         end if
@@ -106,21 +106,25 @@
 #elif   setGammaCDF_ENABLED
         !%%%%%%%%%%%%%%%%%%
 
+        real(RKG) :: gamincupp
 #if     DD_ENABLED
-        real(RKG), parameter :: kappa = 1._RKG, logGammaKappa = log_gamma(kappa)
+        real(RKG), parameter :: kappa = 1._RKG!, logGammaKappa = log_gamma(kappa)
         CHECK_ASSERTION(__LINE__, x > 0._RKG, SK_"@setGammaCDF(): The condition `x > 0.` must hold. x = "//getStr(x)) ! fpp
-        call setGammaIncLow(cdf, x, logGammaKappa, kappa, info)
+        !call setGammaIncLow(cdf, x, logGammaKappa, kappa, info)
+        call setGammaInc(cdf, gamincupp, x, kappa, info)
 #else
         CHECK_ASSERTION(__LINE__, x > 0._RKG, SK_"@setGammaCDF(): The condition `x > 0.` must hold. x = "//getStr(x)) ! fpp
         CHECK_ASSERTION(__LINE__, kappa > 0._RKG, SK_"@setGammaCDF(): The condition `kappa > 0.` must hold. kappa = "//getStr(kappa)) ! fpp
-        CHECK_ASSERTION(__LINE__, abs(log_gamma(kappa) - logGammaKappa) < 100 * epsilon(0._RKG), \
-        SK_"@setGammaCDF(): The condition `abs(log_gamma(kappa) - logGammaKappa) < 100 * epsilon(0._RKG)` must hold. log_gamma(kappa), logGammaKappa = "//\
-        getStr([log_gamma(kappa), logGammaKappa])) ! fpp
+        !check_assertion(__LINE__, abs(log_gamma(kappa) - logGammaKappa) < 100 * epsilon(0._RKG), \
+        !SK_"@setGammaCDF(): The condition `abs(log_gamma(kappa) - logGammaKappa) < 100 * epsilon(0._RKG)` must hold. log_gamma(kappa), logGammaKappa = "//\
+        !getStr([log_gamma(kappa), logGammaKappa])) ! fpp
 #if     KD_ENABLED
-        call setGammaIncLow(cdf, x, logGammaKappa, kappa, info)
+        !call setGammaIncLow(cdf, x, logGammaKappa, kappa, info)
+        call setGammaInc(cdf, gamincupp, x, kappa, info)
 #elif   KS_ENABLED
         CHECK_ASSERTION(__LINE__, invSigma > 0._RKG, SK_"@setGammaCDF(): The condition `invSigma > 0.` must hold. invSigma = "//getStr(invSigma)) ! fpp
-        call setGammaIncLow(cdf, x * invSigma, logGammaKappa, kappa, info)
+        !call setGammaIncLow(cdf, x * invSigma, logGammaKappa, kappa, info)
+        call setGammaInc(cdf, gamincupp, x * invSigma, kappa, info)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -157,7 +161,8 @@ kappaMinusOneThird = kappa - ONE_THIRD + offset; invSqrt9KappaMinusOneThird = 1.
                         call setNormRand(RNG normrnd)
                         GET_RAND(irand) = 1._RKG + invSqrt9KappaMinusOneThird * normrnd
                         if (GET_RAND(irand) <= 0._RKG) cycle
-                        call setUnifRand(RNG unifrnd); unifrnd = 1._RKG - unifrnd
+                        call setUnifRand(RNG unifrnd)
+                        unifrnd = 1._RKG - unifrnd
                         if (unifrnd < 1._RKG - 0.0331_RKG * normrnd**4) then
                             GET_RAND(irand) = kappaMinusOneThird * sigma * GET_RAND(irand)**3
                             exit
@@ -174,12 +179,25 @@ kappaMinusOneThird = kappa - ONE_THIRD + offset; invSqrt9KappaMinusOneThird = 1.
             end block
 #endif
         else
+#if         1
+            block
+                real(RKG) :: kapinv
+#if             D1_ENABLED
+                real(RKG) :: unifrnd(size(rand, 1, IK))
+#endif
+                kapinv = 1._RKG / kappa
+                call setGammaRand(RNG rand, kappa = kappa + 1._RKG, sigma = sigma)
+                call setUnifRand(RNG unifrnd)
+                rand = rand * (1._RKG - unifrnd)**kapinv
+            end block
+#else
             GET_PARAM(1._RKG) ! fpp
 #if         D1_ENABLED
             block
                 integer(IK) :: irand
                 do irand = 1_IK, size(rand, 1, IK)
 #endif
+                    ! This approach seems to be buggy and yield incorrect results.
                     do
                         !call setRandKappaGe1()
                         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -206,6 +224,7 @@ kappaMinusOneThird = kappa - ONE_THIRD + offset; invSqrt9KappaMinusOneThird = 1.
 #if             D1_ENABLED
                 end do
             end block
+#endif
 #endif
         end if
 

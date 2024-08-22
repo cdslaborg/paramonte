@@ -75,7 +75,7 @@ module pm_math1mexp
     !>  \return
     !>  `onemexp`               :   The output scalar (or array) of the same type and kind (and shape) as the input `x` representing `1 - exp(x)` without underflow.
     !>
-    !>  \interface
+    !>  \interface{get1mexp}
     !>  \code{.F90}
     !>
     !>      use pm_math1mexp, only: get1mexp, selection
@@ -101,10 +101,10 @@ module pm_math1mexp
     !>  [getLogSubExp](@ref pm_mathLogSubExp::getLogSubExp)<br>
     !>  [getLogSumExp](@ref pm_mathLogSumExp::getLogSumExp)<br>
     !>
-    !>  \example
+    !>  \example{get1mexp}
     !>  \include{lineno} example/pm_math1mexp/get1mexp/main.F90
-    !>  \compilef
-    !>  \output
+    !>  \compilef{get1mexp}
+    !>  \output{get1mexp}
     !>  \include{lineno} example/pm_math1mexp/get1mexp/main.out.F90
     !>
     !>  \benchmarks

@@ -68,7 +68,7 @@ program example
         open(newunit = fileUnit, file = "setPoisLogPMF.IK.txt")
         do i = 1, size(count)
             call setPoisLogPMF(logPMF, count(i), [.1_RKG, 1._RKG, 4._RKG, 10._RKG])
-            write(fileUnit, "(*(g0,:,' '))" ) count(i), exp(logPMF)
+            write(fileUnit, "(*(g0,:,' '))") count(i), exp(logPMF)
         end do
         close(fileUnit)
 

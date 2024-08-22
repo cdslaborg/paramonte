@@ -4282,7 +4282,7 @@ end block;
 #endif
         integer(IK), intent(in) :: year
         logical(LK)             :: leapYear
-        !CHECK_ASSERTION(__LINE__, year /= 0_IK, SK_"@isLeapYear(): The input year must be non-zero.") ! fpp
+        !check_assertion(__LINE__, year /= 0_IK, SK_"@isLeapYear(): The input year must be non-zero.") ! fpp
         leapYear = mod(year, 400_IK) == 0_IK .or. (mod(year, 4_IK) == 0_IK .and. mod(year, 100_IK) /= 0_IK)
         !if (year > 0_IK) then
         !    leapYear = mod(year, 400_IK) == 0_IK .or. (mod(year, 4_IK) == 0_IK .and. mod(year, 100_IK) /= 0_IK)
@@ -4540,7 +4540,7 @@ end block;
         else
             values = getDateTime()
         end if
-        !CHECK_ASSERTION(__LINE__, all(values /= -huge(values)), SK_"@getHour(): The processor does not provide date and time.") ! fpp
+        !check_assertion(__LINE__, all(values /= -huge(values)), SK_"@getHour(): The processor does not provide date and time.") ! fpp
         hour = values(5)
     end function
 

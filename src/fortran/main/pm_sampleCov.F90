@@ -240,7 +240,7 @@ module pm_sampleCov
     !>                                  <li>    type `real` of the same kind as the output `cov`,
     !>                              </ol>
     !>                              containing the corresponding weights of individual `nsam` observations in `sample`.<br>
-    !>                              (**optional**. default = `getFilled(1, nsam)`. It can be present **only if** the input arguments `cor`, `subsetr`, and `std` are missing.)
+    !>                              (**optional**. default = [getFilled(1, nsam)](@ref pm_arrayFill::getFilled). It can be present **only if** the input arguments `cor`, `subsetr`, and `std` are missing.)
     !>  \param[in]  correction  :   The input scalar object that can be the following:<br>
     !>                              <ol>
     !>                                  <li>    The constant [fweight](@ref pm_sampleWeight::fweight) or an object of type [fweight](@ref pm_sampleWeight::fweight)
@@ -1581,7 +1581,7 @@ module pm_sampleCov
     !>                                      <li>    type `real` of the same kind as the kind of the output `cov`,
     !>                                  </ol>
     !>                                  containing the corresponding weights of individual `nsam` observations in `sample`.<br>
-    !>                                  (**optional**. default = `getFilled(1, nsam)`. It can be present **if and only if** the input arguments `sample` or `x` and `y` are present.)
+    !>                                  (**optional**. default = [getFilled(1, nsam)](@ref pm_arrayFill::getFilled). It can be present **if and only if** the input arguments `sample` or `x` and `y` are present.)
     !>  \param[in]      weisum      :   The input scalar of the same type and kind as the input `weight` containing `sum(weight)`.<br>
     !>                                  This quantity is a byproduct of computing the mean of a sample and is automatically returned by [setMean](@ref pm_sampleMean::setMean).<br>
     !>                                  (**optional**. It **must** be present **if and only if** the `weight` argument is present **and** the input arguments `cor`, `subsetr`, and `std` are missing.)
@@ -5189,7 +5189,7 @@ module pm_sampleCov
     !>                                      <li>    type `real` of the same kind as the kind of the output `cov`,
     !>                                  </ol>
     !>                                  containing the corresponding weights of individual `nsam` observations in `sample`.<br>
-    !>                                  (**optional**. default = `getFilled(1, nsam)`. It can be present **if and only if** the input arguments `sample` or `x` and `y` are present.)
+    !>                                  (**optional**. default = [getFilled(1, nsam)](@ref pm_arrayFill::getFilled). It can be present **if and only if** the input arguments `sample` or `x` and `y` are present.)
     !>  \param[out]     weisum      :   The output scalar of the same type and kind as the input `weight`, containing `sum(weight)`.<br>
     !>                                  (**optional**. It **must** be present **if and only if** the `weight` argument is present.)
     !>  \param[in]      meang        :  The input vector of the same type, kind, and rank as the output `cov` of shape `(1:ndim)` containing the best guess for the `sample` mean.<br>

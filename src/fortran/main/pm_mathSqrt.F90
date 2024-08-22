@@ -15,7 +15,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief
-!>  This module contains procedures and generic interfaces and generic interfaces for computing the **square root** of **integers**.
+!>  This module contains procedures and generic interfaces for computing the **square root** of **integers**.
 !>
 !>  \details
 !>  In number theory, the integer square root (**getSqrt**) of a non-negative integer \f$n\f$ is the non-negative integer \f$m\f$

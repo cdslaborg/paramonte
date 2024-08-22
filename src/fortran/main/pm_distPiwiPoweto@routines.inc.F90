@@ -100,7 +100,7 @@
         CHECK_ASSERTION(__LINE__, isAscending(logLimX), SK_"@setPiwiPowetoLogPDF(): The conditions `isAscending(logLimX)` must hold. logLimX = "//getStr(logLimX))
         CHECK_ASSERTION(__LINE__, logLimX(1) <= logx, SK_"@setPiwiPowetoLogPDFNF(): The condition `logLimX(1) <= logx` must hold. logLimX(1), logx = "//getStr([logLimX(1), logx]))
         CHECK_ASSERTION(__LINE__, logx <= logLimX(size(logLimX,1,IK)), SK_"@getPiwiPowetoLogPDFNF(): The condition `logx < logLimX(size(logLimX,1,IK))` must hold. logx, logLimX(size(logLimX,1,IK)) = "//getStr([logx, logLimX(size(logLimX,1,IK))]))
-        !CHECK_ASSERTION(__LINE__, logLimX(size(logLimX,1,IK)) < log(huge(logLimX)), SK_"@getPiwiPowetoLogPDFNF(): The condition `logLimX(size(logLimX)) < log(huge(logLimX))` must hold. logLimX = "//getStr(logLimX))
+        !check_assertion(__LINE__, logLimX(size(logLimX,1,IK)) < log(huge(logLimX)), SK_"@getPiwiPowetoLogPDFNF(): The condition `logLimX(size(logLimX)) < log(huge(logLimX))` must hold. logLimX = "//getStr(logLimX))
         do i = lenAlpha, 1_IK, -1_IK
             if (logx < logLimX(i)) cycle
             logPDF = logPDFNF(i) + (alpha(i) - 1._RKG) * logx
@@ -168,8 +168,8 @@
         CHECK_ASSERTION(__LINE__, size(logLimX,1,IK) == lenAlpha + 1_IK, SK_"@setPiwiPowetoCDF(): The condition `size(logLimX) == size(alpha) + 1` must hold. size(logLimX,1,IK), size(alpha,1,IK) = "//getStr([size(logLimX,1,IK), size(alpha,1,IK)]))
         CHECK_ASSERTION(__LINE__, logLimX(1) <= logx .and. logx <= logLimX(lenAlpha + 1), SK_"@setPiwiPowetoCDF(): The condition `logLimX(1) <= logx and. logx < logLimX(size(logLimX))` must hold. logLimX(1), logx, logLimX(size(logLimX)) = "//getStr([logLimX(1), logx, logLimX(lenAlpha + 1)]))
         CHECK_ASSERTION(__LINE__, isAscending(logLimX), SK_"@setPiwiPowetoCDF(): The conditions `isAscending(logLimX)` must hold. logLimX = "//getStr(logLimX))
-        !CHECK_ASSERTION(__LINE__, logLimX(size(logLimX,1,IK)) < log(huge(logLimX)), SK_"@getPiwiPowetoLogPDFNF(): The condition `logLimX(size(logLimX)) < log(huge(logLimX))` must hold. logLimX = "//getStr(logLimX))
-        !CHECK_ASSERTION(__LINE__, merge(alpha(lenAlpha) < -1._RKG, .true., size(logLimX,1,IK) == lenAlpha), SK_"@getPiwiPowetoLogPDFNF(): The condition `alpha(size(alpha)) < -1._RKG` must hold. alpha = "//getStr(alpha))
+        !check_assertion(__LINE__, logLimX(size(logLimX,1,IK)) < log(huge(logLimX)), SK_"@getPiwiPowetoLogPDFNF(): The condition `logLimX(size(logLimX)) < log(huge(logLimX))` must hold. logLimX = "//getStr(logLimX))
+        !check_assertion(__LINE__, merge(alpha(lenAlpha) < -1._RKG, .true., size(logLimX,1,IK) == lenAlpha), SK_"@getPiwiPowetoLogPDFNF(): The condition `alpha(size(alpha)) < -1._RKG` must hold. alpha = "//getStr(alpha))
         do i = lenAlpha, 1_IK, -1_IK
             if (logx < logLimX(i)) cycle
             call setPiwiPowetoCDF(cdf, logx, alpha, logLimX, logPDFNF, cumSumArea, i)

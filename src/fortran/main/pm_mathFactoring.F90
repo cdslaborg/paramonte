@@ -15,7 +15,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief
-!>  This module contains procedures and generic interfaces and generic interfaces for computing the **prime factors** of integers.
+!>  This module contains procedures and generic interfaces for computing the **prime factors** of integers.
 !>
 !>  \details
 !>  In mathematics, **factorization** or **factoring** consists of writing a number or another mathematical object as a product of several factors,

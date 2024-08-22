@@ -51,7 +51,7 @@ program example
         A_RK = exp(getLinSpace(-2._RK, 2._RK, NP))
         open(newunit = fileUnit, file = "getLogBeta.RK.txt")
         do i = 1, NP
-            write(fileUnit, "(*(g0,:,' '))" ) A_RK(i), exp(getLogBeta(A_RK(i), [0.1_RK, 1.0_RK, 10._RK]))
+            write(fileUnit, "(*(g0,:,' '))") A_RK(i), exp(getLogBeta(A_RK(i), [0.1_RK, 1.0_RK, 10._RK]))
         end do
         close(fileUnit)
 

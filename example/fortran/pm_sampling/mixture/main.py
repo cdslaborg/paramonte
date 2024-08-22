@@ -8,6 +8,9 @@ import glob
 import sys
 import os
 
+plt.rcParams['text.usetex'] = True
+# Uncomment above line if LaTeX is installed on the system.
+# On Ubuntu, this requires: sudo apt install dvipng texlive-latex-extra texlive-fonts-recommended cm-super
 examname = os.path.basename(os.getcwd())
 
 #### Visualize MCMC
@@ -40,11 +43,11 @@ for file in files:
     ax.set_xscale("log")
     ax.set_xlabel("MCMC Count", fontsize = 17)
     ax.set_ylabel("MCMC State", fontsize = 17)
-    ax.tick_params(axis = "x", which = "minor")
-    ax.tick_params(axis = "y", which = "minor")
+    ax.tick_params(axis = "x", which = "major", labelsize = fontsize)
+    ax.tick_params(axis = "y", which = "major", labelsize = fontsize)
     plt.grid(visible = True, which = "both", axis = "both", color = "0.85", linestyle = "-")
     #ax.legend(df.columns.values, fontsize = fontsize)
-    plt.title(basename)
+    #plt.title(basename)
     plt.tight_layout()
     plt.savefig(basename + ".traceplot.png")
 
@@ -63,11 +66,11 @@ for file in files:
         ax.set_xscale("log")
         ax.set_xlabel(df.columns.values[sindex], fontsize = 17)
         ax.set_ylabel(df.columns.values[sindex + 1], fontsize = 17)
-        ax.tick_params(axis = "x", which = "minor")
-        ax.tick_params(axis = "y", which = "minor")
+        ax.tick_params(axis = "x", which = "major", labelsize = fontsize)
+        ax.tick_params(axis = "y", which = "major", labelsize = fontsize)
         plt.grid(visible = True, which = "both", axis = "both", color = "0.85", linestyle = "-")
         #ax.legend(df.columns.values, fontsize = fontsize)
-        plt.title(basename)
+        #plt.title(basename)
         plt.tight_layout()
         plt.savefig(basename + ".scatterplot.png")
 
@@ -88,12 +91,12 @@ for file in files:
             #ax.set_xscale("log")
             ax.set_yscale("log")
             ax.set_xlabel("MCMC Count", fontsize = 17)
+            ax.tick_params(axis = "x", which = "major", labelsize = fontsize)
+            ax.tick_params(axis = "y", which = "major", labelsize = fontsize)
             ax.set_ylabel("proposalAdaptation", fontsize = 17)
-            ax.tick_params(axis = "x", which = "minor")
-            ax.tick_params(axis = "y", which = "minor")
             plt.grid(visible = True, which = "both", axis = "both", color = "0.85", linestyle = "-")
             #ax.legend(df.columns.values, fontsize = fontsize)
-            plt.title(basename)
+            #plt.title(basename)
             plt.tight_layout()
             plt.savefig(basename + ".proposalAdaptation.png")
 
@@ -205,11 +208,14 @@ for histFile in histFiles:
     model = pd.read_csv(histFile, delimiter = ",")
     x = np.exp(model["logx"].values)
     y = len(durs) * np.exp(model["logPDF"].values) / x
-    plt.grid(which = 'both')
-    plt.plot(x, y, c = 'magenta', label = histFile)
-    plt.xticks(size = 12)
-    plt.yticks(size = 12)
-    plt.legend()
+    plt.grid(which = "both")
+    plt.plot(x, y, c = "magenta", label = histFile)
+    plt.xlabel(r"$T_{90} ~ [s]$", fontsize = fontsize)
+    plt.ylabel(r"$dN ~ / ~ dT_{90} ~ [1 / s]$", fontsize = fontsize)
+    #plt.legend(fontsize = 13)
+    plt.xticks(size = fontsize)
+    plt.yticks(size = fontsize)
     plt.ylim(7*10**-3, 2*10**3)
+    plt.tight_layout()
     plt.savefig(histFile + ".png")
     #plt.show()

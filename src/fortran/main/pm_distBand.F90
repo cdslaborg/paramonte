@@ -16,14 +16,14 @@
 
 !>  \brief
 !>  This module contains procedures and generic interfaces for computing the Band photon distribution
-!>  widely used in modeling the spectra of a class of celestial objects knowns [Gamma-Ray Bursts](https://en.wikipedia.org/wiki/Gamma-ray_burst).<br>
+!>  widely used in modeling the spectra of a class of celestial objects known as [Gamma-Ray Bursts](https://en.wikipedia.org/wiki/Gamma-ray_burst).<br>
 !>
 !>  \details
 !>  The Band model is an empirical spectral model most widely used to fit GRB spectra,
 !>  first proposed in *Band et al. 1993,  BATSE Observations of Gamma-Ray Burst Spectra. I. Spectral Diversity*.<br>
 !>
 !>  The model is **continuously differentiable** (i.e., its derivative is a continuous function).<br>
-!>  It is characterized by 4 parameters:<br>
+!>  It is characterized by four parameters:<br>
 !>  <ol>
 !>      <li>    the amplitude \f$A\f$ in \f$\ms{photons} \ms{s}^{-1} \ms{cm}^{-2} \kev^{-1}\f$,<br>
 !>      <li>    a low-energy spectral index \f$\alpha\f$,<br>
@@ -33,7 +33,7 @@
 !>  The \f$\nu F_\nu\f$ is the **photon spectrum** \f$f(E)\f$ integrated twice over all energies (\f$E^2f(E)\f$).<br>
 !>  Therefore, \f$\nu F_\nu\f$ represents the total energy flux per energy band (i.e., **power density spectrum**).<br>
 !>  The \f$\alpha\f$ index characterizes an asymptotic power-law (i.e., the tangential slope determined at \f$E\rightarrow 0\f$ in a logarithmic scale).<br>
-!>  This may not characterize the actual low-energy power-law, determined within the data energy range, when the **e-folding energy** denoted by \f$E_{0}\f$ approaches the lower energy bound.<br>
+!>  This may not characterize the actual low-energy power-law, determined within the data energy range when the **e-folding energy** denoted by \f$E_{0}\f$ approaches the lower energy bound.<br>
 !>  Although the model was originally constructed based on the observed time-integrated BATSE catalog spectra, it has now become common practice to use the model to fit time-resolved GRB spectra as well.<br>
 !>  There are, however, some time-resolved spectra that cannot be adequately fitted with this model.<br>
 !>  The Band model has the following mathematical form,
@@ -68,7 +68,7 @@
 !>      <li>    the factor \f$\eta(\alpha, \beta, \xbreak)\f$ is a normalization constant that properly normalizes the PDF,
 !>      <li>    the factor \f$\zeta = \xbreak^{\alpha - \beta} \exp\left(\beta - \alpha\right)\f$ is
 !>              the **coefficient of continuity** of the distribution that makes the distribution **continuously differentiable**.<br>
-!>      <li>    the constants \f$(\ms{lb}, \ms{ub})\f$ represent the lower and upper bounds of the PDF respectively.<br>
+!>      <li>    the constants \f$(\ms{lb}, \ms{ub})\f$ represent the lower and upper bounds of the PDF, respectively.<br>
 !>  </ol>
 !>  When the condition \f$\alpha > -1\f$ holds, the lower component of the distribution
 !>  follows the mathematical form of the PDF of the [Gamma distribution](@ref pm_distGamma),
@@ -90,7 +90,7 @@
 !>  \final
 !>
 !>  \author
-!>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
+!>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -114,7 +114,7 @@ module pm_distBand
     !>  \final
     !>
     !>  \author
-    !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
+    !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
     real(RKB), parameter :: MEAN_ALPHA = -1.1_RKB
 
     !>  \brief
@@ -126,7 +126,7 @@ module pm_distBand
     !>  \final
     !>
     !>  \author
-    !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
+    !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
     real(RKB), parameter :: MEAN_BETA = -2.3_RKB
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

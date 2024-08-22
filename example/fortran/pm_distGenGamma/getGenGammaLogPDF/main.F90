@@ -106,7 +106,7 @@ program example
 
     block
         integer     :: fileUnit, i
-        real(RK)    :: logPDF(NP,6)
+        real(RK)    :: logPDF(NP, 6)
         logPDF(:,1) = getGenGammaLogPDF(Point, 1.0, 0.5, 0.5)
         logPDF(:,2) = getGenGammaLogPDF(Point, 2.0, 0.5, 1.0)
         logPDF(:,3) = getGenGammaLogPDF(Point, 0.5, 2.0, 0.5)

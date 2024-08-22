@@ -24,7 +24,7 @@ legends =   [ r"$\alpha = +.1, x_{min} = +3., x_{max} = +10$"
 
 for kind in ["IK", "CK", "RK"]:
 
-    pattern = "*."+kind+".txt"
+    pattern = "*." + kind + ".txt"
     fileList = glob.glob(pattern)
     if len(fileList) == 1:
 

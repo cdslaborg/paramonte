@@ -327,7 +327,7 @@ module pm_distanceEuclid
     !>      distance = getDisEuclid(point(1:ndim), method = method)
     !>      distance(1:npnt) = getDisEuclid(point(1:ndim, 1:npnt), method = method)
     !>
-    !>      ! distance with respect to origin.
+    !>      ! distance with respect to custom reference.
     !>
     !>      distance = getDisEuclid(point(1:ndim), ref(1:ndim), method = method)
     !>      distance(1:nref) = getDisEuclid(point(1:ndim), ref(1:ndim, 1:nref), method = method)
@@ -916,7 +916,7 @@ module pm_distanceEuclid
     !>      call setDisEuclid(distance, point(1:ndim), method)
     !>      call setDisEuclid(distance(1:npnt), point(1:ndim, 1:npnt), method)
     !>
-    !>      ! distance with respect to origin.
+    !>      ! distance with respect to custom reference.
     !>
     !>      call setDisEuclid(distance, point(1:ndim), ref(1:ndim), method)
     !>      call setDisEuclid(distance(1:nref), point(1:ndim), ref(1:ndim, 1:nref), method)
@@ -2235,7 +2235,7 @@ module pm_distanceEuclid
     !>                                              This `subset` value offers a fast convenient method of excluding self-distance values from the output distance matrix
     !>                                              such that each column `(1:npnt-1 , i)` of the distance matrix contains only the distances of `point(1:ndim, i)` with all other `npnt - 1` points in `point`.<br>
     !>                                              For example, finding the nearest neighbor of the points using the output distance matrix would be as simple as `minval(distance, 1)`.<br>
-    !>                                              Finding the actual index of the point that is the nearest neighbor to each point would be slightly more involved as as two-step process:<br>
+    !>                                              Finding the actual index of the point that is the nearest neighbor to each point would be slightly more involved as a two-step process:<br>
     !>                                              \code{.F90}
     !>                                                  nn1loc(1 : npnt) = minloc(distance(1 : npnt - 1, 1 : npnt), 1)
     !>                                                  nn1loc = merge(nn1loc, nn1loc + 1, getRange(1, npnt) <= nn1loc)
@@ -2574,7 +2574,7 @@ module pm_distanceEuclid
     !>                                              This `subset` value offers a fast convenient method of excluding self-distance values from the output distance matrix
     !>                                              such that each column `(1:npnt-1 , i)` of the distance matrix contains only the distances of `point(1:ndim, i)` with all other `npnt - 1` points in `point`.<br>
     !>                                              For example, finding the nearest neighbor of the points using the output distance matrix would be as simple as `minval(distance, 1)`.<br>
-    !>                                              Finding the actual index of the point that is the nearest neighbor to each point would be slightly more involved as as two-step process:<br>
+    !>                                              Finding the actual index of the point that is the nearest neighbor to each point would be slightly more involved as a two-step process:<br>
     !>                                              \code{.F90}
     !>                                                  nn1loc(1 : npnt) = minloc(distance(1 : npnt - 1, 1 : npnt), 1)
     !>                                                  nn1loc = merge(nn1loc, nn1loc + 1, getRange(1, npnt) <= nn1loc)
@@ -2615,8 +2615,8 @@ module pm_distanceEuclid
     !>
     !>      use pm_distanceEuclid, only: setDisMatEuclid
     !>
-    !>      call setDisMatEuclid(distance(1:npnt, 1:npnt), pack, subset, point(1:npnt, 1:npnt), method)
-    !>      call setDisMatEuclid(distance(1:npnt, 1:npnt), pack, subset, point(1:npnt, 1:npnt), method)
+    !>      call setDisMatEuclid(distance(1:npnt, 1:npnt), pack, subset, point(1:ndim, 1:npnt), method) ! subset /= uppLow
+    !>      call setDisMatEuclid(distance(1:npnt-1, 1:npnt), pack, subset, point(1:ndim, 1:npnt), method) ! subset = uppLow
     !>
     !>  \endcode
     !>

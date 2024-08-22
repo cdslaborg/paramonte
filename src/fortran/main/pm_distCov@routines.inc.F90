@@ -115,7 +115,7 @@
 #error  "Unrecognized interface."
 #endif
         TYPE_OF_RAND :: upper(size(rand, 1, IK), size(rand, 2, IK))
-        integer(IK) :: idim, jdim, ndim
+        integer(IK) :: idim, ndim
 #if     SD_ENABLED
 #define GET_SCALED(X)X
 #elif   S0_ENABLED
@@ -163,11 +163,14 @@
 
         ! Rescale.
 #if     S0_ENABLED || S1_ENABLED
-        do jdim = 1, ndim
-            do idim = 1, jdim
-                rand(idim, jdim) = GET_SCALED(rand(idim, jdim))
+        block
+            integer(IK) :: jdim
+            do jdim = 1, ndim
+                do idim = 1, jdim
+                    rand(idim, jdim) = GET_SCALED(rand(idim, jdim))
+                end do
             end do
-        end do
+        end block
 #endif
         !block
         !use pm_io, only: disp
@@ -213,7 +216,7 @@
         CHECK_ASSERTION(__LINE__, all([0._TKG < scale]), SK_"@setCovRand(): The condition `all([0. < scale])` must hold. scale = "//getStr(scale))
 #endif
         CHECK_ASSERTION(__LINE__, 0._TKG <= eta, SK_"@setCovRand(): The condition `0. <= eta` must hold. eta = "//getStr(eta))
-       !CHECK_ASSERTION(__LINE__, 0_IK < size(rand, 1, IK), SK_"@setCovRand(): The condition `0 < size(rand, 1)` must hold. shape(rand) = "//getStr(shape(rand)))
+       !check_assertion(__LINE__, 0_IK < size(rand, 1, IK), SK_"@setCovRand(): The condition `0 < size(rand, 1)` must hold. shape(rand) = "//getStr(shape(rand)))
         CHECK_ASSERTION(__LINE__, size(rand, 1, IK) == size(rand, 2, IK), SK_"@setCovRand(): The condition `size(rand, 1) <= size(rand, 2)` must hold. shape(rand) = "//getStr(shape(rand)))
         ndim = size(rand, 1, IK)
         if (1_IK < ndim) then

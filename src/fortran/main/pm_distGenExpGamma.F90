@@ -1011,13 +1011,9 @@ module pm_distGenExpGamma
     !>                                  and kind the input argument `x`, containing the CDF of the distribution at the specified `x`.<br>
     !>  \param[in]  x               :   The input scalar or array of the same shape as other array like arguments,
     !>                                  of type `real` of kind \RKALL, containing the values at which the CDF must be computed.<br>
-    !>  \param[in]  logGammaKappa   :   The input scalar of the same type and kind as the input `x`,
-    !>                                  representing the precomputed \f$\log(\Gamma(\kappa))\f$ which can be computed
-    !>                                  by calling the Fortran intrinsic function `log_gamma(kappa)`.<br>
-    !>                                  (**optional**, default = `log_gamma(kappa)`. It must be present <b>if and only if</b> `kappa` is also present.)
     !>  \param[in]  kappa           :   The input scalar or array of the same shape as other array-like arguments,
     !>                                  of the same type and kind as `x`, containing the shape parameter of the distribution.<br>
-    !>                                  (**optional**, default = `1.`. It must be present if `logGammaKappa` or `invOmega` are also present.)
+    !>                                  (**optional**, default = `1.`. It must be present if `invOmega` are also present.)
     !>  \param[in]  invOmega        :   The input scalar or array of the same shape as other array-like arguments,
     !>                                  of the same type and kind as `x`, containing the inverse scale parameter of the distribution.<br>
     !>                                  (**optional**, default = `1.`. It must be present if `logSigma` is also present.)
@@ -1029,25 +1025,21 @@ module pm_distGenExpGamma
     !>                                  If the algorithm fails to converge, then `info` is set to the negative of the number of iterations taken by the algorithm.<br>
     !>                                  **An negative output value signifies the lack of convergence and failure to compute the CDF**.<br>
     !>                                  This is likely to happen if the input value for `kappa` is too large.<br>
-    !>  \param[in]  tol             :   The input scalar of the same type and kind as `x`,
-    !>                                  representing the relative accuracy in the convergence checking of the Gamma series representation.<br>
-    !>                                  (**optional**. The default value is set by [setGammaIncLow](@ref pm_mathGamma::setGammaIncLow).)
     !>
     !>  \interface{setGenExpGammaCDF}
     !>  \code{.F90}
     !>
     !>      use pm_distGenExpGamma, only: setGenExpGammaCDF
     !>
-    !>      call setGenExpGammaCDF(cdf, x, info, tol = tol)
-    !>      call setGenExpGammaCDF(cdf, x, logGammaKappa, kappa, info, tol = tol)
-    !>      call setGenExpGammaCDF(cdf, x, logGammaKappa, kappa, invOmega, info, tol = tol)
-    !>      call setGenExpGammaCDF(cdf, x, logGammaKappa, kappa, invOmega, logSigma, info, tol = tol)
+    !>      call setGenExpGammaCDF(cdf, x, info)
+    !>      call setGenExpGammaCDF(cdf, x, kappa, info)
+    !>      call setGenExpGammaCDF(cdf, x, kappa, invOmega, info)
+    !>      call setGenExpGammaCDF(cdf, x, kappa, invOmega, logSigma, info)
     !>
     !>  \endcode
     !>
     !>  \warning
     !>  The condition `kappa > 0` and `invOmega > 0` must hold for the corresponding input arguments.<br>
-    !>  Also, the value of the input argument `logGammaKappa`, if present, must be consistent with input value for `kappa`.<br>
     !>  \vericons
     !>
     !>  \warnpure
@@ -1082,7 +1074,7 @@ module pm_distGenExpGamma
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE elemental module subroutine setGenExpGammaCDFDDD_RK5(cdf, x, info, tol)
+    PURE elemental module subroutine setGenExpGammaCDFDDD_RK5(cdf, x, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaCDFDDD_RK5
 #endif
@@ -1090,12 +1082,11 @@ module pm_distGenExpGamma
         real(RKG)   , intent(out)                   :: cdf
         real(RKG)   , intent(in)                    :: x
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK4_ENABLED
-    PURE elemental module subroutine setGenExpGammaCDFDDD_RK4(cdf, x, info, tol)
+    PURE elemental module subroutine setGenExpGammaCDFDDD_RK4(cdf, x, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaCDFDDD_RK4
 #endif
@@ -1103,12 +1094,11 @@ module pm_distGenExpGamma
         real(RKG)   , intent(out)                   :: cdf
         real(RKG)   , intent(in)                    :: x
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK3_ENABLED
-    PURE elemental module subroutine setGenExpGammaCDFDDD_RK3(cdf, x, info, tol)
+    PURE elemental module subroutine setGenExpGammaCDFDDD_RK3(cdf, x, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaCDFDDD_RK3
 #endif
@@ -1116,12 +1106,11 @@ module pm_distGenExpGamma
         real(RKG)   , intent(out)                   :: cdf
         real(RKG)   , intent(in)                    :: x
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK2_ENABLED
-    PURE elemental module subroutine setGenExpGammaCDFDDD_RK2(cdf, x, info, tol)
+    PURE elemental module subroutine setGenExpGammaCDFDDD_RK2(cdf, x, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaCDFDDD_RK2
 #endif
@@ -1129,12 +1118,11 @@ module pm_distGenExpGamma
         real(RKG)   , intent(out)                   :: cdf
         real(RKG)   , intent(in)                    :: x
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK1_ENABLED
-    PURE elemental module subroutine setGenExpGammaCDFDDD_RK1(cdf, x, info, tol)
+    PURE elemental module subroutine setGenExpGammaCDFDDD_RK1(cdf, x, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaCDFDDD_RK1
 #endif
@@ -1142,208 +1130,192 @@ module pm_distGenExpGamma
         real(RKG)   , intent(out)                   :: cdf
         real(RKG)   , intent(in)                    :: x
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE elemental module subroutine setGenExpGammaCDFXKDD_RK5(cdf, x, logGammaKappa, kappa, info, tol)
+    PURE elemental module subroutine setGenExpGammaCDFXKDD_RK5(cdf, x, kappa, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaCDFXKDD_RK5
 #endif
         use pm_kind, only: RKG => RK5
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa
+        real(RKG)   , intent(in)                    :: x, kappa
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK4_ENABLED
-    PURE elemental module subroutine setGenExpGammaCDFXKDD_RK4(cdf, x, logGammaKappa, kappa, info, tol)
+    PURE elemental module subroutine setGenExpGammaCDFXKDD_RK4(cdf, x, kappa, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaCDFXKDD_RK4
 #endif
         use pm_kind, only: RKG => RK4
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa
+        real(RKG)   , intent(in)                    :: x, kappa
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK3_ENABLED
-    PURE elemental module subroutine setGenExpGammaCDFXKDD_RK3(cdf, x, logGammaKappa, kappa, info, tol)
+    PURE elemental module subroutine setGenExpGammaCDFXKDD_RK3(cdf, x, kappa, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaCDFXKDD_RK3
 #endif
         use pm_kind, only: RKG => RK3
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa
+        real(RKG)   , intent(in)                    :: x, kappa
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK2_ENABLED
-    PURE elemental module subroutine setGenExpGammaCDFXKDD_RK2(cdf, x, logGammaKappa, kappa, info, tol)
+    PURE elemental module subroutine setGenExpGammaCDFXKDD_RK2(cdf, x, kappa, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaCDFXKDD_RK2
 #endif
         use pm_kind, only: RKG => RK2
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa
+        real(RKG)   , intent(in)                    :: x, kappa
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK1_ENABLED
-    PURE elemental module subroutine setGenExpGammaCDFXKDD_RK1(cdf, x, logGammaKappa, kappa, info, tol)
+    PURE elemental module subroutine setGenExpGammaCDFXKDD_RK1(cdf, x, kappa, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaCDFXKDD_RK1
 #endif
         use pm_kind, only: RKG => RK1
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa
+        real(RKG)   , intent(in)                    :: x, kappa
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE elemental module subroutine setGenExpGammaCDFKOD_RK5(cdf, x, logGammaKappa, kappa, invOmega, info, tol)
+    PURE elemental module subroutine setGenExpGammaCDFKOD_RK5(cdf, x, kappa, invOmega, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaCDFKOD_RK5
 #endif
         use pm_kind, only: RKG => RK5
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invOmega
+        real(RKG)   , intent(in)                    :: x, kappa, invOmega
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK4_ENABLED
-    PURE elemental module subroutine setGenExpGammaCDFKOD_RK4(cdf, x, logGammaKappa, kappa, invOmega, info, tol)
+    PURE elemental module subroutine setGenExpGammaCDFKOD_RK4(cdf, x, kappa, invOmega, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaCDFKOD_RK4
 #endif
         use pm_kind, only: RKG => RK4
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invOmega
+        real(RKG)   , intent(in)                    :: x, kappa, invOmega
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK3_ENABLED
-    PURE elemental module subroutine setGenExpGammaCDFKOD_RK3(cdf, x, logGammaKappa, kappa, invOmega, info, tol)
+    PURE elemental module subroutine setGenExpGammaCDFKOD_RK3(cdf, x, kappa, invOmega, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaCDFKOD_RK3
 #endif
         use pm_kind, only: RKG => RK3
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invOmega
+        real(RKG)   , intent(in)                    :: x, kappa, invOmega
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK2_ENABLED
-    PURE elemental module subroutine setGenExpGammaCDFKOD_RK2(cdf, x, logGammaKappa, kappa, invOmega, info, tol)
+    PURE elemental module subroutine setGenExpGammaCDFKOD_RK2(cdf, x, kappa, invOmega, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaCDFKOD_RK2
 #endif
         use pm_kind, only: RKG => RK2
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invOmega
+        real(RKG)   , intent(in)                    :: x, kappa, invOmega
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK1_ENABLED
-    PURE elemental module subroutine setGenExpGammaCDFKOD_RK1(cdf, x, logGammaKappa, kappa, invOmega, info, tol)
+    PURE elemental module subroutine setGenExpGammaCDFKOD_RK1(cdf, x, kappa, invOmega, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaCDFKOD_RK1
 #endif
         use pm_kind, only: RKG => RK1
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invOmega
+        real(RKG)   , intent(in)                    :: x, kappa, invOmega
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE elemental module subroutine setGenExpGammaCDFKOS_RK5(cdf, x, logGammaKappa, kappa, invOmega, logSigma, info, tol)
+    PURE elemental module subroutine setGenExpGammaCDFKOS_RK5(cdf, x, kappa, invOmega, logSigma, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaCDFKOS_RK5
 #endif
         use pm_kind, only: RKG => RK5
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invOmega, logSigma
+        real(RKG)   , intent(in)                    :: x, kappa, invOmega, logSigma
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK4_ENABLED
-    PURE elemental module subroutine setGenExpGammaCDFKOS_RK4(cdf, x, logGammaKappa, kappa, invOmega, logSigma, info, tol)
+    PURE elemental module subroutine setGenExpGammaCDFKOS_RK4(cdf, x, kappa, invOmega, logSigma, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaCDFKOS_RK4
 #endif
         use pm_kind, only: RKG => RK4
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invOmega, logSigma
+        real(RKG)   , intent(in)                    :: x, kappa, invOmega, logSigma
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK3_ENABLED
-    PURE elemental module subroutine setGenExpGammaCDFKOS_RK3(cdf, x, logGammaKappa, kappa, invOmega, logSigma, info, tol)
+    PURE elemental module subroutine setGenExpGammaCDFKOS_RK3(cdf, x, kappa, invOmega, logSigma, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaCDFKOS_RK3
 #endif
         use pm_kind, only: RKG => RK3
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invOmega, logSigma
+        real(RKG)   , intent(in)                    :: x, kappa, invOmega, logSigma
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK2_ENABLED
-    PURE elemental module subroutine setGenExpGammaCDFKOS_RK2(cdf, x, logGammaKappa, kappa, invOmega, logSigma, info, tol)
+    PURE elemental module subroutine setGenExpGammaCDFKOS_RK2(cdf, x, kappa, invOmega, logSigma, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaCDFKOS_RK2
 #endif
         use pm_kind, only: RKG => RK2
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invOmega, logSigma
+        real(RKG)   , intent(in)                    :: x, kappa, invOmega, logSigma
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK1_ENABLED
-    PURE elemental module subroutine setGenExpGammaCDFKOS_RK1(cdf, x, logGammaKappa, kappa, invOmega, logSigma, info, tol)
+    PURE elemental module subroutine setGenExpGammaCDFKOS_RK1(cdf, x, kappa, invOmega, logSigma, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaCDFKOS_RK1
 #endif
         use pm_kind, only: RKG => RK1
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invOmega, logSigma
+        real(RKG)   , intent(in)                    :: x, kappa, invOmega, logSigma
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 

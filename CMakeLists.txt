@@ -171,6 +171,14 @@ if (TRUE)
 endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# Set the default for development mode environment.
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+if (NOT DEFINED dev_enabled)
+    set(dev_enabled 0)
+endif()
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Set CMake verbosity level.
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -1807,19 +1815,21 @@ foreach(fitem ${fresh})
     endif()
 endforeach()
 
-# Copy the package to the binary installation directory.
+#### Copy the package to the binary installation directory.
 
 set(origin "${paramonte_bld_pkg_dir}/")
 set(destin "${paramonte_bin_dir}/${binname}")
-foreach(fitem ${fresh})
-    if ("${fitem}" STREQUAL "deploy" OR "${fitem}" STREQUAL "all")
-        message(NOTICE "${pmattn} Purging the current ParaMonte library deploy directory: \"${destin}/\"")
-        file(REMOVE_RECURSE "${destin}/")
-        break()
-    endif()
-endforeach()
+if (NOT ${dev_enabled})
+    foreach(fitem ${fresh})
+        if ("${fitem}" STREQUAL "deploy" OR "${fitem}" STREQUAL "all")
+            message(NOTICE "${pmattn} Purging the current ParaMonte library deploy directory: \"${destin}/\"")
+            file(REMOVE_RECURSE "${destin}/")
+            break()
+        endif()
+    endforeach()
+endif()
 
-if (NOT ${codecov_enabled})
+if (NOT ${codecov_enabled} AND NOT ${dev_enabled})
     message(NOTICE  "${pmattn} Setting the rule for copying the paramonte::${lang} library package to the final binary installation directory...\n"
                     "${pmattn}      - from: ${origin}\n"
                     "${pmattn}      -   to: ${destin}")

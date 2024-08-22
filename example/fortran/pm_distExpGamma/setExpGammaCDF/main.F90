@@ -47,8 +47,8 @@ program example
     call disp%skip()
     call disp%show("kappa(1)")
     call disp%show( kappa(1) )
-    call disp%show("call setExpGammaCDF(CDF(1), 0.5_RK, log_gamma(kappa(1)), kappa(1), info(1))")
-                    call setExpGammaCDF(CDF(1), 0.5_RK, log_gamma(kappa(1)), kappa(1), info(1))
+    call disp%show("call setExpGammaCDF(CDF(1), 0.5_RK, kappa(1), info(1))")
+                    call setExpGammaCDF(CDF(1), 0.5_RK, kappa(1), info(1))
     call disp%show("if (info(1) < 0) error stop 'The computation of the CDF info.'")
                     if (info(1) < 0) error stop 'The computation of the CDF info.'
     call disp%show("CDF(1)")
@@ -58,8 +58,8 @@ program example
     call disp%skip()
     call disp%show("kappa(1)")
     call disp%show( kappa(1) )
-    call disp%show("call setExpGammaCDF(CDF(1), 0.5_RK, log_gamma(kappa(1)), kappa(1), info(1))")
-                    call setExpGammaCDF(CDF(1), 0.5_RK, log_gamma(kappa(1)), kappa(1), info(1))
+    call disp%show("call setExpGammaCDF(CDF(1), 0.5_RK, kappa(1), info(1))")
+                    call setExpGammaCDF(CDF(1), 0.5_RK, kappa(1), info(1))
     call disp%show("if (info(1) < 0) error stop 'The computation of the CDF info.'")
                     if (info(1) < 0) error stop 'The computation of the CDF info.'
     call disp%show("CDF(1)")
@@ -69,8 +69,8 @@ program example
     call disp%skip()
     call disp%show("kappa(1)")
     call disp%show( kappa(1) )
-    call disp%show("call setExpGammaCDF(CDF(1), 0.5_RK, log_gamma(kappa(1)), kappa(1), logSigma(1), info(1))")
-                    call setExpGammaCDF(CDF(1), 0.5_RK, log_gamma(kappa(1)), kappa(1), logSigma(1), info(1))
+    call disp%show("call setExpGammaCDF(CDF(1), 0.5_RK, kappa(1), logSigma(1), info(1))")
+                    call setExpGammaCDF(CDF(1), 0.5_RK, kappa(1), logSigma(1), info(1))
     call disp%show("if (info(1) < 0) error stop 'The computation of the CDF info.'")
                     if (info(1) < 0) error stop 'The computation of the CDF info.'
     call disp%show("CDF(1)")
@@ -86,8 +86,8 @@ program example
     call disp%skip()
     call disp%show("kappa(1)")
     call disp%show( kappa(1) )
-    call disp%show("call setExpGammaCDF(CDF(1:NP:NP/5), 0.5_RK, log_gamma(kappa(1:NP:NP/5)), kappa(1:NP:NP/5), info(1:NP:NP/5))")
-                    call setExpGammaCDF(CDF(1:NP:NP/5), 0.5_RK, log_gamma(kappa(1:NP:NP/5)), kappa(1:NP:NP/5), info(1:NP:NP/5))
+    call disp%show("call setExpGammaCDF(CDF(1:NP:NP/5), 0.5_RK, kappa(1:NP:NP/5), info(1:NP:NP/5))")
+                    call setExpGammaCDF(CDF(1:NP:NP/5), 0.5_RK, kappa(1:NP:NP/5), info(1:NP:NP/5))
     call disp%show("if (info(1) < 0) error stop 'The computation of the CDF info.'")
                     if (info(1) < 0) error stop 'The computation of the CDF info.'
     call disp%show("CDF(1:NP:NP/5)")
@@ -97,8 +97,8 @@ program example
     call disp%skip()
     call disp%show("kappa(1)")
     call disp%show( kappa(1) )
-    call disp%show("call setExpGammaCDF(CDF(1:NP:NP/5), point(1:NP:NP/5), log_gamma(kappa(1:NP:NP/5)), kappa(1:NP:NP/5), info(1:NP:NP/5))")
-                    call setExpGammaCDF(CDF(1:NP:NP/5), point(1:NP:NP/5), log_gamma(kappa(1:NP:NP/5)), kappa(1:NP:NP/5), info(1:NP:NP/5))
+    call disp%show("call setExpGammaCDF(CDF(1:NP:NP/5), point(1:NP:NP/5), kappa(1:NP:NP/5), info(1:NP:NP/5))")
+                    call setExpGammaCDF(CDF(1:NP:NP/5), point(1:NP:NP/5), kappa(1:NP:NP/5), info(1:NP:NP/5))
     call disp%show("if (any(info(1:NP:NP/5) < 0)) error stop 'The computation of the CDF info.'")
                     if (any(info(1:NP:NP/5) < 0)) error stop 'The computation of the CDF info.'
     call disp%show("CDF(1:NP:NP/5)")
@@ -110,14 +110,14 @@ program example
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block
-        integer     :: fileUnit, i
-        real(RK)    :: CDF(NP,6)
-        call setExpGammaCDF(CDF(:,1), point, log_gamma(.5_RK), .5_RK, 0.5, info)
-        call setExpGammaCDF(CDF(:,2), point, log_gamma(1._RK), 1._RK, 0.5, info)
-        call setExpGammaCDF(CDF(:,3), point, log_gamma(2._RK), 2._RK, 0.5, info)
-        call setExpGammaCDF(CDF(:,4), point, log_gamma(.5_RK), .5_RK, 2.0, info)
-        call setExpGammaCDF(CDF(:,5), point, log_gamma(1._RK), 1._RK, 2.0, info)
-        call setExpGammaCDF(CDF(:,6), point, log_gamma(2._RK), 2._RK, 2.0, info)
+        real(RK) :: CDF(NP,6)
+        integer :: fileUnit, i
+        call setExpGammaCDF(CDF(:,1), point, .5_RK, 0.5, info)
+        call setExpGammaCDF(CDF(:,2), point, 1._RK, 0.5, info)
+        call setExpGammaCDF(CDF(:,3), point, 2._RK, 0.5, info)
+        call setExpGammaCDF(CDF(:,4), point, .5_RK, 2.0, info)
+        call setExpGammaCDF(CDF(:,5), point, 1._RK, 2.0, info)
+        call setExpGammaCDF(CDF(:,6), point, 2._RK, 2.0, info)
         open(newunit = fileUnit, file = "setExpGammaCDF.RK.txt")
         if (any(info < 0)) error stop 'The computation of the CDF info.'
         write(fileUnit,"(7(g0,:,' '))") (point(i), CDF(i,:), i = 1, size(point))

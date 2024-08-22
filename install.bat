@@ -649,6 +649,18 @@ if not defined list_fc (
     set "list_fc=default"
 )
 
+REM Set the optional values.
+
+if defined flag_exam (
+    if not defined flag_exampp (
+    set flag_exampp=""
+)
+
+if defined flag_bench (
+    if not defined flag_benchpp (
+    set flag_benchpp=""
+)
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: Set CMake default flags.
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

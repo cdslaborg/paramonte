@@ -288,7 +288,7 @@ contains
             end if
             ! report progress in the standard output
             if (spec%image%is%first) then
-                write(status, fmt = "(A1,A,*(A25,3X))" ) CR, spec%reportFile%indent, & ! LCOV_EXCL_LINE
+                write(status, fmt = "(A1,A,*(A25,3X))") CR, spec%reportFile%indent, & ! LCOV_EXCL_LINE
                 getStr(getStr(stat%numFunCallAccepted)//SK_" / "//getStr(stat%numFunCallAcceptedRejected), SK_"(125A)"), & ! LCOV_EXCL_LINE
                 getStr(trim(adjustl(getStr(meanAccRateSinceLastReport, SK_"(1F11.4)")))//SK_" / "//trim(adjustl(getStr(stat%numFunCallAccepted / real(stat%numFunCallAcceptedRejected), SK_"(1F11.4)"))), SK_"(125A)"), & ! LCOV_EXCL_LINE
                 getStr(trim(adjustl(getStr(stat%progress%timeElapsedSinceStartInSeconds, SK_"(1F11.4)")))//SK_" / "//trim(adjustl(getStr(min(999999._RKD, timeRemainedToFinishInSeconds), SK_"(1F11.4)"))), SK_"(125A)")

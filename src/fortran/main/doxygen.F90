@@ -52,7 +52,7 @@
 !>  [⛓](#ParaMonteLangDocumentation)
 !>  \section ParaMonteLangDocumentation ParaMonte Fortran Documentation Website
 !>
-!>  The documentation for the latest version of the ParaMonte Fortran library is always <a href="../../fortran/latest/html/index.html" target="_blank"><b>available on this page</b></a>.<br>
+!>  The documentation for the latest version of the ParaMonte Fortran library is always <a href="../../fortran/latest/index.html" target="_blank"><b>available on this page</b></a>.<br>
 !>
 !>  [⛓](#ParaMonteLangModules)
 !>  \section ParaMonteLangModules ParaMonte Fortran Library Modules
@@ -118,7 +118,7 @@
 !>  pm_arrayStrip           | This module contains procedures and generic interfaces for stripping a given pattern from the left and right ends of an array of arbitrary intrinsic type and kind.
 !>  pm_arrayUnique          | This module contains procedures and generic interfaces for finding unique values of an input array of various types.
 !>  pm_arrayVerbose         | This module contains procedures and generic interfaces for flattening (duplicating the elements of) an array according to a user-specified weight.
-!>  pm_batse                | This module contains procedures and generic interfaces for modeling data and detectors of the BATSE Gamma-Ray satellite onboard the NASA Compton Gamma-Ray Observatory.
+!>  pm_batse                | This module contains procedures and generic interfaces for modeling data and detectors of the BATSE Gamma-Ray detectors onboard the NASA Compton Gamma-Ray Observatory.
 !>  pm_bench                | This module contains abstract interfaces and types that facilitate benchmarking of different procedures.
 !>  pm_bit                  | This module contains constants and procedures that are relevant to bit manipulation.
 !>  pm_blas                 | This module contains a set of generic interfaces to the BLAS routines used within the ParaMonte library.
@@ -139,7 +139,7 @@
 !>  pm_distanceHellinger    | This module contains classes and procedures for computing the Hellinger statistical distance between two probability distributions.
 !>  pm_distanceKolm         | This module contains classes and procedures for computing the Kolmogorov statistical distance.
 !>  pm_distanceMahal        | This module contains classes and procedures for computing the Mahalanobis statistical distance.
-!>  pm_distBand             | This module contains procedures and generic interfaces for computing the Band photon distribution widely used in modeling the spectra of a class of celestial objects knowns Gamma-Ray Bursts.
+!>  pm_distBand             | This module contains procedures and generic interfaces for computing the Band photon distribution widely used in modeling the spectra of a class of celestial objects known as Gamma-Ray Bursts.
 !>  pm_distBern             | This module contains classes and procedures for generating Bernoulli-distributed random numbers.
 !>  pm_distBeta             | This module contains classes and procedures for computing various statistical quantities related to the Beta distribution.
 !>  pm_distCosRaised        | This module contains classes and procedures for computing various statistical quantities related to the Raised Cosine distribution.
@@ -169,7 +169,7 @@
 !>  pm_distUnifSphere       | This module contains classes and procedures for computing various statistical quantities related to the Uniform Spherical distribution.
 !>  pm_ellipsoid            | This module contains classes and procedures for setting up and computing the properties of the hyper-ellipsoids in arbitrary dimensions.
 !>  pm_err                  | This module contains classes and procedures for reporting and handling errors.
-!>  pm_except               | This module contains procedures and generic interfaces and generic interfaces for testing for exceptional cases at runtime.
+!>  pm_except               | This module contains procedures and generic interfaces for testing for exceptional cases at runtime.
 !>  pm_fftnr                | This module contains procedures and generic interfaces for computing the Discrete Fourier Transform of a real or complex sequence using radix-2 Cooley–Tukey Fast-Fourier Transform.
 !>  pm_fftpack              | This module contains procedures and generic interfaces for computing the Discrete Fourier Transform of a real or complex sequence using a mixed-radix decimation-in-frequency Fast-Fourier Transform.
 !>  pm_io                   | This module contains classes and procedures for input/output (IO) or generic display operations on standard displays or internal/external files.
@@ -187,7 +187,7 @@
 !>  pm_mathErf              | This module contains classes and procedures for computing the mathematical Inverse Error Function.
 !>  pm_mathExp              | This module contains procedures and generic interfaces for computing the previous/next integer exponent for the given base that yields a number smaller/larger than the absolute input value.
 !>  pm_mathFactorial        | This module contains procedures and generic interfaces for the Factorial function.
-!>  pm_mathFactoring        | This module contains procedures and generic interfaces and generic interfaces for computing the prime factors of integers.
+!>  pm_mathFactoring        | This module contains procedures and generic interfaces for computing the prime factors of integers.
 !>  pm_mathGamma            | This module contains procedures and generic interfaces for the Lower and Upper Incomplete Gamma functions.
 !>  pm_mathLog1p            | This module contains procedures and generic interfaces for computing log(1 + x) more precisely for tiny `x`.
 !>  pm_mathLogAddExp        | This module contains procedures and generic interfaces for adding two real or complex values without causing overflow or underflow.
@@ -197,9 +197,9 @@
 !>  pm_mathNumSys           | This module contains procedures and generic interfaces for converting numbers to different bases in different numeral systems.
 !>  pm_mathRoot             | This module contains classes and procedures for computing the roots of one-dimensional continuous mathematical functions using various root-finding methods.
 !>  pm_mathRootTest         | This module contains a collection of example functions for testing or examining the root-finding routines of the ParaMonte library.
-!>  pm_mathSqrt             | This module contains procedures and generic interfaces and generic interfaces for computing the square root of integers.
+!>  pm_mathSqrt             | This module contains procedures and generic interfaces for computing the square root of integers.
 !>  pm_mathSubAdd           | This module contains procedures and generic interfaces for evaluating the mathematical operator ∓ acting on integer, complex, or real values.
-!>  pm_mathUnsigned         | This module contains procedures and generic interfaces and generic interfaces for various operations with positive integers with results that have the same binary representation as an unsigned integer.
+!>  pm_mathUnsigned         | This module contains procedures and generic interfaces for various operations with positive integers with results that have the same binary representation as an unsigned integer.
 !>  pm_matrixChol           | This module contains procedures and generic interfaces for computing the Cholesky factorization of positive definite matrices.
 !>  pm_matrixClass          | This module contains abstract and concrete derived types that are required for compile-time resolution of procedures within the generic interfaces of the ParaMonte library for Linear Algebra operations.
 !>  pm_matrixCopy           | This module contains procedures and generic interfaces relevant to copying (diagonal or upper/lower triangular) subsets of matrices of arbitrary intrinsic types and kinds from one matrix of arbitrary shape and packing format to another matrix of arbitrary shape and packing format.

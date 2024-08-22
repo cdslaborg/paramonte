@@ -65,7 +65,7 @@
             xnormed = x
         end if
         if (present(kappa)) then
-            call setExpGammaCDF(cdf, xnormed, log_gamma(kappa), kappa, info)
+            call setExpGammaCDF(cdf, xnormed, kappa, info)
         else
             call setExpGammaCDF(cdf, xnormed, info)
         end if
@@ -75,18 +75,22 @@
 #elif   setExpGammaCDF_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%
 
+        real(RKG) :: gamincupp
 #if     DD_ENABLED
-        real(RKG), parameter :: kappa = 1._RKG, logGammaKappa = log_gamma(kappa)
-        call setGammaIncLow(cdf, exp(x), logGammaKappa, kappa, info)
+        real(RKG), parameter :: kappa = 1._RKG!, logGammaKappa = log_gamma(kappa)
+        !call setGammaIncLow(cdf, gamincupp, exp(x), logGammaKappa, kappa, info)
+        call setGammaInc(cdf, gamincupp, exp(x), kappa, info)
 #else
         CHECK_ASSERTION(__LINE__, kappa > 0._RKG, SK_"@setExpGammaCDF(): The condition `kappa > 0.` must hold. kappa = "//getStr(kappa)) ! fpp
-        CHECK_ASSERTION(__LINE__, abs(log_gamma(kappa) - logGammaKappa) < 100 * epsilon(0._RKG), \
-        SK_"@setExpGammaCDF(): The condition `abs(log_gamma(kappa) - logGammaKappa) < 100 * epsilon(0._RKG)` must hold. log_gamma(kappa), logGammaKappa = "//\
-        getStr([log_gamma(kappa), logGammaKappa])) ! fpp
+        !check_assertion(__LINE__, abs(log_gamma(kappa) - logGammaKappa) < 100 * epsilon(0._RKG), \
+        !SK_"@setExpGammaCDF(): The condition `abs(log_gamma(kappa) - logGammaKappa) < 100 * epsilon(0._RKG)` must hold. log_gamma(kappa), logGammaKappa = "//\
+        !getStr([log_gamma(kappa), logGammaKappa])) ! fpp
 #if     KD_ENABLED
-        call setGammaIncLow(cdf, exp(x), logGammaKappa, kappa, info)
+        !call setGammaIncLow(cdf, exp(x), logGammaKappa, kappa, info)
+        call setGammaInc(cdf, gamincupp, exp(x), kappa, info)
 #elif   KS_ENABLED
-        call setGammaIncLow(cdf, exp(x - logSigma), logGammaKappa, kappa, info)
+        !call setGammaIncLow(cdf, gamincupp, exp(x - logSigma), logGammaKappa, kappa, info)
+        call setGammaInc(cdf, gamincupp, exp(x - logSigma), kappa, info)
 #else
 #error  "Unrecognized interface."
 #endif

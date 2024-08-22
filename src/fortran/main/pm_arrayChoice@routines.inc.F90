@@ -48,7 +48,7 @@
 #if     SK_ENABLED && D0_D0_ENABLED
 #define GET_INDEX(i) i:i
 #define GET_SIZE len
-        !CHECK_ASSERTION(__LINE__, 0_IK < len(choice, IK), SK_"@setChoice(): The condition `1 == len(choice)` must hold. len(choice) = "//getStr(len(choice, IK))) ! fpp
+        !check_assertion(__LINE__, 0_IK < len(choice, IK), SK_"@setChoice(): The condition `1 == len(choice)` must hold. len(choice) = "//getStr(len(choice, IK))) ! fpp
 #elif   SK_ENABLED || IK_ENABLED || LK_ENABLED || CK_ENABLED || RK_ENABLED
 #define GET_INDEX(i) i
 #define GET_SIZE size
@@ -69,7 +69,7 @@
         end if
 #elif   D0_D0_ENABLED || D1_D1_ENABLED
         lenChoice = GET_SIZE(choice, kind = IK)
-        !CHECK_ASSERTION(__LINE__, 0_IK < lenChoice, SK_"@setChoice(): The length of the input `choice` must be non-zero. lenChoice = "//getStr(lenChoice)) ! fpp
+        !check_assertion(__LINE__, 0_IK < lenChoice, SK_"@setChoice(): The length of the input `choice` must be non-zero. lenChoice = "//getStr(lenChoice)) ! fpp
         if (present(unique)) then
             if (unique) then
                 CHECK_ASSERTION(__LINE__, lenChoice <= lenArray, SK_"@setChoice(): The size of the input `choice` must smaller than or equal to the size of `array`. lenChoice, lenArray = "//getStr([lenChoice, lenArray])) ! fpp

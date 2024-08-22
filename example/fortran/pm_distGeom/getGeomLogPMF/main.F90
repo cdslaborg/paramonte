@@ -48,7 +48,7 @@ program example
         count = getRange(1_IK, 10_IK)
         open(newunit = fileUnit, file = "getGeomLogPMF.IK.txt")
         do i = 1, size(count)
-            write(fileUnit, "(*(g0,:,' '))" ) count(i), exp(getGeomLogPMF(count(i), [.1_RKG, .2_RKG, .5_RKG, .8_RKG]))
+            write(fileUnit, "(*(g0,:,' '))") count(i), exp(getGeomLogPMF(count(i), [.1_RKG, .2_RKG, .5_RKG, .8_RKG]))
         end do
         close(fileUnit)
 

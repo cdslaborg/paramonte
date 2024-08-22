@@ -26,7 +26,7 @@ legends =   [ "$\kappa = 0.5, \omega = 0.5$"
 
 for kind in ["IK", "CK", "RK"]:
 
-    pattern = "*."+kind+".txt"
+    pattern = "*." + kind + ".txt"
     fileList = glob.glob(pattern)
     if len(fileList) == 1:
 

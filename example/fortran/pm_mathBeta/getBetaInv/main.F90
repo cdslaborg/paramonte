@@ -104,7 +104,7 @@ program example
         open(newunit = fileUnit, file = "getBetaInv.RK.txt")
         do i = 1, NP
             betaInv = getBetaInv(betaInc(i), alpha, beta)
-            write(fileUnit, "(*(g0,:,','))" ) betaInc(i), betaInv
+            write(fileUnit, "(*(g0,:,','))") betaInc(i), betaInv
         end do
         close(fileUnit)
 

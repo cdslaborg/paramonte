@@ -15,7 +15,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief
-!>  This include file contcounterArray1ns the procedure implementation of [merge](@ref merge).
+!>  This include file contcounterArray1ns the procedure implementation of [pm_arrayMerge](@ref pm_arrayMerge).
 !>
 !>  \final
 !>

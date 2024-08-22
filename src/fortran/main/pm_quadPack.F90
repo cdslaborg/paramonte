@@ -300,7 +300,7 @@ module pm_quadPack
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !>  This is the derived type for constructing objects that signify the computation of the integral an arbitrary Sine-weighted function.
+    !>  This is the derived type for constructing objects that signify the computation of the integral of an arbitrary Sine-weighted function.
     !>
     !>  \details
     !>  The specified weight via this derive type has the form,
@@ -452,7 +452,7 @@ module pm_quadPack
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !>  This is the derived type for constructing objects that signify the computation of the integral an arbitrary Cose-weighted function.
+    !>  This is the derived type for constructing objects that signify the computation of the integral of an arbitrary Cose-weighted function.
     !>
     !>  \details
     !>  The specified weight via this derive type has the form,

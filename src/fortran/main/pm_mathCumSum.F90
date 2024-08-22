@@ -393,6 +393,8 @@ module pm_mathCumSum
     !>
     !>  \warnpure
     !>
+    !>  \recursive
+    !>
     !>  \remark
     !>  The procedures under this generic interface becomes `recursive` when `array` has `intent(inout)` (i.e., `cumsum` is missing).
     !>
@@ -429,7 +431,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if IK5_ENABLED
-    PURE module subroutine setCumSumOldDefDef_IK5(array)
+    PURE recursive module subroutine setCumSumOldDefDef_IK5(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_IK5
 #endif
@@ -439,7 +441,7 @@ module pm_mathCumSum
 #endif
 
 #if IK4_ENABLED
-    PURE module subroutine setCumSumOldDefDef_IK4(array)
+    PURE recursive module subroutine setCumSumOldDefDef_IK4(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_IK4
 #endif
@@ -449,7 +451,7 @@ module pm_mathCumSum
 #endif
 
 #if IK3_ENABLED
-    PURE module subroutine setCumSumOldDefDef_IK3(array)
+    PURE recursive module subroutine setCumSumOldDefDef_IK3(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_IK3
 #endif
@@ -459,7 +461,7 @@ module pm_mathCumSum
 #endif
 
 #if IK2_ENABLED
-    PURE module subroutine setCumSumOldDefDef_IK2(array)
+    PURE recursive module subroutine setCumSumOldDefDef_IK2(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_IK2
 #endif
@@ -469,7 +471,7 @@ module pm_mathCumSum
 #endif
 
 #if IK1_ENABLED
-    PURE module subroutine setCumSumOldDefDef_IK1(array)
+    PURE recursive module subroutine setCumSumOldDefDef_IK1(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_IK1
 #endif
@@ -481,7 +483,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK5_ENABLED
-    PURE module subroutine setCumSumOldDefDef_CK5(array)
+    PURE recursive module subroutine setCumSumOldDefDef_CK5(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_CK5
 #endif
@@ -491,7 +493,7 @@ module pm_mathCumSum
 #endif
 
 #if CK4_ENABLED
-    PURE module subroutine setCumSumOldDefDef_CK4(array)
+    PURE recursive module subroutine setCumSumOldDefDef_CK4(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_CK4
 #endif
@@ -501,7 +503,7 @@ module pm_mathCumSum
 #endif
 
 #if CK3_ENABLED
-    PURE module subroutine setCumSumOldDefDef_CK3(array)
+    PURE recursive module subroutine setCumSumOldDefDef_CK3(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_CK3
 #endif
@@ -511,7 +513,7 @@ module pm_mathCumSum
 #endif
 
 #if CK2_ENABLED
-    PURE module subroutine setCumSumOldDefDef_CK2(array)
+    PURE recursive module subroutine setCumSumOldDefDef_CK2(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_CK2
 #endif
@@ -521,7 +523,7 @@ module pm_mathCumSum
 #endif
 
 #if CK1_ENABLED
-    PURE module subroutine setCumSumOldDefDef_CK1(array)
+    PURE recursive module subroutine setCumSumOldDefDef_CK1(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_CK1
 #endif
@@ -533,7 +535,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE module subroutine setCumSumOldDefDef_RK5(array)
+    PURE recursive module subroutine setCumSumOldDefDef_RK5(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_RK5
 #endif
@@ -543,7 +545,7 @@ module pm_mathCumSum
 #endif
 
 #if RK4_ENABLED
-    PURE module subroutine setCumSumOldDefDef_RK4(array)
+    PURE recursive module subroutine setCumSumOldDefDef_RK4(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_RK4
 #endif
@@ -553,7 +555,7 @@ module pm_mathCumSum
 #endif
 
 #if RK3_ENABLED
-    PURE module subroutine setCumSumOldDefDef_RK3(array)
+    PURE recursive module subroutine setCumSumOldDefDef_RK3(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_RK3
 #endif
@@ -563,7 +565,7 @@ module pm_mathCumSum
 #endif
 
 #if RK2_ENABLED
-    PURE module subroutine setCumSumOldDefDef_RK2(array)
+    PURE recursive module subroutine setCumSumOldDefDef_RK2(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_RK2
 #endif
@@ -573,7 +575,7 @@ module pm_mathCumSum
 #endif
 
 #if RK1_ENABLED
-    PURE module subroutine setCumSumOldDefDef_RK1(array)
+    PURE recursive module subroutine setCumSumOldDefDef_RK1(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_RK1
 #endif
@@ -591,7 +593,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if IK5_ENABLED
-    PURE module subroutine setCumSumNewDefDef_IK5(cumsum, array)
+    PURE recursive module subroutine setCumSumNewDefDef_IK5(cumsum, array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_IK5
 #endif
@@ -602,7 +604,7 @@ module pm_mathCumSum
 #endif
 
 #if IK4_ENABLED
-    PURE module subroutine setCumSumNewDefDef_IK4(cumsum, array)
+    PURE recursive module subroutine setCumSumNewDefDef_IK4(cumsum, array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_IK4
 #endif
@@ -613,7 +615,7 @@ module pm_mathCumSum
 #endif
 
 #if IK3_ENABLED
-    PURE module subroutine setCumSumNewDefDef_IK3(cumsum, array)
+    PURE recursive module subroutine setCumSumNewDefDef_IK3(cumsum, array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_IK3
 #endif
@@ -624,7 +626,7 @@ module pm_mathCumSum
 #endif
 
 #if IK2_ENABLED
-    PURE module subroutine setCumSumNewDefDef_IK2(cumsum, array)
+    PURE recursive module subroutine setCumSumNewDefDef_IK2(cumsum, array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_IK2
 #endif
@@ -635,7 +637,7 @@ module pm_mathCumSum
 #endif
 
 #if IK1_ENABLED
-    PURE module subroutine setCumSumNewDefDef_IK1(cumsum, array)
+    PURE recursive module subroutine setCumSumNewDefDef_IK1(cumsum, array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_IK1
 #endif
@@ -648,7 +650,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK5_ENABLED
-    PURE module subroutine setCumSumNewDefDef_CK5(cumsum, array)
+    PURE recursive module subroutine setCumSumNewDefDef_CK5(cumsum, array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_CK5
 #endif
@@ -659,7 +661,7 @@ module pm_mathCumSum
 #endif
 
 #if CK4_ENABLED
-    PURE module subroutine setCumSumNewDefDef_CK4(cumsum, array)
+    PURE recursive module subroutine setCumSumNewDefDef_CK4(cumsum, array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_CK4
 #endif
@@ -670,7 +672,7 @@ module pm_mathCumSum
 #endif
 
 #if CK3_ENABLED
-    PURE module subroutine setCumSumNewDefDef_CK3(cumsum, array)
+    PURE recursive module subroutine setCumSumNewDefDef_CK3(cumsum, array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_CK3
 #endif
@@ -681,7 +683,7 @@ module pm_mathCumSum
 #endif
 
 #if CK2_ENABLED
-    PURE module subroutine setCumSumNewDefDef_CK2(cumsum, array)
+    PURE recursive module subroutine setCumSumNewDefDef_CK2(cumsum, array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_CK2
 #endif
@@ -692,7 +694,7 @@ module pm_mathCumSum
 #endif
 
 #if CK1_ENABLED
-    PURE module subroutine setCumSumNewDefDef_CK1(cumsum, array)
+    PURE recursive module subroutine setCumSumNewDefDef_CK1(cumsum, array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_CK1
 #endif
@@ -705,7 +707,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE module subroutine setCumSumNewDefDef_RK5(cumsum, array)
+    PURE recursive module subroutine setCumSumNewDefDef_RK5(cumsum, array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_RK5
 #endif
@@ -716,7 +718,7 @@ module pm_mathCumSum
 #endif
 
 #if RK4_ENABLED
-    PURE module subroutine setCumSumNewDefDef_RK4(cumsum, array)
+    PURE recursive module subroutine setCumSumNewDefDef_RK4(cumsum, array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_RK4
 #endif
@@ -727,7 +729,7 @@ module pm_mathCumSum
 #endif
 
 #if RK3_ENABLED
-    PURE module subroutine setCumSumNewDefDef_RK3(cumsum, array)
+    PURE recursive module subroutine setCumSumNewDefDef_RK3(cumsum, array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_RK3
 #endif
@@ -738,7 +740,7 @@ module pm_mathCumSum
 #endif
 
 #if RK2_ENABLED
-    PURE module subroutine setCumSumNewDefDef_RK2(cumsum, array)
+    PURE recursive module subroutine setCumSumNewDefDef_RK2(cumsum, array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_RK2
 #endif
@@ -749,7 +751,7 @@ module pm_mathCumSum
 #endif
 
 #if RK1_ENABLED
-    PURE module subroutine setCumSumNewDefDef_RK1(cumsum, array)
+    PURE recursive module subroutine setCumSumNewDefDef_RK1(cumsum, array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_RK1
 #endif
@@ -778,7 +780,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if IK5_ENABLED
-    PURE module subroutine setCumSumOldForNon_IK5(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForNon_IK5(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_IK5
 #endif
@@ -790,7 +792,7 @@ module pm_mathCumSum
 #endif
 
 #if IK4_ENABLED
-    PURE module subroutine setCumSumOldForNon_IK4(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForNon_IK4(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_IK4
 #endif
@@ -802,7 +804,7 @@ module pm_mathCumSum
 #endif
 
 #if IK3_ENABLED
-    PURE module subroutine setCumSumOldForNon_IK3(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForNon_IK3(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_IK3
 #endif
@@ -814,7 +816,7 @@ module pm_mathCumSum
 #endif
 
 #if IK2_ENABLED
-    PURE module subroutine setCumSumOldForNon_IK2(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForNon_IK2(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_IK2
 #endif
@@ -826,7 +828,7 @@ module pm_mathCumSum
 #endif
 
 #if IK1_ENABLED
-    PURE module subroutine setCumSumOldForNon_IK1(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForNon_IK1(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_IK1
 #endif
@@ -840,7 +842,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK5_ENABLED
-    PURE module subroutine setCumSumOldForNon_CK5(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForNon_CK5(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_CK5
 #endif
@@ -852,7 +854,7 @@ module pm_mathCumSum
 #endif
 
 #if CK4_ENABLED
-    PURE module subroutine setCumSumOldForNon_CK4(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForNon_CK4(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_CK4
 #endif
@@ -864,7 +866,7 @@ module pm_mathCumSum
 #endif
 
 #if CK3_ENABLED
-    PURE module subroutine setCumSumOldForNon_CK3(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForNon_CK3(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_CK3
 #endif
@@ -876,7 +878,7 @@ module pm_mathCumSum
 #endif
 
 #if CK2_ENABLED
-    PURE module subroutine setCumSumOldForNon_CK2(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForNon_CK2(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_CK2
 #endif
@@ -888,7 +890,7 @@ module pm_mathCumSum
 #endif
 
 #if CK1_ENABLED
-    PURE module subroutine setCumSumOldForNon_CK1(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForNon_CK1(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_CK1
 #endif
@@ -902,7 +904,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE module subroutine setCumSumOldForNon_RK5(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForNon_RK5(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_RK5
 #endif
@@ -914,7 +916,7 @@ module pm_mathCumSum
 #endif
 
 #if RK4_ENABLED
-    PURE module subroutine setCumSumOldForNon_RK4(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForNon_RK4(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_RK4
 #endif
@@ -926,7 +928,7 @@ module pm_mathCumSum
 #endif
 
 #if RK3_ENABLED
-    PURE module subroutine setCumSumOldForNon_RK3(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForNon_RK3(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_RK3
 #endif
@@ -938,7 +940,7 @@ module pm_mathCumSum
 #endif
 
 #if RK2_ENABLED
-    PURE module subroutine setCumSumOldForNon_RK2(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForNon_RK2(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_RK2
 #endif
@@ -950,7 +952,7 @@ module pm_mathCumSum
 #endif
 
 #if RK1_ENABLED
-    PURE module subroutine setCumSumOldForNon_RK1(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForNon_RK1(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_RK1
 #endif
@@ -970,7 +972,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if IK5_ENABLED
-    PURE module subroutine setCumSumOldForRev_IK5(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForRev_IK5(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_IK5
 #endif
@@ -982,7 +984,7 @@ module pm_mathCumSum
 #endif
 
 #if IK4_ENABLED
-    PURE module subroutine setCumSumOldForRev_IK4(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForRev_IK4(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_IK4
 #endif
@@ -994,7 +996,7 @@ module pm_mathCumSum
 #endif
 
 #if IK3_ENABLED
-    PURE module subroutine setCumSumOldForRev_IK3(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForRev_IK3(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_IK3
 #endif
@@ -1006,7 +1008,7 @@ module pm_mathCumSum
 #endif
 
 #if IK2_ENABLED
-    PURE module subroutine setCumSumOldForRev_IK2(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForRev_IK2(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_IK2
 #endif
@@ -1018,7 +1020,7 @@ module pm_mathCumSum
 #endif
 
 #if IK1_ENABLED
-    PURE module subroutine setCumSumOldForRev_IK1(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForRev_IK1(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_IK1
 #endif
@@ -1032,7 +1034,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK5_ENABLED
-    PURE module subroutine setCumSumOldForRev_CK5(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForRev_CK5(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_CK5
 #endif
@@ -1044,7 +1046,7 @@ module pm_mathCumSum
 #endif
 
 #if CK4_ENABLED
-    PURE module subroutine setCumSumOldForRev_CK4(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForRev_CK4(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_CK4
 #endif
@@ -1056,7 +1058,7 @@ module pm_mathCumSum
 #endif
 
 #if CK3_ENABLED
-    PURE module subroutine setCumSumOldForRev_CK3(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForRev_CK3(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_CK3
 #endif
@@ -1068,7 +1070,7 @@ module pm_mathCumSum
 #endif
 
 #if CK2_ENABLED
-    PURE module subroutine setCumSumOldForRev_CK2(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForRev_CK2(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_CK2
 #endif
@@ -1080,7 +1082,7 @@ module pm_mathCumSum
 #endif
 
 #if CK1_ENABLED
-    PURE module subroutine setCumSumOldForRev_CK1(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForRev_CK1(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_CK1
 #endif
@@ -1094,7 +1096,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE module subroutine setCumSumOldForRev_RK5(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForRev_RK5(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_RK5
 #endif
@@ -1106,7 +1108,7 @@ module pm_mathCumSum
 #endif
 
 #if RK4_ENABLED
-    PURE module subroutine setCumSumOldForRev_RK4(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForRev_RK4(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_RK4
 #endif
@@ -1118,7 +1120,7 @@ module pm_mathCumSum
 #endif
 
 #if RK3_ENABLED
-    PURE module subroutine setCumSumOldForRev_RK3(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForRev_RK3(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_RK3
 #endif
@@ -1130,7 +1132,7 @@ module pm_mathCumSum
 #endif
 
 #if RK2_ENABLED
-    PURE module subroutine setCumSumOldForRev_RK2(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForRev_RK2(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_RK2
 #endif
@@ -1142,7 +1144,7 @@ module pm_mathCumSum
 #endif
 
 #if RK1_ENABLED
-    PURE module subroutine setCumSumOldForRev_RK1(array, direction, action)
+    PURE recursive module subroutine setCumSumOldForRev_RK1(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_RK1
 #endif
@@ -1172,7 +1174,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if IK5_ENABLED
-    PURE module subroutine setCumSumOldBacNon_IK5(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacNon_IK5(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_IK5
 #endif
@@ -1184,7 +1186,7 @@ module pm_mathCumSum
 #endif
 
 #if IK4_ENABLED
-    PURE module subroutine setCumSumOldBacNon_IK4(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacNon_IK4(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_IK4
 #endif
@@ -1196,7 +1198,7 @@ module pm_mathCumSum
 #endif
 
 #if IK3_ENABLED
-    PURE module subroutine setCumSumOldBacNon_IK3(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacNon_IK3(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_IK3
 #endif
@@ -1208,7 +1210,7 @@ module pm_mathCumSum
 #endif
 
 #if IK2_ENABLED
-    PURE module subroutine setCumSumOldBacNon_IK2(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacNon_IK2(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_IK2
 #endif
@@ -1220,7 +1222,7 @@ module pm_mathCumSum
 #endif
 
 #if IK1_ENABLED
-    PURE module subroutine setCumSumOldBacNon_IK1(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacNon_IK1(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_IK1
 #endif
@@ -1234,7 +1236,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK5_ENABLED
-    PURE module subroutine setCumSumOldBacNon_CK5(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacNon_CK5(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_CK5
 #endif
@@ -1246,7 +1248,7 @@ module pm_mathCumSum
 #endif
 
 #if CK4_ENABLED
-    PURE module subroutine setCumSumOldBacNon_CK4(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacNon_CK4(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_CK4
 #endif
@@ -1258,7 +1260,7 @@ module pm_mathCumSum
 #endif
 
 #if CK3_ENABLED
-    PURE module subroutine setCumSumOldBacNon_CK3(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacNon_CK3(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_CK3
 #endif
@@ -1270,7 +1272,7 @@ module pm_mathCumSum
 #endif
 
 #if CK2_ENABLED
-    PURE module subroutine setCumSumOldBacNon_CK2(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacNon_CK2(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_CK2
 #endif
@@ -1282,7 +1284,7 @@ module pm_mathCumSum
 #endif
 
 #if CK1_ENABLED
-    PURE module subroutine setCumSumOldBacNon_CK1(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacNon_CK1(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_CK1
 #endif
@@ -1296,7 +1298,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE module subroutine setCumSumOldBacNon_RK5(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacNon_RK5(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_RK5
 #endif
@@ -1308,7 +1310,7 @@ module pm_mathCumSum
 #endif
 
 #if RK4_ENABLED
-    PURE module subroutine setCumSumOldBacNon_RK4(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacNon_RK4(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_RK4
 #endif
@@ -1320,7 +1322,7 @@ module pm_mathCumSum
 #endif
 
 #if RK3_ENABLED
-    PURE module subroutine setCumSumOldBacNon_RK3(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacNon_RK3(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_RK3
 #endif
@@ -1332,7 +1334,7 @@ module pm_mathCumSum
 #endif
 
 #if RK2_ENABLED
-    PURE module subroutine setCumSumOldBacNon_RK2(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacNon_RK2(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_RK2
 #endif
@@ -1344,7 +1346,7 @@ module pm_mathCumSum
 #endif
 
 #if RK1_ENABLED
-    PURE module subroutine setCumSumOldBacNon_RK1(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacNon_RK1(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_RK1
 #endif
@@ -1364,7 +1366,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if IK5_ENABLED
-    PURE module subroutine setCumSumOldBacRev_IK5(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacRev_IK5(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_IK5
 #endif
@@ -1376,7 +1378,7 @@ module pm_mathCumSum
 #endif
 
 #if IK4_ENABLED
-    PURE module subroutine setCumSumOldBacRev_IK4(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacRev_IK4(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_IK4
 #endif
@@ -1388,7 +1390,7 @@ module pm_mathCumSum
 #endif
 
 #if IK3_ENABLED
-    PURE module subroutine setCumSumOldBacRev_IK3(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacRev_IK3(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_IK3
 #endif
@@ -1400,7 +1402,7 @@ module pm_mathCumSum
 #endif
 
 #if IK2_ENABLED
-    PURE module subroutine setCumSumOldBacRev_IK2(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacRev_IK2(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_IK2
 #endif
@@ -1412,7 +1414,7 @@ module pm_mathCumSum
 #endif
 
 #if IK1_ENABLED
-    PURE module subroutine setCumSumOldBacRev_IK1(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacRev_IK1(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_IK1
 #endif
@@ -1426,7 +1428,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK5_ENABLED
-    PURE module subroutine setCumSumOldBacRev_CK5(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacRev_CK5(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_CK5
 #endif
@@ -1438,7 +1440,7 @@ module pm_mathCumSum
 #endif
 
 #if CK4_ENABLED
-    PURE module subroutine setCumSumOldBacRev_CK4(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacRev_CK4(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_CK4
 #endif
@@ -1450,7 +1452,7 @@ module pm_mathCumSum
 #endif
 
 #if CK3_ENABLED
-    PURE module subroutine setCumSumOldBacRev_CK3(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacRev_CK3(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_CK3
 #endif
@@ -1462,7 +1464,7 @@ module pm_mathCumSum
 #endif
 
 #if CK2_ENABLED
-    PURE module subroutine setCumSumOldBacRev_CK2(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacRev_CK2(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_CK2
 #endif
@@ -1474,7 +1476,7 @@ module pm_mathCumSum
 #endif
 
 #if CK1_ENABLED
-    PURE module subroutine setCumSumOldBacRev_CK1(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacRev_CK1(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_CK1
 #endif
@@ -1488,7 +1490,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE module subroutine setCumSumOldBacRev_RK5(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacRev_RK5(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_RK5
 #endif
@@ -1500,7 +1502,7 @@ module pm_mathCumSum
 #endif
 
 #if RK4_ENABLED
-    PURE module subroutine setCumSumOldBacRev_RK4(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacRev_RK4(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_RK4
 #endif
@@ -1512,7 +1514,7 @@ module pm_mathCumSum
 #endif
 
 #if RK3_ENABLED
-    PURE module subroutine setCumSumOldBacRev_RK3(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacRev_RK3(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_RK3
 #endif
@@ -1524,7 +1526,7 @@ module pm_mathCumSum
 #endif
 
 #if RK2_ENABLED
-    PURE module subroutine setCumSumOldBacRev_RK2(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacRev_RK2(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_RK2
 #endif
@@ -1536,7 +1538,7 @@ module pm_mathCumSum
 #endif
 
 #if RK1_ENABLED
-    PURE module subroutine setCumSumOldBacRev_RK1(array, direction, action)
+    PURE recursive module subroutine setCumSumOldBacRev_RK1(array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_RK1
 #endif
@@ -1566,7 +1568,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if IK5_ENABLED
-    PURE module subroutine setCumSumNewForNon_IK5(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForNon_IK5(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_IK5
 #endif
@@ -1579,7 +1581,7 @@ module pm_mathCumSum
 #endif
 
 #if IK4_ENABLED
-    PURE module subroutine setCumSumNewForNon_IK4(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForNon_IK4(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_IK4
 #endif
@@ -1592,7 +1594,7 @@ module pm_mathCumSum
 #endif
 
 #if IK3_ENABLED
-    PURE module subroutine setCumSumNewForNon_IK3(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForNon_IK3(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_IK3
 #endif
@@ -1605,7 +1607,7 @@ module pm_mathCumSum
 #endif
 
 #if IK2_ENABLED
-    PURE module subroutine setCumSumNewForNon_IK2(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForNon_IK2(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_IK2
 #endif
@@ -1618,7 +1620,7 @@ module pm_mathCumSum
 #endif
 
 #if IK1_ENABLED
-    PURE module subroutine setCumSumNewForNon_IK1(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForNon_IK1(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_IK1
 #endif
@@ -1633,7 +1635,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK5_ENABLED
-    PURE module subroutine setCumSumNewForNon_CK5(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForNon_CK5(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_CK5
 #endif
@@ -1646,7 +1648,7 @@ module pm_mathCumSum
 #endif
 
 #if CK4_ENABLED
-    PURE module subroutine setCumSumNewForNon_CK4(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForNon_CK4(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_CK4
 #endif
@@ -1659,7 +1661,7 @@ module pm_mathCumSum
 #endif
 
 #if CK3_ENABLED
-    PURE module subroutine setCumSumNewForNon_CK3(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForNon_CK3(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_CK3
 #endif
@@ -1672,7 +1674,7 @@ module pm_mathCumSum
 #endif
 
 #if CK2_ENABLED
-    PURE module subroutine setCumSumNewForNon_CK2(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForNon_CK2(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_CK2
 #endif
@@ -1685,7 +1687,7 @@ module pm_mathCumSum
 #endif
 
 #if CK1_ENABLED
-    PURE module subroutine setCumSumNewForNon_CK1(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForNon_CK1(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_CK1
 #endif
@@ -1700,7 +1702,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE module subroutine setCumSumNewForNon_RK5(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForNon_RK5(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_RK5
 #endif
@@ -1713,7 +1715,7 @@ module pm_mathCumSum
 #endif
 
 #if RK4_ENABLED
-    PURE module subroutine setCumSumNewForNon_RK4(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForNon_RK4(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_RK4
 #endif
@@ -1726,7 +1728,7 @@ module pm_mathCumSum
 #endif
 
 #if RK3_ENABLED
-    PURE module subroutine setCumSumNewForNon_RK3(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForNon_RK3(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_RK3
 #endif
@@ -1739,7 +1741,7 @@ module pm_mathCumSum
 #endif
 
 #if RK2_ENABLED
-    PURE module subroutine setCumSumNewForNon_RK2(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForNon_RK2(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_RK2
 #endif
@@ -1752,7 +1754,7 @@ module pm_mathCumSum
 #endif
 
 #if RK1_ENABLED
-    PURE module subroutine setCumSumNewForNon_RK1(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForNon_RK1(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_RK1
 #endif
@@ -1773,7 +1775,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if IK5_ENABLED
-    PURE module subroutine setCumSumNewForRev_IK5(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForRev_IK5(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_IK5
 #endif
@@ -1786,7 +1788,7 @@ module pm_mathCumSum
 #endif
 
 #if IK4_ENABLED
-    PURE module subroutine setCumSumNewForRev_IK4(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForRev_IK4(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_IK4
 #endif
@@ -1799,7 +1801,7 @@ module pm_mathCumSum
 #endif
 
 #if IK3_ENABLED
-    PURE module subroutine setCumSumNewForRev_IK3(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForRev_IK3(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_IK3
 #endif
@@ -1812,7 +1814,7 @@ module pm_mathCumSum
 #endif
 
 #if IK2_ENABLED
-    PURE module subroutine setCumSumNewForRev_IK2(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForRev_IK2(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_IK2
 #endif
@@ -1825,7 +1827,7 @@ module pm_mathCumSum
 #endif
 
 #if IK1_ENABLED
-    PURE module subroutine setCumSumNewForRev_IK1(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForRev_IK1(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_IK1
 #endif
@@ -1840,7 +1842,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK5_ENABLED
-    PURE module subroutine setCumSumNewForRev_CK5(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForRev_CK5(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_CK5
 #endif
@@ -1853,7 +1855,7 @@ module pm_mathCumSum
 #endif
 
 #if CK4_ENABLED
-    PURE module subroutine setCumSumNewForRev_CK4(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForRev_CK4(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_CK4
 #endif
@@ -1866,7 +1868,7 @@ module pm_mathCumSum
 #endif
 
 #if CK3_ENABLED
-    PURE module subroutine setCumSumNewForRev_CK3(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForRev_CK3(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_CK3
 #endif
@@ -1879,7 +1881,7 @@ module pm_mathCumSum
 #endif
 
 #if CK2_ENABLED
-    PURE module subroutine setCumSumNewForRev_CK2(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForRev_CK2(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_CK2
 #endif
@@ -1892,7 +1894,7 @@ module pm_mathCumSum
 #endif
 
 #if CK1_ENABLED
-    PURE module subroutine setCumSumNewForRev_CK1(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForRev_CK1(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_CK1
 #endif
@@ -1907,7 +1909,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE module subroutine setCumSumNewForRev_RK5(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForRev_RK5(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_RK5
 #endif
@@ -1920,7 +1922,7 @@ module pm_mathCumSum
 #endif
 
 #if RK4_ENABLED
-    PURE module subroutine setCumSumNewForRev_RK4(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForRev_RK4(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_RK4
 #endif
@@ -1933,7 +1935,7 @@ module pm_mathCumSum
 #endif
 
 #if RK3_ENABLED
-    PURE module subroutine setCumSumNewForRev_RK3(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForRev_RK3(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_RK3
 #endif
@@ -1946,7 +1948,7 @@ module pm_mathCumSum
 #endif
 
 #if RK2_ENABLED
-    PURE module subroutine setCumSumNewForRev_RK2(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForRev_RK2(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_RK2
 #endif
@@ -1959,7 +1961,7 @@ module pm_mathCumSum
 #endif
 
 #if RK1_ENABLED
-    PURE module subroutine setCumSumNewForRev_RK1(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewForRev_RK1(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_RK1
 #endif
@@ -1990,7 +1992,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if IK5_ENABLED
-    PURE module subroutine setCumSumNewBacNon_IK5(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacNon_IK5(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_IK5
 #endif
@@ -2003,7 +2005,7 @@ module pm_mathCumSum
 #endif
 
 #if IK4_ENABLED
-    PURE module subroutine setCumSumNewBacNon_IK4(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacNon_IK4(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_IK4
 #endif
@@ -2016,7 +2018,7 @@ module pm_mathCumSum
 #endif
 
 #if IK3_ENABLED
-    PURE module subroutine setCumSumNewBacNon_IK3(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacNon_IK3(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_IK3
 #endif
@@ -2029,7 +2031,7 @@ module pm_mathCumSum
 #endif
 
 #if IK2_ENABLED
-    PURE module subroutine setCumSumNewBacNon_IK2(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacNon_IK2(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_IK2
 #endif
@@ -2042,7 +2044,7 @@ module pm_mathCumSum
 #endif
 
 #if IK1_ENABLED
-    PURE module subroutine setCumSumNewBacNon_IK1(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacNon_IK1(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_IK1
 #endif
@@ -2057,7 +2059,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK5_ENABLED
-    PURE module subroutine setCumSumNewBacNon_CK5(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacNon_CK5(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_CK5
 #endif
@@ -2070,7 +2072,7 @@ module pm_mathCumSum
 #endif
 
 #if CK4_ENABLED
-    PURE module subroutine setCumSumNewBacNon_CK4(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacNon_CK4(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_CK4
 #endif
@@ -2083,7 +2085,7 @@ module pm_mathCumSum
 #endif
 
 #if CK3_ENABLED
-    PURE module subroutine setCumSumNewBacNon_CK3(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacNon_CK3(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_CK3
 #endif
@@ -2096,7 +2098,7 @@ module pm_mathCumSum
 #endif
 
 #if CK2_ENABLED
-    PURE module subroutine setCumSumNewBacNon_CK2(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacNon_CK2(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_CK2
 #endif
@@ -2109,7 +2111,7 @@ module pm_mathCumSum
 #endif
 
 #if CK1_ENABLED
-    PURE module subroutine setCumSumNewBacNon_CK1(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacNon_CK1(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_CK1
 #endif
@@ -2124,7 +2126,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE module subroutine setCumSumNewBacNon_RK5(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacNon_RK5(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_RK5
 #endif
@@ -2137,7 +2139,7 @@ module pm_mathCumSum
 #endif
 
 #if RK4_ENABLED
-    PURE module subroutine setCumSumNewBacNon_RK4(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacNon_RK4(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_RK4
 #endif
@@ -2150,7 +2152,7 @@ module pm_mathCumSum
 #endif
 
 #if RK3_ENABLED
-    PURE module subroutine setCumSumNewBacNon_RK3(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacNon_RK3(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_RK3
 #endif
@@ -2163,7 +2165,7 @@ module pm_mathCumSum
 #endif
 
 #if RK2_ENABLED
-    PURE module subroutine setCumSumNewBacNon_RK2(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacNon_RK2(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_RK2
 #endif
@@ -2176,7 +2178,7 @@ module pm_mathCumSum
 #endif
 
 #if RK1_ENABLED
-    PURE module subroutine setCumSumNewBacNon_RK1(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacNon_RK1(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_RK1
 #endif
@@ -2197,7 +2199,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if IK5_ENABLED
-    PURE module subroutine setCumSumNewBacRev_IK5(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacRev_IK5(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_IK5
 #endif
@@ -2210,7 +2212,7 @@ module pm_mathCumSum
 #endif
 
 #if IK4_ENABLED
-    PURE module subroutine setCumSumNewBacRev_IK4(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacRev_IK4(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_IK4
 #endif
@@ -2223,7 +2225,7 @@ module pm_mathCumSum
 #endif
 
 #if IK3_ENABLED
-    PURE module subroutine setCumSumNewBacRev_IK3(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacRev_IK3(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_IK3
 #endif
@@ -2236,7 +2238,7 @@ module pm_mathCumSum
 #endif
 
 #if IK2_ENABLED
-    PURE module subroutine setCumSumNewBacRev_IK2(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacRev_IK2(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_IK2
 #endif
@@ -2249,7 +2251,7 @@ module pm_mathCumSum
 #endif
 
 #if IK1_ENABLED
-    PURE module subroutine setCumSumNewBacRev_IK1(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacRev_IK1(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_IK1
 #endif
@@ -2264,7 +2266,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK5_ENABLED
-    PURE module subroutine setCumSumNewBacRev_CK5(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacRev_CK5(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_CK5
 #endif
@@ -2277,7 +2279,7 @@ module pm_mathCumSum
 #endif
 
 #if CK4_ENABLED
-    PURE module subroutine setCumSumNewBacRev_CK4(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacRev_CK4(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_CK4
 #endif
@@ -2290,7 +2292,7 @@ module pm_mathCumSum
 #endif
 
 #if CK3_ENABLED
-    PURE module subroutine setCumSumNewBacRev_CK3(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacRev_CK3(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_CK3
 #endif
@@ -2303,7 +2305,7 @@ module pm_mathCumSum
 #endif
 
 #if CK2_ENABLED
-    PURE module subroutine setCumSumNewBacRev_CK2(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacRev_CK2(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_CK2
 #endif
@@ -2316,7 +2318,7 @@ module pm_mathCumSum
 #endif
 
 #if CK1_ENABLED
-    PURE module subroutine setCumSumNewBacRev_CK1(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacRev_CK1(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_CK1
 #endif
@@ -2331,7 +2333,7 @@ module pm_mathCumSum
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE module subroutine setCumSumNewBacRev_RK5(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacRev_RK5(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_RK5
 #endif
@@ -2344,7 +2346,7 @@ module pm_mathCumSum
 #endif
 
 #if RK4_ENABLED
-    PURE module subroutine setCumSumNewBacRev_RK4(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacRev_RK4(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_RK4
 #endif
@@ -2357,7 +2359,7 @@ module pm_mathCumSum
 #endif
 
 #if RK3_ENABLED
-    PURE module subroutine setCumSumNewBacRev_RK3(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacRev_RK3(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_RK3
 #endif
@@ -2370,7 +2372,7 @@ module pm_mathCumSum
 #endif
 
 #if RK2_ENABLED
-    PURE module subroutine setCumSumNewBacRev_RK2(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacRev_RK2(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_RK2
 #endif
@@ -2383,7 +2385,7 @@ module pm_mathCumSum
 #endif
 
 #if RK1_ENABLED
-    PURE module subroutine setCumSumNewBacRev_RK1(cumsum, array, direction, action)
+    PURE recursive module subroutine setCumSumNewBacRev_RK1(cumsum, array, direction, action)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_RK1
 #endif

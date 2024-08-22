@@ -11646,9 +11646,9 @@ module pm_io
     !>  \impure
     !>
     !>  \see
-    !>  [wrap_type%%wrap()](@ref pm_io::wrap)<br>
-    !>  [display_type%%show()](@ref pm_io::show)<br>
-    !>  [display_type%%skip()](@ref pm_io::skip)<br>
+    !>  [wrap_type%wrap()](@ref pm_io::wrap)<br>
+    !>  [display_type%show()](@ref pm_io::show)<br>
+    !>  [display_type%skip()](@ref pm_io::skip)<br>
     !>
     !>  \example{show}
     !>  \include{lineno} example/pm_io/show/main.F90

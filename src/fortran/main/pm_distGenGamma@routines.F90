@@ -36,7 +36,9 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
 #define CHECK_ASSERTION(LINE,ASSERTION,MSG) continue;
 #endif
 
-    use pm_mathGamma, only: setGammaIncLow
+    use pm_distGamma, only: setGammaRand
+    use pm_mathGamma, only: setGammaInc!Low
+
     implicit none
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -731,6 +733,358 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #undef setGenGammaCDF_ENABLED
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define setGenGammaRand_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define KR_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define D0_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RNGD_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RK_ENABLED 1
+
+#if RK5_ENABLED
+    module procedure setGenGammaRandRNGD_D0_RK5
+        use pm_kind, only: RKG => RK5
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK4_ENABLED
+    module procedure setGenGammaRandRNGD_D0_RK4
+        use pm_kind, only: RKG => RK4
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK3_ENABLED
+    module procedure setGenGammaRandRNGD_D0_RK3
+        use pm_kind, only: RKG => RK3
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK2_ENABLED
+    module procedure setGenGammaRandRNGD_D0_RK2
+        use pm_kind, only: RKG => RK2
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK1_ENABLED
+    module procedure setGenGammaRandRNGD_D0_RK1
+        use pm_kind, only: RKG => RK1
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#undef RK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef RNGD_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RNGF_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RK_ENABLED 1
+
+#if RK5_ENABLED
+    module procedure setGenGammaRandRNGF_D0_RK5
+        use pm_kind, only: RKG => RK5
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK4_ENABLED
+    module procedure setGenGammaRandRNGF_D0_RK4
+        use pm_kind, only: RKG => RK4
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK3_ENABLED
+    module procedure setGenGammaRandRNGF_D0_RK3
+        use pm_kind, only: RKG => RK3
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK2_ENABLED
+    module procedure setGenGammaRandRNGF_D0_RK2
+        use pm_kind, only: RKG => RK2
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK1_ENABLED
+    module procedure setGenGammaRandRNGF_D0_RK1
+        use pm_kind, only: RKG => RK1
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#undef RK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef RNGF_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RNGX_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RK_ENABLED 1
+
+#if RK5_ENABLED
+    module procedure setGenGammaRandRNGX_D0_RK5
+        use pm_kind, only: RKG => RK5
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK4_ENABLED
+    module procedure setGenGammaRandRNGX_D0_RK4
+        use pm_kind, only: RKG => RK4
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK3_ENABLED
+    module procedure setGenGammaRandRNGX_D0_RK3
+        use pm_kind, only: RKG => RK3
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK2_ENABLED
+    module procedure setGenGammaRandRNGX_D0_RK2
+        use pm_kind, only: RKG => RK2
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK1_ENABLED
+    module procedure setGenGammaRandRNGX_D0_RK1
+        use pm_kind, only: RKG => RK1
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#undef RK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef RNGX_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef D0_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define D1_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RNGD_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RK_ENABLED 1
+
+#if RK5_ENABLED
+    module procedure setGenGammaRandRNGD_D1_RK5
+        use pm_kind, only: RKG => RK5
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK4_ENABLED
+    module procedure setGenGammaRandRNGD_D1_RK4
+        use pm_kind, only: RKG => RK4
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK3_ENABLED
+    module procedure setGenGammaRandRNGD_D1_RK3
+        use pm_kind, only: RKG => RK3
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK2_ENABLED
+    module procedure setGenGammaRandRNGD_D1_RK2
+        use pm_kind, only: RKG => RK2
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK1_ENABLED
+    module procedure setGenGammaRandRNGD_D1_RK1
+        use pm_kind, only: RKG => RK1
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#undef RK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef RNGD_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RNGF_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RK_ENABLED 1
+
+#if RK5_ENABLED
+    module procedure setGenGammaRandRNGF_D1_RK5
+        use pm_kind, only: RKG => RK5
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK4_ENABLED
+    module procedure setGenGammaRandRNGF_D1_RK4
+        use pm_kind, only: RKG => RK4
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK3_ENABLED
+    module procedure setGenGammaRandRNGF_D1_RK3
+        use pm_kind, only: RKG => RK3
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK2_ENABLED
+    module procedure setGenGammaRandRNGF_D1_RK2
+        use pm_kind, only: RKG => RK2
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK1_ENABLED
+    module procedure setGenGammaRandRNGF_D1_RK1
+        use pm_kind, only: RKG => RK1
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#undef RK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef RNGF_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RNGX_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RK_ENABLED 1
+
+#if RK5_ENABLED
+    module procedure setGenGammaRandRNGX_D1_RK5
+        use pm_kind, only: RKG => RK5
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK4_ENABLED
+    module procedure setGenGammaRandRNGX_D1_RK4
+        use pm_kind, only: RKG => RK4
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK3_ENABLED
+    module procedure setGenGammaRandRNGX_D1_RK3
+        use pm_kind, only: RKG => RK3
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK2_ENABLED
+    module procedure setGenGammaRandRNGX_D1_RK2
+        use pm_kind, only: RKG => RK2
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK1_ENABLED
+    module procedure setGenGammaRandRNGX_D1_RK1
+        use pm_kind, only: RKG => RK1
+#include "pm_distGenGamma@routines.inc.F90"
+    end procedure
+#endif
+
+#undef RK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef RNGX_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef D1_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef KR_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef setGenGammaRand_ENABLED
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -49,7 +49,7 @@ program example
         call setLinSpace(X, 0._RKG, 1._RKG)
         open(newunit = fileUnit, file = "getBetaCDF.RK.txt")
         do i = 1, NP
-            write(fileUnit, "(*(g0,:,' '))" ) X(i), getBetaCDF(X(i), [.5_RKG, 5._RKG, .5_RKG, 5._RKG], [.5_RKG, 1.0_RKG, 5.0_RKG, 10._RKG])
+            write(fileUnit, "(*(g0,:,' '))") X(i), getBetaCDF(X(i), [.5_RKG, 5._RKG, .5_RKG, 5._RKG], [.5_RKG, 1.0_RKG, 5.0_RKG, 10._RKG])
         end do
         close(fileUnit)
 

@@ -64,7 +64,7 @@ program example
         open(newunit = fileUnit, file = "getGeomCyclicRand.IK.txt")
         do i = 1, 5000
             rand = getGeomCyclicRand([.05_RKG, .25_RKG, .05_RKG, .25_RKG], period = [10_IK, 10_IK, 10000_IK, 10000_IK])
-            write(fileUnit, "(*(g0,:,','))" ) rand
+            write(fileUnit, "(*(g0,:,','))") rand
         end do
         close(fileUnit)
     end block

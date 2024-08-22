@@ -1483,7 +1483,7 @@ module pm_mathRoot
     !>                                              <li>    the constant [schroder](@ref pm_mathRoot::schroder) or an object of type [schroder_type](@ref pm_mathRoot::schroder_type),<br>
     !>                                          </ol>
     !>                                          all of which either require the first (Newton) or higher derivatives (Halley/Schroder) of the target function to find the function root,
-    !>                                          then `getFunc()` must take a two arguments:<br>
+    !>                                          then `getFunc()` must take two arguments:<br>
     !>                                          <ol>
     !>                                              <li>    A scalar input argument `x` of the same type and kind as the output argument `root` (below).<br>
     !>                                              <li>    A scalar input argument `order` of type `integer` of default kind \IK.<br>
@@ -1493,7 +1493,7 @@ module pm_mathRoot
     !>                                          <ol>
     !>                                              <li>    An input `order` value of `0` must yield the target function value at the input `x`.<br>
     !>                                              <li>    An input `order` value of `1` must yield the target function first derivative at the input `x`.<br>
-    !>                                              <li>    An input `order` value of `1` must yield the target function second derivative at the input `x`.<br>
+    !>                                              <li>    An input `order` value of `2` must yield the target function second derivative at the input `x`.<br>
     !>                                          </ol>
     !>                                          The following illustrates the generic interface of `getFunc()` for the above values of `method`,
     !>                                          \code{.F90}
@@ -2561,7 +2561,7 @@ module pm_mathRoot
     !>                                              <li>    the constant [schroder](@ref pm_mathRoot::schroder) or an object of type [schroder_type](@ref pm_mathRoot::schroder_type),<br>
     !>                                          </ol>
     !>                                          all of which either require the first (Newton) or higher derivatives (Halley/Schroder) of the target function to find the function root,
-    !>                                          then `getFunc()` must take a two arguments:<br>
+    !>                                          then `getFunc()` must take two arguments:<br>
     !>                                          <ol>
     !>                                              <li>    A scalar input argument `x` of the same type and kind as the output argument `root` (below).<br>
     !>                                              <li>    A scalar input argument `order` of type `integer` of default kind \IK.<br>
@@ -2571,7 +2571,7 @@ module pm_mathRoot
     !>                                          <ol>
     !>                                              <li>    An input `order` value of `0` must yield the target function value at the input `x`.<br>
     !>                                              <li>    An input `order` value of `1` must yield the target function first derivative at the input `x`.<br>
-    !>                                              <li>    An input `order` value of `1` must yield the target function second derivative at the input `x`.<br>
+    !>                                              <li>    An input `order` value of `2` must yield the target function second derivative at the input `x`.<br>
     !>                                          </ol>
     !>                                          The following illustrates the generic interface of `getFunc()` for the above values of `method`,
     !>                                          \code{.F90}

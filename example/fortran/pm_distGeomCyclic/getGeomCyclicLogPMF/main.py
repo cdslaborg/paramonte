@@ -15,7 +15,7 @@ label = [ r"probSuccess = .05, period = 10"
         , r"probSuccess = .25, period = 10000"
         ]
 
-pattern = "*."+kind+".txt"
+pattern = "*." + kind + ".txt"
 fileList = glob.glob(pattern)
 if len(fileList) == 1:
 

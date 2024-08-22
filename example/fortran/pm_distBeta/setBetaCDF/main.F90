@@ -77,7 +77,7 @@ program example
         do i = 1, NP
             call setBetaCDF(cdf, X(i), [.5_RKG, 5._RKG, .5_RKG, 5._RKG], [.5_RKG, 1.0_RKG, 5.0_RKG, 10._RKG], getLogBeta([.5_RKG, 5._RKG, .5_RKG, 5._RKG], [.5_RKG, 1.0_RKG, 5.0_RKG, 10._RKG]), signed = signed, info = info)
             if (any(info /= 0)) error stop
-            write(fileUnit, "(*(g0,:,' '))" ) X(i), cdf
+            write(fileUnit, "(*(g0,:,' '))") X(i), cdf
         end do
         close(fileUnit)
 

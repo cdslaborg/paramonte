@@ -36,7 +36,7 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
 #define CHECK_ASSERTION(LINE,ASSERTION,MSG) continue;
 #endif
 
-    use pm_mathGamma, only: setGammaIncLow
+    use pm_mathGamma, only: setGammaInc!Low
     implicit none
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

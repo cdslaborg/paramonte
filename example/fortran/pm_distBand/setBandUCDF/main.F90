@@ -37,7 +37,7 @@ program example
         do i = 1, NP
             call setBandUCDF(ucdf, 0.01_RKG, ub(i), [.5_RKG, 1.5_RKG, -.5_RKG, -1.1_RKG], -[.5_RKG, 1._RKG, 2._RKG, 3._RKG], [.5_RKG, 1.0_RKG, 2.0_RKG, 5._RKG], info = info)
             if (any(info < 0)) error stop
-            write(fileUnit, "(*(g0,:,' '))" ) ub(i), ucdf
+            write(fileUnit, "(*(g0,:,' '))") ub(i), ucdf
         end do
         close(fileUnit)
 

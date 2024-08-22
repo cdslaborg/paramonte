@@ -30,11 +30,11 @@
         character(:, SK), allocatable   :: smaller
         character(:, SK), allocatable   :: larger
 #elif   getMinMax_SSK_ENABLED || setMinMax_SSK_ENABLED
-        use pm_container, only: StrCon => css_pdt
-        type(StrCon)    :: MinMax_ref(2)
-        type(StrCon)    :: minMax(2)
-        type(StrCon)    :: smaller
-        type(StrCon)    :: larger
+        use pm_container, only: css_pdt
+        type(css_pdt)   :: MinMax_ref(2)
+        type(css_pdt)   :: minMax(2)
+        type(css_pdt)   :: smaller
+        type(css_pdt)   :: larger
 #elif   getMinMax_CK_ENABLED || setMinMax_CK_ENABLED
         complex(CK)     :: MinMax_ref(2)
         complex(CK)     :: minMax(2)

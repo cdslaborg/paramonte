@@ -48,7 +48,7 @@ program example
         count = getRange(0_IK, 20_IK)
         open(newunit = fileUnit, file = "getPoisCDF.IK.txt")
         do i = 1, size(count)
-            write(fileUnit, "(*(g0,:,' '))" ) count(i), exp(getPoisCDF(count(i), [.1_RKG, 1._RKG, 4._RKG, 10._RKG]))
+            write(fileUnit, "(*(g0,:,' '))") count(i), exp(getPoisCDF(count(i), [.1_RKG, 1._RKG, 4._RKG, 10._RKG]))
         end do
         close(fileUnit)
 

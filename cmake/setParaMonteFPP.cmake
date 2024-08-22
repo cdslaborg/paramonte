@@ -16,7 +16,7 @@
 
 #   The following cleans up FPP source files for inclusion in the final package directory.
 
-if (${csid_is_gnu} OR ${csid_is_intel})
+if ((${csid_is_gnu} OR ${csid_is_intel}) AND NOT ${dev_enabled})
 
     # Damn gfortran changes its behavior for setting the FPP file extension between V. 10 and newer versions.
     # Therefore, the following approach does not work.

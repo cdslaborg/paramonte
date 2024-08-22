@@ -72,7 +72,7 @@ module pm_mathLogSumExp
     !>                                          See [the relevant benchmark here](#benchmark-getLogSumExp).<br>
     !>                              </ol>
     !>                              The presence of this argument is merely for compile-time resolution of the procedures of this generic interface.<br>
-    !>                              (**optional**. If missing, a sequence control flow will be assumed without dynamic dispatch.)
+    !>                              (**optional**. If missing, a [sequence](@ref pm_control::sequence) control flow will be assumed without dynamic dispatch.)
     !>
     !>  \return
     !>  `logSumExp`            :    The output scalar of the same type and kind as the input `array` containing the natural

@@ -69,15 +69,40 @@
 !>  </ol>
 !>
 !>  The **CDF** of the Generalized Gamma distribution over a strictly-positive support \f$x \in (0, +\infty)\f$ with the three (shape, shape, scale)
-!>  parameters \f$(\kappa > 0, \omega > 0, \sigma > 0)\f$ is defined by the **regularized** Lower Incomplete Gamma function as,
+!>  parameters \f$(\kappa > 0, \omega > 0, \sigma > 0)\f$ is defined by the **regularized** [Lower Incomplete Gamma function](@ref pm_mathGamma) as,
 !>  \f{eqnarray}{
 !>      \large
-!>      \mathrm{CDF}(x | \kappa, \sigma)
+!>      \mathrm{CDF}(x | \kappa, \omega, \sigma)
 !>      & = & P\bigg(\kappa, \big(\frac{x}{\sigma}\big)^{\frac{1}{\omega}} \bigg) \\
 !>      & = & \frac{1}{\Gamma(\kappa)} \int_0^{\big(\frac{x}{\sigma}\big)^{\frac{1}{\omega}}} ~ t^{\kappa - 1}{\mathrm e}^{-t} ~ dt ~,
 !>  \f}
 !>
 !>  where \f$\Gamma(\kappa)\f$ represents the Gamma function.<br>
+!>
+!>  The distribution mean is given by,
+!>
+!>  \f{equation}{
+!>      \large
+!>      \overline{x} = \frac{\Gamma\left(\kappa + \omega\right)}{\Gamma(\kappa)} \sigma ~.
+!>  \f}
+!>
+!>  The distribution mode is given by,
+!>
+!>  \f{equation}{
+!>      \large
+!>      \widehat{x} =
+!>      \begin{cases}
+!>          \sigma \left( \kappa - \omega \right)^\omega ~~~ , ~~~ \omega < \kappa ~, \nonumber \\
+!>          0 ~~~ , ~~~ \kappa \leq \omega ~.
+!>      \end{cases}
+!>  \f}
+!>
+!>  The distribution variance is given by,
+!>
+!>  \f{equation}{
+!>      \large
+!>      \mathrm{VAR}(x) = \sigma^2 \left[ \frac{\Gamma(\kappa + 2\omega)}{\Gamma(\kappa)} - \left( \frac{\Gamma(\kappa + \omega)}{\Gamma(\kappa)} \right)^2 \right] ~.
+!>  \f}
 !>
 !>  \note
 !>  The relationship between the [GenExpGamma](@ref pm_distGenExpGamma) and [GenGamma](@ref pm_distGenGamma) distributions
@@ -88,6 +113,7 @@
 !>  \see
 !>  [pm_distGamma](@ref pm_distGamma)<br>
 !>  [pm_distGenExpGamma](@ref pm_distGenExpGamma)<br>
+!>  Stacy, E. W. (1962). A generalization of the gamma distribution. The Annals of mathematical statistics, 33(3), 1187-1192.<br>
 !>  Wolfram Research (2010), GenGammaDistribution, Wolfram Language function, https://reference.wolfram.com/language/ref/GenGammaDistribution.html (updated 2016)<br>
 !>
 !>  \test
@@ -103,6 +129,8 @@
 module pm_distGenGamma
 
     use pm_kind, only: SK, IK, LK
+    use pm_distUnif, only: rngf_type
+    use pm_distUnif, only: xoshiro256ssw_type
 
     implicit none
 
@@ -196,7 +224,7 @@ module pm_distGenGamma
     !>  See the benchmark below for more details.<br>
     !>
     !>  \see
-    !>  [setGenGammaLogPDF](@ref pm_distGenGamma::setGenGammaLogPDF)<br>
+    !>  [getGenGammaLogPDF](@ref pm_distGenGamma::getGenGammaLogPDF)<br>
     !>  [setGenGammaLogPDF](@ref pm_distGenGamma::setGenGammaLogPDF)<br>
     !>
     !>  \example{getGenGammaLogPDFNF}
@@ -1002,13 +1030,9 @@ module pm_distGenGamma
     !>                                  and kind the input argument `x`, containing the CDF of the distribution at the specified `x`.<br>
     !>  \param[in]  x               :   The input scalar or array of the same shape as other array like arguments,
     !>                                  of type `real` of kind \RKALL, containing the values at which the CDF must be computed.<br>
-    !>  \param[in]  logGammaKappa   :   The input scalar of the same type and kind as the input `x`,
-    !>                                  representing the precomputed \f$\log(\Gamma(\kappa))\f$ which can be computed
-    !>                                  by calling the Fortran intrinsic function `log_gamma(kappa)`.<br>
-    !>                                  (**optional**, default = `log_gamma(kappa)`. It must be present <b>if and only if</b> `kappa` is also present.)
     !>  \param[in]  kappa           :   The input scalar or array of the same shape as other array-like arguments,
     !>                                  of the same type and kind as `x`, containing the shape parameter of the distribution.<br>
-    !>                                  (**optional**, default = `1.`. It must be present if `logGammaKappa` or `invOmega` are also present.)
+    !>                                  (**optional**, default = `1.`. It must be present if `invOmega` are also present.)
     !>  \param[in]  invOmega        :   The input scalar or array of the same shape as other array-valued arguments,
     !>                                  containing the inverse of the second shape parameter (\f$\omega\f$) of the distribution.<br>
     !>                                  (**optional**, default = `1.`)
@@ -1020,24 +1044,24 @@ module pm_distGenGamma
     !>                                  If the algorithm fails to converge, then `info` is set to the negative of the number of iterations taken by the algorithm.<br>
     !>                                  **An negative output value signifies the lack of convergence and failure to compute the CDF**.<br>
     !>                                  This is likely to happen if the input value for `kappa` is too large.<br>
-    !>  \param[in]  tol             :   The input scalar of the same type and kind as `x`,
-    !>                                  representing the relative accuracy in the convergence checking of the Gamma series representation.<br>
-    !>                                  (**optional**. The default value is set by [setGammaIncLow](@ref pm_mathGamma::setGammaIncLow).)
     !>
     !>  \interface{setGenGammaCDF}
     !>  \code{.F90}
     !>
     !>      use pm_distGenGamma, only: setGenGammaCDF
     !>
-    !>      call setGenGammaCDF(cdf, x, info, tol = tol)
-    !>      call setGenGammaCDF(cdf, x, logGammaKappa, kappa, info, tol = tol)
-    !>      call setGenGammaCDF(cdf, x, logGammaKappa, kappa, invOmega, info, tol = tol)
-    !>      call setGenGammaCDF(cdf, x, logGammaKappa, kappa, invOmega, invSigma, info, tol = tol)
+    !>      call setGenGammaCDF(cdf, x, info)
+    !>      call setGenGammaCDF(cdf, x, kappa, info)
+    !>      call setGenGammaCDF(cdf, x, kappa, invOmega, info)
+    !>      call setGenGammaCDF(cdf, x, kappa, invOmega, invSigma, info)
     !>
     !>  \endcode
     !>
     !>  \warning
-    !>  The condition \f$x \in (0,+\infty)\f$, `logGammaKappa > log(kappa)`, `kappa > 0`, `invOmega > 0`, and `invSigma > 0` must hold for the corresponding input arguments.<br>
+    !>  The condition \f$x \in (0,+\infty)\f$ must hold for the corresponding input arguments.<br>
+    !>  The condition `invSigma > 0` must hold for the corresponding input arguments.<br>
+    !>  The condition `invOmega > 0` must hold for the corresponding input arguments.<br>
+    !>  The condition `kappa > 0` must hold for the corresponding input arguments.<br>
     !>  \vericons
     !>
     !>  \warnpure
@@ -1072,7 +1096,7 @@ module pm_distGenGamma
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE elemental module subroutine setGenGammaCDFDDD_RK5(cdf, x, info, tol)
+    PURE elemental module subroutine setGenGammaCDFDDD_RK5(cdf, x, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaCDFDDD_RK5
 #endif
@@ -1080,12 +1104,11 @@ module pm_distGenGamma
         real(RKG)   , intent(out)                   :: cdf
         real(RKG)   , intent(in)                    :: x
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK4_ENABLED
-    PURE elemental module subroutine setGenGammaCDFDDD_RK4(cdf, x, info, tol)
+    PURE elemental module subroutine setGenGammaCDFDDD_RK4(cdf, x, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaCDFDDD_RK4
 #endif
@@ -1093,12 +1116,11 @@ module pm_distGenGamma
         real(RKG)   , intent(out)                   :: cdf
         real(RKG)   , intent(in)                    :: x
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK3_ENABLED
-    PURE elemental module subroutine setGenGammaCDFDDD_RK3(cdf, x, info, tol)
+    PURE elemental module subroutine setGenGammaCDFDDD_RK3(cdf, x, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaCDFDDD_RK3
 #endif
@@ -1106,12 +1128,11 @@ module pm_distGenGamma
         real(RKG)   , intent(out)                   :: cdf
         real(RKG)   , intent(in)                    :: x
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK2_ENABLED
-    PURE elemental module subroutine setGenGammaCDFDDD_RK2(cdf, x, info, tol)
+    PURE elemental module subroutine setGenGammaCDFDDD_RK2(cdf, x, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaCDFDDD_RK2
 #endif
@@ -1119,12 +1140,11 @@ module pm_distGenGamma
         real(RKG)   , intent(out)                   :: cdf
         real(RKG)   , intent(in)                    :: x
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK1_ENABLED
-    PURE elemental module subroutine setGenGammaCDFDDD_RK1(cdf, x, info, tol)
+    PURE elemental module subroutine setGenGammaCDFDDD_RK1(cdf, x, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaCDFDDD_RK1
 #endif
@@ -1132,211 +1152,664 @@ module pm_distGenGamma
         real(RKG)   , intent(out)                   :: cdf
         real(RKG)   , intent(in)                    :: x
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE elemental module subroutine setGenGammaCDFKDD_RK5(cdf, x, logGammaKappa, kappa, info, tol)
+    PURE elemental module subroutine setGenGammaCDFKDD_RK5(cdf, x, kappa, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaCDFKDD_RK5
 #endif
         use pm_kind, only: RKG => RK5
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa
+        real(RKG)   , intent(in)                    :: x, kappa
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK4_ENABLED
-    PURE elemental module subroutine setGenGammaCDFKDD_RK4(cdf, x, logGammaKappa, kappa, info, tol)
+    PURE elemental module subroutine setGenGammaCDFKDD_RK4(cdf, x, kappa, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaCDFKDD_RK4
 #endif
         use pm_kind, only: RKG => RK4
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa
+        real(RKG)   , intent(in)                    :: x, kappa
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK3_ENABLED
-    PURE elemental module subroutine setGenGammaCDFKDD_RK3(cdf, x, logGammaKappa, kappa, info, tol)
+    PURE elemental module subroutine setGenGammaCDFKDD_RK3(cdf, x, kappa, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaCDFKDD_RK3
 #endif
         use pm_kind, only: RKG => RK3
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa
+        real(RKG)   , intent(in)                    :: x, kappa
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK2_ENABLED
-    PURE elemental module subroutine setGenGammaCDFKDD_RK2(cdf, x, logGammaKappa, kappa, info, tol)
+    PURE elemental module subroutine setGenGammaCDFKDD_RK2(cdf, x, kappa, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaCDFKDD_RK2
 #endif
         use pm_kind, only: RKG => RK2
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa
+        real(RKG)   , intent(in)                    :: x, kappa
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK1_ENABLED
-    PURE elemental module subroutine setGenGammaCDFKDD_RK1(cdf, x, logGammaKappa, kappa, info, tol)
+    PURE elemental module subroutine setGenGammaCDFKDD_RK1(cdf, x, kappa, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaCDFKDD_RK1
 #endif
         use pm_kind, only: RKG => RK1
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa
+        real(RKG)   , intent(in)                    :: x, kappa
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE elemental module subroutine setGenGammaCDFKOD_RK5(cdf, x, logGammaKappa, kappa, invOmega, info, tol)
+    PURE elemental module subroutine setGenGammaCDFKOD_RK5(cdf, x, kappa, invOmega, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaCDFKOD_RK5
 #endif
         use pm_kind, only: RKG => RK5
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invOmega
+        real(RKG)   , intent(in)                    :: x, kappa, invOmega
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK4_ENABLED
-    PURE elemental module subroutine setGenGammaCDFKOD_RK4(cdf, x, logGammaKappa, kappa, invOmega, info, tol)
+    PURE elemental module subroutine setGenGammaCDFKOD_RK4(cdf, x, kappa, invOmega, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaCDFKOD_RK4
 #endif
         use pm_kind, only: RKG => RK4
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invOmega
+        real(RKG)   , intent(in)                    :: x, kappa, invOmega
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK3_ENABLED
-    PURE elemental module subroutine setGenGammaCDFKOD_RK3(cdf, x, logGammaKappa, kappa, invOmega, info, tol)
+    PURE elemental module subroutine setGenGammaCDFKOD_RK3(cdf, x, kappa, invOmega, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaCDFKOD_RK3
 #endif
         use pm_kind, only: RKG => RK3
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invOmega
+        real(RKG)   , intent(in)                    :: x, kappa, invOmega
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK2_ENABLED
-    PURE elemental module subroutine setGenGammaCDFKOD_RK2(cdf, x, logGammaKappa, kappa, invOmega, info, tol)
+    PURE elemental module subroutine setGenGammaCDFKOD_RK2(cdf, x, kappa, invOmega, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaCDFKOD_RK2
 #endif
         use pm_kind, only: RKG => RK2
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invOmega
+        real(RKG)   , intent(in)                    :: x, kappa, invOmega
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK1_ENABLED
-    PURE elemental module subroutine setGenGammaCDFKOD_RK1(cdf, x, logGammaKappa, kappa, invOmega, info, tol)
+    PURE elemental module subroutine setGenGammaCDFKOD_RK1(cdf, x, kappa, invOmega, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaCDFKOD_RK1
 #endif
         use pm_kind, only: RKG => RK1
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invOmega
+        real(RKG)   , intent(in)                    :: x, kappa, invOmega
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE elemental module subroutine setGenGammaCDFKOS_RK5(cdf, x, logGammaKappa, kappa, invOmega, invSigma, info, tol)
+    PURE elemental module subroutine setGenGammaCDFKOS_RK5(cdf, x, kappa, invOmega, invSigma, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaCDFKOS_RK5
 #endif
         use pm_kind, only: RKG => RK5
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invOmega, invSigma
+        real(RKG)   , intent(in)                    :: x, kappa, invOmega, invSigma
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK4_ENABLED
-    PURE elemental module subroutine setGenGammaCDFKOS_RK4(cdf, x, logGammaKappa, kappa, invOmega, invSigma, info, tol)
+    PURE elemental module subroutine setGenGammaCDFKOS_RK4(cdf, x, kappa, invOmega, invSigma, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaCDFKOS_RK4
 #endif
         use pm_kind, only: RKG => RK4
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invOmega, invSigma
+        real(RKG)   , intent(in)                    :: x, kappa, invOmega, invSigma
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK3_ENABLED
-    PURE elemental module subroutine setGenGammaCDFKOS_RK3(cdf, x, logGammaKappa, kappa, invOmega, invSigma, info, tol)
+    PURE elemental module subroutine setGenGammaCDFKOS_RK3(cdf, x, kappa, invOmega, invSigma, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaCDFKOS_RK3
 #endif
         use pm_kind, only: RKG => RK3
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invOmega, invSigma
+        real(RKG)   , intent(in)                    :: x, kappa, invOmega, invSigma
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK2_ENABLED
-    PURE elemental module subroutine setGenGammaCDFKOS_RK2(cdf, x, logGammaKappa, kappa, invOmega, invSigma, info, tol)
+    PURE elemental module subroutine setGenGammaCDFKOS_RK2(cdf, x, kappa, invOmega, invSigma, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaCDFKOS_RK2
 #endif
         use pm_kind, only: RKG => RK2
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invOmega, invSigma
+        real(RKG)   , intent(in)                    :: x, kappa, invOmega, invSigma
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK1_ENABLED
-    PURE elemental module subroutine setGenGammaCDFKOS_RK1(cdf, x, logGammaKappa, kappa, invOmega, invSigma, info, tol)
+    PURE elemental module subroutine setGenGammaCDFKOS_RK1(cdf, x, kappa, invOmega, invSigma, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaCDFKOS_RK1
 #endif
         use pm_kind, only: RKG => RK1
         real(RKG)   , intent(out)                   :: cdf
-        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invOmega, invSigma
+        real(RKG)   , intent(in)                    :: x, kappa, invOmega, invSigma
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    end interface
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !>  \brief
+    !>  Return a scalar or array of arbitrary rank of GenGamma-distributed random values with the specified shape and scale
+    !>  parameters \f$(\kappa, \omega, \sigma)\f$ of the Generalized Gamma distribution corresponding to the procedure arguments `(kappa, omega, sigma)`.
+    !>
+    !>  See the documentation of [pm_distGenGamma](@ref pm_distGenGamma) for more
+    !>  information on the Probability Density Function (PDF) of the Generalized Gamma distribution.
+    !>
+    !>  \param[inout]   rng     :   The input/output scalar that can be an object of,
+    !>                              <ol>
+    !>                                  <li>    type [rngf_type](@ref pm_distUnif::rngf_type),
+    !>                                          implying the use of intrinsic Fortran uniform RNG for Gamma RNG.<br>
+    !>                                  <li>    type [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type),
+    !>                                          implying the use of [xoshiro256**](https://prng.di.unimi.it/) uniform RNG for Gamma RNG.<br>
+    !>                              </ol>
+    !>                              (**optional**, default = [rngf_type](@ref pm_distUnif::rngf_type), implying the use of the intrinsic Fortran URNG.)
+    !>  \param[out]     rand    :   The output scalar or
+    !>                              <ol>
+    !>                                  <li>    array of rank `1`, or<br>
+    !>                                  <li>    array of arbitrary rank if the `rng` argument is missing or set to [rngf_type](@ref pm_distUnif::rngf_type), or<br>
+    !>                              </ol>
+    !>                              of,
+    !>                              <ol>
+    !>                                  <li>    type `real` of kind \RKALL.
+    !>                              </ol>
+    !>                              On output, it contains GenGamma-distributed random value(s).<br>
+    !>  \param[in]      kappa   :   The input scalar (or array of the same shape as other array-like arguments) of the same type and kind as `rand`,
+    !>                              representing the \f$\kappa\f$ shape parameter of the Generalized Gamma distribution.<br>
+    !>  \param[in]      sigma   :   The input scalar (or array of the same shape as other array-like arguments) of the same type and kind as `rand`,
+    !>                              representing the \f$\omega\f$ shape parameter of the [Generalized Gamma distribution](@ref pm_distGenGamma).<br>
+    !>  \param[in]      sigma   :   The input scalar (or array of the same shape as other array-like arguments) of the same type and kind as `rand`,
+    !>                              representing the \f$\sigma\f$ scale parameter of the [Generalized Gamma distribution](@ref pm_distGenGamma).<br>
+    !>
+    !>  \interface{setGenGammaRand}
+    !>  \code{.F90}
+    !>
+    !>      use pm_distGenGamma, only: setGenGammaRand
+    !>
+    !>      call setGenGammaRand(rand, kappa, omega, sigma)
+    !>      call setGenGammaRand(rand(..), kappa, omega, sigma)
+    !>      call setGenGammaRand(rng, rand, kappa, omega, sigma)
+    !>      call setGenGammaRand(rng, rand(:), kappa, omega, sigma)
+    !>
+    !>  \endcode
+    !>
+    !>  \warning
+    !>  The condition `0 < kappa` must hold for the corresponding input arguments.<br>
+    !>  The condition `0 < omega` must hold for the corresponding input arguments.<br>
+    !>  The condition `0 < sigma` must hold for the corresponding input arguments.<br>
+    !>  \vericons
+    !>
+    !>  \impure
+    !>
+    !>  \elemental
+    !>
+    !>  \recursive
+    !>
+    !>  \note
+    !>  For repeated Gamma RNG with fixed `kappa`, it is best to pass a vector of `rand` to be filled
+    !>  with random numbers rather than calling the procedures with scalar `rand` argument repeatedly.<br>
+    !>  In addition to avoiding procedure call overhead, vectorized RGN in this particular case also avoids
+    !>  an unnecessary division and square-root operation.<br>
+    !>
+    !>  \see
+    !>  [getGenGammaLogPDF](@ref pm_distGenGamma::getGenGammaLogPDF)<br>
+    !>  [setGenGammaLogPDF](@ref pm_distGenGamma::setGenGammaLogPDF)<br>
+    !>  [getGenGammaCDF](@ref pm_distGenGamma::getGenGammaCDF)<br>
+    !>  [setGenGammaCDF](@ref pm_distGenGamma::setGenGammaCDF)<br>
+    !>
+    !>  \example{setGenGammaRand}
+    !>  \include{lineno} example/pm_distGenGamma/setGenGammaRand/main.F90
+    !>  \compilef{setGenGammaRand}
+    !>  \output{setGenGammaRand}
+    !>  \include{lineno} example/pm_distGenGamma/setGenGammaRand/main.out.F90
+    !>  \postproc{setGenGammaRand}
+    !>  \include{lineno} example/pm_distGenGamma/setGenGammaRand/main.py
+    !>  \vis{setGenGammaRand}
+    !>  \image html pm_distGenGamma/setGenGammaRand/setGenGammaRand.RKG.png width=700
+    !>
+    !>  \test
+    !>  [test_pm_distGenGamma](@ref test_pm_distGenGamma)
+    !>
+    !>  \final{setGenGammaRand}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
+    interface setGenGammaRand
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    impure elemental module subroutine setGenGammaRandRNGD_D0_RK5(rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGD_D0_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+#if RK4_ENABLED
+    impure elemental module subroutine setGenGammaRandRNGD_D0_RK4(rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGD_D0_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+#if RK3_ENABLED
+    impure elemental module subroutine setGenGammaRandRNGD_D0_RK3(rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGD_D0_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+#if RK2_ENABLED
+    impure elemental module subroutine setGenGammaRandRNGD_D0_RK2(rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGD_D0_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+#if RK1_ENABLED
+    impure elemental module subroutine setGenGammaRandRNGD_D0_RK1(rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGD_D0_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    impure elemental module subroutine setGenGammaRandRNGF_D0_RK5(rng, rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGF_D0_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+#if RK4_ENABLED
+    impure elemental module subroutine setGenGammaRandRNGF_D0_RK4(rng, rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGF_D0_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+#if RK3_ENABLED
+    impure elemental module subroutine setGenGammaRandRNGF_D0_RK3(rng, rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGF_D0_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+#if RK2_ENABLED
+    impure elemental module subroutine setGenGammaRandRNGF_D0_RK2(rng, rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGF_D0_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+#if RK1_ENABLED
+    impure elemental module subroutine setGenGammaRandRNGF_D0_RK1(rng, rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGF_D0_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    PURE module subroutine setGenGammaRandRNGX_D0_RK5(rng, rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGX_D0_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+#if RK4_ENABLED
+    PURE module subroutine setGenGammaRandRNGX_D0_RK4(rng, rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGX_D0_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+#if RK3_ENABLED
+    PURE module subroutine setGenGammaRandRNGX_D0_RK3(rng, rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGX_D0_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+#if RK2_ENABLED
+    PURE module subroutine setGenGammaRandRNGX_D0_RK2(rng, rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGX_D0_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+#if RK1_ENABLED
+    PURE module subroutine setGenGammaRandRNGX_D0_RK1(rng, rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGX_D0_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    impure module subroutine setGenGammaRandRNGD_D1_RK5(rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGD_D1_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+#if RK4_ENABLED
+    impure module subroutine setGenGammaRandRNGD_D1_RK4(rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGD_D1_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+#if RK3_ENABLED
+    impure module subroutine setGenGammaRandRNGD_D1_RK3(rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGD_D1_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+#if RK2_ENABLED
+    impure module subroutine setGenGammaRandRNGD_D1_RK2(rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGD_D1_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+#if RK1_ENABLED
+    impure module subroutine setGenGammaRandRNGD_D1_RK1(rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGD_D1_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    impure module subroutine setGenGammaRandRNGF_D1_RK5(rng, rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGF_D1_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+#if RK4_ENABLED
+    impure module subroutine setGenGammaRandRNGF_D1_RK4(rng, rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGF_D1_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+#if RK3_ENABLED
+    impure module subroutine setGenGammaRandRNGF_D1_RK3(rng, rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGF_D1_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+#if RK2_ENABLED
+    impure module subroutine setGenGammaRandRNGF_D1_RK2(rng, rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGF_D1_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+#if RK1_ENABLED
+    impure module subroutine setGenGammaRandRNGF_D1_RK1(rng, rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGF_D1_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    PURE module subroutine setGenGammaRandRNGX_D1_RK5(rng, rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGX_D1_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+#if RK4_ENABLED
+    PURE module subroutine setGenGammaRandRNGX_D1_RK4(rng, rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGX_D1_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+#if RK3_ENABLED
+    PURE module subroutine setGenGammaRandRNGX_D1_RK3(rng, rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGX_D1_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+#if RK2_ENABLED
+    PURE module subroutine setGenGammaRandRNGX_D1_RK2(rng, rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGX_D1_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+#if RK1_ENABLED
+    PURE module subroutine setGenGammaRandRNGX_D1_RK1(rng, rand, kappa, omega, sigma)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGenGammaRandRNGX_D1_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, omega, sigma
+    end subroutine
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     end interface

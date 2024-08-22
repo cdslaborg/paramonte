@@ -11,7 +11,7 @@ fontsize = 17
 
 for kind in ["RK"]:
 
-    pattern = "*."+kind+".txt"
+    pattern = "*." + kind + ".txt"
     fileList = glob.glob(pattern)
 
     for file in fileList:

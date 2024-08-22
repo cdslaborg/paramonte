@@ -135,7 +135,7 @@ program example
     !    open(newunit = fileUnit, file = "setBetaInc.RK.txt")
     !    do i = 1, nx
     !        call setBetaInc(betaInc, x(i), 5._RKG, [1.0_RKG, 5.0_RKG, 10._RKG], getLogBeta(5._RKG, [1.0_RKG, 5.0_RKG, 10._RKG]), err)
-    !        write(fileUnit, "(*(g0,:,' '))" ) x_RK(i), betaInc
+    !        write(fileUnit, "(*(g0,:,' '))") x_RK(i), betaInc
     !    end do
     !    close(fileUnit)
     !end block
@@ -153,7 +153,7 @@ program example
         do i = 1, nx
             call setBetaInc(betaInc, x(i), alphas, betas, getLogBeta(alphas, betas), signed = .false._LK, info = info)
             if (any(info /= 0)) error stop
-            write(fileUnit, "(*(g0,:,','))" ) x(i), betaInc
+            write(fileUnit, "(*(g0,:,','))") x(i), betaInc
         end do
         close(fileUnit)
     end block

@@ -47,7 +47,7 @@
 !>      -#  As such, matrix multiplication format that respects column-major order of Fortran,
 !>          is significantly faster than the row-major matrix multiplication.<br>
 !>      -#  This is particularly relevant when one matrix is symmetric square and the other is a vector,
-!>          which is case with the procedures of the generic interface [getDisMahalSq](@ref pm_distanceMahal::getDisMahalSq).<br>
+!>          which is the case with the procedures of the generic interface [getDisMahalSq](@ref pm_distanceMahal::getDisMahalSq).<br>
 !>
 !>  \benchmark{looping_vs_intrinsic, The runtime performance of [getDisMahalSq](@ref pm_distanceMahal::getDisMahalSq) vs. [setDisMahalSq](@ref pm_distanceMahal::setDisMahalSq)}
 !>  \include{lineno} benchmark/pm_distanceMahal/looping_vs_intrinsic/main.F90

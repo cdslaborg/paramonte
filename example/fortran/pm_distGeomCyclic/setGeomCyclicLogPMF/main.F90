@@ -68,7 +68,7 @@ program example
         open(newunit = fileUnit, file = "setGeomCyclicLogPMF.IK.txt")
         do i = 1, size(stepSuccess)
             call setGeomCyclicLogPMF(logPMF, stepSuccess(i), log([.05_RKG, .25_RKG, .05_RKG, .25_RKG]), period = [10_IK, 10_IK, 10000_IK, 10000_IK])
-            write(fileUnit, "(*(g0,:,','))" ) stepSuccess(i), exp(logPMF)
+            write(fileUnit, "(*(g0,:,','))") stepSuccess(i), exp(logPMF)
         end do
         close(fileUnit)
 

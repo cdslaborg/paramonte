@@ -16,7 +16,7 @@
 
 !>  \brief
 !>  This module contains procedures and generic interfaces for modeling data and
-!>  detectors of the BATSE Gamma-Ray satellite onboard the NASA Compton Gamma-Ray Observatory.<br>
+!>  detectors of the BATSE Gamma-Ray detectors onboard the NASA Compton Gamma-Ray Observatory.<br>
 !>
 !>  \details
 !>  The Compton Gamma Ray Observatory (CGRO) was a space observatory detecting photons with energies from 20 keV to 30 GeV, in Earth orbit from 1991 to 2000.<br>
@@ -62,7 +62,7 @@
 !>  \final
 !>
 !>  \author
-!>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
+!>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -402,7 +402,7 @@ contains
             write(test%disp%unit,"(*(g0))")
             do i = 1,rankS11
                 do j = 1,rankS22
-                    write(test%disp%unit,"(*(F22.15))" ) RegresCoefMat(i,j) &
+                    write(test%disp%unit,"(*(F22.15))") RegresCoefMat(i,j) &
                                                         , RegresCoefMatRef(i,j) &
                                                         , abs(RegresCoefMat(i,j)-RegresCoefMatRef(i,j)) &
                                                         , normalizedDifference
@@ -424,7 +424,7 @@ contains
         ! LCOV_EXCL_START
             do i = 1,rankS11
                 do j = 1,rankS11
-                    write(test%disp%unit,"(*(F22.15))" ) SchurComplement(i,j) &
+                    write(test%disp%unit,"(*(F22.15))") SchurComplement(i,j) &
                                                         , SchurComplementRef(i,j) &
                                                         , abs(SchurComplement(i,j)-SchurComplementRef(i,j)) &
                                                         , normalizedDifference

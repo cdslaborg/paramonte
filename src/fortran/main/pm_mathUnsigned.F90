@@ -15,7 +15,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief
-!>  This module contains procedures and generic interfaces and generic interfaces for various operations with positive integers
+!>  This module contains procedures and generic interfaces for various operations with positive integers
 !>  with results that have the same binary representation as an unsigned integer.<br>
 !>  Such operations (like addition or subtraction) would normally cause runtime overflow errors within the default Fortran environment.<br>
 !>

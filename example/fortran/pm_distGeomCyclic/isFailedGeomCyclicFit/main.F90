@@ -32,9 +32,9 @@ program example
         call disp%show("call setUnique(getGeomCyclicRand(probSuccess, [(period, i = 1, 1000)]), unique = stepSuccess, count = freqSuccess, order = -1_IK)")
                         call setUnique(getGeomCyclicRand(probSuccess, [(period, i = 1, 1000)]), unique = stepSuccess, count = freqSuccess, order = -1_IK)
         call disp%show("stepSuccess")
-        call disp%show( stepSuccess , format = SK_"(sp,20(g0,:,', '))" )
+        call disp%show( stepSuccess , format = SK_"(sp,20(g0,:,', '))")
         call disp%show("freqSuccess")
-        call disp%show( freqSuccess , format = SK_"(sp,20(g0,:,', '))" )
+        call disp%show( freqSuccess , format = SK_"(sp,20(g0,:,', '))")
         call disp%show("if (isFailedGeomCyclicFit(stepSuccess, freqSuccess, period, probSuccessFit, normFacFit)) error stop 'Fitting failed.'")
                         if (isFailedGeomCyclicFit(stepSuccess, freqSuccess, period, probSuccessFit, normFacFit)) error stop 'Fitting failed.'
         call disp%show("[probSuccessFit, normFacFit]")

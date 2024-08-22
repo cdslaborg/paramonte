@@ -48,7 +48,7 @@ program example
         count = getRange(1_IK, 10_IK)
         open(newunit = fileUnit, file = "getGeomCyclicLogPMF.IK.txt")
         do i = 1, size(count)
-            write(fileUnit, "(*(g0,:,','))" ) count(i), exp(getGeomCyclicLogPMF(count(i), [.05_RKG, .25_RKG, .05_RKG, .25_RKG], period = [10_IK, 10_IK, 10000_IK, 10000_IK]))
+            write(fileUnit, "(*(g0,:,','))") count(i), exp(getGeomCyclicLogPMF(count(i), [.05_RKG, .25_RKG, .05_RKG, .25_RKG], period = [10_IK, 10_IK, 10000_IK, 10000_IK]))
         end do
         close(fileUnit)
 

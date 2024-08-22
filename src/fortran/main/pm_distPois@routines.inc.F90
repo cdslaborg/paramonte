@@ -56,23 +56,26 @@
         real(RKG) :: countP1
         CHECK_ASSERTION(__LINE__, 0_IK <= count, SK_"@getPoisCDF(): The condition `0 <= count` must hold. count = "//getStr(count)) ! fpp
         countP1 = real(count, RKG) + 1._RKG
-        call setPoisCDF(cdf, countP1, log_gamma(countP1), lambda, info)
+        call setPoisCDF(cdf, countP1, lambda, info)
+        !call setPoisCDF(cdf, countP1, log_gamma(countP1), lambda, info)
         if (info < 0_IK) error stop MODULE_NAME//SK_"@getPoisCDF(): Call to setPoisCDF failed."
 
         !%%%%%%%%%%%%%%%%%
 #elif   setPoisCDF_ENABLED
         !%%%%%%%%%%%%%%%%%
 
+        real(RKG) :: gaminclow
         ! Validate the input.
         CHECK_ASSERTION(__LINE__, 0._RKG < lambda, SK_"@setPoisCDF(): The condition `0. < lambda` must hold. lambda = "//getStr(lambda)) ! fpp
         CHECK_ASSERTION(__LINE__, 1._RKG <= countP1, SK_"@setPoisCDF(): The condition `1._RKG <= countP1` must hold. countP1 = "//getStr(countP1)) ! fpp
-        CHECK_ASSERTION(__LINE__, abs(logGammaCountP1 - log_gamma(countP1)) <= epsilon(1._RKG) * 100, \
-        SK_"@setPoisCDF(): The condition `logGammaCountP1 == log(countP1)` must hold. logGammaCountP1, log_gamma(countP1) = "\
-        //getStr([logGammaCountP1, log_gamma(countP1)])) ! fpp
+        !check_assertion(__LINE__, abs(logGammaCountP1 - log_gamma(countP1)) <= epsilon(1._RKG) * 100, \
+        !SK_"@setPoisCDF(): The condition `logGammaCountP1 == log(countP1)` must hold. logGammaCountP1, log_gamma(countP1) = "\
+        !//getStr([logGammaCountP1, log_gamma(countP1)])) ! fpp
         CHECK_ASSERTION(__LINE__, mod(countP1, 1._RKG) == 0._RKG, \
         SK_"@setPoisCDF(): The condition `mod(countP1, 1._RKG) == 0._RKG` must hold. countP1, mod(countP1, 1._RKG) = "\
         //getStr([countP1, mod(countP1, 1._RKG)])) ! fpp
-        call setGammaIncUpp(cdf, x = lambda, logGammaKappa = logGammaCountP1, kappa = countP1, info = info, tol = tol)
+        !call setGammaIncUpp(cdf, x = lambda, logGammaKappa = logGammaCountP1, kappa = countP1, info = info, tol = tol)
+        call setGammaInc(gaminclow, cdf, x = lambda, kappa = countP1, info = info)
 
         !%%%%%%%%%%%%%%%%%%
 #elif   getPoisRand_ENABLED

@@ -14,12 +14,12 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief This module contains tests of the module [pm_processPoisson](@ref pm_processPoisson).
+!>  \brief This module contains tests of the module [pm_procPois](@ref pm_procPois).
 !>  \author Amir Shahmoradi
 
 module test_pm_processPoisson
 
-    use pm_processPoisson
+    use pm_procPois
     use pm_test, only: test_type, LK
     use pm_container, only: IV => cvi_type, RV => cvr_type
 

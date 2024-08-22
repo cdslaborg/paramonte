@@ -68,7 +68,7 @@ program example
         open(newunit = fileUnit, file = "setGeomCyclicLogCDF.IK.txt")
         do i = 1, size(stepSuccess)
             call setGeomCyclicLogCDF(logCDF, stepSuccess(i), log([.05_RKG, .25_RKG, .05_RKG, .25_RKG]), period = [10_IK, 10_IK, 10000_IK, 10000_IK])
-            write(fileUnit, "(*(g0,:,','))" ) stepSuccess(i), exp(logCDF)
+            write(fileUnit, "(*(g0,:,','))") stepSuccess(i), exp(logCDF)
         end do
         close(fileUnit)
 

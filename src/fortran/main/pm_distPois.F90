@@ -622,9 +622,6 @@ module pm_distPois
     !>                                  of the same type and kind as the input argument `lambda`, containing the value(s) at which the CDF must be computed plus `1.`.<br>
     !>                                  Although `countP1` is of type `real`, it must be a whole number.<br>
     !>                                  The enforcement of `real` type is to ensure the performance of this generic interface.<br>
-    !>  \param[in]  logGammaCountP1 :   The input scalar (or array of the same rank, shape, and size as other array-like arguments),
-    !>                                  of the same type and kind as the input argument `lambda`, containing `log_gamma(countP1)`.<br>
-    !>                                  Precomputing this argument can lead to significantly faster computations.<br>
     !>  \param[in]  lambda          :   The input scalar (or array of the same rank, shape, and size as other array-like arguments), of
     !>                                  <ol>
     !>                                      <li>    type `real` of kind \RKALL,<br>
@@ -634,23 +631,20 @@ module pm_distPois
     !>                                  On output, it is set to **positive** the number of iterations taken for the series representation of the Gamma function to converge.<br>
     !>                                  If the algorithm fails to converge, then `info` is set to the negative of the number of iterations taken by the algorithm.<br>
     !>                                  **An negative output value signifies the lack of convergence and failure to compute the CDF**.<br>
-    !>                                  For more information, see the documentation of [setGammaIncUpp](@ref pm_mathGamma::setGammaIncUpp).<br>
-    !>  \param[out] tol             :   See the documentation of the corresponding argument of [setGammaIncUpp](@ref pm_mathGamma::setGammaIncUpp).<br>
-    !>                                  (**optional**. The default value is set by [setGammaIncUpp](@ref pm_mathGamma::setGammaIncUpp))
+    !>                                  For more information, see the documentation of [setGammaInc](@ref pm_mathGamma::setGammaInc).<br>
     !>
     !>  \interface{setPoisCDF}
     !>  \code{.F90}
     !>
     !>      use pm_distPois, only: setPoisCDF
     !>
-    !>      call setPoisCDF(cdf, countP1, logGammaCountP1, lambda, info, tol = tol)
+    !>      call setPoisCDF(cdf, countP1, lambda, info)
     !>
     !>  \endcode
     !>
     !>  \warning
     !>  The condition `0 < lambda` must hold for the corresponding input arguments.<br>
     !>  The condition `1. <= countP1` must hold for the corresponding input arguments.<br>
-    !>  The condition `logGammaCountP1 == log_gamma(countP1)` must hold for the corresponding input arguments.<br>
     !>  The condition `mod(countP1, 1._RKG) == 0._RKG` must hold for the corresponding input arguments,
     !>  that is, the input argument `countP1` must be a whole number.<br>
     !>  \vericons
@@ -684,67 +678,62 @@ module pm_distPois
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE elemental module subroutine setPoisCDFLog_RK5(cdf, countP1, logGammaCountP1, lambda, info, tol)
+    PURE elemental module subroutine setPoisCDFLog_RK5(cdf, countP1, lambda, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisCDFLog_RK5
 #endif
         use pm_kind, only: RKG => RK5
-        real(RKG)   , intent(in)                    :: countP1, logGammaCountP1, lambda
+        real(RKG)   , intent(in)                    :: countP1, lambda
         real(RKG)   , intent(out)                   :: cdf
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK4_ENABLED
-    PURE elemental module subroutine setPoisCDFLog_RK4(cdf, countP1, logGammaCountP1, lambda, info, tol)
+    PURE elemental module subroutine setPoisCDFLog_RK4(cdf, countP1, lambda, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisCDFLog_RK4
 #endif
         use pm_kind, only: RKG => RK4
-        real(RKG)   , intent(in)                    :: countP1, logGammaCountP1, lambda
+        real(RKG)   , intent(in)                    :: countP1, lambda
         real(RKG)   , intent(out)                   :: cdf
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK3_ENABLED
-    PURE elemental module subroutine setPoisCDFLog_RK3(cdf, countP1, logGammaCountP1, lambda, info, tol)
+    PURE elemental module subroutine setPoisCDFLog_RK3(cdf, countP1, lambda, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisCDFLog_RK3
 #endif
         use pm_kind, only: RKG => RK3
-        real(RKG)   , intent(in)                    :: countP1, logGammaCountP1, lambda
+        real(RKG)   , intent(in)                    :: countP1, lambda
         real(RKG)   , intent(out)                   :: cdf
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK2_ENABLED
-    PURE elemental module subroutine setPoisCDFLog_RK2(cdf, countP1, logGammaCountP1, lambda, info, tol)
+    PURE elemental module subroutine setPoisCDFLog_RK2(cdf, countP1, lambda, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisCDFLog_RK2
 #endif
         use pm_kind, only: RKG => RK2
-        real(RKG)   , intent(in)                    :: countP1, logGammaCountP1, lambda
+        real(RKG)   , intent(in)                    :: countP1, lambda
         real(RKG)   , intent(out)                   :: cdf
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
 #if RK1_ENABLED
-    PURE elemental module subroutine setPoisCDFLog_RK1(cdf, countP1, logGammaCountP1, lambda, info, tol)
+    PURE elemental module subroutine setPoisCDFLog_RK1(cdf, countP1, lambda, info)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisCDFLog_RK1
 #endif
         use pm_kind, only: RKG => RK1
-        real(RKG)   , intent(in)                    :: countP1, logGammaCountP1, lambda
+        real(RKG)   , intent(in)                    :: countP1, lambda
         real(RKG)   , intent(out)                   :: cdf
         integer(IK) , intent(out)                   :: info
-        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 

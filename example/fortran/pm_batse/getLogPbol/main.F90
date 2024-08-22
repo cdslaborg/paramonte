@@ -38,7 +38,7 @@ program example
         do i = 1, size(logEpk)
             call setBandEnergy(energy, 0.001_RKG, 20000._RKG, 1._RKG, 50._RKG, 300._RKG, alpha, beta, getBandEbreak(alpha, beta, exp(logEpk(i))), info)
             if (info < 0) error stop
-            write(fileUnit, "(*(g0,:,' '))" ) exp(logEpk(i)), exp(getLogPbol(logEpk(i), 0._RKG)), energy / 1.e9
+            write(fileUnit, "(*(g0,:,' '))") exp(logEpk(i)), exp(getLogPbol(logEpk(i), 0._RKG)), energy / 1.e9
         end do
         close(fileUnit)
 

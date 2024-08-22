@@ -38,7 +38,7 @@ program example
         do i = 1, size(logEpk)
             call setBandPhoton(photon, 50._RKG, 300._RKG, 1._RKG, 0.001_RKG, 20000._RKG, alpha, beta, getBandEbreak(alpha, beta, exp(logEpk(i))), info)
             if (info < 0) error stop
-            write(fileUnit, "(*(g0,:,' '))" ) exp(logEpk(i)), exp(getLogPF53(logEpk(i), log(1.e-6_RKG))), photon
+            write(fileUnit, "(*(g0,:,' '))") exp(logEpk(i)), exp(getLogPF53(logEpk(i), log(1.e-6_RKG))), photon
         end do
         close(fileUnit)
 

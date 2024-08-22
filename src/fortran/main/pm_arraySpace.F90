@@ -77,7 +77,7 @@ module pm_arraySpace
     !>  \warning
     !>  The condition `0 < count` must hold for the corresponding input arguments.<br>
     !>  \vericon
-    !>  
+    !>
     !>  \warnpure
     !>
     !>  \remark
@@ -290,10 +290,7 @@ module pm_arraySpace
     !>
     !>      use pm_arraySpace, only: setLinSpace
     !>
-    !>      call setLinSpace(linSpace, x1, x2)
-    !>      call setLinSpace(linSpace, x1, x2, fopen)
-    !>      call setLinSpace(linSpace, x1, x2, fopen, lopen)
-    !>      call setLinSpace(linSpace, x1, x2, lopen = lopen)
+    !>      call setLinSpace(linSpace, x1, x2, fopen = fopen, lopen = lopen)
     !>
     !>  \endcode
     !>

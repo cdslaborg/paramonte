@@ -48,7 +48,7 @@ program example
         probSuccess = getRange(1_IK, 10_IK)
         open(newunit = fileUnit, file = "getGeomCDF.IK.txt")
         do i = 1, size(probSuccess)
-            write(fileUnit, "(*(g0,:,' '))" ) probSuccess(i), getGeomCDF(probSuccess(i), [.1_RKG, .2_RKG, .5_RKG, .8_RKG])
+            write(fileUnit, "(*(g0,:,' '))") probSuccess(i), getGeomCDF(probSuccess(i), [.1_RKG, .2_RKG, .5_RKG, .8_RKG])
         end do
         close(fileUnit)
 

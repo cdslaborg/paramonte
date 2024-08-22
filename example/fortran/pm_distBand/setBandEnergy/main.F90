@@ -50,7 +50,7 @@ program example
         do i = 1, NP
             call setBandEnergy(energy, 0.01_RKG, 20000._RKG, 1._RKG, 50._RKG, 300._RKG, alpha, beta, getBandEbreak(alpha, beta, epeak(i)), info)
             if (any(info < 0)) error stop
-            write(fileUnit, "(*(g0,:,' '))" ) epeak(i), energy
+            write(fileUnit, "(*(g0,:,' '))") epeak(i), energy
         end do
         close(fileUnit)
 
