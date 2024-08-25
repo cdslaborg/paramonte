@@ -30,8 +30,7 @@
 
         real(RKG) :: ndimHalf
         real(RKG), parameter :: LOG_PI = log(acos(-1._RKG))
-        CHECK_ASSERTION(__LINE__, real(0, RKG) <= ndim, \
-        SK_"@setLogVolUnitBall(): The condition `0 <= ndim` must hold. ndim = "//getStr(ndim))
+        CHECK_ASSERTION(__LINE__, real(0, RKG) <= ndim, SK_"@setLogVolUnitBall(): The condition `0 <= ndim` must hold. ndim = "//getStr(ndim))
         ndimHalf = 0.5_RKG * ndim
         if (0._RKG < ndim) then
             logVolUnitBall = ndimHalf * LOG_PI - log_gamma(1._RKG + ndimHalf)
@@ -43,39 +42,44 @@
 #elif   (getLogVolUnitBall_ENABLED || setLogVolUnitBall_ENABLED) && Iter_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        integer(IK)             :: idim, hdim
-        real(RKG)   , parameter :: PI = acos(-1._RKG)
-        real(RKG)   , parameter :: FOUR_PI = PI * 4._RKG
-        CHECK_ASSERTION(__LINE__, 0_IK <= ndim, \
-        SK_"@setLogVolUnitBall(): The condition `0 <= ndim` must hold. ndim = "//getStr(ndim))
+        call setVolUnitBall(logVolUnitBall, ndim)
+        logVolUnitBall = log(logVolUnitBall)
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#elif   (getVolUnitBall_ENABLED || setVolUnitBall_ENABLED) && Iter_ENABLED
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        integer(IK) :: idim, hdim
+        real(RKG), parameter :: PI = acos(-1._RKG)
+        real(RKG), parameter :: FOUR_PI = PI * 4._RKG
+        CHECK_ASSERTION(__LINE__, 0_IK <= ndim, SK_"@setVolUnitBall(): The condition `0 <= ndim` must hold. ndim = "//getStr(ndim))
         if (0_IK < ndim) then
             hdim = ndim / 2_IK
             if (ndim == 2_IK * hdim) then
                 ! ndim is even
                 ! ndim = 2 * hdim
-                ! logVolUnitBall = PI^(hdim) / Factorial(hdim)
-                logVolUnitBall = PI
+                ! volUnitBall = PI^(hdim) / Factorial(hdim)
+                volUnitBall = PI
                 do idim = 2_IK, ndim / 2_IK
-                    logVolUnitBall = logVolUnitBall * PI / idim
+                    volUnitBall = volUnitBall * PI / idim
                 end do
             else
                 ! ndim is an odd integer
                 ! ndim = 2 * hdim - 1
                 ! gamma(ndim / 2 + 1) = gamma(hdim + 1 / 2);
                 ! gamma(hdim + 1 / 2) = sqrt(PI) * (2 * hdim)! / (4**hdim * hdim!)
-                hdim = ndim + 1_IK
-                logVolUnitBall = 4._RKG / (hdim + 1_IK) ! This is to avoid an extra unnecessary division of `logVolUnitBall` by `PI`.
-                do idim = hdim + 2_IK, 2_IK * hdim
-                    ! logVolUnitBall
+                !hdim = hdim + 1_IK ! (ndim - 1) / 2
+                volUnitBall = 2._RKG! / (hdim + 1_IK) ! This is to avoid an extra unnecessary division of `volUnitBall` by `PI`.
+                do idim = 1_IK, hdim !hdim + 2_IK, 2_IK * hdim
+                    ! volUnitBall
                     ! = PI**(hdim - 1 / 2) / gamma(hdim + 1 / 2)
                     ! = PI**(hdim + 1) * 4**hdim * hdim! / (2 * hdim)!
-                    logVolUnitBall = logVolUnitBall * FOUR_PI / idim
+                    volUnitBall = volUnitBall * FOUR_PI / (hdim + idim)
                 end do
-
+                volUnitBall = volUnitBall / ndim
             end if
-            logVolUnitBall = log(logVolUnitBall)
         else
-            logVolUnitBall = 0._RKG
+            volUnitBall = 1._RKG
         end if
 
         !%%%%%%%%%%%%%%%%%%%

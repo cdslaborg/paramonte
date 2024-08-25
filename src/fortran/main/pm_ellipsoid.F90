@@ -117,6 +117,247 @@ module pm_ellipsoid
     !>
     !>  \details
     !>  This generic functional interface is an exact functional-interface replacement for the
+    !>  generic subroutine interface [setVolUnitBall](@ref setVolUnitBall).<br>
+    !>
+    !>  \param[in]  ndim    :   The input scalar of the same type and kind as the output `volUnitBall`,
+    !>                          containing the number of dimensions of the unit-radius hyper-ball.<br>
+    !>
+    !>  \return
+    !>  `volUnitBall`       :   The output scalar (or array of the same rank as other input array-like arguments) of,
+    !>                          <ol>
+    !>                              <li>    type `real` of kind \RKALL,
+    !>                          </ol>
+    !>                          containing natural logarithm of the volume of the unit-radius hyper-ball.<br>
+    !>
+    !>  \interface{getVolUnitBall}
+    !>  \code{.F90}
+    !>
+    !>      use pm_ellipsoid, only: getVolUnitBall
+    !>
+    !>      volUnitBall = getVolUnitBall(ndim)
+    !>
+    !>  \endcode
+    !>
+    !>  \warning
+    !>  The condition `0 <= ndim` must hold for the corresponding input arguments.<br>
+    !>  \vericon
+    !>
+    !>  \warnpure
+    !>
+    !>  \elemental
+    !>
+    !>  \see
+    !>  [setVolUnitBall](@ref setVolUnitBall)<br>
+    !>
+    !>  \example{getVolUnitBall}
+    !>  \include{lineno} example/pm_ellipsoid/getVolUnitBall/main.F90
+    !>  \compilef{getVolUnitBall}
+    !>  \output{getVolUnitBall}
+    !>  \include{lineno} example/pm_ellipsoid/getVolUnitBall/main.out.F90
+    !>  \postproc{getVolUnitBall}
+    !>  \include{lineno} example/pm_ellipsoid/getVolUnitBall/main.py
+    !>  \vis{getVolUnitBall}
+    !>  \image html example/pm_ellipsoid/getVolUnitBall/getVolUnitBall.RK.png width=700
+    !>
+    !>  \test
+    !>  [test_pm_ellipsoid](@ref test_pm_ellipsoid)<br>
+    !>
+    !>  \final{getVolUnitBall}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
+    interface getVolUnitBall
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    PURE elemental module function getVolUnitBallIter_RK5(ndim) result(volUnitBall)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getVolUnitBallIter_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    :: ndim
+        real(RKG)                           :: volUnitBall
+    end function
+#endif
+
+#if RK4_ENABLED
+    PURE elemental module function getVolUnitBallIter_RK4(ndim) result(volUnitBall)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getVolUnitBallIter_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    :: ndim
+        real(RKG)                           :: volUnitBall
+    end function
+#endif
+
+#if RK3_ENABLED
+    PURE elemental module function getVolUnitBallIter_RK3(ndim) result(volUnitBall)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getVolUnitBallIter_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    :: ndim
+        real(RKG)                           :: volUnitBall
+    end function
+#endif
+
+#if RK2_ENABLED
+    PURE elemental module function getVolUnitBallIter_RK2(ndim) result(volUnitBall)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getVolUnitBallIter_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    :: ndim
+        real(RKG)                           :: volUnitBall
+    end function
+#endif
+
+#if RK1_ENABLED
+    PURE elemental module function getVolUnitBallIter_RK1(ndim) result(volUnitBall)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getVolUnitBallIter_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    :: ndim
+        real(RKG)                           :: volUnitBall
+    end function
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    end interface
+
+    !>  \brief
+    !>  Return the volume of an \f$\ndim\f$-dimensional ball of unit-radius.
+    !>
+    !>  \details
+    !>  The computation of the volume of an n-ball requires involves [factorials](@ref pm_mathFactorial)
+    !>  which are computed in the procedures of this generic interface iteratively.<br>
+    !>  This generic subroutine interface is an exact functional-interface replacement for the
+    !>  generic functional interface [getVolUnitBall](@ref getVolUnitBall).<br>
+    !>
+    !>  \param[out] volUnitBall     :   The output scalar (or array of the same rank as other input array-like arguments) of,
+    !>                                  <ol>
+    !>                                      <li>    type `real` of kind \RKALL,
+    !>                                  </ol>
+    !>                                  containing natural logarithm of the volume of the unit-radius hyper-ball.<br>
+    !>  \param[in]  ndim            :   The input scalar containing the number of dimensions of the unit-radius hyper-ball.<br>
+    !>                                  It can be,
+    !>                                  <ol>
+    !>                                      <li>    of type `integer` of default kind \IK.
+    !>                                  </ol>
+    !>
+    !>  \interface{setVolUnitBall}
+    !>  \code{.F90}
+    !>
+    !>      use pm_ellipsoid, only: setVolUnitBall
+    !>
+    !>      call setVolUnitBall(volUnitBall, ndim)
+    !>
+    !>  \endcode
+    !>
+    !>  \warning
+    !>  The condition `0 <= ndim` must hold for the corresponding input arguments.<br>
+    !>  \vericon
+    !>
+    !>  \warnpure
+    !>
+    !>  \elemental
+    !>
+    !>  \see
+    !>  [getLogVolUnitBall](@ref getLogVolUnitBall)<br>
+    !>  [Volume of an n-ball](https://en.wikipedia.org/wiki/Volume_of_an_n-ball)<br>
+    !>  [Particular values of the Gamma function](https://en.wikipedia.org/wiki/Particular_values_of_the_Gamma_function)<br>
+    !>
+    !>  \example{setVolUnitBall}
+    !>  \include{lineno} example/pm_ellipsoid/setVolUnitBall/main.F90
+    !>  \compilef{setVolUnitBall}
+    !>  \output{setVolUnitBall}
+    !>  \include{lineno} example/pm_ellipsoid/setVolUnitBall/main.out.F90
+    !>  \postproc{setVolUnitBall}
+    !>  \include{lineno} example/pm_ellipsoid/setVolUnitBall/main.py
+    !>  \vis{setVolUnitBall}
+    !>  \image html example/pm_ellipsoid/setVolUnitBall/setVolUnitBall.RK.png width=700
+    !>
+    !>  \test
+    !>  [test_pm_ellipsoid](@ref test_pm_ellipsoid)<br>
+    !>
+    !>  \final{setVolUnitBall}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
+    interface setVolUnitBall
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    PURE elemental module subroutine setVolUnitBallIter_RK5(volUnitBall, ndim)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVolUnitBallIter_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)   :: volUnitBall
+        integer(IK)         , intent(in)    :: ndim
+    end subroutine
+#endif
+
+#if RK4_ENABLED
+    PURE elemental module subroutine setVolUnitBallIter_RK4(volUnitBall, ndim)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVolUnitBallIter_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)   :: volUnitBall
+        integer(IK)         , intent(in)    :: ndim
+    end subroutine
+#endif
+
+#if RK3_ENABLED
+    PURE elemental module subroutine setVolUnitBallIter_RK3(volUnitBall, ndim)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVolUnitBallIter_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)   :: volUnitBall
+        integer(IK)         , intent(in)    :: ndim
+    end subroutine
+#endif
+
+#if RK2_ENABLED
+    PURE elemental module subroutine setVolUnitBallIter_RK2(volUnitBall, ndim)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVolUnitBallIter_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(out)   :: volUnitBall
+        integer(IK)         , intent(in)    :: ndim
+    end subroutine
+#endif
+
+#if RK1_ENABLED
+    PURE elemental module subroutine setVolUnitBallIter_RK1(volUnitBall, ndim)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVolUnitBallIter_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)   :: volUnitBall
+        integer(IK)         , intent(in)    :: ndim
+    end subroutine
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    end interface
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !>  \brief
+    !>  Generate and return the natural logarithm of the volume of an \f$\ndim\f$-dimensional ball of unit-radius.
+    !>
+    !>  \details
+    !>  This generic functional interface is an exact functional-interface replacement for the
     !>  generic subroutine interface [setLogVolUnitBall](@ref setLogVolUnitBall).<br>
     !>
     !>  \param[in]  ndim    :   The input scalar of the same type and kind as the output `logVolUnitBall`,
@@ -267,9 +508,6 @@ module pm_ellipsoid
     !>  The condition `0 <= ndim` must hold for the corresponding input arguments.<br>
     !>  \vericon
     !>
-    !>  \warning
-    !>  Specifying the optional arguments
-    !>
     !>  \warnpure
     !>
     !>  \elemental
@@ -301,8 +539,8 @@ module pm_ellipsoid
     !>  \image html benchmark/pm_ellipsoid/setLogVolUnitBall/benchmark.setLogVolUnitBall.runtime.ratio.png width=1000
     !>  \moralb{setLogVolUnitBall}
     !>      -#  The benchmark procedures named `ndimInt2RK1` and `ndimInt2RK2` call the generic interface [setLogVolUnitBall](@ref pm_ellipsoid::setLogVolUnitBall)
-    !>          with a `ndim` argument of type `integer` of kind \IK and return the result as `real` of kind \RK32 and \RK64 respectively.<br>
-    !>          Conversely, the procedures named `ndimReal2RK1` and `ndimReal2RK2` take `ndim` as `real` of kind \RK32 and \RK64 respectively
+    !>          with a `ndim` argument of type `integer` of kind \IK and return the result as `real` of kind \RKS and \RKD respectively.<br>
+    !>          Conversely, the procedures named `ndimReal2RK1` and `ndimReal2RK2` take `ndim` as `real` of kind \RKS and \RKD respectively
     !>          and return results of the same type and kind as `ndim`.<br>
     !>          The first class of procedure interfaces (working with a `ndim` of type `integer`) compute the result using an iterative factorial computation approach.<br>
     !>          The second class of procedure interfaces (working with a `ndim` of type `real`) use the Fortran intrinsic `log_gamma()` to compute the results.<br>

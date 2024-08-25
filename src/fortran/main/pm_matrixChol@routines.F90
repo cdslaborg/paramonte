@@ -43,6 +43,7 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
     use pm_matrixTrans, only: transSymm, transHerm, transUnit
     use pm_matrixUpdate, only: setMatUpdate, hermitian, trans
     use pm_matrixMulTri, only: setMatMulTri
+    !use pm_mathSum, only: dot_product => getDot
 
     implicit none
 

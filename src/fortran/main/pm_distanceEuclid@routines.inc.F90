@@ -57,6 +57,8 @@
                 call setDisEuclid(distance, point, REF method)
             type is (euclidu_type)
                 call setDisEuclid(distance, point, REF method)
+            type is (euclidv_type)
+                call setDisEuclid(distance, point, REF method)
             type is (euclidsq_type)
                 call setDisEuclid(distance, point, REF method)
             class default
@@ -71,12 +73,13 @@
 #elif   setDisEuclid_ENABLED && (D0_D1_XX_ENABLED || D0_D1_D1_ENABLED)
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        integer(IK) :: idim
+        integer(IK) :: idim, ndim
+        ndim = size(point, 1, IK)
 #if     D0_D1_XX_ENABLED
 #define GET_DIFF(PNT,REF)PNT
 #elif   D0_D1_D1_ENABLED
 #define GET_DIFF(PNT,REF)(PNT - REF)
-        CHECK_ASSERTION(__LINE__, size(point, 1, IK) == size(ref, 1, IK), SK_"@setDisEuclid(): The condition `size(point) == size(ref)` must hold. size(point), size(ref) = "//getStr([size(point, 1, IK), size(ref, 1, IK)]))
+        CHECK_ASSERTION(__LINE__, ndim == size(ref, 1, IK), SK_"@setDisEuclid(): The condition `size(point) == size(ref)` must hold. size(point), size(ref) = "//getStr([ndim, size(ref, 1, IK)]))
 #else
 #error  "Unrecognized interface."
 #endif
@@ -85,7 +88,7 @@
             real(TKG) :: invmax, maximum
             ! First find the maximum.
             maximum = -huge(maximum)
-            do idim = 1_IK, size(point, 1, IK)
+            do idim = 1_IK, ndim
                 invmax = abs(GET_DIFF(point(idim),ref(idim))) ! placeholder.
                 if (maximum < invmax) maximum = invmax
             end do
@@ -100,13 +103,21 @@
                 distance = maximum * sqrt(distance)
             end if
         end block
-#elif   MEU_ENABLED || MEQ_ENABLED
+#elif   MEU_ENABLED || MEV_ENABLED || MEQ_ENABLED
         distance = 0._TKG
-        do idim = 1_IK, size(point, 1, IK)
+        do idim = 1_IK, ndim
             distance = distance + GET_DIFF(point(idim),ref(idim))**2
         end do
 #if     MEU_ENABLED
         distance = sqrt(distance)
+#elif   MEV_ENABLED
+        block
+            real(TKG) :: volUnitBall
+            call setVolUnitBall(volUnitBall, ndim)
+            distance = volUnitBall * distance**(.5_TKG * ndim)
+        end block
+#elif   !MEQ_ENABLED
+#error  "Unrecognized interface."
 #endif
 #else
 #error  "Unrecognized interface."
@@ -152,6 +163,8 @@
         do iref = 1_IK, nref
 #if         MEQ_ENABLED
             distance(1 : npnt, iref) = (point - ref(iref))**2
+#elif       MEV_ENABLED
+            distance(1 : npnt, iref) = abs(point - ref(iref)) * 2
 #elif       MED_ENABLED || MEU_ENABLED
             distance(1 : npnt, iref) = abs(point - ref(iref))
 #else

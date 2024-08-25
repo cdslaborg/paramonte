@@ -28,6 +28,8 @@ program main
 
 use pm_test, only: setSummary
 
+call random_seed()
+
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 block; use test_pm_arrayCenter; call setTest(); end block

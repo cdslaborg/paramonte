@@ -72,7 +72,7 @@
         integer(IK), parameter :: ITMAX = 10_IK**6 !< The maximum allowed number of iterations.
         real(RKG), parameter :: EPS = 10 * epsilon(x) ! * 10 !< The default relative accuracy.
         real(RKG), parameter :: FPMIN = tiny(x) / EPS !< A number near the smallest representable floating-point number.
-        real(RKG) :: FPMIN, kappa0, numer, denom, frac, coef, delta, ss
+        real(RKG) :: kappa0, numer, denom, frac, coef, delta
         integer(IK) :: infoHalf
 
         CHECK_ASSERTION(__LINE__, 0 < kappa, SK_"@setGammaIncAM(): The condition `0 <= kappa` must hold. kappa = "//getStr(kappa)) ! fpp
@@ -153,7 +153,7 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         real(RKG), parameter :: EPS = epsilon(x) ! * 10 !< The default relative accuracy.
-        real(RKG) :: invx, invxsq, summ, frac, delta, EPS
+        real(RKG) :: invx, invxsq, summ, frac, delta
         integer(IK) :: decrement, maxit, kappaHalf
         logical(LK) :: isodd
 

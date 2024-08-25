@@ -101,9 +101,11 @@ module pm_distanceEuclid
     !>  \see
     !>  [euclid](@ref pm_distanceEuclid::euclid)<br>
     !>  [euclidu](@ref pm_distanceEuclid::euclidu)<br>
+    !>  [euclidv](@ref pm_distanceEuclid::euclidv)<br>
     !>  [euclidsq](@ref pm_distanceEuclid::euclidsq)<br>
     !>  [euclid_type](@ref pm_distanceEuclid::euclid_type)<br>
     !>  [euclidu_type](@ref pm_distanceEuclid::euclidu_type)<br>
+    !>  [euclidv_type](@ref pm_distanceEuclid::euclidv_type)<br>
     !>  [euclidsq_type](@ref pm_distanceEuclid::euclidsq_type)<br>
     !>  [getDisEuclid](@ref pm_distanceEuclid::getDisEuclid)<br>
     !>  [getDisMatEuclid](@ref pm_distanceEuclid::getDisMatEuclid)<br>
@@ -128,9 +130,11 @@ module pm_distanceEuclid
     !>  \see
     !>  [euclid](@ref pm_distanceEuclid::euclid)<br>
     !>  [euclidu](@ref pm_distanceEuclid::euclidu)<br>
+    !>  [euclidv](@ref pm_distanceEuclid::euclidv)<br>
     !>  [euclidsq](@ref pm_distanceEuclid::euclidsq)<br>
     !>  [euclid_type](@ref pm_distanceEuclid::euclid_type)<br>
     !>  [euclidu_type](@ref pm_distanceEuclid::euclidu_type)<br>
+    !>  [euclidv_type](@ref pm_distanceEuclid::euclidv_type)<br>
     !>  [euclidsq_type](@ref pm_distanceEuclid::euclidsq_type)<br>
     !>  [getDisEuclid](@ref pm_distanceEuclid::getDisEuclid)<br>
     !>  [getDisMatEuclid](@ref pm_distanceEuclid::getDisMatEuclid)<br>
@@ -165,9 +169,11 @@ module pm_distanceEuclid
     !>  \see
     !>  [euclid](@ref pm_distanceEuclid::euclid)<br>
     !>  [euclidu](@ref pm_distanceEuclid::euclidu)<br>
+    !>  [euclidv](@ref pm_distanceEuclid::euclidv)<br>
     !>  [euclidsq](@ref pm_distanceEuclid::euclidsq)<br>
     !>  [euclid_type](@ref pm_distanceEuclid::euclid_type)<br>
     !>  [euclidu_type](@ref pm_distanceEuclid::euclidu_type)<br>
+    !>  [euclidv_type](@ref pm_distanceEuclid::euclidv_type)<br>
     !>  [euclidsq_type](@ref pm_distanceEuclid::euclidsq_type)<br>
     !>  [getDisEuclid](@ref pm_distanceEuclid::getDisEuclid)<br>
     !>  [getDisMatEuclid](@ref pm_distanceEuclid::getDisMatEuclid)<br>
@@ -192,9 +198,11 @@ module pm_distanceEuclid
     !>  \see
     !>  [euclid](@ref pm_distanceEuclid::euclid)<br>
     !>  [euclidu](@ref pm_distanceEuclid::euclidu)<br>
+    !>  [euclidv](@ref pm_distanceEuclid::euclidv)<br>
     !>  [euclidsq](@ref pm_distanceEuclid::euclidsq)<br>
     !>  [euclid_type](@ref pm_distanceEuclid::euclid_type)<br>
     !>  [euclidu_type](@ref pm_distanceEuclid::euclidu_type)<br>
+    !>  [euclidv_type](@ref pm_distanceEuclid::euclidv_type)<br>
     !>  [euclidsq_type](@ref pm_distanceEuclid::euclidsq_type)<br>
     !>  [getDisEuclid](@ref pm_distanceEuclid::getDisEuclid)<br>
     !>  [getDisMatEuclid](@ref pm_distanceEuclid::getDisMatEuclid)<br>
@@ -207,6 +215,74 @@ module pm_distanceEuclid
     type(euclidu_type), parameter :: euclidu = euclidu_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: euclidu
+#endif
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !>  \brief
+    !>  This is a concrete derived type whose instances are exclusively used to
+    !>  request computing Euclidean volumes (with the possible risk of overflow or underflow).<br>
+    !>
+    !>  \details
+    !>  Objects instantiated from this derived type are exclusively used to differentiate the procedures within the
+    !>  [getDisMatEuclid](@ref pm_distanceEuclid::getDisMatEuclid) and [setDisMatEuclid](@ref pm_distanceEuclid::setDisMatEuclid) generic interfaces.<br>
+    !>  As such, this concrete derived type does not contain any attributes.<br>
+    !>
+    !>  \note
+    !>  This concrete derived type is not meant to be directly accessed by the end users.<br>
+    !>  Instead, the end users can use the sole object parameter instance of this derived type [euclidv](@ref pm_distanceEuclid::euclidv)
+    !>  to request computing the Euclidean squared-distances when calling [getDisMatEuclid](@ref pm_distanceEuclid::getDisMatEuclid)
+    !>  and [setDisMatEuclid](@ref pm_distanceEuclid::setDisMatEuclid) generic interfaces.<br>
+    !>
+    !>  \see
+    !>  [euclid](@ref pm_distanceEuclid::euclid)<br>
+    !>  [euclidu](@ref pm_distanceEuclid::euclidu)<br>
+    !>  [euclidv](@ref pm_distanceEuclid::euclidv)<br>
+    !>  [euclidsq](@ref pm_distanceEuclid::euclidsq)<br>
+    !>  [euclid_type](@ref pm_distanceEuclid::euclid_type)<br>
+    !>  [euclidu_type](@ref pm_distanceEuclid::euclidu_type)<br>
+    !>  [euclidv_type](@ref pm_distanceEuclid::euclidv_type)<br>
+    !>  [euclidsq_type](@ref pm_distanceEuclid::euclidsq_type)<br>
+    !>  [getDisEuclid](@ref pm_distanceEuclid::getDisEuclid)<br>
+    !>  [getDisMatEuclid](@ref pm_distanceEuclid::getDisMatEuclid)<br>
+    !>  [setDisMatEuclid](@ref pm_distanceEuclid::setDisMatEuclid)<br>
+    !>
+    !>  \final{euclidv_type}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    type :: euclidv_type
+    end type
+
+    !>  \brief
+    !>  This is a scalar `parameter` object of type [euclidv_type](@ref pm_distanceEuclid::euclidv_type)that is
+    !>  exclusively used to request computing Euclidean <b>squared</b>-distances (without undue overflow or underflow).<br>
+    !>
+    !>  \details
+    !>  This scalar `parameter` object is exclusively used to differentiate the procedures within the
+    !>  [getDisMatEuclid](@ref pm_distanceEuclid::getDisMatEuclid) and [setDisMatEuclid](@ref pm_distanceEuclid::setDisMatEuclid) generic interfaces.<br>
+    !>  See [getDisMatEuclid](@ref pm_distanceEuclid::getDisMatEuclid) and [setDisMatEuclid](@ref pm_distanceEuclid::setDisMatEuclid) for example usage.<br>
+    !>
+    !>  \see
+    !>  [euclid](@ref pm_distanceEuclid::euclid)<br>
+    !>  [euclidu](@ref pm_distanceEuclid::euclidu)<br>
+    !>  [euclidv](@ref pm_distanceEuclid::euclidv)<br>
+    !>  [euclidsq](@ref pm_distanceEuclid::euclidsq)<br>
+    !>  [euclid_type](@ref pm_distanceEuclid::euclid_type)<br>
+    !>  [euclidu_type](@ref pm_distanceEuclid::euclidu_type)<br>
+    !>  [euclidv_type](@ref pm_distanceEuclid::euclidv_type)<br>
+    !>  [euclidsq_type](@ref pm_distanceEuclid::euclidsq_type)<br>
+    !>  [getDisEuclid](@ref pm_distanceEuclid::getDisEuclid)<br>
+    !>  [getDisMatEuclid](@ref pm_distanceEuclid::getDisMatEuclid)<br>
+    !>  [setDisMatEuclid](@ref pm_distanceEuclid::setDisMatEuclid)<br>
+    !>
+    !>  \final{euclidv}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    type(euclidv_type), parameter :: euclidv = euclidv_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: euclidv
 #endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -229,9 +305,11 @@ module pm_distanceEuclid
     !>  \see
     !>  [euclid](@ref pm_distanceEuclid::euclid)<br>
     !>  [euclidu](@ref pm_distanceEuclid::euclidu)<br>
+    !>  [euclidv](@ref pm_distanceEuclid::euclidv)<br>
     !>  [euclidsq](@ref pm_distanceEuclid::euclidsq)<br>
     !>  [euclid_type](@ref pm_distanceEuclid::euclid_type)<br>
     !>  [euclidu_type](@ref pm_distanceEuclid::euclidu_type)<br>
+    !>  [euclidv_type](@ref pm_distanceEuclid::euclidv_type)<br>
     !>  [euclidsq_type](@ref pm_distanceEuclid::euclidsq_type)<br>
     !>  [getDisEuclid](@ref pm_distanceEuclid::getDisEuclid)<br>
     !>  [getDisMatEuclid](@ref pm_distanceEuclid::getDisMatEuclid)<br>
@@ -256,9 +334,11 @@ module pm_distanceEuclid
     !>  \see
     !>  [euclid](@ref pm_distanceEuclid::euclid)<br>
     !>  [euclidu](@ref pm_distanceEuclid::euclidu)<br>
+    !>  [euclidv](@ref pm_distanceEuclid::euclidv)<br>
     !>  [euclidsq](@ref pm_distanceEuclid::euclidsq)<br>
     !>  [euclid_type](@ref pm_distanceEuclid::euclid_type)<br>
     !>  [euclidu_type](@ref pm_distanceEuclid::euclidu_type)<br>
+    !>  [euclidv_type](@ref pm_distanceEuclid::euclidv_type)<br>
     !>  [euclidsq_type](@ref pm_distanceEuclid::euclidsq_type)<br>
     !>  [getDisEuclid](@ref pm_distanceEuclid::getDisEuclid)<br>
     !>  [getDisMatEuclid](@ref pm_distanceEuclid::getDisMatEuclid)<br>
@@ -302,6 +382,9 @@ module pm_distanceEuclid
     !>                                      <li>    the constant [euclidu](@ref pm_distanceEuclid::euclidu) or an object of type [euclidu_type](@ref pm_distanceEuclid::euclidu_type),
     !>                                              implying that all distance calculations must be **without** runtime checks for numerical overflow.<br>
     !>                                              This option is computationally faster than the [euclid](@ref pm_distanceEuclid::euclid) method.<br>
+    !>                                      <li>    the constant [euclidv](@ref pm_distanceEuclid::euclidv) or an object of type [euclidv_type](@ref pm_distanceEuclid::euclidv_type),
+    !>                                              implying that the volumes corresponding to all Euclidean distances must be returned **without** runtime checks for numerical overflow.<br>
+    !>                                              This option is computationally the fastest approach to computing the distances because it avoid costly `sqrt()` operations and runtime overflow 
     !>                                      <li>    the constant [euclidsq](@ref pm_distanceEuclid::euclidsq) or an object of type [euclidsq_type](@ref pm_distanceEuclid::euclidsq_type)
     !>                                              implying that the **squared** values of all distance calculations must be returned **without** runtime checks for numerical overflow.<br>
     !>                                              This option is computationally the fastest approach to computing the distances because it avoid costly `sqrt()` operations and runtime overflow checks.<br>
@@ -900,6 +983,9 @@ module pm_distanceEuclid
     !>                                      <li>    the constant [euclidu](@ref pm_distanceEuclid::euclidu) or an object of type [euclidu_type](@ref pm_distanceEuclid::euclidu_type),
     !>                                              implying that all distance calculations must be **without** runtime checks for numerical overflow.<br>
     !>                                              This option is computationally faster than the [euclid](@ref pm_distanceEuclid::euclid) method.<br>
+    !>                                      <li>    the constant [euclidv](@ref pm_distanceEuclid::euclidv) or an object of type [euclidv_type](@ref pm_distanceEuclid::euclidv_type),
+    !>                                              implying that the volumes corresponding to all Euclidean distances must be returned **without** runtime checks for numerical overflow.<br>
+    !>                                              This option is computationally the fastest approach to computing the distances because it avoid costly `sqrt()` operations and runtime overflow 
     !>                                      <li>    the constant [euclidsq](@ref pm_distanceEuclid::euclidsq) or an object of type [euclidsq_type](@ref pm_distanceEuclid::euclidsq_type)
     !>                                              implying that the **squared** values of all distance calculations must be returned **without** runtime checks for numerical overflow.<br>
     !>                                              This option is computationally the fastest approach to computing the distances because it avoid costly `sqrt()` operations and runtime overflow checks.<br>
@@ -927,8 +1013,8 @@ module pm_distanceEuclid
     !>  \endcode
     !>
     !>  \warning
-    !>  The condition `size(point, 1) == size(ref, 1)` must hold for the corresponding input arguments.<br>
     !>  The shapes of `distance`, `point`, and `ref` must be consistent as in the above interface at all times.<br>
+    !>  The condition `size(point, 1) == size(ref, 1) .or. rank(distance) == 2` must hold for the corresponding input arguments.<br>
     !>  \vericons
     !>
     !>  \warnpure
@@ -961,7 +1047,7 @@ module pm_distanceEuclid
     !>         || ||| || || The dimension of `ref` array: D1 => vector, D2 => matrix, XX => `ref` missing.
     !>         || ||| || The dimension of `point` array: D1 => vector, D2 => matrix.
     !>         || ||| The dimension of the output `distance`: D0 => scalar, D1 => vector, D2 => matrix.
-    !>         || The Method of Euclidean distance computation: MED => euclid_type (default/safe), MEU => eulidu_type (unsafe), MEQ => eulidsq_type (squared)
+    !>         || The Method of Euclidean distance computation: MED => euclid_type (default/safe), MEU => eulidu_type (unsafe), MEV => eulidv_type (volume), MEQ => eulidsq_type (squared)
     !>         The abbreviation for DisEuclid to shorten procedure names.
     !>  \endcode
     !>
@@ -1933,6 +2019,491 @@ module pm_distanceEuclid
         real(RKG)           , intent(in)    , contiguous    :: point(:)
         real(RKG)           , intent(out)   , contiguous    :: distance(:,:)
         type(euclidu_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    end interface
+
+    ! euclidv
+
+    interface setDisEuclid
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    PURE module subroutine setDE_MEV_D0_D1_XX_RK5(distance, point, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D0_D1_XX_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: point(:)
+        real(RKG)           , intent(out)                   :: distance
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK4_ENABLED
+    PURE module subroutine setDE_MEV_D0_D1_XX_RK4(distance, point, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D0_D1_XX_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: point(:)
+        real(RKG)           , intent(out)                   :: distance
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK3_ENABLED
+    PURE module subroutine setDE_MEV_D0_D1_XX_RK3(distance, point, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D0_D1_XX_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: point(:)
+        real(RKG)           , intent(out)                   :: distance
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK2_ENABLED
+    PURE module subroutine setDE_MEV_D0_D1_XX_RK2(distance, point, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D0_D1_XX_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: point(:)
+        real(RKG)           , intent(out)                   :: distance
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK1_ENABLED
+    PURE module subroutine setDE_MEV_D0_D1_XX_RK1(distance, point, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D0_D1_XX_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: point(:)
+        real(RKG)           , intent(out)                   :: distance
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    PURE module subroutine setDE_MEV_D1_D2_XX_RK5(distance, point, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D1_D2_XX_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:)
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK4_ENABLED
+    PURE module subroutine setDE_MEV_D1_D2_XX_RK4(distance, point, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D1_D2_XX_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:)
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK3_ENABLED
+    PURE module subroutine setDE_MEV_D1_D2_XX_RK3(distance, point, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D1_D2_XX_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:)
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK2_ENABLED
+    PURE module subroutine setDE_MEV_D1_D2_XX_RK2(distance, point, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D1_D2_XX_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:)
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK1_ENABLED
+    PURE module subroutine setDE_MEV_D1_D2_XX_RK1(distance, point, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D1_D2_XX_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:)
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    PURE module subroutine setDE_MEV_D0_D1_D1_RK5(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D0_D1_D1_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: ref(:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:)
+        real(RKG)           , intent(out)                   :: distance
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK4_ENABLED
+    PURE module subroutine setDE_MEV_D0_D1_D1_RK4(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D0_D1_D1_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: ref(:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:)
+        real(RKG)           , intent(out)                   :: distance
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK3_ENABLED
+    PURE module subroutine setDE_MEV_D0_D1_D1_RK3(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D0_D1_D1_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: ref(:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:)
+        real(RKG)           , intent(out)                   :: distance
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK2_ENABLED
+    PURE module subroutine setDE_MEV_D0_D1_D1_RK2(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D0_D1_D1_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: ref(:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:)
+        real(RKG)           , intent(out)                   :: distance
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK1_ENABLED
+    PURE module subroutine setDE_MEV_D0_D1_D1_RK1(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D0_D1_D1_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: ref(:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:)
+        real(RKG)           , intent(out)                   :: distance
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    PURE module subroutine setDE_MEV_D1_D1_D2_RK5(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D1_D1_D2_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: ref(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:)
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK4_ENABLED
+    PURE module subroutine setDE_MEV_D1_D1_D2_RK4(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D1_D1_D2_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: ref(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:)
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK3_ENABLED
+    PURE module subroutine setDE_MEV_D1_D1_D2_RK3(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D1_D1_D2_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: ref(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:)
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK2_ENABLED
+    PURE module subroutine setDE_MEV_D1_D1_D2_RK2(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D1_D1_D2_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: ref(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:)
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK1_ENABLED
+    PURE module subroutine setDE_MEV_D1_D1_D2_RK1(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D1_D1_D2_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: ref(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:)
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    PURE module subroutine setDE_MEV_D1_D2_D1_RK5(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D1_D2_D1_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: ref(:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:)
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK4_ENABLED
+    PURE module subroutine setDE_MEV_D1_D2_D1_RK4(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D1_D2_D1_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: ref(:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:)
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK3_ENABLED
+    PURE module subroutine setDE_MEV_D1_D2_D1_RK3(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D1_D2_D1_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: ref(:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:)
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK2_ENABLED
+    PURE module subroutine setDE_MEV_D1_D2_D1_RK2(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D1_D2_D1_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: ref(:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:)
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK1_ENABLED
+    PURE module subroutine setDE_MEV_D1_D2_D1_RK1(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D1_D2_D1_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: ref(:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:)
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    PURE module subroutine setDE_MEV_D2_D2_D2_RK5(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D2_D2_D2_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: ref(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:,:)
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK4_ENABLED
+    PURE module subroutine setDE_MEV_D2_D2_D2_RK4(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D2_D2_D2_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: ref(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:,:)
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK3_ENABLED
+    PURE module subroutine setDE_MEV_D2_D2_D2_RK3(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D2_D2_D2_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: ref(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:,:)
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK2_ENABLED
+    PURE module subroutine setDE_MEV_D2_D2_D2_RK2(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D2_D2_D2_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: ref(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:,:)
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK1_ENABLED
+    PURE module subroutine setDE_MEV_D2_D2_D2_RK1(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D2_D2_D2_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: ref(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:,:)
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    PURE module subroutine setDE_MEV_D2_D1_D1_RK5(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D2_D1_D1_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: ref(:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:,:)
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK4_ENABLED
+    PURE module subroutine setDE_MEV_D2_D1_D1_RK4(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D2_D1_D1_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: ref(:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:,:)
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK3_ENABLED
+    PURE module subroutine setDE_MEV_D2_D1_D1_RK3(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D2_D1_D1_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: ref(:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:,:)
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK2_ENABLED
+    PURE module subroutine setDE_MEV_D2_D1_D1_RK2(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D2_D1_D1_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: ref(:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:,:)
+        type(euclidv_type)  , intent(in)                    :: method
+    end subroutine
+#endif
+
+#if RK1_ENABLED
+    PURE module subroutine setDE_MEV_D2_D1_D1_RK1(distance, point, ref, method)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setDE_MEV_D2_D1_D1_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: ref(:)
+        real(RKG)           , intent(in)    , contiguous    :: point(:)
+        real(RKG)           , intent(out)   , contiguous    :: distance(:,:)
+        type(euclidv_type)  , intent(in)                    :: method
     end subroutine
 #endif
 

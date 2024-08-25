@@ -47,6 +47,128 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#define getVolUnitBall_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define Iter_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RK_ENABLED 1
+
+#if RK5_ENABLED
+    module procedure getVolUnitBallIter_RK5
+        use pm_kind, only: RKG => RK5
+#include "pm_ellipsoid@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK4_ENABLED
+    module procedure getVolUnitBallIter_RK4
+        use pm_kind, only: RKG => RK4
+#include "pm_ellipsoid@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK3_ENABLED
+    module procedure getVolUnitBallIter_RK3
+        use pm_kind, only: RKG => RK3
+#include "pm_ellipsoid@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK2_ENABLED
+    module procedure getVolUnitBallIter_RK2
+        use pm_kind, only: RKG => RK2
+#include "pm_ellipsoid@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK1_ENABLED
+    module procedure getVolUnitBallIter_RK1
+        use pm_kind, only: RKG => RK1
+#include "pm_ellipsoid@routines.inc.F90"
+    end procedure
+#endif
+
+#undef RK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef Iter_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef getVolUnitBall_ENABLED
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define setVolUnitBall_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define Iter_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RK_ENABLED 1
+
+#if RK5_ENABLED
+    module procedure setVolUnitBallIter_RK5
+        use pm_kind, only: RKG => RK5
+#include "pm_ellipsoid@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK4_ENABLED
+    module procedure setVolUnitBallIter_RK4
+        use pm_kind, only: RKG => RK4
+#include "pm_ellipsoid@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK3_ENABLED
+    module procedure setVolUnitBallIter_RK3
+        use pm_kind, only: RKG => RK3
+#include "pm_ellipsoid@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK2_ENABLED
+    module procedure setVolUnitBallIter_RK2
+        use pm_kind, only: RKG => RK2
+#include "pm_ellipsoid@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK1_ENABLED
+    module procedure setVolUnitBallIter_RK1
+        use pm_kind, only: RKG => RK1
+#include "pm_ellipsoid@routines.inc.F90"
+    end procedure
+#endif
+
+#undef RK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef Iter_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef setVolUnitBall_ENABLED
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 #define getLogVolUnitBall_ENABLED 1
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
