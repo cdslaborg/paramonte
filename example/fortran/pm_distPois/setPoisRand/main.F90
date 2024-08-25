@@ -63,17 +63,14 @@ program example
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block
-        integer(IK) :: fileUnit, i
-        integer(IK) , parameter :: NP = 5000_IK
-        real(RKG)   , parameter :: lambda(4) = [.1_RKG, 1._RKG, 4._RKG, 11._RKG]
-        integer(IK) :: rand(NP, 4)
+        use pm_io, only: getErrTableWrite
+        integer(IK) :: rand(500, 4)
+        real(RKG), parameter :: lambda(4) = [.1_RKG, 1._RKG, 4._RKG, 11._RKG]
         call setPoisRand(rand(:, 1), exp(-lambda(1)))
         call setPoisRand(rand(:, 2), exp(-lambda(2)))
         call setPoisRand(rand(:, 3), exp(-lambda(3)))
         call setPoisRand(rand(:, 4), lambda(4), log(lambda(4)), sqrt(lambda(4)))
-        open(newunit = fileUnit, file = "setPoisRand.IK.txt")
-        write(fileUnit,"(4(g0,:,' '))") (rand(i,:), i = 1, NP)
-        close(fileUnit)
+        if (0 /= getErrTableWrite(SK_"setPoisRand.IK.txt", rand)) error stop "Table writing failed."
     end block
 
 end program example

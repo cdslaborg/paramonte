@@ -136,12 +136,14 @@
         do idim = 1, ndim
             do
                 call setUnifRand(rng, upper(1 : idim, idim), LB, UB)
-                normfac = real(sqrt(dot_product(upper(1 : idim, idim), upper(1 : idim, idim))), TKG) ! \todo: The performance of this expression can be improved by replacing `dot_product` with `absq()`.
-                if (ZERO == normfac) cycle
+                normfac = real(sqrt(dot_product(upper(1 : idim, idim), upper(1 : idim, idim))), TKG)
+                ! \todo: The performance of the above expression can be improved by replacing `dot_product` with `absq()`.
+                if (0._TKG == normfac) cycle
                 exit
             end do
             normfac = 1._TKG / normfac
             upper(1 : idim, idim) = upper(1 : idim, idim) * normfac
+            upper(idim + 1 : ndim, idim) = ZERO
         end do
         rand = matmul(transpose(GET_CONJG(upper)), upper)
 

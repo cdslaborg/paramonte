@@ -51,14 +51,14 @@
             npnt = getUnifRand(1_IK, 20_IK)
             nref = getUnifRand(1_IK, 20_IK)
 
-            diff = getFilled(0._TKG, nref, npnt)
+            diff = getFilled(0._TKG, npnt, nref)
             if (isorigin) then
                 ref = getFilled(0._TKG, ndim, nref)
             else
                 ref = getUnifRand(-1._TKG, 1._TKG, ndim, nref)
             end if
             point = getUnifRand(-1._TKG, 1._TKG, ndim, npnt)
-            call setResized(distance, [nref, npnt])
+            call setResized(distance, [npnt, nref])
 
             do imethod = 1, size(method)
                 distance_ref = getDisEuclid_ref(point, ref, method(imethod)%val)
@@ -68,50 +68,54 @@
                     block
                         integer(IK) :: ipnt, iref
                         ipnt = 1_IK; iref = 1_IK
-                        distance(iref,ipnt) = getDisEuclid(point(:,ipnt), method(imethod)%val)
-                        diff(iref,ipnt) = abs(distance(iref,ipnt) - distance_ref(iref,ipnt))
-                        assertion = assertion .and. diff(iref,ipnt) < EPS
-                        call report(__LINE__, mnames(imethod)%val, point(:,ipnt), ref(:,iref), distance(iref,ipnt), distance_ref(iref,ipnt), diff(iref,ipnt))
+                        distance(ipnt, iref) = getDisEuclid(point(:, ipnt), method(imethod)%val)
+                        diff(ipnt, iref) = abs(distance(ipnt, iref) - distance_ref(ipnt, iref))
+                        assertion = assertion .and. diff(ipnt, iref) < EPS
+                        call report(__LINE__, mnames(imethod)%val, point(:, ipnt), ref(:, iref), distance(ipnt, iref), distance_ref(ipnt, iref), diff(ipnt, iref))
                     end block
                     ! D2_XX
                     block
                         integer(IK) :: iref
                         iref = 1_IK
-                        distance(iref,:) = getDisEuclid(point(:,:), method(imethod)%val)
-                        diff(iref,:) = abs(distance(iref,:) - distance_ref(iref,:))
-                        assertion = assertion .and. all(diff(iref,:) < EPS)
-                        call report(__LINE__, mnames(imethod)%val, point(:,:), ref(:,iref), distance(iref,:), distance_ref(iref,:), diff(iref,:))
+                        distance(:, iref) = getDisEuclid(point(:,:), method(imethod)%val)
+                        diff(:, iref) = abs(distance(:, iref) - distance_ref(:, iref))
+                        assertion = assertion .and. all(diff(:, iref) < EPS)
+                        call report(__LINE__, mnames(imethod)%val, point(:,:), ref(:, iref), distance(:, iref), distance_ref(:, iref), diff(:, iref))
                     end block
                 else
                     ! D1_D1
                     block
                         integer(IK) :: ipnt, iref
                         ipnt = 1_IK; iref = 1_IK
-                        distance(iref,ipnt) = getDisEuclid(point(:,ipnt), ref(:,iref), method(imethod)%val)
-                        diff(iref,ipnt) = abs(distance(iref,ipnt) - distance_ref(iref,ipnt))
-                        assertion = assertion .and. diff(iref,ipnt) < EPS
-                        call report(__LINE__, mnames(imethod)%val, point(:,ipnt), ref(:,iref), distance(iref,ipnt), distance_ref(iref,ipnt), diff(iref,ipnt))
+                        distance(ipnt, iref) = getDisEuclid(point(:, ipnt), ref(:, iref), method(imethod)%val)
+                        diff(ipnt, iref) = abs(distance(ipnt, iref) - distance_ref(ipnt, iref))
+                        assertion = assertion .and. diff(ipnt, iref) < EPS
+                        call report(__LINE__, mnames(imethod)%val, point(:, ipnt), ref(:, iref), distance(ipnt, iref), distance_ref(ipnt, iref), diff(ipnt, iref))
                     end block
                     ! D1_D2
                     block
                         integer(IK), allocatable :: ipnt
                         ipnt = 1_IK
-                        distance(:,ipnt) = getDisEuclid(point(:,ipnt), ref(:,:), method(imethod)%val)
-                        diff(:,ipnt) = abs(distance(:,ipnt) - distance_ref(:,ipnt))
-                        assertion = assertion .and. all(diff(:,ipnt) < EPS)
-                        call report(__LINE__, mnames(imethod)%val, point(:,ipnt), ref(:,:), distance(:,ipnt), distance_ref(:,ipnt), diff(:,ipnt))
+                        distance(ipnt, :) = getDisEuclid(point(:, ipnt), ref(:,:), method(imethod)%val)
+                        diff(ipnt, :) = abs(distance(ipnt, :) - distance_ref(ipnt, :))
+                        assertion = assertion .and. all(diff(ipnt, :) < EPS)
+                        call report(__LINE__, mnames(imethod)%val, point(:, ipnt), ref(:,:), distance(ipnt, :), distance_ref(ipnt, :), diff(ipnt, :))
                     end block
                     ! D2_D1
                     block
                         integer(IK) :: iref
                         iref = 1_IK
-                        distance(iref,:) = getDisEuclid(point(:,:), ref(:,iref), method(imethod)%val)
-                        diff(iref,:) = abs(distance(iref,:) - distance_ref(iref,:))
-                        assertion = assertion .and. all(diff(iref,:) < EPS)
-                        call report(__LINE__, mnames(imethod)%val, point(:,:), ref(:,iref), distance(iref,:), distance_ref(iref,:), diff(iref,:))
+                        distance(:, iref) = getDisEuclid(point(:,:), ref(:, iref), method(imethod)%val)
+                        diff(:, iref) = abs(distance(:, iref) - distance_ref(:, iref))
+                        assertion = assertion .and. all(diff(:, iref) < EPS)
+                        call report(__LINE__, mnames(imethod)%val, point(:,:), ref(:, iref), distance(:, iref), distance_ref(:, iref), diff(:, iref))
                     end block
                     ! D2_D2
                     block
+block
+use pm_io
+call disp%show([shape(distance), shape(getDisEuclid(point(:,:), ref(:,:), method(imethod)%val)), shape(point), shape(ref)])
+end block
                         distance(:,:) = getDisEuclid(point(:,:), ref(:,:), method(imethod)%val)
                         diff(:,:) = abs(distance(:,:) - distance_ref(:,:))
                         assertion = assertion .and. all(diff(:,:) < EPS)
@@ -125,34 +129,34 @@
                         integer(IK) :: ipnt, iref
                         ipnt = 1_IK; iref = 1_IK
                         if (same_type_as(method(imethod)%val, euclid)) then
-                            call setDisEuclid(distance(iref,ipnt), point(:,ipnt), euclid)
+                            call setDisEuclid(distance(ipnt, iref), point(:, ipnt), euclid)
                         elseif (same_type_as(method(imethod)%val, euclidu)) then
-                            call setDisEuclid(distance(iref,ipnt), point(:,ipnt), euclidu)
+                            call setDisEuclid(distance(ipnt, iref), point(:, ipnt), euclidu)
                         elseif (same_type_as(method(imethod)%val, euclidsq)) then
-                            call setDisEuclid(distance(iref,ipnt), point(:,ipnt), euclidsq)
+                            call setDisEuclid(distance(ipnt, iref), point(:, ipnt), euclidsq)
                         else
                             error stop "@test_pm_distanceEuclid@test_setDisEuclid(): Internal library error occurred. Unrecognized `method`." ! LCOV_EXCL_LINE
                         end if
-                        diff(iref,ipnt) = abs(distance(iref,ipnt) - distance_ref(iref,ipnt))
-                        assertion = assertion .and. diff(iref,ipnt) < EPS
-                        call report(__LINE__, mnames(imethod)%val, point(:,ipnt), ref(:,iref), distance(iref,ipnt), distance_ref(iref,ipnt), diff(iref,ipnt))
+                        diff(ipnt, iref) = abs(distance(ipnt, iref) - distance_ref(ipnt, iref))
+                        assertion = assertion .and. diff(ipnt, iref) < EPS
+                        call report(__LINE__, mnames(imethod)%val, point(:, ipnt), ref(:, iref), distance(ipnt, iref), distance_ref(ipnt, iref), diff(ipnt, iref))
                     end block
                     ! D2_XX
                     block
                         integer(IK) :: iref
                         iref = 1_IK
                         if (same_type_as(method(imethod)%val, euclid)) then
-                            call setDisEuclid(distance(iref,:), point(:,:), euclid)
+                            call setDisEuclid(distance(:, iref), point(:,:), euclid)
                         elseif (same_type_as(method(imethod)%val, euclidu)) then
-                            call setDisEuclid(distance(iref,:), point(:,:), euclidu)
+                            call setDisEuclid(distance(:, iref), point(:,:), euclidu)
                         elseif (same_type_as(method(imethod)%val, euclidsq)) then
-                            call setDisEuclid(distance(iref,:), point(:,:), euclidsq)
+                            call setDisEuclid(distance(:, iref), point(:,:), euclidsq)
                         else
                             error stop "@test_pm_distanceEuclid@test_setDisEuclid(): Internal library error occurred. Unrecognized `method`." ! LCOV_EXCL_LINE
                         end if
-                        diff(iref,:) = abs(distance(iref,:) - distance_ref(iref,:))
-                        assertion = assertion .and. all(diff(iref,:) < EPS)
-                        call report(__LINE__, mnames(imethod)%val, point(:,:), ref(:,iref), distance(iref,:), distance_ref(iref,:), diff(iref,:))
+                        diff(:, iref) = abs(distance(:, iref) - distance_ref(:, iref))
+                        assertion = assertion .and. all(diff(:, iref) < EPS)
+                        call report(__LINE__, mnames(imethod)%val, point(:,:), ref(:, iref), distance(:, iref), distance_ref(:, iref), diff(:, iref))
                     end block
                 else
                     ! D1_D1
@@ -160,51 +164,51 @@
                         integer(IK) :: ipnt, iref
                         ipnt = 1_IK; iref = 1_IK
                         if (same_type_as(method(imethod)%val, euclid)) then
-                            call setDisEuclid(distance(iref,ipnt), point(:,ipnt), ref(:,iref), euclid)
+                            call setDisEuclid(distance(ipnt, iref), point(:, ipnt), ref(:, iref), euclid)
                         elseif (same_type_as(method(imethod)%val, euclidu)) then
-                            call setDisEuclid(distance(iref,ipnt), point(:,ipnt), ref(:,iref), euclidu)
+                            call setDisEuclid(distance(ipnt, iref), point(:, ipnt), ref(:, iref), euclidu)
                         elseif (same_type_as(method(imethod)%val, euclidsq)) then
-                            call setDisEuclid(distance(iref,ipnt), point(:,ipnt), ref(:,iref), euclidsq)
+                            call setDisEuclid(distance(ipnt, iref), point(:, ipnt), ref(:, iref), euclidsq)
                         else
                             error stop "@test_pm_distanceEuclid@test_setDisEuclid(): Internal library error occurred. Unrecognized `method`." ! LCOV_EXCL_LINE
                         end if
-                        diff(iref,ipnt) = abs(distance(iref,ipnt) - distance_ref(iref,ipnt))
-                        assertion = assertion .and. diff(iref,ipnt) < EPS
-                        call report(__LINE__, mnames(imethod)%val, point(:,ipnt), ref(:,iref), distance(iref,ipnt), distance_ref(iref,ipnt), diff(iref,ipnt))
+                        diff(ipnt, iref) = abs(distance(ipnt, iref) - distance_ref(ipnt, iref))
+                        assertion = assertion .and. diff(ipnt, iref) < EPS
+                        call report(__LINE__, mnames(imethod)%val, point(:, ipnt), ref(:, iref), distance(ipnt, iref), distance_ref(ipnt, iref), diff(ipnt, iref))
                     end block
                     ! D1_D2
                     block
                         integer(IK), allocatable :: ipnt
                         ipnt = 1_IK
                         if (same_type_as(method(imethod)%val, euclid)) then
-                            call setDisEuclid(distance(:,ipnt), point(:,ipnt), ref(:,:), euclid)
+                            call setDisEuclid(distance(ipnt, :), point(:, ipnt), ref(:,:), euclid)
                         elseif (same_type_as(method(imethod)%val, euclidu)) then
-                            call setDisEuclid(distance(:,ipnt), point(:,ipnt), ref(:,:), euclidu)
+                            call setDisEuclid(distance(ipnt, :), point(:, ipnt), ref(:,:), euclidu)
                         elseif (same_type_as(method(imethod)%val, euclidsq)) then
-                            call setDisEuclid(distance(:,ipnt), point(:,ipnt), ref(:,:), euclidsq)
+                            call setDisEuclid(distance(ipnt, :), point(:, ipnt), ref(:,:), euclidsq)
                         else
                             error stop "@test_pm_distanceEuclid@test_setDisEuclid(): Internal library error occurred. Unrecognized `method`." ! LCOV_EXCL_LINE
                         end if
-                        diff(:,ipnt) = abs(distance(:,ipnt) - distance_ref(:,ipnt))
-                        assertion = assertion .and. all(diff(:,ipnt) < EPS)
-                        call report(__LINE__, mnames(imethod)%val, point(:,ipnt), ref(:,:), distance(:,ipnt), distance_ref(:,ipnt), diff(:,ipnt))
+                        diff(ipnt, :) = abs(distance(ipnt, :) - distance_ref(ipnt, :))
+                        assertion = assertion .and. all(diff(ipnt, :) < EPS)
+                        call report(__LINE__, mnames(imethod)%val, point(:, ipnt), ref(:,:), distance(ipnt, :), distance_ref(ipnt, :), diff(ipnt, :))
                     end block
                     ! D2_D1
                     block
                         integer(IK) :: iref
                         iref = 1_IK
                         if (same_type_as(method(imethod)%val, euclid)) then
-                            call setDisEuclid(distance(iref,:), point(:,:), ref(:,iref), euclid)
+                            call setDisEuclid(distance(:, iref), point(:,:), ref(:, iref), euclid)
                         elseif (same_type_as(method(imethod)%val, euclidu)) then
-                            call setDisEuclid(distance(iref,:), point(:,:), ref(:,iref), euclidu)
+                            call setDisEuclid(distance(:, iref), point(:,:), ref(:, iref), euclidu)
                         elseif (same_type_as(method(imethod)%val, euclidsq)) then
-                            call setDisEuclid(distance(iref,:), point(:,:), ref(:,iref), euclidsq)
+                            call setDisEuclid(distance(:, iref), point(:,:), ref(:, iref), euclidsq)
                         else
                             error stop "@test_pm_distanceEuclid@test_setDisEuclid(): Internal library error occurred. Unrecognized `method`." ! LCOV_EXCL_LINE
                         end if
-                        diff(iref,:) = abs(distance(iref,:) - distance_ref(iref,:))
-                        assertion = assertion .and. all(diff(iref,:) < EPS)
-                        call report(__LINE__, mnames(imethod)%val, point(:,:), ref(:,iref), distance(iref,:), distance_ref(iref,:), diff(iref,:))
+                        diff(:, iref) = abs(distance(:, iref) - distance_ref(:, iref))
+                        assertion = assertion .and. all(diff(:, iref) < EPS)
+                        call report(__LINE__, mnames(imethod)%val, point(:,:), ref(:, iref), distance(:, iref), distance_ref(:, iref), diff(:, iref))
                     end block
                     ! D2_D2
                     block
@@ -232,7 +236,7 @@
         pure function getDisEuclid_ref(point, ref, method) result(distance_ref)
             real(TKG), intent(in), contiguous :: point(:,:), ref(:,:)
             class(*), intent(in) :: method
-            real(TKG) :: distance_ref(size(ref, 2, IK), size(point, 2, IK))
+            real(TKG) :: distance_ref(size(point, 2, IK), size(ref, 2, IK))
             integer(IK) :: ndim, npnt, nref
             integer(IK) :: ipnt, iref
             ndim = size(point, 1, IK)
@@ -240,7 +244,7 @@
             nref = size(ref, 2, IK)
             do ipnt = 1, npnt
                 do iref = 1, nref
-                    distance_ref(iref, ipnt) = sum((point(1:ndim, ipnt) - ref(1:ndim, iref))**2)
+                    distance_ref(ipnt, iref) = sum((point(1:ndim, ipnt) - ref(1:ndim, iref))**2)
                 end do
             end do
             if (same_type_as(method, euclidsq)) return

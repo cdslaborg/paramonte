@@ -434,7 +434,7 @@ if ("${test}" STREQUAL "all")
                 "${pmwarn} Resetting `mod` to `all`...\n"
                 "\n"
                 )
-        set(mod "all" CACHE "modules to compiler." FORCE)
+        set(mod "all" CACHE STRING "modules to compiler." FORCE)
     endif()
 endif()
 

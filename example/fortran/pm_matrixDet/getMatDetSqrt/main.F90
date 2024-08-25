@@ -27,7 +27,7 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKG => RKS
+        use pm_kind, only: TKG => RKD
         real(TKG), allocatable :: mat(:,:)
         real(TKG) :: detSqrt
         do itry = 1, ntry

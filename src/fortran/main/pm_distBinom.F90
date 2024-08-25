@@ -92,6 +92,27 @@
 !>      &=& (n-k){n \choose k}\int _{0}^{1-p}t^{n-k-1}(1-t)^{k}\,dt ~.
 !>  \f}
 !>
+!>  Sums of binomials
+!>  -----------------
+!>
+!>  If \f$X \sim B(n, p)\f$ and \f$Y \sim B(m, p)\f$ are independent binomial variables with the same probability \f$p\f$,
+!>  then \f$X + Y\f$ is again a binomial variable; its distribution is \f$Z = X + Y \sim B(n+m, p)\f$:<br>
+!>  \f{eqnarray}{
+!>      \large
+!>      \up{P}(Z=k)
+!>      &=& \sum_{i=0}^{k}\left[{\binom {n}{i}}p^{i}(1-p)^{n-i}\right]\left[{\binom {m}{k-i}}p^{k-i}(1-p)^{m-k+i}\right] \\
+!>      &=& \binom{n+m}{k} p^{k}(1-p)^{n+m-k} ~.
+!>  \f}
+!>
+!>  A Binomial distributed random variable \f$X \sim B(n, p)\f$ can be considered as the sum of \f$n\f$
+!>  [Bernoulli distributed](@ref pm_distBern) random variables.<br>
+!>  Thus, the sum of two Binomial distributed random variable \f$X \sim B(n, p)\f$ and \f$Y \sim B(m, p)\f$
+!>  is equivalent to the sum of \f$n + m\f$ Bernoulli distributed random variables,
+!>  which means \f$Z = X + Y \sim B(n + m, p)\f$.<br>
+!>
+!>  However, if \f$X\f$ and \f$Y\f$ do not have the same probability \f$p\f$,
+!>  then the variance of the sum will be smaller than the variance of a binomial variable distributed as \f$B(n+m,{\bar{p}})\f$.<br>
+!>
 !>  \test
 !>  [test_pm_distBinom](@ref test_pm_distBinom)
 !>

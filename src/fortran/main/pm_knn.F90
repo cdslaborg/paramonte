@@ -127,7 +127,7 @@ module pm_knn
     !>                                  up to which the distances in each column will be sorted in ascending order.<br>
     !>                                  The rest of the rows beyond the `k`th row remain unsorted.<br>
     !>                                  This argument is useful when sorting the entire distance matrix or computing the entire `rank` matrix is unnecessary.<br>
-    !>                                  (**optional**. It can be present **if and only if** the input argument `rank` is missing.)
+    !>                                  (**optional**, default = `size(distance, 1)`. It can be present **if and only if** the input argument `rank` is missing.)
     !>
     !>  \interface{setKnnSorted}
     !>  \code{.F90}

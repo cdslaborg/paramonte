@@ -67,14 +67,14 @@
         call setDisEuclid(distance, point, REF euclid)
 #undef  REF
 
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-#elif   setDisEuclid_ENABLED && (D1_XX_ENABLED || D1_D1_ENABLED)
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#elif   setDisEuclid_ENABLED && (D0_D1_XX_ENABLED || D0_D1_D1_ENABLED)
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: idim
-#if     D1_XX_ENABLED
+#if     D0_D1_XX_ENABLED
 #define GET_DIFF(PNT,REF)PNT
-#elif   D1_D1_ENABLED
+#elif   D0_D1_D1_ENABLED
 #define GET_DIFF(PNT,REF)(PNT - REF)
         CHECK_ASSERTION(__LINE__, size(point, 1, IK) == size(ref, 1, IK), SK_"@setDisEuclid(): The condition `size(point) == size(ref)` must hold. size(point), size(ref) = "//getStr([size(point, 1, IK), size(ref, 1, IK)]))
 #else
@@ -113,9 +113,9 @@
 #endif
 #undef  GET_DIFF
 
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-#elif   setDisEuclid_ENABLED && D1_D2_ENABLED
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#elif   setDisEuclid_ENABLED && D1_D1_D2_ENABLED
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: iref, ndim
         ndim = size(point, 1, IK)
@@ -124,33 +124,52 @@
             call setDisEuclid(distance(iref), point, ref(1:ndim, iref), method)
         end do
 
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-#elif   setDisEuclid_ENABLED && (D2_XX_ENABLED || D2_D1_ENABLED)
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#elif   setDisEuclid_ENABLED && (D1_D2_XX_ENABLED || D1_D2_D1_ENABLED)
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: ipnt, ndim
         ndim = size(point, 1, IK)
         CHECK_ASSERTION(__LINE__, size(point, 2, IK) == size(distance, 1, IK), SK_"@getDisEuclid(): The condition `size(point, 2) == size(distance)` must hold. shape(point), size(distance) = "//getStr([shape(point, IK), size(distance, 1, IK)]))
         do ipnt = 1_IK, size(point, 2, IK)
-#if         D2_XX_ENABLED
+#if         D1_D2_XX_ENABLED
             call setDisEuclid(distance(ipnt), point(1:ndim, ipnt), method)
-#elif       D2_D1_ENABLED
+#elif       D1_D2_D1_ENABLED
             call setDisEuclid(distance(ipnt), point(1:ndim, ipnt), ref, method)
 #else
 #error      "Unrecognized interface."
 #endif
         end do
 
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-#elif   setDisEuclid_ENABLED && D2_D2_ENABLED
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#elif   setDisEuclid_ENABLED && D2_D1_D1_ENABLED
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        integer(IK) :: ipnt, ndim, nref
-        nref = size(ref, 2, IK)
-        ndim = size(point, 1, IK)
-        CHECK_ASSERTION(__LINE__, all(shape(distance, IK) == [nref, size(point, 2, IK)]), SK_"@getDisEuclid(): The condition `all(shape(distance) == [size(ref, 2), size(point, 2)])` must hold. shape(distance), shape(ref), shape(point) = "//getStr([shape(distance, IK), shape(ref, IK), shape(point, IK)]))
-        do ipnt = 1_IK, size(point, 2, IK)
-            call setDisEuclid(distance(1 : nref, ipnt), point(1 : ndim, ipnt), ref, method)
+        integer(IK) :: iref, nref, npnt
+        npnt = size(point, 1, IK)
+        nref = size(ref, 1, IK)
+        CHECK_ASSERTION(__LINE__, all(shape(distance, IK) == [npnt, nref]), SK_"@getDisEuclid(): The condition `all(shape(distance) == [size(point), size(ref)])` must hold. shape(distance), shape(point), shape(ref) = "//getStr([shape(distance), shape(point), shape(ref)]))
+        do iref = 1_IK, nref
+#if         MEQ_ENABLED
+            distance(1 : npnt, iref) = (point - ref(iref))**2
+#elif       MED_ENABLED || MEU_ENABLED
+            distance(1 : npnt, iref) = abs(point - ref(iref))
+#else
+#error      "Unrecognized interface."
+#endif
+        end do
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#elif   setDisEuclid_ENABLED && D2_D2_D2_ENABLED
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        integer(IK) :: iref, npnt, ndim
+        npnt = size(point, 2, IK)
+        ndim = size(ref, 1, IK)
+        CHECK_ASSERTION(__LINE__, size(point, 1, IK) == size(ref, 1, IK), SK_"@getDisEuclid(): The condition `size(point, 1) == size(ref, 1)` must hold. size(point, 1) == size(ref, 1) = "//getStr([size(point, 1, IK) == size(ref, 1, IK)]))
+        CHECK_ASSERTION(__LINE__, all(shape(distance, IK) == [npnt, size(ref, 2, IK)]), SK_"@getDisEuclid(): The condition `all(shape(distance) == [size(point, 2), size(ref, 2)])` must hold. shape(distance), shape(point), shape(ref) = "//getStr([shape(distance), shape(point), shape(ref)]))
+        do iref = 1_IK, size(ref, 2, IK)
+            call setDisEuclid(distance(1 : npnt, iref), point, ref(1 : ndim, iref), method)
         end do
 
         !%%%%%%%%%%%%%%%%%%%%%%

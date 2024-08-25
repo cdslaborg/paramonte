@@ -745,7 +745,7 @@ if (EXISTS "${origin}")
 
             unset(paramonte_${collection}PP_dir_list)
 
-            if ("${${collection}PP}" STREQUAL "")
+            if ("${${collection}PP}" STREQUAL "" OR "${${collection}PP}" STREQUAL "${${collection}BR}")
                 if (DEFINED paramonte_${collection}BR_dir_list)
                     set(paramonte_${collection}PP_dir_list "${paramonte_${collection}BR_dir_list}")
                 endif()

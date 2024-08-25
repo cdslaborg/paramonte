@@ -7,6 +7,7 @@ program example
     use pm_distUnif, only: getUnifRand
     use pm_distUnif, only: setUnifRand
     use pm_distUnif, only: xoshiro256ssg_type
+    use pm_io, only: getErrTableWrite
 
     implicit none
 
@@ -183,34 +184,21 @@ program example
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block
-        use pm_kind, only: IKL
-        integer(IK) :: fileUnit
-        integer(IK), parameter :: NP = 10000_IK
-        integer(IKL), dimension(NP) :: rand
-        call setUnifRand(rng, rand)
-        open(newunit = fileUnit, file = "xoshiro256ssg_type.IK.txt")
-        write(fileUnit,"(1(g0,:,' '))") rand
-        close(fileUnit)
+        integer :: rand(5000)
+        call setUnifRand(rng, rand, -2, 3)
+        if (0 /= getErrTableWrite(SK_"xoshiro256ssg_type.IK.txt", rand)) error stop "Table writing failed."
     end block
 
     block
-        integer(IK) :: fileUnit
-        integer(IK), parameter :: NP = 5000_IK
-        complex, dimension(NP) :: rand
+        complex :: rand(5000)
         call setUnifRand(rng, rand, (-2., +2.), (3., 5.))
-        open(newunit = fileUnit, file = "xoshiro256ssg_type.CK.txt")
-        write(fileUnit,"(2(g0,:,' '))") rand
-        close(fileUnit)
+        if (0 /= getErrTableWrite(SK_"xoshiro256ssg_type.CK.txt", rand)) error stop "Table writing failed."
     end block
 
     block
-        integer(IK) :: fileUnit
-        integer(IK), parameter :: NP = 5000_IK
-        real, dimension(NP) :: rand
+        real :: rand(5000)
         call setUnifRand(rng, rand)
-        open(newunit = fileUnit, file = "xoshiro256ssg_type.RK.txt")
-        write(fileUnit,"(1(g0,:,' '))") rand
-        close(fileUnit)
+        if (0 /= getErrTableWrite(SK_"xoshiro256ssg_type.RK.txt", rand)) error stop "Table writing failed."
     end block
 
 end program example

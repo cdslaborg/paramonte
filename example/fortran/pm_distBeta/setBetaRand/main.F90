@@ -79,16 +79,13 @@ program example
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block
-        integer(IK) :: fileUnit, i
-        integer(IK) , parameter :: NP = 5000_IK
-        real(RKG)   :: rand(NP, 4)
+        use pm_io, only: getErrTableWrite
+        real(RKG) :: rand(5000, 4)
         call setBetaRand(rand(:, 1), alpha = 0.5_RKG, beta = 0.5_RKG)
         call setBetaRand(rand(:, 2), alpha = 2.0_RKG, beta = 2.0_RKG)
         call setBetaRand(rand(:, 3), alpha = 2.0_RKG, beta = 5.0_RKG)
         call setBetaRand(rand(:, 4), alpha = 5.0_RKG, beta = 2.0_RKG)
-        open(newunit = fileUnit, file = "setBetaRand.RK.txt")
-        write(fileUnit,"(4(g0,:,' '))") (rand(i,:), i = 1, NP)
-        close(fileUnit)
+        if (0 /= getErrTableWrite(SK_"setBetaRand.RK.txt", rand)) error stop "Failed to write table."
     end block
 
 end program example

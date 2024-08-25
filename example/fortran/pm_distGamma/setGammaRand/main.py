@@ -28,7 +28,7 @@ for kind in ["IK", "CK", "RK"]:
     fileList = glob.glob(pattern)
     if len(fileList) == 1:
 
-        df = pd.read_csv(fileList[0], delimiter = " ", header = None)
+        df = pd.read_csv(fileList[0], delimiter = ",", header = None)
 
         fig = plt.figure(figsize = 1.25 * np.array([6.4, 4.8]), dpi = 200)
         ax = plt.subplot()

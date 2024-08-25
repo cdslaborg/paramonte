@@ -6,17 +6,18 @@ program example
     use pm_kind, only: RK => RKS ! All other kinds are also supported.
     use pm_io, only: display_type
     use pm_distUnif, only: setUnifRand
+    use pm_io, only: getErrTableWrite
 
     implicit none
 
     integer(IK)     , parameter :: NP = 5_IK
 
-    character(5,SK) :: Rand_D0_SK
-    character(2,SK) ::             Rand_D1_SK(NP), Rand_D2_SK(NP,NP)
-    logical(LK)     :: Rand_D0_LK, Rand_D1_LK(NP), Rand_D2_LK(NP,NP)
-    integer(IK)     :: Rand_D0_IK, Rand_D1_IK(NP), Rand_D2_IK(NP,NP)
-    complex(CK)     :: Rand_D0_CK, Rand_D1_CK(NP), Rand_D2_CK(NP,NP)
-    real(RK)        :: Rand_D0_RK, Rand_D1_RK(NP), Rand_D2_RK(NP,NP)
+    character(5,SK) :: rand_D0_SK
+    character(2,SK) ::             rand_D1_SK(NP), rand_D2_SK(NP,NP)
+    logical(LK)     :: rand_D0_LK, rand_D1_LK(NP), rand_D2_LK(NP,NP)
+    integer(IK)     :: rand_D0_IK, rand_D1_IK(NP), rand_D2_IK(NP,NP)
+    complex(CK)     :: rand_D0_CK, rand_D1_CK(NP), rand_D2_CK(NP,NP)
+    real(RK)        :: rand_D0_RK, rand_D1_RK(NP), rand_D2_RK(NP,NP)
 
     type(display_type) :: disp
 
@@ -49,10 +50,10 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    call disp%show("call setUnifRand(Rand_D1_LK) ! random binary logical in the default range [.false._LK, .true._LK].")
-                    call setUnifRand(Rand_D1_LK)
-    call disp%show("Rand_D1_LK")
-    call disp%show( Rand_D1_LK )
+    call disp%show("call setUnifRand(rand_D1_LK) ! random binary logical in the default range [.false._LK, .true._LK].")
+                    call setUnifRand(rand_D1_LK)
+    call disp%show("rand_D1_LK")
+    call disp%show( rand_D1_LK )
     call disp%skip()
 
     call disp%skip()
@@ -61,10 +62,10 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    call disp%show("call setUnifRand(Rand_D2_LK) ! random binary integer in the default range [.false._LK, .true._LK].")
-                    call setUnifRand(Rand_D2_LK)
-    call disp%show("Rand_D2_LK")
-    call disp%show( Rand_D2_LK )
+    call disp%show("call setUnifRand(rand_D2_LK) ! random binary integer in the default range [.false._LK, .true._LK].")
+                    call setUnifRand(rand_D2_LK)
+    call disp%show("rand_D2_LK")
+    call disp%show( rand_D2_LK )
     call disp%skip()
 
 
@@ -163,16 +164,16 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    call disp%show("call setUnifRand(Rand_D1_IK) ! random binary integer in the default range [0, 1].")
-                    call setUnifRand(Rand_D1_IK)
-    call disp%show("Rand_D1_IK")
-    call disp%show( Rand_D1_IK )
+    call disp%show("call setUnifRand(rand_D1_IK) ! random binary integer in the default range [0, 1].")
+                    call setUnifRand(rand_D1_IK)
+    call disp%show("rand_D1_IK")
+    call disp%show( rand_D1_IK )
     call disp%skip()
 
-    call disp%show("call setUnifRand(Rand_D1_IK, -3_IK, 2_IK) ! random integer in range [-3 2].")
-                    call setUnifRand(Rand_D1_IK, -3_IK, 2_IK)
-    call disp%show("Rand_D1_IK")
-    call disp%show( Rand_D1_IK )
+    call disp%show("call setUnifRand(rand_D1_IK, -3_IK, 2_IK) ! random integer in range [-3 2].")
+                    call setUnifRand(rand_D1_IK, -3_IK, 2_IK)
+    call disp%show("rand_D1_IK")
+    call disp%show( rand_D1_IK )
     call disp%skip()
 
     call disp%skip()
@@ -181,16 +182,16 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    call disp%show("call setUnifRand(Rand_D2_IK) ! random binary integer in the default range [0, 1].")
-                    call setUnifRand(Rand_D2_IK)
-    call disp%show("Rand_D2_IK")
-    call disp%show( Rand_D2_IK )
+    call disp%show("call setUnifRand(rand_D2_IK) ! random binary integer in the default range [0, 1].")
+                    call setUnifRand(rand_D2_IK)
+    call disp%show("rand_D2_IK")
+    call disp%show( rand_D2_IK )
     call disp%skip()
 
-    call disp%show("call setUnifRand(Rand_D2_IK, -3_IK, 2_IK) ! random integer in range [-3 2].")
-                    call setUnifRand(Rand_D2_IK, -3_IK, 2_IK)
-    call disp%show("Rand_D2_IK")
-    call disp%show( Rand_D2_IK )
+    call disp%show("call setUnifRand(rand_D2_IK, -3_IK, 2_IK) ! random integer in range [-3 2].")
+                    call setUnifRand(rand_D2_IK, -3_IK, 2_IK)
+    call disp%show("rand_D2_IK")
+    call disp%show( rand_D2_IK )
     call disp%skip()
 
 
@@ -225,15 +226,15 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    call disp%show("call setUnifRand(Rand_D1_CK) ! random binary complex in the default range [(0,0), (1,1)).")
-                    call setUnifRand(Rand_D1_CK)
-    call disp%show("Rand_D1_CK")
-    call disp%show( Rand_D1_CK )
+    call disp%show("call setUnifRand(rand_D1_CK) ! random binary complex in the default range [(0,0), (1,1)).")
+                    call setUnifRand(rand_D1_CK)
+    call disp%show("rand_D1_CK")
+    call disp%show( rand_D1_CK )
 
-    call disp%show("call setUnifRand(Rand_D1_CK, (-3._CK, 3._CK), (2._CK, 5._CK)).")
-                    call setUnifRand(Rand_D1_CK, (-3._CK, 3._CK), (2._CK, 5._CK))
-    call disp%show("Rand_D1_CK")
-    call disp%show( Rand_D1_CK )
+    call disp%show("call setUnifRand(rand_D1_CK, (-3._CK, 3._CK), (2._CK, 5._CK)).")
+                    call setUnifRand(rand_D1_CK, (-3._CK, 3._CK), (2._CK, 5._CK))
+    call disp%show("rand_D1_CK")
+    call disp%show( rand_D1_CK )
     call disp%skip()
 
     call disp%skip()
@@ -242,15 +243,15 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    call disp%show("call setUnifRand(Rand_D2_CK) ! random binary complex in the default range [(0,0), (1,1)).")
-                    call setUnifRand(Rand_D2_CK)
-    call disp%show("Rand_D2_CK")
-    call disp%show( Rand_D2_CK )
+    call disp%show("call setUnifRand(rand_D2_CK) ! random binary complex in the default range [(0,0), (1,1)).")
+                    call setUnifRand(rand_D2_CK)
+    call disp%show("rand_D2_CK")
+    call disp%show( rand_D2_CK )
 
-    call disp%show("call setUnifRand(Rand_D2_CK, (-3._CK, 3._CK), (2._CK, 5._CK)) ! random complex in range [(-3._CK, 3._CK), (2._CK, -2._CK)).")
-                    call setUnifRand(Rand_D2_CK, (-3._CK, 3._CK), (2._CK, 5._CK))
-    call disp%show("Rand_D2_CK")
-    call disp%show( Rand_D2_CK )
+    call disp%show("call setUnifRand(rand_D2_CK, (-3._CK, 3._CK), (2._CK, 5._CK)) ! random complex in range [(-3._CK, 3._CK), (2._CK, -2._CK)).")
+                    call setUnifRand(rand_D2_CK, (-3._CK, 3._CK), (2._CK, 5._CK))
+    call disp%show("rand_D2_CK")
+    call disp%show( rand_D2_CK )
     call disp%skip()
 
 
@@ -286,16 +287,16 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    call disp%show("call setUnifRand(Rand_D1_RK) ! random binary real in the default range [0, 1).")
-                    call setUnifRand(Rand_D1_RK)
-    call disp%show("Rand_D1_RK")
-    call disp%show( Rand_D1_RK )
+    call disp%show("call setUnifRand(rand_D1_RK) ! random binary real in the default range [0, 1).")
+                    call setUnifRand(rand_D1_RK)
+    call disp%show("rand_D1_RK")
+    call disp%show( rand_D1_RK )
     call disp%skip()
 
-    call disp%show("call setUnifRand(Rand_D1_RK, -3._RK, 2._RK) ! random real in range [-3 2).")
-                    call setUnifRand(Rand_D1_RK, -3._RK, 2._RK)
-    call disp%show("Rand_D1_RK")
-    call disp%show( Rand_D1_RK )
+    call disp%show("call setUnifRand(rand_D1_RK, -3._RK, 2._RK) ! random real in range [-3 2).")
+                    call setUnifRand(rand_D1_RK, -3._RK, 2._RK)
+    call disp%show("rand_D1_RK")
+    call disp%show( rand_D1_RK )
     call disp%skip()
 
     call disp%skip()
@@ -304,16 +305,16 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    call disp%show("call setUnifRand(Rand_D2_RK) ! random binary real in the default range [0, 1).")
-                    call setUnifRand(Rand_D2_RK)
-    call disp%show("Rand_D2_RK")
-    call disp%show( Rand_D2_RK )
+    call disp%show("call setUnifRand(rand_D2_RK) ! random binary real in the default range [0, 1).")
+                    call setUnifRand(rand_D2_RK)
+    call disp%show("rand_D2_RK")
+    call disp%show( rand_D2_RK )
     call disp%skip()
 
-    call disp%show("call setUnifRand(Rand_D2_RK, -3._RK, 2._RK) ! random real in range [-3 2).")
-                    call setUnifRand(Rand_D2_RK, -3._RK, 2._RK)
-    call disp%show("Rand_D2_RK")
-    call disp%show( Rand_D2_RK )
+    call disp%show("call setUnifRand(rand_D2_RK, -3._RK, 2._RK) ! random real in range [-3 2).")
+                    call setUnifRand(rand_D2_RK, -3._RK, 2._RK)
+    call disp%show("rand_D2_RK")
+    call disp%show( rand_D2_RK )
     call disp%skip()
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -321,33 +322,21 @@ program example
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block
-        integer(IK) :: fileUnit, i
-        integer(IK), parameter :: NP = 5000_IK
-        integer, dimension(NP) :: rand
+        integer :: rand(5000)
         call setUnifRand(rand, -2, 3)
-        open(newunit = fileUnit, file = "setUnifRand.IK.txt")
-        write(fileUnit,"(1(g0,:,' '))") rand
-        close(fileUnit)
+        if (0 /= getErrTableWrite(SK_"setUnifRand.IK.txt", rand)) error stop "Table writing failed."
     end block
 
     block
-        integer(IK) :: fileUnit, i
-        integer(IK), parameter :: NP = 5000_IK
-        complex, dimension(NP) :: rand
+        complex :: rand(5000)
         call setUnifRand(rand, (-2., +2.), (3., 5.))
-        open(newunit = fileUnit, file = "setUnifRand.CK.txt")
-        write(fileUnit,"(2(g0,:,' '))") rand
-        close(fileUnit)
+        if (0 /= getErrTableWrite(SK_"setUnifRand.CK.txt", rand)) error stop "Table writing failed."
     end block
 
     block
-        integer(IK) :: fileUnit
-        integer(IK), parameter :: NP = 5000_IK
-        real, dimension(NP) :: rand
+        real :: rand(5000)
         call setUnifRand(rand)
-        open(newunit = fileUnit, file = "setUnifRand.RK.txt")
-        write(fileUnit,"(1(g0,:,' '))") rand
-        close(fileUnit)
+        if (0 /= getErrTableWrite(SK_"setUnifRand.RK.txt", rand)) error stop "Table writing failed."
     end block
 
 end program example

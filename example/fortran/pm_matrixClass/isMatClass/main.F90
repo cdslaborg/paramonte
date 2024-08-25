@@ -131,12 +131,12 @@ program example
     end block
 
     block
-        use pm_kind, only: RKD
-        real(RKD), allocatable :: choice(:), mat(:,:)
+        use pm_kind, only: TKG => RKD
+        real(TKG), allocatable :: choice(:), mat(:,:)
         do i = 1, 10
             call disp%skip
-            call disp%show("mat = getCovRand(mold = getChoice([.5, 1., 5.]), ndim = int(getUnifRand(2, 8), IK))")
-                            mat = getCovRand(mold = getChoice([.5, 1., 5.]), ndim = int(getUnifRand(2, 8), IK))
+            call disp%show("mat = getCovRand(mold = 5._TKG, ndim = int(getUnifRand(2, 8), IK))")
+                            mat = getCovRand(mold = 5._TKG, ndim = int(getUnifRand(2, 8), IK))
             call disp%show("mat")
             call disp%show( mat )
             call disp%show("isMatClass(mat, class = symmetric)")

@@ -126,19 +126,12 @@ program example
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block
-        integer(IK) :: fileUnit, i
-        integer(IK), parameter :: NP = 5000_IK
-        real(RKG), dimension(NP) :: Rand1, Rand2, Rand3
-        call setGammaRand(Rand1, +0.8_RKG, sigma = 2._RKG)
-        call setGammaRand(Rand2, +1.0_RKG, sigma = 2._RKG)
-        call setGammaRand(Rand3, +5.0_RKG, sigma = 2._RKG)
-        open(newunit = fileUnit, file = "setGammaRand.RK.txt")
-        write(fileUnit,"(3(g0,:,' '))") ( Rand1(i) &
-                                        , Rand2(i) &
-                                        , Rand3(i) &
-                                        , i = 1,NP &
-                                        )
-        close(fileUnit)
+        use pm_io, only: getErrTableWrite
+        real(RKG):: rand(5000, 3)
+        call setGammaRand(rand(:, 1), +0.8_RKG, sigma = 2._RKG)
+        call setGammaRand(rand(:, 2), +1.0_RKG, sigma = 2._RKG)
+        call setGammaRand(rand(:, 3), +5.0_RKG, sigma = 2._RKG)
+        if (0 /= getErrTableWrite(SK_"setGammaRand.RK.txt", rand)) error stop "Table writing failed."
     end block
 
 end program example

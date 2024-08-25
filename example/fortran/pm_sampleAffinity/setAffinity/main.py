@@ -54,5 +54,5 @@ for kind in ["warp", "rotation"]:
         ax.set_ylabel("Y", fontsize = 17)
         ax.legend([file.split(".")[-2]], fontsize = fontsize)
 
-        plt.tight_layout()
+        #plt.tight_layout()
         plt.savefig(file.replace(".txt",".png"))
