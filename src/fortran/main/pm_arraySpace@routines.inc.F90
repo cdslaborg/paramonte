@@ -15,7 +15,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief
-!>  This include file contains procedure implementation of [getLinSpace](@ref pm_arraySpace::getLinSpace).
+!>  This include file contains procedure implementation of [pm_arraySpace](@ref pm_arraySpace).
 !>
 !>  \final
 !>
