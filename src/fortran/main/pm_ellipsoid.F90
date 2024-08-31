@@ -1693,23 +1693,23 @@ contains
 !
 !        ! Compute the upper representative matrix of the cluster representative matrices.
 !
-!        allocate(ellipsoid%ChoLowCovUpp(1:ndim,1:ndim), ellipsoid%choDia(1:ndim), source = 0._RK)
+!        allocate(ellipsoid%choLowCovUpp(1:ndim,1:ndim), ellipsoid%choDia(1:ndim), source = 0._RK)
 !        do ip = 1, np
 !            do id = 1, ndim
-!                ellipsoid%ChoLowCovUpp(1:id,id) = ellipsoid%ChoLowCovUpp(1:id,id) + NormedPoint(1:id,ip) * NormedPoint(id,ip)
+!                ellipsoid%choLowCovUpp(1:id,id) = ellipsoid%choLowCovUpp(1:id,id) + NormedPoint(1:id,ip) * NormedPoint(id,ip)
 !            end do
 !        end do
-!        ellipsoid%ChoLowCovUpp(1:ndim,1:ndim) = ellipsoid%ChoLowCovUpp(1:ndim,1:ndim) / real(np - 1, RK)
+!        ellipsoid%choLowCovUpp(1:ndim,1:ndim) = ellipsoid%choLowCovUpp(1:ndim,1:ndim) / real(np - 1, RK)
 !
 !        ! Compute the Cholesky Factor of the cluster representative matrices.
 !
-!        call setChoLow(ellipsoid%ChoLowCovUpp(1:ndim,1:ndim), ellipsoid%choDia(1:ndim), ndim)
+!        call setChoLow(ellipsoid%choLowCovUpp(1:ndim,1:ndim), ellipsoid%choDia(1:ndim), ndim)
 !        failed = ellipsoid%choDia(1) < 0._RK
 !        if (failed) return
 !
 !        ! Compute the inverse of the cluster representative matrices.
 !
-!        ellipsoid%invCov = getMatInvFromChoLow(ndim, ellipsoid%ChoLowCovUpp, ellipsoid%choDia)
+!        ellipsoid%invCov = getMatInvFromChoLow(ndim, ellipsoid%choLowCovUpp, ellipsoid%choDia)
 !
 !        ! Compute the mahalSq of the points.
 !
@@ -1730,7 +1730,7 @@ contains
 !
 !            ellipsoid%choDia(1:ndim) = ellipsoid%choDia * ellipsoid%scale
 !            ellipsoid%invCov(1:ndim,1:ndim) = ellipsoid%invCov * scaleSqInverse
-!            do concurrent(id = 1:ndim); ellipsoid%ChoLowCovUpp(id+1:ndim,id) = ellipsoid%ChoLowCovUpp(id+1:ndim,id) * ellipsoid%scale; end do
+!            do concurrent(id = 1:ndim); ellipsoid%choLowCovUpp(id+1:ndim,id) = ellipsoid%choLowCovUpp(id+1:ndim,id) * ellipsoid%scale; end do
 !
 !!        else
 !!

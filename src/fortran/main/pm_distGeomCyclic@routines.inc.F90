@@ -37,7 +37,7 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         real(RKG), parameter :: logProbSuccessMin = log(epsilon(0._RKG))
-        real(RKG), parameter :: NEGINF = -log(huge(logPMF))
+        real(RKG), parameter :: LOGNEGINF = -log(huge(logPMF))
         real(RKG) :: logDenominator
 #if     Def_ENABLED
         real(RKG) :: logProbFailure
@@ -59,12 +59,12 @@
                 logDenominator = log(get1mexp(period * logProbFailure))
                 logPMF = logProbSuccess + (stepSuccess - 1_IK) * logProbFailure - logDenominator
             else
-                logPMF = NEGINF
+                logPMF = LOGNEGINF
             end if
         else ! 100% probability of success.
 #if         D0_ENABLED
             if (1_IK < stepSuccess) then ! stepSuccess can be larger than 1.
-                logPMF = NEGINF
+                logPMF = LOGNEGINF
             else
                 logPMF = 0._RKG
             end if

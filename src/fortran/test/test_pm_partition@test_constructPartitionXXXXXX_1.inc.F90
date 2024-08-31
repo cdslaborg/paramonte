@@ -179,28 +179,28 @@
             ! write data to output for further investigation
 
             test%File = test%openFile(label = "Partition")
-            call Partition%write(test%File%unit, ClusteredPoint%Point)
+            call partition%write(test%File%unit, ClusteredPoint%Point)
             close(test%File%unit)
 
-            assertion = assertion .and. .not. Partition%err%occurred
+            assertion = assertion .and. .not. partition%err%occurred
 !write(*,*) assertion
-            assertion = assertion .and. Partition%err%stat /= 1
+            assertion = assertion .and. partition%err%stat /= 1
 !write(*,*) assertion
-            assertion = assertion .and. Partition%err%stat /= 2
+            assertion = assertion .and. partition%err%stat /= 2
 !write(*,*) assertion
-            assertion = assertion .and. all(Partition%Size(1:Partition%ne) >= 0)
+            assertion = assertion .and. all(partition%Size(1:partition%ne) >= 0)
 !write(*,*) assertion
-            assertion = assertion .and. all(Partition%Membership > 0) .and. all(Partition%Membership < Partition%ne + 1)
+            assertion = assertion .and. all(partition%membership > 0) .and. all(partition%membership < partition%ne + 1)
 !write(*,*) assertion
 
             !if (.not. assertion) return
 
             ! Ensure all points are within their corresponding clusters.
 
-            do ip = 1, Partition%np
-                ic = Partition%Membership(ip)
-                NormedPoint = ClusteredPoint%Point(:,ip) - Partition%Center(:,ic)
-                mahalSq = dot_product(NormedPoint,matmul(Partition%invCov(:,:,ic),NormedPoint))
+            do ip = 1, partition%np
+                ic = partition%membership(ip)
+                NormedPoint = ClusteredPoint%Point(:,ip) - partition%Center(:,ic)
+                mahalSq = dot_product(NormedPoint,matmul(partition%invCov(:,:,ic),NormedPoint))
                 isInside = mahalSq - 1._RK <= 1.e-6_RK
                 if (.not. isInside) then
                     if (test%traceable) then
@@ -216,19 +216,19 @@
             if (test%traceable .and. .not. assertion) then
                 ! LCOV_EXCL_START
                 write(test%disp%unit,"(*(g0.15,:,' '))")
-                write(test%disp%unit,"(*(g0.15,:,' '))") "Partition%ne                 =", Partition%ne
-                write(test%disp%unit,"(*(g0.15,:,' '))") "Partition%Size < 1           =", pack(Partition%Size(1:Partition%ne), mask = Partition%Size(1:Partition%ne) < 1)
-                write(test%disp%unit,"(*(g0.15,:,' '))") "Partition%Membership < 1     =", pack(Partition%Membership, mask = Partition%Membership < 1)
-                write(test%disp%unit,"(*(g0.15,:,' '))") "Partition%Membership > ne    =", pack(Partition%Membership, mask = Partition%Membership > Partition%ne)
-                write(test%disp%unit,"(*(g0.15,:,' '))") "Partition%err%occurred       =", Partition%err%occurred
-                write(test%disp%unit,"(*(g0.15,:,' '))") "Partition%err%stat           =", Partition%err%stat
-                write(test%disp%unit,"(*(g0.15,:,' '))") "Partition%err%msg            =", Partition%err%msg
+                write(test%disp%unit,"(*(g0.15,:,' '))") "partition%ne                 =", partition%ne
+                write(test%disp%unit,"(*(g0.15,:,' '))") "partition%Size < 1           =", pack(partition%Size(1:partition%ne), mask = partition%Size(1:partition%ne) < 1)
+                write(test%disp%unit,"(*(g0.15,:,' '))") "partition%membership < 1     =", pack(partition%membership, mask = partition%membership < 1)
+                write(test%disp%unit,"(*(g0.15,:,' '))") "partition%membership > ne    =", pack(partition%membership, mask = partition%membership > partition%ne)
+                write(test%disp%unit,"(*(g0.15,:,' '))") "partition%err%occurred       =", partition%err%occurred
+                write(test%disp%unit,"(*(g0.15,:,' '))") "partition%err%stat           =", partition%err%stat
+                write(test%disp%unit,"(*(g0.15,:,' '))") "partition%err%msg            =", partition%err%msg
                 if (.not. isInside) write(test%disp%unit,"(*(g0.15,:,' '))") "One or more points are NOT bounded!"
                 write(test%disp%unit,"(*(g0.15,:,' '))")
                 ! LCOV_EXCL_STOP
             end if
 
-            ! The membership IDs must cover a full range from 1 to Partition%ne
+            ! The membership IDs must cover a full range from 1 to partition%ne
 
             block
 
@@ -236,18 +236,18 @@
                 integer(IK) :: lenUnique
                 integer(IK), allocatable :: UniqueValue(:), UniqueCount(:)
 
-                call setUnique  ( Array = Partition%Membership & ! LCOV_EXCL_LINE
+                call setUnique  ( Array = partition%membership & ! LCOV_EXCL_LINE
                                 , Unique = UniqueValue & ! LCOV_EXCL_LINE
                                 , Count = UniqueCount & ! LCOV_EXCL_LINE
                                 )
                 lenUnique = size(UniqueValue, kind = IK)
-                do ic = 1, Partition%ne
+                do ic = 1, partition%ne
                     assertion = assertion .and. any(UniqueValue == ic)
                     if (test%traceable .and. .not. assertion) then
                         ! LCOV_EXCL_START
                         write(test%disp%unit,"(*(g0.15,:,' '))")
-                        write(test%disp%unit,"(*(g0.15,:,' '))") "Membership IDs must cover a full range 1:Partition%ne"
-                        write(test%disp%unit,"(*(g0.15,:,' '))") "Partition%ne             =", Partition%ne
+                        write(test%disp%unit,"(*(g0.15,:,' '))") "Membership IDs must cover a full range 1:partition%ne"
+                        write(test%disp%unit,"(*(g0.15,:,' '))") "partition%ne             =", partition%ne
                         write(test%disp%unit,"(*(g0.15,:,' '))") "Unique Membership IDs    =", UniqueValue
                         write(test%disp%unit,"(*(g0.15,:,' '))")
                         ! LCOV_EXCL_STOP

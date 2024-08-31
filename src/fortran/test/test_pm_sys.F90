@@ -110,7 +110,7 @@ contains
         ! Fortran runtime error: EXECUTE_COMMAND_LINE: Termination status of the command-language interpreter cannot be obtained
 
         EnvVar%name = SK_""
-        call EnvVar%get(EnvVar%name,EnvVar%val,EnvVar%length,EnvVar%Err)
+        call EnvVar%get(EnvVar%name,EnvVar%val,EnvVar%length,EnvVar%err)
         !assertion = EnvVar%err%occurred
 
     end function test_EnvVar_type_1
@@ -134,7 +134,7 @@ contains
         ! Fortran runtime error: EXECUTE_COMMAND_LINE: Termination status of the command-language interpreter cannot be obtained
 
         EnvVar%name = SK_"OS"
-        call EnvVar%get(EnvVar%name,EnvVar%val,EnvVar%length,EnvVar%Err)
+        call EnvVar%get(EnvVar%name,EnvVar%val,EnvVar%length,EnvVar%err)
         !assertion = .not. EnvVar%err%occurred .and. allocated(EnvVar%name) .and. allocated(EnvVar%val)
 
         !if (test%traceable .and. .not. assertion) then
@@ -168,7 +168,7 @@ contains
         ! Fortran runtime error: EXECUTE_COMMAND_LINE: Termination status of the command-language interpreter cannot be obtained
 
         EnvVar%name = SK_"OS"
-        call EnvVar%get(EnvVar%name, EnvVar%val, Err = EnvVar%Err)
+        call EnvVar%get(EnvVar%name, EnvVar%val, Err = EnvVar%err)
         !assertion = .not. EnvVar%err%occurred .and. allocated(EnvVar%name) .and. allocated(EnvVar%val)
 
     end function test_EnvVar_type_3
@@ -452,7 +452,7 @@ contains
         ! Fortran runtime error: EXECUTE_COMMAND_LINE: Termination status of the command-language interpreter cannot be obtained
         ! The `Err` argument handles exceptions.
 
-        call isFailedExec(command,wait,exitstat,OS%Err)
+        call isFailedExec(command,wait,exitstat,OS%err)
         !assertion = .not. OS%err%occurred
         !if (.not. assertion) return
 
@@ -490,7 +490,7 @@ contains
         ! Fortran runtime error: EXECUTE_COMMAND_LINE: Termination status of the command-language interpreter cannot be obtained
         ! The `Err` argument handles exceptions.
 
-        call isFailedExec(command, Err = OS%Err)
+        call isFailedExec(command, Err = OS%err)
 
     end function test_isFailedExec_2
 
@@ -538,7 +538,7 @@ contains
         open(newunit=fileUnit,file=newpath,status="new")
         close(fileUnit)
 
-        call removeFile(path = newpath, Err = test%Err)
+        call removeFile(path = newpath, Err = test%err)
         assertion = assertion .and. .not. Tes%err%occurred
         call test%assert(assertion)
 

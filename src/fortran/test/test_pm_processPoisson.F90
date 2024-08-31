@@ -331,7 +331,7 @@ contains
        !integer(IK)                 :: ip,i,j
         type(err_type)              :: Err
 
-        real(RK)                    :: ChoLowCovUpp(nd,nd)
+        real(RK)                    :: choLowCovUpp(nd,nd)
         real(RK)                    :: choDia(nd)
         real(RK)                    :: mean(nd)
         real(RK)                    :: volumeRef
@@ -362,20 +362,20 @@ contains
 
         ! Generate points uniformly distributed within an ellipsoid.
 
-       !ChoLowCovUpp = getVecDia(nd, nd, [(real(i,RK),i=1,nd)], 0.8_RK)
-        call setMatInit(ChoLowCovUpp, 1._RK)
-        call setChoLow(ChoLowCovUpp, choDia, nd)
+       !choLowCovUpp = getVecDia(nd, nd, [(real(i,RK),i=1,nd)], 0.8_RK)
+        call setMatInit(choLowCovUpp, 1._RK)
+        call setChoLow(choLowCovUpp, choDia, nd)
         assertion = choDia(1) > 0._RK
         !write(*,*) choDia(1)
-        !write(*,*) ((ChoLowCovUpp(i,j), j = 1, nd), new_line("a"), i = 1, nd)
+        !write(*,*) ((choLowCovUpp(i,j), j = 1, nd), new_line("a"), i = 1, nd)
         call test%assert(assertion)
         !choDia = exp((-logVolUnitBall)/nd) ! - sum(log(choDia))
 
         divisor = 2 ! This must be set such that the different sections of the volume have the same uniform distribution.
         mean = -10._RK
-        call getUnifRand(rand = Sample(1:nd,1:np/divisor), mean = mean, choLow = ChoLowCovUpp, choDia = choDia)
+        call getUnifRand(rand = Sample(1:nd,1:np/divisor), mean = mean, choLow = choLowCovUpp, choDia = choDia)
         mean = +10._RK
-        call getUnifRand(rand = Sample(1:nd,np/divisor+1:np), mean = mean, choLow = ChoLowCovUpp, choDia = choDia)
+        call getUnifRand(rand = Sample(1:nd,np/divisor+1:np), mean = mean, choLow = choLowCovUpp, choDia = choDia)
 
         logVol = sum(log(choDia)) + logVolUnitBall + log(2._RK)
         volumeRef = exp(logVol)
@@ -393,14 +393,14 @@ contains
             real(RK)    :: InvMatLow(nd,nd)!, invCov(nd,nd), mahalSq(np)
 
             mean = sum(Sample, dim = 2) / np
-            call setChoLowCovUpp(nd,np,mean,Sample,ChoLowCovUpp,choDia)
+            call setChoLowCovUpp(nd,np,mean,Sample,choLowCovUpp,choDia)
             assertion = choDia(1) > 0._RK
             call test%assert(assertion)
 
             ! Compute the correlation matrix.
 
-            InvMatLow = getLogPDF(nd,ChoLowCovUpp,choDia)
-            !invCov = getMatInvFromChoLow(nd,ChoLowCovUpp,choDia)
+            InvMatLow = getLogPDF(nd,choLowCovUpp,choDia)
+            !invCov = getMatInvFromChoLow(nd,choLowCovUpp,choDia)
             !mahalSq = getDisMahalSq(nd,np,mean,invCov,Sample)
 
             ! Decorrelate the entire sample.

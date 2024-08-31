@@ -70,7 +70,7 @@ contains
                             !, domainCubeLimitLower = DistMultiNormShellMix%Domain%Cube%Limit%Lower & ! LCOV_EXCL_LINE
                             !, domainCubeLimitUpper = DistMultiNormShellMix%Domain%Cube%Limit%Upper & ! LCOV_EXCL_LINE
                             !, domainBallAvg = DistMultiNormShellMix%Domain%Ellipsoid%Center & ! LCOV_EXCL_LINE
-                            !, domainBallCov = DistMultiNormShellMix%Domain%Ellipsoid%ChoLowCovUpp & ! LCOV_EXCL_LINE
+                            !, domainBallCov = DistMultiNormShellMix%Domain%Ellipsoid%choLowCovUpp & ! LCOV_EXCL_LINE
                             !, domain = "ball" & ! LCOV_EXCL_LINE
 
                             ! NormLogGammaMix

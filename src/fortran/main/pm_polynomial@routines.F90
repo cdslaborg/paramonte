@@ -1816,6 +1816,98 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#define SGO_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define CK_CK_ENABLED 1
+
+#if CK5_ENABLED
+    module procedure getPolyRootSGO_CK5_CK5
+        use pm_kind, only: TKG => CK5
+#include "pm_polynomial@routines.inc.F90"
+    end procedure
+#endif
+
+#if CK4_ENABLED
+    module procedure getPolyRootSGO_CK4_CK4
+        use pm_kind, only: TKG => CK4
+#include "pm_polynomial@routines.inc.F90"
+    end procedure
+#endif
+
+#if CK3_ENABLED
+    module procedure getPolyRootSGO_CK3_CK3
+        use pm_kind, only: TKG => CK3
+#include "pm_polynomial@routines.inc.F90"
+    end procedure
+#endif
+
+#if CK2_ENABLED
+    module procedure getPolyRootSGO_CK2_CK2
+        use pm_kind, only: TKG => CK2
+#include "pm_polynomial@routines.inc.F90"
+    end procedure
+#endif
+
+#if CK1_ENABLED
+    module procedure getPolyRootSGO_CK1_CK1
+        use pm_kind, only: TKG => CK1
+#include "pm_polynomial@routines.inc.F90"
+    end procedure
+#endif
+
+#undef CK_CK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RK_CK_ENABLED 1
+
+#if RK5_ENABLED
+    module procedure getPolyRootSGO_RK5_CK5
+        use pm_kind, only: TKG => RK5
+#include "pm_polynomial@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK4_ENABLED
+    module procedure getPolyRootSGO_RK4_CK4
+        use pm_kind, only: TKG => RK4
+#include "pm_polynomial@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK3_ENABLED
+    module procedure getPolyRootSGO_RK3_CK3
+        use pm_kind, only: TKG => RK3
+#include "pm_polynomial@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK2_ENABLED
+    module procedure getPolyRootSGO_RK2_CK2
+        use pm_kind, only: TKG => RK2
+#include "pm_polynomial@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK1_ENABLED
+    module procedure getPolyRootSGO_RK1_CK1
+        use pm_kind, only: TKG => RK1
+#include "pm_polynomial@routines.inc.F90"
+    end procedure
+#endif
+
+#undef RK_CK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef SGO_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 #undef getPolyRoot_ENABLED
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2097,6 +2189,98 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #undef Lag_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define SGO_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define CK_CK_ENABLED 1
+
+#if CK5_ENABLED
+    module procedure setPolyRootSGO_CK5_CK5
+        use pm_kind, only: TKG => CK5
+#include "pm_polynomial@routines.inc.F90"
+    end procedure
+#endif
+
+#if CK4_ENABLED
+    module procedure setPolyRootSGO_CK4_CK4
+        use pm_kind, only: TKG => CK4
+#include "pm_polynomial@routines.inc.F90"
+    end procedure
+#endif
+
+#if CK3_ENABLED
+    module procedure setPolyRootSGO_CK3_CK3
+        use pm_kind, only: TKG => CK3
+#include "pm_polynomial@routines.inc.F90"
+    end procedure
+#endif
+
+#if CK2_ENABLED
+    module procedure setPolyRootSGO_CK2_CK2
+        use pm_kind, only: TKG => CK2
+#include "pm_polynomial@routines.inc.F90"
+    end procedure
+#endif
+
+#if CK1_ENABLED
+    module procedure setPolyRootSGO_CK1_CK1
+        use pm_kind, only: TKG => CK1
+#include "pm_polynomial@routines.inc.F90"
+    end procedure
+#endif
+
+#undef CK_CK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RK_CK_ENABLED 1
+
+#if RK5_ENABLED
+    module procedure setPolyRootSGO_RK5_CK5
+        use pm_kind, only: TKG => RK5
+#include "pm_polynomial@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK4_ENABLED
+    module procedure setPolyRootSGO_RK4_CK4
+        use pm_kind, only: TKG => RK4
+#include "pm_polynomial@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK3_ENABLED
+    module procedure setPolyRootSGO_RK3_CK3
+        use pm_kind, only: TKG => RK3
+#include "pm_polynomial@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK2_ENABLED
+    module procedure setPolyRootSGO_RK2_CK2
+        use pm_kind, only: TKG => RK2
+#include "pm_polynomial@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK1_ENABLED
+    module procedure setPolyRootSGO_RK1_CK1
+        use pm_kind, only: TKG => RK1
+#include "pm_polynomial@routines.inc.F90"
+    end procedure
+#endif
+
+#undef RK_CK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef SGO_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

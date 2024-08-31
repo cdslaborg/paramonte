@@ -113,17 +113,17 @@ contains
         assertion = assertion .and. Kmeans%err%stat /= 1_IK
         assertion = assertion .and. Kmeans%err%stat /= 2_IK
         assertion = assertion .and. Kmeans%potential > 0._RK
-        assertion = assertion .and. all(Kmeans%Membership > 0_IK) .and. all(Kmeans%Membership < nc + 1)
-        assertion = assertion .and. all(Kmeans%MinDistanceSq > 0_IK)
+        assertion = assertion .and. all(Kmeans%membership > 0_IK) .and. all(Kmeans%membership < nc + 1)
+        assertion = assertion .and. all(Kmeans%minDistanceSq > 0_IK)
         assertion = assertion .and. all(Kmeans%Size > 0_IK) .and. sum(Kmeans%Size)==TestData%np
 
         if (test%traceable .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(test%disp%unit,"(*(g0.15,:,' '))")
             write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Size < 1          =", pack(Kmeans%Size, mask = Kmeans%Size < 1_IK)
-            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Membership < 1    =", pack(Kmeans%Membership, mask = Kmeans%Membership < 1_IK)
-            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Membership > nc   =", pack(Kmeans%Membership, mask = Kmeans%Membership > nc)
-            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%MinDistanceSq < 0 =", pack(Kmeans%MinDistanceSq, mask = Kmeans%MinDistanceSq < 0._RK)
+            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%membership < 1    =", pack(Kmeans%membership, mask = Kmeans%membership < 1_IK)
+            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%membership > nc   =", pack(Kmeans%membership, mask = Kmeans%membership > nc)
+            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%minDistanceSq < 0 =", pack(Kmeans%minDistanceSq, mask = Kmeans%minDistanceSq < 0._RK)
             write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%err%occurred      =", Kmeans%err%occurred
             write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%potential         =", Kmeans%potential
             write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%err%stat          =", Kmeans%err%stat
@@ -170,17 +170,17 @@ contains
         assertion = assertion .and. Kmeans%err%stat /= 1_IK
         assertion = assertion .and. Kmeans%err%stat /= 2_IK
         assertion = assertion .and. Kmeans%potential > 0._RK
-        assertion = assertion .and. all(Kmeans%Membership > 0_IK) .and. all(Kmeans%Membership < nc + 1)
-        assertion = assertion .and. all(Kmeans%MinDistanceSq > 0_IK)
+        assertion = assertion .and. all(Kmeans%membership > 0_IK) .and. all(Kmeans%membership < nc + 1)
+        assertion = assertion .and. all(Kmeans%minDistanceSq > 0_IK)
         assertion = assertion .and. all(Kmeans%Size > 0_IK) .and. sum(Kmeans%Size)==TestData%np
 
         if (test%traceable .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(test%disp%unit,"(*(g0.15,:,' '))")
             write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Size < 1          =", pack(Kmeans%Size, mask = Kmeans%Size < 1_IK)
-            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Membership < 1    =", pack(Kmeans%Membership, mask = Kmeans%Membership < 1_IK)
-            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Membership > nc   =", pack(Kmeans%Membership, mask = Kmeans%Membership > nc)
-            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%MinDistanceSq < 0 =", pack(Kmeans%MinDistanceSq, mask = Kmeans%MinDistanceSq < 0._RK)
+            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%membership < 1    =", pack(Kmeans%membership, mask = Kmeans%membership < 1_IK)
+            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%membership > nc   =", pack(Kmeans%membership, mask = Kmeans%membership > nc)
+            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%minDistanceSq < 0 =", pack(Kmeans%minDistanceSq, mask = Kmeans%minDistanceSq < 0._RK)
             write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%err%occurred      =", Kmeans%err%occurred
             write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%potential         =", Kmeans%potential
             write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%err%stat          =", Kmeans%err%stat
@@ -226,17 +226,17 @@ contains
         assertion = assertion .and. Kmeans%err%stat == 1_IK
         assertion = assertion .and. Kmeans%niter == niterMax
         assertion = assertion .and. Kmeans%potential > 0._RK
-        assertion = assertion .and. all(Kmeans%Membership > 0_IK) .and. all(Kmeans%Membership < nc + 1)
-        assertion = assertion .and. all(Kmeans%MinDistanceSq > 0_IK)
+        assertion = assertion .and. all(Kmeans%membership > 0_IK) .and. all(Kmeans%membership < nc + 1)
+        assertion = assertion .and. all(Kmeans%minDistanceSq > 0_IK)
         assertion = assertion .and. all(Kmeans%Size > 0_IK) .and. sum(Kmeans%Size)==TestData%np
 
         if (test%traceable .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(test%disp%unit,"(*(g0.15,:,' '))")
             write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Size < 1          =", pack(Kmeans%Size, mask = Kmeans%Size < 1_IK)
-            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Membership < 1    =", pack(Kmeans%Membership, mask = Kmeans%Membership < 1_IK)
-            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Membership > nc   =", pack(Kmeans%Membership, mask = Kmeans%Membership > nc)
-            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%MinDistanceSq < 0 =", pack(Kmeans%MinDistanceSq, mask = Kmeans%MinDistanceSq < 0._RK)
+            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%membership < 1    =", pack(Kmeans%membership, mask = Kmeans%membership < 1_IK)
+            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%membership > nc   =", pack(Kmeans%membership, mask = Kmeans%membership > nc)
+            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%minDistanceSq < 0 =", pack(Kmeans%minDistanceSq, mask = Kmeans%minDistanceSq < 0._RK)
             write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%err%occurred      =", Kmeans%err%occurred
             write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%potential         =", Kmeans%potential
             write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%err%stat          =", Kmeans%err%stat
@@ -282,17 +282,17 @@ contains
         assertion = assertion .and. Kmeans%err%stat /= 1_IK
         assertion = assertion .and. Kmeans%err%stat /= 2_IK
         assertion = assertion .and. Kmeans%potential > 0._RK
-        assertion = assertion .and. all(Kmeans%Membership > 0_IK) .and. all(Kmeans%Membership < nc + 1)
-        assertion = assertion .and. all(Kmeans%MinDistanceSq > 0_IK)
+        assertion = assertion .and. all(Kmeans%membership > 0_IK) .and. all(Kmeans%membership < nc + 1)
+        assertion = assertion .and. all(Kmeans%minDistanceSq > 0_IK)
         assertion = assertion .and. all(Kmeans%Size > 0_IK) .and. sum(Kmeans%Size)==TestData%np
 
         if (test%traceable .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(test%disp%unit,"(*(g0.15,:,' '))")
             write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Size < 1          =", pack(Kmeans%Size, mask = Kmeans%Size < 1_IK)
-            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Membership < 1    =", pack(Kmeans%Membership, mask = Kmeans%Membership < 1_IK)
-            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Membership > nc   =", pack(Kmeans%Membership, mask = Kmeans%Membership > nc)
-            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%MinDistanceSq < 0 =", pack(Kmeans%MinDistanceSq, mask = Kmeans%MinDistanceSq < 0._RK)
+            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%membership < 1    =", pack(Kmeans%membership, mask = Kmeans%membership < 1_IK)
+            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%membership > nc   =", pack(Kmeans%membership, mask = Kmeans%membership > nc)
+            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%minDistanceSq < 0 =", pack(Kmeans%minDistanceSq, mask = Kmeans%minDistanceSq < 0._RK)
             write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%err%occurred      =", Kmeans%err%occurred
             write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%potential         =", Kmeans%potential
             write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%err%stat          =", Kmeans%err%stat
@@ -338,17 +338,17 @@ contains
         assertion = assertion .and. .not. Kmeans%err%occurred
         assertion = assertion .and. Kmeans%potential > 0._RK
         assertion = assertion .and. Kmeans%err%stat /= 1_IK .and. Kmeans%err%stat /= 2_IK
-        assertion = assertion .and. all(Kmeans%Membership > 0_IK) .and. all(Kmeans%Membership < nc + 1)
-        assertion = assertion .and. all(Kmeans%MinDistanceSq > 0_IK)
+        assertion = assertion .and. all(Kmeans%membership > 0_IK) .and. all(Kmeans%membership < nc + 1)
+        assertion = assertion .and. all(Kmeans%minDistanceSq > 0_IK)
         assertion = assertion .and. all(Kmeans%Size > 0_IK) .and. sum(Kmeans%Size)==TestData%np
 
         if (test%traceable .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(test%disp%unit,"(*(g0.15,:,' '))")
             write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Size < 1          =", pack(Kmeans%Size, mask = Kmeans%Size < 1_IK)
-            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Membership < 1    =", pack(Kmeans%Membership, mask = Kmeans%Membership < 1_IK)
-            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Membership > nc   =", pack(Kmeans%Membership, mask = Kmeans%Membership > nc)
-            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%MinDistanceSq < 0 =", pack(Kmeans%MinDistanceSq, mask = Kmeans%MinDistanceSq < 0._RK)
+            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%membership < 1    =", pack(Kmeans%membership, mask = Kmeans%membership < 1_IK)
+            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%membership > nc   =", pack(Kmeans%membership, mask = Kmeans%membership > nc)
+            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%minDistanceSq < 0 =", pack(Kmeans%minDistanceSq, mask = Kmeans%minDistanceSq < 0._RK)
             write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%err%occurred      =", Kmeans%err%occurred
             write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%potential         =", Kmeans%potential
             write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%err%stat          =", Kmeans%err%stat
@@ -403,12 +403,12 @@ contains
 
         assertion = assertion .and. Kmeans%potential > 0._RK
         assertion = assertion .and. Kmeans%err%stat /= 1_IK .and. Kmeans%err%stat /= 2_IK
-        assertion = assertion .and. all(Kmeans%Membership > 0_IK) .and. all(Kmeans%Membership < nc + 1)
-        assertion = assertion .and. all(Kmeans%MinDistanceSq > 0_IK)
+        assertion = assertion .and. all(Kmeans%membership > 0_IK) .and. all(Kmeans%membership < nc + 1)
+        assertion = assertion .and. all(Kmeans%minDistanceSq > 0_IK)
         assertion = assertion .and. all(Kmeans%Size > 0_IK) .and. sum(Kmeans%Size)==TestData%np
         assertion = assertion .and. all(TestData%Point(:,PointIndex) == Point)
         do ic = 1, nc
-            assertion = assertion .and. all( Kmeans%Membership(Kmeans%Prop%CumSumSize(ic-1)+1:Kmeans%Prop%CumSumSize(ic)) == Kmeans%Membership(Kmeans%Prop%CumSumSize(ic)) )
+            assertion = assertion .and. all( Kmeans%membership(Kmeans%Prop%cumSumSize(ic-1)+1:Kmeans%Prop%cumSumSize(ic)) == Kmeans%membership(Kmeans%Prop%cumSumSize(ic)) )
         end do
         call test%assert(assertion)
 
@@ -416,9 +416,9 @@ contains
         ! LCOV_EXCL_START
             write(test%disp%unit,"(*(g0.15,:,' '))")
             write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Size < 1          =", pack(Kmeans%Size, mask = Kmeans%Size < 1_IK)
-            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Membership < 1    =", pack(Kmeans%Membership, mask = Kmeans%Membership < 1_IK)
-            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Membership > nc   =", pack(Kmeans%Membership, mask = Kmeans%Membership > nc)
-            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%MinDistanceSq < 0 =", pack(Kmeans%MinDistanceSq, mask = Kmeans%MinDistanceSq < 0._RK)
+            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%membership < 1    =", pack(Kmeans%membership, mask = Kmeans%membership < 1_IK)
+            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%membership > nc   =", pack(Kmeans%membership, mask = Kmeans%membership > nc)
+            write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%minDistanceSq < 0 =", pack(Kmeans%minDistanceSq, mask = Kmeans%minDistanceSq < 0._RK)
             write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%err%occurred      =", Kmeans%err%occurred
             write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%potential         =", Kmeans%potential
             write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%err%stat          =", Kmeans%err%stat
@@ -488,13 +488,13 @@ contains
         end if
         call test%assert(assertion)
 
-        assertion = assertion .and. all(Kmeans%Membership(1:10) == Kmeans%Membership(1))
+        assertion = assertion .and. all(Kmeans%membership(1:10) == Kmeans%membership(1))
         if (.not. assertion) then
             ! LCOV_EXCL_START
             if (test%traceable) then
                 write(test%disp%unit,"(*(g0.15,:,' '))")
                 write(test%disp%unit,"(*(g0.15,:,' '))") "The first 10 memberships must be equal."
-                write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Membership    =", Kmeans%Membership
+                write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%membership    =", Kmeans%membership
                 write(test%disp%unit,"(*(g0.15,:,' '))")
             end if
             ! LCOV_EXCL_STOP
@@ -592,7 +592,7 @@ contains
         real(RK)    , parameter     :: pointLogVolNormed = log(1.e-1_RK) - LOG_PI
         real(RK)    , parameter     :: LogVolNormed(nc) = [-0.608967271692436_RK, -2.91155236468648_RK]
        !real(RK)    , parameter     :: LogDenNormed(nc) = [2.91155236468648_RK, 2.91155236468648_RK]
-        real(RK)    , parameter     :: ChoLowCovUpp(nd,nd,nc) = reshape([ 0.140347692021171_RK &
+        real(RK)    , parameter     :: choLowCovUpp(nd,nd,nc) = reshape([ 0.140347692021171_RK &
                                                                         , 0.273777628663980E-1_RK &
                                                                         , 0.492129448979672E-2_RK &
                                                                         , 0.111901976129643_RK &
@@ -600,7 +600,7 @@ contains
                                                                         , 0.00000000000000_RK &
                                                                         , 0.00000000000000_RK &
                                                                         , 0.543912292747094E-1_RK &
-                                                                        ], shape = shape(ChoLowCovUpp))
+                                                                        ], shape = shape(choLowCovUpp))
         real(RK)    , parameter     :: invCov(nd,nd,nc) = reshape(   [ 1.64294297527196_RK &
                                                                         , -0.722543648549051E-1_RK &
                                                                         , -0.722543648549051E-1_RK &
@@ -735,28 +735,28 @@ contains
         !    return
         !end if
 
-        assertion = assertion .and. all(Kmeans%Prop%CumSumSize(1:) == getCumSum(Kmeans%Size(1:nc))) .and. Kmeans%Prop%CumSumSize(0) == 0_IK
+        assertion = assertion .and. all(Kmeans%Prop%cumSumSize(1:) == getCumSum(Kmeans%Size(1:nc))) .and. Kmeans%Prop%cumSumSize(0) == 0_IK
         if (.not. assertion) then
             ! LCOV_EXCL_START
             if (test%traceable) then
                 write(test%disp%unit,"(*(g0.15,:,' '))")
-                write(test%disp%unit,"(*(g0.15,:,' '))") "all(Kmeans%Prop%CumSumSize == [0_IK,10_IK,11_IK])"
-                write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Prop%CumSumSize     =", Kmeans%Prop%CumSumSize
+                write(test%disp%unit,"(*(g0.15,:,' '))") "all(Kmeans%Prop%cumSumSize == [0_IK,10_IK,11_IK])"
+                write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Prop%cumSumSize     =", Kmeans%Prop%cumSumSize
                 write(test%disp%unit,"(*(g0.15,:,' '))")
             end if
             ! LCOV_EXCL_STOP
         end if
         call test%assert(assertion)
 
-        assertion = assertion .and. ( all(abs(Kmeans%Prop%ChoLowCovUpp - ChoLowCovUpp) < 1.e-10_RK) .or. all(abs(Kmeans%Prop%ChoLowCovUpp(:,:,nc:1:-1) - ChoLowCovUpp) < 1.e-10_RK) )
+        assertion = assertion .and. ( all(abs(Kmeans%Prop%choLowCovUpp - choLowCovUpp) < 1.e-10_RK) .or. all(abs(Kmeans%Prop%choLowCovUpp(:,:,nc:1:-1) - choLowCovUpp) < 1.e-10_RK) )
         if (.not. assertion) then
             ! LCOV_EXCL_START
             if (test%traceable) then
                 write(test%disp%unit,"(*(g0.15,:,' '))")
-                write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Prop%ChoLowCovUpp(:,:,nc:1:-1)    == ChoLowCovUpp"
-                write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Prop%ChoLowCovUpp                 =", Kmeans%Prop%ChoLowCovUpp
-                write(test%disp%unit,"(*(g0.15,:,' '))") "ChoLowCovUpp                             =", ChoLowCovUpp
-                write(test%disp%unit,"(*(g0.15,:,' '))") "difference                               =", abs(Kmeans%Prop%ChoLowCovUpp - ChoLowCovUpp)
+                write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Prop%choLowCovUpp(:,:,nc:1:-1)    == choLowCovUpp"
+                write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Prop%choLowCovUpp                 =", Kmeans%Prop%choLowCovUpp
+                write(test%disp%unit,"(*(g0.15,:,' '))") "choLowCovUpp                             =", choLowCovUpp
+                write(test%disp%unit,"(*(g0.15,:,' '))") "difference                               =", abs(Kmeans%Prop%choLowCovUpp - choLowCovUpp)
                 write(test%disp%unit,"(*(g0.15,:,' '))")
             end if
             ! LCOV_EXCL_STOP
@@ -835,17 +835,17 @@ contains
             assertion = assertion .and. Kmeans%err%stat /= 1_IK
             assertion = assertion .and. Kmeans%err%stat /= 2_IK
             assertion = assertion .and. Kmeans%potential > 0._RK
-            assertion = assertion .and. all(Kmeans%Membership(1:np) > 0_IK) .and. all(Kmeans%Membership(1:np) < nc + 1)
-            assertion = assertion .and. all(Kmeans%MinDistanceSq(1:np) > 0_IK)
+            assertion = assertion .and. all(Kmeans%membership(1:np) > 0_IK) .and. all(Kmeans%membership(1:np) < nc + 1)
+            assertion = assertion .and. all(Kmeans%minDistanceSq(1:np) > 0_IK)
             assertion = assertion .and. all(Kmeans%Size > 0_IK) .and. sum(Kmeans%Size)==TestData%np
 
             if (test%traceable .and. .not. assertion) then
             ! LCOV_EXCL_START
                 write(test%disp%unit,"(*(g0.15,:,' '))")
                 write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Size < 1          =", pack(Kmeans%Size, mask = Kmeans%Size < 1_IK)
-                write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Membership < 1    =", pack(Kmeans%Membership(1:np), mask = Kmeans%Membership(1:np) < 1_IK)
-                write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%Membership > nc   =", pack(Kmeans%Membership(1:np), mask = Kmeans%Membership(1:np) > nc)
-                write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%MinDistanceSq < 0 =", pack(Kmeans%MinDistanceSq(1:np), mask = Kmeans%MinDistanceSq(1:np) < 0._RK)
+                write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%membership < 1    =", pack(Kmeans%membership(1:np), mask = Kmeans%membership(1:np) < 1_IK)
+                write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%membership > nc   =", pack(Kmeans%membership(1:np), mask = Kmeans%membership(1:np) > nc)
+                write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%minDistanceSq < 0 =", pack(Kmeans%minDistanceSq(1:np), mask = Kmeans%minDistanceSq(1:np) < 0._RK)
                 write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%err%occurred      =", Kmeans%err%occurred
                 write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%potential         =", Kmeans%potential
                 write(test%disp%unit,"(*(g0.15,:,' '))") "Kmeans%err%stat          =", Kmeans%err%stat

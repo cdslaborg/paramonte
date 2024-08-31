@@ -379,7 +379,7 @@
         integer(IK) :: count
 #if     Def_ENABLED
         type(eigen_type), parameter :: method = eigen_type()
-#elif   !(Eig_ENABLED || Jen_ENABLED || Lag_ENABLED)
+#elif   !(Eig_ENABLED || Jen_ENABLED || Lag_ENABLED || SGO_ENABLED)
 #error  "Unrecognized interface."
 #endif
         allocate(root(size(coef, 1, IK) - 1_IK))
@@ -2079,7 +2079,7 @@
                 droot = exp(cmplx(log(1._TKG + absroot), real(niter, TKG), TKG))
             endif
             rootnew = root - droot
-            if(root == rootnew) return
+            if (root == rootnew) return
             counter = counter + 1
             if (counter /= nstep) then
                 root = rootnew
@@ -2092,6 +2092,10 @@
             if (niter == nitermax) exit
         end do
         niter = -niter
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#elif   setPolyRoot_ENABLED && SGO_ENABLED && (CK_CK_ENABLED || RK_CK_ENABLED)
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #else
         !%%%%%%%%%%%%%%%%%%%%%%%%

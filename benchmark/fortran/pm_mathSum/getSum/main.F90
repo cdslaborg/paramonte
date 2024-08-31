@@ -16,10 +16,8 @@ program benchmark
     integer(IK)                         :: fileUnit             !<  The output file unit for benchmark results.
     real(RKG)                           :: dumsum = 0._RKG      !<  The dummy computation to prevent the compiler from aggressive optimizations.
     real(RKG)                           :: array(10**8)         !<  The benchmark values.
-   !real(RKH)                           :: truth(10**8)         !<  The benchmark values.
     real(RKG)                           :: sumres               !<  The summation.
     type(bench_type)    , allocatable   :: bench(:)             !<  The Benchmark array.
-    logical(LK)                         :: underflowEnabled     !<  The logical flag indicating whether an array with many instances of underflow should be generated.
 
     bench = [ bench_type(name = SK_"sum()", exec = getSumFortran, overhead = setOverhead) &
             , bench_type(name = SK_"fablocked", exec = getSumFAB, overhead = setOverhead) &
@@ -36,7 +34,6 @@ program benchmark
     open(newunit = fileUnit, file = "main.out", status = "replace")
 
         call setUnifRand(array)
-        !truth = array; call setCumSum(truth)
         write(fileUnit, "(*(g0,:,','))") "Array Size", (bench(ibench)%name, ibench = 1, size(bench))
         loopOverArraySize: do iarr = 2, 26, 2
 

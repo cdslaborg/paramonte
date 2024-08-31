@@ -3,7 +3,7 @@ program example
     use pm_kind, only: SK, IK, LK
     use pm_kind, only: RKS, RKD, RKH ! all processor real/complex kinds are supported.
     use pm_io, only: display_type
-    use pm_polynomial, only: setPolyRoot
+    use pm_polynomial, only: setPolyRoot, cmplx_roots_gen
     use pm_polynomial, only: eigen, jenkins, laguerre
     use pm_arrayResize, only: setResized
     use pm_polynomial, only: getPolyVal
@@ -33,7 +33,7 @@ call disp%show("coef"); \
 call disp%show( coef , format = "(sp,"//getStr(CREP)//"(g0,:,', '))"); \
 call disp%show("call setResized(root, size(coef, 1, IK) - 1_IK)"); \
                 call setResized(root, size(coef, 1, IK) - 1_IK); \
-call disp%show("call setPolyRoot(root, count, coef, eigen) ! polynomial with real coefficients."); \
+call disp%show("call setPolyRoot(root, count, coef, eigen)"); \
                 call setPolyRoot(root, count, coef, eigen); \
 call disp%show("count"); \
 call disp%show( count ); \
@@ -62,7 +62,7 @@ call disp%show("coef"); \
 call disp%show( coef , format = "(sp,"//getStr(CREP)//"(g0,:,', '))"); \
 call disp%show("call setResized(root, size(coef, 1, IK) - 1_IK)"); \
                 call setResized(root, size(coef, 1, IK) - 1_IK); \
-call disp%show("call setPolyRoot(root, count, coef, jenkins) ! polynomial with real coefficients."); \
+call disp%show("call setPolyRoot(root, count, coef, jenkins)"); \
                 call setPolyRoot(root, count, coef, jenkins); \
 call disp%show("count"); \
 call disp%show( count ); \
@@ -91,10 +91,37 @@ call disp%show("coef"); \
 call disp%show( coef , format = "(sp,"//getStr(CREP)//"(g0,:,', '))"); \
 call disp%show("call setResized(root, size(coef, 1, IK) - 1_IK)"); \
                 call setResized(root, size(coef, 1, IK) - 1_IK); \
-call disp%show("call setPolyRoot(root, count, coef, laguerre) ! polynomial with real coefficients."); \
+call disp%show("call setPolyRoot(root, count, coef, laguerre)"); \
                 call setPolyRoot(root, count, coef, laguerre); \
 call disp%show("count"); \
 call disp%show( count ); \
+call disp%show("root(1:count)"); \
+call disp%show( root(1:count) , format = "(sp,2(g0,:,', '))"); \
+call disp%show("getPolyVal(coef, root(1:count))"); \
+call disp%show( getPolyVal(coef, root(1:count)) , format = "(sp,2(g0,:,', '))"); \
+call disp%skip(); \
+end block;
+
+! Template to avoid code duplication in the
+! example for various types and kind parameters.
+! See the output below for the actual code.
+! developer guideline:
+! TYPE - type of coefficient vector: `real`, `complex`
+! RKG  - kind of coefficient vector: any supported by the processor
+! CREP - Number of coefficient elements to display per line: use `1` for `real` and `2` for `complex` coefficients.
+#define GET_ROOT_SKO(CREP, TYPE, RKG) \
+block; \
+use pm_val2str, only: getStr; \
+TYPE(RKG)   , allocatable   :: coef(:); \
+complex(RKG), allocatable   :: root(:); \
+call disp%skip(); \
+coef = COEF; \
+call disp%show("coef"); \
+call disp%show( coef , format = "(sp,"//getStr(CREP)//"(g0,:,', '))"); \
+call disp%show("call setResized(root, size(coef, 1, IK) - 1_IK)"); \
+                call setResized(root, size(coef, 1, IK) - 1_IK); \
+call disp%show("call cmplx_roots_gen(root, coef, size(coef) - 1, .true., .true.)"); \
+                call cmplx_roots_gen(root, coef, size(coef) - 1, .true., .true.); \
 call disp%show("root(1:count)"); \
 call disp%show( root(1:count) , format = "(sp,2(g0,:,', '))"); \
 call disp%show("getPolyVal(coef, root(1:count))"); \
@@ -196,6 +223,7 @@ GET_ROOT_JEN(2, complex, RKD)
 GET_ROOT_JEN(2, complex, RKH)
 GET_ROOT_LAG(2, complex, RKD)
 GET_ROOT_LAG(2, complex, RKH)
+!get_root_sko(2, complex, RKD)
 
     call disp%skip()
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
@@ -225,6 +253,7 @@ GET_ROOT_JEN(2, complex, RKH)
 GET_ROOT_LAG(2, complex, RKS)
 GET_ROOT_LAG(2, complex, RKD)
 GET_ROOT_LAG(2, complex, RKH)
+!get_root_sko(2, complex, RKD)
 
     call disp%skip()
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
@@ -256,5 +285,6 @@ GET_ROOT_JEN(2, complex, RKH)
 GET_ROOT_LAG(2, complex, RKS)
 GET_ROOT_LAG(2, complex, RKD)
 GET_ROOT_LAG(2, complex, RKH)
+!get_root_sko(2, complex, RKD)
 
 end program example
