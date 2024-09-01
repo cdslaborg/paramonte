@@ -227,7 +227,7 @@ set(grandpa
     pm_os
     pm_parallelism
     pm_polynomial
-    pm_procPois
+   #pm_procPois
     pm_quadPack
     pm_quadRomb
     pm_quadTest
