@@ -103,13 +103,13 @@ restart = restart{1};
 figure("color", "white");
 sv = pm.vis.SubplotEllipse(restart.proposalCov, restart.proposalMean);
 pv.subplot.title.titletext = "Ellipse Subplot";
-sv.make("axes", {"zscale", "log"}, "dimx", [1, 3], "dimx", [1, 3] + 1);
+sv.make("axes", {"zscale", "log"}, "dimx", [1, 3], "dimy", [1, 3] + 1);
 pm.vis.figure.savefig("SubplotEllipse.1.png", "-m3");
 
 figure("color", "white");
-sv = pm.vis.SubplotEllipse3(restart.proposalCov, restart.proposalMean, restart.uniqueStateVisitCount');
+sv = pm.vis.SubplotEllipse3(restart.proposalCov, restart.proposalMean, transpose(restart.uniqueStateVisitCount));
 pv.subplot.title.titletext = "Ellipse3 Subplot";
-sv.make("axes", {"zscale", "log"}, "dimx", [1, 3], "dimx", [1, 3] + 1);
+sv.make("axes", {"zscale", "log"}, "dimx", [1, 3], "dimy", [1, 3] + 1);
 pm.vis.figure.savefig("SubplotEllipse3.1.png", "-m3");
 
 close all;

@@ -16,8 +16,8 @@ restart = sampler.readRestart();
 restart = restart{1};
 
 figure("color", "white");
-sv = pm.vis.SubplotEllipse(restart.proposalCov, restart.proposalMean, restart.uniqueStateVisitCount');
-sv.make("axes", {"zscale", "log"}, "dimx", [1, 3], "dimx", [1, 3] + 1);
+sv = pm.vis.SubplotEllipse(restart.proposalCov, restart.proposalMean, transpose(restart.uniqueStateVisitCount));
+sv.make("axes", {"zscale", "log"}, "dimx", [1, 3], "dimy", [1, 3] + 1);
 pm.vis.figure.savefig("SubplotEllipse.1.png", "-m3");
 
 close all;

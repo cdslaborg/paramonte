@@ -28,11 +28,11 @@ classdef DataFrame < pm.data.DataRef
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         %>  \brief
-        %>  Generate an return an object of class [DataFrame](pm.data.DataFrame)
+        %>  Generate an return an object of class [pm.data.DataFrame](@ref DataFrame)
         %>  from the input dataframe or its specified input reference.<br>
         %>
         %>  \details
-        %>  This is the constructor of the class [DataFrame](pm.data.DataFrame).<br>
+        %>  This is the constructor of the class [pm.data.DataFrame](@ref DataFrame).<br>
         %>
         %>  \param[in]  dfref   :   The input MATLAB 2D matrix or table containing the target dataset
         %>                          or function handle that takes no arguments and returns the dataset.<br>

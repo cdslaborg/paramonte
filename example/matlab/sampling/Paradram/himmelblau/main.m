@@ -31,6 +31,6 @@ p.savefig("Paradram.himmelblau.traceplot.png", "-m3");
 restart = sampler.readRestart();
 restart = restart{1};
 
-p = pm.vis.PlotEllipse3(restart.proposalCov, restart.proposalMean, restart.uniqueStateVisitCount');
+p = pm.vis.PlotEllipse3(restart.proposalCov, restart.proposalMean, transpose(restart.uniqueStateVisitCount));
 p.make("axes", {"zscale", "log"});
 p.savefig("Paradram.himmelblau.proposalCov.png", "-m3");

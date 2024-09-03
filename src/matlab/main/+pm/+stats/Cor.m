@@ -48,7 +48,7 @@ classdef Cor < pm.matlab.Handle
         val = [];
     end
 
-    methods(Access=public)
+    methods(Access = public)
 
         %>  \brief
         %>  Return an object of class ``Cor``.<br>

@@ -570,7 +570,7 @@ pm_polynomial/setPolyMul
 pm_polynomial/setPolyRoot
 pm_polynomial/setPolyRootPolished
 pm_polynomial/setPolySub
-pm_procPois/modeling
+!pm_procPois/modeling
 pm_quadPack/GK15
 pm_quadPack/GK21
 pm_quadPack/GK31

@@ -15,8 +15,8 @@ sampler.run ( @(x) -sum((x - [-5; 5; 10; -10]) .^ 2) ...
 restart = sampler.readRestart();
 restart = restart{1};
 
-pv = pm.vis.PlotEllipse3(restart.proposalCov, restart.proposalMean, restart.uniqueStateVisitCount');
-pv.make("axes", {"zscale", "log"}, "dimx", [1, 3], "dimx", [1, 3] + 1);
+pv = pm.vis.PlotEllipse3(restart.proposalCov, restart.proposalMean, transpose(restart.uniqueStateVisitCount));
+pv.make("axes", {"zscale", "log"}, "dimx", [1, 3], "dimy", [1, 3] + 1);
 pv.savefig("PlotEllipse3.1.png", "-m3");
 
 close all;

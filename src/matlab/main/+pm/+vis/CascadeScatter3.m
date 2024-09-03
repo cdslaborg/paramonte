@@ -29,9 +29,9 @@ classdef CascadeScatter3 < pm.vis.Cascade
         %>  Construct and return an object of class [pm.vis.CascadeScatter3](@ref CascadeScatter3).<br>
         %>
         %>  \param[in]  dfref       :   See the documentation of the corresponding input
-        %>                              argument of the class [pm.vis.Plot](@ref Plot).<br>
+        %>                              argument of the class [pm.vis.Subplot](@ref Subplot).<br>
         %>  
-        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
+        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
         %>                              Note that all of these property-value pairs can be also directly set via the

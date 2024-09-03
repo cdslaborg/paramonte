@@ -5,7 +5,7 @@
 %>  \details
 %>  This is a generic class for generating figures
 %>  containing multiple subplots (axes) of the same class.
-classdef Tile < pm.vis.figure.Tiling
+classdef Tile < pm.vis.Tiling
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -44,7 +44,7 @@ classdef Tile < pm.vis.figure.Tiling
         %>  \param[in]  template    :   The input scalar object of superclass [pm.vis.Subplot](@ref Subplot).
         %>                              It serves as the template based upon which all subplots are constructed.
         %>
-        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
+        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %>                              Note that all of these property-value pairs can be also directly set via the
@@ -67,7 +67,7 @@ classdef Tile < pm.vis.figure.Tiling
         %>
         %>  \note
         %>  See the list of class attributes below,
-        %>  also those of the superclass [pm.vis.figure.Tiling](@ref Tiling).
+        %>  also those of the superclass [pm.vis.Tiling](@ref Tiling).
         %>
         %>  \final{Tile}
         %>
@@ -75,7 +75,7 @@ classdef Tile < pm.vis.figure.Tiling
         %>  \JoshuaOsborne, May 22 2024, 7:39 PM, University of Texas at Arlington<br>
         function self = Tile(template, varargin)
             [varobj, vartemp] = pm.matlab.hashmap.popKeyVal(["figure", "subplot", "template", "tiledlayout", "tileshape"], varargin);
-            self = self@pm.vis.figure.Tiling(cell(0, 0), varobj{:});
+            self = self@pm.vis.Tiling(cell(0, 0), varobj{:});
             self.template = template;
             if ~isempty(vartemp)
                 self.template.hash2comp(vartemp);
@@ -89,7 +89,7 @@ classdef Tile < pm.vis.figure.Tiling
         %>  Use this method when you change many attributes of the tile and
         %>  you want to clean up and go back to the default settings.
         %>
-        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
+        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %>                              Note that all of these property-value pairs can be also directly set via the
@@ -122,7 +122,7 @@ classdef Tile < pm.vis.figure.Tiling
                 self.hash2comp(vartemp);
                 %self.template.reset();
             end
-            reset@pm.vis.figure.Tiling(self, varleft{:});
+            reset@pm.vis.Tiling(self, varleft{:});
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% RULE 0: Any non-MATLAB-default setting must be preferably set in premake() method to override user null values.
@@ -145,7 +145,7 @@ classdef Tile < pm.vis.figure.Tiling
         %>  This method has side-effects by manipulating
         %>  the existing attributes of the parent object.
         %>
-        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
+        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %>                              Note that all of these property-value pairs can be also directly set via the
@@ -301,7 +301,7 @@ classdef Tile < pm.vis.figure.Tiling
                 end
             end
 
-            make@pm.vis.figure.Tiling(self);
+            make@pm.vis.Tiling(self);
 
             %%%% Define a single colorbar.
 
@@ -372,7 +372,7 @@ classdef Tile < pm.vis.figure.Tiling
         %>  This method has side-effects by manipulating
         %>  the existing attributes of the parent object.
         %>
-        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
+        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %>                              Note that all of these property-value pairs can be also directly set via the
@@ -402,7 +402,7 @@ classdef Tile < pm.vis.figure.Tiling
 
             if ~isempty(varargin)
                 [varobj, vartemp] = pm.matlab.hashmap.popKeyVal(["figure", "subplot", "template", "tiledlayout", "tileshape"], varargin);
-                premake@pm.vis.figure.Tiling(self, varobj{:});
+                premake@pm.vis.Tiling(self, varobj{:});
                 self.template.hash2comp(vartemp);
                 %recursive = true;
                 %extensible = true;

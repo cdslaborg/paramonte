@@ -81,7 +81,7 @@ classdef AutoCorr < pm.matlab.Handle
         val = [];
     end
 
-    methods(Access=public)
+    methods(Access = public)
 
         %>  \brief
         %>  Return an object of class [pm.stats.AutoCorr](@ref AutoCorr).<br>

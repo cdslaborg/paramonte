@@ -7,7 +7,7 @@
 %>  also those of the superclass [pm.vis.figure.Figure](@ref Figure).<br>
 %>
 %>  \note
-%>  See also the documentation of the constructor of the class [pm.vis.figure.Tiling::Tiling](@ref Tiling::Tiling).<br>
+%>  See also the documentation of the constructor of the class [pm.vis.Tiling::Tiling](@ref Tiling::Tiling).<br>
 %>
 %>  \final
 %>
@@ -43,10 +43,10 @@ classdef Tiling < pm.vis.figure.Figure
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         %>  \brief
-        %>  Construct and return an object of class [pm.vis.figure.Tiling](@ref Tiling).<br>
+        %>  Construct and return an object of class [pm.vis.Tiling](@ref Tiling).<br>
         %>
         %>  \details
-        %>  This is the constructor of the class [pm.vis.figure.Tiling](@ref Tiling).<br>
+        %>  This is the constructor of the class [pm.vis.Tiling](@ref Tiling).<br>
         %>
         %>  \param[in]  subplot     :   The input cell matrix of MATLAB objects of superclass [pm.vis.Subplot](@ref Subplot).<br>
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
@@ -56,13 +56,13 @@ classdef Tiling < pm.vis.figure.Figure
         %>                              parent object attributes, before calling the ``make()`` method.<br>
         %>
         %>  \return
-        %>  ``self``                :   The output scalar object of class [pm.vis.figure.Tiling](@ref Tiling).<br>
+        %>  ``self``                :   The output scalar object of class [pm.vis.Tiling](@ref Tiling).<br>
         %>
         %>  \interface{Tiling}
         %>  \code{.m}
         %>
-        %>      t = pm.vis.figure.Tiling(subplot);
-        %>      t = pm.vis.figure.Tiling(subplot, varargin);
+        %>      t = pm.vis.Tiling(subplot);
+        %>      t = pm.vis.Tiling(subplot, varargin);
         %>
         %>  \endcode
         %>
@@ -95,7 +95,7 @@ classdef Tiling < pm.vis.figure.Figure
             if ~failed
                 varargin = {"subplot", subplot, varargin{:}};
             else
-                help("[pm.vis.figure.Tiling](@ref Tiling)");
+                help("pm.vis.Tiling");
                 error   ( newline ...
                         + "The input argument ``subplot`` must be a MATLAB cell matrix of " + newline ...
                         + "empty objects or objects of superclass [pm.vis.Subplot](@ref Subplot)." + newline ...
@@ -128,7 +128,7 @@ classdef Tiling < pm.vis.figure.Figure
         %>  \interface{make}
         %>  \code{.m}
         %>
-        %>      t = pm.vis.figure.Tiling(subplot, varargin);
+        %>      t = pm.vis.Tiling(subplot, varargin);
         %>      t.make(varargin);
         %>
         %>  \endcode
@@ -214,7 +214,7 @@ classdef Tiling < pm.vis.figure.Figure
         %>  \interface{reset}
         %>  \code{.m}
         %>
-        %>      t = pm.vis.figure.Tiling(subplot, varargin) % reset all object properties to the default settings.
+        %>      t = pm.vis.Tiling(subplot, varargin) % reset all object properties to the default settings.
         %>      t.reset(varargin);
         %>
         %>  \endcode
@@ -263,7 +263,7 @@ classdef Tiling < pm.vis.figure.Figure
         %>  \interface{premake}
         %>  \code{.m}
         %>
-        %>      t = pm.vis.figure.Tiling(subplot, varargin);
+        %>      t = pm.vis.Tiling(subplot, varargin);
         %>      t.premake(varargin);
         %>
         %>  \endcode

@@ -41,6 +41,7 @@ classdef SubplotEllipse3 < pm.vis.SubplotLineScatter3
         %>  The MATLAB scalar (or vector) of whole-number(s) representing the dimension(s) of the
         %>  input ``gramian`` and ``center`` data to be used on the x-axis of 2D ellipsoid visualization.<br>
         %>  The default is ``1`` if ``dimy`` component is also unspecified, or the appropriate data column adjacent to ``dimmy``.<br>
+        %>  If the condition ``dimx == dimy`` holds, then the resulting ellipses will be circles.<br>
         %>
         dimx = [];
         %>
@@ -49,6 +50,7 @@ classdef SubplotEllipse3 < pm.vis.SubplotLineScatter3
         %>  The MATLAB scalar (or vector) of whole-number(s) representing the dimension(s) of the
         %>  input ``gramian`` and ``center`` data to be used on the y-axis of 2D ellipsoid visualization.<br>
         %>  The default is ``1`` if ``dimx`` component is also unspecified, or the appropriate data column adjacent to ``dimmx``.<br>
+        %>  If the condition ``dimx == dimy`` holds, then the resulting ellipses will be circles.<br>
         %>
         dimy = [];
         %>
@@ -818,6 +820,7 @@ classdef SubplotEllipse3 < pm.vis.SubplotLineScatter3
             %%%% Generate ellipse self.workspace.
             %%%%
 
+            gramtmp = zeros(2, 2);
             bcrd = zeros(size(self.workspace.zval, 1), length(fields) * length(self.workspace.ellindex) * numel(self.workspace.dimx));
             for idim = 1 : numel(self.workspace.dimx)
                 for iell = 1 : length(self.workspace.ellindex)
@@ -825,7 +828,13 @@ classdef SubplotEllipse3 < pm.vis.SubplotLineScatter3
                     icol = (iell - 1) * length(fields) + 1;
                     iset = (idim - 1) * length(fields) * length(self.workspace.ellindex);
                     dimxy = [self.workspace.dimx(idim), self.workspace.dimy(idim)];
-                    bcrd(:, iset + icol : iset + icol + 1) = pm.geom.ell2.getBorder ( self.workspace.gramian(dimxy, dimxy, jell) ...
+                    if  self.workspace.dimx(idim) ~= self.workspace.dimy(idim)
+                        gramtmp(:, :) = self.workspace.gramian(dimxy, dimxy, jell);
+                    else
+                        sigmasq = self.workspace.gramian(self.workspace.dimx(idim), self.workspace.dimx(idim), jell);
+                        gramtmp(:, :) = [sigmasq, 0; 0, sigmasq];
+                    end
+                    bcrd(:, iset + icol : iset + icol + 1) = pm.geom.ell2.getBorder ( gramtmp ...
                                                                                     , self.workspace.center(dimxy, jell) ...
                                                                                     , size(self.workspace.zval, 1) ...
                                                                                     );

@@ -89,12 +89,12 @@ restart = restart{1};
 
 pv = pm.vis.Plot(pm.vis.SubplotEllipse(restart.proposalCov, restart.proposalMean));
 pv.subplot.title.titletext = "Ellipse Plot";
-pv.make("axes", {"zscale", "log"}, "dimx", [1, 3], "dimx", [1, 3] + 1);
+pv.make("axes", {"zscale", "log"}, "dimx", [1, 3], "dimy", [1, 3] + 1);
 pv.savefig("PlotEllipse.1.png", "-m3");
 
-pv = pm.vis.Plot(pm.vis.SubplotEllipse3(restart.proposalCov, restart.proposalMean, restart.uniqueStateVisitCount'));
+pv = pm.vis.Plot(pm.vis.SubplotEllipse3(restart.proposalCov, restart.proposalMean, transpose(restart.uniqueStateVisitCount)));
 pv.subplot.title.titletext = "Ellipse3 Plot";
-pv.make("axes", {"zscale", "log"}, "dimx", [1, 3], "dimx", [1, 3] + 1);
+pv.make("axes", {"zscale", "log"}, "dimx", [1, 3], "dimy", [1, 3] + 1);
 pv.savefig("PlotEllipse3.1.png", "-m3");
 
 close all;

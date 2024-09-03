@@ -9,12 +9,17 @@ classdef TileEllipse3 < pm.vis.Tile
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        %>  \brief
+        %>  Construct and return an object of class [pm.vis.TileEllipse3](@ref TileEllipse3).<br>
+        %>
+        %>  \details
+        %>  This is the constructor of the class [pm.vis.TileEllipse3](@ref TileEllipse3).<br>
         %>
         %>  \param[in]  gramian     :   See the corresponding input argument to the class [pm.vis.SubplotEllipse3](@ref SubplotEllipse3).
         %>  \param[in]  center      :   See the corresponding input argument to the class [pm.vis.SubplotEllipse3](@ref SubplotEllipse3).
         %>  \param[in]  zval        :   See the corresponding input argument to the class [pm.vis.SubplotEllipse3](@ref SubplotEllipse3).
         %>  \param[in]  cval        :   See the corresponding input argument to the class [pm.vis.SubplotEllipse3](@ref SubplotEllipse3).
-        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.
+        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %>                              Note that all of these property-value pairs can be also directly set via the

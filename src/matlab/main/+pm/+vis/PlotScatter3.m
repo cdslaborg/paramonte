@@ -32,7 +32,7 @@ classdef PlotScatter3 < pm.vis.Plot
 
         %>
         %>  \param[in]  dfref       :   See the documentation of the corresponding input
-        %>                              argument of the superclass [pm.vis.Plot](@ref Plot).<br>
+        %>                              argument of the class [pm.vis.Subplot](@ref Subplot).<br>
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
