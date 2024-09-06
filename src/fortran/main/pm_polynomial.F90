@@ -379,9 +379,8 @@
 !>  \image html benchmark/pm_polynomial/setPolyRoot/benchmark.setPolyRoot.runtime.ratio.png width=1000
 !>  \image html benchmark/pm_polynomial/setPolyRoot/benchmark.setPolyRoot.root.count.png width=1000
 !>  \moralb{setPolyRoot}
-!>      -#  Among all summation algorithms, [jenkins_type](@ref pm_polynomial::jenkins_type)
-!>          appears to offer the fastest root finding algorithms.<br>
-!>      -#  The [eigen_type](@ref pm_polynomial::eigen_type) method also tends to offer excellent performance.<br>
+!>      -#  Among all root finding algorithms, [jenkins_type](@ref pm_polynomial::jenkins_type) appears to be the fastest.<br>
+!>      -#  The [eigen_type](@ref pm_polynomial::eigen_type) method also tends to offer a comparably good performance.<br>
 !>      -#  Unlike the above two, [laguerre_type](@ref pm_polynomial::laguerre_type) algorithm tends to significantly
 !>          trail behind both in performance and reliability in finding all roots of the polynomial.<br>
 !>
@@ -4499,7 +4498,7 @@ module pm_polynomial
     !>  \interface{setPolyRoot}
     !>  \code{.F90}
     !>
-    !>      use pm_polynomial, only: setPolyRoot, eigen, jenkins, laguerre, skgo
+    !>      use pm_polynomial, only: setPolyRoot, eigen_type, jenkins_type, laguerre_type, skgo_type
     !>
     !>      call setPolyRoot(root(1 : degree), count, coef(0 : degree), method) ! `degree` is the degree of the polynomial.
     !>
@@ -4549,9 +4548,8 @@ module pm_polynomial
     !>  \image html benchmark/pm_polynomial/setPolyRoot/benchmark.setPolyRoot.runtime.ratio.png width=1000
     !>  \image html benchmark/pm_polynomial/setPolyRoot/benchmark.setPolyRoot.root.count.png width=1000
     !>  \moralb{setPolyRoot}
-    !>      -#  Among all summation algorithms, [jenkins_type](@ref pm_polynomial::jenkins_type)
-    !>          appears to offer the fastest root finding algorithms.<br>
-    !>      -#  The [eigen_type](@ref pm_polynomial::eigen_type) method also tends to offer excellent performance.<br>
+    !>      -#  Among all root finding algorithms, [jenkins_type](@ref pm_polynomial::jenkins_type) appears to be the fastest.<br>
+    !>      -#  The [eigen_type](@ref pm_polynomial::eigen_type) method also tends to offer a comparably good performance.<br>
     !>      -#  Unlike the above two, [laguerre_type](@ref pm_polynomial::laguerre_type) algorithm tends to significantly
     !>          trail behind both in performance and reliability in finding all roots of the polynomial.<br>
     !>
