@@ -4499,7 +4499,7 @@ module pm_polynomial
     !>  \interface{setPolyRoot}
     !>  \code{.F90}
     !>
-    !>      use pm_polynomial, only: setPolyRoot
+    !>      use pm_polynomial, only: setPolyRoot, eigen, jenkins, laguerre, skgo
     !>
     !>      call setPolyRoot(root(1 : degree), count, coef(0 : degree), method) ! `degree` is the degree of the polynomial.
     !>
