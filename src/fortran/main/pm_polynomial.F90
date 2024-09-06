@@ -3689,7 +3689,7 @@ module pm_polynomial
     !>  \interface{getPolyRoot}
     !>  \code{.F90}
     !>
-    !>      use pm_polynomial, only: getPolyRoot
+    !>      use pm_polynomial, only: getPolyRoot, eigen, jenkins, laguerre, skgo
     !>      complex(kind(coef)), allocatable :: root(:)
     !>
     !>      root = getPolyRoot(coef(:)) ! allocatable output.
