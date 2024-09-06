@@ -4479,6 +4479,10 @@ module pm_polynomial
     !>                                  <li>    the scalar constant [laguerre](@ref pm_polynomial::laguerre) or a
     !>                                          constant object of type [laguerre_type](@ref pm_polynomial::laguerre_type)
     !>                                          implying the use of the Laguerre root-finding method.<br>
+    !>                                  <li>    the scalar constant [skgo](@ref pm_polynomial::skgo) or a
+    !>                                          constant object of type [skgo_type](@ref pm_polynomial::skgo_type)
+    !>                                          implying the use of the Skowron-Gould root-finding method.<br>
+    !>                                          **This method is yet to be fully implemented**.<br>
     !>                              </ol>
     !>                              **Which polynomial root-finding method should I use?**<br>
     !>                              <ol>
@@ -4602,6 +4606,7 @@ module pm_polynomial
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
+    !>  \FatemehBagheri, Friday 09:51 AM, September 6, 2024, NASA Goddard Space Flight Center, Washington, D.C.
 
     ! Eigenvalue method.
 
