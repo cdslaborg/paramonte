@@ -24,7 +24,7 @@
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        ! Define zero.
+        ! Define ZERO.
 #if     CK_ENABLED || CK_CK_ENABLED
 #define TYPE_KIND complex(TKG)
         complex(TKG), parameter :: ZERO = (0._TKG, 0._TKG), ONE = (1._TKG, 0._TKG)
@@ -379,7 +379,7 @@
         integer(IK) :: count
 #if     Def_ENABLED
         type(eigen_type), parameter :: method = eigen_type()
-#elif   !(Eig_ENABLED || Jen_ENABLED || Lag_ENABLED || SGO_ENABLED)
+#elif   !(Eig_ENABLED || Jen_ENABLED || Lag_ENABLED || SGL_ENABLED)
 #error  "Unrecognized interface."
 #endif
         allocate(root(size(coef, 1, IK) - 1_IK))
@@ -411,7 +411,7 @@
         CHECK_ASSERTION(__LINE__, all(shape(workspace, kind = IK) == degree), SK_"@setPolyRoot(): The condition `all(shape(workspace) == size(coef) - 1)` must hold. shape(workspace), size(coef) = "//getStr([shape(workspace, kind = IK), degree + 1_IK]))
         CHECK_ASSERTION(__LINE__, coef(degree) /= ZERO, SK_"@setPolyRoot(): The condition `coef(size(coef)) /= 0.` must hold. degree = "//getStr(coef(degree)))
 
-        ! Gracefully capture the error and return if the highest polynomial coefficient is zero.
+        ! Gracefully capture the error and return if the highest polynomial coefficient is ZERO.
 
         if (coef(degree) == ZERO) then
             count = 0_IK ! degree + 1_IK
@@ -434,7 +434,7 @@
 
         ! The special case of `degree == 0` or `degree == 1`.
 
-        if (degree == 0_IK) then ! Gracefully capture the error and return if the degree of polynomial is zero.
+        if (degree == 0_IK) then ! Gracefully capture the error and return if the degree of polynomial is ZERO.
             count = 0_IK
             return
         elseif (degree == 1_IK) then
@@ -710,7 +710,7 @@
         !       `root` contains the eigenvalues.
         !       If an error exit is made, the eigenvalues should be correct for indices `first+1,...,order`,
         !       `first` is set to,
-        !           zero       for normal return,
+        !           ZERO       for normal return,
         !           j          if the j-th eigenvalue has not been
         !                      determined after 30 iterations.
         !
@@ -896,7 +896,7 @@
         CHECK_ASSERTION(__LINE__, coef(degree) /= ZERO, SK_"@setPolyRoot(): The condition `coef(size(coef)) /= 0.` must hold. coef = "//getStr(coef))
         CHECK_ASSERTION(__LINE__, size(root, 1, IK) == degree, SK_"@setPolyRoot(): The condition `size(root) == size(coef) - 1` must hold. size(root), size(coef) - 1 = "//getStr([size(root, 1, IK), degree]))
 
-        ! Algorithm fails if the leading coefficient is zero.
+        ! Algorithm fails if the leading coefficient is ZERO.
         if (coef(degree) == ZERO) then
             count = 0_IK
             return
@@ -960,11 +960,11 @@
 
         ! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        ! Start the algorithm for one zero.
+        ! Start the algorithm for one ZERO.
         loopIter: do ! 40
 
             if (nn <= 2) then
-                ! Calculate the final zero and return.
+                ! Calculate the final ZERO and return.
                 count = degree
                 root(degree) = GET_RATIO(-workspace(2), workspace(1))
                 return
@@ -1047,7 +1047,7 @@
                         end do
                         h(1) = workspace(1)
                     else
-                        ! If the constant term is essentially zero, shift `h` coefficients.
+                        ! If the constant term is essentially ZERO, shift `h` coefficients.
                         do i = 1, nm1
                             j = nn - i
                             h(j) = h(j - 1)
@@ -1069,7 +1069,7 @@
                     call fxshft(10_IK * cnt2, root(count), converged)
                     if (converged) then
                         ! The second stage jumps directly to the third stage iteration.
-                        ! If successful the zero is stored and the polynomial deflated.
+                        ! If successful the ZERO is stored and the polynomial deflated.
                         nn = nn - 1_IK
                         do i = 1_IK, nn
                             workspace(i) = qp(i)
@@ -1093,9 +1093,9 @@
 
         subroutine fxshft(l2, z, converged)
             ! Computes l2 fixed-shift h polynomials and tests for convergence.
-            ! Initiates a variable-shift iteration and returns with the approximate zero if successful.
+            ! Initiates a variable-shift iteration and returns with the approximate ZERO if successful.
             ! l2 - limit of fixed shift steps.
-            ! z - the output approximate zero if `converged == .true._LK`.
+            ! z - the output approximate ZERO if `converged == .true._LK`.
             ! converged  - logical indicating convergence of stage 3 iteration.
             integer(IK) , intent(in)    :: l2
             complex(TKG), intent(out)   :: z
@@ -1180,7 +1180,7 @@
                 if (i /= 1_IK) then
                     if (.not. (b .or. mp < omp .or. relstp >= .05_TKG)) then
                         ! Iteration has stalled. probably a cluster of zeros.
-                        ! Do 5 fixed shift steps into the cluster to force one zero to dominate.
+                        ! Do 5 fixed shift steps into the cluster to force one ZERO to dominate.
                         tp = relstp
                         b = .true._LK
                         if (relstp < EPS) tp = EPS
@@ -1215,7 +1215,7 @@
 
         subroutine calct(bool)
             ! Computes  t = -p(s) / h(s).
-            ! bool: logical(LK) , set true if h(s) is essentially zero.
+            ! bool: logical(LK) , set true if h(s) is essentially ZERO.
             logical(LK) , intent(out)   :: bool
             complex(TKG)                :: hv
             integer(IK)                 :: n
@@ -1234,7 +1234,7 @@
 
         subroutine nexth(bool)
             ! Compute the next shifted `h` polynomial.
-            ! bool: logical(LK) , if .true._LK h(s) is essentially zero
+            ! bool: logical(LK) , if .true._LK h(s) is essentially ZERO
             logical(LK) , intent(in)    :: bool
             complex(TKG)                :: temp
             integer(IK)                 :: j,n
@@ -1248,7 +1248,7 @@
                 h(1) = qp(1)
                 return
             end if
-            ! If `h(s) == zero`, replace `h` with `qh`.
+            ! If `h(s) == ZERO`, replace `h` with `qh`.
             do j = 2_IK, n
                 h(j) = qh(j - 1)
             end do
@@ -1339,7 +1339,7 @@
         xx = sqrt(.5_RKR)
         yy = -xx
 
-        ! Algorithm fails if the leading coefficient is zero.
+        ! Algorithm fails if the leading coefficient is ZERO.
         if (coef(count) == 0._TKG) then
             count = 0_IK
             return
@@ -1373,12 +1373,12 @@
 
         !write(*,*) "nn, workspace", nn, workspace
 
-        ! Start the algorithm for one zero.
+        ! Start the algorithm for one ZERO.
         loopIter: do ! 30
 
             if (n <= 2_IK) then
                 if (n < 1_IK) return
-                ! Compute the final zero or pair of zeros.
+                ! Compute the final ZERO or pair of zeros.
                 if (n /= 2_IK) then
                     root(count)%re = -workspace(2) / workspace(1)
                     root(count)%im = 0._TKG
@@ -1507,7 +1507,7 @@
                 call fxshfr(MAX_ITER * cnt, nz)
                 if (nz /= 0_IK) then
                     ! The second stage jumps directly to one of the third stage iterations and returns here if successful.
-                    ! Deflate the polynomial, store the zero or zeros and return to the main algorithm.
+                    ! Deflate the polynomial, store the ZERO or zeros and return to the main algorithm.
                     j = count - n + 1_IK
                     root(j) = sz
                     !write(*,*) "j", j, count, n, nn, nz
@@ -1604,7 +1604,7 @@
                         stry = .true.
                         betas = betas * .25_RKR
                         if (iflag /= 0_IK) then
-                            ! if linear iteration signals an almost double real zero attempt quadratic interation
+                            ! if linear iteration signals an almost double real ZERO attempt quadratic interation
                             ui = -(slocal + slocal)
                             vi = slocal * slocal
                             goto 20
@@ -1632,7 +1632,7 @@
         subroutine quadit(uu, vv, nz)
             ! Variable-shift `k`-polynomial iteration for a quadratic factor, converges only if the zeros are equimodular or nearly so.
             ! uu, vv:   coefficients of starting quadratic
-            ! nz:       number of zero found
+            ! nz:       number of ZERO found
             real(TKG)   , intent(in)    :: uu
             real(TKG)   , intent(in)    :: vv
             integer(IK) , intent(out)   :: nz
@@ -1691,7 +1691,7 @@
             call nextk(itype)
             call calcsc(itype)
             call newest(itype, ui, vi)
-            ! If vi is zero the iteration is not converging.
+            ! If vi is ZERO the iteration is not converging.
             if (vi == 0._TKG) return
             relstp = real(abs((vi - v) / vi), RKR)
             u = ui
@@ -1702,9 +1702,9 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         subroutine realit(sss,nz,iflag)
-            ! Variable-shift `h` polynomial iteration for a real zero.
+            ! Variable-shift `h` polynomial iteration for a real ZERO.
             ! sss  : starting iterate.
-            ! nz   : number of zero found.
+            ! nz   : number of ZERO found.
             ! iflag: flag to indicate a pair of zeros near real axis.
             real(TKG)   , intent(inout) :: sss
             integer(IK) , intent(out)   :: nz, iflag
@@ -1831,7 +1831,7 @@
                 temp = a
                 if (itype == 1_IK) temp = b
                 if (abs(a1) <= abs(temp) * EPS * 10._TKG) then
-                    ! If `a1` is nearly zero then use a special form of the recurrence.
+                    ! If `a1` is nearly ZERO then use a special form of the recurrence.
                     k(1) = 0._TKG
                     k(2) = -a7 * qp(1)
                     do i = 3_IK, n
@@ -1918,8 +1918,8 @@
 
         pure subroutine quad(a, b1, c, sroot, lroot)
             ! Compute the zeros of the quadratic `a * z**2 + b1 * z + c`.
-            ! The quadratic formula, modified to avoid overflow, is used to find the larger zero if the zeros are real and both zeros are complex.
-            ! The smaller real zero is found directly from the product of the zeros `c / a`.
+            ! The quadratic formula, modified to avoid overflow, is used to find the larger ZERO if the zeros are real and both zeros are complex.
+            ! The smaller real ZERO is found directly from the product of the zeros `c / a`.
             real(TKG)   , intent(in)    :: a, b1, c
             complex(TKG), intent(out)   :: sroot, lroot
             complex(TKG), parameter     :: ZERO = (0._TKG, 0._TKG)
@@ -2009,7 +2009,7 @@
         !do jdeg = 2_IK, degree
         !    x = root(jdeg)
         !    do ideg = jdeg - 1, 1, -1
-        !        if(root(ideg)%re < x%re) exit
+        !        if (root(ideg)%re < x%re) exit
         !        root(ideg + 1) = root(ideg)
         !    end do
         !    root(ideg + 1) = x
@@ -2059,7 +2059,7 @@
                 relerr = abs(der2) + absroot * relerr
             end do
             relerr = EPS * relerr
-            if(abs(der2) <= relerr) return
+            if (abs(der2) <= relerr) return
             ! Use the Laguerre method.
             der12 = der1 / der2
             der12sq = der12 * der12
@@ -2069,7 +2069,7 @@
             denom2 = der12 - dterm
             absdenom1 = abs(denom1)
             absdenom2 = abs(denom2)
-            if(absdenom1 < absdenom2) then
+            if (absdenom1 < absdenom2) then
                 absdenom1 = absdenom2
                 denom1 = denom2
             end if
@@ -2077,7 +2077,7 @@
                 droot = degree / denom1
             else
                 droot = exp(cmplx(log(1._TKG + absroot), real(niter, TKG), TKG))
-            endif
+            end if
             rootnew = root - droot
             if (root == rootnew) return
             counter = counter + 1
@@ -2093,9 +2093,1368 @@
         end do
         niter = -niter
 
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-#elif   setPolyRoot_ENABLED && SGO_ENABLED && (CK_CK_ENABLED || RK_CK_ENABLED)
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#elif   setPolyRoot_ENABLED && SGL_ENABLED && RK_CK_ENABLED
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        call setPolyRoot(root, count, cmplx(coef, kind = TKG), method)
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#elif   setPolyRoot_ENABLED && SGL_ENABLED && CK_CK_ENABLED
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        !   No    Subroutine
+        !
+        !    1   cmplx_roots_gen               - general polynomial solver, works for random degree, not as fast or robust as cmplx_roots_5
+        !    2   cmplx_roots_5                 - complex roots finding algorithm taylored for 5th order polynomial (with failsafes for polishing)
+        !    3   sort_5_points_by_separation   - sorting of an array of 5 points, 1st most isolated, 4th and 5th - closest
+        !    4   sort_5_points_by_separation_i - sorting same as above, returns array of indicies rather than sorted array
+        !    5   find_2_closest_from_5         - finds closest pair of 5 points
+        !    6   cmplx_laguerre                - Laguerre method with simplified Adams' stopping criterion
+        !    7   cmplx_newton_spec             - Newton method with stopping criterion calculated every 10 steps
+        !    8   cmplx_laguerre2newton         - three regime method: Laguerre, Second-order General method and Newton
+        !    9   solve_quadratic_eq            - quadratic equation solver
+        !   10   solve_cubic_eq                - cubic equation solver based on Lagrange's method
+        !   11   divide_poly_1                 - division of the polynomial by (x-p)
+        !
+        !   fortran 90 code
+        !
+        !   Paper:  Skowron & Gould 2012
+        !           "General Complex Polynomial Root Solver and Its Further Optimization for Binary Microlenses"
+        !
+        !   for a full text see:
+        !       http://www.astrouw.edu.pl/~jskowron/cmplx_roots_sg/
+        !       or http://arxiv.org/find/astro-ph
+        !       or http://www.adsabs.harvard.edu/abstract_service.html
+        !   see also file NOTICE and LICENSE
+        !
+        !   ver. 2012.03.03 initial
+        !   ver. 2014.03.12 bug fix
+        !   ver. 2016.01.21 bug fix
+        !   ver. 2016.04.28 bug fix
+        !
+        !   This subroutine finds roots of a complex polynomial.
+        !   It is general, however less fast or robust than cmplx_roots_5
+        !   which contains failsafe checks in the polishing stage, but is
+        !   designed only for 5th order polynomials.
+        !   It uses a new dynamic root finding algorithm (see the Paper).
+        !
+        !   It can use Laguerre method (subroutine cmplx_laguerre)
+        !   or Laguerre->SG->Newton method (subroutine
+        !   cmplx_laguerre2newton - this is default choice) to find
+        !   roots. It divides polynomial one by one by found roots. At the
+        !   end it finds last root from Viete's formula for quadratic
+        !   equation. Finally, it polishes all found roots using a full
+        !   polynomial and Newton or Laguerre method (default is
+        !   Laguerre - subroutine cmplx_laguerre).
+        !   You can change default choices by commenting out and uncommenting
+        !   certain lines in the code below.
+        !
+        !   Note:
+        !   - we solve for the last root with Viete's formula rather
+        !     than doing full Laguerre step (which is time consuming
+        !     and unnecessary)
+        !   - we do not introduce any preference to real roots
+        !   - in Laguerre implementation we omit unneccesarry calculation of
+        !     absolute values of denominator
+        !   - we do not sort roots. If you need to sort
+        !     roots - we have provided sorting subroutine called:
+        !     sort_5_points_by_separation, which sorts points from most
+        !     isolated to most close. Algorithm in this routine can be
+        !     easily used for number of points different than 5.
+        !
+        !   root  - array which will hold all roots that had been found.
+        !            If the flag 'method%reckoned' is set to
+        !            .true., then instead of point (0,0) we use value from
+        !            this array as starting point for cmplx_laguerre
+        !   coef -   is an array of polynomial cooefs, length = degree + 1,
+        !            coef(1) is a constant term:
+        !                 1              2             3
+        !            coef(1) x^0 + coef(2) x^1 + coef(3) x^2 + ...
+        !   degree - degree of the polynomial and size of 'root' array
+        !   method%polished - after all roots have been found by dividing
+        !            original polynomial by each root found,
+        !            you can opt in to polish all roots using full
+        !            polynomial
+        !   method%reckoned - usually we start Laguerre
+        !            method from point (0,0), but you can decide to use the
+        !            values of 'root' array as starting point for each new
+        !            root that is searched for. This is useful if you have
+        !            very rough idea where some of the roots can be.
+        !
+        logical(LK) :: success
+        integer(IK) :: i, iter, degree
+        complex(TKG) :: coefCopy(size(coef, 1, IK))
+        complex(TKG) :: temp, prev
+        real(TKG), parameter :: LARGE = sqrt(huge(0._TKG))
+        degree = size(root, 1, IK)
+        CHECK_ASSERTION(__LINE__, 0_IK <= degree, SK_"@setPolyRoot(): The condition `0_IK < size(coef)` must hold. size(coef) = "//getStr(degree + 1_IK))
+        CHECK_ASSERTION(__LINE__, size(root, 1, IK) + 1 == size(coef, 1, IK), SK_"@setPolyRoot(): The condition `size(root) + 1 == size(coef)` must hold. size(root), size(coef) = "//getStr([size(root, 1, IK), size(coef, 1, IK)]))
+        coefCopy = coef
+
+        if (.not. method%reckoned) root = ZERO ! initialize starting points.
+
+        ! skip small degree polynomials from doing Laguerre method
+        if (degree <= 1_IK) then
+            if (degree == 1_IK) root(1) = -coef(1) / coef(2)
+            return
+        end if
+
+        do count = degree, 3_IK, -1_IK
+
+            ! find root with Laguerre method
+            ! call cmplx_laguerre(coefCopy, count, root(count), iter, success)
+            ! or
+            ! find root with (Laguerre method -> SG method -> Newton method)
+            call cmplx_laguerre2newton(coefCopy, count, root(count), iter, success, 2_IK)
+            if (.not. success) then
+                root(count) = ZERO
+                call cmplx_laguerre(coefCopy, count, root(count), iter, success)
+            end if
+
+            ! divide the polynomial by this root.
+            temp = coefCopy(count + 1)
+            do i = count, 1, -1
+                prev = coefCopy(i)
+                coefCopy(i) = temp
+                temp = prev + root(count) * temp
+            end do
+            ! variable temp now holds a remainder - should be close to 0
+        end do
+
+        ! find all but last root with Laguerre method.
+        !call cmplx_laguerre(coefCopy, 2, root(2), iter, success)
+        call cmplx_laguerre2newton(coefCopy, 2_IK, root(2), iter, success, 2_IK)
+        if (.not. success) then
+            call solve_quadratic_eq(root(2), root(1), coefCopy)
+        else
+            ! calculate last root from Viete's formula
+            root(1) = -(root(2) + coefCopy(2) / coefCopy(3))
+        end if
+
+        if (method%polished) then
+            do count = 1, degree ! polish root one-by-one with a full polynomial
+                call cmplx_laguerre(coef, degree, root(count), iter, success)
+                !call cmplx_newton_spec(coef, degree, root(count), iter, success)
+            end do
+        end if
+
+    contains
+
+        subroutine cmplx_roots_5(roots, first_3_roots_order_changed, poly, polish_only)
+            ! Subroutine finds or polishes roots of a complex polynomial
+            ! (degree=5)
+            ! This routine is especially tailored for solving binary lens
+            ! equation in form of 5th order polynomial.
+            !
+            ! Use of this routine, in comparison to 'cmplx_roots_gen' can yield
+            ! considerably faster code, because it makes polishing of the roots
+            ! (that come in as a guess from previous solutions) secure by
+            ! implementing additional checks on the result of polishing.
+            ! If those checks are not satisfied then routine reverts to the
+            ! robust algorithm. These checks are designed to work for 5th order
+            ! polynomial originated from binary lens equation.
+            !
+            ! Usage:
+            !
+            ! polish_only == false - I do not know the roots, routine should
+            !                find them from scratch. At the end it
+            !                sorts roots from the most distant to closest.
+            !                Two last roots are the closest (in no particular
+            !                order).
+            ! polish_only = true - I do know the roots pretty well, for example
+            !                I have changed the coefficients of the polynomial
+            !                only a bit, so the two closest roots are
+            !                most likely still the closest ones.
+            !                If the output flag 'first_3_roots_order_changed'
+            !                is returned as 'false', then first 3 returned roots
+            !                are in the same order as initially given to the
+            !                routine. The last two roots are the closest ones,
+            !                but in no specific order (!).
+            !                If 'first_3_roots_order_changed' is 'true' then
+            !                it means that all roots had been resorted.
+            !                Two last roots are the closest ones. First is most
+            !                isolated one.
+            !
+            !
+            ! If you do not know the position of the roots just use flag
+            ! polish_only=.false. In this case routine will find the roots by
+            ! itself.
+            !
+            ! Returns all five roots in the 'roots' array.
+            !
+            ! poly  - is an array of polynomial cooefs, length = degree + 1
+            !       poly(1) x^0 + poly(2) x^1 + poly(3) x^2 + poly(4) x^3 + ...
+            ! roots - roots of the polynomial ('out' and optionally 'in')
+            !
+            !
+            ! Jan Skowron 2011
+            !
+            integer(IK), parameter :: degree = 5_IK
+            complex(TKG), intent(inout) :: roots(degree)
+            logical(LK), intent(out) :: first_3_roots_order_changed
+            complex(TKG), intent(in)  :: poly(degree + 1)
+            logical(LK), intent(in) :: polish_only
+            complex(TKG) :: remainder, roots_robust(degree), coefCopy(degree + 1)
+            integer(IK) :: iter, loops, go_to_robust, m, root4, root5, i, i2
+            logical(LK) :: succ
+            real(TKG) :: d2min
+
+            roots_robust = roots
+            go_to_robust = 0_IK
+            if (.not. polish_only) then
+                ! initialize roots
+                roots = ZERO
+                go_to_robust = 1_IK
+            end if
+            first_3_roots_order_changed = .false._LK
+
+            do loops = 1, 3
+
+                ! ROBUST
+                ! (we do not know the roots)
+                if (go_to_robust > 0_IK) then
+
+                    if (go_to_robust > 2_IK) then ! something is wrong
+                        roots = roots_robust ! return not-polished roots, because polishing creates errors
+                        return
+                    end if
+
+                    coefCopy = poly ! copy coeffs
+                    do m = degree, 4, -1 ! find the roots one-by-one (until 3 are left to be found)
+                        call cmplx_laguerre2newton(coefCopy, m, roots(m), iter, succ, 2_IK)
+                        if (.not. succ) then
+                            roots(m) = ZERO
+                            call cmplx_laguerre(coefCopy, m, roots(m), iter, succ)
+                        end if
+                        ! divide polynomial by this root
+                        call divide_poly_1(coefCopy, remainder, roots(m), coefCopy, m)
+                    end do
+                    ! find last 3 roots with cubic euqation solver (Lagrange's method)
+                    call solve_cubic_eq(roots(1), roots(2), roots(3), coefCopy)
+                    ! all roots found.
+                    ! sort roots - first will be most isolated, last two will be the closest
+                    call sort_5_points_by_separation(roots)
+                    ! copy roots in case something will go wrong during polishing
+                    roots_robust = roots
+                    ! set flag, that roots have been resorted
+                    first_3_roots_order_changed = .true._LK
+                end if ! go_to_robust>0
+                ! POLISH
+                ! (we know the roots approximately, and we guess that last two are closest)
+                coefCopy = poly ! copy coeffs
+
+                do m = 1, degree - 2
+                !do m = 1, degree ! POWN - polish only with Newton (option)
+
+                    ! polish roots with full polynomial
+                    call cmplx_newton_spec(coefCopy, degree, roots(m), iter, succ)
+
+                    if (.not. succ) then
+                        ! go back to robust
+                        go_to_robust = go_to_robust + 1_IK
+                        roots = ZERO
+                        exit
+                    end if
+                end do ! m=1,degree-2
+
+                if (succ) then
+
+                    ! comment out division and quadratic if you (POWN) polish with Newton only
+                    do m = 1, degree - 2_IK
+                        call divide_poly_1(coefCopy, remainder, roots(m), coefCopy, degree - m + 1_IK)
+                    end do
+                    ! last two roots are found with quadratic equation solver
+                    ! (this is faster and more robust, although little less accurate)
+                    call solve_quadratic_eq(roots(degree - 1_IK), roots(degree ), coefCopy)
+                    ! all roots found and polished
+
+                    ! TEST ORDER
+                    ! test closest roots if they are the same pair as given to polish
+                    call find_2_closest_from_5(root4, root5, d2min, roots)
+
+                    ! check if the closest roots are not too close, this could happen
+                    ! when using polishing with Newton only, when two roots erroneously
+                    ! colapsed to the same root. This check is not needed for polishing
+                    ! 3 roots by Newton and using quadratic for the remaining two.
+                    ! If the real roots are so close indeed (very low probability), this will just
+                    ! take more time and the unpolished result be returned at the end
+                    ! but algorithm will work, and will return accurate enough result
+                    !if (d2min<1d-18) then             ! POWN - polish only with Newton
+                    !  go_to_robust=go_to_robust+1    ! POWN - polish only with Newton
+                    !else                             ! POWN - polish only with Newton
+
+                    if (root4 < degree - 1_IK .or. root5 < degree - 1_IK) then
+                        ! after polishing some of the 3 far roots become one of the 2 closest ones go back to robust.
+                        if (go_to_robust > 0_IK) then
+                            ! if came from robust
+                            ! copy two most isolated roots as starting points for new robust
+                            do i = 1, degree - 3
+                                roots(degree - i + 1) = roots_robust(i)
+                            end do
+                        else
+                            ! came from users initial guess copy some 2 roots (except the closest ones).
+                            i2 = degree
+                            do i = 1, degree
+                                if (i /= root4 .and. i /= root5) then
+                                    roots(i2) = roots(i)
+                                    i2 = i2 - 1_IK
+                                end if
+                                if (i2 <= 3_IK) exit ! do not copy those that will be done by cubic in robust
+                            end do
+                        end if
+                        go_to_robust = go_to_robust + 1_IK
+                    else
+                        return ! root4 and root5 comes from the initial closest pair most common case.
+                    end if
+                !endif ! POWN - polish only with Newton
+                end if
+            end do
+        end subroutine
+
+        subroutine sort_5_points_by_separation(points)
+            ! Sort array of five points
+            ! Most isolated point will become the first point in the array
+            ! The closest points will be the last two points in the array
+            !
+            ! Algorithm works well for all dimensions. We put n=5 as
+            ! a hardcoded value just for optimization purposes.
+            integer(IK), parameter :: n = 5 ! works for different n as well, but is faster for n as constant (optimization)
+            complex(TKG), intent(inout) :: points(n)
+            integer(IK) :: sorted_points(n)
+            complex(TKG) :: savepoints(n)
+            integer(IK) :: i
+            call sort_5_points_by_separation_i(sorted_points, points)
+            savepoints = points
+            do i = 1, n
+                points(i) = savepoints(sorted_points(i))
+            end do
+        end subroutine
+
+        subroutine sort_5_points_by_separation_i(sorted_points, points)
+            ! Return index array that sorts array of five points
+            ! Index of the most isolated point will appear on the first place of the output array.
+            ! The indices of the closest 2 points will be at the last two
+            ! places in the 'sorted_points' array
+            !
+            ! Algorithm works well for all dimensions. We put n=5 as
+            ! a hardcoded value just for optimization purposes.
+            integer(IK), parameter :: n = 5 ! works for different n as well, but is faster for n as constant (optimization)
+            integer(IK), intent(out) :: sorted_points(n)
+            complex(TKG), intent(in) :: points(n)
+            real(TKG) :: dmin, d1, d2, d
+            real(TKG) :: distances2(n, n)
+            integer(IK) :: ki, kj, ind2, put
+            real(TKG) :: neigh1st(n), neigh2nd(n)
+            complex(TKG) :: p
+
+            distances2 = LARGE
+            dmin = LARGE
+
+            do kj = 1, n
+                do ki = 1, kj - 1
+                    p = points(ki) - points(kj)
+                    d = real(conjg(p)*p)
+                    distances2(ki, kj) = d
+                    distances2(kj, ki) = d
+                end do
+            end do
+
+            ! find neighbours.
+            neigh1st = LARGE
+            neigh2nd = LARGE
+            do kj = 1, n
+                do ki = 1, n
+                    d = distances2(kj, ki)
+                    if (d < neigh2nd(kj)) then
+                        if (d < neigh1st(kj)) then
+                            neigh2nd(kj) = neigh1st(kj)
+                            neigh1st(kj) = d
+                        else
+                            neigh2nd(kj) = d
+                        end if
+                    end if
+                end do
+            end do
+
+            ! initialize sorted_points
+            do ki = 1, n
+                sorted_points(ki) = ki
+            end do
+
+            ! sort the rest 1..n-2
+            do kj = 2, n
+                d1 = neigh1st(kj)
+                d2 = neigh2nd(kj)
+                put = 1
+                do ki = kj - 1, 1, -1
+                    ind2 = sorted_points(ki)
+                    d = neigh1st(ind2)
+                    if (d >= d1) then
+                        if (d == d1) then
+                            if (neigh2nd(ind2) > d2) then
+                                put = ki + 1_IK
+                                exit
+                            end if
+                        else
+                            put = ki + 1_IK
+                            exit
+                        end if
+                    end if
+                    sorted_points(ki + 1) = sorted_points(ki)
+                end do
+                sorted_points(put) = kj
+            end do
+        end subroutine
+
+        subroutine find_2_closest_from_5(i1,i2, d2min, points)
+            ! Returns indices of the two closest points out of array of 5
+            integer(IK), parameter :: n = 5 ! will work for other n too, but it is faster with n as constant
+            complex(TKG), intent(in) :: points(n)
+            integer(IK), intent(out) :: i1, i2
+            real(TKG), intent(out) :: d2min ! square of minimal distance
+            !real(TKG) :: distances2(n,n)
+            real(TKG) :: d2min1, d2
+            integer(IK) :: i, j
+            complex(TKG) :: p
+
+            d2min1 = LARGE
+            do j = 1, n
+                !distances2(j,j)=0._TKG
+                do i = 1, j - 1
+                    p = points(i) - points(j)
+                    d2 = real(conjg(p)*p)
+                    !distances2(i,j)=d2
+                    !distances2(j,i)=d2
+                    if (d2 <= d2min1) then
+                        i1 = i
+                        i2 = j
+                        d2min1 = d2
+                    end if
+                end do
+            end do
+            d2min = d2min1
+        end subroutine
+
+        recursive subroutine cmplx_laguerre(poly, degree, root, iter, success)
+            ! Subroutine finds one root of a complex polynomial using
+            ! Laguerre method. In every loop it calculates simplified
+            ! Adams' stopping criterion for the value of the polynomial.
+            !
+            ! Uses 'root' value as a starting point (!!!!!)
+            ! Remember to initialize 'root' to some initial guess or to
+            ! point (0,0) if you have no prior knowledge.
+            !
+            ! poly - is an array of polynomial cooefs
+            !        length = degree + 1, poly(1) is constant
+            !               1              2             3
+            !          poly(1) x^0 + poly(2) x^1 + poly(3) x^2 + ...
+            ! degree - a degree of the polynomial
+            ! root - input: guess for the value of a root
+            !        output: a root of the polynomial
+            ! iter - number of iterations performed (the number of polynomial
+            !        evaluations and stopping criterion evaluation)
+            ! success - is false if routine reaches maximum number of iterations
+            !
+            ! For a summary of the method go to:
+            ! http://en.wikipedia.org/wiki/Laguerre_method
+            !
+            integer(IK) , parameter :: MAX_ITERS = 200 ! Laguerre is used as a failsafe
+            ! constants needed to break cycles in the scheme
+            integer(IK) , parameter :: FRAC_JUMP_LEN = 10_IK
+            integer(IK) , parameter :: FRAC_JUMP_EVERY = 10_IK
+            real(TKG)   , parameter :: FRAC_JUMPS(FRAC_JUMP_LEN) =  [ 0.64109297_TKG &
+                                                                    , 0.91577881_TKG, 0.25921289_TKG, 0.50487203_TKG &
+                                                                    , 0.08177045_TKG, 0.13653241_TKG, 0.30616200_TKG &
+                                                                    , 0.37794326_TKG, 0.04618805_TKG, 0.75132137_TKG &
+                                                                    ] ! some random numbers
+            real(TKG) :: faq ! jump length
+            integer(IK), intent(in) :: degree
+            complex(TKG), intent(in) :: poly(degree + 1)
+            complex(TKG), intent(inout) :: root
+            logical(LK), intent(out) :: success
+            integer(IK), intent(out) :: iter
+            real(TKG), parameter :: PI = acos(-1._TKG)
+            real(TKG), parameter :: FRAC_ERR = 10 * epsilon(0._TKG) ! fractional error for TKG (see. Adams 1967 Eqs 9 and 10)
+            complex(TKG) :: p         ! value of polynomial
+            complex(TKG) :: dp        ! value of 1st derivative
+            complex(TKG) :: d2p_half  ! value of 2nd derivative
+            integer(IK) :: i, k
+            logical(LK) :: good_to_go
+            !complex(TKG) :: G, H, G2
+            complex(TKG) :: denom, denom_sqrt, dx, newroot
+            real(TKG) :: ek, absroot, abs2p
+            complex(TKG) :: fac_netwon, fac_extra, F_half, c_one_nth
+            real(TKG) :: one_nth, n_1_nth, two_n_div_n_1
+            real(TKG) :: stopping_crit2
+
+            !---------------------------------------
+
+            iter = 0_IK
+            success = .true._LK
+            ! next if-endif block is an EXTREME failsafe, not usually needed, and thus turned off in this version.
+            if (.false.) then ! change false-->true if you would like to use caution about having first coefficient == 0
+                if (degree < 0) then
+                    ! \todo
+                    ! \phigh
+                    ! This error handling must be improved.
+                    write(*,*) 'Error: cmplx_laguerre: degree<0'
+                    return
+                end if
+                if (poly(degree + 1_IK) == ZERO) then
+                    if (degree == 0_IK) return
+                    call cmplx_laguerre(poly, degree - 1_IK, root, iter, success)
+                    return
+                end if
+                if (degree <= 1_IK) then
+                    if (degree == 0_IK) then  ! we know from previous check than poly(1) not equal ZERO
+                        success = .false._LK
+                        ! \todo
+                        ! \phigh
+                        ! This error handling must be improved.
+                        write(*,*) 'Warning: cmplx_laguerre: degree=0 and poly(1)/=0, no roots'
+                        return
+                    else
+                        root = -poly(1) / poly(2)
+                        return
+                    end if
+                end if
+            end if
+            !  end EXTREME failsafe
+
+            good_to_go = .false._LK
+            one_nth = 1._TKG / degree
+            n_1_nth = (degree - 1._TKG) * one_nth
+            c_one_nth = cmplx(one_nth, 0._TKG, TKG)
+            two_n_div_n_1 = 2._TKG / n_1_nth
+
+
+            do i = 1, MAX_ITERS
+
+                ! prepare stoping criterion
+                ek = abs(poly(degree + 1_IK))
+                absroot = abs(root)
+                ! calculate value of polynomial and its first two derivatives
+                p = poly(degree + 1_IK)
+                dp = ZERO
+                d2p_half = ZERO
+                do k = degree, 1_IK, -1_IK ! Horner Scheme, see for eg.  Numerical Recipes Sec. 5.3 how to evaluate polynomials and derivatives
+                    d2p_half = dp + d2p_half * root
+                    dp = p + dp * root
+                    p = poly(k) + p * root ! b_k
+                    ! Adams, Duane A., 1967, "A stopping criterion for polynomial root finding",
+                    ! Communications of the ACM, Volume 10 Issue 10, Oct. 1967, p. 655
+                    ! ftp://reports.stanford.edu/pub/cstr/reports/cs/tr/67/55/CS-TR-67-55.pdf
+                    ! Eq 8.
+                    ek = absroot * ek + abs(p)
+                end do
+                iter = iter + 1_IK
+
+                abs2p = real(conjg(p) * p)
+                if (abs2p == 0._TKG) return
+                stopping_crit2 = (FRAC_ERR * ek)**2
+                if (abs2p < stopping_crit2) then ! (simplified a little Eq. 10 of Adams 1967)
+                    ! do additional iteration if we are less than 10x from stopping criterion
+                    if (abs2p < 0.01_TKG * stopping_crit2) then
+                        return ! return immediately, because we are at very good place
+                    else
+                        good_to_go = .true._LK ! do one iteration more
+                    end if
+                else
+                    good_to_go = .false._LK ! reset if we are outside the zone of the root.
+                end if
+
+                faq = 1._TKG
+                denom = ZERO
+                if (dp /= ZERO) then
+                    fac_netwon = p / dp
+                    fac_extra = d2p_half / dp
+                    F_half = fac_netwon * fac_extra
+                    denom_sqrt = sqrt(ONE - two_n_div_n_1 * F_half)
+                    !G = dp/p ! gradient of ln(p)
+                    !G2 = G*G
+                    !H = G2-2._TKG * d2p_half / p ! second derivative of ln(p)
+                    !denom_sqrt = sqrt((degree - 1) * (degree * H - G2))
+                    ! NEXT LINE PROBABLY CAN BE COMMENTED OUT
+                    if (real(denom_sqrt) >= 0._TKG) then
+                        ! real part of a square root is positive for probably all compilers. You can
+                        ! test this on your compiler and if so, you can omit this check
+                        denom = c_one_nth + n_1_nth * denom_sqrt
+                    else
+                        denom = c_one_nth - n_1_nth * denom_sqrt
+                    end if
+                end if
+                if (denom == ZERO) then !test if demoninators are > 0.0 not to divide by ZERO
+                    dx = (absroot + 1._TKG) * exp(cmplx(0._TKG, FRAC_JUMPS(mod(i, FRAC_JUMP_LEN) + 1_IK) * 2_IK * PI, TKG)) ! make some random jump
+                else
+                    dx = fac_netwon / denom
+                    !dx = degree / denom
+                end if
+
+                newroot = root - dx
+                if (newroot == root) return ! nothing changes -> return
+                if (good_to_go) then ! this was jump already after stopping criterion was met
+                    root = newroot
+                    return
+                end if
+                if (mod(i, FRAC_JUMP_EVERY) == 0_IK) then ! decide whether to do a jump of modified length (to break cycles)
+                    faq = FRAC_JUMPS(mod(i / FRAC_JUMP_EVERY - 1_IK, FRAC_JUMP_LEN) + 1_IK)
+                    newroot = root - faq * dx ! do jump of some semi-random length (0<faq<1)
+                end if
+                root = newroot
+            end do
+            success = .false._LK
+            ! too many iterations here.
+        end subroutine
+
+        recursive subroutine cmplx_newton_spec(poly, degree, root, iter, success)
+            ! Subroutine finds one root of a complex polynomial using
+            ! Newton method. It calculates simplified Adams' stopping
+            ! criterion for the value of the polynomial once per 10 iterations (!),
+            ! after initial iteration. This is done to speed up calculations
+            ! when polishing roots that are known preety well, and stopping
+            ! criterion does significantly change in their neighborhood.
+            !
+            ! Uses 'root' value as a starting point (!!!!!)
+            ! Remember to initialize 'root' to some initial guess.
+            ! Do not initilize 'root' to point (0,0) if the polynomial
+            ! coefficients are strictly real, because it will make going
+            ! to imaginary roots impossible.
+            !
+            ! poly - is an array of polynomial cooefs
+            !        length = degree + 1, poly(1) is constant
+            !               1              2             3
+            !          poly(1) x^0 + poly(2) x^1 + poly(3) x^2 + ...
+            ! degree - a degree of the polynomial
+            ! root - input: guess for the value of a root
+            !        output: a root of the polynomial
+            ! iter - number of iterations performed (the number of polynomial
+            !        evaluations)
+            ! success - is false if routine reaches maximum number of iterations
+            !
+            ! For a summary of the method go to:
+            ! http://en.wikipedia.org/wiki/Newton's_method
+            !
+            integer(IK), parameter :: MAX_ITERS = 50_IK
+            ! constants needed to break cycles in the scheme
+            integer(IK), parameter :: FRAC_JUMP_EVERY = 10_IK
+            integer(IK), parameter :: FRAC_JUMP_LEN = 10_IK
+            real(TKG), parameter :: FRAC_JUMPS(FRAC_JUMP_LEN) = [ 0.64109297_TKG &
+                                                                , 0.91577881_TKG, 0.25921289_TKG,  0.50487203_TKG &
+                                                                , 0.08177045_TKG, 0.13653241_TKG,  0.30616200_TKG &
+                                                                , 0.37794326_TKG, 0.04618805_TKG,  0.75132137_TKG &
+                                                                ] ! some random numbers
+            real(TKG) :: faq ! jump length
+            real(TKG), parameter :: PI = acos(-1._TKG)
+            real(TKG), parameter :: FRAC_ERR = 10 * epsilon(0._TKG) ! fractional error for TKG (see. Adams 1967 Eqs 9 and 10)
+            integer(IK), intent(in) :: degree
+            complex(TKG), intent(in) :: poly(degree + 1)
+            complex(TKG), intent(inout) :: root
+            logical(LK), intent(out) :: success
+            integer(IK), intent(out) :: iter
+            complex(TKG) :: p ! value of polynomial
+            complex(TKG) :: dp ! value of 1st derivative
+            integer(IK) :: i, k
+            logical(LK) :: good_to_go
+            complex(TKG) :: dx, newroot
+            real(TKG) :: ek, absroot, abs2p
+            real(TKG) :: stopping_crit2
+
+            iter = 0
+            success = .true.
+
+            ! next if-endif block is an EXTREME failsafe, not usually needed, and thus turned off in this version.
+            if (.false.) then ! change false-->true if you would like to use caution about having first coefficient == 0
+                if (degree < 0_IK) then
+                    ! \todo
+                    write(*,*) 'Error: cmplx_newton_spec: degree<0'
+                    return
+                end if
+                if (poly(degree + 1_IK) == ZERO) then
+                    if (degree == 0_IK) return
+                    call cmplx_newton_spec(poly, degree - 1_IK, root, iter, success)
+                    return
+                end if
+                if (degree <= 1_IK) then
+                    if (degree == 0_IK) then  ! we know from previous check than poly(1) not equal ZERO
+                        success = .false._LK
+                        ! \todo
+                        write(*,*) 'Warning: cmplx_newton_spec: degree=0 and poly(1)/=0, no roots'
+                        return
+                    else
+                        root=-poly(1)/poly(2)
+                        return
+                    end if
+                end if
+            end if
+            !  end EXTREME failsafe
+
+            good_to_go = .false.
+
+            stopping_crit2 = 0._TKG  ! value not importat, will be initialized anyway on the first loop (because mod(1,10)==1)
+            do i = 1, MAX_ITERS
+
+                faq = 1._TKG
+                ! prepare stoping criterion
+                ! calculate value of polynomial and its first two derivatives
+                p = poly(degree + 1_IK)
+                dp = ZERO
+
+                if (mod(i, 10_IK) == 1_IK) then ! calculate stopping criterion every tenth iteration
+                    ek = abs(poly(degree + 1))
+                    absroot = abs(root)
+                    do k=degree, 1, -1 ! Horner Scheme, see for eg.  Numerical Recipes Sec. 5.3 how to evaluate polynomials and derivatives
+                        dp = p + dp * root
+                        p = poly(k) + p * root ! b_k
+                        ! Adams, Duane A., 1967, "A stopping criterion for polynomial root finding",
+                        ! Communications of the ACM, Volume 10 Issue 10, Oct. 1967, p. 655
+                        ! ftp://reports.stanford.edu/pub/cstr/reports/cs/tr/67/55/CS-TR-67-55.pdf
+                        ! Eq 8.
+                        ek = absroot * ek + abs(p)
+                    end do
+                    stopping_crit2 = (FRAC_ERR * ek)**2
+                else ! calculate just the value and derivative
+                    do k = degree, 1, -1 ! Horner Scheme, see for eg.  Numerical Recipes Sec. 5.3 how to evaluate polynomials and derivatives
+                        dp = p + dp * root
+                        p = poly(k) + p * root ! b_k
+                    end do
+                end if
+                iter = iter + 1_IK
+
+                abs2p = real(conjg(p) * p)
+                if (abs2p == 0._TKG) return
+
+                if (abs2p < stopping_crit2) then ! (simplified a little Eq. 10 of Adams 1967)
+                    if (dp==ZERO) return ! if we have problem with ZERO, but we are close to the root, just accept
+                    ! do additional iteration if we are less than 10x from stopping criterion
+                    if (abs2p < 0.01_TKG * stopping_crit2) then
+                        return ! return immediately, because we are at very good place
+                    else
+                        good_to_go = .true._LK ! do one iteration more
+                    end if
+                else
+                    good_to_go = .false._LK ! reset if we are outside the zone of the root
+                end if
+
+
+                if (dp == ZERO) then
+                    ! problem with ZERO
+                    dx = (abs(root) + 1._TKG) * exp(cmplx(0._TKG, FRAC_JUMPS(mod(i, FRAC_JUMP_LEN) + 1_IK) * 2_IK * PI, TKG)) ! make some random jump
+                else
+                    dx = p / dp ! Newton method, see http://en.wikipedia.org/wiki/Newton's_method
+                end if
+
+                newroot = root - dx
+                if (newroot == root) return ! nothing changes -> return
+                if (good_to_go) then ! this was jump already after stopping criterion was met
+                    root = newroot
+                    return
+                end if
+
+                if (mod(i, FRAC_JUMP_EVERY) == 0_IK) then ! decide whether to do a jump of modified length (to break cycles)
+                    faq = FRAC_JUMPS(mod(i / FRAC_JUMP_EVERY - 1_IK, FRAC_JUMP_LEN) + 1_IK)
+                    newroot = root - faq * dx ! do jump of some semi-random length (0<faq<1)
+                end if
+                root = newroot
+
+            end do
+            success = .false._LK
+            ! too many iterations here
+        end
+
+        recursive subroutine cmplx_laguerre2newton(poly, degree, root, iter, success, starting_mode)
+            ! Subroutine finds one root of a complex polynomial using
+            ! Laguerre method, Second-order General method and Newton
+            ! method - depending on the value of function F, which is a
+            ! combination of second derivative, first derivative and
+            ! value of polynomial [F=-(p"*p)/(p'p')].
+            !
+            ! Subroutine has 3 modes of operation. It starts with mode=2
+            ! which is the Laguerre method, and continues until F
+            ! becames F<0.50, at which point, it switches to mode=1,
+            ! i.e., SG method (see paper). While in the first two
+            ! modes, routine calculates stopping criterion once per every
+            ! iteration. Switch to the last mode, Newton method, (mode=0)
+            ! happens when becomes F<0.05. In this mode, routine calculates
+            ! stopping criterion only once, at the beginning, under an
+            ! assumption that we are already very close to the root.
+            ! If there are more than 10 iterations in Newton mode,
+            ! it means that in fact we were far from the root, and
+            ! routine goes back to Laguerre method (mode=2).
+            !
+            ! Uses 'root' value as a starting point (!!!!!)
+            ! Remember to initialize 'root' to some initial guess or to
+            ! point (0,0) if you have no prior knowledge.
+            !
+            ! poly - is an array of polynomial cooefs
+            !        length = degree + 1, poly(1) is constant
+            !               1              2             3
+            !          poly(1) x^0 + poly(2) x^1 + poly(3) x^2 + ...
+            ! degree - a degree of the polynomial
+            ! root - input: guess for the value of a root
+            !        output: a root of the polynomial
+            ! iter - number of iterations performed (the number of polynomial
+            !        evaluations and stopping criterion evaluation)
+            ! success - is false if routine reaches maximum number of iterations
+            ! starting_mode - this should be by default = 2. However if you
+            !                 choose to start with SG method put 1 instead.
+            !                 Zero will cause the routine to
+            !                 start with Newton for first 10 iterations, and
+            !                 then go back to mode 2.
+            !
+            !
+            ! For a summary of the method see the paper: Skowron & Gould (2012)
+            !
+            integer(IK), parameter :: MAX_ITERS = 50
+            ! constants needed to break cycles in the scheme
+            integer(IK), parameter :: FRAC_JUMP_EVERY = 10
+            integer(IK), parameter :: FRAC_JUMP_LEN = 10
+            real(TKG), parameter :: FRAC_JUMPS(FRAC_JUMP_LEN) = [ 0.64109297_TKG &
+                                                                , 0.91577881_TKG, 0.25921289_TKG,  0.50487203_TKG &
+                                                                , 0.08177045_TKG, 0.13653241_TKG,  0.30616200_TKG &
+                                                                , 0.37794326_TKG, 0.04618805_TKG,  0.75132137_TKG &
+                                                                ] ! some random numbers
+            real(TKG) :: faq ! jump length
+            real(TKG), parameter :: PI = acos(-1._TKG)
+            real(TKG), parameter :: FRAC_ERR = 10 * epsilon(0._TKG) ! fractional error for TKG (see. Adams 1967 Eqs 9 and 10)
+            integer(IK), intent(in) :: degree
+            complex(TKG), intent(in) :: poly(degree + 1)
+            integer(IK), intent(in) :: starting_mode
+            complex(TKG), intent(inout) :: root
+            logical(LK), intent(out) :: success
+            integer(IK), intent(out) :: iter
+            complex(TKG) :: p ! value of polynomial
+            complex(TKG) :: dp ! value of 1st derivative
+            complex(TKG) :: d2p_half ! value of 2nd derivative
+            logical(LK) :: good_to_go
+            integer(IK) :: i, j, k
+            !complex(TKG) :: G, H, G2
+            complex(TKG) :: denom, denom_sqrt, dx, newroot
+            real(TKG) :: ek, absroot, abs2p, abs2_F_half
+            complex(TKG) :: fac_netwon, fac_extra, F_half, c_one_nth
+            real(TKG) :: one_nth, n_1_nth, two_n_div_n_1, stopping_crit2
+            integer(IK) :: mode
+
+            iter = 0_IK
+            success = .true._LK
+            stopping_crit2 = 0._TKG ! value not importat, will be initialized anyway on the first loop (because mod(1,10)==1)
+            ! next if-endif block is an EXTREME failsafe, not usually needed, and thus turned off in this version.
+            if (.false.) then ! change false-->true if you would like to use caution about having first coefficient == 0
+                if (degree < 0) then
+                    ! \todo
+                    write(*,*) 'Error: cmplx_laguerre2newton: degree<0'
+                    return
+                end if
+                if (poly(degree + 1_IK) == ZERO) then
+                    if (degree == 0_IK) return
+                    call cmplx_laguerre2newton(poly, degree - 1_IK, root, iter, success, starting_mode)
+                    return
+                end if
+                if (degree <= 1_IK) then
+                    if (degree == 0_IK) then ! we know from previous check than poly(1) not equal ZERO
+                        success = .false._LK
+                        ! \todo
+                        write(*,*) 'Warning: cmplx_laguerre2newton: degree=0 and poly(1)/=0, no roots'
+                        return
+                    else
+                        root = -poly(1) / poly(2)
+                        return
+                    end if
+                end if
+            end if
+            !  end EXTREME failsafe
+
+            j = 1_IK
+            good_to_go = .false._LK
+            mode = starting_mode ! mode=2 full Laguerre, mode=1 SG, mode=0 newton
+            do ! infinite loop, just to be able to come back from newton, if more than 10 iteration there
+
+                !------------------------------------------------------------- mode 2
+                if (mode >= 2_IK) then ! Laguerre METHOD
+
+                    one_nth = 1._TKG / degree
+                    n_1_nth = (degree - 1._TKG) * one_nth
+                    two_n_div_n_1 = 2._TKG / n_1_nth
+                    c_one_nth = cmplx(one_nth, 0._TKG, TKG)
+
+                    do i = 1, MAX_ITERS
+
+                        faq = 1._TKG
+                        ! prepare stoping criterion
+                        ek = abs(poly(degree + 1))
+                        absroot = abs(root)
+                        ! calculate value of polynomial and its first two derivatives
+                        p = poly(degree + 1)
+                        dp = ZERO
+                        d2p_half = ZERO
+                        do k = degree, 1, -1 ! Horner Scheme, see for eg.  Numerical Recipes Sec. 5.3 how to evaluate polynomials and derivatives
+                            d2p_half = dp + d2p_half * root
+                            dp = p + dp * root
+                            p = poly(k) + p * root ! b_k
+                            ! Adams, Duane A., 1967, "A stopping criterion for polynomial root finding",
+                            ! Communications of the ACM, Volume 10 Issue 10, Oct. 1967, p. 655
+                            ! ftp://reports.stanford.edu/pub/cstr/reports/cs/tr/67/55/CS-TR-67-55.pdf
+                            ! Eq 8.
+                            ek = absroot * ek + abs(p)
+                        end do
+                        abs2p = real(conjg(p) * p) !abs(p)
+                        iter = iter + 1_IK
+                        if (abs2p == 0._TKG) return
+                        stopping_crit2 = (FRAC_ERR * ek)**2
+                        if (abs2p < stopping_crit2) then ! (simplified a little Eq. 10 of Adams 1967)
+                            ! do additional iteration if we are less than 10x from stopping criterion
+                            if (abs2p < 0.01_TKG * stopping_crit2) then ! ten times better than stopping criterion
+                                return ! return immediately, because we are at very good place
+                            else
+                                good_to_go = .true. ! do one iteration more
+                            end if
+                        else
+                            good_to_go = .false. ! reset if we are outside the zone of the root
+                        end if
+
+                        denom = ZERO
+                        if (dp /= ZERO) then
+                            fac_netwon = p / dp
+                            fac_extra = d2p_half / dp
+                            F_half = fac_netwon * fac_extra
+                            abs2_F_half = real(conjg(F_half) * F_half)
+                            if (abs2_F_half <= 0.0625_TKG) then ! F<0.50, F/2<0.25
+                                ! go to SG method
+                                if (abs2_F_half <= 0.000625_TKG) then ! F<0.05, F/2<0.025
+                                    mode = 0_IK ! go to Newton
+                                else
+                                    mode = 1_IK ! go to SG
+                                end if
+                            end if
+                            denom_sqrt = sqrt(ONE - two_n_div_n_1 * F_half)
+                            ! NEXT LINE PROBABLY CAN BE COMMENTED OUT
+                            if (real(denom_sqrt) >= 0._TKG) then
+                                ! real part of a square root is positive for probably all compilers. You can
+                                ! test this on your compiler and if so, you can omit this check
+                                denom = c_one_nth + n_1_nth * denom_sqrt
+                            else
+                                denom = c_one_nth - n_1_nth * denom_sqrt
+                            end if
+                        end if
+                        if (denom == ZERO) then ! test if demoninators are > 0.0 not to divide by ZERO
+                            dx = (abs(root) + 1._TKG) * exp(cmplx(0._TKG, FRAC_JUMPS(mod(i, FRAC_JUMP_LEN) + 1) * 2 * PI, TKG)) ! make some random jump
+                        else
+                            dx = fac_netwon / denom
+                        end if
+                        newroot = root - dx
+                        if (newroot == root) return ! nothing changes -> return
+                        if (good_to_go) then ! this was jump already after stopping criterion was met
+                            root = newroot
+                            return
+                        end if
+                        if (mode /= 2_IK) then
+                            root = newroot
+                            j = i + 1_IK ! remember iteration index
+                            exit ! go to Newton or SG
+                        end if
+
+                        if (mod(i, FRAC_JUMP_EVERY) == 0_IK) then ! decide whether to do a jump of modified length (to break cycles)
+                            faq = FRAC_JUMPS(mod(i / FRAC_JUMP_EVERY - 1_IK, FRAC_JUMP_LEN) + 1_IK)
+                            newroot = root - faq * dx ! do jump of some semi-random length (0<faq<1)
+                        end if
+                        root = newroot
+                    end do ! do mode 2
+
+                    if (i >= MAX_ITERS) then
+                        success = .false._LK
+                        return
+                    end if
+
+                end if ! if mode 2
+
+                if (mode == 1_IK) then ! SECOND-ORDER GENERAL METHOD (SG)
+
+                    do i = j, MAX_ITERS
+                        faq = 1._TKG
+                        ! calculate value of polynomial and its first two derivatives
+                        p = poly(degree + 1)
+                        dp = ZERO
+                        d2p_half = ZERO
+                        if (mod(i - j, 10_IK) == 0_IK) then
+                            ! prepare stoping criterion
+                            ek = abs(poly(degree + 1))
+                            absroot = abs(root)
+                            do k = degree, 1, -1 ! Horner Scheme, see for eg.  Numerical Recipes Sec. 5.3 how to evaluate polynomials and derivatives
+                                d2p_half = dp + d2p_half * root
+                                dp = p + dp * root
+                                p  = poly(k) + p * root ! b_k
+                                ! Adams, Duane A., 1967, "A stopping criterion for polynomial root finding",
+                                ! Communications of the ACM, Volume 10 Issue 10, Oct. 1967, p. 655
+                                ! ftp://reports.stanford.edu/pub/cstr/reports/cs/tr/67/55/CS-TR-67-55.pdf
+                                ! Eq 8.
+                                ek = absroot * ek + abs(p)
+                            end do
+                            stopping_crit2 = (FRAC_ERR * ek)**2
+                        else
+                            do k = degree, 1, -1 ! Horner Scheme, see for eg.  Numerical Recipes Sec. 5.3 how to evaluate polynomials and derivatives
+                                d2p_half = dp + d2p_half * root
+                                dp = p + dp * root
+                                p = poly(k) + p * root ! b_k
+                            end do
+                        end if
+
+                        abs2p = real(conjg(p) * p) !abs(p)**2
+                        iter = iter + 1_IK
+                        if (abs2p == 0._TKG) return
+
+                        if (abs2p < stopping_crit2) then ! (simplified a little Eq. 10 of Adams 1967)
+                            if (dp == ZERO) return
+                            ! do additional iteration if we are less than 10x from stopping criterion
+                            if (abs2p < 0.01_TKG * stopping_crit2) then ! ten times better than stopping criterion
+                                return ! return immediately, because we are at very good place
+                            else
+                                good_to_go = .true._LK ! do one iteration more
+                            end if
+                        else
+                            good_to_go = .false._LK ! reset if we are outside the zone of the root
+                        end if
+
+                        if (dp == ZERO) then !test if demoninators are > 0.0 not to divide by ZERO
+                            ! make some random jump
+                            dx = (abs(root) + 1._TKG) * exp(cmplx(0._TKG, FRAC_JUMPS(mod(i, FRAC_JUMP_LEN) + 1_IK) * 2_IK * PI, TKG))
+                        else
+                            fac_netwon = p / dp
+                            fac_extra = d2p_half / dp
+                            F_half = fac_netwon * fac_extra
+                            abs2_F_half = real(conjg(F_half) * F_half)
+                            if (abs2_F_half <= 0.000625_TKG) then ! F<0.05, F/2<0.025
+                                mode = 0_IK ! set Newton, go there after jump
+                            end if
+                            dx = fac_netwon * (ONE + F_half) ! SG
+                        end if
+                        newroot = root - dx
+                        if (newroot == root) return ! nothing changes -> return
+                        if (good_to_go) then       ! this was jump already after stopping criterion was met
+                            root = newroot
+                            return
+                        end if
+                        if (mode /= 1_IK) then
+                            root = newroot
+                            j = i + 1_IK ! remember iteration number
+                            exit ! go to Newton
+                        end if
+                        if (mod(i, FRAC_JUMP_EVERY) == 0_IK) then ! decide whether to do a jump of modified length (to break cycles)
+                            faq = FRAC_JUMPS(mod(i / FRAC_JUMP_EVERY - 1_IK, FRAC_JUMP_LEN) + 1_IK)
+                            newroot = root - faq * dx ! do jump of some semi-random length (0<faq<1)
+                        end if
+                        root = newroot
+                    end do ! do mode 1
+                    if (i >= MAX_ITERS) then
+                        success = .false._LK
+                        return
+                    end if
+                end if ! if mode 1
+
+                if (mode == 0_IK) then ! NEWTON'S METHOD
+
+                    do i = j, j + 10_IK ! do only 10 iterations the most, then go back to full Laguerre
+                        faq = 1._TKG
+                        ! calculate value of polynomial and its first two derivatives
+                        p = poly(degree + 1)
+                        dp = ZERO
+                        if (i == j) then ! calculate stopping crit only once at the begining
+                            ! prepare stoping criterion
+                            ek = abs(poly(degree + 1))
+                            absroot = abs(root)
+                            do k = degree, 1_IK, -1_IK ! Horner Scheme, see for eg.  Numerical Recipes Sec. 5.3 how to evaluate polynomials and derivatives
+                                dp = p + dp * root
+                                p = poly(k) + p * root ! b_k
+                                ! Adams, Duane A., 1967, "A stopping criterion for polynomial root finding",
+                                ! Communications of the ACM, Volume 10 Issue 10, Oct. 1967, p. 655
+                                ! ftp://reports.stanford.edu/pub/cstr/reports/cs/tr/67/55/CS-TR-67-55.pdf
+                                ! Eq 8.
+                                ek = absroot * ek + abs(p)
+                            end do
+                            stopping_crit2 = (FRAC_ERR * ek)**2
+                        else
+                            do k = degree, 1_IK, -1_IK ! Horner Scheme, see for eg.  Numerical Recipes Sec. 5.3 how to evaluate polynomials and derivatives
+                                dp = p + dp * root
+                                p = poly(k) + p * root ! b_k
+                            end do
+                        end if
+                        abs2p = real(conjg(p) * p) !abs(p)**2
+                        iter = iter + 1_IK
+                        if (abs2p == 0._TKG) return
+                        if (abs2p < stopping_crit2) then ! (simplified a little Eq. 10 of Adams 1967)
+                            if (dp == ZERO) return
+                            ! do additional iteration if we are less than 10x from stopping criterion
+                            if (abs2p < 0.01_TKG * stopping_crit2) then ! ten times better than stopping criterion
+                                return ! return immediately, because we are at very good place
+                            else
+                                good_to_go = .true._LK ! do one iteration more
+                            end if
+                        else
+                            good_to_go = .false._LK ! reset if we are outside the zone of the root
+                        end if
+
+                        if (dp == ZERO) then ! test if demoninators are > 0.0 not to divide by ZERO
+                            dx = (abs(root) + 1._TKG) * exp(cmplx(0._TKG, FRAC_JUMPS(mod(i, FRAC_JUMP_LEN) + 1_IK) * 2_IK * PI, TKG)) ! make some random jump
+                        else
+                            dx = p / dp
+                        end if
+
+                        newroot = root - dx
+                        if (newroot == root) return ! nothing changes -> return
+                        if (good_to_go) then
+                            root = newroot
+                            return
+                        end if
+
+                        ! this loop is done only 10 times. So skip this check
+                        !if (mod(i,FRAC_JUMP_EVERY)==0) then ! decide whether to do a jump of modified length (to break cycles)
+                        !  faq=FRAC_JUMPS(mod(i/FRAC_JUMP_EVERY-1,FRAC_JUMP_LEN)+1)
+                        !  newroot=root-faq*dx ! do jump of some semi-random length (0<faq<1)
+                        !endif
+                        root = newroot
+
+                    end do ! do mode 0 10 times
+
+                    if (iter >= MAX_ITERS) then
+                        ! too many iterations here
+                        success = .false._LK
+                        return
+                    end if
+                    mode = 2_IK ! go back to Laguerre. This happens when we were unable to converge in 10 iterations with Newton
+
+                end if ! if mode 0
+
+            end do ! end of infinite loop
+            success = .false._LK
+        end
+
+        subroutine solve_quadratic_eq(x0, x1, poly)
+            ! Quadratic equation solver for complex polynomial (degree=2)
+            complex(TKG), intent(out) :: x0, x1
+            complex(TKG), dimension(*), intent(in) :: poly ! coeffs of the polynomial
+            ! poly - is an array of polynomial cooefs, length = degree + 1, poly(1) is constant
+            !             1              2             3
+            !        poly(1) x^0 + poly(2) x^1 + poly(3) x^2
+            complex(TKG) :: a, b, c, b2, delta
+            complex(TKG) :: val, x
+            integer(IK) :: i
+            a = poly(3)
+            b = poly(2)
+            c = poly(1)
+            ! quadratic equation: a z^2 + b z + c = 0
+            b2 = b * b
+            delta = sqrt(b2 - 4 * (a * c))
+            if (real(conjg(b) * delta) >= 0._TKG) then  ! scallar product to decide the sign yielding bigger magnitude
+                x0 = -0.5_TKG * (b + delta)
+            else
+                x0 = -0.5_TKG * (b - delta)
+            end if
+            if (x0 == ZERO) then
+                x1 = ZERO
+            else ! Viete's formula
+                x1 = c / x0
+                x0 = x0 / a
+            end if
+#if         0
+            if (.false.) then ! print the results
+                x = x0
+                val = poly(3)
+                do i = 2, 1, -1
+                    val = val * x + poly(i)
+                end do
+                write(*,'(2f19.15,a3,2f19.15)') x,' ->',val
+                x = x1
+                val = poly(3)
+                do i = 2, 1, -1
+                    val = val * x + poly(i)
+                end do
+                write(*,'(2f19.15,a3,2f19.15)') x,' ->',val
+            end if
+#endif
+        end subroutine
+
+        subroutine solve_cubic_eq(x0, x1, x2, poly)
+            ! Cubic equation solver for complex polynomial (degree=3)
+            ! http://en.wikipedia.org/wiki/Cubic_function   Lagrange's method
+            complex(TKG), intent(out) :: x0, x1, x2
+            complex(TKG), dimension(*), intent(in) :: poly ! coeffs of the polynomial
+            ! poly - is an array of polynomial cooefs, length = degree + 1, poly(1) is constant
+            !             1              2             3             4
+            !        poly(1) x^0 + poly(2) x^1 + poly(3) x^2 + poly(4) x^3
+            complex(TKG), parameter :: zeta =cmplx(-0.5_TKG, 0.8660254037844386_TKG, TKG)  ! sqrt3(1)
+            complex(TKG), parameter :: zeta2=cmplx(-0.5_TKG,-0.8660254037844386_TKG, TKG)  ! sqrt3(1)**2
+            real(TKG), parameter    :: third = 1._TKG / 3._TKG
+            complex(TKG) :: s0, s1, s2
+            complex(TKG) :: E1 ! x0+x1+x2
+            complex(TKG) :: E2 ! x0x1+x1x2+x2x0
+            complex(TKG) :: E3 ! x0x1x2
+            complex(TKG) :: A, B, a_1, E12
+            complex(TKG) :: delta, A2
+            complex(TKG) :: val, x
+            integer(IK) :: i
+
+            a_1 = poly(4)**(-1)
+            E1 = -poly(3) * a_1
+            E2 = +poly(2) * a_1
+            E3 = -poly(1) * a_1
+
+            s0 = E1
+            E12 = E1 * E1
+            A = 2._TKG * E1 * E12 - 9 * E1 * E2 + 27 * E3 ! = s1^3 + s2^3
+            B = E12 - 3 * E2 ! = s1 s2
+            ! quadratic equation: z^2-Az+B^3=0  where roots are equal to s1^3 and s2^3
+            A2 = A * A
+            delta = sqrt(A2 - 4 * B**3)
+            if (real(conjg(A) * delta) >= 0._TKG) then
+                ! scalar product to decide the sign yielding bigger magnitude
+                s1 = (0.5_TKG * (A + delta))**third
+            else
+                s1 = (0.5_TKG * (A - delta))**third
+            end if
+            if (s1 == ZERO) then
+                s2 = ZERO
+            else
+                s2 = B / s1
+            end if
+            x0 = third * (s0 + s1 + s2)
+            x1 = third * (s0 + s1 * zeta2 + s2 * zeta)
+            x2 = third * (s0 + s1 * zeta + s2 * zeta2)
+#if         0
+            if (.false.) then  ! print the results
+                x = x0
+                val=poly(4)
+                do i=3,1,-1
+                    val=val*x+poly(i)
+                end do
+                write(*,'(2f19.15,a3,2f19.15)') x,' ->',val
+                x=x1
+                val=poly(4)
+                do i=3,1,-1
+                    val=val*x+poly(i)
+                end do
+                write(*,'(2f19.15,a3,2f19.15)') x,' ->',val
+
+                x=x2
+                val=poly(4)
+                do i=3,1,-1
+                    val=val*x+poly(i)
+                end do
+                write(*,'(2f19.15,a3,2f19.15)') x,' ->',val
+            end if
+#endif
+        end subroutine
+
+        subroutine divide_poly_1(polyout, remainder, p, polyin, degree)
+            ! Subroutine will divide polynomial 'polyin' by (x-p)
+            ! results will be returned in polynomial 'polyout' of degree-1
+            ! The remainder of the division will be returned in 'remainder'
+            !
+            ! You can provide same array as 'polyin' and 'polyout' - this
+            ! routine will work fine, though it will not set to ZERO the
+            ! unused, highest coefficient in the output array. You just have
+            ! remember the proper degree of a polynomial.
+            integer(IK), intent(in) :: degree
+            complex(TKG), intent(out) :: polyout(degree)
+            complex(TKG), intent(out) :: remainder
+            complex(TKG), intent(in) :: p
+            complex(TKG), intent(in) :: polyin(degree + 1) ! coeffs of the polynomial
+            ! poly - is an array of polynomial cooefs, length = degree + 1, poly(1) is constant
+            !             1              2             3
+            !        poly(1) x^0 + poly(2) x^1 + poly(3) x^2 + ...
+            complex(TKG) :: temp, prev
+            integer(IK) :: i
+            temp = polyin(degree + 1)
+            polyout = polyin(1 : degree)
+            do i = degree, 1, -1
+                prev = polyout(i)
+                polyout(i) = temp
+                temp = prev + p * temp
+            end do
+            remainder = temp
+        end subroutine
+
+        complex(TKG) function eval_poly(x, poly, degree, errk)
+            ! Evaluation of the complex polynomial 'poly' of a given degree
+            ! at the point 'x'. This routine calculates also the simplified
+            ! Adams' (1967) stopping criterion. ('errk' should be multiplied
+            ! by 2d-15 for double precision, real*8, arithmetic)
+            complex(TKG), intent(in) :: x
+            integer(IK), intent(in) :: degree
+            real(TKG), intent(out) :: errk
+            complex(TKG), intent(in) :: poly(degree + 1) ! coeffs of the polynomial
+            ! poly - is an array of polynomial cooefs, length = degree + 1, poly(1) is constant
+            !             1              2             3
+            !        poly(1) x^0 + poly(2) x^1 + poly(3) x^2 + ...
+            complex(TKG) :: val
+            real(TKG) :: absx
+            integer(IK) :: i
+            ! prepare stoping criterion
+            errk = abs(poly(degree + 1))
+            val = poly(degree + 1)
+            absx = abs(x)
+            do i = degree, 1, -1 ! Horner Scheme, see for eg.  Numerical Recipes Sec. 5.3 how to evaluate polynomials and derivatives
+                val = val * x + poly(i)
+                ! Adams, Duane A., 1967, "A stopping criterion for polynomial root finding",
+                ! Communications of the ACM, Volume 10 Issue 10, Oct. 1967, p. 655
+                ! ftp://reports.stanford.edu/pub/cstr/reports/cs/tr/67/55/CS-TR-67-55.pdf
+                ! Eq 8.
+                errk = errk * absx + abs(val)
+            end do
+            eval_poly = val
+            ! if (abs(val)<2d-15*errk) return  ! (simplified a little Eq. 10 of Adams 1967)
+        end function
+
+        subroutine multiply_poly_1(polyout, p, polyin, degree)
+            ! Subroutine will multiply polynomial 'polyin' by (x-p)
+            ! results will be returned in polynomial 'polyout' of degree + 1
+            !
+            ! You can provide same array as 'polyin' and 'polyout' - this
+            ! routine will work fine.
+            integer(IK), intent(in) :: degree  ! OLD degree, new will be +1
+            complex(TKG), intent(out) :: polyout(degree + 2)
+            complex(TKG), intent(in) :: p
+            complex(TKG), intent(in) :: polyin(degree + 1) ! coeffs of the polynomial
+            ! poly - is an array of polynomial cooefs, length = degree + 1, poly(1) is constant
+            !             1              2             3
+            !        poly(1) x^0 + poly(2) x^1 + poly(3) x^2 + ...
+            integer(IK) :: i
+            polyout(1 : degree + 1) = polyin(1 : degree + 1) ! copy
+            polyout(degree+2)=polyout(degree + 1)
+            do i = degree + 1, 2, -1
+                polyout(i) = polyout(i - 1) - polyout(i) * p
+            end do
+            polyout(1) = -polyout(1) * p
+        end subroutine
+
+        subroutine create_poly_from_roots(poly, degree, a, roots)
+            ! Routine will build polynomial from a set of points given in
+            ! the array 'roots'. These points will be zeros of the resulting
+            ! polynomial.
+            !
+            ! poly - is an array of polynomial coefs, length = degree + 1, poly(1) is constant
+            !             1              2             3
+            !        poly(1) x^0 + poly(2) x^1 + poly(3) x^2 + ...
+            ! degree - is and integer denoting size of the 'roots' array
+            ! a - gives the leading coefficient of the resutling polynomial
+            ! roots - input array of points, size=degree
+            !
+            ! This subroutine works, but it is not optimal - it will work
+            ! up to a polynomial of degree~50, if you would like to have
+            ! more robust routine, up to a degree ~ 2000, you should
+            ! split your factors into a binary tree, and then multiply
+            ! leafs level by level from down up with subroutine like:
+            ! multiply_poly for arbitraty polynomial multiplications
+            ! not multiply_poly_1.
+            integer(IK), intent(in) :: degree
+            complex(TKG), intent(out) :: poly(degree + 1)
+            complex(TKG), intent(in) :: roots(degree)
+            complex(TKG), intent(in) :: a
+            integer(IK) :: i
+            poly = ZERO
+            poly(1) = a ! leading coeff of the polynomial
+            do i = 1, degree
+                call multiply_poly_1(poly, roots(i), poly, i - 1_IK)
+            end do
+        end subroutine
 
 #else
         !%%%%%%%%%%%%%%%%%%%%%%%%

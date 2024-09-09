@@ -24,9 +24,7 @@ program benchmark
     bench = [ bench_type(name = SK_"Eigen", exec = setPolyRootEigen, overhead = setOverhead) &
             , bench_type(name = SK_"Jenkins", exec = setPolyRootJenkins, overhead = setOverhead) &
             , bench_type(name = SK_"Laguerre", exec = setPolyRootLaguerre, overhead = setOverhead) &
-#if 0
             , bench_type(name = SK_"Skowron", exec = setPolyRootSkowron, overhead = setOverhead) &
-#endif
             ]
     allocate(rootCount(size(bench)))
 
@@ -88,13 +86,11 @@ contains
         call getDummy()
     end subroutine
 
-#if 0
     subroutine setPolyRootSkowron()
-        use pm_polynomial, only: cmplx_roots_gen
-        call cmplx_roots_gen(root(1 : degree), coef(0 : degree), degree, polish_roots_after = .true., use_roots_as_starting_points = .false.)
+        use pm_polynomial, only: setPolyRoot, method => sgl
+        call setPolyRoot(root(1 : degree), rootCount(ibench), coef(0 : degree), method)
         rootCount(ibench) = root(1)%re
         call getDummy()
     end subroutine
-#endif
 
 end program benchmark

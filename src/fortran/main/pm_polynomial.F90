@@ -3183,11 +3183,11 @@ module pm_polynomial
     !>  Instead, the end users must use `parameter` objects instantiated from the concrete subclasses of this parent `abstract` derived type.<br>
     !>
     !>  \see
-    !>  [skgo](@ref pm_polynomial::skgo)<br>
+    !>  [sgl](@ref pm_polynomial::sgl)<br>
     !>  [eigen](@ref pm_polynomial::eigen)<br>
     !>  [jenkins](@ref pm_polynomial::jenkins)<br>
     !>  [laguerre](@ref pm_polynomial::laguerre)<br>
-    !>  [skgo_type](@ref pm_polynomial::skgo_type)<br>
+    !>  [sgl_type](@ref pm_polynomial::sgl_type)<br>
     !>  [eigen_type](@ref pm_polynomial::eigen_type)<br>
     !>  [jenkins_type](@ref pm_polynomial::jenkins_type)<br>
     !>  [laguerre_type](@ref pm_polynomial::laguerre_type)<br>
@@ -3214,42 +3214,43 @@ module pm_polynomial
     !>  The approach of Skowron and Gould is outlined in their 2012 paper:
     !>  *General Complex Polynomial Root Solver and Its Further Optimization for Binary Microlenses*.
     !>
-    !>  \interface{skgo_type}
+    !>  \interface{sgl_type}
     !>  \code{.F90}
     !>
-    !>      use pm_polynomial, only: skgo_type
-    !>      type(skgo_type), allocatable :: method
+    !>      use pm_polynomial, only: sgl_type
+    !>      type(sgl_type), allocatable :: method
     !>
-    !>      method = skgo_type(polished = polished, informed = informed)
+    !>      method = sgl_type(polished = polished, informed = informed)
     !>
     !>  \endcode
     !>
     !>  \note
     !>  This concrete derived type is not meant to be directly accessed by the end users.<br>
     !>  Instead, the end users should use the specific object parameter instance of this derived type
-    !>  (e.g., [skgo](@ref pm_polynomial::skgo) as directed by the documentation of the specific procedure they intend to use.<br>
+    !>  (e.g., [sgl](@ref pm_polynomial::sgl) as directed by the documentation of the specific procedure they intend to use.<br>
     !>
     !>  \see
-    !>  [skgo](@ref pm_polynomial::skgo)<br>
+    !>  [sgl](@ref pm_polynomial::sgl)<br>
     !>  [eigen](@ref pm_polynomial::eigen)<br>
     !>  [jenkins](@ref pm_polynomial::jenkins)<br>
     !>  [laguerre](@ref pm_polynomial::laguerre)<br>
-    !>  [skgo_type](@ref pm_polynomial::skgo_type)<br>
+    !>  [sgl_type](@ref pm_polynomial::sgl_type)<br>
     !>  [eigen_type](@ref pm_polynomial::eigen_type)<br>
     !>  [jenkins_type](@ref pm_polynomial::jenkins_type)<br>
     !>  [laguerre_type](@ref pm_polynomial::laguerre_type)<br>
     !>  [method_type](@ref pm_polynomial::method_type)<br>
     !>
-    !>  \final{skgo_type}
+    !>  \final{sgl_type}
     !>
     !>  \author
     !>  \FatemehBagheri, August 28, 2024, 6:12 PM, NASA Goddard Space Flight Center, Washington, D.C.
-    type, extends(method_type) :: skgo_type
+    type, extends(method_type) :: sgl_type
         logical(LK) :: polished = .true._LK     !<  \public The scalar `logical` of default kind \LK. If `.true.`, the roots identified will be polished.
+        logical(LK) :: reckoned = .false._LK    !<  \public The scalar `logical` of default kind \LK. If `.true.`, the search will start from the user-specified values, otherwise, from zero for all roots.
     end type
 
     !>  \brief
-    !>  This is a scalar `parameter` object of type [skgo_type](@ref pm_polynomial::skgo_type) that is exclusively used
+    !>  This is a scalar `parameter` object of type [sgl_type](@ref pm_polynomial::sgl_type) that is exclusively used
     !>  to signify the use of **Skowron-Gould** method of root-finding within an interface of a procedure of the ParaMonte library.<br>
     !>
     !>  \details
@@ -3257,23 +3258,23 @@ module pm_polynomial
     !>  For example usage, see the documentation of the target procedure requiring this object.<br>
     !>
     !>  \see
-    !>  [skgo](@ref pm_polynomial::skgo)<br>
+    !>  [sgl](@ref pm_polynomial::sgl)<br>
     !>  [eigen](@ref pm_polynomial::eigen)<br>
     !>  [jenkins](@ref pm_polynomial::jenkins)<br>
     !>  [laguerre](@ref pm_polynomial::laguerre)<br>
-    !>  [skgo_type](@ref pm_polynomial::skgo_type)<br>
+    !>  [sgl_type](@ref pm_polynomial::sgl_type)<br>
     !>  [eigen_type](@ref pm_polynomial::eigen_type)<br>
     !>  [jenkins_type](@ref pm_polynomial::jenkins_type)<br>
     !>  [laguerre_type](@ref pm_polynomial::laguerre_type)<br>
     !>  [method_type](@ref pm_polynomial::method_type)<br>
     !>
-    !>  \final{skgo}
+    !>  \final{sgl}
     !>
     !>  \author
     !>  \FatemehBagheri, August 28, 2024, 6:12 PM, NASA Goddard Space Flight Center, Washington, D.C.
-    type(skgo_type), parameter :: skgo = skgo_type()
+    type(sgl_type), parameter :: sgl = sgl_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-    !DIR$ ATTRIBUTES DLLEXPORT :: skgo
+    !DIR$ ATTRIBUTES DLLEXPORT :: sgl
 #endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3293,11 +3294,11 @@ module pm_polynomial
     !>  (e.g., [eigen](@ref pm_polynomial::eigen) as directed by the documentation of the specific procedure they intend to use.<br>
     !>
     !>  \see
-    !>  [skgo](@ref pm_polynomial::skgo)<br>
+    !>  [sgl](@ref pm_polynomial::sgl)<br>
     !>  [eigen](@ref pm_polynomial::eigen)<br>
     !>  [jenkins](@ref pm_polynomial::jenkins)<br>
     !>  [laguerre](@ref pm_polynomial::laguerre)<br>
-    !>  [skgo_type](@ref pm_polynomial::skgo_type)<br>
+    !>  [sgl_type](@ref pm_polynomial::sgl_type)<br>
     !>  [eigen_type](@ref pm_polynomial::eigen_type)<br>
     !>  [jenkins_type](@ref pm_polynomial::jenkins_type)<br>
     !>  [laguerre_type](@ref pm_polynomial::laguerre_type)<br>
@@ -3319,11 +3320,11 @@ module pm_polynomial
     !>  For example usage, see the documentation of the target procedure requiring this object.<br>
     !>
     !>  \see
-    !>  [skgo](@ref pm_polynomial::skgo)<br>
+    !>  [sgl](@ref pm_polynomial::sgl)<br>
     !>  [eigen](@ref pm_polynomial::eigen)<br>
     !>  [jenkins](@ref pm_polynomial::jenkins)<br>
     !>  [laguerre](@ref pm_polynomial::laguerre)<br>
-    !>  [skgo_type](@ref pm_polynomial::skgo_type)<br>
+    !>  [sgl_type](@ref pm_polynomial::sgl_type)<br>
     !>  [eigen_type](@ref pm_polynomial::eigen_type)<br>
     !>  [jenkins_type](@ref pm_polynomial::jenkins_type)<br>
     !>  [laguerre_type](@ref pm_polynomial::laguerre_type)<br>
@@ -3355,11 +3356,11 @@ module pm_polynomial
     !>  (e.g., [jenkins](@ref pm_polynomial::jenkins) as directed by the documentation of the specific procedure they intend to use.<br>
     !>
     !>  \see
-    !>  [skgo](@ref pm_polynomial::skgo)<br>
+    !>  [sgl](@ref pm_polynomial::sgl)<br>
     !>  [eigen](@ref pm_polynomial::eigen)<br>
     !>  [jenkins](@ref pm_polynomial::jenkins)<br>
     !>  [laguerre](@ref pm_polynomial::laguerre)<br>
-    !>  [skgo_type](@ref pm_polynomial::skgo_type)<br>
+    !>  [sgl_type](@ref pm_polynomial::sgl_type)<br>
     !>  [eigen_type](@ref pm_polynomial::eigen_type)<br>
     !>  [jenkins_type](@ref pm_polynomial::jenkins_type)<br>
     !>  [laguerre_type](@ref pm_polynomial::laguerre_type)<br>
@@ -3381,11 +3382,11 @@ module pm_polynomial
     !>  For example usage, see the documentation of the target procedure requiring this object.<br>
     !>
     !>  \see
-    !>  [skgo](@ref pm_polynomial::skgo)<br>
+    !>  [sgl](@ref pm_polynomial::sgl)<br>
     !>  [eigen](@ref pm_polynomial::eigen)<br>
     !>  [jenkins](@ref pm_polynomial::jenkins)<br>
     !>  [laguerre](@ref pm_polynomial::laguerre)<br>
-    !>  [skgo_type](@ref pm_polynomial::skgo_type)<br>
+    !>  [sgl_type](@ref pm_polynomial::sgl_type)<br>
     !>  [eigen_type](@ref pm_polynomial::eigen_type)<br>
     !>  [jenkins_type](@ref pm_polynomial::jenkins_type)<br>
     !>  [laguerre_type](@ref pm_polynomial::laguerre_type)<br>
@@ -3417,11 +3418,11 @@ module pm_polynomial
     !>  (e.g., [laguerre](@ref pm_polynomial::laguerre) as directed by the documentation of the specific procedure they intend to use.<br>
     !>
     !>  \see
-    !>  [skgo](@ref pm_polynomial::skgo)<br>
+    !>  [sgl](@ref pm_polynomial::sgl)<br>
     !>  [eigen](@ref pm_polynomial::eigen)<br>
     !>  [jenkins](@ref pm_polynomial::jenkins)<br>
     !>  [laguerre](@ref pm_polynomial::laguerre)<br>
-    !>  [skgo_type](@ref pm_polynomial::skgo_type)<br>
+    !>  [sgl_type](@ref pm_polynomial::sgl_type)<br>
     !>  [eigen_type](@ref pm_polynomial::eigen_type)<br>
     !>  [jenkins_type](@ref pm_polynomial::jenkins_type)<br>
     !>  [laguerre_type](@ref pm_polynomial::laguerre_type)<br>
@@ -3443,11 +3444,11 @@ module pm_polynomial
     !>  For example usage, see the documentation of the target procedure requiring this object.<br>
     !>
     !>  \see
-    !>  [skgo](@ref pm_polynomial::skgo)<br>
+    !>  [sgl](@ref pm_polynomial::sgl)<br>
     !>  [eigen](@ref pm_polynomial::eigen)<br>
     !>  [jenkins](@ref pm_polynomial::jenkins)<br>
     !>  [laguerre](@ref pm_polynomial::laguerre)<br>
-    !>  [skgo_type](@ref pm_polynomial::skgo_type)<br>
+    !>  [sgl_type](@ref pm_polynomial::sgl_type)<br>
     !>  [eigen_type](@ref pm_polynomial::eigen_type)<br>
     !>  [jenkins_type](@ref pm_polynomial::jenkins_type)<br>
     !>  [laguerre_type](@ref pm_polynomial::laguerre_type)<br>
@@ -3664,8 +3665,8 @@ module pm_polynomial
     !>                                  <li>    the scalar constant [laguerre](@ref pm_polynomial::laguerre) or a
     !>                                          constant object of type [laguerre_type](@ref pm_polynomial::laguerre_type)
     !>                                          implying the use of the Laguerre root-finding method.<br>
-    !>                                  <li>    the scalar constant [skgo](@ref pm_polynomial::skgo) or a
-    !>                                          constant object of type [skgo_type](@ref pm_polynomial::skgo_type)
+    !>                                  <li>    the scalar constant [sgl](@ref pm_polynomial::sgl) or a
+    !>                                          constant object of type [sgl_type](@ref pm_polynomial::sgl_type)
     !>                                          implying the use of the Skowron-Gould root-finding method.<br>
     !>                                          **This method is yet to be fully implemented**.<br>
     !>                              </ol>
@@ -3688,7 +3689,7 @@ module pm_polynomial
     !>  \interface{getPolyRoot}
     !>  \code{.F90}
     !>
-    !>      use pm_polynomial, only: getPolyRoot, eigen, jenkins, laguerre, skgo
+    !>      use pm_polynomial, only: getPolyRoot, eigen, jenkins, laguerre, sgl
     !>      complex(kind(coef)), allocatable :: root(:)
     !>
     !>      root = getPolyRoot(coef(:)) ! allocatable output.
@@ -4305,124 +4306,124 @@ module pm_polynomial
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK5_ENABLED
-    module function getPolyRootSGO_CK5_CK5(coef, method) result(root)
+    module function getPolyRootSGL_CK5_CK5(coef, method) result(root)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootSGO_CK5_CK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootSGL_CK5_CK5
 #endif
         use pm_kind, only: CKG => CK5
         complex(CKG)                            , allocatable   :: root(:)
         complex(CKG)            , intent(in)    , contiguous    :: coef(:)
-        type(skgo_type)         , intent(in)                    :: method
+        type(sgl_type)          , intent(in)                    :: method
     end function
 #endif
 
 #if CK4_ENABLED
-    module function getPolyRootSGO_CK4_CK4(coef, method) result(root)
+    module function getPolyRootSGL_CK4_CK4(coef, method) result(root)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootSGO_CK4_CK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootSGL_CK4_CK4
 #endif
         use pm_kind, only: CKG => CK4
         complex(CKG)                            , allocatable   :: root(:)
         complex(CKG)            , intent(in)    , contiguous    :: coef(:)
-        type(skgo_type)         , intent(in)                    :: method
+        type(sgl_type)          , intent(in)                    :: method
     end function
 #endif
 
 #if CK3_ENABLED
-    module function getPolyRootSGO_CK3_CK3(coef, method) result(root)
+    module function getPolyRootSGL_CK3_CK3(coef, method) result(root)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootSGO_CK3_CK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootSGL_CK3_CK3
 #endif
         use pm_kind, only: CKG => CK3
         complex(CKG)                            , allocatable   :: root(:)
         complex(CKG)            , intent(in)    , contiguous    :: coef(:)
-        type(skgo_type)         , intent(in)                    :: method
+        type(sgl_type)          , intent(in)                    :: method
     end function
 #endif
 
 #if CK2_ENABLED
-    module function getPolyRootSGO_CK2_CK2(coef, method) result(root)
+    module function getPolyRootSGL_CK2_CK2(coef, method) result(root)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootSGO_CK2_CK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootSGL_CK2_CK2
 #endif
         use pm_kind, only: CKG => CK2
         complex(CKG)                            , allocatable   :: root(:)
         complex(CKG)            , intent(in)    , contiguous    :: coef(:)
-        type(skgo_type)         , intent(in)                    :: method
+        type(sgl_type)          , intent(in)                    :: method
     end function
 #endif
 
 #if CK1_ENABLED
-    module function getPolyRootSGO_CK1_CK1(coef, method) result(root)
+    module function getPolyRootSGL_CK1_CK1(coef, method) result(root)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootSGO_CK1_CK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootSGL_CK1_CK1
 #endif
         use pm_kind, only: CKG => CK1
         complex(CKG)                            , allocatable   :: root(:)
         complex(CKG)            , intent(in)    , contiguous    :: coef(:)
-        type(skgo_type)         , intent(in)                    :: method
+        type(sgl_type)          , intent(in)                    :: method
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    module function getPolyRootSGO_RK5_CK5(coef, method) result(root)
+    module function getPolyRootSGL_RK5_CK5(coef, method) result(root)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootSGO_RK5_CK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootSGL_RK5_CK5
 #endif
         use pm_kind, only: RKG => RK5
         complex(RKG)                            , allocatable   :: root(:)
         real(RKG)               , intent(in)    , contiguous    :: coef(:)
-        type(skgo_type)         , intent(in)                    :: method
+        type(sgl_type)          , intent(in)                    :: method
     end function
 #endif
 
 #if RK4_ENABLED
-    module function getPolyRootSGO_RK4_CK4(coef, method) result(root)
+    module function getPolyRootSGL_RK4_CK4(coef, method) result(root)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootSGO_RK4_CK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootSGL_RK4_CK4
 #endif
         use pm_kind, only: RKG => RK4
         complex(RKG)                            , allocatable   :: root(:)
         real(RKG)               , intent(in)    , contiguous    :: coef(:)
-        type(skgo_type)         , intent(in)                    :: method
+        type(sgl_type)          , intent(in)                    :: method
     end function
 #endif
 
 #if RK3_ENABLED
-    module function getPolyRootSGO_RK3_CK3(coef, method) result(root)
+    module function getPolyRootSGL_RK3_CK3(coef, method) result(root)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootSGO_RK3_CK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootSGL_RK3_CK3
 #endif
         use pm_kind, only: RKG => RK3
         complex(RKG)                            , allocatable   :: root(:)
         real(RKG)               , intent(in)    , contiguous    :: coef(:)
-        type(skgo_type)         , intent(in)                    :: method
+        type(sgl_type)          , intent(in)                    :: method
     end function
 #endif
 
 #if RK2_ENABLED
-    module function getPolyRootSGO_RK2_CK2(coef, method) result(root)
+    module function getPolyRootSGL_RK2_CK2(coef, method) result(root)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootSGO_RK2_CK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootSGL_RK2_CK2
 #endif
         use pm_kind, only: RKG => RK2
         complex(RKG)                            , allocatable   :: root(:)
         real(RKG)               , intent(in)    , contiguous    :: coef(:)
-        type(skgo_type)         , intent(in)                    :: method
+        type(sgl_type)          , intent(in)                    :: method
     end function
 #endif
 
 #if RK1_ENABLED
-    module function getPolyRootSGO_RK1_CK1(coef, method) result(root)
+    module function getPolyRootSGL_RK1_CK1(coef, method) result(root)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootSGO_RK1_CK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootSGL_RK1_CK1
 #endif
         use pm_kind, only: RKG => RK1
         complex(RKG)                            , allocatable   :: root(:)
         real(RKG)               , intent(in)    , contiguous    :: coef(:)
-        type(skgo_type)         , intent(in)                    :: method
+        type(sgl_type)          , intent(in)                    :: method
     end function
 #endif
 
@@ -4450,55 +4451,58 @@ module pm_polynomial
     !>  \details
     !>  See the documentation of [pm_polynomial](@ref pm_polynomial) for details of the root-finding method.<br>
     !>
-    !>  \param[out] root        :   The output `contiguous` vector of type `complex` of the same kind as the input
-    !>                              argument `coef` and the same size as the degree of the polynomial (i.e., `size(coef) - 1`),
-    !>                              containing the roots of the polynomial determined from the polynomial coefficients `coef`.<br>
-    !>  \param[out] count       :   The output scalar of type `integer` of default kind \IK, containing the
-    !>                              total number of roots computed and stored in the output vector slice `root(1 : count)`.<br>
-    !>                              A value of `count = size(root)` implies a successful computation of all polynomial roots.<br>
-    !>                              A value of `count = 0` implies a total failure of the algorithm in finding any roots.<br>
-    !>                              The condition `count < size(root)` occurs if either,<br>
-    !>                              <ul>
-    !>                                  <li>    the algorithm fails to converge, or<br>
-    !>                                  <li>    the algorithm fails to identify all roots of the polynomial, or<br>
-    !>                                  <li>    the condition `coef(size(coef)) == 0.` occurs (i.e., when the coefficient of the highest power of the polynomial is zero), or<br>
-    !>                                  <li>    the condition `size(coef) < 2` occurs (i.e., when the input polynomial is a constant).<br>
-    !>                              </ul>
-    !>  \param[in]  coef        :   The input `contiguous` vector of,<br>
-    !>                              <ol>
-    !>                                  <li>    type `complex` of kind \CKALL, or<br>
-    !>                                  <li>    type `real` of kind \RKALL, <br>
-    !>                              </ol>
-    !>                              containing the coefficients of the polynomial in the order of **increasing power**.<br>
-    !>                              By definition, the degree of the polynomial is `size(coef) - 1`.<br>
-    !>  \param[in]  method      :   The input scalar constant that can be any of the following:<br>
-    !>                              <ol>
-    !>                                  <li>    the scalar constant [eigen](@ref pm_polynomial::eigen) or a
-    !>                                          constant object of type [eigen_type](@ref pm_polynomial::eigen_type)
-    !>                                          implying the use of the Eigenvalue root-finding method.<br>
-    !>                                  <li>    the scalar constant [jenkins](@ref pm_polynomial::jenkins) or a
-    !>                                          constant object of type [jenkins_type](@ref pm_polynomial::jenkins_type)
-    !>                                          implying the use of the Jenkins-Traub root-finding method.<br>
-    !>                                  <li>    the scalar constant [laguerre](@ref pm_polynomial::laguerre) or a
-    !>                                          constant object of type [laguerre_type](@ref pm_polynomial::laguerre_type)
-    !>                                          implying the use of the Laguerre root-finding method.<br>
-    !>                                  <li>    the scalar constant [skgo](@ref pm_polynomial::skgo) or a
-    !>                                          constant object of type [skgo_type](@ref pm_polynomial::skgo_type)
-    !>                                          implying the use of the Skowron-Gould root-finding method.<br>
-    !>                                          **This method is yet to be fully implemented**.<br>
-    !>                              </ol>
-    !>                              **Which polynomial root-finding method should I use?**<br>
-    !>                              <ol>
-    !>                                  <li>    If you have a polynomial of highly varying coefficients, then the Eigenvalue method as
-    !>                                          specified by [eigen_type](@ref pm_polynomial::eigen_type) is likely more reliable.<br>
-    !>                                  <li>    The [Jenkins-Traub](@ref pm_polynomial) is also considered a relatively reliable
-    !>                                          fast **Sure-Fire** technique for finding the roots of polynomials.<br>
-    !>                              </ol>
+    !>  \param[inout]   root        :   The output `contiguous` vector of type `complex` of the same kind as the input
+    !>                                  argument `coef` and the same size as the degree of the polynomial (i.e., `size(coef) - 1`),
+    !>                                  containing the roots of the polynomial determined from the polynomial coefficients `coef`.<br>
+    !>                                  If the specified input `method` argument is of type [sgl_type](@ref pm_polynomial::sgl_type),
+    !>                                  the argument `root` has `intent(inout)` and the input values will be used to initialize the
+    !>                                  root searching only if the condition `method%%reckoned == .true.` holds.<br>
+    !>  \param[out]     count       :   The output scalar of type `integer` of default kind \IK, containing the
+    !>                                  total number of roots computed and stored in the output vector slice `root(1 : count)`.<br>
+    !>                                  A value of `count = size(root)` implies a successful computation of all polynomial roots.<br>
+    !>                                  A value of `count = 0` implies a total failure of the algorithm in finding any roots.<br>
+    !>                                  The condition `count < size(root)` occurs if either,<br>
+    !>                                  <ul>
+    !>                                      <li>    the algorithm fails to converge, or<br>
+    !>                                      <li>    the algorithm fails to identify all roots of the polynomial, or<br>
+    !>                                      <li>    the condition `coef(size(coef)) == 0.` occurs (i.e., when the coefficient of the highest power of the polynomial is zero), or<br>
+    !>                                      <li>    the condition `size(coef) < 2` occurs (i.e., when the input polynomial is a constant).<br>
+    !>                                  </ul>
+    !>  \param[in]      coef        :   The input `contiguous` vector of,<br>
+    !>                                  <ol>
+    !>                                      <li>    type `complex` of kind \CKALL, or<br>
+    !>                                      <li>    type `real` of kind \RKALL, <br>
+    !>                                  </ol>
+    !>                                  containing the coefficients of the polynomial in the order of **increasing power**.<br>
+    !>                                  By definition, the degree of the polynomial is `size(coef) - 1`.<br>
+    !>  \param[in]      method      :   The input scalar constant that can be any of the following:<br>
+    !>                                  <ol>
+    !>                                      <li>    the scalar constant [eigen](@ref pm_polynomial::eigen) or a
+    !>                                              constant object of type [eigen_type](@ref pm_polynomial::eigen_type)
+    !>                                              implying the use of the Eigenvalue root-finding method.<br>
+    !>                                      <li>    the scalar constant [jenkins](@ref pm_polynomial::jenkins) or a
+    !>                                              constant object of type [jenkins_type](@ref pm_polynomial::jenkins_type)
+    !>                                              implying the use of the Jenkins-Traub root-finding method.<br>
+    !>                                      <li>    the scalar constant [laguerre](@ref pm_polynomial::laguerre) or a
+    !>                                              constant object of type [laguerre_type](@ref pm_polynomial::laguerre_type)
+    !>                                              implying the use of the Laguerre root-finding method.<br>
+    !>                                      <li>    the scalar constant [sgl](@ref pm_polynomial::sgl) or a
+    !>                                              constant object of type [sgl_type](@ref pm_polynomial::sgl_type)
+    !>                                              implying the use of the Skowron-Gould root-finding method.<br>
+    !>                                              **This method is yet to be fully implemented**.<br>
+    !>                                  </ol>
+    !>                                  **Which polynomial root-finding method should I use?**<br>
+    !>                                  <ol>
+    !>                                      <li>    If you have a polynomial of highly varying coefficients, then the Eigenvalue method as
+    !>                                              specified by [eigen_type](@ref pm_polynomial::eigen_type) is likely more reliable.<br>
+    !>                                      <li>    The [Jenkins-Traub](@ref pm_polynomial) is also considered a relatively reliable
+    !>                                              fast **Sure-Fire** technique for finding the roots of polynomials.<br>
+    !>                                  </ol>
     !>
     !>  \interface{setPolyRoot}
     !>  \code{.F90}
     !>
-    !>      use pm_polynomial, only: setPolyRoot, eigen_type, jenkins_type, laguerre_type, skgo_type
+    !>      use pm_polynomial, only: setPolyRoot, eigen_type, jenkins_type, laguerre_type, sgl_type
     !>
     !>      call setPolyRoot(root(1 : degree), count, coef(0 : degree), method) ! `degree` is the degree of the polynomial.
     !>
@@ -5073,134 +5077,134 @@ module pm_polynomial
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK5_ENABLED
-    module subroutine setPolyRootSGO_CK5_CK5(root, count, coef, method)
+    module subroutine setPolyRootSGL_CK5_CK5(root, count, coef, method)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootSGO_CK5_CK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootSGL_CK5_CK5
 #endif
         use pm_kind, only: CKG => CK5
         complex(CKG)            , intent(in)    , contiguous    :: coef(:)
-        complex(CKG)            , intent(in)    , contiguous    :: root(:)
+        complex(CKG)            , intent(inout) , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
-        type(skgo_type)         , intent(in)                    :: method
+        type(sgl_type)          , intent(in)                    :: method
     end subroutine
 #endif
 
 #if CK4_ENABLED
-    module subroutine setPolyRootSGO_CK4_CK4(root, count, coef, method)
+    module subroutine setPolyRootSGL_CK4_CK4(root, count, coef, method)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootSGO_CK4_CK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootSGL_CK4_CK4
 #endif
         use pm_kind, only: CKG => CK4
         complex(CKG)            , intent(in)    , contiguous    :: coef(:)
-        complex(CKG)            , intent(in)    , contiguous    :: root(:)
+        complex(CKG)            , intent(inout) , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
-        type(skgo_type)         , intent(in)                    :: method
+        type(sgl_type)          , intent(in)                    :: method
     end subroutine
 #endif
 
 #if CK3_ENABLED
-    module subroutine setPolyRootSGO_CK3_CK3(root, count, coef, method)
+    module subroutine setPolyRootSGL_CK3_CK3(root, count, coef, method)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootSGO_CK3_CK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootSGL_CK3_CK3
 #endif
         use pm_kind, only: CKG => CK3
         complex(CKG)            , intent(in)    , contiguous    :: coef(:)
-        complex(CKG)            , intent(in)    , contiguous    :: root(:)
+        complex(CKG)            , intent(inout) , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
-        type(skgo_type)         , intent(in)                    :: method
+        type(sgl_type)          , intent(in)                    :: method
     end subroutine
 #endif
 
 #if CK2_ENABLED
-    module subroutine setPolyRootSGO_CK2_CK2(root, count, coef, method)
+    module subroutine setPolyRootSGL_CK2_CK2(root, count, coef, method)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootSGO_CK2_CK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootSGL_CK2_CK2
 #endif
         use pm_kind, only: CKG => CK2
         complex(CKG)            , intent(in)    , contiguous    :: coef(:)
-        complex(CKG)            , intent(in)    , contiguous    :: root(:)
+        complex(CKG)            , intent(inout) , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
-        type(skgo_type)         , intent(in)                    :: method
+        type(sgl_type)          , intent(in)                    :: method
     end subroutine
 #endif
 
 #if CK1_ENABLED
-    module subroutine setPolyRootSGO_CK1_CK1(root, count, coef, method)
+    module subroutine setPolyRootSGL_CK1_CK1(root, count, coef, method)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootSGO_CK1_CK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootSGL_CK1_CK1
 #endif
         use pm_kind, only: CKG => CK1
         complex(CKG)            , intent(in)    , contiguous    :: coef(:)
-        complex(CKG)            , intent(in)    , contiguous    :: root(:)
+        complex(CKG)            , intent(inout) , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
-        type(skgo_type)         , intent(in)                    :: method
+        type(sgl_type)          , intent(in)                    :: method
     end subroutine
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    module subroutine setPolyRootSGO_RK5_CK5(root, count, coef, method)
+    module subroutine setPolyRootSGL_RK5_CK5(root, count, coef, method)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootSGO_RK5_CK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootSGL_RK5_CK5
 #endif
         use pm_kind, only: RKG => RK5
         real(RKG)               , intent(in)    , contiguous    :: coef(:)
-        complex(RKG)            , intent(in)    , contiguous    :: root(:)
+        complex(RKG)            , intent(inout) , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
-        type(skgo_type)         , intent(in)                    :: method
+        type(sgl_type)          , intent(in)                    :: method
     end subroutine
 #endif
 
 #if RK4_ENABLED
-    module subroutine setPolyRootSGO_RK4_CK4(root, count, coef, method)
+    module subroutine setPolyRootSGL_RK4_CK4(root, count, coef, method)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootSGO_RK4_CK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootSGL_RK4_CK4
 #endif
         use pm_kind, only: RKG => RK4
         real(RKG)               , intent(in)    , contiguous    :: coef(:)
-        complex(RKG)            , intent(in)    , contiguous    :: root(:)
+        complex(RKG)            , intent(inout) , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
-        type(skgo_type)         , intent(in)                    :: method
+        type(sgl_type)          , intent(in)                    :: method
     end subroutine
 #endif
 
 #if RK3_ENABLED
-    module subroutine setPolyRootSGO_RK3_CK3(root, count, coef, method)
+    module subroutine setPolyRootSGL_RK3_CK3(root, count, coef, method)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootSGO_RK3_CK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootSGL_RK3_CK3
 #endif
         use pm_kind, only: RKG => RK3
         real(RKG)               , intent(in)    , contiguous    :: coef(:)
-        complex(RKG)            , intent(in)    , contiguous    :: root(:)
+        complex(RKG)            , intent(inout) , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
-        type(skgo_type)         , intent(in)                    :: method
+        type(sgl_type)          , intent(in)                    :: method
     end subroutine
 #endif
 
 #if RK2_ENABLED
-    module subroutine setPolyRootSGO_RK2_CK2(root, count, coef, method)
+    module subroutine setPolyRootSGL_RK2_CK2(root, count, coef, method)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootSGO_RK2_CK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootSGL_RK2_CK2
 #endif
         use pm_kind, only: RKG => RK2
         real(RKG)               , intent(in)    , contiguous    :: coef(:)
-        complex(RKG)            , intent(in)    , contiguous    :: root(:)
+        complex(RKG)            , intent(inout) , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
-        type(skgo_type)         , intent(in)                    :: method
+        type(sgl_type)          , intent(in)                    :: method
     end subroutine
 #endif
 
 #if RK1_ENABLED
-    module subroutine setPolyRootSGO_RK1_CK1(root, count, coef, method)
+    module subroutine setPolyRootSGL_RK1_CK1(root, count, coef, method)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootSGO_RK1_CK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootSGL_RK1_CK1
 #endif
         use pm_kind, only: RKG => RK1
         real(RKG)               , intent(in)    , contiguous    :: coef(:)
-        complex(RKG)            , intent(in)    , contiguous    :: root(:)
+        complex(RKG)            , intent(inout) , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
-        type(skgo_type)         , intent(in)                    :: method
+        type(sgl_type)          , intent(in)                    :: method
     end subroutine
 #endif
 
