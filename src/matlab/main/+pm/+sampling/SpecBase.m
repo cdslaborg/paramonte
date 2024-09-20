@@ -27,32 +27,58 @@ classdef SpecBase < pm.matlab.Handle
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     properties
-        description                     = [];
-        domain                          = [];
-        domainAxisName                  = [];
-        domainBallAvg                   = [];
-        domainBallCor                   = [];
-        domainBallCov                   = [];
-        domainBallStd                   = [];
-        domainCubeLimitLower            = [];
-        domainCubeLimitUpper            = [];
-        domainErrCount                  = [];
-        domainErrCountMax               = [];
-        outputChainFileFormat           = [];
-        outputColumnWidth               = [];
-        outputFileName                  = [];
-        outputStatus                    = [];
-        outputPrecision                 = [];
-        outputReportPeriod              = [];
-        outputRestartFileFormat         = [];
-        outputSampleSize                = [];
-        outputSeparator                 = [];
-        outputSplashMode                = [];
-        parallelism                     = [];
-        parallelismMpiFinalizeEnabled   = [];
-        parallelismNumThread            = [];
-        randomSeed                      = [];
-        targetAcceptanceRate            = [];
+        %> \specdram{description}
+        description = [];
+        %> \specdram{domain}
+        domain = [];
+        %> \specdram{domainaxisname}
+        domainAxisName = [];
+        %> \specdram{domainballavg}
+        domainBallAvg = [];
+        %> \specdram{domainballcor}
+        domainBallCor = [];
+        %> \specdram{domainballcov}
+        domainBallCov = [];
+        %> \specdram{domainballstd}
+        domainBallStd = [];
+        %> \specdram{domaincubelimitlower}
+        domainCubeLimitLower = [];
+        %> \specdram{domaincubelimitupper}
+        domainCubeLimitUpper = [];
+        %> \specdram{domainerrcount}
+        domainErrCount = [];
+        %> \specdram{domainerrcountmax}
+        domainErrCountMax = [];
+        %> \specdram{outputchainfileformat}
+        outputChainFileFormat = [];
+        %> \specdram{outputcolumnwidth}
+        outputColumnWidth = [];
+        %> \specdram{outputfilename}
+        outputFileName = [];
+        %> \specdram{outputstatus}
+        outputStatus = [];
+        %> \specdram{outputprecision}
+        outputPrecision = [];
+        %> \specdram{outputreportperiod}
+        outputReportPeriod = [];
+        %> \specdram{outputrestartfileformat}
+        outputRestartFileFormat = [];
+        %> \specdram{outputsamplesize}
+        outputSampleSize = [];
+        %> \specdram{outputseparator}
+        outputSeparator = [];
+        %> \specdram{outputsplashmode}
+        outputSplashMode = [];
+        %> \specdram{parallelism}
+        parallelism = [];
+        %> \specdram{parallelismmpifinalizeenabled}
+        parallelismMpiFinalizeEnabled = [];
+        %> \specdram{parallelismnumthread}
+        parallelismNumThread = [];
+        %> \specdram{randomseed}
+        randomSeed = [];
+        %> \specdram{targetacceptancerate}
+        targetAcceptanceRate = [];
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -226,8 +252,8 @@ classdef SpecBase < pm.matlab.Handle
         %>  \param[in]      ndim        :   The input scalar MATLAB integer containing
         %>                                  the number of dimensions of the domain of the
         %>                                  object function that is to be explored.<br>
-        %>      
-        %>  \return     
+        %>
+        %>  \return
         %>  ``entries``                 :   The output scalar MATLAB string containing
         %>                                  the simulation specifications converted to
         %>                                  a Fortran-namelist-compatible entry.<br>

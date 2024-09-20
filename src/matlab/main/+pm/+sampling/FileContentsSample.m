@@ -24,45 +24,43 @@ classdef FileContentsSample < pm.io.FileContentsTabular
 
     properties(Access = public)
         %>
-        %>  ``stats``                   :   The scalar MATLAB object containing the set of
-        %>                                  computed properties of the contents of the file.<br>
+        %>  ``stats``       :   The scalar MATLAB object containing the set of
+        %>                      computed properties of the contents of the file.<br>
         %>
         stats = [];
         %>
-        %>  ``ndim``                    :   The scalar MATLAB integer representing the number of
-        %>                                  dimensions of the domain of the objective function sampled.<br>
-        %>                                  This integer is also the number of columns in the file that
-        %>                                  correspond that contain the sampled states from the domain
-        %>                                  of the mathematical objective function.<br>
+        %>  ``ndim``        :   The scalar MATLAB integer representing the number of
+        %>                      dimensions of the domain of the objective function sampled.<br>
+        %>                      This integer is also the number of columns in the file that
+        %>                      correspond that contain the sampled states from the domain
+        %>                      of the mathematical objective function.<br>
         %>
         ndim = 0;
         %>
-        %>  ``sampleLogFuncColIndex``   :   The scalar MATLAB integer representing the column
-        %>                                  index of the dataframe component ``df`` that contains
-        %>                                  the natural logarithm of the objective function values
-        %>                                  corresponding to the sampled states next to this column,
-        %>                                  such that the following relationship holds.<br>
-        %>                                  \code{.m}
-        %>                                      FileContentsSample.ndim =
-        %>                                      FileContentsSample.ncol -
-        %>                                      FileContentsSample.sampleLogFuncColIndex<br>
-        %>                                  \endcode
-        %>                                  While this column index can be readily inferred by exploring
-        %>                                  the contents of the dataframe component, this column index is also
-        %>                                  computed and explicitly offered to conveniently slice the values of
-        %>                                  the sampled states and their corresponding log-function values.<br>
+        %>  ``slfc``        :   The scalar MATLAB integer representing the column
+        %>                      index of the dataframe component ``df`` that contains
+        %>                      the natural logarithm of the objective function values
+        %>                      corresponding to the sampled states next to this column,
+        %>                      such that the following relationship holds.<br>
+        %>                      \code{.m}
+        %>                          FileContentsSample.ndim = FileContentsSample.ncol - FileContentsSample.slfc;
+        %>                      \endcode
+        %>                      While this column index can be readily inferred by exploring
+        %>                      the contents of the dataframe component, this column index is also
+        %>                      computed and explicitly offered to conveniently slice the values of
+        %>                      the sampled states and their corresponding log-function values.<br>
         %>
-        sampleLogFuncColIndex = 0;
+        slfc = 0;
     end
 
     properties(Hidden)
         %>
-        %>  ``sampleLogFuncColName``    :   The scalar MATLAB string representing the column
-        %>                                  name of the dataframe component ``df`` that contains
-        %>                                  the natural logarithm of the objective function values
-        %>                                  corresponding to the sampled states next to this column.<br>
+        %>  ``slfcname``    :   The scalar MATLAB string representing the column
+        %>                      name of the dataframe component ``df`` that contains
+        %>                      the natural logarithm of the objective function values
+        %>                      corresponding to the sampled states next to this column.<br>
         %>
-        sampleLogFuncColName = "sampleLogFunc";
+        slfcname = "sampleLogFunc";
     end
 
     methods(Access = public)
@@ -109,12 +107,12 @@ classdef FileContentsSample < pm.io.FileContentsTabular
             self = self@pm.io.FileContentsTabular(file, silent, sep);
 
             for icol = 1 : self.ncol
-                if strcmpi(self.df.Properties.VariableNames{icol}, self.sampleLogFuncColName)
+                if strcmpi(self.df.Properties.VariableNames{icol}, self.slfcname)
                     break;
                 end
             end
-            self.sampleLogFuncColIndex = icol;
-            self.ndim = self.ncol - self.sampleLogFuncColIndex;
+            self.slfc = icol;
+            self.ndim = self.ncol - self.slfc;
             if  self.nrow <= self.ndim
                 warning ( newline ...
                         + "There are insufficient number of states in the specified file:" + newline ...
@@ -136,19 +134,19 @@ classdef FileContentsSample < pm.io.FileContentsTabular
             %%%% Add chain cormat.
 
             self.checkpoint("computing the sample correlation matrix...", false);
-            self.stats.cor = pm.stats.Cor(self.df(:, self.sampleLogFuncColIndex + 1 : end));
+            self.stats.cor = pm.stats.Cor(self.df(:, self.slfc + 1 : end));
             self.checkpoint();
 
             %%%% Add chain covmat.
 
             self.checkpoint("computing the sample covariance matrix...", false);
-            self.stats.cov = pm.stats.Cov(self.df(:, self.sampleLogFuncColIndex + 1 : end));
+            self.stats.cov = pm.stats.Cov(self.df(:, self.slfc + 1 : end));
             self.checkpoint();
 
             %%%% Add chain acf.
 
             self.checkpoint("computing the sample autocorrelation...", false);
-            self.stats.acf = pm.stats.AutoCorr(self.df(:, self.sampleLogFuncColIndex : end));
+            self.stats.acf = pm.stats.AutoCorr(self.df(:, self.slfc : end));
             self.checkpoint();
 
             self.stats.max = struct("val", [], "loc", []);

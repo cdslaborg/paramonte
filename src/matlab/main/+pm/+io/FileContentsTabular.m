@@ -64,6 +64,7 @@ classdef FileContentsTabular < pm.io.FileContents
         %>  \param[in]  file    :   See the documentation of the corresponding argument of [pm.io.FileContents](@ref FileContents).
         %>  \param[in]  silent  :   See the documentation of the corresponding argument of [pm.io.FileContents](@ref FileContents).
         %>  \param[in]  sep     :   The input scalar MATLAB string containing the field separator used in the file.<br>
+        %>                          Use ``"\t"`` to represent the horizontal tab character.<br>
         %>                          (**optional**. The default is inferred from the contents of the specified input ``file``.)
         %>
         %>  \return
@@ -98,6 +99,11 @@ classdef FileContentsTabular < pm.io.FileContents
             if  nargin < 1
                 file = [];
             end
+            if  pm.array.len(sep) == 0
+                sep = "";
+            else
+                sep = string(sep);
+            end
             self = self@pm.io.FileContents(file, silent);
             if ~isfile(self.file)
                 error   ( newline ...
@@ -111,8 +117,10 @@ classdef FileContentsTabular < pm.io.FileContents
             end
             if  pm.array.len(sep) == 0
                 [d, self.sep, ~] = importdata(self.file);
-            elseif length(convertStringsToChars(sep)) == 1
-                [d, self.sep, ~] = importdata(self.file, sep);
+                self.sep = string(self.sep);
+            elseif length(convertStringsToChars(sep)) == 1 || strcmpi(sep, "\t")
+                [d, self.sep, ~] = importdata(self.file, convertStringsToChars(sep));
+                self.sep = string(self.sep);
             else
                 weblinks = pm.lib.weblinks();
                 error   ( newline ...
@@ -137,7 +145,10 @@ classdef FileContentsTabular < pm.io.FileContents
                         + newline ...
                         + pm.io.tab + self.file + newline ...
                         + newline ...
-                        + "The choice of field separator (""" + sep + """) may be incorrect." + newline ...
+                        + "The default or the inferred choice of field separator (""" + sep + """) may be incorrect." + newline ...
+                        + "Alternatively, the specified file contents may be corrupted and non-tabular." + newline ...
+                        + "If the specified tile path is a weblink, ensure the weblink corrently points" + newline ...
+                        + "to the target raw tabular ASCII file and not an HTML page." + newline ...
                         + newline ...
                         );
             end

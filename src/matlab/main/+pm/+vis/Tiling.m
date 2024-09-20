@@ -214,8 +214,8 @@ classdef Tiling < pm.vis.figure.Figure
         %>  \interface{reset}
         %>  \code{.m}
         %>
-        %>      t = pm.vis.Tiling(subplot, varargin) % reset all object properties to the default settings.
-        %>      t.reset(varargin);
+        %>      t = pm.vis.Tiling(subplot, varargin)
+        %>      t.reset(varargin); % reset all object properties to the default settings.
         %>
         %>  \endcode
         %>
@@ -267,8 +267,6 @@ classdef Tiling < pm.vis.figure.Figure
         %>      t.premake(varargin);
         %>
         %>  \endcode
-        %>
-        %>  \example{premake}
         %>
         %>  \final{premake}
         %>

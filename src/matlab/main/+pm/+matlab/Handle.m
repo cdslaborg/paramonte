@@ -120,14 +120,18 @@ classdef Handle < dynamicprops%handle
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     methods(Access = public, Hidden)
-        function setKeyVal(self, field, key, val)
+        function setKeyVal(self, field, subfield, key, val)
             if  nargin < 4
-                if  isempty(self.(field))
-                    self.(field) = key;
+                if ~(isfield(self, field) || isprop(self, field)) || isempty(self.(field))
+                    self.(field) = subfield;
+                end
+            elseif  nargin < 5
+                if ~(isfield(self.(field), subfield) || isprop(self.(field), subfield)) || isempty(self.(field).(subfield))
+                    self.(field).(subfield) = key;
                 end
             else
-                if ~isfield(self.(field), key) || isempty(self.(field).(key))
-                    self.(field).(key) = val;
+                if ~(isfield(self.(field).(subfield), key) || isprop(self.(field).(subfield), key)) || isempty(self.(field).(subfield).(key))
+                    self.(field).(subfield).(key) = val;
                 end
             end
         end

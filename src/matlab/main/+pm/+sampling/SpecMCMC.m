@@ -20,18 +20,30 @@ classdef SpecMCMC < pm.sampling.SpecBase
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     properties
-        outputChainSize                     = [];
-        outputSampleRefinementCount         = [];
-        outputSampleRefinementMethod        = [];
-        proposal                            = [];
-        proposalCor                         = [];
-        proposalCov                         = [];
-        proposalScale                       = [];
-        proposalStart                       = [];
-        proposalStartDomainCubeLimitLower   = [];
-        proposalStartDomainCubeLimitUpper   = [];
-        proposalStartRandomized             = [];
-        proposalStd                         = [];
+        %> \specdram{outputchainsize}
+        outputChainSize = [];
+        %> \specdram{outputsamplerefinementcount}
+        outputSampleRefinementCount = [];
+        %> \specdram{outputsamplerefinementmethod}
+        outputSampleRefinementMethod = [];
+        %> \specdram{proposal}
+        proposal = [];
+        %> \specdram{proposalcor}
+        proposalCor = [];
+        %> \specdram{proposalcov}
+        proposalCov = [];
+        %> \specdram{proposalscale}
+        proposalScale = [];
+        %> \specdram{proposalstart}
+        proposalStart = [];
+        %> \specdram{proposalstartdomaincubelimitlower}
+        proposalStartDomainCubeLimitLower = [];
+        %> \specdram{proposalstartdomaincubelimitupper}
+        proposalStartDomainCubeLimitUpper = [];
+        %> \specdram{proposalstartrandomized}
+        proposalStartRandomized = [];
+        %> \specdram{proposalstd}
+        proposalStd = [];
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -48,7 +60,7 @@ classdef SpecMCMC < pm.sampling.SpecBase
         %>                          If ``true``, all descriptive messages on
         %>                          the MATLAB command line will be suppressed.<br>
         %>                          (**optional**, default = ``false``)
-        %>  
+        %>
         %>  \return
         %>  The output scalar object of class [pm.sampling.SpecMCMC](@ref SpecMCMC).<br>
         %>

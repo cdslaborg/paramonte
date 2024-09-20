@@ -26,12 +26,18 @@ classdef SpecDRAM < pm.sampling.SpecMCMC
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     properties
-        proposalAdaptationBurnin        = [];
-        proposalAdaptationCount         = [];
-        proposalAdaptationCountGreedy   = [];
-        proposalAdaptationPeriod        = [];
-        proposalDelayedRejectionCount   = [];
-        proposalDelayedRejectionScale   = [];
+        %> \specdram{proposaladaptationburnin}
+        proposalAdaptationBurnin = [];
+        %> \specdram{proposaladaptationcount}
+        proposalAdaptationCount = [];
+        %> \specdram{proposaladaptationcountgreedy}
+        proposalAdaptationCountGreedy = [];
+        %> \specdram{proposaladaptationperiod}
+        proposalAdaptationPeriod = [];
+        %> \specdram{proposaldelayedrejectioncount}
+        proposalDelayedRejectionCount = [];
+        %> \specdram{proposaldelayedrejectionscale}
+        proposalDelayedRejectionScale = [];
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

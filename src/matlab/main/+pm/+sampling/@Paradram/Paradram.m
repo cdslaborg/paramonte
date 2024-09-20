@@ -83,14 +83,15 @@ classdef Paradram < pm.sampling.Sampler
         %>
         %>  \code{.m}
         %>
+        %>      ndim = 4;
         %>      sampler = pm.sampling.Paradram();
         %>      sampler.run ( @(x) - sum(x.^2)  ... getLogFunc: the natural log of the objective function.
-        %>                  , 4                 ... ndim:       the number of dimensions of the objective function.
+        %>                  , ndim              ... ndim: the number of dimensions of the objective function.
         %>                  );
         %>      samples = sampler.readSample();
         %>      sample = samples{1};
         %>      tile = pm.vis.TileLine(sample.df);
-        %>      tile.make("coly", sample.sampleLogFuncColIndex + 1 : sample.sampleLogFuncColIndex + 4, "colc", "sampleLogFunc");
+        %>      tile.make("coly", sample.slfc + 1 : sample.slfc + ndim, "colc", "sampleLogFunc");
         %>
         %>  \endcode
         %>

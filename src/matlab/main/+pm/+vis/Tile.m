@@ -268,8 +268,8 @@ classdef Tile < pm.vis.Tiling
                         break;
                     end
                     %self.subplot{irow, icol} = self.template;
-                    copyStream = getByteStreamFromArray(self.template);
-                    self.subplot{irow, icol} = getArrayFromByteStream(copyStream);
+                    byteStream = getByteStreamFromArray(self.template);
+                    self.subplot{irow, icol} = getArrayFromByteStream(byteStream);
                     if  isEllipsoid
                         if ~isempty(self.template.subplot.dimx)
                             self.subplot{irow, icol}.dimx = self.template.dimx(min(iplt, numel(self.template.dimx)));

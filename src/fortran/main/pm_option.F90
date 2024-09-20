@@ -118,7 +118,7 @@ module pm_option
     !>          the overall average overhead of calling [getOption](@ref pm_option::getOption) remains extremely small as of 2022 AD,
     !>          on the order of nano to micro seconds depending on the size of the optional argument from scalar to large arrays.<br>
     !>      -#  Additionally, the significance of performance degradation, if any, depends entirely on the ability of the compiler to inline the procedure.<br>
-    !>          In observed performance degradations report here are without any compiler inlining.<br>
+    !>          The observed performance degradations report here occur without any compiler inlining attempts.<br>
     !>      -#  Consequently, **there is practically no harm in using [getOption](@ref pm_option::getOption) in non-performance-critical
     !>          sections of a codebase**, that is, **parts of a codebase that are to be called less than billions of times at runtime**.<br>
     !>

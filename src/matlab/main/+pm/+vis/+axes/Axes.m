@@ -411,7 +411,7 @@
 %>              the decimal point for the values that appear in each cell
 %>              of the heatmap. The default value is set by MATLAB.<br>
 %>
-%>      <li>    ``resolution`` (available only for [pm.vis.SubplotContour](@ref SuplotContour), 
+%>      <li>    ``resolution`` (available only for [pm.vis.SubplotContour](@ref SuplotContour),
 %>              [pm.vis.SubplotContourf](@ref SuplotContourf), [pm.vis.SubplotContour3](@ref SuplotContour3) axes types)
 %>
 %>              A scalar integer indicating the grid resolution for discretization of
@@ -517,7 +517,7 @@
 %>              \endcode
 %>              <br>
 %>
-%>      <li>    ``surface`` (available only for [pm.vis.SubplotLine](@ref SubplotLine), [pm.vis.SubplotLineScatter](@ref pm.vis.SubplotLineScatter), 
+%>      <li>    ``surface`` (available only for [pm.vis.SubplotLine](@ref SubplotLine), [pm.vis.SubplotLineScatter](@ref pm.vis.SubplotLineScatter),
 %>              [pm.vis.SubplotLine3](@ref SubplotLine3)/[pm.vis.SubplotLineScatter3](@ref SubplotLineScatter3) axes types)
 %>
 %>              A MATLAB ``struct`` whose fields and their values will be passed
@@ -622,7 +622,7 @@ classdef Axes < pm.matlab.Handle
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    properties(Access = protected, Hidden)
+    properties(Access = public, Hidden)
         %>
         %>  ``type``
         %>
@@ -781,7 +781,9 @@ classdef Axes < pm.matlab.Handle
 
             fontSize_def = 12;
 
+            %%%%
             %%%% axes
+            %%%%
 
             if ~self.type.is.heatmap
                 self.newprop("axes", struct());
@@ -801,7 +803,9 @@ classdef Axes < pm.matlab.Handle
                 self.axes.enabled = [];
             end
 
+            %%%%
             %%%% title
+            %%%%
 
             self.newprop("title", struct());
             if ~self.type.is.heatmap
@@ -816,7 +820,9 @@ classdef Axes < pm.matlab.Handle
                 self.title.subtitletext = [];
             end
 
+            %%%%
             %%%% xlabel, xlim
+            %%%%
 
             self.newprop("xlabel", struct());
             if ~self.type.is.heatmap
@@ -832,8 +838,9 @@ classdef Axes < pm.matlab.Handle
             self.xlabel.enabled = [];
             self.xlabel.txt = [];
 
-
+            %%%%
             %%%% ylabel, ylim
+            %%%%
 
             self.newprop("ylabel", self.xlabel);
             if ~self.type.is.heatmap
@@ -841,7 +848,9 @@ classdef Axes < pm.matlab.Handle
                 self.newprop("ylim", []);
             end
 
+            %%%%
             %%%% zlabel, zlim
+            %%%%
 
             if  self.type.is.triaxes
                 self.newprop("zlabel", self.xlabel);
@@ -849,7 +858,9 @@ classdef Axes < pm.matlab.Handle
                 self.newprop("zscale", []);
             end
 
+            %%%%
             %%%% colc, colorbar, colormap
+            %%%%
 
             if  self.type.is.heatmap || ~self.type.is.d1
 
@@ -875,7 +886,9 @@ classdef Axes < pm.matlab.Handle
 
             end
 
+            %%%%
             %%%% legend
+            %%%%
 
             if ~self.type.is.heatmap
                 self.newprop("legend", struct());
@@ -890,15 +903,17 @@ classdef Axes < pm.matlab.Handle
                 self.legend.labels = {};
             end
 
+            %%%%
             %%%% target
+            %%%%
 
             %if ~self.type.is.targetable
             %    self.newprop("target");
             %end
 
-            %%%%%%%%%%%%%%%%%%%%%%%
+            %%%%
             %%%% heatmap attributes
-            %%%%%%%%%%%%%%%%%%%%%%%
+            %%%%
 
             if  self.type.is.heatmap
                 self.newprop("heatmap", struct());
@@ -911,9 +926,9 @@ classdef Axes < pm.matlab.Handle
                 self.heatmap.enabled = [];
             end
 
-            %%%%%%%%%%%%%%%%%%%%%%%
+            %%%%
             %%%% density attributes
-            %%%%%%%%%%%%%%%%%%%%%%%
+            %%%%
 
             if  self.type.is.histfit
                 self.newprop("histfit", struct());
@@ -1004,9 +1019,9 @@ classdef Axes < pm.matlab.Handle
                 self.contour3.lineSpec = [];
             end
 
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%%
             %%%% line/scatter attributes
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%%
 
             if  self.type.is.line || self.type.is.lineScatter
                 self.newprop("surface", struct());

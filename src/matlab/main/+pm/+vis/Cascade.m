@@ -278,8 +278,8 @@ classdef Cascade < pm.matlab.Handle
 
             self.window = cell(nplt);
             for iplt = 1 : nplt
-                copyStream = getByteStreamFromArray(self.template);
-                self.window{iplt} = getArrayFromByteStream(copyStream);
+                byteStream = getByteStreamFromArray(self.template);
+                self.window{iplt} = getArrayFromByteStream(byteStream);
                 if  isHeatmap
                     if ~isempty(hdf.colx)
                         self.window{iplt}.subplot.colx = hdf.colx{min(iplt, numel(hdf.colx))};
