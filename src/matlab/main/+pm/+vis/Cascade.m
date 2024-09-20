@@ -325,12 +325,12 @@ classdef Cascade < pm.matlab.Handle
         %>
         %>  \param[inout]   self    :   The input/output parent object of class [pm.vis.Cascade](@ref Cascade)
         %>                              which is **implicitly** passed to this dynamic method (not by the user).<br>
-        %>  \param[in]      files   :   The input vector of MATLAB strings or cell array of char vectors that must be
-        %>                              of the same length as the length of the ``window`` component of the parent object.<br>
-        %>                              containing the paths to the external files to contain the visualizations.<br>
-        %>                              For more information, see the corresponding argument of the ``savefig``
+        %>  \param[in]      file    :   The input **vector** of MATLAB strings or cell array of char vectors
+        %>                              containing the paths to the external output figure files.<br>
+        %>                              It must be of the same length as the ``window`` component of the parent object.<br>
+        %>                              For more information, see the corresponding argument ``file`` of the ``savefig``
         %>                              method of class [pm.vis.figure.Figure](@ref Figure).<br>
-        %>                              (**optional**.  If ``files`` or any elements of it are is missing or empty,
+        %>                              (**optional**.  If ``file`` or any elements of it is missing or empty,
         %>                              the default will be set by the ``savefig`` method of the corresponding
         %>                              cascade figure in the ``window`` component.)
         %>
@@ -338,12 +338,12 @@ classdef Cascade < pm.matlab.Handle
         %>                              the ``savefig`` method of class [pm.vis.figure.Figure](@ref Figure).<br>
         %>                              For more information, see the ``savefig`` method of class [pm.vis.figure.Figure](@ref Figure).<br>
         %>
-        %>  \interface{savefigs}
+        %>  \interface{savefig}
         %>  \code{.m}
         %>
-        %>      c.savefigs();
-        %>      c.savefigs(files);
-        %>      c.savefigs(files, varargin);
+        %>      c.savefig();
+        %>      c.savefig(file);
+        %>      c.savefig(file, varargin);
         %>
         %>  \endcode
         %>
@@ -354,20 +354,20 @@ classdef Cascade < pm.matlab.Handle
         %>  \image html example/vis/Cascade/Cascade.window.2.png width=700
         %>  \image html example/vis/Cascade/Cascade.window.3.png width=700
         %>
-        %>  \final{savefigs}
+        %>  \final{savefig}
         %>
         %>  \author
         %>  \JoshuaOsborne, May 21 2024, 6:29 AM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
-        function savefigs(self, files, varargin)
-            if  nargin < 2 || isempty(files)
-                files = strings(length(self.window), 1);
+        function savefig(self, file, varargin)
+            if  nargin < 2 || isempty(file)
+                file = strings(length(self.window), 1);
             end
-            if  length(files) ~= length(self.window)
+            if  length(file) ~= length(self.window)
                 help("pm.vis.Cascade");
                 error   ( newline ...
-                        + "The condition ``length(files) == length(self.window)`` must hold." + newline ...
+                        + "The condition ``length(file) == length(self.window)`` must hold." + newline ...
                         + "For more information, see the documentation displayed above." + newline ...
                         + newline ...
                         );
@@ -386,7 +386,7 @@ classdef Cascade < pm.matlab.Handle
             %%%%    figures have been generated before starting to export any figure.
             %%%%
             for iwin = length(self.window) : -1 : 1
-                self.window{iwin}.savefig(files(iwin), varargin{:});
+                self.window{iwin}.savefig(file(iwin), varargin{:});
             end
         end
 

@@ -24,33 +24,38 @@ classdef FileContentsSample < pm.io.FileContentsTabular
 
     properties(Access = public)
         %>
-        %>  ``stats``       :   The scalar MATLAB object containing the set of
-        %>                      computed properties of the contents of the file.<br>
-        %>
-        stats = [];
-        %>
-        %>  ``ndim``        :   The scalar MATLAB integer representing the number of
-        %>                      dimensions of the domain of the objective function sampled.<br>
-        %>                      This integer is also the number of columns in the file that
-        %>                      correspond that contain the sampled states from the domain
-        %>                      of the mathematical objective function.<br>
+        %>  ``ndim``    :   The scalar MATLAB integer representing the number of
+        %>                  dimensions of the domain of the objective function sampled.<br>
+        %>                  This integer is also the number of columns in the file that
+        %>                  correspond that contain the sampled states from the domain
+        %>                  of the mathematical objective function.<br>
         %>
         ndim = 0;
         %>
-        %>  ``slfc``        :   The scalar MATLAB integer representing the column
-        %>                      index of the dataframe component ``df`` that contains
-        %>                      the natural logarithm of the objective function values
-        %>                      corresponding to the sampled states next to this column,
-        %>                      such that the following relationship holds.<br>
-        %>                      \code{.m}
-        %>                          FileContentsSample.ndim = FileContentsSample.ncol - FileContentsSample.slfc;
-        %>                      \endcode
-        %>                      While this column index can be readily inferred by exploring
-        %>                      the contents of the dataframe component, this column index is also
-        %>                      computed and explicitly offered to conveniently slice the values of
-        %>                      the sampled states and their corresponding log-function values.<br>
+        %>  ``slfc``    :   The scalar MATLAB integer representing the column
+        %>                  index of the dataframe component ``df`` that contains
+        %>                  the natural logarithm of the objective function values
+        %>                  corresponding to the sampled states next to this column,
+        %>                  such that the following relationship holds.<br>
+        %>                  \code{.m}
+        %>                      FileContentsSample.ndim = FileContentsSample.ncol - FileContentsSample.slfc;
+        %>                  \endcode
+        %>                  While this column index can be readily inferred by exploring
+        %>                  the contents of the dataframe component, this column index is also
+        %>                  computed and explicitly offered to conveniently slice the values of
+        %>                  the sampled states and their corresponding log-function values.<br>
         %>
         slfc = 0;
+        %>
+        %>  ``stats``   :   The scalar MATLAB object containing the set of
+        %>                  computed properties of the contents of the file.<br>
+        %>
+        stats = [];
+        %>
+        %>  ``vis``     :   The scalar MATLAB ``struct`` containing the set of
+        %>                  predefined visualizations for the output data.<br>
+        %>
+        vis = [];
     end
 
     properties(Hidden)
@@ -91,6 +96,34 @@ classdef FileContentsSample < pm.io.FileContentsTabular
         %>
         %>  \endcode
         %>
+        %>  \example{FileContentsSample}
+        %>  \include{lineno} example/sampling/FileContentsSample/main.m
+        %>  \vis{FileContentsSample}
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.line.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.scatter.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.lineScatter.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.line3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.scatter3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.lineScatter3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.histfit.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.histogram.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.histogram2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.contour.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.contourf.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.contour3.png width=700
+        %>
         %>  \final{FileContentsSample}
         %>
         %>  \author
@@ -98,6 +131,7 @@ classdef FileContentsSample < pm.io.FileContentsTabular
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = FileContentsSample(file, silent, sep)
+
             if nargin < 3
                 sep = [];
             end
@@ -126,7 +160,7 @@ classdef FileContentsSample < pm.io.FileContentsTabular
             end
 
             %%%%
-            %%%% statistics
+            %%%% statistics.
             %%%%
 
             self.stats = struct();
@@ -158,6 +192,48 @@ classdef FileContentsSample < pm.io.FileContentsTabular
             [self.stats.min.val, self.stats.min.loc] = min(self.df{:,:});
             self.stats.avg = mean(self.df{:,:});
             self.stats.std = std(self.df{:,:});
+
+            %%%%
+            %%%% visualization.
+            %%%%
+
+            self.vis = struct();
+
+            self.vis.plot = struct();
+
+            self.vis.plot.line = pm.vis.PlotLine(@()self.df, "coly", self.slfc + [1 : self.ndim], "colc", self.slfc);
+            self.vis.plot.scatter = pm.vis.PlotScatter(@()self.df, "coly", self.slfc + [1 : self.ndim], "colc", self.slfc);
+            self.vis.plot.lineScatter = pm.vis.PlotLineScatter(@()self.df, "coly", self.slfc + [1 : self.ndim], "colc", self.slfc);
+
+            self.vis.plot.line3 = pm.vis.PlotLine3(@()self.df, "coly", self.slfc + [1 : self.ndim], "colc", self.slfc);
+            self.vis.plot.scatter3 = pm.vis.PlotScatter3(@()self.df, "coly", self.slfc + [1 : self.ndim], "colz", self.slfc, "colc", self.slfc);
+            self.vis.plot.lineScatter3 = pm.vis.PlotLineScatter3(@()self.df, "coly", self.slfc + [1 : self.ndim], "colz", self.slfc, "colc", self.slfc);
+
+            self.vis.plot.histfit = pm.vis.PlotHistfit(@()self.df, "colx", self.slfc + [1 : self.ndim]);
+            self.vis.plot.histogram = pm.vis.PlotHistogram(@()self.df, "colx", self.slfc + [1 : self.ndim]);
+            self.vis.plot.histogram2 = pm.vis.PlotHistogram2(@()self.df, "colx", self.slfc, "coly", self.slfc + [1 : self.ndim]);
+
+            self.vis.plot.contour = pm.vis.PlotContour(@()self.df, "colx", self.slfc + [1 : self.ndim], "coly", self.slfc);
+            self.vis.plot.contourf = pm.vis.PlotContourf(@()self.df, "colx", self.slfc + [1 : self.ndim], "coly", self.slfc);
+            self.vis.plot.contour3 = pm.vis.PlotContour3(@()self.df, "colx", self.slfc + [1 : self.ndim], "coly", self.slfc);
+
+            self.vis.tile = struct();
+
+            self.vis.tile.line = pm.vis.TileLine(@()self.df, "coly", self.slfc + [1 : self.ndim], "colc", self.slfc);
+            self.vis.tile.scatter = pm.vis.TileScatter(@()self.df, "coly", self.slfc + [1 : self.ndim], "colc", self.slfc);
+            self.vis.tile.lineScatter = pm.vis.TileLineScatter(@()self.df, "coly", self.slfc + [1 : self.ndim], "colc", self.slfc);
+
+            self.vis.tile.line3 = pm.vis.TileLine3(@()self.df, "coly", self.slfc + [1 : self.ndim], "colc", self.slfc);
+            self.vis.tile.scatter3 = pm.vis.TileScatter3(@()self.df, "coly", self.slfc + [1 : self.ndim], "colz", self.slfc, "colc", self.slfc);
+            self.vis.tile.lineScatter3 = pm.vis.TileLineScatter3(@()self.df, "coly", self.slfc + [1 : self.ndim], "colz", self.slfc, "colc", self.slfc);
+
+            self.vis.tile.histfit = pm.vis.TileHistfit(@()self.df, "colx", self.slfc + [1 : self.ndim]);
+            self.vis.tile.histogram = pm.vis.TileHistogram(@()self.df, "colx", self.slfc + [1 : self.ndim]);
+            self.vis.tile.histogram2 = pm.vis.TileHistogram2(@()self.df, "colx", self.slfc, "coly", self.slfc + [1 : self.ndim]);
+
+            self.vis.tile.contour = pm.vis.TileContour(@()self.df, "colx", self.slfc + [1 : self.ndim], "coly", self.slfc);
+            self.vis.tile.contourf = pm.vis.TileContourf(@()self.df, "colx", self.slfc + [1 : self.ndim], "coly", self.slfc);
+            self.vis.tile.contour3 = pm.vis.TileContour3(@()self.df, "colx", self.slfc + [1 : self.ndim], "coly", self.slfc);
 
         end
 

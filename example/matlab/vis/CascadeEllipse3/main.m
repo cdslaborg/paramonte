@@ -10,4 +10,4 @@ for iell = 1 : nell
 end
 cv = pm.vis.CascadeEllipse3(gramian, center, [], [], "dimx", 1:2:5, "dimy", 2:2:6);
 cv.make();
-cv.savefigs(["CascadeEllipse3.window.1.png", "CascadeEllipse3.window.2.png", "CascadeEllipse3.window.3.png"], "-m3");
+cv.savefig(["CascadeEllipse3.window.1.png", "CascadeEllipse3.window.2.png", "CascadeEllipse3.window.3.png"], "-m3");

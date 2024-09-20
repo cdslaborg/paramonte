@@ -8,4 +8,4 @@ df = ctranspose(pm.stats.dist.mvn.getRand(mean, cholow, 5000));
 df = [df, pm.stats.dist.mvn.getLogPDF(ctranspose(df), mean, pm.matrix.inv(cholow))];
 cv = pm.vis.CascadeScatter(df, "colx", 1:2:5, "coly", 2:2:6, "colc", ndim + 1);
 cv.make();
-cv.savefigs(["CascadeScatter.window.1.png", "CascadeScatter.window.2.png", "CascadeScatter.window.3.png"], "-m3");
+cv.savefig(["CascadeScatter.window.1.png", "CascadeScatter.window.2.png", "CascadeScatter.window.3.png"], "-m3");
