@@ -534,6 +534,7 @@ if not "%1"=="" (
     REM --ddir
 
     if "!FLAG!"=="--ddir" (
+        set "ddir=!VALUE!"
         set FLAG_SUPPORTED=true
         set "flag_ddir=-Dddir=!VALUE!"
         if "!VALUE!"=="" set "VALUE_SUPPORTED=false"
@@ -1023,12 +1024,60 @@ for %%C in ("!list_fc:;=" "!") do (
             )
         )
     )
+
 )
 
 echo.
 echo.!pmnote! !BoldGreen!All build files for all requested build configurations are stored at!ColorReset! "!paramonte_dir!bld"
 echo.!pmnote! !BoldGreen!The installed binary files for all requested build configurations are ready to use at!ColorReset! "!ddir!"
 echo.
+
+REM
+REM zip the binary folder. The application tar.exe
+REM
+
+set "zipperFound="
+set zipperName=tar.exe
+for %%X in (!zipperName!) do (set zipperFound=%%~$PATH:X)
+if "!zipperFound!"=="" (
+    echo.
+    echo.!pmwarn! !BoldMagenta!Skipping the binary archive generation because the !zipperName! application could not be found.!ColorReset!
+    echo.
+) else (
+    echo.
+    echo.!pmnote! !BoldGreen!Generating the the binary archive zip file using !zipperName! at:!ColorReset! "!ddir!"
+    echo.
+    call :NORMALIZEPATH "!ddir!"
+    if exist "!ddir!" (
+        cd "!ddir!"
+        echo.
+        echo. -- ParaMonte - compressing all subdirectories in the directory: "!ddir!"
+        echo.
+        for /f "tokens=* usebackq" %%G in (`dir /b /a:d "!ddir!"`) do (
+            if exist "%%~G.zip" (
+                echo.!pmwarn! !BoldMagenta!: compressed subdirectory already exists:!ColorReset! "!ddir!\%%~G.zip"
+                echo.!pmwarn! !BoldMagenta!: overwriting the existing archive file...!ColorReset!
+            )
+            echo. -- ParaMonte - compressing subdirectory: %%~G
+            tar.exe -a -cf "%%~G.zip" "%%~G" || (
+                echo.
+                echo.!pmfatal! !BoldRed!: compression failed for subdirectory:!ColorReset! "!ddir!\%%~G"
+                echo.!pmfatal! !BoldRed!: gracefully exiting.!ColorReset!
+                echo.
+                cd !paramonte_dir!
+                set ERRORLEVEL=1
+                exit /B 1
+            )
+        )
+    ) else (
+        echo.
+        echo.!pmfatal! !BoldRed!: The final binary deployment destination directory does not exist: "!ddir!"
+        echo.
+        cd !paramonte_dir!
+        set ERRORLEVEL=1
+        exit /B 1
+    )
+)
 
 goto LABEL_EOF
 
@@ -1094,6 +1143,11 @@ echo.
 cd %~dp0
 set ERRORLEVEL=1
 exit /B 1
+
+:NORMALIZEPATH
+cd !paramonte_dir!
+set DESTINATION_DIR=%~dpfn1
+exit /B
 
 :LABEL_EOF
 

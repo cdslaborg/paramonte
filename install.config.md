@@ -701,6 +701,8 @@ Value               | Usage
 
 > This is a low level option and mostly useful to the developers of the ParaMonte library.
 
+> **NOTE** This flag is currently non-functional on Windows platforms possibly due to a CMake bug related to `TARGET_SONAME_FILE`.
+
 **optional**. The default value for `dependencies_list` is `none`.
 
 ### `exampp`
