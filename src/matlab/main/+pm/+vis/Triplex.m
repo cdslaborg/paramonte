@@ -467,7 +467,13 @@ classdef Triplex < pm.vis.figure.Figure
 
                     if ~isempty(comp)
 
-                        self.tile{irow, icol} = getArrayFromByteStream(getByteStreamFromArray(self.(comp)));
+                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                        %%%% The byte stream approach leads to serious problems with
+                        %%%% figures when generated from within sampler components.
+                        %self.tile{irow, icol} = getArrayFromByteStream(getByteStreamFromArray(self.(comp)));
+                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                        self.tile{irow, icol} = pm.matlab.copy(self.(comp), eval(string(class(self.(comp))) + "()"));
+                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                         %%%%
                         %%%% Set the data columns to plot in the current tile.
@@ -543,8 +549,9 @@ classdef Triplex < pm.vis.figure.Figure
             %%%%
             %%%% Reset the marginal axes labels.
             %%%%
-
+disp("done1")
             self.hideShowAxesLabels();
+disp("done2")
 
             %%%%
             %%%% Add colorbars.
@@ -575,7 +582,13 @@ classdef Triplex < pm.vis.figure.Figure
                             dumaxes = axes("Parent", self.fout.figure, kws{:});
 
                             set(self.fout.figure, 'CurrentAxes', dumaxes);
-                            dumplot = getArrayFromByteStream(getByteStreamFromArray(self.tile{irow, icol}));
+                            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                            %%%% The byte stream approach leads to serious problems with
+                            %%%% figures when generated from within sampler components.
+                            %dumplot = getArrayFromByteStream(getByteStreamFromArray(self.tile{irow, icol}));
+                            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                            dumplot = pm.matlab.copy(self.tile{irow, icol}, eval(string(class(self.tile{irow, icol})) + "()"), [], "fout");
+                            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                             dumplot.colorbar.position = self.layout.(cbar).position;
                             dumplot.colorbar.location = location.(cbar);
                             dumplot.colorbar.enabled = true;
@@ -585,7 +598,7 @@ classdef Triplex < pm.vis.figure.Figure
                                 dumplot.make("axes")
                             end
                             dumaxes.Visible = "off";
-                            set([dumaxes;dumaxes.Children], 'Visible', 'off');
+                            set([dumaxes; dumaxes.Children], 'Visible', 'off');
 
                             %kws = self.tile{irow, icol}.comp2hash("colorbar");
                             %self.fout.(cbar) = colorbar(dumaxes, kws{:}, "position", self.layout.(cbar).position, "location", location.(cbar));

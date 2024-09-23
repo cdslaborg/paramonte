@@ -100,29 +100,131 @@ classdef FileContentsSample < pm.io.FileContentsTabular
         %>  \include{lineno} example/sampling/FileContentsSample/main.m
         %>  \vis{FileContentsSample}
         %>  <br><br>
-        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.line.png width=700
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.contour.1.png width=700
         %>  <br><br>
-        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.scatter.png width=700
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.contour.2.png width=700
         %>  <br><br>
-        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.lineScatter.png width=700
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.contour.3.png width=700
         %>  <br><br>
-        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.line3.png width=700
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.contour3.1.png width=700
         %>  <br><br>
-        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.scatter3.png width=700
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.contour3.2.png width=700
         %>  <br><br>
-        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.lineScatter3.png width=700
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.contour3.3.png width=700
         %>  <br><br>
-        %>  \image html example/sampling/FileContentsSample/FileContentsSample.histfit.png width=700
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.contourf.1.png width=700
         %>  <br><br>
-        %>  \image html example/sampling/FileContentsSample/FileContentsSample.histogram.png width=700
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.contourf.2.png width=700
         %>  <br><br>
-        %>  \image html example/sampling/FileContentsSample/FileContentsSample.histogram2.png width=700
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.contourf.3.png width=700
         %>  <br><br>
-        %>  \image html example/sampling/FileContentsSample/FileContentsSample.contour.png width=700
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.histfit.1.png width=700
         %>  <br><br>
-        %>  \image html example/sampling/FileContentsSample/FileContentsSample.contourf.png width=700
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.histfit.2.png width=700
         %>  <br><br>
-        %>  \image html example/sampling/FileContentsSample/FileContentsSample.contour3.png width=700
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.histfit.3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.histogram.1.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.histogram.2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.histogram.3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.histogram2.1.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.histogram2.2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.histogram2.3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.line.1.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.line.2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.line.3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.line3.1.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.line3.2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.line3.3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.lineScatter.1.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.lineScatter.2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.lineScatter.3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.lineScatter3.1.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.lineScatter3.2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.lineScatter3.3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.scatter.1.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.scatter.2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.scatter.3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.scatter3.1.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.scatter3.2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.cascade.scatter3.3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.plot.contour.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.plot.contour3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.plot.contourf.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.plot.histfit.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.plot.histogram.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.plot.histogram2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.plot.line.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.plot.line3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.plot.lineScatter.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.plot.lineScatter3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.plot.scatter.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.plot.scatter3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.tile.contour.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.tile.contour3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.tile.contourf.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.tile.histfit.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.tile.histogram.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.tile.histogram2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.tile.line.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.tile.line3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.tile.lineScatter.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.tile.lineScatter3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.tile.scatter.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.tile.scatter3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.triplex.lshc2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.triplex.lshc3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsSample/FileContentsSample.triplex.lshcf.png width=700
         %>
         %>  \final{FileContentsSample}
         %>
@@ -197,43 +299,86 @@ classdef FileContentsSample < pm.io.FileContentsTabular
             %%%% visualization.
             %%%%
 
+            colf = self.slfc;
+            cols = self.slfc + [1 : self.ndim];
+
             self.vis = struct();
+
+            self.vis.cascade = struct();
+
+            self.vis.cascade.line = pm.vis.CascadeLine(@()self.df, "coly", cols, "colc", colf);
+            self.vis.cascade.scatter = pm.vis.CascadeScatter(@()self.df, "coly", cols, "colc", colf);
+            self.vis.cascade.lineScatter = pm.vis.CascadeLineScatter(@()self.df, "coly", cols, "colc", colf);
+
+            self.vis.cascade.line3 = pm.vis.CascadeLine3(@()self.df, "coly", cols, "colz", colf, "colc", colf);
+            self.vis.cascade.scatter3 = pm.vis.CascadeScatter3(@()self.df, "coly", cols, "colz", colf, "colc", colf);
+            self.vis.cascade.lineScatter3 = pm.vis.CascadeLineScatter3(@()self.df, "coly", cols, "colz", colf, "colc", colf);
+
+            self.vis.cascade.histfit = pm.vis.CascadeHistfit(@()self.df, "colx", cols);
+            self.vis.cascade.histogram = pm.vis.CascadeHistogram(@()self.df, "colx", cols);
+            self.vis.cascade.histogram2 = pm.vis.CascadeHistogram2(@()self.df, "colx", cols, "coly", colf);
+
+            self.vis.cascade.contour = pm.vis.CascadeContour(@()self.df, "colx", cols, "coly", colf);
+            self.vis.cascade.contourf = pm.vis.CascadeContourf(@()self.df, "colx", cols, "coly", colf);
+            self.vis.cascade.contour3 = pm.vis.CascadeContour3(@()self.df, "colx", cols, "coly", colf);
 
             self.vis.plot = struct();
 
-            self.vis.plot.line = pm.vis.PlotLine(@()self.df, "coly", self.slfc + [1 : self.ndim], "colc", self.slfc);
-            self.vis.plot.scatter = pm.vis.PlotScatter(@()self.df, "coly", self.slfc + [1 : self.ndim], "colc", self.slfc);
-            self.vis.plot.lineScatter = pm.vis.PlotLineScatter(@()self.df, "coly", self.slfc + [1 : self.ndim], "colc", self.slfc);
+            self.vis.plot.line = pm.vis.PlotLine(@()self.df, "coly", cols, "colc", colf);
+            self.vis.plot.scatter = pm.vis.PlotScatter(@()self.df, "coly", cols, "colc", colf);
+            self.vis.plot.lineScatter = pm.vis.PlotLineScatter(@()self.df, "coly", cols, "colc", colf);
 
-            self.vis.plot.line3 = pm.vis.PlotLine3(@()self.df, "coly", self.slfc + [1 : self.ndim], "colc", self.slfc);
-            self.vis.plot.scatter3 = pm.vis.PlotScatter3(@()self.df, "coly", self.slfc + [1 : self.ndim], "colz", self.slfc, "colc", self.slfc);
-            self.vis.plot.lineScatter3 = pm.vis.PlotLineScatter3(@()self.df, "coly", self.slfc + [1 : self.ndim], "colz", self.slfc, "colc", self.slfc);
+            self.vis.plot.line3 = pm.vis.PlotLine3(@()self.df, "coly", cols, "colc", colf);
+            self.vis.plot.scatter3 = pm.vis.PlotScatter3(@()self.df, "coly", cols, "colz", colf, "colc", colf);
+            self.vis.plot.lineScatter3 = pm.vis.PlotLineScatter3(@()self.df, "coly", cols, "colz", colf, "colc", colf);
 
-            self.vis.plot.histfit = pm.vis.PlotHistfit(@()self.df, "colx", self.slfc + [1 : self.ndim]);
-            self.vis.plot.histogram = pm.vis.PlotHistogram(@()self.df, "colx", self.slfc + [1 : self.ndim]);
-            self.vis.plot.histogram2 = pm.vis.PlotHistogram2(@()self.df, "colx", self.slfc, "coly", self.slfc + [1 : self.ndim]);
+            self.vis.plot.histfit = pm.vis.PlotHistfit(@()self.df, "colx", cols);
+            self.vis.plot.histogram = pm.vis.PlotHistogram(@()self.df, "colx", cols);
+            self.vis.plot.histogram2 = pm.vis.PlotHistogram2(@()self.df, "colx", colf, "coly", cols);
 
-            self.vis.plot.contour = pm.vis.PlotContour(@()self.df, "colx", self.slfc + [1 : self.ndim], "coly", self.slfc);
-            self.vis.plot.contourf = pm.vis.PlotContourf(@()self.df, "colx", self.slfc + [1 : self.ndim], "coly", self.slfc);
-            self.vis.plot.contour3 = pm.vis.PlotContour3(@()self.df, "colx", self.slfc + [1 : self.ndim], "coly", self.slfc);
+            self.vis.plot.contour = pm.vis.PlotContour(@()self.df, "colx", cols, "coly", colf);
+            self.vis.plot.contourf = pm.vis.PlotContourf(@()self.df, "colx", cols, "coly", colf);
+            self.vis.plot.contour3 = pm.vis.PlotContour3(@()self.df, "colx", cols, "coly", colf);
 
             self.vis.tile = struct();
 
-            self.vis.tile.line = pm.vis.TileLine(@()self.df, "coly", self.slfc + [1 : self.ndim], "colc", self.slfc);
-            self.vis.tile.scatter = pm.vis.TileScatter(@()self.df, "coly", self.slfc + [1 : self.ndim], "colc", self.slfc);
-            self.vis.tile.lineScatter = pm.vis.TileLineScatter(@()self.df, "coly", self.slfc + [1 : self.ndim], "colc", self.slfc);
+            self.vis.tile.line = pm.vis.TileLine(@()self.df, "coly", cols, "colc", colf);
+            self.vis.tile.scatter = pm.vis.TileScatter(@()self.df, "coly", cols, "colc", colf);
+            self.vis.tile.lineScatter = pm.vis.TileLineScatter(@()self.df, "coly", cols, "colc", colf);
 
-            self.vis.tile.line3 = pm.vis.TileLine3(@()self.df, "coly", self.slfc + [1 : self.ndim], "colc", self.slfc);
-            self.vis.tile.scatter3 = pm.vis.TileScatter3(@()self.df, "coly", self.slfc + [1 : self.ndim], "colz", self.slfc, "colc", self.slfc);
-            self.vis.tile.lineScatter3 = pm.vis.TileLineScatter3(@()self.df, "coly", self.slfc + [1 : self.ndim], "colz", self.slfc, "colc", self.slfc);
+            self.vis.tile.line3 = pm.vis.TileLine3(@()self.df, "coly", cols, "colc", colf);
+            self.vis.tile.scatter3 = pm.vis.TileScatter3(@()self.df, "coly", cols, "colz", colf, "colc", colf);
+            self.vis.tile.lineScatter3 = pm.vis.TileLineScatter3(@()self.df, "coly", cols, "colz", colf, "colc", colf);
 
-            self.vis.tile.histfit = pm.vis.TileHistfit(@()self.df, "colx", self.slfc + [1 : self.ndim]);
-            self.vis.tile.histogram = pm.vis.TileHistogram(@()self.df, "colx", self.slfc + [1 : self.ndim]);
-            self.vis.tile.histogram2 = pm.vis.TileHistogram2(@()self.df, "colx", self.slfc, "coly", self.slfc + [1 : self.ndim]);
+            self.vis.tile.histfit = pm.vis.TileHistfit(@()self.df, "colx", cols);
+            self.vis.tile.histogram = pm.vis.TileHistogram(@()self.df, "colx", cols);
+            self.vis.tile.histogram2 = pm.vis.TileHistogram2(@()self.df, "colx", colf, "coly", cols);
 
-            self.vis.tile.contour = pm.vis.TileContour(@()self.df, "colx", self.slfc + [1 : self.ndim], "coly", self.slfc);
-            self.vis.tile.contourf = pm.vis.TileContourf(@()self.df, "colx", self.slfc + [1 : self.ndim], "coly", self.slfc);
-            self.vis.tile.contour3 = pm.vis.TileContour3(@()self.df, "colx", self.slfc + [1 : self.ndim], "coly", self.slfc);
+            self.vis.tile.contour = pm.vis.TileContour(@()self.df, "colx", cols, "coly", colf);
+            self.vis.tile.contourf = pm.vis.TileContourf(@()self.df, "colx", cols, "coly", colf);
+            self.vis.tile.contour3 = pm.vis.TileContour3(@()self.df, "colx", cols, "coly", colf);
+
+            self.vis.triplex.lshc2 = pm.vis.Triplex ( pm.vis.SubplotLineScatter(@()self.df, "colx", cols, "coly", cols, "colc", colf, "colorbar", {"enabled", false}) ...
+                                                    , pm.vis.SubplotHistogram(@()self.df, "colx", cols) ...
+                                                    , pm.vis.SubplotContour(@()self.df, "colx", cols, "coly", cols, "colorbar", {"enabled", false}) ...
+                                                    );
+
+            self.vis.triplex.lshcf = pm.vis.Triplex ( pm.vis.SubplotLineScatter(@()self.df, "colx", cols, "coly", cols, "colc", colf, "colorbar", {"enabled", false}) ...
+                                                    , pm.vis.SubplotHistogram(@()self.df, "colx", cols) ...
+                                                    , pm.vis.SubplotContourf(@()self.df, "colx", cols, "coly", cols, "colorbar", {"enabled", false}) ...
+                                                    );
+
+            self.vis.triplex.lshc3 = pm.vis.Triplex ( pm.vis.SubplotLineScatter(@()self.df, "colx", cols, "coly", cols, "colc", colf, "colorbar", {"enabled", false}) ...
+                                                    , pm.vis.SubplotHistogram(@()self.df, "colx", cols) ...
+                                                    , pm.vis.SubplotContour3(@()self.df, "colx", cols, "coly", cols, "colorbar", {"enabled", false}) ...
+                                                    );
+
+            %if  5 < ndim
+            %    self.vis.triplex.layout.tiling.position = [.1, .1, nan, nan];
+            %    self.vis.triplex.layout.cbarh.position = [];
+            %    self.vis.triplex.layout.cbarv.position = [];
+            %    self.vis.triplex.layout.tiling.tile.width = [];
+            %end
 
         end
 

@@ -268,8 +268,14 @@ classdef Tile < pm.vis.Tiling
                         break;
                     end
                     %self.subplot{irow, icol} = self.template;
-                    byteStream = getByteStreamFromArray(self.template);
-                    self.subplot{irow, icol} = getArrayFromByteStream(byteStream);
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    %%%% The byte stream approach leads to serious problems with
+                    %%%% figures when generated from within sampler components.
+                    %byteStream = getByteStreamFromArray(self.template);
+                    %self.subplot{irow, icol} = getArrayFromByteStream(byteStream);
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    self.subplot{irow, icol} = pm.matlab.copy(self.template, eval(string(class(self.template)) + "()"));
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     if  isEllipsoid
                         if ~isempty(self.template.subplot.dimx)
                             self.subplot{irow, icol}.dimx = self.template.dimx(min(iplt, numel(self.template.dimx)));

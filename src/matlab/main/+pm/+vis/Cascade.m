@@ -276,10 +276,16 @@ classdef Cascade < pm.matlab.Handle
             %%%% The following code block may be improved in
             %%%% the future to avoid full data copy to subplots.
 
-            self.window = cell(nplt);
+            self.window = cell(nplt, 1);
             for iplt = 1 : nplt
-                byteStream = getByteStreamFromArray(self.template);
-                self.window{iplt} = getArrayFromByteStream(byteStream);
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                %%%% The byte stream approach leads to serious problems with
+                %%%% figures when generated from within sampler components.
+                %byteStream = getByteStreamFromArray(self.template);
+                %self.window{iplt} = getArrayFromByteStream(byteStream);
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                self.window{iplt} = pm.matlab.copy(self.template, eval(string(class(self.template)) + "()"));
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 if  isHeatmap
                     if ~isempty(hdf.colx)
                         self.window{iplt}.subplot.colx = hdf.colx{min(iplt, numel(hdf.colx))};
@@ -361,13 +367,27 @@ classdef Cascade < pm.matlab.Handle
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function savefig(self, file, varargin)
+            % deleted doc for ``file`` behavior:
+            %                              It must be either,
+            %                              <ol>
+            %                                  <li>    of the same length as the ``window`` component of the parent object, or,<br>
+            %                                  <li>    scalar string or vector of length one.<br>
+            %                                          If so, the specified single value for ``file`` will be used a prefix
+            %                                          for all output figures and each figure will be suffixed with ``.i.png``
+            %                                          where ``i`` is replaced with the figure number starting from ``1``.<br>
+            %                                          **Beware that any existing figure file with the same name will be overwritten.**<br>
+            %                              </ol>
             if  nargin < 2 || isempty(file)
-                file = strings(length(self.window), 1);
+                file = strings(numel(self.window), 1);
             end
-            if  length(file) ~= length(self.window)
+            if  numel(file) ~= numel(self.window)
                 help("pm.vis.Cascade");
+                disp("numel(self.window)");
+                disp( numel(self.window) );
+                disp("numel(file)");
+                disp( numel(file) );
                 error   ( newline ...
-                        + "The condition ``length(file) == length(self.window)`` must hold." + newline ...
+                        + "The condition ``numel(file) == numel(self.window)`` must hold." + newline ...
                         + "For more information, see the documentation displayed above." + newline ...
                         + newline ...
                         );
@@ -385,7 +405,7 @@ classdef Cascade < pm.matlab.Handle
             %%%%    However, this is only a temporary fix. An ideal solution must ensure all
             %%%%    figures have been generated before starting to export any figure.
             %%%%
-            for iwin = length(self.window) : -1 : 1
+            for iwin = numel(self.window) : -1 : 1
                 self.window{iwin}.savefig(file(iwin), varargin{:});
             end
         end
