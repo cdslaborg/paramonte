@@ -857,6 +857,12 @@ filename            | The specified filename in the current build directory will
 
 > This option is simplifies the task of cleaning CMake build directory when library for a given build is being built repeatedly.
 
+> **NOTE**
+> Beware that the specified values for all flags (including `--fresh` are sticky and have to be unset for the next builds, if desired.
+> For example, the value is set to `all`, any subsequent CMake reconfigurations will use this value even if the flag `--fresh` is not specified
+> in the subsequent configurations. This sticky behavior can lead to complete rebuilds of the library, which may be time consuming.
+> To change the sticky behavior, one has to reset the value of `--fresh` explicitly.
+
 **optional**. The default value for `subdirectories_to_delete` is `none`.
 
 ### `G`
@@ -880,6 +886,7 @@ Value               | Usage
 `MinGW Makefiles`   | Generates makefiles for use with mingw32-make under a Windows command prompt.
 `MSYS Makefiles`    | Generates makefiles for use with MSYS (Minimal SYStem) make under the MSYS shell.
 `Unix Makefiles`    | Generates standard UNIX makefiles.
+`Ninja`             | Generates a `build.ninja` file into the build tree.
 other               | Any build generator supported by CMake.
 
 > This is a low-level build setting that is automated by the ParaMonte install scripts.
