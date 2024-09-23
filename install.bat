@@ -625,6 +625,20 @@ if not defined list_mem set list_mem=heap
 if not defined list_par set list_par=serial
 if not defined flag_j set "flag_j=-j"
 
+REM Set the optional values.
+
+if defined flag_exam (
+    if not defined flag_exampp (
+        set "flag_exampp="
+    )
+)
+
+if defined flag_bench (
+    if not defined flag_benchpp (
+        set "flag_benchpp="
+    )
+)
+
 REM Set the default Fortran compiler and the `list_fc` flag.
 
 if not defined list_fc (
@@ -647,18 +661,6 @@ if not defined list_fc (
     echo.!pmwarn! No compatible Fortran compiler detected in the environment.
     echo.!pmwarn! Proceeding without a guarantee of build success...
     set "list_fc=default"
-)
-
-REM Set the optional values.
-
-if defined flag_exam (
-    if not defined flag_exampp (
-    set flag_exampp=""
-)
-
-if defined flag_bench (
-    if not defined flag_benchpp (
-    set flag_benchpp=""
 )
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
