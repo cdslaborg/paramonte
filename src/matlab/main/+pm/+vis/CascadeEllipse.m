@@ -11,8 +11,8 @@
 %>  \see
 %>  [pm.vis.Cascade](@ref Cascade)<br>
 %>  [pm.vis.Subplot](@ref Subplot)<br>
+%>  [pm.vis.Triplex](@ref Triplex)<br>
 %>  [pm.vis.Figure](@ref Figure)<br>
-%>  [pm.vis.Corner](@ref Corner)<br>
 %>  [pm.vis.Plot](@ref Plot)<br>
 %>  [pm.vis.Tile](@ref Tile)<br>
 %>
@@ -62,9 +62,9 @@ classdef CascadeEllipse < pm.vis.Cascade
         %>  \example{CascadeEllipse}
         %>  \include{lineno} example/vis/CascadeEllipse/main.m
         %>  \vis{CascadeEllipse}
-        %>  \image html example/vis/CascadeEllipse3/CascadeEllipse.window.1.png width=700
-        %>  \image html example/vis/CascadeEllipse3/CascadeEllipse.window.2.png width=700
-        %>  \image html example/vis/CascadeEllipse3/CascadeEllipse.window.3.png width=700
+        %>  \image html example/vis/CascadeEllipse/CascadeEllipse.window.1.png width=700
+        %>  \image html example/vis/CascadeEllipse/CascadeEllipse.window.2.png width=700
+        %>  \image html example/vis/CascadeEllipse/CascadeEllipse.window.3.png width=700
         %>
         %>  \final{CascadeEllipse}
         %>

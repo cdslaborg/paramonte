@@ -209,13 +209,13 @@
 %>  +   **Doxygen custom command orderings**.
 %>
 %>      +   The Doxygen tag `\brief` must always be the first line of the documentation of modules, types, and procedures.<br>
-%>          Example: [+sampling/@Paradram/Paradram](@ref +sampling/@Paradram/Paradram).<br>
+%>          Example: [pm.sampling.Paradram](@ref Paradram).<br>
 %>      +   The Doxygen tag `\details`, if it exists, must always immediately follow the Doxygen tag `\brief`.<br>
-%>          Example: [+sampling/@Paradram/Paradram](@ref +sampling/@Paradram/Paradram).<br>
+%>          Example: [pm.sampling.Paradram](@ref Paradram).<br>
 %>      +   The Doxygen tag `\param`, if any number of it exists, must always immediately follow the Doxygen tag `\brief` (or `\details` if it exists).<br>
-%>          Example: [runParaDRAMD()](@ref +sampling/@Paradram/Paradram::runParaDRAMD).<br>
+%>          Example: [pm.sampling.Paradram](@ref Paradram).<br>
 %>      +   The Doxygen tag `\return`, must be exclusively used to indicate the return value of functions.<br>
-%>          If it exists, it must appear immediately after the set of `\param` tags. Example: [runParaDRAMD()](@ref +sampling/@Paradram/Paradram::runParaDRAMD).<br>
+%>          If it exists, it must appear immediately after the set of `\param` tags. Example: [pm.sampling.Paradram](@ref Paradram).<br>
 %>      +   If a generic interface is being documented, the ParaMonte custom command <tt>\\interface</tt> must appear immediately
 %>          after the Doxygen `\return`, `\param`, `\details`, or `\brief` tags in the specified order, if any exists.<br>
 %>      +   The Doxygen tag `\warning`, if any number of it exists, must immediately follow the Doxygen tag `\return` if it exists,

@@ -1,7 +1,7 @@
 %>  \dir
 %>
 %>  \brief
-%>  The ParaMonte MATLAB package [pm.data](@ref \psldir/main/+pm/+data) contains a set
+%>  The ParaMonte MATLAB package [pm.data](@ref \psldir/main/+pm/+container) contains a set
 %>  of packages and functionalities for data structures and containers
 %>  that are frequently used within other library functionalities.
 %>

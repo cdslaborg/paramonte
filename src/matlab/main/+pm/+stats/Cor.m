@@ -114,6 +114,7 @@ classdef Cor < pm.matlab.Handle
         %>  corresponding to the output of this method
         %>  must be set explicitly manually.<br>
         %>
+        %>  \param[in]  self    :   The **implicitly-passed** input argument representing the parent object of the method.<br>
         %>  \param[in]  df      :   The input MATLAB matrix or table of rank ``2``
         %>                          containing the data as ``ncol`` columns of ``nrow``
         %>                          observations whose correlation matrix must be computed.<br>

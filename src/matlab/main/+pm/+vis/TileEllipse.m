@@ -35,7 +35,6 @@ classdef TileEllipse < pm.vis.Tile
         %>
         %>  \interface{TileEllipse}
         %>  \code{.m}
-        %>  \endcode
         %>
         %>      t = pm.vis.TileEllipse();
         %>      t = pm.vis.TileEllipse(gramian);

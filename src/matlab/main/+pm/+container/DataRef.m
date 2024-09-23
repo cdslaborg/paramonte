@@ -66,9 +66,9 @@ classdef DataRef < pm.matlab.Handle
         %>  \endcode
         %>
         %>  \example{DataRef}
-        %>  \include{lineno} example/data/DataRef/main.m
+        %>  \include{lineno} example/container/DataRef/main.m
         %>  \output{DataRef}
-        %>  \include{lineno} example/data/DataRef/main.out.m
+        %>  \include{lineno} example/container/DataRef/main.out.m
         %>
         %>  \final{DataRef}
         %>
@@ -94,10 +94,12 @@ classdef DataRef < pm.matlab.Handle
         %>  originates from the lack of the concept of references (pointers)
         %>  in the MATLAB computing language.<br>
         %>
+        %>  \param[inout]   self    :   The **implicitly-passed** input argument representing the parent object of the method.<br>
+        %>
         %>  \return
-        %>  ``df``  :   The output scalar MATLAB table a full copy of the data (reference)
-        %>              contained in the user-specified input ``dfref`` passed
-        %>              to the constructor of the parent object.<br>
+        %>  ``df``                  :   The output scalar MATLAB table a full copy of the data (reference)
+        %>                              contained in the user-specified input ``dfref`` passed
+        %>                              to the constructor of the parent object.<br>
         %>
         %>  \interface{copy}
         %>  \code{.m}

@@ -119,12 +119,12 @@ classdef FileContents < pm.matlab.Handle
         %>  The messaging within this routine occurs only if the ``silent`` attribute of the parent object
         %>  is set to ``false`` at the time of constructing the parent object of class [pm.io.FileContents](@ref FileContents).<br>
         %>
-        %>  \param[in]  line    :   The input scalar MATLAB string or whole number,
-        %>                          representing the line number within the file about which the warning message should be printed.<br>
-        %>                          (**optional**, default = ``"UNKNOWN"``)
-        %>
-        %>  \param[in]  msg     :   The input scalar MATLAB string containing a message to display on the MATLAB console.<br>
-        %>                          (**optional**, default = ``"done in " + sprintf("%.6f", string(self.timer.del())) + " seconds."``)
+        %>  \param[inout]   self    :   The **implicitly-passed** input argument representing the parent object of the method.<br>
+        %>  \param[in]      line    :   The input scalar MATLAB string or whole number,
+        %>                              representing the line number within the file about which the warning message should be printed.<br>
+        %>                              (**optional**, default = ``"UNKNOWN"``)
+        %>  \param[in]      msg     :   The input scalar MATLAB string containing a message to display on the MATLAB console.<br>
+        %>                              (**optional**, default = ``"done in " + sprintf("%.6f", string(self.timer.del())) + " seconds."``)
         %>
         %>  \interface{warn}
         %>  \code{.m}
@@ -180,13 +180,14 @@ classdef FileContents < pm.matlab.Handle
         %>  \details
         %>  This is a ``Hidden`` method of the class [pm.io.FileContents](@ref FileContents).<br>
         %>
-        %>  \param[in]  msg     :   The input scalar MATLAB string containing a
-        %>                          message to display on the MATLAB console.<br>
-        %>                          (**optional**, default = ``"done in " + sprintf("%.6f", string(self.timer.del())) + " seconds."``)
+        %>  \param[inout]   self    :   The **implicitly-passed** input/output argument representing the parent object of the method.<br>
+        %>  \param[in]      msg     :   The input scalar MATLAB string containing a
+        %>                              message to display on the MATLAB console.<br>
+        %>                              (**optional**, default = ``"done in " + sprintf("%.6f", string(self.timer.del())) + " seconds."``)
         %>
-        %>  \param[in]  advance :   The input scalar MATLAB ``logical``.<br>
-        %>                          If ``true``, an end of line character will be added at the end of the printed message.<br>
-        %>                          (**optional**, default = ``true``)
+        %>  \param[in]      advance :   The input scalar MATLAB ``logical``.<br>
+        %>                              If ``true``, an end of line character will be added at the end of the printed message.<br>
+        %>                              (**optional**, default = ``true``)
         %>
         %>  \interface{checkpoint}
         %>  \code{.m}
@@ -239,13 +240,14 @@ classdef FileContents < pm.matlab.Handle
         %%>  this class to repeatedly sync the internal copy of ``df`` with
         %%>  the original ``df`` component of the parent object.
         %%>
-        %%>  \param[in]  field   :   The input scalar MATLAB string containing the
-        %%>                          name of a field (component/attribute) of the parent
-        %%>                          object whose value will have to be returned.<br>
+        %%>  \param[inout]   self    :   The **implicitly-passed** input argument representing the parent object of the method.<br>
+        %%>  \param[in]      field   :   The input scalar MATLAB string containing the
+        %%>                              name of a field (component/attribute) of the parent
+        %%>                              object whose value will have to be returned.<br>
         %%>
         %%>  \return
-        %%>  ``val``             :   The output object containing the value of the
-        %%>                          specified ``field`` of the parent object.<br>
+        %%>  ``val``                 :   The output object containing the value of the
+        %%>                              specified ``field`` of the parent object.<br>
         %%>
         %%>  \interface{getVal}
         %%>  \code{.m}

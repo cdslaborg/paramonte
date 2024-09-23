@@ -11,8 +11,8 @@
 %>  \see
 %>  [pm.vis.Cascade](@ref Cascade)<br>
 %>  [pm.vis.Subplot](@ref Subplot)<br>
+%>  [pm.vis.Triplex](@ref Triplex)<br>
 %>  [pm.vis.Figure](@ref Figure)<br>
-%>  [pm.vis.Corner](@ref Corner)<br>
 %>  [pm.vis.Plot](@ref Plot)<br>
 %>  [pm.vis.Tile](@ref Tile)<br>
 %>
@@ -92,17 +92,18 @@ classdef SubplotHeatmap < pm.vis.Subplot
         %>  This method has side-effects by manipulating
         %>  the existing attributes of the parent object.<br>
         %>
-        %>  \param[in]  lb  :   The input MATLAB object that can be either:<br>
-        %>                      <ol>
-        %>                          <li>    a scalar of type double representing the lower bound of the Heatmap colormap range.<br>
-        %>                          <li>    a vector of type double of size ``2`` representing the lower
-        %>                                  and upper bounds of the Heatmap colormap range.<br>
-        %>                      </ol>
-        %>                      (**optional**. If missing, the current value will remain intact.)
-        %>
-        %>  \param[in]  ub  :   The input MATLAB scalar double representing the upper bound of the Heatmap colormap limits.<br>
-        %>                      Its value is completely ignored if the input ``lb`` argument is a vector of size ``2``.<br>
-        %>                      (**optional**. If missing, the current value will remain intact.)
+        %>  \param[in]  self    :   The **implicitly-passed** input argument representing the parent object of the method.<br>
+        %>  \param[in]  lb      :   The input MATLAB object that can be either:<br>
+        %>                          <ol>
+        %>                              <li>    a scalar of type double representing the lower bound of the Heatmap colormap range.<br>
+        %>                              <li>    a vector of type double of size ``2`` representing the lower
+        %>                                      and upper bounds of the Heatmap colormap range.<br>
+        %>                          </ol>
+        %>                          (**optional**. If missing, the current value will remain intact.)
+        %>  
+        %>  \param[in]  ub      :   The input MATLAB scalar double representing the upper bound of the Heatmap colormap limits.<br>
+        %>                          Its value is completely ignored if the input ``lb`` argument is a vector of size ``2``.<br>
+        %>                          (**optional**. If missing, the current value will remain intact.)
         %>
         %>  \interface{setColorLim}
         %>  \code{.m}

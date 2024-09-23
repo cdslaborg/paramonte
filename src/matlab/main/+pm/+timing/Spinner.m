@@ -102,8 +102,9 @@ classdef Spinner < pm.matlab.Handle
         %>  and display the percentage value of the input fraction.<br>
         %>  This is a dynamic method of the class [pm.timing.Spinner](@ref Spinner).<br>
         %>
-        %>  \param[in]  fraction    :   The input scalar MATLAB fractional real (``0 <= fraction <= 1``)
-        %>                              representing the fraction of work so far accomplished.<br>
+        %>  \param[inout]   self        :   The **implicitly-passed** input argument representing the parent object of the method.<br>
+        %>  \param[in]      fraction    :   The input scalar MATLAB fractional real (``0 <= fraction <= 1``)
+        %>                                  representing the fraction of work so far accomplished.<br>
         %>
         %>  \interface{spin}
         %>  \code{.m}

@@ -41,12 +41,12 @@
 %>
 %>  <ol>
 %>      <li>    The parameter \f$\sigma\f$ determines the scale of the GenGamma PDF.<br>
-%>      <li>    When \f$\omega = 1\f$, the GenGamma PDF reduces to the PDF of the [Gamma distribution](@ref pm_distGamma).<br>
-%>      <li>    When \f$\kappa = 1, \omega = 1\f$, the GenGamma PDF reduces to the PDF of the [Exponential distribution](@ref pm_distExp).<br>
+%>      <li>    When \f$\omega = 1\f$, the GenGamma PDF reduces to the PDF of the Gamma distribution.<br>
+%>      <li>    When \f$\kappa = 1, \omega = 1\f$, the GenGamma PDF reduces to the PDF of the Exponential distribution.<br>
 %>  </ol>
 %>
 %>  The **CDF** of the Generalized Gamma distribution over a strictly-positive support \f$x \in (0, +\infty)\f$ with the three (shape, shape, scale)
-%>  parameters \f$(\kappa > 0, \omega > 0, \sigma > 0)\f$ is defined by the **regularized** [Lower Incomplete Gamma function](@ref pm_mathGamma) as,
+%>  parameters \f$(\kappa > 0, \omega > 0, \sigma > 0)\f$ is defined by the **regularized** Lower Incomplete Gamma function as,
 %>  \f{eqnarray}{
 %>      \large
 %>      \mathrm{CDF}(x | \kappa, \omega, \sigma)
@@ -66,7 +66,7 @@
 %>                              containing the inverse of the scale parameter (\f$\sigma\f$) of the distribution.<br>
 %>
 %>  \return
-%>  `cdf`                :   The output scalar or array of the same shape as other array-valued input arguments
+%>  `cdf`                   :   The output scalar or array of the same shape as other array-valued input arguments
 %>                              of the same type and kind as `x` containing the PDF of the specified GenGamma distribution.
 %>
 %>  \interface{getCDF}

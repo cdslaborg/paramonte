@@ -2,11 +2,11 @@
 %>  Export figures in a publication-quality format.<br>
 %>
 %>  \details
-%>  This function saves a figure or single axes to one or more vector and/or
-%>  bitmap file formats, and/or outputs a rasterized version to the workspace,
+%>  This function saves a figure or single axes to one or more vectors and/or
+%>  bitmap file formats and/or outputs a rasterized version to the workspace,
 %>  with the following properties:<br>
 %>  <ol>
-%>      <li>    Figure/axes reproduced as it appears on screen.
+%>      <li>    Figure/axes reproduced as it appears on the screen.
 %>      <li>    Cropped/padded borders (optional).
 %>      <li>    Embedded fonts (vector formats).
 %>      <li>    Improved line and grid line styles.
@@ -14,7 +14,7 @@
 %>      <li>    Render images at native resolution (optional for bitmap formats).
 %>      <li>    Transparent background supported (pdf, eps, png, tif, gif).
 %>      <li>    Semi-transparent patch objects supported (png, tif).
-%>      <li>    RGB, CMYK or grayscale output (CMYK only with pdf, eps, tif).
+%>      <li>    RGB, CMYK, or grayscale output (CMYK only with pdf, eps, tif).
 %>      <li>    Variable image compression, including lossless (pdf, eps, jpg).
 %>      <li>    Optional rounded line-caps (pdf, eps).
 %>      <li>    Optionally append to file (pdf, tif, gif).
@@ -23,7 +23,7 @@
 %>  </ol>
 %>
 %>  This function is especially suited to exporting figures for use
-%>  in publications and presentations, because of the high quality
+%>  in publications and presentations because of the high quality
 %>  and portability of media produced.<br>
 %>
 %>  Note that the background color and figure dimensions are reproduced
@@ -32,17 +32,17 @@
 %>  option or set the figure ``'Color'`` property to ``'none'``.<br>
 %>  To make axes transparent set the axes ``'Color'`` property to ``'none'``.<br>
 %>  PDF, EPS, TIF, and PNG are the only formats that support a transparent background.<br>
-%>  Only TIF and PNG formats support transparency of patch objects.<br>
+%>  Only TIF and PNG formats support the transparency of patch objects.<br>
 %>
-%>  The choice of renderer (opengl/zbuffer/painters) has a large impact on the output quality.<br>
+%>  The choice of renderer (opengl/zbuffer/painters) greatly impacts the output quality.<br>
 %>  The default value (opengl for bitmaps, painters for vector formats) generally gives good results,
-%>  but if you are not satisfied then try another renderer.<br>
+%>  but if you are not satisfied, then try another renderer.<br>
 %>
 %>  \note
 %>  <ol>
-%>      <li>    For vector formats (EPS,PDF), only painters generates vector graphics.<br>
-%>      <li>    For bitmap formats, only opengl correctly renders transparent patches.<br>
-%>      <li>    For bitmap formats, only painters correctly scales line dash and dot
+%>      <li>    For vector formats (EPS, PDF), only painters generate vector graphics.<br>
+%>      <li>    For bitmap formats, only OPENGL correctly renders transparent patches.<br>
+%>      <li>    For bitmap formats, only painters correctly scale line dash and dot
 %>              lengths when magnifying or anti-aliasing.<br>
 %>      <li>    Fonts may be substitued with Courier when using painters.<br>
 %>  </ol>
@@ -50,7 +50,7 @@
 %>  When exporting to vector format (PDF & EPS) and bitmap format using the painters
 %>  renderer, this function requires that ghostscript is installed on your system.<br>
 %>  You can download this from: http://www.ghostscript.com<br>
-%>  When exporting to EPS it additionally requires pdftops, from the Xpdf suite of functions.<br>
+%>  When exporting to EPS, pdftops from the Xpdf function suite are also required.<br>
 %>  You can download this from: http://xpdfreader.com<br>
 %>
 %>  SVG output uses MATLAB's built-in SVG export if available, or otherwise the
@@ -62,50 +62,50 @@
 %>
 %>  \param[in]      varargin    :   Any ``property, value`` pair of the following set:<br>
 %>                                  <ol>
-%>                                      <li>    ``filename`` - string containing the name (optionally including full or
-%>                                              relative path) of the file the figure is to be saved as.<br>
+%>                                      <li>    The option ``filename`` - string containing the name (optionally including full or
+%>                                              relative path) of the file, the figure is to be saved as.<br>
 %>                                              If no path is specified, the figure is saved in the current folder.<br>
-%>                                              If no name and no output arguments are specified, the figure ``FileName`` property is used.<br>
+%>                                              If no name and output arguments are specified, the figure ``FileName`` property is used.<br>
 %>                                              If this property is empty, then the default name ``'export_fig_out'`` is used.<br>
-%>                                              If neither file extension nor a format parameter are specified, a ``".png"``
-%>                                              is added to the filename and the figure saved in PNG format.<br>
+%>                                              If neither file extension nor a format parameter is specified, a ``".png"``
+%>                                              is added to the filename, and the figure is saved in PNG format.<br>
 %>
-%>                                      <li>    ``-<format>`` - string(s) containing the output file extension(s).<br>
+%>                                      <li>    The option ``-<format>`` - string(s) containing the output file extension(s).<br>
 %>                                              Options are ``'-pdf'``, ``'-eps'``, ``'emf'``, ``'-svg'``, ``'-png'``, ``'-tif'``, ``'-jpg'``, ``'-gif'``, ``'-bmp'``.<br>
-%>                                              Multiple formats can be specified, without restriction.<br>
+%>                                              Multiple formats can be specified without restriction.<br>
 %>                                              For example: ``savefig('-jpg', '-pdf', '-png', ...)``.<br>
 %>                                              Note that  ``'-tif'``, ``'-tiff'`` are equivalent, and so are '-jpg'``, ``'-jpeg'.<br>
 %>
-%>                                      <li>    ``-transparent`` - option indicating that the figure background is to be made
+%>                                      <li>    The option ``-transparent`` indicating that the figure background is to be made
 %>                                              transparent (PNG, PDF, TIF, EPS, EMF formats only). Implies ``-noinvert``.<br>
 %>
-%>                                      <li>    ``-nocrop`` - option indicating that empty margins should not be cropped.<br>
+%>                                      <li>    The option ``-nocrop`` indicating that empty margins should not be cropped.<br>
 %>
-%>                                      <li>    ``-c[<val>,<val>,<val>,<val>]`` - option indicating crop amounts.<br>
+%>                                      <li>    The option ``-c[<val>,<val>,<val>,<val>]`` indicating crop amounts.<br>
 %>                                              It must be a 4-element vector of numeric values: ``[top, right, bottom, left]``.<br>
 %>                                              where NaN/Inf indicates auto-cropping, 0 means no cropping, any
 %>                                              other value means cropping in pixel amounts. e.g. ``'-c7,15,0,NaN'``
-%>                                              Note: this option is not supported by SVG and EMF formats.<br>
+%>                                              Note that SVG and EMF formats do not support this option.<br>
 %>
-%>                                      <li>    ``-p<val>`` - option to pad a border of width val to exported files,
-%>                                              where ``val`` is either a relative size with respect to cropped image
+%>                                      <li>    The option ``-p<val>`` to pad a border of width val to exported files,
+%>                                              where ``val`` is either a relative size with respect to the cropped image
 %>                                              size (i.e. ``p=0.01`` adds a ``1%`` border).<br>
 %>                                              For EPS and PDF formats, ``val`` can also be integer in units of ``1/72`` points (``abs(val)>1``).<br>
 %>                                              The input ``val`` can be positive (padding) or negative (extra cropping).<br>
 %>                                              If used, the ``-nocrop`` flag will be ignored, i.e. the image will
 %>                                              always be cropped and then padded. Default: 0 (i.e. no padding).<br>
-%>                                              Note: this option is not supported by SVG and EMF formats.<br>
+%>                                              Note that SVG and EMF formats do not support this option.<br>
 %>
-%>                                      <li>    ``-m<val>`` - option val indicates the factor to magnify the figure dimensions
+%>                                      <li>    The option ``-m<val>`` where ``val`` indicates the factor to magnify the figure dimensions
 %>                                              when generating bitmap outputs (does not affect vector formats).<br>
 %>                                              Default: ``'-m1'`` (i.e. ``val=1``). Note: ``val~=1`` slows down savefig.<br>
 %>
-%>                                      <li>    ``-r<val>`` - option val indicates the resolution (in pixels per inch) to
-%>                                              export bitmap and vector outputs, without changing dimensions of
+%>                                      <li>    The option ``-r<val>`` where ``val`` indicates the resolution (in pixels per inch) to
+%>                                              export bitmap and vector outputs, without changing the dimensions of
 %>                                              the on-screen figure. Default: ``'-r864'`` (for vector output only).<br>
 %>                                              Note: ``-m`` option overrides ``-r`` option for bitmap exports only.<br>
 %>
-%>                                      <li>    ``-native`` - option indicating that the output resolution
+%>                                      <li>    The option ``-native`` indicating that the output resolution
 %>                                              (when outputting a bitmap format) should be such that the vertical resolution
 %>                                              of the first suitable image found in the figure is at the native resolution of that image.<br>
 %>                                              To specify a particular image to use, give it the tag ``'export_fig_native'``.<br>
@@ -114,127 +114,127 @@
 %>                                              The output resolution is approximate and should not be relied upon.<br>
 %>                                              Anti-aliasing can have adverse effects on image quality (disable with the ``-a1`` option).<br>
 %>
-%>                                      <li>    ``-a1, -a2, -a3, -a4`` - option indicating the amount of anti-aliasing (AA) to
-%>                                              use for bitmap outputs, when GraphicsSmoothing is not available.<br>
+%>                                      <li>    The option ``-a1, -a2, -a3, -a4`` indicating the amount of anti-aliasing (AA) to
+%>                                              use for bitmap outputs when GraphicsSmoothing is not available.<br>
 %>                                              ``'-a1'=no AA; '-a4'=max``.<br>
 %>                                              Default: 3 for HG1, 1 for HG2.<br>
 %>
-%>                                      <li>    ``-<renderer>`` - option to force a particular renderer
+%>                                      <li>    The option ``-<renderer>`` to force a particular renderer
 %>                                              (painters, opengl or [in R2014a or older] zbuffer).<br>
 %>                                              Default value: opengl for bitmap formats or figures with patches and/or
 %>                                              transparent annotations and painters for vector formats without patches/transparencies.<br>
 %>
-%>                                      <li>    ``-<colorspace>`` - option indicating which colorspace color figures should
+%>                                      <li>    The option ``-<colorspace>`` indicating which colorspace color figures should
 %>                                              be saved in: RGB (default), CMYK or gray. Usage example: ``'-gray'``.<br>
 %>                                              Note: CMYK is only supported in PDF, EPS and TIF formats.<br>
 %>
-%>                                      <li>    ``-q<val>`` - option to vary bitmap image quality (PDF, EPS, JPG formats only).<br>
+%>                                      <li>    The option ``-q<val>`` to vary bitmap image quality (PDF, EPS, JPG formats only).<br>
 %>                                              A larger val, in the range ``0-100``, produces higher quality and
 %>                                              lower compression. ``val > 100`` results in lossless compression.<br>
 %>                                              Default: '-q95' for JPG, ghostscript prepress default for PDF,EPS.<br>
 %>                                              Note: lossless compression can sometimes give a smaller file size
 %>                                              than the default lossy compression, depending on the image type.<br>
 %>
-%>                                      <li>    ``-n<val>`` - option to set minimum output image size (bitmap formats only).<br>
+%>                                      <li>    The option ``-n<val>`` to set minimum output image size (bitmap formats only).<br>
 %>                                              The output size can be specified as a single value (for both rows
 %>                                              and cols, e.g. ``-n200``) or comma-separated values (e.g. ``-n300,400``).<br>
-%>                                              Use an Inf value to keep a dimension unchanged (e.g. ``-n50,inf``).<br>
-%>                                              Use a NaN value to keep aspect ratio unchanged (e.g. ``-n50,nan``).<br>
+%>                                              Use an Inf value to keep a dimension unchanged (e.g., ``-n50,inf``).<br>
+%>                                              Use a ``NaN`` value to keep the aspect ratio unchanged (e.g., ``-n50, nan``).<br>
 %>
-%>                                      <li>    ``-x<val>`` - option to set maximum output image size (bitmap formats only).<br>
+%>                                      <li>    The option ``-x<val>`` to set maximum output image size (bitmap formats only).<br>
 %>                                              The output size can be specified as a single value (for both rows
-%>                                              and cols, e.g. ``-x200``) or comma-separated values (e.g. ``-x300,400``).<br>
+%>                                              and cols, e.g. ``-x200``) or comma-separated values (e.g. ``-x300, 400``).<br>
 %>                                              Use an ``Inf`` value to keep a dimension unchanged (e.g. ``-x50,inf``).<br>
 %>                                              Use a ``NaN`` value to keep aspect ratio unchanged (e.g. ``-x50,nan``).<br>
 %>
-%>                                      <li>    ``-s<val>`` - option to scale output image to specific size (bitmap formats only).<br>
+%>                                      <li>    The option ``-s<val>`` to scale output image to a specific size (bitmap formats only).<br>
 %>                                              The fixed size can be specified as a single value (for rows=cols) or
 %>                                              comma-separated values (e.g. ``-s300,400``).<br>
-%>                                              Each value can be a scalar integer (signifying pixels) or percentage (e.g. ``-s125%``).<br>
+%>                                              Each value can be a scalar integer (signifying pixels) or percentage (e.g., ``-s125%``).<br>
 %>                                              The scaling is done last, after any other cropping/rescaling due to other params.<br>
 %>
-%>                                      <li>    ``-append`` - option indicating that if the file already exists the figure is to
+%>                                      <li>    The option ``-append`` indicates that if the file already exists the figure is to
 %>                                              be appended as a new page, instead of being overwritten (default).<br>
 %>                                              PDF, TIF & GIF output formats only (multi-image GIF = animated).<br>
 %>
-%>                                      <li>    ``-bookmark`` - option to indicate that a bookmark with the name of the
+%>                                      <li>    The option ``-bookmark`` to indicate that a bookmark with the name of the
 %>                                              figure is to be created in the output file (PDF format only).<br>
 %>
-%>                                      <li>    ``-clipboard`` - option to save output as an image on the system clipboard.<br>
+%>                                      <li>    The option ``-clipboard`` to save the output as an image on the system clipboard.<br>
 %>
-%>                                      <li>    ``-clipboard<:format>`` - copies to clipboard in the specified format:
+%>                                      <li>    The option ``-clipboard<:format>`` - copies to clipboard in the specified format:
 %>                                              image (default), bitmap, emf, or pdf.<br>
 %>                                              Note that Only ``-clipboard`` (or ``-clipboard:image``, which is the same)
-%>                                              applies savefig parameters such as cropping, padding etc:<br>
+%>                                              applies ``savefig`` parameters such as cropping, padding, etc:<br>
 %>                                              <ol>
-%>                                                  <li>    ``-clipboard:image`` create a bitmap image using savefig processing.<br>
-%>                                                  <li>    ``-clipboard:bitmap`` create a bitmap image as-is (no auto-cropping etc.).<br>
-%>                                                  <li>    ``-clipboard:emf`` is vector format without auto-cropping; Windows-only.<br>
-%>                                                  <li>    ``-clipboard:pdf`` is vector format without cropping; not universally supported.<br>
+%>                                                  <li>    The option ``-clipboard:image`` creates a bitmap image using savefig processing.<br>
+%>                                                  <li>    The option ``-clipboard:bitmap`` creates a bitmap image as-is (no auto-cropping etc.).<br>
+%>                                                  <li>    The option ``-clipboard:emf`` is vector format without auto-cropping; Windows-only.<br>
+%>                                                  <li>    The option ``-clipboard:pdf`` is vector format without cropping; not universally supported.<br>
 %>                                              </ol>
 %>
-%>                                      <li>    ``-d<gs_option>`` - option to indicate a ghostscript setting. For example,
+%>                                      <li>    The option ``-d<gs_option>`` to indicate a ghostscript setting. For example,
 %>                                              ``-dMaxBitmap=0`` or ``-dNoOutputFonts`` (Ghostscript 9.15+).<br>
 %>
-%>                                      <li>    ``-depsc`` -  option to use EPS level-3 rather than the default level-2 print
+%>                                      <li>    The option ``-depsc`` -  option to use EPS level-3 rather than the default level-2 print
 %>                                              device. This solves some bugs with MATLAB's default ``-depsc2`` device
 %>                                              such as discolored subplot lines on images (vector formats only).<br>
 %>
-%>                                      <li>    ``-metadata <metaDataInfo>`` - adds the specified meta-data information to the
+%>                                      <li>    The option ``-metadata <metaDataInfo>`` - adds the specified meta-data information to the
 %>                                              exported file (PDF format only). metaDataInfo must be either a struct
 %>                                              or a cell array with pairs of values: {``'fieldName'``, ``fieldValue``, ...}.<br>
 %>                                              Common metadata fields: Title, Author, Creator, Producer, Subject, Keywords.<br>
 %>
-%>                                      <li>    ``-update`` - option to download and install the latest version of savefig.<br>
+%>                                      <li>    The option ``-update`` - downloads and installs the latest version of ``savefig``.<br>
 %>
-%>                                      <li>    ``-version`` - return the current savefig version, without any figure export.<br>
+%>                                      <li>    The option ``-version`` returns the current savefig version without any figure export.<br>
 %>
-%>                                      <li>    ``-nofontswap`` - option to avoid font swapping. Font swapping is automatically
+%>                                      <li>    The option ``-nofontswap`` - avoids font swapping. Font swapping is automatically
 %>                                              done in vector formats (only): 11 standard MATLAB fonts are
 %>                                              replaced by the original figure fonts. This option prevents this.<br>
 %>
-%>                                      <li>    ``-font_space <char>`` - option to set a spacer character for font-names that
-%>                                              contain spaces, used by EPS/PDF. Default: ``''``.<br>
+%>                                      <li>    The option ``-font_space <char>`` sets a spacer character for font-names that
+%>                                              contain spaces used by EPS/PDF. Default: ``''``.<br>
 %>
-%>                                      <li>    ``-linecaps`` - option to create rounded line-caps (vector formats only).<br>
+%>                                      <li>    The option ``-linecaps`` creates rounded line-caps (vector formats only).<br>
 %>
-%>                                      <li>    ``-noinvert`` - option to avoid setting figure's InvertHardcopy property to
+%>                                      <li>    The option ``-noinvert`` avoids setting figure's InvertHardcopy property to
 %>                                              'off' during output (this solves some problems of empty outputs).<br>
 %>
-%>                                      <li>    ``-preserve_size`` - option to preserve the figure's PaperSize property in output
+%>                                      <li>    The option ``-preserve_size`` preserves the figure's PaperSize property in output
 %>                                              file (PDF/EPS formats only; default is to not preserve it).<br>
 %>
-%>                                      <li>    ``-options <optionsStruct>`` - format-specific parameters as defined in MATLAB
+%>                                      <li>    The option ``-options <optionsStruct>`` - format-specific parameters as defined in MATLAB
 %>                                              documentation of the ``imwrite`` function, contained in a struct under
-%>                                              the format name. For example to specify the JPG Comment parameter,
+%>                                              the format name. For example, to specify the JPG Comment parameter,
 %>                                              pass a struct such as this: ``options.JPG.Comment='abc'``. Similarly,
-%>                                              ``options.PNG.BitDepth=4``. Only used by PNG,TIF,JPG,GIF output formats.<br>
+%>                                              ``options.PNG.BitDepth=4``. Only used by PNG, TIF, JPG, and GIF output formats.<br>
 %>                                              Options can also be specified as a cell array of name-value pairs,
-%>                                              e.g. ``{'BitDepth',4, 'Author','Yair'}`` - these options will be used
+%>                                              e.g., ``{'BitDepth', 4, 'Author', 'Yair'}`` - these options will be used
 %>                                              by all supported output formats of the savefig command.<br>
 %>
-%>                                      <li>    ``-silent`` - option to avoid various warning and informational messages, such
+%>                                      <li>    The option ``-silent`` to avoid various warning and informational messages, such
 %>                                              as version update checks, transparency or renderer issues, etc.<br>
 %>
-%>                                      <li>    ``-notify`` - option to notify the user when export is done, in both a console
+%>                                      <li>    The option ``-notify`` to notify the user when export is done, in both a console
 %>                                              message and a popup dialog (allow opening the exported file/folder).<br>
 %>
-%>                                      <li>    ``-regexprep <old> <new>`` - replaces all occurances of <old> (a regular expression
+%>                                      <li>    The option ``-regexprep <old> <new>`` - replaces all occurrences of ``<old>`` (a regular expression
 %>                                              string or array of strings; case-sensitive), with the corresponding
-%>                                              <new> string(s), in EPS/PDF files (only). See regexp function doc.<br>
+%>                                              ``<new>`` string(s), in EPS/PDF files (only). See ``regexp`` function doc.<br>
 %>                                              Warning: invalid replacement can make your EPS/PDF file unreadable!<br>
 %>
-%>                                      <li>    ``-toolbar`` - adds an interactive export button to the figure toolbar.<br>
+%>                                      <li>    The option ``-toolbar`` - adds an interactive export button to the figure toolbar.<br>
 %>
-%>                                      <li>    ``-menubar`` - adds an interactive export menu to the figure menubar.<br>
+%>                                      <li>    The option ``-menubar`` - adds an interactive export menu to the figure menubar.<br>
 %>
-%>                                      <li>    ``-contextmenu`` - adds interactive export menu to figure context-menu (right-click)<br>
+%>                                      <li>    The option ``-contextmenu`` - adds interactive export menu to figure context-menu (right-click)<br>
 %>
-%>                                      <li>    ``handle`` - handle of the figure, axes or uipanels (can be an array of handles
+%>                                      <li>    The option ``handle`` - handle of the figure, axes, or uipanels (can be an array of handles
 %>                                              but all the objects must be in the same figure) to be exported.<br>
-%>                                              Default: ``gcf`` (handle of current figure).<br>
+%>                                              Default: ``gcf`` (handle of the current figure).<br>
 %>
-%>                                      <li>    ``figName`` - name (title) of the figure to export (e.g. ``'Figure 1'`` or ``'My fig'``).<br>
+%>                                      <li>    The option ``figName`` - name (title) of the figure to export (e.g., ``'Figure 1'`` or ``'My fig'``).<br>
 %>                                              Overridden by handle (if specified); Default: current figure.<br>
 %>                                  </ol>
 %>
@@ -292,7 +292,7 @@
 %>
 %>  \note
 %>  This function is a reimplementation of the MATLAB package
-%>  [export_fig](@ref https://github.com/altmany/export_fig).<br>
+%>  [export_fig](https://github.com/altmany/export_fig).<br>
 %>
 %>  \example{savefig}
 %>  \code{.m}

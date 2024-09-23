@@ -185,6 +185,7 @@ classdef Triplex < pm.vis.figure.Figure
         %>  Use this method when you change many attributes of the plot and
         %>  you want to clean up and go back to the default settings.<br>
         %>
+        %>  \param[in]  self        :   The **implicitly-passed** input argument representing the parent object of the method.<br>
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
@@ -315,6 +316,7 @@ classdef Triplex < pm.vis.figure.Figure
         %>  This method causes side-effects by manipulating
         %>  the existing attributes of the object.<br>
         %>
+        %>  \param[in]  self        :   The **implicitly-passed** input argument representing the parent object of the method.<br>
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
@@ -408,6 +410,7 @@ classdef Triplex < pm.vis.figure.Figure
         %>  This method has side-effects by manipulating
         %>  the existing attributes of the parent object.<br>
         %>
+        %>  \param[in]  self        :   The **implicitly-passed** input argument representing the parent object of the method.<br>
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
@@ -549,9 +552,8 @@ classdef Triplex < pm.vis.figure.Figure
             %%%%
             %%%% Reset the marginal axes labels.
             %%%%
-disp("done1")
+
             self.hideShowAxesLabels();
-disp("done2")
 
             %%%%
             %%%% Add colorbars.
@@ -640,6 +642,7 @@ disp("done2")
         %>  All axes labels in the tiling will be impacted by this routine,
         %>  even though only a selected subset might be visible.<br>
         %>
+        %>  \param[in]  self    :   The **implicitly-passed** input argument representing the parent object of the method.<br>
         %>  \param[in]  degx    :   The input scalar MATLAB positive whole-number, representing the amount of
         %>                          rotation to be applied to the x-axis labels with respect to the horizontal line.<br>
         %>                          If it is set to empty ``[]``, the axis label orientation will remain intact.<br>
@@ -702,6 +705,7 @@ disp("done2")
         %%%>  \details
         %%%>  Note that the main axes colorbar associated with the specified component is also automatically hidden.<br>
         %%%>
+        %%%>  \param[in]  self        :   The **implicitly-passed** input argument representing the parent object of the method.<br>
         %%%>  \param[in]  complist    :   The input vector of MATLAB strings each of which can be any of the following:
         %%%>                              <ol>
         %%%>                                  <li>    ``"lower"``     :   corresponding to the lower triangle of the Triplex plot.
@@ -812,6 +816,7 @@ disp("done2")
         %%%>  This is an internal (hidden) method of the class and inaccessible to end users.<br>
         %%%>  Note that the main axes colorbar associated with the specified component is also automatically impacted.<br>
         %%%>
+        %%%>  \param[in]  self        :   The **implicitly-passed** input argument representing the parent object of the method.<br>
         %%%>  \param[in]  action      :   The input scalar MATLAB string that can be any of the following:<br>
         %%%>                              <ol>
         %%%>                                  <li>    ``"hide"``      :   hide the specified components of the Triplex plot in the input argument ``complist``.
@@ -926,6 +931,8 @@ disp("done2")
         %>  \details
         %>  This is an internal (hidden) method of the class and inaccessible to end users.<br>
         %>
+        %>  \param[in]  self    :   The **implicitly-passed** input argument representing the parent object of the method.<br>
+        %>
         %>  \interface{hideShowAxesLabels}
         %>  \code{.m}
         %>
@@ -1018,6 +1025,8 @@ disp("done2")
         %>
         %>  \details
         %>  This is an internal (hidden) method of the class and inaccessible to end users.<br>
+        %>
+        %>  \param[in]  self    :   The **implicitly-passed** input argument representing the parent object of the method.<br>
         %>
         %>  \interface{hideShowAxesLabels}
         %>  \code{.m}

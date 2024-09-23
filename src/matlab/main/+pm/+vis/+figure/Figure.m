@@ -13,8 +13,8 @@
 %>  \see
 %>  [pm.vis.Cascade](@ref Cascade)<br>
 %>  [pm.vis.Subplot](@ref Subplot)<br>
+%>  [pm.vis.Triplex](@ref Triplex)<br>
 %>  [pm.vis.Figure](@ref Figure)<br>
-%>  [pm.vis.Corner](@ref Corner)<br>
 %>  [pm.vis.Plot](@ref Plot)<br>
 %>  [pm.vis.Tile](@ref Tile)<br>
 %>
@@ -638,7 +638,7 @@ classdef Figure < pm.matlab.Handle
         %>
         %>                                      <li>    ``"-regexprep <old> <new>"``
         %>
-        %>                                              The input replaces all occurrences of <old> (a regular expression
+        %>                                              The input replaces all occurrences of ``<old>`` (a regular expression
         %>                                              string or array of strings; case-sensitive), with the corresponding
         %>                                              new string(s), in EPS/PDF files (only). See regexp function's doc.<br>
         %>                                              Warning: invalid replacement can make your EPS/PDF file unreadable!<br>

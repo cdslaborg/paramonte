@@ -14,8 +14,8 @@
 %>  \see
 %>  [pm.vis.Cascade](@ref Cascade)<br>
 %>  [pm.vis.Subplot](@ref Subplot)<br>
+%>  [pm.vis.Triplex](@ref Triplex)<br>
 %>  [pm.vis.Figure](@ref Figure)<br>
-%>  [pm.vis.Corner](@ref Corner)<br>
 %>  [pm.vis.Plot](@ref Plot)<br>
 %>  [pm.vis.Tile](@ref Tile)<br>
 %>
@@ -131,7 +131,6 @@ classdef SubplotEllipse < pm.vis.SubplotEllipse3
         %>
         %>  \interface{make}
         %>  \code{.m}
-        %>  \endcode
         %>
         %>      pm.vis.SubplotEllipse.make(varargin);
         %>

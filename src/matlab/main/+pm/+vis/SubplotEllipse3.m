@@ -14,8 +14,8 @@
 %>  \see
 %>  [pm.vis.Cascade](@ref Cascade)<br>
 %>  [pm.vis.Subplot](@ref Subplot)<br>
+%>  [pm.vis.Triplex](@ref Triplex)<br>
 %>  [pm.vis.Figure](@ref Figure)<br>
-%>  [pm.vis.Corner](@ref Corner)<br>
 %>  [pm.vis.Plot](@ref Plot)<br>
 %>  [pm.vis.Tile](@ref Tile)<br>
 %>
@@ -335,8 +335,7 @@ classdef SubplotEllipse3 < pm.vis.SubplotLineScatter3
         %>  Use this method when you change many attributes of the plot and
         %>  you want to clean up and go back to the default settings.<br>
         %>
-        %>  \param[inout]   self        :   The input/output parent object of class [pm.vis.SubplotEllipse3](@ref SubplotEllipse3)
-        %>                                  which is **implicitly** passed to this dynamic method (not by the user).<br>
+        %>  \param[inout]   self        :   The **implicitly-passed** input argument representing the parent object of the method.<br>
         %>  \param[in]      varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                                  If the property is a ``struct()``, then its value must be given as a cell array,
         %>                                  with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>

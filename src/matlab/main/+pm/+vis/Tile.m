@@ -23,10 +23,10 @@ classdef Tile < pm.vis.Tiling
         %>                          visualization.
         %>
         tileshape = [];
-        %>
-        %>  \param  tileindex   :   The MATLAB vector of size ``0`` or ``prod(tileshape)`` containing
-        %>                          the list of indices of the tiling to fill with subplots, starting
-        %>
+        %
+        %  \param  tileindex   :   The MATLAB vector of size ``0`` or ``prod(tileshape)`` containing
+        %                          the list of indices of the tiling to fill with subplots, starting
+        %
         %tileindex = [];
     end
 
@@ -86,9 +86,12 @@ classdef Tile < pm.vis.Tiling
 
         %>  \brief
         %>  Reset the properties of the tile to the original default settings.
+        %>
+        %>  \details
         %>  Use this method when you change many attributes of the tile and
         %>  you want to clean up and go back to the default settings.
         %>
+        %>  \param[in]  self        :   The **implicitly-passed** input argument representing the parent object of the method.<br>
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
@@ -141,19 +144,12 @@ classdef Tile < pm.vis.Tiling
         %>  methods of each of the subplot objects stored in the
         %>  ``subplot`` component.
         %>
-        %>  \warning
-        %>  This method has side-effects by manipulating
-        %>  the existing attributes of the parent object.
-        %>
+        %>  \param[in]  self        :   The **implicitly-passed** input argument representing the parent object of the method.<br>
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
         %>                              Note that all of these property-value pairs can be also directly set via the
         %>                              parent object attributes, before calling the ``make()`` method.
-        %>
-        %>  \note
-        %>  The input ``varargin`` can also contain the components
-        %>  of the ``subplot`` component of the parent object.
         %>
         %>  \interface{make}
         %>  \code{.m}
@@ -163,6 +159,14 @@ classdef Tile < pm.vis.Tiling
         %>      tile.make();
         %>
         %>  \endcode
+        %>
+        %>  \warning
+        %>  This method has side-effects by manipulating
+        %>  the existing attributes of the parent object.
+        %>
+        %>  \note
+        %>  The input ``varargin`` can also contain the components
+        %>  of the ``subplot`` component of the parent object.
         %>
         %>  \example{make}
         %>
@@ -378,6 +382,7 @@ classdef Tile < pm.vis.Tiling
         %>  This method has side-effects by manipulating
         %>  the existing attributes of the parent object.
         %>
+        %>  \param[in]  self        :   The **implicitly-passed** input argument representing the parent object of the method.<br>
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.

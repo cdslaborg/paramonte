@@ -33,6 +33,8 @@ classdef Handle < dynamicprops%handle
         %>  \details
         %>  This is a dynamic method of the class [pm.matlab.Handle](@ref Handle).
         %>
+        %>  \param[inout]   self    :   The **implicitly-passed** input argument representing the parent object of the method.<br>
+        %>
         %>  \interface{doc}
         %>  \code{.m}
         %>

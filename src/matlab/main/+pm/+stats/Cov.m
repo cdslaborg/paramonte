@@ -111,13 +111,14 @@ classdef Cov < pm.matlab.Handle
         %>  corresponding to the output of this method
         %>  must be set explicitly manually.<br>
         %>
-        %>  \param[in]  df      :   The input MATLAB matrix or table of rank ``2``
-        %>                          containing the data as ``ncol`` columns of ``nrow``
-        %>                          observations whose covariance matrix must be computed.<br>
-        %>  \param[in]  method  :   The input scalar MATLAB string that can be either:<br>
-        %>                          "pearson"   : for computing the Pearson covariance matrix of the input data.<br>
-        %>                          "spearman"  : for computing the Spearman rank covariance matrix of the input data.<br>
-        %>                          (**optional**, default = ``"pearson"``)
+        %>  \param[inout]   self    :   The **implicitly-passed** input argument representing the parent object of the method.<br>
+        %>  \param[in]      df      :   The input MATLAB matrix or table of rank ``2``
+        %>                              containing the data as ``ncol`` columns of ``nrow``
+        %>                              observations whose covariance matrix must be computed.<br>
+        %>  \param[in]      method  :   The input scalar MATLAB string that can be either:<br>
+        %>                              "pearson"   : for computing the Pearson covariance matrix of the input data.<br>
+        %>                              "spearman"  : for computing the Spearman rank covariance matrix of the input data.<br>
+        %>                              (**optional**, default = ``"pearson"``)
         %>
         %>  \return
         %>  ``val``             :   The output MATLAB ``table`` containing the covariance matrix.<br>

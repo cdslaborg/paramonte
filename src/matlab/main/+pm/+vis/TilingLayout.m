@@ -62,12 +62,12 @@ classdef TilingLayout < pm.matlab.Handle
         %>                                                                  The positions are computed **with respect to the figure container**.<br>
         %>                                                                  The position values are calculated based on the tiling position.<br>
         %>                                                                  **Beware that this component is always set by the ``update()`` method.**<br>
-        %>                                  <\ol>
+        %>                                  </ol>
         %>      <li>    ``position``    :   The MATLAB vector of length four containing
         %>                                  a set of positive normalized values in the range ``[0, 1]``,
         %>                                  representing the whole tiling coordinates as ``[startx, starty, width, height]``.<br>
         %>                                  The default value is ``[0.07, 0.07, 0.93, 0.93]``.<br>
-        %>  <\ol>
+        %>  </ol>
         %>
         tiling = struct();
         %>
@@ -88,7 +88,7 @@ classdef TilingLayout < pm.matlab.Handle
         %>                                  The default value is ``0.07``.<br>
         %>      <li>    ``enabled``     :   The MATLAB ``logical`` scalar that allows addition of the colorbar if ``true``.<br>
         %>                                  The default value is ``false``.<br>
-        %>  <\ol>
+        %>  </ol>
         %>
         cbarh = struct();
         %>
@@ -109,7 +109,7 @@ classdef TilingLayout < pm.matlab.Handle
         %>                                  The default value is ``0.07``.<br>
         %>      <li>    ``enabled``     :   The MATLAB ``logical`` scalar that allows addition of the colorbar if ``true``.<br>
         %>                                  The default value is ``false``.<br>
-        %>  <\ol>
+        %>  </ol>
         %>
         cbarv = struct();
     end
@@ -171,6 +171,7 @@ classdef TilingLayout < pm.matlab.Handle
         %>  Use this method when you change many attributes of the plot and
         %>  you want to clean up and go back to the default settings.<br>
         %>
+        %>  \param[in]  self        :   The **implicitly-passed** input argument representing the parent object of the method.<br>
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
@@ -221,6 +222,7 @@ classdef TilingLayout < pm.matlab.Handle
         %>  This method causes side-effects by manipulating
         %>  the existing attributes of the object.<br>
         %>
+        %>  \param[in]  self        :   The **implicitly-passed** input argument representing the parent object of the method.<br>
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>

@@ -133,7 +133,7 @@
 %>
 %>      <li>    ``colc`` (standing for color-columns; available only for 2D/3D line/scatter axes types, e.g.,
 %>              [pm.vis.SubplotLine3](@ref SubplotLine3), [pm.vis.SubplotScatter3](@ref SubplotScatter3),
-%>              [pm.vis.SubplotLineScatter3](@ref SubplotLineScatter3), [pm.vis.SubplotLine](@ref SubplotTileLine),
+%>              [pm.vis.SubplotLineScatter3](@ref SubplotLineScatter3), [pm.vis.SubplotLine](@ref SubplotLine),
 %>              [pm.vis.SubplotScatter](@ref SubplotScatter), [pm.vis.SubplotLineScatter](@ref SubplotLineScatter))<br>
 %>
 %>              Optional property that determines the columns of the input ``dfref`` to
@@ -174,8 +174,8 @@
 %>  [pm.matlab.Handle](@ref Handle)<br>
 %>  [pm.vis.Cascade](@ref Cascade)<br>
 %>  [pm.vis.Subplot](@ref Subplot)<br>
+%>  [pm.vis.Triplex](@ref Triplex)<br>
 %>  [pm.vis.Figure](@ref Figure)<br>
-%>  [pm.vis.Corner](@ref Corner)<br>
 %>  [pm.vis.Plot](@ref Plot)<br>
 %>  [pm.vis.Tile](@ref Tile)<br>
 %>
@@ -247,14 +247,21 @@ classdef Subplot < pm.vis.axes.Axes
         %>  \details
         %>  This is the custom constructor of the class [pm.vis.Subplot](@ref Subplot).<br>
         %>
-        %>  \param[in]  ptype   :   See the documentation of the corresponding input argument of the
-        %>                          superclass constructor [pm.vis.axes.Axes::Axes](@ref Axes::Axes).<br>
-        %>  \param[in]  dfref   :   The input MATLAB matrix or table containing the data to plot or
-        %>                          a function handle that returns such a MATLAB matrix or table.<br>
-        %>                          Specifying a function handle is superior to specifying the
-        %>                          data directly, because the function handle will always use
-        %>                          the most updated version of the user table or matrix.<br>
-        %>                          (**optional**. The default is an empty table.)
+        %>  \param[in]  ptype       :   See the documentation of the corresponding input argument of the
+        %>                              superclass constructor [pm.vis.axes.Axes::Axes](@ref Axes::Axes).<br>
+        %>  \param[in]  dfref       :   The input MATLAB matrix or table containing the data to plot or
+        %>                              a function handle that returns such a MATLAB matrix or table.<br>
+        %>                              Specifying a function handle is superior to specifying the
+        %>                              data directly, because the function handle will always use
+        %>                              the most updated version of the user table or matrix.<br>
+        %>                              (**optional**. The default is an empty table.)
+        %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
+        %>                              If the property is a ``struct()``, then its value must be given as a cell array,
+        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
+        %>                              Note that all of these property-value pairs can be also directly set via the
+        %>                              parent object attributes, before calling the ``make()`` method.<br>
+        %>                              The input ``varargin`` can also contain the components
+        %>                              of the ``subplot`` component of the parent object.<br>
         %>
         %>  \return
         %>  ``self``            :   The output scalar object of class [pm.vis.Subplot](@ref Subplot).<br>
@@ -275,7 +282,7 @@ classdef Subplot < pm.vis.axes.Axes
         %>  If it is an empty object having length 0, then the default value will be used.<br>
         %>
         %>  \note
-        %>  In case of [pm.vis.SubplotContour](@ref SuplotContour)/[pm.vis.SubplotContourf](@ref SuplotContourf)/[pm.vis.SubplotContour3](@ref SuplotContour3)
+        %>  In case of [pm.vis.SubplotContour](@ref SubplotContour)/[pm.vis.SubplotContourf](@ref SubplotContourf)/[pm.vis.SubplotContour3](@ref SubplotContour3)
         %>  visualization objects, the density of the input data is first computed and smoothed
         %>  by a Gaussian kernel density estimator and then passed to the MATLAB intrinsic
         %>  plotting functions , ``contour``, ``contourf``, ``contour3``.<br>
@@ -298,8 +305,6 @@ classdef Subplot < pm.vis.axes.Axes
         %>  <br>\image html example/vis/Subplot/SubplotHeatmap.1.png width=700
         %>  <br>\image html example/vis/Subplot/SubplotEllipse3.1.png width=700
         %>  <br>\image html example/vis/Subplot/SubplotEllipse.1.png width=700
-        %>
-        %>  \endcode
         %>
         %>  \final{Subplot}
         %>

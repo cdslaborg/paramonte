@@ -329,7 +329,7 @@
 %>              A MATLAB ``struct`` whose fields and values are passed
 %>              as keyword arguments to the MATLAB intrinsic ``title()``.<br>
 %>
-%>      <li>    ``maxnoise`` (available only for [pm.vis.SubplotContour](@ref SuplotContour)/[pm.vis.SubplotContourf](@ref SuplotContourf)/[pm.vis.SubplotContour3](@ref SuplotContour3) axes types)
+%>      <li>    ``maxnoise`` (available only for [pm.vis.SubplotContour](@ref SubplotContour)/[pm.vis.SubplotContourf](@ref SubplotContourf)/[pm.vis.SubplotContour3](@ref SubplotContour3) axes types)
 %>
 %>              A float indicating the threshold below which the kernel density
 %>              estimate is considered to be noise and is rounded to zero.<br>
@@ -411,8 +411,8 @@
 %>              the decimal point for the values that appear in each cell
 %>              of the heatmap. The default value is set by MATLAB.<br>
 %>
-%>      <li>    ``resolution`` (available only for [pm.vis.SubplotContour](@ref SuplotContour),
-%>              [pm.vis.SubplotContourf](@ref SuplotContourf), [pm.vis.SubplotContour3](@ref SuplotContour3) axes types)
+%>      <li>    ``resolution`` (available only for [pm.vis.SubplotContour](@ref SubplotContour),
+%>              [pm.vis.SubplotContourf](@ref SubplotContourf), [pm.vis.SubplotContour3](@ref SubplotContour3) axes types)
 %>
 %>              A scalar integer indicating the grid resolution for discretization of
 %>              the data during the kernel density estimation. It must be a power of
@@ -517,7 +517,7 @@
 %>              \endcode
 %>              <br>
 %>
-%>      <li>    ``surface`` (available only for [pm.vis.SubplotLine](@ref SubplotLine), [pm.vis.SubplotLineScatter](@ref pm.vis.SubplotLineScatter),
+%>      <li>    ``surface`` (available only for [pm.vis.SubplotLine](@ref SubplotLine), [pm.vis.SubplotLineScatter](@ref SubplotLineScatter),
 %>              [pm.vis.SubplotLine3](@ref SubplotLine3)/[pm.vis.SubplotLineScatter3](@ref SubplotLineScatter3) axes types)
 %>
 %>              A MATLAB ``struct`` whose fields and their values will be passed

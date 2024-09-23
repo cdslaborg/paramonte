@@ -52,9 +52,9 @@ classdef DataFrame < pm.data.DataRef
         %>  \endcode
         %>
         %>  \example{DataFrame}
-        %>  \include{lineno} example/data/DataFrame/main.m
+        %>  \include{lineno} example/container/DataFrame/main.m
         %>  \output{DataFrame}
-        %>  \include{lineno} example/data/DataFrame/main.out.m
+        %>  \include{lineno} example/container/DataFrame/main.out.m
         %>
         %>  \final{DataFrame}
         %>
@@ -84,10 +84,12 @@ classdef DataFrame < pm.data.DataRef
         %>  originates from the lack of the concept of references (pointers)
         %>  in the MATLAB computing language.<br>
         %>
+        %>  \param[inout]   self    :   The **implicitly-passed** input argument representing the parent object of the method.<br>
+        %>
         %>  \return
-        %>  ``df``  :   The output scalar MATLAB table a full copy of the dataframe
-        %>              contained in the user-specified input ``dfref`` passed
-        %>              to the constructor of the parent object.<br>
+        %>  ``df``                  :   The output scalar MATLAB table a full copy of the dataframe
+        %>                              contained in the user-specified input ``dfref`` passed
+        %>                              to the constructor of the parent object.<br>
         %>
         %>  \interface{copy}
         %>  \code{.m}
@@ -123,9 +125,11 @@ classdef DataFrame < pm.data.DataRef
         %>  This class method is a handy shorthand for ``size(self.dfref, 2)``, particularly
         %>  useful for specifying a range of indices of columns in visualization tasks.<br>
         %>
+        %>  \param[inout]   self    :   The **implicitly-passed** input argument representing the parent object of the method.<br>
+        %>
         %>  \return
-        %>  ``count``   :   The output scalar MATLAB whole-number representing the number
-        %>                  of columns in the ``dfref`` component of the parent object.
+        %>  ``count``               :   The output scalar MATLAB whole-number representing the number
+        %>                              of columns in the ``dfref`` component of the parent object.
         %>
         %>  \interface{ncol}
         %>  \code{.m}
@@ -158,11 +162,11 @@ classdef DataFrame < pm.data.DataRef
         %>  This class method is a handy shorthand for ``size(self.dfref, 2)``,
         %>  particularly useful for specifying a range of indices of rows to visualize.<br>
         %>
-        %>  \param[in] `None`
+        %>  \param[inout]   self    :   The **implicitly-passed** input argument representing the parent object of the method.<br>
         %>
         %>  \return
-        %>  ``count``   :   The output scalar MATLAB whole-number representing the number
-        %>                  of rows in the ``dfref`` component of the parent object.<br>
+        %>  ``count``               :   The output scalar MATLAB whole-number representing the number
+        %>                              of rows in the ``dfref`` component of the parent object.<br>
         %>
         %>  \interface{nrow}
         %>  \code{.m}
@@ -199,29 +203,30 @@ classdef DataFrame < pm.data.DataRef
         %>  Beware of the different order of the input arguments
         %>  between this method and [pm.array.logrange](@ref logrange).<br>
         %>
-        %>  \param[in]  count   :   The input scalar MATLAB whole-number (integer)
-        %>                          representing the maximum size of the output range.<br>
-        %>                          Due to rounding operation involved in creating the
-        %>                          output range, it is impossible to prespecify the
-        %>                          output range size, only the maximum.<br>
-        %>                          (**optional**, default = ``1000``)
+        %>  \param[inout]   self    :   The **implicitly-passed** input/output argument representing the parent object of the method.<br>
+        %>  \param[in]      count   :   The input scalar MATLAB whole-number (integer)
+        %>                              representing the maximum size of the output range.<br>
+        %>                              Due to rounding operation involved in creating the
+        %>                              output range, it is impossible to prespecify the
+        %>                              output range size, only the maximum.<br>
+        %>                              (**optional**, default = ``1000``)
         %>
-        %>  \param[in]  start   :   The input scalar MATLAB whole-number (integer)
-        %>                          representing the starting point of the output range.<br>
-        %>                          It must be a number in the range ``[1, size(self.dfref, 1)]``.
-        %>                          Otherwise, the value ``max(1, min(start, self.nrow()))`` will be used.<br>
-        %>                          (**optional**, default = ``1``)
+        %>  \param[in]      start   :   The input scalar MATLAB whole-number (integer)
+        %>                              representing the starting point of the output range.<br>
+        %>                              It must be a number in the range ``[1, size(self.dfref, 1)]``.
+        %>                              Otherwise, the value ``max(1, min(start, self.nrow()))`` will be used.<br>
+        %>                              (**optional**, default = ``1``)
         %>
-        %>  \param[in]  stop    :   The input scalar MATLAB whole-number (integer)
-        %>                          representing the stopping point of the output range.<br>
-        %>                          It must be a number in the range ``[1, size(self.dfref, 1)]``.
-        %>                          Otherwise, the value ``max(start, min(stop, self.nrow()))`` will be used.<br>
-        %>                          (**optional**, default = ``1``)
+        %>  \param[in]      stop    :   The input scalar MATLAB whole-number (integer)
+        %>                              representing the stopping point of the output range.<br>
+        %>                              It must be a number in the range ``[1, size(self.dfref, 1)]``.
+        %>                              Otherwise, the value ``max(start, min(stop, self.nrow()))`` will be used.<br>
+        %>                              (**optional**, default = ``1``)
         %>
         %>  \return
-        %>  ``indices``         :   The output vector of MATLAB real values containing
-        %>                          the set of naturally logarithmically-spaced integer
-        %>                          values in the specified input range.<br>
+        %>  ``indices``             :   The output vector of MATLAB real values containing
+        %>                              the set of naturally logarithmically-spaced integer
+        %>                              values in the specified input range.<br>
         %>
         %>  \interface{rowslog}
         %>  \code{.m}
