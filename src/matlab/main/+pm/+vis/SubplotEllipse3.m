@@ -66,28 +66,28 @@ classdef SubplotEllipse3 < pm.vis.SubplotLineScatter3
         %>
         %>  ``gramian``
         %>
-        %>  A scalar object of class [pm.data.DataRef](@ref DataRef)
+        %>  A scalar object of class [pm.container.DataRef](@ref DataRef)
         %>  containing the user-specified Gramian data to visualize.<br>
         %>
         gramian = [];
         %>
         %>  ``center``
         %>
-        %>  A scalar object of class [pm.data.DataRef](@ref DataRef)
+        %>  A scalar object of class [pm.container.DataRef](@ref DataRef)
         %>  containing the user-specified center data to visualize.<br>
         %>
         center = [];
         %>
         %>  ``zval``
         %>
-        %>  A scalar object of class [pm.data.DataRef](@ref DataRef)
+        %>  A scalar object of class [pm.container.DataRef](@ref DataRef)
         %>  containing the user-specified z-axis data to visualize.<br>
         %>
         zval = [];
         %>
         %>  ``cval``
         %>
-        %>  A scalar object of class [pm.data.DataRef](@ref DataRef)
+        %>  A scalar object of class [pm.container.DataRef](@ref DataRef)
         %>  containing the user-specified color data in colormap.<br>
         %>  If empty or unspecified, it will be set to ``zval`` component.<br>
         %>
@@ -313,10 +313,10 @@ classdef SubplotEllipse3 < pm.vis.SubplotLineScatter3
                 gramian = zeros(0, 0, 0);
             end
 
-            varargin =  { "gramian", pm.data.DataRef(gramian) ...
-                        , "center", pm.data.DataRef(center) ...
-                        , "zval", pm.data.DataRef(zval) ...
-                        , "cval", pm.data.DataRef(cval) ...
+            varargin =  { "gramian", pm.container.DataRef(gramian) ...
+                        , "center", pm.container.DataRef(center) ...
+                        , "zval", pm.container.DataRef(zval) ...
+                        , "cval", pm.container.DataRef(cval) ...
                         , varargin{:} ...
                         };
             self = self@pm.vis.SubplotLineScatter3([], varargin{:})
@@ -848,7 +848,7 @@ classdef SubplotEllipse3 < pm.vis.SubplotLineScatter3
             %%%% Generate the dataframe.
             %%%%
 
-            self.df = pm.data.DataFrame(bcrd);
+            self.df = pm.container.DataFrame(bcrd);
 
         end
 

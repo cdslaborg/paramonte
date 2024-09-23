@@ -192,7 +192,7 @@ classdef Subplot < pm.vis.axes.Axes
         %>
         %>  ``df``
         %>
-        %>  A scalar object of class [pm.data.DataFrame](@ref DataFrame)
+        %>  A scalar object of class [pm.container.DataFrame](@ref DataFrame)
         %>  containing the user-specified data to visualize.<br>
         %>
         df = [];
@@ -228,7 +228,7 @@ classdef Subplot < pm.vis.axes.Axes
         %>  If ``rows`` is empty, the default will be all rows of the ``dfref``.<br>
         %>
         %>  \note
-        %>  The [pm.data.DataFrame.rowslog()](@ref DataFrame::rowslog) method of
+        %>  The [pm.container.DataFrame.rowslog()](@ref DataFrame::rowslog) method of
         %>  this class can be used to generate logarithmically-spaced
         %>  row indices of the target dataframe.<br>
         %>
@@ -319,7 +319,7 @@ classdef Subplot < pm.vis.axes.Axes
                 ptype = [];
             end
             self@pm.vis.axes.Axes(ptype, varargin{:});
-            self.df = pm.data.DataFrame(dfref);
+            self.df = pm.container.DataFrame(dfref);
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
