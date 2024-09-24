@@ -325,7 +325,7 @@ function run(self, getLogFunc, ndim)
                 pool = parpool("threads", abs(self.spec.parallelismNumThread));
             end
         else
-            evalc('delete(gcp("nocreate")');
+            evalc('delete(gcp("nocreate"))');
             if  pm.matlab.release() < "2022b"
                 evalc('pool = parpool("threads")');
                 evalc('maxNumCompThreads(abs(self.spec.parallelismNumThread))');

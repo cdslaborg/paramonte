@@ -17,7 +17,7 @@ function finalize(self)
         if ~self.silent
             delete(gcp("nocreate"));
         else
-            evalc('delete(gcp("nocreate")');
+            evalc('delete(gcp("nocreate"))');
         end
     end
     munlock(self.mexname);
