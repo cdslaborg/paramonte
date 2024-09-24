@@ -1058,7 +1058,7 @@ if "!zipperFound!"=="" (
                 echo.!pmwarn! !BoldMagenta!: compressed subdirectory already exists:!ColorReset! "!ddir!\%%~G.zip"
                 echo.!pmwarn! !BoldMagenta!: overwriting the existing archive file...!ColorReset!
             )
-            echo. -- ParaMonte - compressing subdirectory: %%~G
+            echo. -- ParaMonte - compressing subdirectory: "!ddir!%%~G"
             tar.exe -a -cf "%%~G.zip" "%%~G" || (
                 echo.
                 echo.!pmfatal! !BoldRed!: compression failed for subdirectory:!ColorReset! "!ddir!\%%~G"
