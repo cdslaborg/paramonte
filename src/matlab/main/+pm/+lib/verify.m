@@ -105,8 +105,8 @@ function verify()
     msgfile1 = fullfile(pm.lib.path.auxil(), ".mpi.install.msg");
     msgfile2 = fullfile(pm.lib.path.auxil(), ".mpi.run.msg");
     try
-        fprintf('%s\n\n', fileread(msgfile1));
-        fprintf('%s\n\n', fileread(msgfile2));
+        fprintf('%s\n\n', strrep(fileread(msgfile1), char(13), ''));
+        fprintf('%s\n\n', strrep(fileread(msgfile2), char(13), ''));
     catch me
         warning ( newline ...
                 + string(me.identifier) + " : " + string(me.message) + newline ...

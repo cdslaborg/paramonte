@@ -374,7 +374,7 @@ if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
             for extension in "${extensions[@]}"; do
                 echo >&2 "${pmnote} Checking existence of compiler \"${compiler}\" executable with extension \"${extension}\""
                 # check if the specified compiler can be found in the environment.
-                if command -v "${compiler}${extension}" >/dev/null 2>&1; then
+                if  command -v "${compiler}${extension}" >/dev/null 2>&1; then
                     list_fc="$(command -v "${compiler}${extension}")"
                     break 2
                 fi
@@ -466,6 +466,7 @@ fi
 # Configure and build the ParaMonte library.
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+if [ 0 -lt 1 ]; then # just to allow further control.
 for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
 
     #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -1039,12 +1040,67 @@ for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
     done
 
 done
+fi
 
 echo >&2 ""
 echo >&2 "${pmnote} All build files for all requested build configurations are stored at: \"${paramonte_dir}/bld/\""
 if [[ ! "${flag_codecov}" =~ .*"true".* ]]; then
     echo >&2 "${pmnote} The installed binary files for all requested build configurations are ready to use at: \"${ddir}/\""
 fi
+
+####
+#### Compress all binary folders.
+####
+
+if [ -d "${ddir}" ] && ! [ "${flag_deps}" = "" ]; then
+    if  command -v "tar" >/dev/null 2>&1; then
+        echo >&2
+        echo >&2 "${pmnote} Compressing all subdirectories in the directory: ${ddir}"
+        echo >&2
+        cd "${ddir}"
+        for subdir in ./*; do
+            if [ -d "${subdir}" ]; then
+                compressionEnabled=false
+                if [[ "${subdir}" =~ .*"_c".* ]]; then compressionEnabled=true; fi
+                if [[ "${subdir}" =~ .*"_cpp".* ]]; then compressionEnabled=true; fi
+                if [[ "${subdir}" =~ .*"_fortran".* ]]; then compressionEnabled=true; fi
+                if [[ "${subdir}" =~ .*"_matlab".* ]]; then compressionEnabled=true; fi
+                if [[ "${subdir}" =~ .*"_python".* ]]; then compressionEnabled=true; fi
+                if [ "${compressionEnabled}" = "true" ]; then
+                    tarfile="${subdir}.tar.gz"
+                    #cd "${subdir}"
+                    if [ -f "${tarfile}" ]; then
+                        echo >&2 "${pmwarn} Compressed subdirectory already exists: ${tarfile}"
+                        echo >&2 "${pmwarn} Overwriting the existing archive file..."
+                    fi
+                    echo >&2 "${pmnote} Compressing subdirectory: ${subdir}"
+                    tar -cvzf ${tarfile} --exclude="${subdir}/setup.sh" "${subdir}" && {
+                        echo >&2 "${pmnote} Subdirectory compressed: ${tarfile}"
+                    }|| {
+                        echo >&2
+                        echo >&2 "${pmfatal} Compression failed for subdirectory: ${subdir}"
+                        echo >&2 "${pmfatal} Gracefully exiting."
+                        echo >&2
+                        exit 1
+                    }
+                    #cd ..
+                fi
+            else
+                echo >&2 "${pmnote} Non-directory object detected: ${subdir}"
+            fi
+        done
+    else
+        echo >&2
+        echo >&2 "${pmwarn} The tar archive maker cannot be found on your system."
+        echo >&2 "${pmwarn} Skipping the archive file generation from the output binary files..."
+        echo >&2
+    fi
+else
+    echo >&2
+    echo >&2 "${pmwarn} The requested input target directory ${ddir} specified with the input flag --dir does not exist."
+    echo >&2
+fi
+
 echo >&2 ""
 echo >&2 "${pmnote} ${BoldGreen}mission accomplished.${ColorReset}"
 echo >&2 ""
