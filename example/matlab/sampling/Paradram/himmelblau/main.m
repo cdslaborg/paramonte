@@ -16,7 +16,7 @@ sampler.silent = true;
 sampler.run ( @(x) pm.stats.dist.himmelblau.getLogUDF(x(1), x(2)) ...
             , 2 ...
             );
-if ~sampler.mpiname == ""
+if  pm.array.len(sampler.mpiname) > 0
     % We do not want to do any post-processing in distributed MPI-parallel mode.
     % It would be at least redundant but more importantly, potentially troubling.
     return;
