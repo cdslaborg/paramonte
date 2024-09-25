@@ -889,7 +889,7 @@ for %%C in ("!list_fc:;=" "!") do (
                             REM Set the ParaMonte CMake build directory.
                             REM
 
-                            if not defined bdir (
+                            if  not defined bdir (
                                 set "paramonte_bld_dir=!paramonte_dir!bld\!os!\!arch!\!csid!\!csvs!\%%~B\%%~L\%%~M\!parname!\%%~H\%%~G"
                                 if "!flag_perfprof!" == "-Dperfprof=all" set paramonte_bld_dir=!paramonte_bld_dir!\perfprof
                                 if "!flag_codecov!" == "-Dcodecov=all" set paramonte_bld_dir=!paramonte_bld_dir!\codecov
@@ -901,7 +901,7 @@ for %%C in ("!list_fc:;=" "!") do (
 
                             REM Make the build directory if needed.
 
-                            if not exist "!paramonte_bld_dir!" (
+                            if  not exist "!paramonte_bld_dir!" (
                                 echo.!pmnote! Generating the ParaMonte build directory...
                                 mkdir "!paramonte_bld_dir!"
                             )

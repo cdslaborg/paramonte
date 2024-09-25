@@ -7,13 +7,20 @@ sampler.spec.proposalStart = [-5, 5];
 sampler.spec.outputFileName = "himmelblau";
 sampler.spec.randomSeed = 28457353; % make sampling reproducible.
 sampler.spec.outputChainSize = 30000; % Use a small chain size for illustration.
-sampler.spec.parallelismNumThread = []; % Use these many parallel threads.
+sampler.spec.parallelismNumThread = []; % Set this to a positive number to request that many parallel threads for the sampling.
 sampler.spec.outputRestartFileFormat = "ascii";
+% Set ``mpiname`` to ``pm.lib.mpi.choice()`` or your choice of MPI
+% library ("intel", "openmpi", "mpich", ...) for MPI-parallel applications.
+sampler.mpiname = ""; %pm.lib.mpi.choice()
 sampler.silent = true;
 sampler.run ( @(x) pm.stats.dist.himmelblau.getLogUDF(x(1), x(2)) ...
             , 2 ...
             );
-
+if ~sampler.mpiname == ""
+    % We do not want to do any post-processing in distributed MPI-parallel mode.
+    % It would be at least redundant but more importantly, potentially troubling.
+    return;
+end
 chain = sampler.readChain();
 chain = chain{1};
 p = pm.vis.PlotScatter(chain.df, "coly", "proposalAdaptation");
