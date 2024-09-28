@@ -24,7 +24,7 @@ setlocal EnableDelayedExpansion
 set BUILD_SCRIPT_NAME=install.bat
 set "script_name=install.bat"
 :: change directory to the folder containing this batch file
-cd %~dp0
+cd "%~dp0"
 
 REM WARNING: paramonte_dir ends with a forward slash.
 
@@ -148,7 +148,7 @@ echo.
 set bdir=
 set FOR_COARRAY_NUM_IMAGES=3
 set "ddir=!paramonte_dir!bin"
-set "flag_ddir=-Dddir=!ddir!"
+set "flag_ddir=-Dddir="!ddir!""
 
 set list_build=
 set list_checking=
@@ -196,8 +196,8 @@ if not "%1"=="" (
 
     echo.!pmnote! processing: %1
 
-    set FLAG=%~1
-    set VALUE=%~2
+    set "FLAG=%~1"
+    set "VALUE=%~2"
     REM call :getLowerCase FLAG
     REM call :getLowerCase VALUE
 
@@ -396,7 +396,7 @@ if not "%1"=="" (
 
     if "!FLAG!"=="--matlabdir" (
         set FLAG_SUPPORTED=true
-        set "flag_matlabdir=-Dmatlabdir=!VALUE!"
+        set "flag_matlabdir=-Dmatlabdir="!VALUE!""
         if "!VALUE!"=="" set "VALUE_SUPPORTED=false"
         if /i "!VALUE:~0,2!"=="--" set "VALUE_SUPPORTED=false"
         shift
@@ -536,7 +536,7 @@ if not "%1"=="" (
     if "!FLAG!"=="--ddir" (
         set "ddir=!VALUE!"
         set FLAG_SUPPORTED=true
-        set "flag_ddir=-Dddir=!VALUE!"
+        set "flag_ddir=-Dddir="!VALUE!""
         if "!VALUE!"=="" set "VALUE_SUPPORTED=false"
         if /i "!VALUE:~0,2!"=="--" set "VALUE_SUPPORTED=false"
         shift
@@ -657,6 +657,7 @@ if not defined list_fc (
         )
     )
 )
+
 :loopExit
 if not defined list_fc (
     echo.!pmwarn! No compatible Fortran compiler detected in the environment.
@@ -1064,7 +1065,7 @@ if "!zipperFound!"=="" (
                 echo.!pmfatal! !BoldRed!: compression failed for subdirectory:!ColorReset! "!ddir!\%%~G"
                 echo.!pmfatal! !BoldRed!: gracefully exiting.!ColorReset!
                 echo.
-                cd !paramonte_dir!
+                cd "!paramonte_dir!"
                 set ERRORLEVEL=1
                 exit /B 1
             )
@@ -1073,7 +1074,7 @@ if "!zipperFound!"=="" (
         echo.
         echo.!pmfatal! !BoldRed!: The final binary deployment destination directory does not exist: "!ddir!"
         echo.
-        cd !paramonte_dir!
+        cd "!paramonte_dir!"
         set ERRORLEVEL=1
         exit /B 1
     )
@@ -1145,7 +1146,7 @@ set ERRORLEVEL=1
 exit /B 1
 
 :NORMALIZEPATH
-cd !paramonte_dir!
+cd "!paramonte_dir!"
 set DESTINATION_DIR=%~dpfn1
 exit /B
 

@@ -1052,7 +1052,7 @@ fi
 #### Compress all binary folders.
 ####
 
-if [ -d "${ddir}" ] && ! [ "${flag_deps}" = "" ]; then
+if [ -d "${ddir}" ]; then
     if  command -v "tar" >/dev/null 2>&1; then
         echo >&2
         echo >&2 "${pmnote} Compressing all subdirectories in the directory: ${ddir}"
@@ -1095,7 +1095,7 @@ if [ -d "${ddir}" ] && ! [ "${flag_deps}" = "" ]; then
         echo >&2 "${pmwarn} Skipping the archive file generation from the output binary files..."
         echo >&2
     fi
-else
+elif ! [ "${flag_deps}" = "" ]; then
     echo >&2
     echo >&2 "${pmwarn} The requested input target directory ${ddir} specified with the input flag --dir does not exist."
     echo >&2
