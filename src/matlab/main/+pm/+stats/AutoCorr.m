@@ -239,7 +239,7 @@ classdef AutoCorr < pm.matlab.Handle
             bnd = zeros(size(data, 2), 1);
             try
                 for icol = 1 : size(data, 2)
-                    [val(:, icol), lag, bounds] = autocorr(data(:, icol), numlag);
+                    [val(:, icol), lag, bounds] = autocorr(data(:, icol), "numlags", numlag);
                     bnd(icol) = abs(bounds(1)) * numstd;
                 end
                 val = array2table(val);

@@ -474,8 +474,9 @@ vendor              | Any vendor name recognized by the CMake `BLA_VENDOR`.
 
 ### `matlabdir`
 
-Specifies the path to the root **directory** of MATLAB against which the library will be linked.
+Specifies the path to the **root directory** of MATLAB against which the library will be linked.
 Within a MATLAB session, this directory path is returned by the MATLAB intrinsic function `matlabroot`.
+An example such path returned in MATLAB 2024a environment is: `'C:\Program Files\MATLAB\R2024a'` on Windows platforms.
 
 +   Usage (with `install.bat` or `install.sh`)
     ```bash
@@ -500,6 +501,12 @@ where `matlab_root_dir_path` is the path to the root directory of MATLAB.
 
 > We highly recommend to specify the MATLAB choice explicitly via this argument
 as CMake often has difficultly choosing the right MATLAB version among several options.
+
+> **NOTE**
+> If you are a ParaMonte developer and aim to specify a MATLAB installation against which you intend to build the library,
+> always ensure to install the oldest possible compatible MATLAB version. This ensures the generated MEX files are compatible
+> with all newer MATLAB version. The opposite does not generally hold. For example, MATLAB 2024a MEX files are not compatible with 
+> MATLAB 2020b environment and libraries. 
 
 **optional**. The default value for `matlab_root_dir_path` is set automatically by CMake.
 
