@@ -52,8 +52,13 @@ mxArray *matlabFuncHandle;
         mxDestroyArray(argin[1]); // free allocation.
 
         // Parse the MATLAB function output arguments.
-
+        // mxGetDoubles() is a new API routine that only exists in the R2018a+ API memory model.
+        // See for example: https://www.mathworks.com/matlabcentral/answers/515893-mex-error-lnk2019-unresolved-symbol#answer_424915
+#if     MX_HAS_INTERLEAVED_COMPLEX
         double *logFunc = mxGetDoubles(argout[0]);
+#else
+        double *logFunc = mxGetPr(argout[0]); // pointer to real part.
+#endif
         for (mwSize ijob = 0; ijob < njob; ijob++) {
             logFuncState[ijob * ndimp1] = logFunc[ijob];
             //mexPrintf("logFuncState[ijob * ndim] = %f\n", logFuncState[ijob * ndimp1]);
@@ -72,8 +77,11 @@ mxArray *matlabFuncHandle;
         mxArray *argin[2];
         argin[0] = matlabFuncHandle;
         argin[1] = mxCreateDoubleMatrix((mwSize) ndim, (mwSize) 1, mxREAL);
+#if     MX_HAS_INTERLEAVED_COMPLEX
         memcpy(mxGetDoubles(argin[1]), state, ndim * sizeof(double));
-
+#else
+        memcpy(mxGetPr(argin[1]), state, ndim * sizeof(double));
+#endif
         // Get the MATLAB function output arguments.
 
         mxArray *argout[1];
