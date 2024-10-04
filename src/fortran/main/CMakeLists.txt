@@ -740,7 +740,9 @@ if (DLL_ENABLED)
         set_target_properties("${libname}" PROPERTIES INSTALL_RPATH "${rpath_prop}")
     endif()
 
-    #### set up the library-specific compile link flags
+    ####
+    #### Set up the library-specific compile link flags.
+    ####
 
     if(${csid_is_gnu})
 
