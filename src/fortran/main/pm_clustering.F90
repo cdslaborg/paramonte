@@ -1175,9 +1175,8 @@ module pm_clustering
     !>                                      <li>    type [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type),
     !>                                              implying the use of [xoshiro256**](https://prng.di.unimi.it/) uniform RNG.<br>
     !>                                  </ol>
-    !>                                  (**optional**,
-    !>                                  If this argument is present, then all `intent(inout)` arguments below have `intent(out)` argument
-    !>                                  and will be initialized using the [k-means++](@ref pm_clustering::setKmeansPP) algorithm.<br>
+    !>                                  (**optional**. If this argument is present, then all `intent(inout)` arguments below have `intent(out)` 
+    !>                                  argument and will be initialized using the [k-means++](@ref pm_clustering::setKmeansPP) algorithm.<br>
     !>                                  If this argument is missing, then the user must initialize all of the following arguments with `intent(inout)`
     !>                                  via [k-means++](@ref pm_clustering::setKmeansPP) or any other method before passing them to this generic interface.)
     !>  \param[inout]   membership  :   The input/output vector of shape `(1:nsam)` of type `integer` of default kind \IK,
