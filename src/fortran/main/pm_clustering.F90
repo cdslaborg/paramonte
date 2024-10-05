@@ -1234,11 +1234,11 @@ module pm_clustering
     !>
     !>      use pm_clustering, only: setKmeans
     !>
-    !>      call setKmeansPP(membership(1 : nsam)  , disq(1 : nsam), sample(1 : nsam)          , center(1 : ncls)          , size(1 : ncls), potential(1 : ncls), failed, niter = niter, maxniter = maxniter, minsize = minsize)
-    !>      call setKmeansPP(membership(1 : nsam)  , disq(1 : nsam), sample(1 : ndim, 1 : nsam), center(1 : ndim, 1 : ncls), size(1 : ncls), potential(1 : ncls), failed, niter = niter, maxniter = maxniter, minsize = minsize)
+    !>      call setKmeans(membership(1 : nsam)  , disq(1 : nsam), sample(1 : nsam)          , center(1 : ncls)          , size(1 : ncls), potential(1 : ncls), failed, niter = niter, maxniter = maxniter, minsize = minsize)
+    !>      call setKmeans(membership(1 : nsam)  , disq(1 : nsam), sample(1 : ndim, 1 : nsam), center(1 : ndim, 1 : ncls), size(1 : ncls), potential(1 : ncls), failed, niter = niter, maxniter = maxniter, minsize = minsize)
     !>
-    !>      call setKmeansPP(rng, membership(1 : nsam)  , disq(1 : nsam), sample(1 : nsam)          , center(1 : ncls)          , size(1 : ncls), potential(1 : ncls), failed, niter = niter, maxniter = maxniter, minsize = minsize, nfail = nfail)
-    !>      call setKmeansPP(rng, membership(1 : nsam)  , disq(1 : nsam), sample(1 : ndim, 1 : nsam), center(1 : ndim, 1 : ncls), size(1 : ncls), potential(1 : ncls), failed, niter = niter, maxniter = maxniter, minsize = minsize, nfail = nfail)
+    !>      call setKmeans(rng, membership(1 : nsam)  , disq(1 : nsam), sample(1 : nsam)          , center(1 : ncls)          , size(1 : ncls), potential(1 : ncls), failed, niter = niter, maxniter = maxniter, minsize = minsize, nfail = nfail)
+    !>      call setKmeans(rng, membership(1 : nsam)  , disq(1 : nsam), sample(1 : ndim, 1 : nsam), center(1 : ndim, 1 : ncls), size(1 : ncls), potential(1 : ncls), failed, niter = niter, maxniter = maxniter, minsize = minsize, nfail = nfail)
     !>
     !>  \endcode
     !>
