@@ -192,7 +192,7 @@ set(ParaMonteTest_SOURCE_FILES
 #    ${paramonte_src_fortran_test_dir}/test_pm_val2int@routines.F90
 #    ${paramonte_src_fortran_test_dir}/test_pm_polation.F90
 #    #${paramonte_src_fortran_test_dir}/test_pm_polation.F90
-#    ${paramonte_src_fortran_test_dir}/test_pm_clustering.F90
+#    ${paramonte_src_fortran_test_dir}/test_pm_clusKmeans.F90
 #    ${paramonte_src_fortran_test_dir}/test_pm_logicalCompare.F90
 #    ${paramonte_src_fortran_test_dir}/test_pm_logicalCompare@routines.F90
 #    ${paramonte_src_fortran_test_dir}/test_pm_val2logical.F90

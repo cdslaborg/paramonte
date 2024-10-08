@@ -122,7 +122,7 @@
 !>  pm_bench                | This module contains abstract interfaces and types that facilitate benchmarking of different procedures.
 !>  pm_bit                  | This module contains constants and procedures that are relevant to bit manipulation.
 !>  pm_blas                 | This module contains a set of generic interfaces to the BLAS routines used within the ParaMonte library.
-!>  pm_clustering           | This module contains procedures and routines for the computing the Kmeans clustering of a given set of data.
+!>  pm_clusKmeans           | This module contains procedures and routines for the computing the Kmeans clustering of a given set of data.
 !>  pm_complexAbs           | This module contains procedures and generic interfaces for performing element-wise comparison of the real and imaginary components of scalars and arrays of arbitrary ranks of various types.
 !>  pm_complexCompareAll    | This module contains procedures and generic interfaces for checking if both of the corresponding real and imaginary components of two complex numbers satisfy a relational operator.
 !>  pm_complexCompareAny    | This module contains procedures and generic interfaces for checking if either of the corresponding real and imaginary components of two complex numbers satisfy a relational operator.

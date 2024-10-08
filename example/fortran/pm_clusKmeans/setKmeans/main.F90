@@ -5,13 +5,14 @@ program example
     use pm_io, only: display_type
     use pm_distUnif, only: getUnifRand
     use pm_arrayResize, only: setResized
-    use pm_clustering, only: setCenter
-    use pm_clustering, only: setMember
+    use pm_clusKmeans, only: setKmeansPP
+    use pm_clusKmeans, only: setKmeans, rngf
 
     implicit none
 
-    integer(IK) :: ndim, nsam, ncls
-    real(RKG)   , allocatable  :: sample(:,:), center(:,:), disq(:), potential(:)
+    logical(LK) :: failed
+    integer(IK) :: ndim, nsam, ncls, itry, niter
+    real(RKG)   , allocatable  :: sample(:,:), center(:,:), disq(:), csdisq(:), potential(:)
     integer(IK) , allocatable  :: membership(:), size(:)
     type(display_type) :: disp
 
@@ -23,50 +24,50 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip
 
+    do itry = 1, 10
     call disp%skip()
-    call disp%show("ndim = getUnifRand(1, 5); nsam = getUnifRand(1, 5); ncls = getUnifRand(1, 5);")
-                    ndim = getUnifRand(1, 5); nsam = getUnifRand(1, 5); ncls = getUnifRand(1, 5);
+    call disp%show("ndim = getUnifRand(1, 5); ncls = getUnifRand(1, 5); nsam = getUnifRand(ncls, 2 * ncls);")
+                    ndim = getUnifRand(1, 5); ncls = getUnifRand(1, 5); nsam = getUnifRand(ncls, 2 * ncls);
     call disp%show("[ndim, nsam, ncls]")
     call disp%show( [ndim, nsam, ncls] )
-    call disp%show("center = getUnifRand(0., 5., ndim, ncls) ! initialize random centers.")
-                    center = getUnifRand(0., 5., ndim, ncls) ! initialize random centers.
-    call disp%show("center")
-    call disp%show( center )
     call disp%show("sample = getUnifRand(0., 5., ndim, nsam) ! Create a random sample.")
                     sample = getUnifRand(0., 5., ndim, nsam) ! Create a random sample.
     call disp%show("sample")
     call disp%show( sample )
     call disp%show("call setResized(disq, nsam)")
                     call setResized(disq, nsam)
+    call disp%show("call setResized(csdisq, nsam + 1_IK)")
+                    call setResized(csdisq, nsam + 1_IK)
     call disp%show("call setResized(membership, nsam)")
                     call setResized(membership, nsam)
+    call disp%show("call setResized(center, [ndim, ncls])")
+                    call setResized(center, [ndim, ncls])
     call disp%show("call setResized(potential, ncls)")
                     call setResized(potential, ncls)
     call disp%show("call setResized(size, ncls)")
                     call setResized(size, ncls)
-    call disp%show("call setMember(membership, disq, sample, center) ! get sample points memberships.")
-                    call setMember(membership, disq, sample, center) ! get sample points memberships.
     call disp%skip()
 
-    call disp%show("call setCenter(membership, disq, sample, center, size, potential) ! now compute the new clusters.")
-                    call setCenter(membership, disq, sample, center, size, potential) ! now compute the new clusters.
-    call disp%show("size")
-    call disp%show( size )
+    call disp%show("call setKmeans(rngf, membership, disq, csdisq, sample, center, size, potential, failed, niter) ! compute the new clusters and memberships.")
+                    call setKmeans(rngf, membership, disq, csdisq, sample, center, size, potential, failed, niter) ! compute the new clusters and memberships.
+    call disp%show("failed")
+    call disp%show( failed )
+    call disp%show("niter")
+    call disp%show( niter )
+    call disp%show("disq")
+    call disp%show( disq )
+    call disp%show("csdisq")
+    call disp%show( csdisq )
+    call disp%show("membership")
+    call disp%show( membership )
+    call disp%show("potential")
+    call disp%show( potential )
     call disp%show("center")
     call disp%show( center )
-    call disp%show("potential")
-    call disp%show( potential )
-    call disp%skip()
-
-    call disp%show("call setCenter(membership, disq, sample(1,:), center(1,:), size, potential) ! sample points memberships in one-dimension.")
-                    call setCenter(membership, disq, sample(1,:), center(1,:), size, potential) ! sample points memberships in one-dimension.
     call disp%show("size")
     call disp%show( size )
-    call disp%show("center(1,:)")
-    call disp%show( center(1,:) )
-    call disp%show("potential")
-    call disp%show( potential )
     call disp%skip()
+    end do
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     ! Output an example for visualization.
@@ -80,28 +81,29 @@ program example
         center = getUnifRand(0., 1., ndim, ncls)
         sample = getUnifRand(0., 1., ndim, nsam)
         call setResized(disq, nsam)
+        call setResized(csdisq, nsam + 1_IK)
         call setResized(membership, nsam)
         call setResized(potential, ncls)
         call setResized(size, ncls)
         ! output the sample and the initial centers.
-        call setMember(membership, disq, sample, center)
-        open(newunit = funit, file = "setMember.center.txt")
+        call setKmeansPP(rngf, membership, disq, csdisq, sample, center, size, potential)
+        open(newunit = funit, file = "setKmeansPP.center.txt")
             do i = 1, ncls
                 write(funit, "(*(g0,:,','))") i, center(:,i)
             end do
         close(funit)
-        open(newunit = funit, file = "setMember.sample.txt")
+        open(newunit = funit, file = "setKmeansPP.sample.txt")
             do i = 1, nsam
                 write(funit, "(*(g0,:,','))") membership(i), sample(:,i)
             end do
         close(funit)
-        call setCenter(membership, disq, sample, center, size, potential)
-        open(newunit = funit, file = "setCenter.center.txt")
+        call setKmeans(membership, disq, sample, center, size, potential, failed)
+        open(newunit = funit, file = "setKmeans.center.txt")
             do i = 1, ncls
                 write(funit, "(*(g0,:,','))") i, center(:,i)
             end do
         close(funit)
-        open(newunit = funit, file = "setCenter.sample.txt")
+        open(newunit = funit, file = "setKmeans.sample.txt")
             do i = 1, nsam
                 write(funit, "(*(g0,:,','))") membership(i), sample(:,i)
             end do

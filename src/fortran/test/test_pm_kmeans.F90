@@ -14,14 +14,14 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief This module contains tests of the module [pm_clustering](@ref pm_clustering).
+!>  \brief This module contains tests of the module [pm_clusKmeans](@ref pm_clusKmeans).
 !>  \author Amir Shahmoradi
 
-module test_pm_clustering
+module test_pm_clusKmeans
 
     use pm_test, only: test_type, LK
     use pm_kind, only: LK
-    use pm_clustering
+    use pm_clusKmeans
     implicit none
 
     private
@@ -67,7 +67,7 @@ contains
         implicit none
         class(TestData_type), intent(inout) :: TestData
         integer(IK) :: fileUnit, ip
-        open( file = test%dir%inp//"/test_pm_clustering@points.txt" & ! LCOV_EXCL_LINE
+        open( file = test%dir%inp//"/test_pm_clusKmeans@points.txt" & ! LCOV_EXCL_LINE
             , newunit = fileUnit & ! LCOV_EXCL_LINE
             , status = "old" & ! LCOV_EXCL_LINE
 #if         INTEL_ENABLED && WINDOWS_ENABLED
@@ -360,7 +360,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    !> The component `index` must be properly set by [pm_clustering::setKmeans](@ref pm_clustering::setKmeans) when it is given as input.
+    !> The component `index` must be properly set by [pm_clusKmeans::setKmeans](@ref pm_clusKmeans::setKmeans) when it is given as input.
     function test_setKmeans_2() result(assertion)
         use pm_kind, only: IK, RK
         use pm_val2str, only: getStr
@@ -430,7 +430,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    !> The component `index` must be properly set by [pm_clustering::setKmeans](@ref pm_clustering::setKmeans) when it is given as input.
+    !> The component `index` must be properly set by [pm_clusKmeans::setKmeans](@ref pm_clusKmeans::setKmeans) when it is given as input.
     function test_setKmeans_3() result(assertion)
         use pm_kind, only: IK, RK
         use pm_val2str, only: getStr
@@ -862,4 +862,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module test_pm_clustering ! LCOV_EXCL_LINE
+end module test_pm_clusKmeans ! LCOV_EXCL_LINE

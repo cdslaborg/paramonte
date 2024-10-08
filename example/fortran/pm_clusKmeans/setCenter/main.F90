@@ -5,11 +5,12 @@ program example
     use pm_io, only: display_type
     use pm_distUnif, only: getUnifRand
     use pm_arrayResize, only: setResized
-    use pm_clustering, only: setKmeansPP, rngf
+    use pm_clusKmeans, only: setCenter
+    use pm_clusKmeans, only: setMember
 
     implicit none
 
-    integer(IK) :: ndim, nsam, ncls, itry
+    integer(IK) :: ndim, nsam, ncls
     real(RKG)   , allocatable  :: sample(:,:), center(:,:), disq(:), potential(:)
     integer(IK) , allocatable  :: membership(:), size(:)
     type(display_type) :: disp
@@ -22,12 +23,15 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip
 
-    do itry = 1, 10
     call disp%skip()
-    call disp%show("ndim = getUnifRand(1, 5); ncls = getUnifRand(1, 5); nsam = getUnifRand(ncls, 2 * ncls);")
-                    ndim = getUnifRand(1, 5); ncls = getUnifRand(1, 5); nsam = getUnifRand(ncls, 2 * ncls);
+    call disp%show("ndim = getUnifRand(1, 5); nsam = getUnifRand(1, 5); ncls = getUnifRand(1, 5);")
+                    ndim = getUnifRand(1, 5); nsam = getUnifRand(1, 5); ncls = getUnifRand(1, 5);
     call disp%show("[ndim, nsam, ncls]")
     call disp%show( [ndim, nsam, ncls] )
+    call disp%show("center = getUnifRand(0., 5., ndim, ncls) ! initialize random centers.")
+                    center = getUnifRand(0., 5., ndim, ncls) ! initialize random centers.
+    call disp%show("center")
+    call disp%show( center )
     call disp%show("sample = getUnifRand(0., 5., ndim, nsam) ! Create a random sample.")
                     sample = getUnifRand(0., 5., ndim, nsam) ! Create a random sample.
     call disp%show("sample")
@@ -36,28 +40,33 @@ program example
                     call setResized(disq, nsam)
     call disp%show("call setResized(membership, nsam)")
                     call setResized(membership, nsam)
-    call disp%show("call setResized(center, [ndim, ncls])")
-                    call setResized(center, [ndim, ncls])
     call disp%show("call setResized(potential, ncls)")
                     call setResized(potential, ncls)
     call disp%show("call setResized(size, ncls)")
                     call setResized(size, ncls)
+    call disp%show("call setMember(membership, disq, sample, center) ! get sample points memberships.")
+                    call setMember(membership, disq, sample, center) ! get sample points memberships.
     call disp%skip()
 
-    call disp%show("call setKmeansPP(rngf, membership, disq, sample, center, size, potential) ! compute the new clusters and memberships.")
-                    call setKmeansPP(rngf, membership, disq, sample, center, size, potential) ! compute the new clusters and memberships.
-    call disp%show("disq")
-    call disp%show( disq )
-    call disp%show("membership")
-    call disp%show( membership )
-    call disp%show("potential")
-    call disp%show( potential )
-    call disp%show("center")
-    call disp%show( center )
+    call disp%show("call setCenter(membership, disq, sample, center, size, potential) ! now compute the new clusters.")
+                    call setCenter(membership, disq, sample, center, size, potential) ! now compute the new clusters.
     call disp%show("size")
     call disp%show( size )
+    call disp%show("center")
+    call disp%show( center )
+    call disp%show("potential")
+    call disp%show( potential )
     call disp%skip()
-    end do
+
+    call disp%show("call setCenter(membership, disq, sample(1,:), center(1,:), size, potential) ! sample points memberships in one-dimension.")
+                    call setCenter(membership, disq, sample(1,:), center(1,:), size, potential) ! sample points memberships in one-dimension.
+    call disp%show("size")
+    call disp%show( size )
+    call disp%show("center(1,:)")
+    call disp%show( center(1,:) )
+    call disp%show("potential")
+    call disp%show( potential )
+    call disp%skip()
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     ! Output an example for visualization.
@@ -72,16 +81,27 @@ program example
         sample = getUnifRand(0., 1., ndim, nsam)
         call setResized(disq, nsam)
         call setResized(membership, nsam)
-        call setResized(center, [ndim, ncls])
         call setResized(potential, ncls)
         call setResized(size, ncls)
-        call setKmeansPP(rngf, membership, disq, sample, center, size, potential)
-        open(newunit = funit, file = "setKmeansPP.center.txt")
+        ! output the sample and the initial centers.
+        call setMember(membership, disq, sample, center)
+        open(newunit = funit, file = "setMember.center.txt")
             do i = 1, ncls
                 write(funit, "(*(g0,:,','))") i, center(:,i)
             end do
         close(funit)
-        open(newunit = funit, file = "setKmeansPP.sample.txt")
+        open(newunit = funit, file = "setMember.sample.txt")
+            do i = 1, nsam
+                write(funit, "(*(g0,:,','))") membership(i), sample(:,i)
+            end do
+        close(funit)
+        call setCenter(membership, disq, sample, center, size, potential)
+        open(newunit = funit, file = "setCenter.center.txt")
+            do i = 1, ncls
+                write(funit, "(*(g0,:,','))") i, center(:,i)
+            end do
+        close(funit)
+        open(newunit = funit, file = "setCenter.sample.txt")
             do i = 1, nsam
                 write(funit, "(*(g0,:,','))") membership(i), sample(:,i)
             end do

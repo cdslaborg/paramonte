@@ -15,7 +15,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief
-!>  This file contains procedure implementations of [pm_clustering](@ref pm_clustering).
+!>  This file contains procedure implementations of [pm_clusKmeans](@ref pm_clusKmeans).
 !>
 !>  \final
 !>
@@ -24,7 +24,7 @@
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-submodule (pm_clustering) routines
+submodule (pm_clusKmeans) routines
 
 #if CHECK_ENABLED
     use pm_err, only: getFine
@@ -60,35 +60,35 @@ contains
 #if RK5_ENABLED
     module procedure setCenterEuc_D1_D1_RK5
         use pm_kind, only: RKG => RK5
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCenterEuc_D1_D1_RK4
         use pm_kind, only: RKG => RK4
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCenterEuc_D1_D1_RK3
         use pm_kind, only: RKG => RK3
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCenterEuc_D1_D1_RK2
         use pm_kind, only: RKG => RK2
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCenterEuc_D1_D1_RK1
         use pm_kind, only: RKG => RK1
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
@@ -111,35 +111,35 @@ contains
 #if RK5_ENABLED
     module procedure setCenterEuc_D2_D2_RK5
         use pm_kind, only: RKG => RK5
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCenterEuc_D2_D2_RK4
         use pm_kind, only: RKG => RK4
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCenterEuc_D2_D2_RK3
         use pm_kind, only: RKG => RK3
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCenterEuc_D2_D2_RK2
         use pm_kind, only: RKG => RK2
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCenterEuc_D2_D2_RK1
         use pm_kind, only: RKG => RK1
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
@@ -163,6 +163,12 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#define Def_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 #define D0_D1_ENABLED 1
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -170,37 +176,37 @@ contains
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure setMemberEuc_D0_D1_RK5
+    module procedure setMemberEucDef_D0_D1_RK5
         use pm_kind, only: RKG => RK5
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure setMemberEuc_D0_D1_RK4
+    module procedure setMemberEucDef_D0_D1_RK4
         use pm_kind, only: RKG => RK4
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure setMemberEuc_D0_D1_RK3
+    module procedure setMemberEucDef_D0_D1_RK3
         use pm_kind, only: RKG => RK3
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure setMemberEuc_D0_D1_RK2
+    module procedure setMemberEucDef_D0_D1_RK2
         use pm_kind, only: RKG => RK2
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure setMemberEuc_D0_D1_RK1
+    module procedure setMemberEucDef_D0_D1_RK1
         use pm_kind, only: RKG => RK1
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
@@ -221,37 +227,37 @@ contains
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure setMemberEuc_D1_D1_RK5
+    module procedure setMemberEucDef_D1_D1_RK5
         use pm_kind, only: RKG => RK5
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure setMemberEuc_D1_D1_RK4
+    module procedure setMemberEucDef_D1_D1_RK4
         use pm_kind, only: RKG => RK4
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure setMemberEuc_D1_D1_RK3
+    module procedure setMemberEucDef_D1_D1_RK3
         use pm_kind, only: RKG => RK3
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure setMemberEuc_D1_D1_RK2
+    module procedure setMemberEucDef_D1_D1_RK2
         use pm_kind, only: RKG => RK2
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure setMemberEuc_D1_D1_RK1
+    module procedure setMemberEucDef_D1_D1_RK1
         use pm_kind, only: RKG => RK1
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
@@ -272,37 +278,37 @@ contains
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure setMemberEuc_D1_D2_RK5
+    module procedure setMemberEucDef_D1_D2_RK5
         use pm_kind, only: RKG => RK5
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure setMemberEuc_D1_D2_RK4
+    module procedure setMemberEucDef_D1_D2_RK4
         use pm_kind, only: RKG => RK4
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure setMemberEuc_D1_D2_RK3
+    module procedure setMemberEucDef_D1_D2_RK3
         use pm_kind, only: RKG => RK3
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure setMemberEuc_D1_D2_RK2
+    module procedure setMemberEucDef_D1_D2_RK2
         use pm_kind, only: RKG => RK2
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure setMemberEuc_D1_D2_RK1
+    module procedure setMemberEucDef_D1_D2_RK1
         use pm_kind, only: RKG => RK1
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
@@ -323,37 +329,37 @@ contains
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure setMemberEuc_D2_D2_RK5
+    module procedure setMemberEucDef_D2_D2_RK5
         use pm_kind, only: RKG => RK5
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure setMemberEuc_D2_D2_RK4
+    module procedure setMemberEucDef_D2_D2_RK4
         use pm_kind, only: RKG => RK4
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure setMemberEuc_D2_D2_RK3
+    module procedure setMemberEucDef_D2_D2_RK3
         use pm_kind, only: RKG => RK3
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure setMemberEuc_D2_D2_RK2
+    module procedure setMemberEucDef_D2_D2_RK2
         use pm_kind, only: RKG => RK2
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure setMemberEuc_D2_D2_RK1
+    module procedure setMemberEucDef_D2_D2_RK1
         use pm_kind, only: RKG => RK1
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
@@ -362,6 +368,228 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #undef D2_D2_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef Def_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define Cng_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define D0_D1_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RK_ENABLED 1
+
+#if RK5_ENABLED
+    module procedure setMemberEucCng_D0_D1_RK5
+        use pm_kind, only: RKG => RK5
+#include "pm_clusKmeans@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK4_ENABLED
+    module procedure setMemberEucCng_D0_D1_RK4
+        use pm_kind, only: RKG => RK4
+#include "pm_clusKmeans@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK3_ENABLED
+    module procedure setMemberEucCng_D0_D1_RK3
+        use pm_kind, only: RKG => RK3
+#include "pm_clusKmeans@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK2_ENABLED
+    module procedure setMemberEucCng_D0_D1_RK2
+        use pm_kind, only: RKG => RK2
+#include "pm_clusKmeans@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK1_ENABLED
+    module procedure setMemberEucCng_D0_D1_RK1
+        use pm_kind, only: RKG => RK1
+#include "pm_clusKmeans@routines.inc.F90"
+    end procedure
+#endif
+
+#undef RK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef D0_D1_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define D1_D1_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RK_ENABLED 1
+
+#if RK5_ENABLED
+    module procedure setMemberEucCng_D1_D1_RK5
+        use pm_kind, only: RKG => RK5
+#include "pm_clusKmeans@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK4_ENABLED
+    module procedure setMemberEucCng_D1_D1_RK4
+        use pm_kind, only: RKG => RK4
+#include "pm_clusKmeans@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK3_ENABLED
+    module procedure setMemberEucCng_D1_D1_RK3
+        use pm_kind, only: RKG => RK3
+#include "pm_clusKmeans@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK2_ENABLED
+    module procedure setMemberEucCng_D1_D1_RK2
+        use pm_kind, only: RKG => RK2
+#include "pm_clusKmeans@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK1_ENABLED
+    module procedure setMemberEucCng_D1_D1_RK1
+        use pm_kind, only: RKG => RK1
+#include "pm_clusKmeans@routines.inc.F90"
+    end procedure
+#endif
+
+#undef RK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef D1_D1_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define D1_D2_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RK_ENABLED 1
+
+#if RK5_ENABLED
+    module procedure setMemberEucCng_D1_D2_RK5
+        use pm_kind, only: RKG => RK5
+#include "pm_clusKmeans@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK4_ENABLED
+    module procedure setMemberEucCng_D1_D2_RK4
+        use pm_kind, only: RKG => RK4
+#include "pm_clusKmeans@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK3_ENABLED
+    module procedure setMemberEucCng_D1_D2_RK3
+        use pm_kind, only: RKG => RK3
+#include "pm_clusKmeans@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK2_ENABLED
+    module procedure setMemberEucCng_D1_D2_RK2
+        use pm_kind, only: RKG => RK2
+#include "pm_clusKmeans@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK1_ENABLED
+    module procedure setMemberEucCng_D1_D2_RK1
+        use pm_kind, only: RKG => RK1
+#include "pm_clusKmeans@routines.inc.F90"
+    end procedure
+#endif
+
+#undef RK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef D1_D2_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define D2_D2_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RK_ENABLED 1
+
+#if RK5_ENABLED
+    module procedure setMemberEucCng_D2_D2_RK5
+        use pm_kind, only: RKG => RK5
+#include "pm_clusKmeans@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK4_ENABLED
+    module procedure setMemberEucCng_D2_D2_RK4
+        use pm_kind, only: RKG => RK4
+#include "pm_clusKmeans@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK3_ENABLED
+    module procedure setMemberEucCng_D2_D2_RK3
+        use pm_kind, only: RKG => RK3
+#include "pm_clusKmeans@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK2_ENABLED
+    module procedure setMemberEucCng_D2_D2_RK2
+        use pm_kind, only: RKG => RK2
+#include "pm_clusKmeans@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK1_ENABLED
+    module procedure setMemberEucCng_D2_D2_RK1
+        use pm_kind, only: RKG => RK1
+#include "pm_clusKmeans@routines.inc.F90"
+    end procedure
+#endif
+
+#undef RK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef D2_D2_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef Cng_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -392,35 +620,35 @@ contains
 #if RK5_ENABLED
     module procedure setKmeansPPDRNGF_RK5
         use pm_kind, only: RKG => RK5
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setKmeansPPDRNGF_RK4
         use pm_kind, only: RKG => RK4
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setKmeansPPDRNGF_RK3
         use pm_kind, only: RKG => RK3
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setKmeansPPDRNGF_RK2
         use pm_kind, only: RKG => RK2
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setKmeansPPDRNGF_RK1
         use pm_kind, only: RKG => RK1
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
@@ -443,35 +671,35 @@ contains
 #if RK5_ENABLED
     module procedure setKmeansPPDRNGX_RK5
         use pm_kind, only: RKG => RK5
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setKmeansPPDRNGX_RK4
         use pm_kind, only: RKG => RK4
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setKmeansPPDRNGX_RK3
         use pm_kind, only: RKG => RK3
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setKmeansPPDRNGX_RK2
         use pm_kind, only: RKG => RK2
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setKmeansPPDRNGX_RK1
         use pm_kind, only: RKG => RK1
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
@@ -506,35 +734,35 @@ contains
 #if RK5_ENABLED
     module procedure setKmeansPPORNGF_RK5
         use pm_kind, only: RKG => RK5
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setKmeansPPORNGF_RK4
         use pm_kind, only: RKG => RK4
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setKmeansPPORNGF_RK3
         use pm_kind, only: RKG => RK3
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setKmeansPPORNGF_RK2
         use pm_kind, only: RKG => RK2
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setKmeansPPORNGF_RK1
         use pm_kind, only: RKG => RK1
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
@@ -557,35 +785,35 @@ contains
 #if RK5_ENABLED
     module procedure setKmeansPPORNGX_RK5
         use pm_kind, only: RKG => RK5
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setKmeansPPORNGX_RK4
         use pm_kind, only: RKG => RK4
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setKmeansPPORNGX_RK3
         use pm_kind, only: RKG => RK3
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setKmeansPPORNGX_RK2
         use pm_kind, only: RKG => RK2
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setKmeansPPORNGX_RK1
         use pm_kind, only: RKG => RK1
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
@@ -624,35 +852,35 @@ contains
 #if RK5_ENABLED
     module procedure setKmeansInit_RK5
         use pm_kind, only: RKG => RK5
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setKmeansInit_RK4
         use pm_kind, only: RKG => RK4
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setKmeansInit_RK3
         use pm_kind, only: RKG => RK3
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setKmeansInit_RK2
         use pm_kind, only: RKG => RK2
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setKmeansInit_RK1
         use pm_kind, only: RKG => RK1
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
@@ -675,35 +903,35 @@ contains
 #if RK5_ENABLED
     module procedure setKmeansRNGF_RK5
         use pm_kind, only: RKG => RK5
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setKmeansRNGF_RK4
         use pm_kind, only: RKG => RK4
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setKmeansRNGF_RK3
         use pm_kind, only: RKG => RK3
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setKmeansRNGF_RK2
         use pm_kind, only: RKG => RK2
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setKmeansRNGF_RK1
         use pm_kind, only: RKG => RK1
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
@@ -726,35 +954,35 @@ contains
 #if RK5_ENABLED
     module procedure setKmeansRNGX_RK5
         use pm_kind, only: RKG => RK5
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setKmeansRNGX_RK4
         use pm_kind, only: RKG => RK4
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setKmeansRNGX_RK3
         use pm_kind, only: RKG => RK3
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setKmeansRNGX_RK2
         use pm_kind, only: RKG => RK2
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setKmeansRNGX_RK1
         use pm_kind, only: RKG => RK1
-#include "pm_clustering@routines.inc.F90"
+#include "pm_clusKmeans@routines.inc.F90"
     end procedure
 #endif
 

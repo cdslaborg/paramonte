@@ -125,6 +125,7 @@ Thumbs.db
 # ParaMonte temp folders
 #########################
 
+**/pm_partition*
 **/pm_paramonte@version.inc.F90
 **/.ipynb_checkpoints
 **/src/python/setup

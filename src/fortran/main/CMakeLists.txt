@@ -30,6 +30,7 @@ set(sterile
     pm_mathConst
     pm_memory
     pm_paramonte
+    pm_partition
     pm_physUnit
     pm_search
     pm_strANSI
@@ -122,7 +123,7 @@ set(grandpa
     pm_arrayVerbose
     pm_batse
     pm_bench
-    pm_clustering
+    pm_clusKmeans
     pm_complexAbs
     pm_complexCompareAll
     pm_complexCompareAny
@@ -291,11 +292,6 @@ endforeach()
 #    ${paramonte_src_fortran_main_dir}/DistMultiNormGenExpGammaMix_pmod.F90
 #    ${paramonte_src_fortran_main_dir}/pm_distMultiSkewNorm.F90
 #    ${paramonte_src_fortran_main_dir}/ClusteredPoint_pmod.F90
-#    ${paramonte_src_fortran_main_dir}/pm_partition.F90
-#    ${paramonte_src_fortran_main_dir}/pm_partition@MaxDen_smod.F90
-#    ${paramonte_src_fortran_main_dir}/pm_partition@MinVol_smod.F90
-#    #${paramonte_src_fortran_main_dir}/PartitionKmeans_pmod.F90
-#    #${paramonte_src_fortran_main_dir}/PartitionVarDen_pmod.F90
 #    #${paramonte_src_fortran_main_dir}/pm_partitionRecursiveMaxDen.F90
 #    #${paramonte_src_fortran_main_dir}/pm_partitionRecursiveMinVol.F90
 #    #${paramonte_src_fortran_main_dir}/pm_partitionMaxDen.F90

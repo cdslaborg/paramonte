@@ -5,14 +5,12 @@ program example
     use pm_io, only: display_type
     use pm_distUnif, only: getUnifRand
     use pm_arrayResize, only: setResized
-    use pm_clustering, only: setKmeansPP
-    use pm_clustering, only: setKmeans, rngf
+    use pm_clusKmeans, only: setKmeansPP, rngf
 
     implicit none
 
-    logical(LK) :: failed
-    integer(IK) :: ndim, nsam, ncls, itry, niter
-    real(RKG)   , allocatable  :: sample(:,:), center(:,:), disq(:), potential(:)
+    integer(IK) :: ndim, nsam, ncls, itry
+    real(RKG)   , allocatable  :: sample(:,:), center(:,:), disq(:), csdisq(:), potential(:)
     integer(IK) , allocatable  :: membership(:), size(:)
     type(display_type) :: disp
 
@@ -36,6 +34,8 @@ program example
     call disp%show( sample )
     call disp%show("call setResized(disq, nsam)")
                     call setResized(disq, nsam)
+    call disp%show("call setResized(csdisq, nsam + 1_IK)")
+                    call setResized(csdisq, nsam + 1_IK)
     call disp%show("call setResized(membership, nsam)")
                     call setResized(membership, nsam)
     call disp%show("call setResized(center, [ndim, ncls])")
@@ -46,14 +46,12 @@ program example
                     call setResized(size, ncls)
     call disp%skip()
 
-    call disp%show("call setKmeans(rngf, membership, disq, sample, center, size, potential, failed, niter) ! compute the new clusters and memberships.")
-                    call setKmeans(rngf, membership, disq, sample, center, size, potential, failed, niter) ! compute the new clusters and memberships.
-    call disp%show("failed")
-    call disp%show( failed )
-    call disp%show("niter")
-    call disp%show( niter )
+    call disp%show("call setKmeansPP(rngf, membership, disq, csdisq, sample, center, size, potential) ! compute the new clusters and memberships.")
+                    call setKmeansPP(rngf, membership, disq, csdisq, sample, center, size, potential) ! compute the new clusters and memberships.
     call disp%show("disq")
     call disp%show( disq )
+    call disp%show("csdisq")
+    call disp%show( csdisq )
     call disp%show("membership")
     call disp%show( membership )
     call disp%show("potential")
@@ -76,29 +74,19 @@ program example
         nsam = 5000
         center = getUnifRand(0., 1., ndim, ncls)
         sample = getUnifRand(0., 1., ndim, nsam)
+        call setResized(csdisq, nsam + 1_IK)
         call setResized(disq, nsam)
         call setResized(membership, nsam)
+        call setResized(center, [ndim, ncls])
         call setResized(potential, ncls)
         call setResized(size, ncls)
-        ! output the sample and the initial centers.
-        call setKmeansPP(rngf, membership, disq, sample, center, size, potential)
+        call setKmeansPP(rngf, membership, disq, csdisq, sample, center, size, potential)
         open(newunit = funit, file = "setKmeansPP.center.txt")
             do i = 1, ncls
                 write(funit, "(*(g0,:,','))") i, center(:,i)
             end do
         close(funit)
         open(newunit = funit, file = "setKmeansPP.sample.txt")
-            do i = 1, nsam
-                write(funit, "(*(g0,:,','))") membership(i), sample(:,i)
-            end do
-        close(funit)
-        call setKmeans(membership, disq, sample, center, size, potential, failed)
-        open(newunit = funit, file = "setKmeans.center.txt")
-            do i = 1, ncls
-                write(funit, "(*(g0,:,','))") i, center(:,i)
-            end do
-        close(funit)
-        open(newunit = funit, file = "setKmeans.sample.txt")
             do i = 1, nsam
                 write(funit, "(*(g0,:,','))") membership(i), sample(:,i)
             end do

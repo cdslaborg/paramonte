@@ -5,11 +5,12 @@ program example
     use pm_io, only: display_type
     use pm_distUnif, only: getUnifRand
     use pm_arrayResize, only: setResized
-    use pm_clustering, only: setMember
+    use pm_clusKmeans, only: setMember
     use pm_arrayRange, only: getRange
 
     implicit none
 
+    logical(LK) :: changed
     integer(IK) :: ndim, nsam, ncls
     real(RKG)   , allocatable  :: sample(:,:), center(:,:), disq(:)
     integer(IK) , allocatable  :: membership(:)
@@ -50,12 +51,32 @@ program example
     call disp%show( disq )
     call disp%skip()
 
+    call disp%show("call setMember(membership, disq, sample, center, changed) ! sample points memberships.")
+                    call setMember(membership, disq, sample, center, changed) ! sample points memberships.
+    call disp%show("membership")
+    call disp%show( membership )
+    call disp%show("disq")
+    call disp%show( disq )
+    call disp%show("changed")
+    call disp%show( changed )
+    call disp%skip()
+
     call disp%show("call setMember(membership(1), disq(1), sample(:,1), center) ! single point membership.")
                     call setMember(membership(1), disq(1), sample(:,1), center) ! single point membership.
     call disp%show("membership")
     call disp%show( membership )
     call disp%show("disq")
     call disp%show( disq )
+    call disp%skip()
+
+    call disp%show("call setMember(membership(1), disq(1), sample(:,1), center, changed) ! single point membership.")
+                    call setMember(membership(1), disq(1), sample(:,1), center, changed) ! single point membership.
+    call disp%show("membership")
+    call disp%show( membership )
+    call disp%show("disq")
+    call disp%show( disq )
+    call disp%show("changed")
+    call disp%show( changed )
     call disp%skip()
 
     call disp%show("call setMember(membership, disq, sample(1,:), center(1,:)) ! sample points memberships in one-dimension.")
@@ -66,12 +87,32 @@ program example
     call disp%show( disq )
     call disp%skip()
 
+    call disp%show("call setMember(membership, disq, sample(1,:), center(1,:), changed) ! sample points memberships in one-dimension.")
+                    call setMember(membership, disq, sample(1,:), center(1,:), changed) ! sample points memberships in one-dimension.
+    call disp%show("membership")
+    call disp%show( membership )
+    call disp%show("disq")
+    call disp%show( disq )
+    call disp%show("changed")
+    call disp%show( changed )
+    call disp%skip()
+
     call disp%show("call setMember(membership(1), disq(1), sample(1,1), center(1,:)) ! single point membership in one-dimension.")
                     call setMember(membership(1), disq(1), sample(1,1), center(1,:)) ! single point membership in one-dimension.
     call disp%show("membership")
     call disp%show( membership )
     call disp%show("disq")
     call disp%show( disq )
+    call disp%skip()
+
+    call disp%show("call setMember(membership(1), disq(1), sample(1,1), center(1,:), changed) ! single point membership in one-dimension.")
+                    call setMember(membership(1), disq(1), sample(1,1), center(1,:), changed) ! single point membership in one-dimension.
+    call disp%show("membership")
+    call disp%show( membership )
+    call disp%show("disq")
+    call disp%show( disq )
+    call disp%show("changed")
+    call disp%show( changed )
     call disp%skip()
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -88,6 +129,7 @@ program example
         call setResized(disq, nsam)
         call setResized(membership, nsam)
         call setMember(membership, disq, sample, center)
+        call setMember(membership, disq, sample, center, changed)
         open(newunit = funit, file = "setMember.center.txt")
             do i = 1, ncls
                 write(funit, "(*(g0,:,','))") i, center(:,i)

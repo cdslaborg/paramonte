@@ -27,7 +27,7 @@ program benchmark
             ]
 
     write(*,"(*(g0,:,' '))")
-    write(*,"(*(g0,:,' '))") "sample covariance benchmarking..."
+    write(*,"(*(g0,:,' '))") "sample mean benchmarking..."
     write(*,"(*(g0,:,' '))")
 
     open(newunit = fileUnit, file = "main.out", status = "replace")

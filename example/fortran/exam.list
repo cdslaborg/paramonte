@@ -99,10 +99,10 @@
 !pm_bench/benchBase_type
 !pm_bench/benchMulti_type
 !pm_bench/bench_type
-!pm_clustering/setCenter
-!pm_clustering/setKmeans
-!pm_clustering/setKmeansPP
-!pm_clustering/setMember
+!pm_clusKmeans/setCenter
+!pm_clusKmeans/setKmeans
+!pm_clusKmeans/setKmeansPP
+!pm_clusKmeans/setMember
 !pm_complexAbs/abs
 !pm_complexCompareAll/isallleq
 !pm_complexCompareAll/isallless
