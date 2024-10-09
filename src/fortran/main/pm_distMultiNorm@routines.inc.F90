@@ -95,7 +95,7 @@
         integer(IK) :: ndim
         ndim = size(rand, kind = IK)
 #if     AM_ENABLED
-        CHECK_ASSERTION(__LINE__, size(rand, 1, IK) == size(mean, 1, IK), SK_"@setMultiNormRand(): The condition `size(rand) == size(mean)` must hold. size(rand), size(mean) = "//getStr([size(rand, 1, IK), size(mean, 1, IK)]))
+        CHECK_ASSERTION(__LINE__, size(rand, 1, IK) == size(mean, 1, IK), SK_"@setMultiNormRand(): The condition `size(rand, 1) == size(mean, 1)` must hold. shape(rand), shape(mean) = "//getStr([shape(rand, IK), shape(mean, IK)]))
 #elif   !DM_ENABLED
 #error  "Unrecognized interface."
 #endif
@@ -106,7 +106,7 @@
         call setNormRand(RNG rand)
         rand = rand + mean
 #elif   AC_ENABLED && (AM_ENABLED || DM_ENABLED)
-        CHECK_ASSERTION(__LINE__, all(size(rand, 1, IK) == shape(chol, IK)), SK_"@setMultiNormRand(): The condition `all(size(rand) == shape(chol))` must hold. size(rand), shape(chol) = "//getStr([size(rand, 1, IK), shape(chol, IK)]))
+        CHECK_ASSERTION(__LINE__, all(size(rand, 1, IK) == shape(chol, IK)), SK_"@setMultiNormRand(): The condition `all(size(rand, 1) == shape(chol))` must hold. size(rand, 1), shape(chol) = "//getStr([size(rand, 1, IK), shape(chol, IK)]))
         ! Define the indexing rules.
 #if     XLD_ENABLED
 #define GET_INDEX(I,J)I,J

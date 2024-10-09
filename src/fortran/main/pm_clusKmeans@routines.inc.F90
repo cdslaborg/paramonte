@@ -321,6 +321,10 @@
 #elif   setKmeansPP_ENABLED
         !%%%%%%%%%%%%%%%%%%
 
+        !!!!
+        !!!!    WARNING:
+        !!!!    You cannot use the intrinsic `size` here, becuase it is an procedure argument.
+        !!!!
 #define INTRINSIC_ENABLED 0
         real(RKG)   :: temp
         integer(IK) :: idim, icls, isam, ndim, nsam, cid
@@ -338,8 +342,8 @@
         nsam = ubound(sample, 2, IK)
         CHECK_ASSERTION(__LINE__, 0_IK  < ncls, SK_"@setKmeansPP(): The condition `0 < ncls` must hold. ncls = "//getStr(ncls))
         CHECK_ASSERTION(__LINE__, 0_IK  < ubound(sample, 2, IK), SK_"@setKmeansPP(): The condition `0 < ubound(sample, rank(sample))` must hold. shape(sample) = "//getStr(shape(sample, IK)))
-        CHECK_ASSERTION(__LINE__, nsam == ubound(disq, 1, IK), SK_"@setKmeansPP(): The condition `ubound(sample, rank(sample)) == ubound(disq, 1)` must hold. shape(sample), size(disq) = "//getStr([shape(sample, IK), size(disq, 1, IK)]))
-        CHECK_ASSERTION(__LINE__, nsam == ubound(csdisq, 1, IK), SK_"@setKmeansPP(): The condition `ubound(sample, rank(sample)) == ubound(csdisq, 1)` must hold. shape(sample), size(csdisq) = "//getStr([shape(sample, IK), size(csdisq, 1, IK)]))
+        CHECK_ASSERTION(__LINE__, nsam == ubound(disq, 1, IK), SK_"@setKmeansPP(): The condition `ubound(sample, rank(sample)) == ubound(disq, 1)` must hold. shape(sample), size(disq) = "//getStr([shape(sample, IK), ubound(disq, 1, IK)]))
+        CHECK_ASSERTION(__LINE__, nsam == ubound(csdisq, 1, IK), SK_"@setKmeansPP(): The condition `ubound(sample, rank(sample)) == ubound(csdisq, 1)` must hold. shape(sample), size(csdisq) = "//getStr([shape(sample, IK), ubound(csdisq, 1, IK)]))
         CHECK_ASSERTION(__LINE__, nsam == ubound(membership, 1, IK), SK_"@setKmeansPP(): The condition `ubound(sample, rank(sample)) == ubound(membership, 1)` must hold. ubound(sample, rank(sample)), ubound(membership, 1) = "//getStr([nsam, ubound(membership, 1, IK)]))
         CHECK_ASSERTION(__LINE__, ncls <= nsam, SK_"@setKmeansPP(): The condition `ncls < ubound(sample, rank(sample))` must hold. ncls, ubound(sample, rank(sample)) = "//getStr([ncls, nsam]))
 

@@ -315,7 +315,7 @@ module pm_distUnifSphere
     !>                                          implying the use of [xoshiro256**](https://prng.di.unimi.it/) uniform RNG.<br>
     !>                              </ol>
     !>                              (**optional**, default = [rngf_type](@ref pm_distUnif::rngf_type).)
-    !>  \param[in]      mean    :   The input `contiguous` vector of the same type, kind, rank, and size as the output `rand`, representing the center of the sphere.<br>
+    !>  \param[in]      mean    :   The input `contiguous` vector of shape `(1:ndim)`, of the same type and kind as the output `rand`, representing the center of the sphere.<br>
     !>                              (**optional**, default = `[(0., i = 1, size(rand))]`. It must be present if the input argument `chol` is missing.)
     !>  \param[in]      chol    :   The input `contiguous` matrix of shape `(ndim, ndim)` whose specified triangular `subset` contains the [Cholesky Factorization](@ref pm_matrixChol)
     !>                              of the Gramian matrix of the corresponding hyper-ellipsoid on which the output random vectors must be distributed proportional to the ellipsoidal surface curvature.<br>
@@ -2476,12 +2476,12 @@ module pm_distUnifSphere
     !>                                          implying the use of [xoshiro256**](https://prng.di.unimi.it/) uniform RNG.<br>
     !>                              </ol>
     !>                              (**optional**, default = [rngf_type](@ref pm_distUnif::rngf_type).)
-    !>  \param[out]     rand    :   The output `contiguous` array of rank `1` of length `ndim` of <br>
+    !>  \param[out]     rand    :   The output `contiguous` vector of shape `(1:ndim)` or matrix of shape `(1:ndim, 1:nsam)` of<br>
     !>                              <ul>
     !>                                  <li>    type `real` of kind \RKALL,<br>
     !>                              </ul>
     !>                              containing the random output vector.<br>
-    !>  \param[in]      mean    :   The input `contiguous` vector of the same type, kind, rank, and size as the output `rand`, representing the center of the sphere.<br>
+    !>  \param[in]      mean    :   The input `contiguous` vector of shape `(1:ndim)`, of the same type and kind as the output `rand`, representing the center of the sphere.<br>
     !>                              (**optional**, default = `[(0., i = 1, size(rand))]`. It must be present if the input argument `chol` is missing.)
     !>  \param[in]      chol    :   The input `contiguous` matrix of shape `(ndim, ndim)` whose specified triangular `subset` contains the [Cholesky Factorization](@ref pm_matrixChol)
     !>                              of the Gramian matrix of the corresponding hyper-ellipsoid on which the output random vectors must be distributed proportional to the ellipsoidal surface curvature.<br>
@@ -2528,8 +2528,8 @@ module pm_distUnifSphere
     !>  \endcode
     !>
     !>  \warning
+    !>  The condition `size(mean, 1) == size(rand, 1)` must hold for the corresponding input arguments.<br>
     !>  The condition `all(shape(chol) == size(rand, 1))` must hold for the corresponding input arguments.<br>
-    !>  The condition `size(mean, 1, IK) == size(rand)` must hold for the corresponding input arguments.<br>
     !>  \vericons
     !>
     !>  \impure

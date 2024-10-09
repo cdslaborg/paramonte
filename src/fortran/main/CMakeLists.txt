@@ -25,12 +25,12 @@ set(sterile
     pm_array
     pm_bit
     pm_blas
+    pm_clusDensity
     pm_control
     pm_lapack
     pm_mathConst
     pm_memory
     pm_paramonte
-    pm_partition
     pm_physUnit
     pm_search
     pm_strANSI
@@ -161,6 +161,7 @@ set(grandpa
     pm_distMultiNorm
     pm_distNormShell
     pm_distUnifEll
+    pm_distUnifElls
     pm_distUnifPar
     pm_distNegExp
     pm_distNorm

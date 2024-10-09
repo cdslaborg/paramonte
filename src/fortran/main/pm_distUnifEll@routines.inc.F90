@@ -71,9 +71,9 @@
 #endif
         ! Perform runtime bound checks.
 #if     AM_ENABLED
-        CHECK_ASSERTION(__LINE__, size(rand, 1, IK) == size(mean, 1, IK), SK_"@setUnifEllRand(): The condition `size(rand) == size(mean)` must hold. size(rand), size(mean) = "//getStr([size(rand, 1, IK), size(mean, 1, IK)]))
+        CHECK_ASSERTION(__LINE__, size(rand, 1, IK) == size(mean, 1, IK), SK_"@setUnifEllRand(): The condition `size(rand, 1) == size(mean, 1)` must hold. size(rand, 1), size(mean) = "//getStr([size(rand, 1, IK), size(mean, 1, IK)]))
 #elif   AC_ENABLED
-        CHECK_ASSERTION(__LINE__, all(size(rand, 1, IK) == shape(chol, IK)), SK_"@setUnifEllRand(): The condition `all(size(rand) == shape(chol))` must hold. size(rand), shape(chol) = "//getStr([size(rand, 1, IK), shape(chol, IK)]))
+        CHECK_ASSERTION(__LINE__, all(size(rand, 1, IK) == shape(chol, IK)), SK_"@setUnifEllRand(): The condition `all(size(rand, 1) == shape(chol))` must hold. size(rand, 1), shape(chol) = "//getStr([size(rand, 1, IK), shape(chol, IK)]))
 #elif   !(DM_ENABLED || DC_ENABLED)
 #error  "Unrecognized interface."
 #endif
