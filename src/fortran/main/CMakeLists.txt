@@ -161,7 +161,7 @@ set(grandpa
     pm_distMultiNorm
     pm_distNormShell
     pm_distUnifEll
-    pm_distUnifElls
+    #pm_distUnifElls
     pm_distUnifPar
     pm_distNegExp
     pm_distNorm
