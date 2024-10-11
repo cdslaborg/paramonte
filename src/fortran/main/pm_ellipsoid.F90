@@ -75,7 +75,7 @@
 !>
 !>  \note
 !>  <ol>
-!>      <li>    A ellipsoid with a diagonal representative Gramian matrix \f$\Sigma_\ell\f$ is an
+!>      <li>    An ellipsoid with a diagonal representative Gramian matrix \f$\Sigma_\ell\f$ is an
 !>              uncorrelated **hyper-ellipsoid** whose axes are parallel to the coordinate axes.<br>
 !>      <li>    An uncorrelated hyper-ellipsoid with equal diagonal elements in its
 !>              representative Gramian matrix \f$\Sigma_\ell\f$ is a **hyper-ball**.<br>

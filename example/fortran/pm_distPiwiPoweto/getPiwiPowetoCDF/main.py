@@ -41,7 +41,7 @@ for kind in ["IK", "CK", "RK"]:
                     , linewidth = linewidth
                    #, color = "r"
                     )
-            plt.plot( df.values[:,1]
+            plt.plot( df.values[:, 1]
                     , df.values[:,[3,5]]
                     , marker[kind]
                     , linewidth = linewidth

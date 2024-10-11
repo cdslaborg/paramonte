@@ -687,7 +687,7 @@ module pm_matrixSubset
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !>  Generate and return the objects representing the symmetric
+    !>  Generate and return the objects representing the symmetric mirror
     !>  subset of the input matrix subset `sub` with respect to the main diagonal of the matrix.
     !>
     !>  \param[in]  sub     :   The input scalar (or array of arbitrary rank and shape) of,
@@ -703,7 +703,7 @@ module pm_matrixSubset
     !>
     !>  \return
     !>  `subSymm`           :   The output object of the same rank and shape as the input subset `sub` whose
-    !>                          type represents the matrix subset corresponding to the symmetric subset of
+    !>                          type represents the matrix subset corresponding to the symmetric mirror subset of
     !>                          the input subset `sub` with respect to the main diagonal of the matrix.<br>
     !>                          <ol>
     !>                              <li>    If `sub` is of type [upp_type](@ref pm_matrixSubset::upp_type), then the output `subSymm` is of type [low_type](@ref pm_matrixSubset::low_type).

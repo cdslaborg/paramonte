@@ -24,7 +24,7 @@ for kind in ["neimean", "neinear", "neinext", "neiprev", "piwilin", "monopol", "
         ax = plt.subplot(1,1,1)
 
         ax.scatter  ( df.values[:, 0]
-                    , df.values[:,1]
+                    , df.values[:, 1]
                     , zorder = 1000
                     , c = "black"
                     , s = 8

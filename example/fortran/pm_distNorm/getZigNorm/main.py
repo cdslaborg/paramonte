@@ -30,12 +30,12 @@ for kind in ["RK"]:
 
         # the scatter plot:
         ax.plot     ( df.values[:, 0]
-                    , df.values[:,1]
+                    , df.values[:, 1]
                     , linewidth = 2
                     , color = "black"
                     )
         ax.scatter  ( df.values[:, 0]
-                    , df.values[:,1]
+                    , df.values[:, 1]
                     , s = 8
                     , zorder = 1000
                     , color = "red"

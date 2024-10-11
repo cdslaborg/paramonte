@@ -183,7 +183,7 @@ module pm_distUnifSphere
     !>  \note
     !>  Note that the procedures of this generic interface do not require an
     !>  input `X` value representing a location within the domain of the density function.<br>
-    !>  This is fine and intentional by design because the PDF is uniform across the entire support of the PDF.
+    !>  This is fine and intentional by design because the PDF is uniform across the entire support of the PDF.<br>
     !>
     !>  \param[in]  logRadius   :   The input scalar of the same type and kind as the output `logPDF`,
     !>                              containing the natural logarithm of the radius of the \f$n\f$-sphere embedded in the \f$\ndim\f$-dimensional space.<br>

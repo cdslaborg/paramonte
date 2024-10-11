@@ -56,7 +56,7 @@ plt.plot( df.values[:, 0]
         )
 for colname in df.columns.values[2:]:
     plt.plot( df.values[:, 0]
-            , df[colname].values / df.values[:,1]
+            , df[colname].values / df.values[:, 1]
             , linewidth = 2
             )
 

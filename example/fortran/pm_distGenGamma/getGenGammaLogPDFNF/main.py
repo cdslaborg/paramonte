@@ -34,14 +34,14 @@ for kind in ["IK", "CK", "RK"]:
                     , marker[kind]
                     , color = "r"
                     )
-            plt.plot( df.values[:,1]
+            plt.plot( df.values[:, 1]
                     , df.values[:,3]
                     , marker[kind]
                     , color = "blue"
                     )
         else:
             plt.plot( df.values[:, 0]
-                    , df.values[:,1]
+                    , df.values[:, 1]
                     , marker[kind]
                     , color = "r"
                     )

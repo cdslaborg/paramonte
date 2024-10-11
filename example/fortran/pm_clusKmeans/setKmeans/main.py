@@ -27,7 +27,7 @@ for prefix in list(prefixes.keys()):
             df = pd.read_csv(file, delimiter = ",", header = None)
 
             if kind == "center":
-                ax.scatter  ( df.values[:,1]
+                ax.scatter  ( df.values[:, 1]
                             , df.values[:,2]
                             , zorder = 100
                             , marker = "*"
@@ -36,7 +36,7 @@ for prefix in list(prefixes.keys()):
                             )
                 legends.append("center")
             elif kind == "sample":
-                ax.scatter  ( df.values[:,1]
+                ax.scatter  ( df.values[:, 1]
                             , df.values[:,2]
                             , c = df.values[:, 0]
                             , s = 10

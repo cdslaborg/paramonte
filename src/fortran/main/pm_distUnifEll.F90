@@ -79,7 +79,7 @@
 !>  **Random Number Generation**<br>
 !>
 !>  The **RNG** generic interfaces within this module generate uniformly-distributed random vectors from within an \f$\ndim\f$-dimensional
-!>  hyper-ellipsoid generalize the proposed approach of Marsaglia (1972) for choosing a point from the surface of a sphere.<br>
+!>  hyper-ellipsoid by generalizing the proposed approach of Marsaglia (1972) for choosing a point from the surface of a sphere.<br>
 !>  <ol>
 !>      <li>    Generate a normalized (unit) \f$\ndim\f$-dimensional [Multivariate Normal random vector](@ref pm_distMultiNorm),
 !>              \f{equation}{
@@ -109,7 +109,7 @@
 !>
 !>  \note
 !>  <ol>
-!>      <li>    A ellipsoid with a diagonal representative Gramian matrix \f$\gramian_\ell\f$ is an
+!>      <li>    An ellipsoid with a diagonal representative Gramian matrix \f$\gramian_\ell\f$ is an
 !>              uncorrelated **hyper-ellipsoid** whose axes are parallel to the coordinate axes.<br>
 !>      <li>    An uncorrelated hyper-ellipsoid with equal diagonal elements in its
 !>              representative Gramian matrix \f$\gramian_\ell\f$ is a **hyper-sphere**.<br>
@@ -203,7 +203,7 @@ module pm_distUnifEll
     !>  \note
     !>  Note that the procedures of this generic interface do not require an
     !>  input `X` value representing a location within the domain of the density function.<br>
-    !>  This is fine and intentional by design because the PDF is uniform across the entire support of the PDF.
+    !>  This is fine and intentional by design because the PDF is uniform across the entire support of the PDF.<br>
     !>
     !>  \param[in]  logChoDia   :   The input scalar or `contiguous` vector of shape `(1:ndim)` of the same type and kind as the output `logPDF`.<br>
     !>                              <ol>
@@ -214,7 +214,7 @@ module pm_distUnifEll
     !>                                          of the corresponding hyper-spherical support of the distribution.<br>
     !>                              </ol>
     !>                              (**optional**. It must be present **if and only if** the input `gramian` is missing.)
-    !>  \param[in]  ndim        :   The input positive scalar of type `integer` of default kind \IK, containing the number of dimensions of the distribution.<br>
+    !>  \param[in]  ndim        :   The input positive scalar of type `integer` of default kind \IK, containing the number of dimensions of the domain of the distribution.<br>
     !>                              (**optional**. It must be present **if and only if** the input `logChoDia` is present and is a scalar.)
     !>  \param[in]  gramian     :   The input square matrix of shape `(1:ndim, 1:ndim)` of the same type and kind as the output `logPDF`,
     !>                              containing the **upper** triangle and diagonal elements of the

@@ -35,7 +35,7 @@ cd(fileparts(mfilename('fullpath'))); % Change working directory to source code 
 
 % define the objective function
 
-NDIM = 2; % number of dimensions of the distribution
+NDIM = 2; % number of dimensions of the domain of the distribution
 
 % create a ParaMonte object
 

@@ -154,7 +154,7 @@ module pm_distUnifPar
     !>                                  <li>    If `logLenEdge` is a vector, the support of the distribution is assumed to be a hyper-rectangle.<br>
     !>                              </ol>
     !>                              (**optional**. It must be present **if and only if** the input `repmat` is missing.)
-    !>  \param[in]  ndim        :   The input positive scalar of type `integer` of default kind \IK, containing the number of dimensions of the distribution.<br>
+    !>  \param[in]  ndim        :   The input positive scalar of type `integer` of default kind \IK, containing the number of dimensions of the domain of the distribution.<br>
     !>                              (**optional**. It must be present **if and only if** the input `logLenEdge` is present and is a scalar.)
     !>  \param[in]  repmat      :   The input square matrix of shape `(1:ndim, 1:ndim)` of the same type and kind as the output `logPDF`,
     !>                              containing the [representative matrix](@ref pm_distUnifPar) \f$M_R\f$ of the parallelepiped.<br>
@@ -420,7 +420,7 @@ module pm_distUnifPar
     !>                                          matrix of the `ndim`-dimensional hyper-parallelepiped support of the distribution.<br>
     !>                              </ol>
     !>  \param[in]  ndim        :   The input positive scalar of type `integer` of default kind \IK,
-    !>                              containing the number of dimensions of the distribution.<br>
+    !>                              containing the number of dimensions of the domain of the distribution.<br>
     !>                              (**optional**. It must be present **if and only if** the input `lb` and `ub` are scalar.)
     !>
     !>  \return

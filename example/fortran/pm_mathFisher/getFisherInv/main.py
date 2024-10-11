@@ -17,8 +17,8 @@ df = pd.read_csv(examname + ".csv", delimiter = ",")
 fig = plt.figure(figsize = 1.25 * np.array([6.4, 4.8]), dpi = 200)
 ax = plt.subplot()
 
-plt.plot( df.values[:,1]
-        , df.values[:,1]
+plt.plot( df.values[:, 1]
+        , df.values[:, 1]
         , linestyle = "-"
         , linewidth = 2
         )

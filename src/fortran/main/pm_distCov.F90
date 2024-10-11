@@ -51,6 +51,9 @@
 !>              The resulting correlation matrix can be arbitrarily scaled along different dimensions to generate power-law randomly-distributed **covariance matrix**.<br>
 !>  </ol>
 !>
+!>  \see
+!>  [pm_distBeta](@ref pm_distBeta)<br>
+!>
 !>  \test
 !>  [test_pm_distCov](@ref test_pm_distCov)<br>
 !>
@@ -58,9 +61,6 @@
 !>  \pvhigh
 !>  The output square matrices from the onion method are frequently non-positive-definite, particularly in higher dimensions.<br>
 !>  A closer look into the root causes of this instability must be done.<br>
-!>
-!>  \see
-!>  [pm_distBeta](@ref pm_distBeta)<br>
 !>
 !>  \final
 !>

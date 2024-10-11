@@ -72,9 +72,24 @@
         ! Perform runtime bound checks.
 #if     AM_ENABLED
         CHECK_ASSERTION(__LINE__, size(rand, 1, IK) == size(mean, 1, IK), SK_"@setUnifEllRand(): The condition `size(rand, 1) == size(mean, 1)` must hold. size(rand, 1), size(mean) = "//getStr([size(rand, 1, IK), size(mean, 1, IK)]))
-#elif   AC_ENABLED
+#endif
+#if     AC_ENABLED
         CHECK_ASSERTION(__LINE__, all(size(rand, 1, IK) == shape(chol, IK)), SK_"@setUnifEllRand(): The condition `all(size(rand, 1) == shape(chol))` must hold. size(rand, 1), shape(chol) = "//getStr([size(rand, 1, IK), shape(chol, IK)]))
-#elif   !(DM_ENABLED || DC_ENABLED)
+        ! Define the indexing rules.
+#if     XLD_ENABLED
+#define GET_INDEX(I,J)I,J
+#elif   UXD_ENABLED
+#define GET_INDEX(I,J)J,I
+#elif   D1_ENABLED && setMUR_ENABLED
+#error  "Unrecognized interface."
+#endif
+#endif
+        ! Define the default mean.
+#if     DM_ENABLED
+#define MEAN_PLUS(I)
+#elif   AM_ENABLED
+#define MEAN_PLUS(I) mean(I) +
+#else
 #error  "Unrecognized interface."
 #endif
         ndim = size(rand, kind = IK)
@@ -94,29 +109,14 @@
         call setUnifRand(rng, unifrnd)
 #endif
         unifrnd = unifrnd**ndimInv / sqrt(sumSqUnifBallRand)
-        UNIFBALLRAND = UNIFBALLRAND * unifrnd ! a uniform random point from inside of nd-sphere
 #if     AC_ENABLED
-        ! Define the indexing rules.
-#if     XLD_ENABLED
-#define GET_INDEX(I,J)I,J
-#elif   UXD_ENABLED
-#define GET_INDEX(I,J)J,I
-#elif   D1_ENABLED && setMUR_ENABLED
-#error  "Unrecognized interface."
-#endif
-        ! Define the default mean.
-#if     DM_ENABLED
-#define MEAN_PLUS(I)
-#elif   AM_ENABLED
-#define MEAN_PLUS(I) mean(I) +
-#else
-#error  "Unrecognized interface."
-#endif
         ! Separate the first to allow the possibility of adding an optional `mean`.
-        rand(1 : ndim) = MEAN_PLUS(1 : ndim) chol(GET_INDEX(1 : ndim, 1)) * unifBallRand(1)
+        rand(1 : ndim) = MEAN_PLUS(1 : ndim) chol(GET_INDEX(1 : ndim, 1)) * unifBallRand(1) * unifrnd
         do idim = 2_IK, ndim
-            rand(idim : ndim) = rand(idim : ndim) + chol(GET_INDEX(idim : ndim, idim)) * unifBallRand(idim)
+            rand(idim : ndim) = rand(idim : ndim) + chol(GET_INDEX(idim : ndim, idim)) * unifBallRand(idim) * unifrnd
         end do
+#else
+        UNIFBALLRAND = MEAN_PLUS(1 : ndim) UNIFBALLRAND * unifrnd ! a uniform random point from inside of an ndim-sphere.
 #endif
 #undef  UNIFBALLRAND
 #undef  MEAN_PLUS

@@ -146,6 +146,7 @@ set(grandpa
     pm_distBeta
     pm_distBinom
     pm_distCosRaised
+    pm_distChol
     pm_distCov
     pm_distExp
     pm_distExpGamma
@@ -161,7 +162,7 @@ set(grandpa
     pm_distMultiNorm
     pm_distNormShell
     pm_distUnifEll
-    #pm_distUnifElls
+    pm_distUnifElls
     pm_distUnifPar
     pm_distNegExp
     pm_distNorm

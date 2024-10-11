@@ -42,7 +42,7 @@ for kind in ["IK", "CK", "RK"]:
                     , density = True
                     , alpha = 1
                     )
-            ax.hist ( df.values[:,1]
+            ax.hist ( df.values[:, 1]
                     , bins = 30
                     , histtype = "step"
                     , density = True

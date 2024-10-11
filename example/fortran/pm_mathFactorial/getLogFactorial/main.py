@@ -39,7 +39,7 @@ for kind in ["IK", "CK", "RK"]:
                     , linestyle = linestyle[kind]
                     , color = "r"
                     )
-            plt.plot( df.values[:,1]
+            plt.plot( df.values[:, 1]
                     , df.values[:,3]
                     , marker = marker[kind]
                     , linestyle = linestyle[kind]
@@ -47,7 +47,7 @@ for kind in ["IK", "CK", "RK"]:
                     )
         else:
             plt.plot( df.values[:, 0]
-                    , df.values[:,1]
+                    , df.values[:, 1]
                     , marker = marker[kind]
                     , linestyle = linestyle[kind]
                     , color = "r"

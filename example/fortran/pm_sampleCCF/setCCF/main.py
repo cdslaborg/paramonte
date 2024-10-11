@@ -36,7 +36,7 @@ for kind in ["sin.cos.RK"]:
     fig = plt.figure(figsize = (8, 6))
     ax = plt.subplot(1,1,1)
     ax.plot ( df.values[:, 0]
-            , df.values[:,1]
+            , df.values[:, 1]
             , zorder = 1000
             )
     plt.minorticks_on()

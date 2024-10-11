@@ -136,6 +136,8 @@
         do idim = 1, ndim
             do
                 call setUnifRand(rng, upper(1 : idim, idim), LB, UB)
+                upper(idim, idim) = abs(upper(idim, idim))
+                if (real(upper(idim, idim), TKG) < epsilon(0._TKG)) upper(idim, idim) = ONE
                 normfac = real(sqrt(dot_product(upper(1 : idim, idim), upper(1 : idim, idim))), TKG)
                 ! \todo: The performance of the above expression can be improved by replacing `dot_product` with `absq()`.
                 if (0._TKG == normfac) cycle

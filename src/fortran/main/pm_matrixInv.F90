@@ -314,7 +314,7 @@ module pm_matrixInv
     !>  \interface{getMatInv}
     !>  \code{.F90}
     !>
-    !>      use pm_matrixInv, only: getMatInv
+    !>      use pm_matrixInv, only: getMatInv, choUpp, choLow, upperDiag, lowerDiag
     !>
     !>      inv(1:ndim, 1:ndim) = getMatInv(mat(1:ndim, 1:ndim))
     !>      inv(1:ndim, 1:ndim) = getMatInv(mat(1:ndim, 1:ndim), auxil)

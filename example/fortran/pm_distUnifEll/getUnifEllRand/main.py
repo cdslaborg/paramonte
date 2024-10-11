@@ -42,13 +42,13 @@ for kind in ["RK"]:
 
         # the scatter plot:
         ax.scatter  ( df.values[:, 0]
-                    , df.values[:,1]
+                    , df.values[:, 1]
                     , s = 8
                     , zorder = 1000
                     )
 
         ax_histx.hist(df.values[:, 0], bins = 50, zorder = 1000)
-        ax_histy.hist(df.values[:,1], bins = 50, orientation = "horizontal", zorder= 1000)
+        ax_histy.hist(df.values[:, 1], bins = 50, orientation = "horizontal", zorder = 1000)
 
         ax.set_xlabel("X", fontsize = 17)
         ax.set_ylabel("Y", fontsize = 17)
