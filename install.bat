@@ -1019,86 +1019,90 @@ for %%C in ("!list_fc:;=" "!") do (
                                     for %%D in ("!INSTALL_LOC_LIST:/=" "!") do (
                                         for %%V in ("!MATLAB_VERSION_LIST:/=" "!") do (
 
-                                            set "MATLAB_ROOT_DIR_TEMP=%%~D%%~V"
-                                            set "MATLAB_BIN_DIR_TEMP=!MATLAB_ROOT_DIR_TEMP!\bin"
-                                            set "MATLAB_EXE_PATH_TEMP=!MATLAB_BIN_DIR_TEMP!\matlab.exe"
+                                            if !MATLAB_FOUND!==false (
 
-                                            if  exist !MATLAB_EXE_PATH_TEMP! (
+                                                set "MATLAB_ROOT_DIR_TEMP=%%~D%%~V"
+                                                set "MATLAB_BIN_DIR_TEMP=!MATLAB_ROOT_DIR_TEMP!\bin"
+                                                set "MATLAB_EXE_PATH_TEMP=!MATLAB_BIN_DIR_TEMP!\matlab.exe"
 
-                                                set MATLAB_FOUND=true
-                                                echo.!pmnote! !BoldYellow!MATLAB %%~V installation detected at: !MATLAB_EXE_PATH! !ColorReset!
-                                                set "MATLAB_ROOT_DIR=!MATLAB_ROOT_DIR_TEMP!"
-                                                set "MATLAB_EXE_PATH=!MATLAB_EXE_PATH_TEMP!"
-                                                set "MATLAB_BIN_DIR=!MATLAB_BIN_DIR_TEMP!"
-                                                set "MATLAB_INC_DIR=!MATLAB_ROOT_DIR!\extern\include"
-                                                set "MATLAB_LIB_DIR=!MATLAB_ROOT_DIR!\extern\lib\win64\microsoft"
-                                                set "MATLAB_LIBMX_FILE=!MATLAB_LIB_DIR!\libmx.lib"
-                                                set "MATLAB_LIBMEX_FILE=!MATLAB_LIB_DIR!\libmex.lib"
-                                                set "MATLAB_LIBMAT_FILE=!MATLAB_LIB_DIR!\libmat.lib"
-                                                set "MATLAB_VERSION_FILE=!MATLAB_ROOT_DIR!\extern\version\fortran_mexapi_version.F"
-                                                REM set "MATLAB_INC_DIR_FLAG=/I:!MATLAB_INC_DIR!"
-                                                REM set FPP_FLAGS=/define:MATLAB_MEX_FILE
+                                                if  exist !MATLAB_EXE_PATH_TEMP! (
 
-                                                REM
-                                                REM  Build MATLAB MEX files.
-                                                REM
+                                                    set MATLAB_FOUND=true
+                                                    echo.!pmnote! !BoldYellow!MATLAB %%~V installation detected at: !MATLAB_EXE_PATH! !ColorReset!
+                                                    set "MATLAB_ROOT_DIR=!MATLAB_ROOT_DIR_TEMP!"
+                                                    set "MATLAB_EXE_PATH=!MATLAB_EXE_PATH_TEMP!"
+                                                    set "MATLAB_BIN_DIR=!MATLAB_BIN_DIR_TEMP!"
+                                                    set "MATLAB_INC_DIR=!MATLAB_ROOT_DIR!\extern\include"
+                                                    set "MATLAB_LIB_DIR=!MATLAB_ROOT_DIR!\extern\lib\win64\microsoft"
+                                                    set "MATLAB_LIBMX_FILE=!MATLAB_LIB_DIR!\libmx.lib"
+                                                    set "MATLAB_LIBMEX_FILE=!MATLAB_LIB_DIR!\libmex.lib"
+                                                    set "MATLAB_LIBMAT_FILE=!MATLAB_LIB_DIR!\libmat.lib"
+                                                    set "MATLAB_VERSION_FILE=!MATLAB_ROOT_DIR!\extern\version\fortran_mexapi_version.F"
+                                                    REM set "MATLAB_INC_DIR_FLAG=/I:!MATLAB_INC_DIR!"
+                                                    REM set FPP_FLAGS=/define:MATLAB_MEX_FILE
 
-                                                call set PMLIB_MATLAB_NAME=!PMLIB_NAME:_matlab_=_!
+                                                    REM
+                                                    REM  Build MATLAB MEX files.
+                                                    REM
 
-                                                REM /subsystem:windows
-                                                REM mex -setup:"C:\Program Files\MATLAB\R2019a\bin\win64\mexopts\intel_c_19_vs2017.xml" C
-                                                REM if !BTYPE!==debug   set "MATLAB_BUILD_FLAGS=!MATLAB_BUILD_FLAGS!/Od /Z7"
-                                                REM if !BTYPE!==testing set "MATLAB_BUILD_FLAGS=!MATLAB_BUILD_FLAGS!/O2"
-                                                REM if !BTYPE!==release set "MATLAB_BUILD_FLAGS=!MATLAB_BUILD_FLAGS!/Od"
+                                                    call set PMLIB_MATLAB_NAME=!PMLIB_NAME:_matlab_=_!
 
-                                                REM if !BTYPE!==debug   set "MATLAB_BUILD_FLAGS=!MATLAB_BUILD_FLAGS!!INTEL_CPP_DEBUG_FLAGS!"
-                                                REM if !BTYPE!==testing set "MATLAB_BUILD_FLAGS=!MATLAB_BUILD_FLAGS!!INTEL_CPP_TESTING_FLAGS!"
-                                                REM if !BTYPE!==release set "MATLAB_BUILD_FLAGS=!MATLAB_BUILD_FLAGS!!INTEL_CPP_RELEASE_FLAGS!"
+                                                    REM /subsystem:windows
+                                                    REM mex -setup:"C:\Program Files\MATLAB\R2019a\bin\win64\mexopts\intel_c_19_vs2017.xml" C
+                                                    REM if !BTYPE!==debug   set "MATLAB_BUILD_FLAGS=!MATLAB_BUILD_FLAGS!/Od /Z7"
+                                                    REM if !BTYPE!==testing set "MATLAB_BUILD_FLAGS=!MATLAB_BUILD_FLAGS!/O2"
+                                                    REM if !BTYPE!==release set "MATLAB_BUILD_FLAGS=!MATLAB_BUILD_FLAGS!/Od"
 
-                                                set "MEX_FLAGS=-v -nojvm"
-                                                echo.!pmnote! Generating the ParaMonte MATLAB MEX files...
-                                                echo.!pmnote! Compiler command: "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!paramonte_dir!\src\matlab\xrc\pm_sampling.c" libparamonte.lib -output pm_sampling
+                                                    REM if !BTYPE!==debug   set "MATLAB_BUILD_FLAGS=!MATLAB_BUILD_FLAGS!!INTEL_CPP_DEBUG_FLAGS!"
+                                                    REM if !BTYPE!==testing set "MATLAB_BUILD_FLAGS=!MATLAB_BUILD_FLAGS!!INTEL_CPP_TESTING_FLAGS!"
+                                                    REM if !BTYPE!==release set "MATLAB_BUILD_FLAGS=!MATLAB_BUILD_FLAGS!!INTEL_CPP_RELEASE_FLAGS!"
 
-                                                cd !paramonte_bld_dir!\lib
-                                                REM if not exist "%%~V" (mkdir "%%~V")
-                                                REM cd %%~V
-                                                call "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!paramonte_dir!\src\matlab\xrc\pm_sampling.c" libparamonte.lib -output pm_sampling && (
-                                                    echo.!pmnote! !BoldGreen! The ParaMonte MATLAB shared library build appears to have succeeded.!ColorReset!
-                                                ) || (
-                                                    echo.!pmwarn! !BoldMagenta!The ParaMonte MATLAB library build failed.!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!Please make sure you have the following components installed!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!on your system before rerunning the installation script:!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!    -- MATLAB, including MATLAB compilers.!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!    -- Intel Parallel Studio icl/ifort compilers 2018 or newer.!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!Once you are sure of the existence of these components in your !ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!Windows command line environment, run the following command:!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!    "!MATLAB_BIN_DIR!\mex.bat" -setup C!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!Among the options displayed, you should see the command to setup!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!the Intel OneAPI icl compiler on your system.!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!This command should look similar to the following,!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!    "!MATLAB_BIN_DIR_TEMP!\mex.bat" -setup:"C:\Program Files\MATLAB\R2024a\bin\win64\mexopts\intel_c_24_vs2022.xml" C!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!with minor differences depending on your specific installations of !ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!    -- the Intel OneAPI version!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!    -- the Microsoft Visual Studio version!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!    -- the MATLAB version!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!Copy and paste this command in your terminal, run it, and then rerun the ParaMonte MATLAB installation script.!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!Please report this issue at:!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!    https://github.com/cdslaborg/paramonte/issues!ColorReset!
-                                                    echo.!pmwarn! !BoldMagenta!!ColorReset!
-                                                    REM set ERRORLEVEL=1
-                                                    REM exit /B 1
+                                                    set "MEX_FLAGS=-v -nojvm"
+                                                    echo.!pmnote! Generating the ParaMonte MATLAB MEX files...
+                                                    echo.!pmnote! Compiler command: "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!paramonte_src_dir!\matlab\xrc\pm_sampling.c" libparamonte.lib -output pm_sampling
+
+                                                    cd !paramonte_bld_dir!\lib
+                                                    REM if not exist "%%~V" (mkdir "%%~V")
+                                                    REM cd %%~V
+                                                    call "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!paramonte_src_dir!\matlab\xrc\pm_sampling.c" libparamonte.lib -output pm_sampling && (
+                                                        echo.!pmnote! !BoldGreen!The ParaMonte MATLAB shared library build appears to have succeeded.!ColorReset!
+                                                    ) || (
+                                                        echo.!pmwarn! !BoldMagenta!The ParaMonte MATLAB library build failed.!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!Please make sure you have the following components installed!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!on your system before rerunning the installation script:!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!    -- MATLAB, including MATLAB compilers.!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!    -- Intel Parallel Studio icl/ifort compilers 2018 or newer.!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!Once you are sure of the existence of these components in your !ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!Windows command line environment, run the following command:!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!    "!MATLAB_BIN_DIR!\mex.bat" -setup C!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!Among the options displayed, you should see the command to setup!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!the Intel OneAPI icl compiler on your system.!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!This command should look similar to the following,!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!    "!MATLAB_BIN_DIR_TEMP!\mex.bat" -setup:"C:\Program Files\MATLAB\R2024a\bin\win64\mexopts\intel_c_24_vs2022.xml" C!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!with minor differences depending on your specific installations of !ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!    -- the Intel OneAPI version!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!    -- the Microsoft Visual Studio version!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!    -- the MATLAB version!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!Copy and paste this command in your terminal, run it, and then rerun the ParaMonte MATLAB installation script.!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!Please report this issue at:!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!    https://github.com/cdslaborg/paramonte/issues!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!!ColorReset!
+                                                        REM set ERRORLEVEL=1
+                                                        REM exit /B 1
+                                                    )
+                                                    cd %~dp0
+
                                                 )
-                                                cd %~dp0
 
                                             )
                                         )
@@ -1196,7 +1200,7 @@ for %%C in ("!list_fc:;=" "!") do (
 )
 
 echo.
-echo.!pmnote! !BoldGreen!All build files for all requested build configurations are stored at!ColorReset! "!paramonte_dir!bld"
+echo.!pmnote! !BoldGreen!All build files for all requested build configurations are stored at!ColorReset! "!paramonte_bld_dir!"
 echo.!pmnote! !BoldGreen!The installed binary files for all requested build configurations are ready to use at!ColorReset! "!ddir!"
 echo.
 

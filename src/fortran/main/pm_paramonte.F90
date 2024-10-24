@@ -289,7 +289,10 @@ module pm_paramonte
 #define PROGNAME"Swift"
 
 #else
-#error  "Unrecognized interface."
+! Assume default Fortran.
+#define PROGLANG fortran
+#define PROGNAME"Fortran"
+!#error  "Unrecognized interface."
 #endif
 !>  \endcond excluded
 
