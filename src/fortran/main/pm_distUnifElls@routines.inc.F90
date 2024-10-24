@@ -38,7 +38,7 @@
         CHECK_ASSERTION(__LINE__, all(shape(invGram, IK) == [size(mean, 1, IK), size(mean, 1, IK), size(mean, 2, IK)]), SK_"@getUnifEllsLogPDF(): The condition `all(shape(invGram) == [size(mean, 1), size(mean, 1), size(mean, 2)])` must hold. shape(invGram), shape(mean) = "//getStr([shape(invGram, IK), shape(mean, IK)]))
         maxLogVol = -huge(maxLogVol)
         do  iell = 1, size(mean, 2, IK)
-            cumPropVol(iell) = getMatMulTraceLog(chol(:, :, iell))
+            cumPropVol(iell) = getMatMulTraceLog(chol(:, 1 : size(mean, 1, IK), iell))
             if (maxLogVol < cumPropVol(iell)) maxLogVol = cumPropVol(iell)
         end do
         call setCumPropExp(cumPropVol, maxArray = maxLogVol, control = sequence)
