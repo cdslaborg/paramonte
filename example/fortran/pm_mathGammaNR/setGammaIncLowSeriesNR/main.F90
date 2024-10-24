@@ -5,7 +5,7 @@ program example
     use pm_kind, only: LK
     use pm_kind, only: RKS, RKD, RKH
     use pm_io, only: display_type
-    use pm_mathGammaNR, only: setGammaIncLowNR
+    use pm_mathGammaNR, only: setGammaIncLowSeriesNR
 
     implicit none
 
@@ -31,8 +31,8 @@ program example
     call disp%show( x_RKS )
     call disp%show("kappa_RKS")
     call disp%show( kappa_RKS )
-    call disp%show("call setGammaIncLowNR(gamIncLow_RKS, x_RKS, logGammaKappa = log_gamma(kappa_RKS), kappa = kappa_RKS, info = info)")
-                    call setGammaIncLowNR(gamIncLow_RKS, x_RKS, logGammaKappa = log_gamma(kappa_RKS), kappa = kappa_RKS, info = info)
+    call disp%show("call setGammaIncLowSeriesNR(gamIncLow_RKS, x_RKS, logGammaKappa = log_gamma(kappa_RKS), kappa = kappa_RKS, info = info)")
+                    call setGammaIncLowSeriesNR(gamIncLow_RKS, x_RKS, logGammaKappa = log_gamma(kappa_RKS), kappa = kappa_RKS, info = info)
     call disp%show("gamIncLow_RKS")
     call disp%show( gamIncLow_RKS )
     call disp%show("info")
@@ -44,8 +44,8 @@ program example
     call disp%show( x_RKD)
     call disp%show("kappa_RKD")
     call disp%show( kappa_RKD)
-    call disp%show("call setGammaIncLowNR(gamIncLow_RKD, x_RKD, logGammaKappa = log_gamma(kappa_RKD), kappa = kappa_RKD, info = info)")
-                    call setGammaIncLowNR(gamIncLow_RKD, x_RKD, logGammaKappa = log_gamma(kappa_RKD), kappa = kappa_RKD, info = info)
+    call disp%show("call setGammaIncLowSeriesNR(gamIncLow_RKD, x_RKD, logGammaKappa = log_gamma(kappa_RKD), kappa = kappa_RKD, info = info)")
+                    call setGammaIncLowSeriesNR(gamIncLow_RKD, x_RKD, logGammaKappa = log_gamma(kappa_RKD), kappa = kappa_RKD, info = info)
     call disp%show("gamIncLow_RKD")
     call disp%show( gamIncLow_RKD)
     call disp%show("info")
@@ -57,8 +57,8 @@ program example
     call disp%show( x_RKH )
     call disp%show("kappa_RKH")
     call disp%show( kappa_RKH )
-    call disp%show("call setGammaIncLowNR(gamIncLow_RKH, x_RKH, logGammaKappa = log_gamma(kappa_RKH), kappa = kappa_RKH, info = info)")
-                    call setGammaIncLowNR(gamIncLow_RKH, x_RKH, logGammaKappa = log_gamma(kappa_RKH), kappa = kappa_RKH, info = info)
+    call disp%show("call setGammaIncLowSeriesNR(gamIncLow_RKH, x_RKH, logGammaKappa = log_gamma(kappa_RKH), kappa = kappa_RKH, info = info)")
+                    call setGammaIncLowSeriesNR(gamIncLow_RKH, x_RKH, logGammaKappa = log_gamma(kappa_RKH), kappa = kappa_RKH, info = info)
     call disp%show("gamIncLow_RKH")
     call disp%show( gamIncLow_RKH )
     call disp%show("info")
@@ -81,8 +81,8 @@ program example
         call disp%show( exprange )
         call disp%show("allocate(gamIncLow(size(exprange)), info(size(exprange)))")
                         allocate(gamIncLow(size(exprange)), info(size(exprange)))
-        call disp%show("call setGammaIncLowNR(gamIncLow, 10._RKG**exprange, logGammaKappa = log_gamma(10._RKG**exprange), kappa = 10._RKG**exprange, info = info)")
-                        call setGammaIncLowNR(gamIncLow, 10._RKG**exprange, logGammaKappa = log_gamma(10._RKG**exprange), kappa = 10._RKG**exprange, info = info)
+        call disp%show("call setGammaIncLowSeriesNR(gamIncLow, 10._RKG**exprange, logGammaKappa = log_gamma(10._RKG**exprange), kappa = 10._RKG**exprange, info = info)")
+                        call setGammaIncLowSeriesNR(gamIncLow, 10._RKG**exprange, logGammaKappa = log_gamma(10._RKG**exprange), kappa = 10._RKG**exprange, info = info)
         call disp%show("gamIncLow")
         call disp%show( gamIncLow )
         call disp%show("info")
@@ -106,8 +106,8 @@ program example
         call disp%show( exprange )
         call disp%show("allocate(gamIncLow(size(exprange)), info(size(exprange)))")
                         allocate(gamIncLow(size(exprange)), info(size(exprange)))
-        call disp%show("call setGammaIncLowNR(gamIncLow, 10._RKG**exprange, logGammaKappa = log_gamma(10._RKG**exprange), kappa = 10._RKG**exprange, info = info)")
-                        call setGammaIncLowNR(gamIncLow, 10._RKG**exprange, logGammaKappa = log_gamma(10._RKG**exprange), kappa = 10._RKG**exprange, info = info)
+        call disp%show("call setGammaIncLowSeriesNR(gamIncLow, 10._RKG**exprange, logGammaKappa = log_gamma(10._RKG**exprange), kappa = 10._RKG**exprange, info = info)")
+                        call setGammaIncLowSeriesNR(gamIncLow, 10._RKG**exprange, logGammaKappa = log_gamma(10._RKG**exprange), kappa = 10._RKG**exprange, info = info)
         call disp%show("gamIncLow")
         call disp%show( gamIncLow )
         call disp%show("info")
@@ -131,8 +131,8 @@ program example
         call disp%show( exprange )
         call disp%show("allocate(gamIncLow(size(exprange)), info(size(exprange)))")
                         allocate(gamIncLow(size(exprange)), info(size(exprange)))
-        call disp%show("call setGammaIncLowNR(gamIncLow, 10._RKG**exprange, logGammaKappa = log_gamma(10._RKG**exprange), kappa = 10._RKG**exprange, info = info)")
-                        call setGammaIncLowNR(gamIncLow, 10._RKG**exprange, logGammaKappa = log_gamma(10._RKG**exprange), kappa = 10._RKG**exprange, info = info)
+        call disp%show("call setGammaIncLowSeriesNR(gamIncLow, 10._RKG**exprange, logGammaKappa = log_gamma(10._RKG**exprange), kappa = 10._RKG**exprange, info = info)")
+                        call setGammaIncLowSeriesNR(gamIncLow, 10._RKG**exprange, logGammaKappa = log_gamma(10._RKG**exprange), kappa = 10._RKG**exprange, info = info)
         call disp%show("gamIncLow")
         call disp%show( gamIncLow )
         call disp%show("info")
@@ -151,9 +151,9 @@ program example
         integer :: fileUnit, i
 
         call setLinSpace(x_RKS, 0._RKS, 8._RKS)
-        open(newunit = fileUnit, file = "setGammaIncLowNR.RK.txt")
+        open(newunit = fileUnit, file = "setGammaIncLowSeriesNR.RK.txt")
         do i = 1, NP
-            call setGammaIncLowNR(gamIncLow_RKS, x_RKS(i), logGammaKappa = log_gamma(kappa_RKS), kappa = kappa_RKS, info = info)
+            call setGammaIncLowSeriesNR(gamIncLow_RKS, x_RKS(i), logGammaKappa = log_gamma(kappa_RKS), kappa = kappa_RKS, info = info)
             write(fileUnit,"(2(g0,:,' '))") x_RKS(i), gamIncLow_RKS
         end do
         close(fileUnit)

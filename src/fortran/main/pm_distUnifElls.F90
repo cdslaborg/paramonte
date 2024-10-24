@@ -216,15 +216,42 @@ module pm_distUnifElls
     !>  input `X` value representing a location within the domain of the density function.<br>
     !>  This is fine and intentional by design because the PDF is uniform across the entire support of the PDF.<br>
     !>
-    !>  \param[in]      invmul      :   The input vector of shape `(1:nsam)` of the same type and kind as the output `logPDF`,
-    !>                                  each element of which represents the inverse of the number of ellipsoids within which the corresponding sampled random vector falls.
-    !>  \param[in]      ndim        :   The input positive scalar of type `integer` of default kind \IK, containing the number of dimensions of the domain of the distribution.<br>
-    !>                                  (**optional**. It must be present **if and only if** the input argument `nell` is also present and `chol` is missing.)
-    !>  \param[in]      nell        :   The input positive scalar of type `integer` of default kind \IK, containing the number of ellpisoids in the distribution.<br>
-    !>                                  (**optional**. It must be present **if and only if** the input argument `ndim` is also present and `chol` is missing.)
+    !>  \param[inout]   rng         :   The input/output scalar that can be an object of,
+    !>                                  <ol>
+    !>                                      <li>    type [rngf_type](@ref pm_distUnif::rngf_type),
+    !>                                              implying the use of intrinsic Fortran uniform RNG.<br>
+    !>                                      <li>    type [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type),
+    !>                                              implying the use of [xoshiro256**](https://prng.di.unimi.it/) uniform RNG.<br>
+    !>                                  </ol>
+    !>  \param[in]      mean        :   The input `contiguous` matrix of shape `(1:ndim, 1:nell)`, of the same type and kind as the output `logPDF`,
+    !>                                  representing the centers of the ellipsoids in the distribution.<br>
     !>  \param[in]      chol        :   The input `contiguous` array of shape `(1:ndim, 1:ndim, 1:nell)` whose specified triangular `subset` contains
     !>                                  the [Cholesky Factorization](@ref pm_matrixChol) of the Gramian matrix of the MMVUE distribution.<br>
-    !>                                  (**optional**, the default is the Identity matrix of rank `ndim`. It must be present <b>if and only if</b> the input argument `subset` and `invGram` are also present.)
+    !>  \param[in]      subset      :   The input scalar constant that can be any of the following:<br>
+    !>                                  <ol>
+    !>                                      <li>    the constant [uppDia](@ref pm_matrixSubset::uppDia) or an object of type [uppDia_type](@ref pm_matrixSubset::uppDia_type)
+    !>                                              implying that the upper-diagonal triangular block of the input `chol` must be used while the lower subset is not referenced.<br>
+    !>                                      <li>    the constant [lowDia](@ref pm_matrixSubset::lowDia) or an object of type [lowDia_type](@ref pm_matrixSubset::lowDia_type)
+    !>                                              implying that the lower-diagonal triangular block of the input `chol` must be used while the upper subset is not referenced.<br>
+    !>                                  </ol>
+    !>                                  This argument is merely a convenience to differentiate the different procedure functionalities within this generic interface.<br>
+    !>  \param[in]      invGram     :   The input array of shape `(1:ndim, 1:ndim, 1:nell)` of the same type and kind as the input argument `point`,
+    !>                                  containing the collection of square matrices of full inverse representative Gramian matrix of the \f$\ndim\f$-dimensional ellipsoids in the distribution.<br>
+    !>                                  This argument is needed to determine the membership of the generated random vectors for estimating the effective volumes the ellipsoids.<br>
+    !>  \param[in]      nsim        :   The input positive scalar of type `integer` of default kind \IK, containing the number of random number simulations in approximating the PDF of the distribution.<br>
+    !>                                  The larger this integer, the more accurate the `logPDF` estimate will be.<br>
+    !>                                  (**optional**, default = `10000`.)
+    !>  \param[in]      normed      :   The input positive scalar of type `logical` of default kind \LK.<br>
+    !>                                  <ol>
+    !>                                      <li>    If set to `.false.`, the output `logPDF` will contain the usual normalizing factor corresponding to the volume of a [unit-ball](@ref pm_ellipsoid) in the corresponding number of dimensions of the domain of the distribution.<br>
+    !>                                      <li>    If set to `.true.`, the output `logPDF` will **not** contain the factor corresponding to the volume of a [unit-ball](@ref pm_ellipsoid) in the corresponding number of dimensions of the domain of the distribution.<br>
+    !>                                              This factor is returned by the generic interface [getLogVolUnitBall](@ref pm_ellipsoid::getLogVolUnitBall).<br>
+    !>                                              In such a case, the output `logPDF` is not simply the natural logarithm of the inverse of effective volumes of the ellipsoids,
+    !>                                              but instead, their effective sum of the square-roots of the [multiplicative traces](@ref pm_matrixTrace) of their Cholesky factors.<br>
+    !>                                              This normalized value is occasionally useful in [clustering algorithms](@ref pm_clusPartition) or when the normalization factor is irrelevant.<br>
+    !>                                              **Beware that in this case, the output `logPDF` does not represent the actual `log(PDF)` of the distribution, but is a constant-added equivalent to it**.<br>
+    !>                                  </ol>
+    !>                                  (**optional**, default = `.false.`.)
     !>
     !>  \return
     !>  `logPDF`                    :   The output scalar of,
@@ -238,25 +265,30 @@ module pm_distUnifElls
     !>
     !>      use pm_distUnifElls, only: getUnifEllsLogPDF
     !>
-    !>      logPDF = getUnifEllsLogPDF(chol, invmul)
+    !>      logPDF = getUnifEllsLogPDF(rng, mean(1:ndim, 1:nell), nsim = nsim, normed = normed) ! all ellipsoids are unit-balls centered on `mean` slices.
+    !>      logPDF = getUnifEllsLogPDF(rng, mean(1:ndim, 1:nell), chol(1:ndim, 1:ndim, 1:nell), subset, invGram(1:ndim, 1:ndim, 1:nell), nsim = nsim, normed = normed)
     !>      !
     !>  \endcode
     !>
     !>  \warning
-    !>  The condition `0 < ndim` must hold for the corresponding input arguments.<br>
+    !>  The condition `0 < nsim` must hold for the corresponding input arguments.<br>
+    !>  The condition `all(shape(invGram) == [size(mean, 1), size(mean, 1), size(mean, 2))` must hold for the corresponding input arguments.<br>
+    !>  The condition `size(chol, 1) <= size(chol, 2)` must hold for the corresponding input arguments (to ensure that arguments can be passed without data copy).<br>
+    !>  The condition `all([size(chol, 1), size(chol, 3)] == shape(mean))` must hold for the corresponding input arguments.<br>
+    !>  \vericons
+    !>
+    !>  \impure
+    !>  The procedures of this generic interface are `pure` when the input argument `rng` is set to
+    !>  [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type) and the compile-time macro `CHECK_ENABLED` is set to `0` or is undefined.<br>
+    !>
+    !>  \warning
     !>  The condition `0 < nell` must hold for the corresponding input arguments.<br>
     !>  The condition `all(invmul <= 1)` must hold for the corresponding input arguments.<br>
     !>  The condition `size(chol, 1) == size(chol, 2)` must hold for the corresponding input arguments.<br>
     !>  \vericons
     !>
-    !>  \warnpure
-    !>
-    !>  \remark
-    !>  The procedures under this generic interface are `elemental` when the input argument `ndim` is present.<br>
-    !>
     !>  \see
     !>  [pm_ellipsoid](@ref pm_ellipsoid)<br>
-    !>  [getUnifEllsRand](@ref pm_distUnifElls::getUnifEllsRand)<br>
     !>  [setUnifEllsRand](@ref pm_distUnifElls::setUnifEllsRand)<br>
     !>
     !>  \example{getUnifEllsLogPDF}
@@ -273,69 +305,233 @@ module pm_distUnifElls
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
 
-    ! NELL
+    ! RNGF
 
     interface getUnifEllsLogPDF
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE module function getUnifEllsLogPDFNELL_RK5(invmul, ndim, nell) result(logPDF)
+    impure module function getMMUP_RNGF_AM_DC_XXX_RK5(rng, mean, nsim, normed) result(logPDF)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUnifEllsLogPDFNELL_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGF_AM_DC_XXX_RK5
 #endif
         use pm_kind, only: RKG => RK5
-        integer(IK)         , intent(in)                    :: ndim, nell
-        real(RKG)           , intent(in)    , contiguous    :: invmul(:)
-        real(RKG)                                           :: logPDF
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
     end function
 #endif
 
 #if RK4_ENABLED
-    PURE module function getUnifEllsLogPDFNELL_RK4(invmul, ndim, nell) result(logPDF)
+    impure module function getMMUP_RNGF_AM_DC_XXX_RK4(rng, mean, nsim, normed) result(logPDF)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUnifEllsLogPDFNELL_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGF_AM_DC_XXX_RK4
 #endif
         use pm_kind, only: RKG => RK4
-        integer(IK)         , intent(in)                    :: ndim, nell
-        real(RKG)           , intent(in)    , contiguous    :: invmul(:)
-        real(RKG)                                           :: logPDF
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
     end function
 #endif
 
 #if RK3_ENABLED
-    PURE module function getUnifEllsLogPDFNELL_RK3(invmul, ndim, nell) result(logPDF)
+    impure module function getMMUP_RNGF_AM_DC_XXX_RK3(rng, mean, nsim, normed) result(logPDF)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUnifEllsLogPDFNELL_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGF_AM_DC_XXX_RK3
 #endif
         use pm_kind, only: RKG => RK3
-        integer(IK)         , intent(in)                    :: ndim, nell
-        real(RKG)           , intent(in)    , contiguous    :: invmul(:)
-        real(RKG)                                           :: logPDF
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
     end function
 #endif
 
 #if RK2_ENABLED
-    PURE module function getUnifEllsLogPDFNELL_RK2(invmul, ndim, nell) result(logPDF)
+    impure module function getMMUP_RNGF_AM_DC_XXX_RK2(rng, mean, nsim, normed) result(logPDF)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUnifEllsLogPDFNELL_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGF_AM_DC_XXX_RK2
 #endif
         use pm_kind, only: RKG => RK2
-        integer(IK)         , intent(in)                    :: ndim, nell
-        real(RKG)           , intent(in)    , contiguous    :: invmul(:)
-        real(RKG)                                           :: logPDF
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
     end function
 #endif
 
 #if RK1_ENABLED
-    PURE module function getUnifEllsLogPDFNELL_RK1(invmul, ndim, nell) result(logPDF)
+    impure module function getMMUP_RNGF_AM_DC_XXX_RK1(rng, mean, nsim, normed) result(logPDF)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUnifEllsLogPDFNELL_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGF_AM_DC_XXX_RK1
 #endif
         use pm_kind, only: RKG => RK1
-        integer(IK)         , intent(in)                    :: ndim, nell
-        real(RKG)           , intent(in)    , contiguous    :: invmul(:)
-        real(RKG)                                           :: logPDF
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
+    end function
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    impure module function getMMUP_RNGF_AM_AC_UXD_RK5(rng, mean, chol, subset, invGram, nsim, normed) result(logPDF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGF_AM_AC_UXD_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
+        type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
+    end function
+#endif
+
+#if RK4_ENABLED
+    impure module function getMMUP_RNGF_AM_AC_UXD_RK4(rng, mean, chol, subset, invGram, nsim, normed) result(logPDF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGF_AM_AC_UXD_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
+        type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
+    end function
+#endif
+
+#if RK3_ENABLED
+    impure module function getMMUP_RNGF_AM_AC_UXD_RK3(rng, mean, chol, subset, invGram, nsim, normed) result(logPDF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGF_AM_AC_UXD_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
+        type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
+    end function
+#endif
+
+#if RK2_ENABLED
+    impure module function getMMUP_RNGF_AM_AC_UXD_RK2(rng, mean, chol, subset, invGram, nsim, normed) result(logPDF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGF_AM_AC_UXD_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
+        type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
+    end function
+#endif
+
+#if RK1_ENABLED
+    impure module function getMMUP_RNGF_AM_AC_UXD_RK1(rng, mean, chol, subset, invGram, nsim, normed) result(logPDF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGF_AM_AC_UXD_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
+        type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
+    end function
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    impure module function getMMUP_RNGF_AM_AC_XLD_RK5(rng, mean, chol, subset, invGram, nsim, normed) result(logPDF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGF_AM_AC_XLD_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
+        type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
+    end function
+#endif
+
+#if RK4_ENABLED
+    impure module function getMMUP_RNGF_AM_AC_XLD_RK4(rng, mean, chol, subset, invGram, nsim, normed) result(logPDF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGF_AM_AC_XLD_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
+        type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
+    end function
+#endif
+
+#if RK3_ENABLED
+    impure module function getMMUP_RNGF_AM_AC_XLD_RK3(rng, mean, chol, subset, invGram, nsim, normed) result(logPDF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGF_AM_AC_XLD_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
+        type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
+    end function
+#endif
+
+#if RK2_ENABLED
+    impure module function getMMUP_RNGF_AM_AC_XLD_RK2(rng, mean, chol, subset, invGram, nsim, normed) result(logPDF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGF_AM_AC_XLD_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
+        type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
+    end function
+#endif
+
+#if RK1_ENABLED
+    impure module function getMMUP_RNGF_AM_AC_XLD_RK1(rng, mean, chol, subset, invGram, nsim, normed) result(logPDF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGF_AM_AC_XLD_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
+        type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
     end function
 #endif
 
@@ -343,64 +539,233 @@ module pm_distUnifElls
 
     end interface
 
-    ! CHOL
+    ! RNGX
 
     interface getUnifEllsLogPDF
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE module function getUnifEllsLogPDFCHOL_RK5(invmul, chol) result(logPDF)
+    impure module function getMMUP_RNGX_AM_DC_XXX_RK5(rng, mean, nsim, normed) result(logPDF)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUnifEllsLogPDFCHOL_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGX_AM_DC_XXX_RK5
 #endif
         use pm_kind, only: RKG => RK5
-        real(RKG)           , intent(in)    , contiguous    :: invmul(:), chol(:,:,:)
-        real(RKG)                                           :: logPDF
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
     end function
 #endif
 
 #if RK4_ENABLED
-    PURE module function getUnifEllsLogPDFCHOL_RK4(invmul, chol) result(logPDF)
+    impure module function getMMUP_RNGX_AM_DC_XXX_RK4(rng, mean, nsim, normed) result(logPDF)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUnifEllsLogPDFCHOL_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGX_AM_DC_XXX_RK4
 #endif
         use pm_kind, only: RKG => RK4
-        real(RKG)           , intent(in)    , contiguous    :: invmul(:), chol(:,:,:)
-        real(RKG)                                           :: logPDF
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
     end function
 #endif
 
 #if RK3_ENABLED
-    PURE module function getUnifEllsLogPDFCHOL_RK3(invmul, chol) result(logPDF)
+    impure module function getMMUP_RNGX_AM_DC_XXX_RK3(rng, mean, nsim, normed) result(logPDF)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUnifEllsLogPDFCHOL_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGX_AM_DC_XXX_RK3
 #endif
         use pm_kind, only: RKG => RK3
-        real(RKG)           , intent(in)    , contiguous    :: invmul(:), chol(:,:,:)
-        real(RKG)                                           :: logPDF
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
     end function
 #endif
 
 #if RK2_ENABLED
-    PURE module function getUnifEllsLogPDFCHOL_RK2(invmul, chol) result(logPDF)
+    impure module function getMMUP_RNGX_AM_DC_XXX_RK2(rng, mean, nsim, normed) result(logPDF)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUnifEllsLogPDFCHOL_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGX_AM_DC_XXX_RK2
 #endif
         use pm_kind, only: RKG => RK2
-        real(RKG)           , intent(in)    , contiguous    :: invmul(:), chol(:,:,:)
-        real(RKG)                                           :: logPDF
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
     end function
 #endif
 
 #if RK1_ENABLED
-    PURE module function getUnifEllsLogPDFCHOL_RK1(invmul, chol) result(logPDF)
+    impure module function getMMUP_RNGX_AM_DC_XXX_RK1(rng, mean, nsim, normed) result(logPDF)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUnifEllsLogPDFCHOL_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGX_AM_DC_XXX_RK1
 #endif
         use pm_kind, only: RKG => RK1
-        real(RKG)           , intent(in)    , contiguous    :: invmul(:), chol(:,:,:)
-        real(RKG)                                           :: logPDF
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
+    end function
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    impure module function getMMUP_RNGX_AM_AC_UXD_RK5(rng, mean, chol, subset, invGram, nsim, normed) result(logPDF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGX_AM_AC_UXD_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
+        type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
+    end function
+#endif
+
+#if RK4_ENABLED
+    impure module function getMMUP_RNGX_AM_AC_UXD_RK4(rng, mean, chol, subset, invGram, nsim, normed) result(logPDF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGX_AM_AC_UXD_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
+        type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
+    end function
+#endif
+
+#if RK3_ENABLED
+    impure module function getMMUP_RNGX_AM_AC_UXD_RK3(rng, mean, chol, subset, invGram, nsim, normed) result(logPDF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGX_AM_AC_UXD_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
+        type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
+    end function
+#endif
+
+#if RK2_ENABLED
+    impure module function getMMUP_RNGX_AM_AC_UXD_RK2(rng, mean, chol, subset, invGram, nsim, normed) result(logPDF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGX_AM_AC_UXD_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
+        type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
+    end function
+#endif
+
+#if RK1_ENABLED
+    impure module function getMMUP_RNGX_AM_AC_UXD_RK1(rng, mean, chol, subset, invGram, nsim, normed) result(logPDF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGX_AM_AC_UXD_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
+        type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
+    end function
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    impure module function getMMUP_RNGX_AM_AC_XLD_RK5(rng, mean, chol, subset, invGram, nsim, normed) result(logPDF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGX_AM_AC_XLD_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
+        type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
+    end function
+#endif
+
+#if RK4_ENABLED
+    impure module function getMMUP_RNGX_AM_AC_XLD_RK4(rng, mean, chol, subset, invGram, nsim, normed) result(logPDF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGX_AM_AC_XLD_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
+        type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
+    end function
+#endif
+
+#if RK3_ENABLED
+    impure module function getMMUP_RNGX_AM_AC_XLD_RK3(rng, mean, chol, subset, invGram, nsim, normed) result(logPDF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGX_AM_AC_XLD_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
+        type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
+    end function
+#endif
+
+#if RK2_ENABLED
+    impure module function getMMUP_RNGX_AM_AC_XLD_RK2(rng, mean, chol, subset, invGram, nsim, normed) result(logPDF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGX_AM_AC_XLD_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
+        type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
+    end function
+#endif
+
+#if RK1_ENABLED
+    impure module function getMMUP_RNGX_AM_AC_XLD_RK1(rng, mean, chol, subset, invGram, nsim, normed) result(logPDF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getMMUP_RNGX_AM_AC_XLD_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
+        type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(in)    , optional      :: nsim
+        logical(LK)             , intent(in)    , optional      :: normed
+        real(RKG)                                               :: logPDF
     end function
 #endif
 
@@ -429,21 +794,29 @@ module pm_distUnifElls
     !>                                      <li>    type [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type),
     !>                                              implying the use of [xoshiro256**](https://prng.di.unimi.it/) uniform RNG.<br>
     !>                                  </ol>
-    !>  \param[out]     rand        :   The output `contiguous` matrix of shape `(1:ndim, 1:nsam)` of<br>
+    !>  \param[out]     rand        :   The output `contiguous` vector of shape `(1:ndim)` (or matrix of shape `(1:ndim, 1:nsam)`) of<br>
     !>                                  <ol>
     !>                                      <li>    type `real` of kind \RKALL,<br>
     !>                                  </ol>
-    !>                                  containing the random output vectors.<br>
-    !>  \param[out]     mahalSq     :   The output matrix of shape `(1:nell, 1:nsam)` of the same type and kind as the output `rand`,
-    !>                                  containing the squared Mahalanobis distances of individual randomly sampled vectors `rand(:, isam)` from the
+    !>                                  containing the (`nsam`) random output vector(s).<br>
+    !>  \param[out]     mahalSq     :   The output vector of shape `(1:nell)` (or matrix of shape `(1:nell, 1:nsam)`) of the same type and kind as the output `rand`,
+    !>                                  containing the squared Mahalanobis distance(s) of individual randomly sampled vector(s `rand(:, isam)`) from the
     !>                                  centers of the specified ellipsoids in the distribution via the input argument `mean(1:ndim, 1:nell)`.<br>
-    !>                                  A value larger than `1` for `mahalSq(iell, isam)` implies that the ranodm vector `rand(1:ndim, isam)` is
-    !>                                  outside ellipsoid `iell` specified by the input arguments, while a value less than `1` implies that the
-    !>                                  random vector is within the ellipsoid.<br>
-    !>                                  Thus, the expression `count(mahalSq(1:nell, isam) <= 1)` yields the membership count of `rand(1:ndim, isam)` in all input ellipsoids.
-    !>  \param[out]     invmul      :   The output vector of shape `(1:nsam)` of the same type and kind as the output `rand`,
-    !>                                  each element of which represents the inverse of the number of ellipsoids within which the corresponding random vector `rand(1:ndim, isam)` falls.
-    !>  \param[in]      mean        :   The input `contiguous` vector of shape `(1:ndim)`, of the same type and kind as the output `rand`,
+    !>                                  <ol>
+    !>                                      <li>    A value larger than `1` for the vector element `mahalSq(iell)` (or matrix element `mahalSq(iell, isam)`) implies
+    !>                                              that the random vector `rand(1:ndim, isam)` is outside ellipsoid `iell` specified by the input arguments.<br>
+    !>                                      <li>    A value less than `1` implies that the random vector is within the ellipsoid.<br>
+    !>                                  </ol>
+    !>                                  Thus,
+    !>                                  <ol>
+    !>                                      <li>    for vector `mahalSq(1:nell)`, the expression `count(mahalSq(1:nell) <= 1)` yields the membership count of `rand(1:ndim)` in all input ellipsoids.<br>
+    !>                                      <li>    for matrix `mahalSq(1:nell, 1:nsam)`, the expression `count(mahalSq(1:nell, isam) <= 1)` yields the membership count of `rand(1:ndim, isam)` in all input ellipsoids.<br>
+    !>                                  </ol>
+    !>  \param[out]     invmul      :   The output scalar (or vector of shape `(1:nsam)`) of the same type and kind as the output `rand`,
+    !>                                  (each element of) which represents the inverse of the number of ellipsoids within which the corresponding random vector `rand(1:ndim)` (or `rand(1:ndim, isam)`) falls.<br>
+    !>  \param[out]     membership  :   The output scalar (or vector of shape `(1:nsam)`) of type `integer` of default kind \IK,
+    !>                                  (the `isam` element of) which contains the ID of the ellipsoid from which (the `isam`) sampled point has been generated.<br>
+    !>  \param[in]      mean        :   The input `contiguous` matrix of shape `(1:ndim, 1:nell)`, of the same type and kind as the output `rand`,
     !>                                  representing the centers of the ellipsoids in the distribution.<br>
     !>  \param[in]      chol        :   The input `contiguous` array of shape `(1:ndim, 1:ndim, 1:nell)` whose specified triangular `subset` contains
     !>                                  the [Cholesky Factorization](@ref pm_matrixChol) of the Gramian matrix of the MMVUE distribution.<br>
@@ -457,33 +830,57 @@ module pm_distUnifElls
     !>                                  </ol>
     !>                                  This argument is merely a convenience to differentiate the different procedure functionalities within this generic interface.<br>
     !>                                  (**optional**. It must be present **if and only if** the input argument `chol` is present.)
-    !>  \param[in]      invGram     :   The input array of shape `(1:ndim, 1:ndim, 1:nell)` of the same type and kind as the input argument `point`,
-    !>                                  containing the collection of square matrices of full inverse representative Gramian matrix of the \f$\ndim\f$-dimensional ellipsoid.<br>
-    !>                                  This argument is needed to determine the membership of the output random vectors in the ellipsoids.<br>
-    !>                                  (**optional**. It must be present **if and only if** the inpt argument `chol` is present.)
+    !>  \param[in]      invGram     :   The input array of shape `(1:ndim, 1:ndim, 1:nell)` of the same type and kind as the output argument `rand`,
+    !>                                  containing the collection of square matrices of full inverse representative Gramian matrix of the \f$\ndim\f$-dimensional ellipsoids in the distribution.<br>
+    !>                                  This argument is needed to determine the membership of the output random vector(s) in the ellipsoids.<br>
+    !>                                  (**optional**. It must be present **if and only if** the input argument `chol` is present.)
+    !>  \param[in]      cumPropVol  :   The input vector of shape `(0:nell)` of the same type and kind as the output argument `rand`,
+    !>                                  the subset `(1:nell)` contains the cumulative *proportions* of the [multiplicative traces](@ref pm_matrixTrace)
+    !>                                  of the input Cholesky factors `chol` of the ellipsoids in the distribution.<br>
+    !>                                  This argument can be computed as,
+    !>                                  \code{.F90}
+    !>                                      use pm_mathCumPropExp, only: setCumPropExp, sequence
+    !>                                      use pm_matrixTrace, only: getMatMulTraceLog
+    !>                                      real(typeof(rand)) :: cumPropVol(size(mean, 2))
+    !>                                      do  iell = 1, size(mean, 2, IK)
+    !>                                          cumPropVol(iell) = getMatMulTraceLog(chol(:, :, iell))
+    !>                                      end do
+    !>                                      call setCumPropExp(cumPropVol, maxArray = maxval(cumPropVol), control = sequence)
+    !>                                  \endcode
+    !>                                  The presence of this argument significantly boosts the algorithm performance by avoiding redundant, repetitive computations.<br>
+    !>                                  (**optional**. It must be present **if and only if** the input arguments `chol` and `invGram` are present and the output argument `rand` is of rank `1`.)
     !>
     !>  \interface{setUnifEllsRand}
     !>  \code{.F90}
     !>
-    !>      use pm_distUnifElls, only: setUnifEllsRand
+    !>      use pm_distUnifElls, only: setUnifEllsRand, uppDia, lowDia
     !>
-    !>      call setUnifEllsRand(rng, rand(1:ndim, 1:nsam), mahalSq(1:nell, 1:nsam), invmul(1:nsam), mean(1:ndim, 1:nell))
-    !>      call setUnifEllsRand(rng, rand(1:ndim, 1:nsam), mahalSq(1:nell, 1:nsam), invmul(1:nsam), mean(1:ndim, 1:nell), chol(1:ndim, 1:ndim, 1:nell), subset, invGram(1:ndim, 1:ndim, 1:nell))
+    !>      ! 1D output random vector.
+    !>
+    !>      call setUnifEllsRand(rng, rand(1:ndim), mahalSq(1:nell), invmul, membership, mean(1:ndim, 1:nell))
+    !>      call setUnifEllsRand(rng, rand(1:ndim), mahalSq(1:nell), invmul, membership, mean(1:ndim, 1:nell), chol(1:ndim, 1:ndim, 1:nell), subset, invGram(1:ndim, 1:ndim, 1:nell), cumPropVol(1:nell))
+    !>
+    !>      ! 2D output random vector.
+    !>
+    !>      call setUnifEllsRand(rng, rand(1:ndim, 1:nsam), mahalSq(1:nell, 1:nsam), invmul(1:nsam), membership(1:nsam), mean(1:ndim, 1:nell))
+    !>      call setUnifEllsRand(rng, rand(1:ndim, 1:nsam), mahalSq(1:nell, 1:nsam), invmul(1:nsam), membership(1:nsam), mean(1:ndim, 1:nell), chol(1:ndim, 1:ndim, 1:nell), subset, invGram(1:ndim, 1:ndim, 1:nell))
     !>
     !>  \endcode
     !>
     !>  \warning
     !>  The condition `size(mean, 1) == size(rand, 1)` must hold for the corresponding input arguments.<br>
-    !>  The condition `all(shape(mahalSq) == [size(mean, 2), size(rand, 2)])` must hold for the corresponding input arguments.<br>
-    !>  The condition `all(shape(chol) == [size(mean, 1), size(mean, 1), size(mean, 2)])` must hold for the corresponding input arguments.<br>
-    !>  The condition `all(shape(chol) == shape(invGram))` must hold for the corresponding input arguments.<br>
+    !>  The condition `size(mean, 2) == size(cumPropVol)` must hold for the corresponding input arguments.<br>
+    !>  The condition `rank(rand) == 2 .and. size(invmul) == size(rand, 2)` must hold for the corresponding input arguments.<br>
+    !>  The condition `rank(rand) == 2 .and. size(invmul) == size(membership)` must hold for the corresponding input arguments.<br>
+    !>  The condition `rank(rand) == 2 .and. all(shape(mahalSq) == [size(mean, 2), size(rand, 2)])` must hold for the corresponding input arguments.<br>
+    !>  The condition `size(chol, 1) <= size(chol, 2)` must hold for the corresponding input arguments (to ensure that arguments can be passed without data copy).<br>
+    !>  The condition `all(shape(invGram) == [size(mean, 1), size(mean, 1), size(mean, 2))` must hold for the corresponding input arguments.<br>
+    !>  The condition `all([size(chol, 1), size(chol, 3)] == shape(mean))` must hold for the corresponding input arguments.<br>
     !>  \vericons
     !>
     !>  \impure
     !>  The procedures of this generic interface are `pure` when the input argument `rng` is set to
     !>  [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type) and the compile-time macro `CHECK_ENABLED` is set to `0` or is undefined.<br>
-    !>
-    !>  \impure
     !>
     !>  \see
     !>  [pm_distNorm](@ref pm_distNorm)<br>
@@ -492,6 +889,7 @@ module pm_distUnifElls
     !>  [pm_distUnifPar](@ref pm_distUnifPar)<br>
     !>  [pm_distUnifElls](@ref pm_distUnifElls)<br>
     !>  [pm_distMultiNorm](@ref pm_distMultiNorm)<br>
+    !>  [getUnifEllsLogPDF](@ref pm_distUnifElls::getUnifEllsLogPDF)<br>
     !>
     !>  \example{setUnifEllsRand}
     !>  \include{lineno} example/pm_distUnifElls/setUnifEllsRand/main.F90
@@ -501,8 +899,8 @@ module pm_distUnifElls
     !>  \postproc{setUnifEllsRand}
     !>  \include{lineno} example/pm_distUnifElls/setUnifEllsRand/main.py
     !>  \vis{setUnifEllsRand}
-    !>  \image html pm_distUnifElls/setUnifEllsRand/setUnifEllsRandMean.png width=700
-    !>  \image html pm_distUnifElls/setUnifEllsRand/setUnifEllsRandMeanChol.png width=700
+    !>  \image html pm_distUnifElls/setUnifEllsRand/setUnifEllsRandMean.svg width=700
+    !>  \image html pm_distUnifElls/setUnifEllsRand/setUnifEllsRandMeanChol.svg width=700
     !>
     !>  \test
     !>  [test_pm_distUnifElls](@ref test_pm_distUnifElls)
@@ -512,6 +910,504 @@ module pm_distUnifElls
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 12:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
 
+    ! D1 RNGF
+
+    interface setUnifEllsRand
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    impure module subroutine setMMUR_RNGF_AM_DC_XXX_D1_RK5(rng, rand, mahalSq, invmul, membership, mean)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_DC_XXX_D1_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+#if RK4_ENABLED
+    impure module subroutine setMMUR_RNGF_AM_DC_XXX_D1_RK4(rng, rand, mahalSq, invmul, membership, mean)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_DC_XXX_D1_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+#if RK3_ENABLED
+    impure module subroutine setMMUR_RNGF_AM_DC_XXX_D1_RK3(rng, rand, mahalSq, invmul, membership, mean)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_DC_XXX_D1_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+#if RK2_ENABLED
+    impure module subroutine setMMUR_RNGF_AM_DC_XXX_D1_RK2(rng, rand, mahalSq, invmul, membership, mean)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_DC_XXX_D1_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+#if RK1_ENABLED
+    impure module subroutine setMMUR_RNGF_AM_DC_XXX_D1_RK1(rng, rand, mahalSq, invmul, membership, mean)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_DC_XXX_D1_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    impure module subroutine setMMUR_RNGF_AM_AC_UXD_D1_RK5(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram, cumPropVol)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_AC_UXD_D1_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:), cumPropVol(:)
+        type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+#if RK4_ENABLED
+    impure module subroutine setMMUR_RNGF_AM_AC_UXD_D1_RK4(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram, cumPropVol)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_AC_UXD_D1_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:), cumPropVol(:)
+        type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+#if RK3_ENABLED
+    impure module subroutine setMMUR_RNGF_AM_AC_UXD_D1_RK3(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram, cumPropVol)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_AC_UXD_D1_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:), cumPropVol(:)
+        type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+#if RK2_ENABLED
+    impure module subroutine setMMUR_RNGF_AM_AC_UXD_D1_RK2(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram, cumPropVol)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_AC_UXD_D1_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:), cumPropVol(:)
+        type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+#if RK1_ENABLED
+    impure module subroutine setMMUR_RNGF_AM_AC_UXD_D1_RK1(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram, cumPropVol)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_AC_UXD_D1_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:), cumPropVol(:)
+        type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    impure module subroutine setMMUR_RNGF_AM_AC_XLD_D1_RK5(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram, cumPropVol)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_AC_XLD_D1_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:), cumPropVol(:)
+        type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+#if RK4_ENABLED
+    impure module subroutine setMMUR_RNGF_AM_AC_XLD_D1_RK4(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram, cumPropVol)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_AC_XLD_D1_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:), cumPropVol(:)
+        type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+#if RK3_ENABLED
+    impure module subroutine setMMUR_RNGF_AM_AC_XLD_D1_RK3(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram, cumPropVol)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_AC_XLD_D1_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:), cumPropVol(:)
+        type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+#if RK2_ENABLED
+    impure module subroutine setMMUR_RNGF_AM_AC_XLD_D1_RK2(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram, cumPropVol)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_AC_XLD_D1_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:), cumPropVol(:)
+        type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+#if RK1_ENABLED
+    impure module subroutine setMMUR_RNGF_AM_AC_XLD_D1_RK1(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram, cumPropVol)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_AC_XLD_D1_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        type(rngf_type)         , intent(in)                    :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:), cumPropVol(:)
+        type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    end interface
+
+    ! D1 RNGX
+
+    interface setUnifEllsRand
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    PURE module subroutine setMMUR_RNGX_AM_DC_XXX_D1_RK5(rng, rand, mahalSq, invmul, membership, mean)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_DC_XXX_D1_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+#if RK4_ENABLED
+    PURE module subroutine setMMUR_RNGX_AM_DC_XXX_D1_RK4(rng, rand, mahalSq, invmul, membership, mean)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_DC_XXX_D1_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+#if RK3_ENABLED
+    PURE module subroutine setMMUR_RNGX_AM_DC_XXX_D1_RK3(rng, rand, mahalSq, invmul, membership, mean)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_DC_XXX_D1_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+#if RK2_ENABLED
+    PURE module subroutine setMMUR_RNGX_AM_DC_XXX_D1_RK2(rng, rand, mahalSq, invmul, membership, mean)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_DC_XXX_D1_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+#if RK1_ENABLED
+    PURE module subroutine setMMUR_RNGX_AM_DC_XXX_D1_RK1(rng, rand, mahalSq, invmul, membership, mean)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_DC_XXX_D1_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    PURE module subroutine setMMUR_RNGX_AM_AC_UXD_D1_RK5(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram, cumPropVol)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_AC_UXD_D1_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:), cumPropVol(:)
+        type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+#if RK4_ENABLED
+    PURE module subroutine setMMUR_RNGX_AM_AC_UXD_D1_RK4(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram, cumPropVol)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_AC_UXD_D1_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:), cumPropVol(:)
+        type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+#if RK3_ENABLED
+    PURE module subroutine setMMUR_RNGX_AM_AC_UXD_D1_RK3(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram, cumPropVol)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_AC_UXD_D1_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:), cumPropVol(:)
+        type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+#if RK2_ENABLED
+    PURE module subroutine setMMUR_RNGX_AM_AC_UXD_D1_RK2(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram, cumPropVol)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_AC_UXD_D1_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:), cumPropVol(:)
+        type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+#if RK1_ENABLED
+    PURE module subroutine setMMUR_RNGX_AM_AC_UXD_D1_RK1(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram, cumPropVol)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_AC_UXD_D1_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:), cumPropVol(:)
+        type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    PURE module subroutine setMMUR_RNGX_AM_AC_XLD_D1_RK5(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram, cumPropVol)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_AC_XLD_D1_RK5
+#endif
+        use pm_kind, only: RKG => RK5
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:), cumPropVol(:)
+        type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+#if RK4_ENABLED
+    PURE module subroutine setMMUR_RNGX_AM_AC_XLD_D1_RK4(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram, cumPropVol)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_AC_XLD_D1_RK4
+#endif
+        use pm_kind, only: RKG => RK4
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:), cumPropVol(:)
+        type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+#if RK3_ENABLED
+    PURE module subroutine setMMUR_RNGX_AM_AC_XLD_D1_RK3(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram, cumPropVol)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_AC_XLD_D1_RK3
+#endif
+        use pm_kind, only: RKG => RK3
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:), cumPropVol(:)
+        type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+#if RK2_ENABLED
+    PURE module subroutine setMMUR_RNGX_AM_AC_XLD_D1_RK2(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram, cumPropVol)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_AC_XLD_D1_RK2
+#endif
+        use pm_kind, only: RKG => RK2
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:), cumPropVol(:)
+        type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+#if RK1_ENABLED
+    PURE module subroutine setMMUR_RNGX_AM_AC_XLD_D1_RK1(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram, cumPropVol)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_AC_XLD_D1_RK1
+#endif
+        use pm_kind, only: RKG => RK1
+        type(xoshiro256ssw_type), intent(inout)                 :: rng
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: mahalSq(:)
+        real(RKG)               , intent(out)                   :: invmul
+        real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:), cumPropVol(:)
+        type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)                   :: membership
+    end subroutine
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    end interface
+
     ! D2 RNGF
 
     interface setUnifEllsRand
@@ -519,7 +1415,7 @@ module pm_distUnifElls
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    impure module subroutine setMMUR_RNGF_AM_DC_XXX_D2_RK5(rng, rand, mahalSq, invmul, mean)
+    impure module subroutine setMMUR_RNGF_AM_DC_XXX_D2_RK5(rng, rand, mahalSq, invmul, membership, mean)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_DC_XXX_D2_RK5
 #endif
@@ -529,11 +1425,12 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: mahalSq(:,:)
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
 #if RK4_ENABLED
-    impure module subroutine setMMUR_RNGF_AM_DC_XXX_D2_RK4(rng, rand, mahalSq, invmul, mean)
+    impure module subroutine setMMUR_RNGF_AM_DC_XXX_D2_RK4(rng, rand, mahalSq, invmul, membership, mean)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_DC_XXX_D2_RK4
 #endif
@@ -543,11 +1440,12 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: mahalSq(:,:)
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
 #if RK3_ENABLED
-    impure module subroutine setMMUR_RNGF_AM_DC_XXX_D2_RK3(rng, rand, mahalSq, invmul, mean)
+    impure module subroutine setMMUR_RNGF_AM_DC_XXX_D2_RK3(rng, rand, mahalSq, invmul, membership, mean)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_DC_XXX_D2_RK3
 #endif
@@ -557,11 +1455,12 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: mahalSq(:,:)
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
 #if RK2_ENABLED
-    impure module subroutine setMMUR_RNGF_AM_DC_XXX_D2_RK2(rng, rand, mahalSq, invmul, mean)
+    impure module subroutine setMMUR_RNGF_AM_DC_XXX_D2_RK2(rng, rand, mahalSq, invmul, membership, mean)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_DC_XXX_D2_RK2
 #endif
@@ -571,11 +1470,12 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: mahalSq(:,:)
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
 #if RK1_ENABLED
-    impure module subroutine setMMUR_RNGF_AM_DC_XXX_D2_RK1(rng, rand, mahalSq, invmul, mean)
+    impure module subroutine setMMUR_RNGF_AM_DC_XXX_D2_RK1(rng, rand, mahalSq, invmul, membership, mean)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_DC_XXX_D2_RK1
 #endif
@@ -585,13 +1485,14 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: mahalSq(:,:)
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    impure module subroutine setMMUR_RNGF_AM_AC_UXD_D2_RK5(rng, rand, mahalSq, invmul, mean, chol, subset, invGram)
+    impure module subroutine setMMUR_RNGF_AM_AC_UXD_D2_RK5(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_AC_UXD_D2_RK5
 #endif
@@ -602,11 +1503,12 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
         type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
 #if RK4_ENABLED
-    impure module subroutine setMMUR_RNGF_AM_AC_UXD_D2_RK4(rng, rand, mahalSq, invmul, mean, chol, subset, invGram)
+    impure module subroutine setMMUR_RNGF_AM_AC_UXD_D2_RK4(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_AC_UXD_D2_RK4
 #endif
@@ -617,11 +1519,12 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
         type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
 #if RK3_ENABLED
-    impure module subroutine setMMUR_RNGF_AM_AC_UXD_D2_RK3(rng, rand, mahalSq, invmul, mean, chol, subset, invGram)
+    impure module subroutine setMMUR_RNGF_AM_AC_UXD_D2_RK3(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_AC_UXD_D2_RK3
 #endif
@@ -632,11 +1535,12 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
         type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
 #if RK2_ENABLED
-    impure module subroutine setMMUR_RNGF_AM_AC_UXD_D2_RK2(rng, rand, mahalSq, invmul, mean, chol, subset, invGram)
+    impure module subroutine setMMUR_RNGF_AM_AC_UXD_D2_RK2(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_AC_UXD_D2_RK2
 #endif
@@ -647,11 +1551,12 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
         type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
 #if RK1_ENABLED
-    impure module subroutine setMMUR_RNGF_AM_AC_UXD_D2_RK1(rng, rand, mahalSq, invmul, mean, chol, subset, invGram)
+    impure module subroutine setMMUR_RNGF_AM_AC_UXD_D2_RK1(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_AC_UXD_D2_RK1
 #endif
@@ -662,13 +1567,14 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
         type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    impure module subroutine setMMUR_RNGF_AM_AC_XLD_D2_RK5(rng, rand, mahalSq, invmul, mean, chol, subset, invGram)
+    impure module subroutine setMMUR_RNGF_AM_AC_XLD_D2_RK5(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_AC_XLD_D2_RK5
 #endif
@@ -679,11 +1585,12 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
         type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
 #if RK4_ENABLED
-    impure module subroutine setMMUR_RNGF_AM_AC_XLD_D2_RK4(rng, rand, mahalSq, invmul, mean, chol, subset, invGram)
+    impure module subroutine setMMUR_RNGF_AM_AC_XLD_D2_RK4(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_AC_XLD_D2_RK4
 #endif
@@ -694,11 +1601,12 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
         type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
 #if RK3_ENABLED
-    impure module subroutine setMMUR_RNGF_AM_AC_XLD_D2_RK3(rng, rand, mahalSq, invmul, mean, chol, subset, invGram)
+    impure module subroutine setMMUR_RNGF_AM_AC_XLD_D2_RK3(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_AC_XLD_D2_RK3
 #endif
@@ -709,11 +1617,12 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
         type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
 #if RK2_ENABLED
-    impure module subroutine setMMUR_RNGF_AM_AC_XLD_D2_RK2(rng, rand, mahalSq, invmul, mean, chol, subset, invGram)
+    impure module subroutine setMMUR_RNGF_AM_AC_XLD_D2_RK2(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_AC_XLD_D2_RK2
 #endif
@@ -724,11 +1633,12 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
         type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
 #if RK1_ENABLED
-    impure module subroutine setMMUR_RNGF_AM_AC_XLD_D2_RK1(rng, rand, mahalSq, invmul, mean, chol, subset, invGram)
+    impure module subroutine setMMUR_RNGF_AM_AC_XLD_D2_RK1(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGF_AM_AC_XLD_D2_RK1
 #endif
@@ -739,6 +1649,7 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
         type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
@@ -753,7 +1664,7 @@ module pm_distUnifElls
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE module subroutine setMMUR_RNGX_AM_DC_XXX_D2_RK5(rng, rand, mahalSq, invmul, mean)
+    PURE module subroutine setMMUR_RNGX_AM_DC_XXX_D2_RK5(rng, rand, mahalSq, invmul, membership, mean)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_DC_XXX_D2_RK5
 #endif
@@ -763,11 +1674,12 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: mahalSq(:,:)
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
 #if RK4_ENABLED
-    PURE module subroutine setMMUR_RNGX_AM_DC_XXX_D2_RK4(rng, rand, mahalSq, invmul, mean)
+    PURE module subroutine setMMUR_RNGX_AM_DC_XXX_D2_RK4(rng, rand, mahalSq, invmul, membership, mean)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_DC_XXX_D2_RK4
 #endif
@@ -777,11 +1689,12 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: mahalSq(:,:)
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
 #if RK3_ENABLED
-    PURE module subroutine setMMUR_RNGX_AM_DC_XXX_D2_RK3(rng, rand, mahalSq, invmul, mean)
+    PURE module subroutine setMMUR_RNGX_AM_DC_XXX_D2_RK3(rng, rand, mahalSq, invmul, membership, mean)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_DC_XXX_D2_RK3
 #endif
@@ -791,11 +1704,12 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: mahalSq(:,:)
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
 #if RK2_ENABLED
-    PURE module subroutine setMMUR_RNGX_AM_DC_XXX_D2_RK2(rng, rand, mahalSq, invmul, mean)
+    PURE module subroutine setMMUR_RNGX_AM_DC_XXX_D2_RK2(rng, rand, mahalSq, invmul, membership, mean)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_DC_XXX_D2_RK2
 #endif
@@ -805,11 +1719,12 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: mahalSq(:,:)
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
 #if RK1_ENABLED
-    PURE module subroutine setMMUR_RNGX_AM_DC_XXX_D2_RK1(rng, rand, mahalSq, invmul, mean)
+    PURE module subroutine setMMUR_RNGX_AM_DC_XXX_D2_RK1(rng, rand, mahalSq, invmul, membership, mean)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_DC_XXX_D2_RK1
 #endif
@@ -819,13 +1734,14 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: mahalSq(:,:)
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:)
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE module subroutine setMMUR_RNGX_AM_AC_UXD_D2_RK5(rng, rand, mahalSq, invmul, mean, chol, subset, invGram)
+    PURE module subroutine setMMUR_RNGX_AM_AC_UXD_D2_RK5(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_AC_UXD_D2_RK5
 #endif
@@ -836,11 +1752,12 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
         type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
 #if RK4_ENABLED
-    PURE module subroutine setMMUR_RNGX_AM_AC_UXD_D2_RK4(rng, rand, mahalSq, invmul, mean, chol, subset, invGram)
+    PURE module subroutine setMMUR_RNGX_AM_AC_UXD_D2_RK4(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_AC_UXD_D2_RK4
 #endif
@@ -851,11 +1768,12 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
         type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
 #if RK3_ENABLED
-    PURE module subroutine setMMUR_RNGX_AM_AC_UXD_D2_RK3(rng, rand, mahalSq, invmul, mean, chol, subset, invGram)
+    PURE module subroutine setMMUR_RNGX_AM_AC_UXD_D2_RK3(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_AC_UXD_D2_RK3
 #endif
@@ -866,11 +1784,12 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
         type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
 #if RK2_ENABLED
-    PURE module subroutine setMMUR_RNGX_AM_AC_UXD_D2_RK2(rng, rand, mahalSq, invmul, mean, chol, subset, invGram)
+    PURE module subroutine setMMUR_RNGX_AM_AC_UXD_D2_RK2(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_AC_UXD_D2_RK2
 #endif
@@ -881,11 +1800,12 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
         type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
 #if RK1_ENABLED
-    PURE module subroutine setMMUR_RNGX_AM_AC_UXD_D2_RK1(rng, rand, mahalSq, invmul, mean, chol, subset, invGram)
+    PURE module subroutine setMMUR_RNGX_AM_AC_UXD_D2_RK1(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_AC_UXD_D2_RK1
 #endif
@@ -896,13 +1816,14 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
         type(uppDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE module subroutine setMMUR_RNGX_AM_AC_XLD_D2_RK5(rng, rand, mahalSq, invmul, mean, chol, subset, invGram)
+    PURE module subroutine setMMUR_RNGX_AM_AC_XLD_D2_RK5(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_AC_XLD_D2_RK5
 #endif
@@ -913,11 +1834,12 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
         type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
 #if RK4_ENABLED
-    PURE module subroutine setMMUR_RNGX_AM_AC_XLD_D2_RK4(rng, rand, mahalSq, invmul, mean, chol, subset, invGram)
+    PURE module subroutine setMMUR_RNGX_AM_AC_XLD_D2_RK4(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_AC_XLD_D2_RK4
 #endif
@@ -928,11 +1850,12 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
         type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
 #if RK3_ENABLED
-    PURE module subroutine setMMUR_RNGX_AM_AC_XLD_D2_RK3(rng, rand, mahalSq, invmul, mean, chol, subset, invGram)
+    PURE module subroutine setMMUR_RNGX_AM_AC_XLD_D2_RK3(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_AC_XLD_D2_RK3
 #endif
@@ -943,11 +1866,12 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
         type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
 #if RK2_ENABLED
-    PURE module subroutine setMMUR_RNGX_AM_AC_XLD_D2_RK2(rng, rand, mahalSq, invmul, mean, chol, subset, invGram)
+    PURE module subroutine setMMUR_RNGX_AM_AC_XLD_D2_RK2(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_AC_XLD_D2_RK2
 #endif
@@ -958,11 +1882,12 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
         type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 
 #if RK1_ENABLED
-    PURE module subroutine setMMUR_RNGX_AM_AC_XLD_D2_RK1(rng, rand, mahalSq, invmul, mean, chol, subset, invGram)
+    PURE module subroutine setMMUR_RNGX_AM_AC_XLD_D2_RK1(rng, rand, mahalSq, invmul, membership, mean, chol, subset, invGram)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMMUR_RNGX_AM_AC_XLD_D2_RK1
 #endif
@@ -973,6 +1898,7 @@ module pm_distUnifElls
         real(RKG)               , intent(out)   , contiguous    :: invmul(:)
         real(RKG)               , intent(in)    , contiguous    :: mean(:,:), chol(:,:,:), invGram(:,:,:)
         type(lowDia_type)       , intent(in)                    :: subset
+        integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
 

@@ -64,6 +64,7 @@
 *.log
 *.sql
 *.sqlite
+*Zone.Identifier
 
 ######################
 # OS generated files #
@@ -125,7 +126,7 @@ Thumbs.db
 # ParaMonte temp folders
 #########################
 
-**/pm_clusDensity*
+**/pm_clusPartition*
 **/pm_paramonte@version.inc.F90
 **/.ipynb_checkpoints
 **/src/python/setup

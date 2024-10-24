@@ -25,7 +25,7 @@ set(sterile
     pm_array
     pm_bit
     pm_blas
-    pm_clusDensity
+    pm_clusPartition
     pm_control
     pm_lapack
     pm_mathConst
@@ -123,6 +123,7 @@ set(grandpa
     pm_arrayVerbose
     pm_batse
     pm_bench
+    pm_clusTest
     pm_clusKmeans
     pm_complexAbs
     pm_complexCompareAll

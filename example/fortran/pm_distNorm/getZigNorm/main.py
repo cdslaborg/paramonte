@@ -19,7 +19,7 @@ for kind in ["RK"]:
         df = pd.read_csv(file, delimiter = ",", header = None)
 
         # start with a square Figure
-        fig = plt.figure(figsize=(8, 8))
+        fig = plt.figure(figsize = (8, 8))
 
         plt.rcParams.update({'font.size': fontsize - 2})
         ax = plt.subplot()
