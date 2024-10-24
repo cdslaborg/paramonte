@@ -46,10 +46,11 @@ for file in fileList:
     ax.scatter  ( df.values[:, 0]
                 , df.values[:, 1]
                 , c = df.values[:, -1]
+                , cmap = "gist_rainbow"
                 , zorder = 1000
                 , marker = "o"
                 , alpha = 1
-                , s = 0.5
+                , s = 0.7
                 )
 
     #ax_histx.hist(df.values[:, 0], bins = 50, zorder = 1000)
