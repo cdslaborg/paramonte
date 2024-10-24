@@ -25,7 +25,7 @@ set(sterile
     pm_array
     pm_bit
     pm_blas
-    pm_clusPartition
+    #pm_clusPartition
     pm_control
     pm_lapack
     pm_mathConst

@@ -49,18 +49,19 @@
 #elif   (getVolUnitBall_ENABLED || setVolUnitBall_ENABLED) && Iter_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        integer(IK) :: idim, hdim
+        integer(IK) :: idim, hdim, ndimint
         real(RKG), parameter :: PI = acos(-1._RKG)
         real(RKG), parameter :: FOUR_PI = PI * 4._RKG
-        CHECK_ASSERTION(__LINE__, 0_IK <= ndim, SK_"@setVolUnitBall(): The condition `0 <= ndim` must hold. ndim = "//getStr(ndim))
-        if (0_IK < ndim) then
-            hdim = ndim / 2_IK
-            if (ndim == 2_IK * hdim) then
+        ndimint = ndim
+        CHECK_ASSERTION(__LINE__, 0_IK <= ndimint, SK_"@setVolUnitBall(): The condition `0 <= ndim` must hold. ndim = "//getStr(ndim))
+        if (0_IK < ndimint) then
+            hdim = ndimint / 2_IK
+            if (ndimint == 2_IK * hdim) then
                 ! ndim is even
                 ! ndim = 2 * hdim
                 ! volUnitBall = PI^(hdim) / Factorial(hdim)
                 volUnitBall = PI
-                do idim = 2_IK, ndim / 2_IK
+                do idim = 2_IK, ndimint / 2_IK
                     volUnitBall = volUnitBall * PI / idim
                 end do
             else

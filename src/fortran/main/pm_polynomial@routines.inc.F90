@@ -2241,6 +2241,8 @@
 
     contains
 
+#if     0
+        ! This subroutine is defined in the original library, but nowhere used, thus commented out here.
         subroutine cmplx_roots_5(roots, first_3_roots_order_changed, poly, polish_only)
             ! Subroutine finds or polishes roots of a complex polynomial
             ! (degree=5)
@@ -2411,7 +2413,7 @@
                 end if
             end do
         end subroutine
-
+#endif
         subroutine sort_5_points_by_separation(points)
             ! Sort array of five points
             ! Most isolated point will become the first point in the array
@@ -3235,8 +3237,6 @@
             !             1              2             3
             !        poly(1) x^0 + poly(2) x^1 + poly(3) x^2
             complex(TKG) :: a, b, c, b2, delta
-            complex(TKG) :: val, x
-            integer(IK) :: i
             a = poly(3)
             b = poly(2)
             c = poly(1)
@@ -3256,18 +3256,22 @@
             end if
 #if         0
             if (.false.) then ! print the results
-                x = x0
-                val = poly(3)
-                do i = 2, 1, -1
-                    val = val * x + poly(i)
-                end do
-                write(*,'(2f19.15,a3,2f19.15)') x,' ->',val
-                x = x1
-                val = poly(3)
-                do i = 2, 1, -1
-                    val = val * x + poly(i)
-                end do
-                write(*,'(2f19.15,a3,2f19.15)') x,' ->',val
+                block
+                    complex(TKG) :: val, x
+                    integer(IK) :: i
+                    x = x0
+                    val = poly(3)
+                    do i = 2, 1, -1
+                        val = val * x + poly(i)
+                    end do
+                    write(*,'(2f19.15,a3,2f19.15)') x,' ->',val
+                    x = x1
+                    val = poly(3)
+                    do i = 2, 1, -1
+                        val = val * x + poly(i)
+                    end do
+                    write(*,'(2f19.15,a3,2f19.15)') x,' ->',val
+                end block
             end if
 #endif
         end subroutine
@@ -3290,7 +3294,6 @@
             complex(TKG) :: A, B, a_1, E12
             complex(TKG) :: delta, A2
             complex(TKG) :: val, x
-            integer(IK) :: i
 
             a_1 = poly(4)**(-1)
             E1 = -poly(3) * a_1
@@ -3320,25 +3323,28 @@
             x2 = third * (s0 + s1 * zeta + s2 * zeta2)
 #if         0
             if (.false.) then  ! print the results
-                x = x0
-                val=poly(4)
-                do i=3,1,-1
-                    val=val*x+poly(i)
-                end do
-                write(*,'(2f19.15,a3,2f19.15)') x,' ->',val
-                x=x1
-                val=poly(4)
-                do i=3,1,-1
-                    val=val*x+poly(i)
-                end do
-                write(*,'(2f19.15,a3,2f19.15)') x,' ->',val
+                block
+                    integer(IK) :: i
+                    x = x0
+                    val=poly(4)
+                    do i = 3, 1, -1
+                        val=val*x+poly(i)
+                    end do
+                    write(*,'(2f19.15,a3,2f19.15)') x,' ->',val
+                    x=x1
+                    val=poly(4)
+                    do i=3,1,-1
+                        val=val*x+poly(i)
+                    end do
+                    write(*,'(2f19.15,a3,2f19.15)') x,' ->',val
 
-                x=x2
-                val=poly(4)
-                do i=3,1,-1
-                    val=val*x+poly(i)
-                end do
-                write(*,'(2f19.15,a3,2f19.15)') x,' ->',val
+                    x=x2
+                    val=poly(4)
+                    do i=3,1,-1
+                        val=val*x+poly(i)
+                    end do
+                    write(*,'(2f19.15,a3,2f19.15)') x,' ->',val
+                end block
             end if
 #endif
         end subroutine
@@ -3403,6 +3409,22 @@
             ! if (abs(val)<2d-15*errk) return  ! (simplified a little Eq. 10 of Adams 1967)
         end function
 
+#if     0
+        ! These subroutine is defined in the original library but nowhere used, thus commented out here.
+#if     1
+        ! This version avoids the unnecessary copy upon entry (see the alternative version below for more info).
+        subroutine multiply_poly_1(poly, p, degree)
+            integer(IK), intent(in) :: degree ! OLD degree, new will be +1
+            complex(TKG), intent(inout) :: poly(degree + 2)
+            complex(TKG), intent(in) :: p
+            integer(IK) :: i
+            poly(degree + 2) = poly(degree + 1)
+            do i = degree + 1, 2, -1
+                poly(i) = poly(i - 1) - poly(i) * p
+            end do
+            poly(1) = -poly(1) * p
+        end subroutine
+#else
         subroutine multiply_poly_1(polyout, p, polyin, degree)
             ! Subroutine will multiply polynomial 'polyin' by (x-p)
             ! results will be returned in polynomial 'polyout' of degree + 1
@@ -3417,14 +3439,18 @@
             !             1              2             3
             !        poly(1) x^0 + poly(2) x^1 + poly(3) x^2 + ...
             integer(IK) :: i
+            !   \todo
+            !   \pvhigh
+            !   The following copy is redundant when polyin & polyout are the same arguments and must be fixed.
+            !   See the contents of `subroutine create_poly_from_roots` for example scenario.
             polyout(1 : degree + 1) = polyin(1 : degree + 1) ! copy
-            polyout(degree+2)=polyout(degree + 1)
+            polyout(degree + 2) = polyout(degree + 1)
             do i = degree + 1, 2, -1
                 polyout(i) = polyout(i - 1) - polyout(i) * p
             end do
             polyout(1) = -polyout(1) * p
         end subroutine
-
+#endif
         subroutine create_poly_from_roots(poly, degree, a, roots)
             ! Routine will build polynomial from a set of points given in
             ! the array 'roots'. These points will be zeros of the resulting
@@ -3434,16 +3460,15 @@
             !             1              2             3
             !        poly(1) x^0 + poly(2) x^1 + poly(3) x^2 + ...
             ! degree - is and integer denoting size of the 'roots' array
-            ! a - gives the leading coefficient of the resutling polynomial
+            ! a - gives the leading coefficient of the resulting polynomial
             ! roots - input array of points, size=degree
             !
             ! This subroutine works, but it is not optimal - it will work
             ! up to a polynomial of degree~50, if you would like to have
             ! more robust routine, up to a degree ~ 2000, you should
             ! split your factors into a binary tree, and then multiply
-            ! leafs level by level from down up with subroutine like:
-            ! multiply_poly for arbitraty polynomial multiplications
-            ! not multiply_poly_1.
+            ! leaves level-by-level from the bottom up with subroutine like:
+            ! multiply_poly for arbitrary polynomial multiplications not multiply_poly_1.
             integer(IK), intent(in) :: degree
             complex(TKG), intent(out) :: poly(degree + 1)
             complex(TKG), intent(in) :: roots(degree)
@@ -3452,9 +3477,14 @@
             poly = ZERO
             poly(1) = a ! leading coeff of the polynomial
             do i = 1, degree
+#if             1
+                call multiply_poly_1(poly, roots(i), i - 1_IK)
+#else
                 call multiply_poly_1(poly, roots(i), poly, i - 1_IK)
+#endif
             end do
         end subroutine
+#endif
 
 #else
         !%%%%%%%%%%%%%%%%%%%%%%%%
