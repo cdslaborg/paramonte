@@ -17,15 +17,27 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#if     MX_HAS_INTERLEAVED_COMPLEX
+#define MATLAB_INSANITY mxGetDoubles
+#else
+// pointer to real part.
+#define MATLAB_INSANITY mxGetPr
+#endif
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "mex.h"
 //#include "matrix.h"
 mxArray *matlabFuncHandle;
 #define runParaDRAM runParaDRAMD
 
 #if OMP_ENABLED
+
     double getLogFunc(double logFuncState[], int32_t ndim, int32_t njob, double *avgTimePerFunCall, double *avgCommPerFunCall)
     {
-        // Set the MATLAB function input arguments.
+        ////
+        //// Set the MATLAB function input arguments.
+        ////
 
         mxArray *argin[2];
         mwSize ndimp1 = ndim + 1;
@@ -45,20 +57,21 @@ mxArray *matlabFuncHandle;
         mxSetM(argin[1], ndim);
         mxSetN(argin[1], njob);
 
-        // Get the MATLAB function output arguments.
+        ////
+        //// Get the MATLAB function output arguments.
+        ////
 
         mxArray *argout[3];
         mexCallMATLAB(3, argout, 2, argin, "feval");
         mxDestroyArray(argin[1]); // free allocation.
 
-        // Parse the MATLAB function output arguments.
-        // mxGetDoubles() is a new API routine that only exists in the R2018a+ API memory model.
-        // See for example: https://www.mathworks.com/matlabcentral/answers/515893-mex-error-lnk2019-unresolved-symbol#answer_424915
-#if     MX_HAS_INTERLEAVED_COMPLEX
-        double *logFunc = mxGetDoubles(argout[0]);
-#else
-        double *logFunc = mxGetPr(argout[0]); // pointer to real part.
-#endif
+        ////
+        //// Parse the MATLAB function output arguments.
+        //// mxGetDoubles() is a new API routine that only exists in the R2018a+ API memory model.
+        //// See for example: https://www.mathworks.com/matlabcentral/answers/515893-mex-error-lnk2019-unresolved-symbol#answer_424915
+        ////
+
+        double *logFunc = MATLAB_INSANITY(argout[0]);
         for (mwSize ijob = 0; ijob < njob; ijob++) {
             logFuncState[ijob * ndimp1] = logFunc[ijob];
             //mexPrintf("logFuncState[ijob * ndim] = %f\n", logFuncState[ijob * ndimp1]);
@@ -68,41 +81,72 @@ mxArray *matlabFuncHandle;
         double mold = 0;
         return mold;
     }
-    int32_t runParaDRAM(double(*getLogFunc)(double logFuncState[], int32_t ndim, int32_t njob, double *avgTimePerFunCall, double *avgCommPerFunCall), const int32_t ndim, const char* input);
+
+    ////
+    //// ParaDRAM sampler interface (signature).
+    ////
+
+    int32_t runParaDRAM (double(*getLogFunc)( double logFuncState[]
+                                            , int32_t ndim
+                                            , int32_t njob
+                                            , double *avgTimePerFunCall
+                                            , double *avgCommPerFunCall
+                                            )
+                        , const int32_t ndim
+                        , const char* input
+                        );
+
 #else
+
     double getLogFunc(double state[], int32_t ndim)
     {
-        // Set the MATLAB function input arguments.
+        ////
+        //// Set the MATLAB function input arguments.
+        ////
 
         mxArray *argin[2];
         argin[0] = matlabFuncHandle;
         argin[1] = mxCreateDoubleMatrix((mwSize) ndim, (mwSize) 1, mxREAL);
-#if     MX_HAS_INTERLEAVED_COMPLEX
-        memcpy(mxGetDoubles(argin[1]), state, ndim * sizeof(double));
-#else
-        memcpy(mxGetPr(argin[1]), state, ndim * sizeof(double));
-#endif
-        // Get the MATLAB function output arguments.
+        memcpy(MATLAB_INSANITY(argin[1]), state, ndim * sizeof(double));
 
-        mxArray *argout[1];
+        ////
+        //// Get the MATLAB function output arguments.
+        ////
+
+        mxArray *argout[1]; // logFunc
         mexCallMATLAB(1, argout, 2, argin, "feval");
 
-        // Parse the MATLAB function output arguments.
+        ////
+        //// Parse the MATLAB function output arguments.
+        ////
 
         double logFunc = mxGetScalar(argout[0]);
         mxDestroyArray(argin[1]);
         return logFunc;
     }
-    int32_t runParaDRAM(double(*getLogFunc)(double state[], int32_t ndim), const int32_t ndim, const char* input);
+
+    ////
+    //// ParaDRAM sampler interface (signature).
+    ////
+
+    int32_t runParaDRAM (double(*getLogFunc)( double state[]
+                                            , int32_t ndim
+                                            )
+                        , const int32_t ndim
+                        , const char* input
+                        );
+
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     // prhs: method, getLogFunc, ndim, input.
-    if(0 < nlhs) mexErrMsgIdAndTxt("Mex:ParaMonte:maxlhs", "Internal ParaMonte MATLAB library error occurred: Too many output arguments.");
-    if (nrhs != 4) {mexErrMsgIdAndTxt("Mex:ParaMonte:invalidNumInputs", "Internal ParaMonte MATLAB library error occurred: input variable mismatch.");}
+    if (0 < nlhs) mexErrMsgIdAndTxt("Mex:ParaMonte:maxlhs", "Internal ParaMonte MATLAB library error occurred: Too many output arguments.");
+    if (nrhs != 4) mexErrMsgIdAndTxt("Mex:ParaMonte:invalidNumInputs", "Internal ParaMonte MATLAB library error occurred: input variable mismatch.");
     mwSize iarg;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -113,12 +157,12 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 
     char *method;
     method = mxArrayToString(prhs[iarg]);
-    if(method == NULL) mexErrMsgIdAndTxt("Mex:ParaMonte:conversionFailed", "Internal ParaMonte MATLAB library error occurred: Could not convert input #0 (method) to string.");
+    if (method == NULL) mexErrMsgIdAndTxt("Mex:ParaMonte:conversionFailed", "Internal ParaMonte MATLAB library error occurred: Could not convert input #0 (method) to string.");
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     iarg = 1;
-    if(!mxIsClass(prhs[iarg], "function_handle")) mexErrMsgTxt("The second input argument must be a function handle.");
+    if (!mxIsClass(prhs[iarg], "function_handle")) mexErrMsgTxt("The second input argument must be a function handle.");
     matlabFuncHandle = mxDuplicateArray(prhs[iarg]);
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -134,7 +178,8 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 
     char *input;
     input = mxArrayToString(prhs[iarg]);
-    if(input == NULL) mexErrMsgIdAndTxt("Mex:ParaMonte:conversionFailed", "Internal ParaMonte MATLAB library error occurred: Could not convert input #2 to string.");
+    //inputlen = (mxGetM(prhs[iarg]) * mxGetN(prhs[iarg])) + 1;
+    if (input == NULL) mexErrMsgIdAndTxt("Mex:ParaMonte:conversionFailed", "Internal ParaMonte MATLAB library error occurred: Could not convert input #2 to string.");
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -152,3 +197,4 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
+#undef MATLAB_INSANITY

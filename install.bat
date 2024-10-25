@@ -702,6 +702,21 @@ if not defined flag_G (
     set "replacement="
     set "cmakeBuildGenerator="
 
+    REM Above all, search for the Ninja makefile generator: ninja
+    REM The ninja executable is installed either as part of Microsoft Visual Studio or Quickstart Fortran software.
+
+    if not defined cmakeBuildGenerator (
+        echo.!pmnote! Searching for the Ninja build generator in the command-line environment...
+        set "NINJA_FOUND="
+        for %%X in (ninja.exe) do (set NINJA_FOUND=%%~$PATH:X)
+        if defined NINJA_FOUND (
+            echo.!pmnote! !BoldYellow!Setting CMake makefile generator to Ninja...!ColorReset!
+            set "cmakeBuildGenerator=Ninja"
+        ) else (
+            echo.!pmnote! Failed to detect the Ninja build generator in the command-line environment. skipping...
+        )
+    )
+
     REM Firstly, search for the CMake makefile generator: make
 
     if not defined cmakeBuildGenerator (
@@ -711,7 +726,7 @@ if not defined flag_G (
         for /f "Tokens=* Delims=" %%i in ('make --version') do set make_version=!make_version!%%i
         for /f "delims=" %%S in (^""!substring!=!replacement!"^") do (set "make_version_modified=!make_version:%%~S!")
         if not "!make_version_modified!" == "!make_version!" (
-            echo.!pmnote! Setting CMake makefile generator to GNU MinGW Make application...
+            echo.!pmnote! !BoldYellow!Setting CMake makefile generator to GNU MinGW Make application...!ColorReset!
             set "cmakeBuildGenerator=MinGW Makefiles"
         ) else (
             echo.!pmnote! Failed to detect the GNU Make application in the command-line environment. skipping...
@@ -720,14 +735,14 @@ if not defined flag_G (
 
     REM Secondly, search for the CMake makefile generator: mingw32-make
 
-    if defined cmakeBuildGenerator (
+    if not defined cmakeBuildGenerator (
         echo.!pmnote! Searching for the GNU Make application in the command-line environment...
         set "make_version="
         set "substring=GNU Make"
         for /f "Tokens=* Delims=" %%i in ('mingw32-make --version') do set make_version=!make_version!%%i
         for /f "delims=" %%S in (^""!substring!=!replacement!"^") do (set "make_version_modified=!make_version:%%~S!")
         if not "!make_version_modified!" == "!make_version!" (
-            echo.!pmnote! Setting CMake makefile generator to GNU MinGW Make application...
+            echo.!pmnote! !BoldYellow!Setting CMake makefile generator to GNU MinGW Make application...!ColorReset!
             set "cmakeBuildGenerator=MinGW Makefiles"
         ) else (
             echo.!pmnote! Failed to detect the GNU MinGW Make application in the command-line environment. skipping...
@@ -743,7 +758,7 @@ if not defined flag_G (
         for /f "Tokens=* Delims=" %%i in ('nmake') do set make_version=!make_version!%%i
         for /f "delims=" %%S in (^""!substring!=!replacement!"^") do (set "make_version_modified=!make_version:%%~S!")
         if not "!make_version_modified!" == "!make_version!" (
-            echo.!pmnote! Setting CMake makefile generator to Microsoft NMake application...
+            echo.!pmnote! !BoldYellow!Setting CMake makefile generator to Microsoft NMake application...!ColorReset!
             set "cmakeBuildGenerator=NMake Makefiles"
         ) else (
             echo.!pmnote! Failed to detect the Microsoft NMake application in the command-line environment. skipping...
