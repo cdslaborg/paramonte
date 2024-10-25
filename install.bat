@@ -189,6 +189,7 @@ set flag_cki=
 set flag_rki=
 
 set ntry=2
+set "MATLAB_ROOT_DIR_TEMP="
 
 echo.
 type "!paramonte_auxil_dir!\.paramonte.banner"
@@ -400,6 +401,7 @@ if not "%1"=="" (
 
     if "!FLAG!"=="--matlabdir" (
         set FLAG_SUPPORTED=true
+        set "MATLAB_ROOT_DIR_TEMP=!VALUE!"
         set "flag_matlabdir=-Dmatlabdir="!VALUE!""
         if "!VALUE!"=="" set "VALUE_SUPPORTED=false"
         if /i "!VALUE:~0,2!"=="--" set "VALUE_SUPPORTED=false"
@@ -1015,20 +1017,52 @@ for %%C in ("!list_fc:;=" "!") do (
                                     set MATLAB_VERSION_LIST=R2035b/R2035a/R2034b/R2034a/R2033b/R2033a/R2032b/R2032a/R2031b/R2031a/R2030b/R2030a/R2029b/R2029a/R2028b/R2028a/R2027b/R2027a/R2026b/R2026a
                                     set MATLAB_VERSION_LIST=!MATLAB_VERSION_LIST!/R2025b/R2025a/R2024b/R2024a/R2023b/R2023a/R2022b/R2022a/R2021b/R2021a/R2020b/R2020a/R2019b/R2019a/R2018b/R2018a/R2017b/R2017a
 
+                                    REM
+                                    REM Amir Shahmoradi Oct 25, 2024:
+                                    REM The following block is currently was added despite its functionality being already implemented within CMake.
+                                    REM The reason for its existence is to resolve the vicious bug that exists in CMake intrinsic module FindMatlab.cmake yielding the following runtime error:
+                                    REM
+                                    REM     Error using pm.sampling.Sampler/run MATLAB:mex:ErrInvalidMEXFile : Invalid MEX-file 'pm_sampling.mexw64': Gateway function is missing
+                                    REM
+                                    REM See also,
+                                    REM
+                                    REM     https://gitlab.kitware.com/cmake/cmake/-/issues/25068#note_1580985
+                                    REM
+                                    REM for a relevant discussion of this bug faced by others and the status of a resolution to fix it.
+                                    REM Note that this CMake bug is different from another vicious MATLAB-MEX-version related bug that causes the MEX files to fail at runtime
+                                    REM while the same MEX compilation and run for ParaMonte 1 succeeds with MATLAB R2022b and older.
+                                    REM See
+                                    REM
+                                    REM     https://www.mathworks.com/matlabcentral/answers/2157360-matlab-mex-errinvalidmexfile-invalid-mex-file-the-specified-procedure-could-not-be-found?s_tid=prof_contriblnk
+                                    REM
+                                    REM for more relevant discussion of this bug and possible causes.
+                                    REM
+                                    REM As of today, both CMake and MATLAB MEX compatibility bugs remain unresolved.
+                                    REM The following block can be commented out by setting the value of
+                                    REM `MATLAB_FOUND` to `none` in the following `set` command.
+                                    REM
+                                    REM \todo
+                                    REM \pvhigh
+                                    REM Once the CMake bug in FindMatlab.cmake intrinsic modules is resolved, the whole shenanigan above and below for MEX compilation must be removed.
+                                    REM
+
                                     set MATLAB_FOUND=false
                                     for %%D in ("!INSTALL_LOC_LIST:/=" "!") do (
                                         for %%V in ("!MATLAB_VERSION_LIST:/=" "!") do (
 
                                             if !MATLAB_FOUND!==false (
 
-                                                set "MATLAB_ROOT_DIR_TEMP=%%~D%%~V"
+                                                if defined MATLAB_ROOT_DIR_TEMP (
+                                                    echo.!pmnote! !BoldYellow!Searching for user-specified MATLAB installation at: !MATLAB_ROOT_DIR_TEMP! !ColorReset!
+                                                ) else (
+                                                    set "MATLAB_ROOT_DIR_TEMP=%%~D%%~V"
+                                                )
                                                 set "MATLAB_BIN_DIR_TEMP=!MATLAB_ROOT_DIR_TEMP!\bin"
                                                 set "MATLAB_EXE_PATH_TEMP=!MATLAB_BIN_DIR_TEMP!\matlab.exe"
 
                                                 if  exist !MATLAB_EXE_PATH_TEMP! (
 
                                                     set MATLAB_FOUND=true
-                                                    echo.!pmnote! !BoldYellow!MATLAB %%~V installation detected at: !MATLAB_EXE_PATH! !ColorReset!
                                                     set "MATLAB_ROOT_DIR=!MATLAB_ROOT_DIR_TEMP!"
                                                     set "MATLAB_EXE_PATH=!MATLAB_EXE_PATH_TEMP!"
                                                     set "MATLAB_BIN_DIR=!MATLAB_BIN_DIR_TEMP!"
@@ -1038,6 +1072,7 @@ for %%C in ("!list_fc:;=" "!") do (
                                                     set "MATLAB_LIBMEX_FILE=!MATLAB_LIB_DIR!\libmex.lib"
                                                     set "MATLAB_LIBMAT_FILE=!MATLAB_LIB_DIR!\libmat.lib"
                                                     set "MATLAB_VERSION_FILE=!MATLAB_ROOT_DIR!\extern\version\fortran_mexapi_version.F"
+                                                    echo.!pmnote! !BoldYellow!MATLAB installation detected at: !MATLAB_EXE_PATH! !ColorReset!
                                                     REM set "MATLAB_INC_DIR_FLAG=/I:!MATLAB_INC_DIR!"
                                                     REM set FPP_FLAGS=/define:MATLAB_MEX_FILE
 
@@ -1062,6 +1097,7 @@ for %%C in ("!list_fc:;=" "!") do (
                                                     echo.!pmnote! Compiler command: "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!paramonte_src_dir!\matlab\xrc\pm_sampling.c" libparamonte.lib -output pm_sampling
 
                                                     cd !paramonte_bld_dir!\lib
+                                                    REM we cannot use the version variable when MATLAB directory is user-specified.
                                                     REM if not exist "%%~V" (mkdir "%%~V")
                                                     REM cd %%~V
                                                     call "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!paramonte_src_dir!\matlab\xrc\pm_sampling.c" libparamonte.lib -output pm_sampling && (
@@ -1103,6 +1139,10 @@ for %%C in ("!list_fc:;=" "!") do (
                                                     cd %~dp0
 
                                                 )
+
+                                                set "MATLAB_ROOT_DIR_TEMP="
+                                                set "MATLAB_BIN_DIR_TEMP="
+                                                set "MATLAB_EXE_PATH_TEMP="
 
                                             )
                                         )
