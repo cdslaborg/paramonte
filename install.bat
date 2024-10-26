@@ -189,7 +189,7 @@ set flag_cki=
 set flag_rki=
 
 set ntry=2
-set "MATLAB_ROOT_DIR_TEMP="
+set "matlabdir="
 
 echo.
 type "!paramonte_auxil_dir!\.paramonte.banner"
@@ -401,7 +401,7 @@ if not "%1"=="" (
 
     if "!FLAG!"=="--matlabdir" (
         set FLAG_SUPPORTED=true
-        set "MATLAB_ROOT_DIR_TEMP=!VALUE!"
+        set "matlabdir=!VALUE!"
         set "flag_matlabdir=-Dmatlabdir="!VALUE!""
         if "!VALUE!"=="" set "VALUE_SUPPORTED=false"
         if /i "!VALUE:~0,2!"=="--" set "VALUE_SUPPORTED=false"
@@ -1067,7 +1067,8 @@ for %%C in ("!list_fc:;=" "!") do (
 
                                             if !MATLAB_FOUND!==false (
 
-                                                if defined MATLAB_ROOT_DIR_TEMP (
+                                                if defined matlabdir (
+                                                    set "MATLAB_ROOT_DIR_TEMP=!matlabdir!"
                                                     echo.!pmnote! !BoldYellow!Searching for user-specified MATLAB installation at: !MATLAB_ROOT_DIR_TEMP! !ColorReset!
                                                 ) else (
                                                     set "MATLAB_ROOT_DIR_TEMP=%%~D%%~V"
