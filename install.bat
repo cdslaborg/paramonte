@@ -1,5 +1,6 @@
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::::                                                                                                                            ::::
 ::::    ParaMonte: Parallel Monte Carlo and Machine Learning Library.                                                           ::::
 ::::                                                                                                                            ::::
@@ -189,7 +190,16 @@ set flag_cki=
 set flag_rki=
 
 set ntry=2
+
+REM
+REM MATLAB MEX variables (must be removed once CMake FindMatlab.cmake module bug for Windows is resolved.)
+REM
+
 set "matlabdir="
+
+REM
+REM Echo the ParaMonte banner.
+REM
 
 echo.
 type "!paramonte_auxil_dir!\.paramonte.banner"
@@ -1109,6 +1119,18 @@ for %%C in ("!list_fc:;=" "!") do (
                                                     REM if !BTYPE!==release set "MATLAB_BUILD_FLAGS=!MATLAB_BUILD_FLAGS!!INTEL_CPP_RELEASE_FLAGS!"
 
                                                     set "MEX_FLAGS=-v -nojvm"
+
+                                                    REM
+                                                    REM If openmp is enabled, define the macro OMP_ENABLED=1.
+                                                    REM \todo
+                                                    REM \pvhigh
+                                                    REM This is a weakness point as the input value for `--par` flag may not be completely lower case.
+                                                    REM
+
+                                                    if omp==%%~P (set "MEX_FLAGS=!MEX_FLAGS! -DOMP_ENABLED=1")
+                                                    if OMP==%%~P (set "MEX_FLAGS=!MEX_FLAGS! -DOMP_ENABLED=1")
+                                                    if openmp==%%~P (set "MEX_FLAGS=!MEX_FLAGS! -DOMP_ENABLED=1")
+                                                    if OPENMP==%%~P (set "MEX_FLAGS=!MEX_FLAGS! -DOMP_ENABLED=1")
                                                     echo.!pmnote! Generating the ParaMonte MATLAB MEX files...
                                                     echo.!pmnote! Compiler command: "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!paramonte_src_dir!\matlab\xrc\pm_sampling.c" libparamonte.lib -output pm_sampling
 
