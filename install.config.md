@@ -472,7 +472,7 @@ vendor              | Any vendor name recognized by the CMake `BLA_VENDOR`.
 
 **optional**. The default value for `cmake_lapack_vendor` is `none`.
 
-### `matlabdir`
+### `matlabroot`
 
 Specifies the path to the **root directory** of MATLAB against which the library will be linked.
 Within a MATLAB session, this directory path is returned by the MATLAB intrinsic function `matlabroot`.
@@ -480,11 +480,11 @@ An example such path returned in MATLAB 2024a environment is: `'C:\Program Files
 
 +   Usage (with `install.bat` or `install.sh`)
     ```bash
-    --matlabdir "matlab_root_dir_path"
+    --matlabroot "matlab_root_dir_path"
     ```
 +   Usage (with `cmake` binary executable)
     ```cmake
-    -Dmatlabdir="matlab_root_dir_path"
+    -Dmatlabroot="matlab_root_dir_path"
     ```
 
 where `matlab_root_dir_path` is the path to the root directory of MATLAB.

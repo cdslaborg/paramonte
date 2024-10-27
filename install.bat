@@ -174,7 +174,7 @@ set flag_fresh=
 set flag_G=
 set flag_j=
 set flag_lapack=
-set flag_matlabdir=
+set flag_matlabroot=
 set flag_me=
 set flag_mod=
 set flag_nproc=
@@ -195,7 +195,7 @@ REM
 REM MATLAB MEX variables (must be removed once CMake FindMatlab.cmake module bug for Windows is resolved.)
 REM
 
-set "matlabdir="
+set "matlabroot="
 
 REM
 REM Echo the ParaMonte banner.
@@ -407,12 +407,12 @@ if not "%1"=="" (
         shift
     )
 
-    REM --matlabdir
+    REM --matlabroot
 
-    if "!FLAG!"=="--matlabdir" (
+    if "!FLAG!"=="--matlabroot" (
         set FLAG_SUPPORTED=true
-        set "matlabdir=!VALUE!"
-        set "flag_matlabdir=-Dmatlabdir="!VALUE!""
+        set "matlabroot=!VALUE!"
+        set "flag_matlabroot=-Dmatlabroot="!VALUE!""
         if "!VALUE!"=="" set "VALUE_SUPPORTED=false"
         if /i "!VALUE:~0,2!"=="--" set "VALUE_SUPPORTED=false"
         shift
@@ -970,7 +970,7 @@ for %%C in ("!list_fc:;=" "!") do (
 
                             echo.cd "!paramonte_bld_dir!"
                             echo.cmake !paramonte_dir! !flag_G! -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON !flag_build! !flag_checking! !flag_lib! !flag_mem! !flag_par! !flag_fc!
-                            echo.!flag_ddir! !flag_bench! !flag_benchpp! !flag_blas! !flag_codecov! !flag_cfi! !flag_deps! !flag_exam! !flag_exampp! !flag_fpp! !flag_fresh! !flag_lapack! !flag_matlabdir!
+                            echo.!flag_ddir! !flag_bench! !flag_benchpp! !flag_blas! !flag_codecov! !flag_cfi! !flag_deps! !flag_exam! !flag_exampp! !flag_fpp! !flag_fresh! !flag_lapack! !flag_matlabroot!
                             echo.!flag_lang! !flag_me! !flag_mod! !flag_nproc! !flag_perfprof! !flag_pdt! !flag_purity! !flag_test! !flag_ski! !flag_iki! !flag_lki! !flag_cki! !flag_rki!
 
                             REM The following loop temporarily bypasses an existing bug where the first fresh installation
@@ -980,7 +980,7 @@ for %%C in ("!list_fc:;=" "!") do (
 
                                 cd "!paramonte_bld_dir!"
                                 cmake !paramonte_dir! !flag_G! -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON !flag_build! !flag_checking! !flag_lib! !flag_mem! !flag_par! !flag_fc! ^
-                                !flag_ddir! !flag_bench! !flag_benchpp! !flag_blas! !flag_codecov! !flag_cfi! !flag_deps! !flag_exam! !flag_exampp! !flag_fpp! !flag_fresh! !flag_lapack! !flag_matlabdir! ^
+                                !flag_ddir! !flag_bench! !flag_benchpp! !flag_blas! !flag_codecov! !flag_cfi! !flag_deps! !flag_exam! !flag_exampp! !flag_fpp! !flag_fresh! !flag_lapack! !flag_matlabroot! ^
                                 !flag_lang! !flag_me! !flag_mod! !flag_nproc! !flag_perfprof! !flag_pdt! !flag_purity! !flag_test! !flag_ski! !flag_iki! !flag_lki! !flag_cki! !flag_rki! ^
                                 && (
                                     echo.
@@ -1077,8 +1077,8 @@ for %%C in ("!list_fc:;=" "!") do (
 
                                             if !MATLAB_FOUND!==false (
 
-                                                if defined matlabdir (
-                                                    set "MATLAB_ROOT_DIR_TEMP=!matlabdir!"
+                                                if defined matlabroot (
+                                                    set "MATLAB_ROOT_DIR_TEMP=!matlabroot!"
                                                     echo.!pmnote! !BoldYellow!Searching for user-specified MATLAB installation at: !MATLAB_ROOT_DIR_TEMP! !ColorReset!
                                                 ) else (
                                                     set "MATLAB_ROOT_DIR_TEMP=%%~D%%~V"

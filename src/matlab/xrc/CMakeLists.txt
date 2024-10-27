@@ -30,7 +30,7 @@ unset(MEX_FLAGS)
 unset(rpath_prop)
 #set(MEX_FLAGS "-v -nojvm")
 #set(CFLAGS "-fPIC -shared")
-set(LDFLAGS "-fPIC -shared")
+#set(LDFLAGS "-fPIC -shared")
 
 if (${csid_is_gnu} OR ${csid_is_intel})
     if (APPLE)
