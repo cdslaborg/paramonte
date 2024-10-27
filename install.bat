@@ -1127,12 +1127,14 @@ for %%C in ("!list_fc:;=" "!") do (
                                                     REM This is a weakness point as the input value for `--par` flag may not be completely lower case.
                                                     REM
 
-                                                    if omp==%%~P (set "MEX_FLAGS=!MEX_FLAGS! -DOMP_ENABLED=1")
-                                                    if OMP==%%~P (set "MEX_FLAGS=!MEX_FLAGS! -DOMP_ENABLED=1")
-                                                    if openmp==%%~P (set "MEX_FLAGS=!MEX_FLAGS! -DOMP_ENABLED=1")
-                                                    if OPENMP==%%~P (set "MEX_FLAGS=!MEX_FLAGS! -DOMP_ENABLED=1")
-                                                    echo.!pmnote! Generating the ParaMonte MATLAB MEX files...
-                                                    echo.!pmnote! Compiler command: "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!paramonte_src_dir!\matlab\xrc\pm_sampling.c" libparamonte.lib -output pm_sampling
+                                                    set "ismatlabomp=false"
+                                                    if omp==%%~P set "ismatlabomp=true"
+                                                    if OMP==%%~P set "ismatlabomp=true"
+                                                    if openmp==%%~P set "ismatlabomp=true"
+                                                    if OPENMP==%%~P set "ismatlabomp=true"
+                                                    if !ismatlabomp!==true set "MEX_FLAGS=!MEX_FLAGS! -DOMP_ENABLED"
+                                                    echo.!pmnote!!BoldYellow!Generating the ParaMonte MATLAB MEX files...!ColorReset!
+                                                    echo.!pmnote!!BoldYellow!Compiler command: "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!paramonte_src_dir!\matlab\xrc\pm_sampling.c" libparamonte.lib -output pm_sampling!ColorReset!
 
                                                     cd !paramonte_bld_dir!\lib
                                                     REM we cannot use the version variable when MATLAB directory is user-specified.
@@ -1141,12 +1143,13 @@ for %%C in ("!list_fc:;=" "!") do (
                                                     call "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!paramonte_src_dir!\matlab\xrc\pm_sampling.c" libparamonte.lib -output pm_sampling && (
                                                         echo.!pmnote! !BoldGreen!The ParaMonte MATLAB shared library build appears to have succeeded.!ColorReset!
                                                     ) || (
+                                                        echo.
                                                         echo.!pmwarn! !BoldMagenta!The ParaMonte MATLAB library build failed.!ColorReset!
                                                         echo.!pmwarn! !BoldMagenta!Please make sure you have the following components installed!ColorReset!
                                                         echo.!pmwarn! !BoldMagenta!on your system before rerunning the installation script:!ColorReset!
                                                         echo.!pmwarn! !BoldMagenta!!ColorReset!
-                                                        echo.!pmwarn! !BoldMagenta!    -- MATLAB, including MATLAB compilers.!ColorReset!
-                                                        echo.!pmwarn! !BoldMagenta!    -- Intel Parallel Studio icl/ifort compilers 2018 or newer.!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!    -- MATLAB, including MATLAB MEX compilers.!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!    -- Intel OneAPI icx/icl and ifx/ifort compilers 2023 or newer.!ColorReset!
                                                         echo.!pmwarn! !BoldMagenta!!ColorReset!
                                                         echo.!pmwarn! !BoldMagenta!Once you are sure of the existence of these components in your !ColorReset!
                                                         echo.!pmwarn! !BoldMagenta!Windows command line environment, run the following command:!ColorReset!
@@ -1154,23 +1157,24 @@ for %%C in ("!list_fc:;=" "!") do (
                                                         echo.!pmwarn! !BoldMagenta!    "!MATLAB_BIN_DIR!\mex.bat" -setup C!ColorReset!
                                                         echo.!pmwarn! !BoldMagenta!!ColorReset!
                                                         echo.!pmwarn! !BoldMagenta!Among the options displayed, you should see the command to setup!ColorReset!
-                                                        echo.!pmwarn! !BoldMagenta!the Intel OneAPI icl compiler on your system.!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!the Intel OneAPI icl/icx or Microsoft cl compiler for C on your system.!ColorReset!
                                                         echo.!pmwarn! !BoldMagenta!This command should look similar to the following,!ColorReset!
                                                         echo.!pmwarn! !BoldMagenta!!ColorReset!
                                                         echo.!pmwarn! !BoldMagenta!    "!MATLAB_BIN_DIR_TEMP!\mex.bat" -setup:"C:\Program Files\MATLAB\R2024a\bin\win64\mexopts\intel_c_24_vs2022.xml" C!ColorReset!
                                                         echo.!pmwarn! !BoldMagenta!!ColorReset!
-                                                        echo.!pmwarn! !BoldMagenta!with minor differences depending on your specific installations of !ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!with minor differences in the xml file name depending on your specific installations of !ColorReset!
                                                         echo.!pmwarn! !BoldMagenta!!ColorReset!
-                                                        echo.!pmwarn! !BoldMagenta!    -- the Intel OneAPI version!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!    -- the Intel OneAPI or Microsoft compiler version!ColorReset!
                                                         echo.!pmwarn! !BoldMagenta!    -- the Microsoft Visual Studio version!ColorReset!
                                                         echo.!pmwarn! !BoldMagenta!    -- the MATLAB version!ColorReset!
                                                         echo.!pmwarn! !BoldMagenta!!ColorReset!
-                                                        echo.!pmwarn! !BoldMagenta!Copy and paste this command in your terminal, run it, and then rerun the ParaMonte MATLAB installation script.!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!Copy and paste this command into your terminal, run it, and then rerun the ParaMonte MATLAB installation script.!ColorReset!
                                                         echo.!pmwarn! !BoldMagenta!!ColorReset!
-                                                        echo.!pmwarn! !BoldMagenta!Please report this issue at:!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!Please report this or any other issues at:!ColorReset!
                                                         echo.!pmwarn! !BoldMagenta!!ColorReset!
-                                                        echo.!pmwarn! !BoldMagenta!    https://github.com/cdslaborg/paramonte/issues!ColorReset!
+                                                        echo.!pmwarn! !BoldMagenta!    https://github.com/cdslaborg/paramonte/issues !ColorReset!
                                                         echo.!pmwarn! !BoldMagenta!!ColorReset!
+                                                        echo.
                                                         REM set ERRORLEVEL=1
                                                         REM exit /B 1
                                                     )

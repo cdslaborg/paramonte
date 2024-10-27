@@ -18,16 +18,18 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #if     MX_HAS_INTERLEAVED_COMPLEX
-#define MATLAB_INSANITY mxGetDoubles
+#define MEX_GET_REAL(PM)mxGetDoubles(PM)
+#define MEX_SET_REAL(PM,PR)mxSetDoubles(PM,PR)
+#include "matrix.h"
 #else
 // pointer to real part.
-#define MATLAB_INSANITY mxGetPr
+#define MEX_GET_REAL(PM)mxGetPr(PM)
+#define MEX_SET_REAL(PM,PR)mxSetPr(PM,PR)
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include "mex.h"
-//#include "matrix.h"
 mxArray *matlabFuncHandle;
 #define runParaDRAM runParaDRAMD
 
@@ -53,7 +55,7 @@ mxArray *matlabFuncHandle;
                 //mexPrintf("state = %f\n", state[counter - 1]);
             }
         }
-        mxSetDoubles(argin[1], state); // pointer to state.
+        MEX_SET_REAL(argin[1], state); // pointer to state.
         mxSetM(argin[1], ndim);
         mxSetN(argin[1], njob);
 
@@ -71,7 +73,7 @@ mxArray *matlabFuncHandle;
         //// See for example: https://www.mathworks.com/matlabcentral/answers/515893-mex-error-lnk2019-unresolved-symbol#answer_424915
         ////
 
-        double *logFunc = MATLAB_INSANITY(argout[0]);
+        double *logFunc = MEX_GET_REAL(argout[0]);
         for (mwSize ijob = 0; ijob < njob; ijob++) {
             logFuncState[ijob * ndimp1] = logFunc[ijob];
             //mexPrintf("logFuncState[ijob * ndim] = %f\n", logFuncState[ijob * ndimp1]);
@@ -107,7 +109,7 @@ mxArray *matlabFuncHandle;
         mxArray *argin[2];
         argin[0] = matlabFuncHandle;
         argin[1] = mxCreateDoubleMatrix((mwSize) ndim, (mwSize) 1, mxREAL);
-        memcpy(MATLAB_INSANITY(argin[1]), state, ndim * sizeof(double));
+        memcpy(MEX_GET_REAL(argin[1]), state, ndim * sizeof(double));
 
         ////
         //// Get the MATLAB function output arguments.
@@ -197,4 +199,4 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
-#undef MATLAB_INSANITY
+#undef MEX_GET_REAL

@@ -1591,7 +1591,14 @@ if (MATLAB_ENABLED)
     endif()
     set(paramonte_src_matlab_xrc_dir "${paramonte_src_matlab_dir}/xrc")
     message(NOTICE "${pmattn} paramonte_src_matlab_xrc_dir: ${paramonte_src_matlab_xrc_dir}")
-    add_subdirectory("${paramonte_src_matlab_xrc_dir}" "${paramonte_bld_xrc_dir}")
+    if (NOT WIN32)
+        #### \todo
+        #### \pvhigh
+        #### The above WIN32 fence must be removed as soon as the MEX compilation bug in the CMake intrinsic module FindMatlab.cmake is resolved.
+        #### Note that this bug does not prevent MEX compilation, but only shows up as a runtime error in MATLAB session like "missing gateway function...".
+        #### More information about this bug can be found here: https://gitlab.kitware.com/cmake/cmake/-/issues/25068#note_1453147
+        add_subdirectory("${paramonte_src_matlab_xrc_dir}" "${paramonte_bld_xrc_dir}")
+    endif()
 endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
