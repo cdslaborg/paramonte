@@ -30,6 +30,8 @@ The general usage syntax of the flags with the `install.sh` installation script 
 
 where `flag` can be any of the following installation flags and `value` is the user-specified value for the flag. 
 
+> **NOTE** There can be as many `flag` with `value` pairs as needed, although only one pair is shown above as an example.
+
 > **NOTE** Some flags below may not require a `value` to be specified.
 
 > **NOTE** If the installation script `install.sh` is non-executable,
@@ -43,6 +45,8 @@ The general usage syntax of the flags with the `install.bat` installation script
 ```
 
 where `flag` can be any of the following installation flags and `value` is the user-specified value for the flag. 
+
+> **NOTE** There can be as many `flag` with `value` pairs as needed, although only one pair is shown above as an example.
 
 > **NOTE** Some flags below may not require a `value` to be specified.
 
