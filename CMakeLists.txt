@@ -1822,7 +1822,9 @@ foreach(fitem ${fresh})
     endif()
 endforeach()
 
+####
 #### Copy the package to the binary installation directory.
+####
 
 set(origin "${paramonte_bld_pkg_dir}/")
 set(destin "${paramonte_bin_dir}/${binname}")
@@ -1848,7 +1850,7 @@ if (NOT ${codecov_enabled} AND NOT ${dev_enabled})
         add_dependencies(deploy makeBinDir) # ensure the folder is created before deployment.
     endif()
 else()
-    message(NOTICE  "${pmattn} Skipping the rule for copying the paramonte::${lang} library package to the final binary installation directory...")
+    message(NOTICE "${pmattn} Skipping the rule for copying the paramonte::${lang} library package to the final binary installation directory...")
     add_custom_target(deploy)
 endif()
 add_dependencies(deploy package)

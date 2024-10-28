@@ -271,23 +271,6 @@
 %>          +   <tt>\\naming</tt> Inserts a `\remark` tag about the naming conventions used in the library.
 %>          +   <tt>\\license</tt> Inserts a `\remark` tag about the generic licensing of the library.
 %>          +   <tt>\\final</tt> Inserts the set of final generic remarks that should appear at the end of each documentation section.
-%>          +   <tt>\\RK</tt>       Inserts a hyper-link reference \RK     to the default `real` kind used in the library.
-%>          +   <tt>\\RK32</tt>     Inserts a hyper-link reference \RK32   to the `real32` real kind used in the library.
-%>          +   <tt>\\RK64</tt>     Inserts a hyper-link reference \RK64   to the `real64` real kind used in the library.
-%>          +   <tt>\\RK128</tt>    Inserts a hyper-link reference \RK128  to the `real128` real kind used in the library.
-%>          +   <tt>\\CK</tt>       Inserts a hyper-link reference \CK     to the default `complex` kind used in the library.
-%>          +   <tt>\\CK32</tt>     Inserts a hyper-link reference \CK32   to the `real32` complex kind used in the library.
-%>          +   <tt>\\CK64</tt>     Inserts a hyper-link reference \CK64   to the `real64` complex kind used in the library.
-%>          +   <tt>\\CK128</tt>    Inserts a hyper-link reference \CK128  to the `real128` complex kind used in the library.
-%>          +   <tt>\\IK8</tt>      Inserts a hyper-link reference \IK8    to the `int8` integer kind used in the library.
-%>          +   <tt>\\IK16</tt>     Inserts a hyper-link reference \IK16   to the `int16` integer kind used in the library.
-%>          +   <tt>\\IK32</tt>     Inserts a hyper-link reference \IK32   to the `int32` integer kind used in the library.
-%>          +   <tt>\\IK64</tt>     Inserts a hyper-link reference \IK64   to the `int64` integer kind used in the library.
-%>          +   <tt>\\SKALL</tt>    Inserts a hyper-link reference to all major `character` kinds like: \SKALL.
-%>          +   <tt>\\IKALL</tt>    Inserts a hyper-link reference to all major `integer`   kinds like: \IKALL.
-%>          +   <tt>\\LKALL</tt>    Inserts a hyper-link reference to all major `logical`   kinds like: \LKALL.
-%>          +   <tt>\\CKALL</tt>    Inserts a hyper-link reference to all major `complex`   kinds like: \CKALL.
-%>          +   <tt>\\RKALL</tt>    Inserts a hyper-link reference to all major `real`      kinds like: \RKALL.
 %>      <br>
 %>      <br>
 %>

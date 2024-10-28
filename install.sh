@@ -87,11 +87,18 @@ if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
     unset flag_cki
     unset flag_rki
 
+    ####
     #### Flag to skip timely production steps in development and documentation modes.
     #### if `--dev` is specified  by the user, the macro `dev_enabled` will be set to `1`,
     #### preventing the package copy to the final binary installation directory.
+    ####
+    #### The variable `ntry` is to bypass the need for duplicate build with CMake for development and testing times.
+    #### The duplicate build with CMake is required to ensure the generation of FPP source files in the output package.
+    #### This need for duplicate builds is an issue within the current CMake build scripts of the ParaMonte library that
+    #### must be resolved in the future with a better solution.
+    ####
 
-    unset flag_dev
+    flag_dev="-Ddev_enabled=0"
     ntry=2
 
     while [ "$1" != "" ]; do
@@ -370,7 +377,8 @@ if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
         #   On Windows OS, particularly with MinGW, CMake fails if the specified compiler name or path does not have the
         #   the file extension ".exe". Given that this extension is unlikely to change in the future, and that it is not used
         #   on Unix systems, try suffixing the extension to the compiler file path. If it fails, use the default specified path.
-        fccompilers=("ifort" "ifx" "gfortran" "gfortran-10" "gfortran-11" "gfortran-12" "gfortran-13" "gfortran-14" "gfortran-15" "gfortran-16" "gfortran-17" "gfortran-18" "gfortran-19" "gfortran-20")
+        #fccompilers=("ifort" "ifx" "gfortran" "gfortran-10" "gfortran-11" "gfortran-12" "gfortran-13" "gfortran-14" "gfortran-15" "gfortran-16" "gfortran-17" "gfortran-18" "gfortran-19" "gfortran-20")
+        fccompilers=("ifort" "ifx" "gfortran-20" "gfortran-19" "gfortran-18" "gfortran-17" "gfortran-16" "gfortran-15" "gfortran-14" "gfortran-13" "gfortran-12" "gfortran-11" "gfortran-10" "gfortran")
         if [ "${os}" = "mingw" ] || [ "${os}" = "msys" ] || [ "${os}" = "cygwin" ]; then
             extensions=(".exe" "")
         else
@@ -654,6 +662,7 @@ for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
                                     "${flag_lib}" \
                                     "${flag_mem}" \
                                     "${flag_par}" \
+                                    "${flag_dev}" \
                                     ${flag_fc} \
                                     ${flag_bench} \
                                     ${flag_benchpp} \
@@ -679,7 +688,6 @@ for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
                                     ${flag_lki} \
                                     ${flag_cki} \
                                     ${flag_rki} \
-                                    ${flag_dev} \
                                     )
                                     verify $? "configuration with cmake"
 

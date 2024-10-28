@@ -15,8 +15,8 @@ sampler.spec.parallelismNumThread = []; % Set this to a positive number to reque
 sampler.spec.outputRestartFileFormat = "ascii";
 % Set ``mpiname`` to ``pm.lib.mpi.choice()`` or your choice of MPI
 % library ("intel", "openmpi", "mpich", ...) for MPI-parallel applications.
-sampler.mpiname = ""; %pm.lib.mpi.choice();
-sampler.silent = true;
+sampler.mpiname = ''; %pm.lib.mpi.choice();
+sampler.silent = ~isempty(sampler.mpiname);
 
 %%%%
 %%%% Run the sampler.
@@ -43,6 +43,19 @@ chain = chain{1};
 p = pm.vis.PlotScatter(chain.df, "coly", "proposalAdaptation");
 p.make("axes", {"yscale", "log"});
 p.savefig("Paradram.himmelblau.proposalAdaptation.png", "-m3");
+
+%%%%
+%%%% Make triplet (corner) plots from the chain file.
+%%%%
+
+chain.vis.triplex.lshc2.make();
+p.savefig("Paradram.himmelblau.triplex.lshc2.png", "-m3");
+
+chain.vis.triplex.lshc3.make();
+p.savefig("Paradram.himmelblau.triplex.lshc3.png", "-m3");
+
+chain.vis.triplex.lshcf.make();
+p.savefig("Paradram.himmelblau.triplex.lshcf.png", "-m3");
 
 %%%%
 %%%% The number `chain.slfc` corresponds to the data column with header "sampleLogFunc"`.

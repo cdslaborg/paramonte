@@ -48,6 +48,6 @@ function run(self, getLogFunc, ndim)
                 + newline ...
                 );
     end
-    self.name = inputname(1);
+    self.name = string(inputname(1));
     run@pm.sampling.Sampler(self, getLogFunc, ndim);
 end

@@ -20,6 +20,7 @@ pm_arrayShuffle/getShuffled_vs_setShuffled
 pm_arraySort/sorting
 pm_arraySort/sorting_vs_indexing
 pm_arraySplit/scalarSep_vs_vectorSep
+pm_clusKmeans/setMember
 pm_distExp/getExpLogPDF_vs_setExpLogPDF
 pm_distExp/setExpLogPDF-logInvSigma-missing_vs_present
 pm_distGenExpGamma/getGenExpGammaLogPDFNF
@@ -49,6 +50,7 @@ pm_mathLogAddExp/getLogAddExp
 pm_mathLogSubExp/getLogSubExp
 pm_mathLogSumExp/getLogSumExp
 pm_mathSqrt/getSqrt
+pm_mathSum/getDot
 pm_mathSum/getSum
 pm_matrixChol/cholesky_assumed_vs_explicit
 pm_matrixInit/getMatInit_vs_setMatInit
@@ -58,6 +60,7 @@ pm_matrixTrans/setMatTransBlock
 pm_matrixTrans/setMatTrans_vs_transHerm
 pm_matrixTrans/setMatTrans_vs_transpose
 pm_option/getOption_vs_direct
+pm_polynomial/setPolyRoot
 pm_sampleCov/setCovMean_dim1_vs_dim2
 pm_sampleCov/setCov_dim1_vs_dim2
 pm_sampleCov/setCov_vs_setCovMean

@@ -189,6 +189,14 @@ set flag_lki=
 set flag_cki=
 set flag_rki=
 
+REM
+REM The variable `ntry` is to bypass the need for duplicate build with CMake for development and testing times.
+REM The duplicate build with CMake is required to ensure the generation of FPP source files in the output package.
+REM This need for duplicate builds is an issue within the current CMake build scripts of the ParaMonte library that
+REM must be resolved in the future with a better solution.
+REM
+
+set "flag_dev=-Ddev_enabled=0"
 set ntry=2
 
 REM
@@ -581,6 +589,7 @@ if not "%1"=="" (
 
     if "!FLAG!"=="--dev" (
         set FLAG_SUPPORTED=true
+        set "flag_dev=-Ddev_enabled=1"
         set ntry=1
     )
 
@@ -971,7 +980,7 @@ for %%C in ("!list_fc:;=" "!") do (
                             echo.cd "!paramonte_bld_dir!"
                             echo.cmake !paramonte_dir! !flag_G! -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON !flag_build! !flag_checking! !flag_lib! !flag_mem! !flag_par! !flag_fc!
                             echo.!flag_ddir! !flag_bench! !flag_benchpp! !flag_blas! !flag_codecov! !flag_cfi! !flag_deps! !flag_exam! !flag_exampp! !flag_fpp! !flag_fresh! !flag_lapack! !flag_matlabroot!
-                            echo.!flag_lang! !flag_me! !flag_mod! !flag_nproc! !flag_perfprof! !flag_pdt! !flag_purity! !flag_test! !flag_ski! !flag_iki! !flag_lki! !flag_cki! !flag_rki!
+                            echo.!flag_lang! !flag_me! !flag_mod! !flag_nproc! !flag_perfprof! !flag_pdt! !flag_purity! !flag_test! !flag_ski! !flag_iki! !flag_lki! !flag_cki! !flag_rki! !flag_dev!
 
                             REM The following loop temporarily bypasses an existing bug where the first fresh installation
                             REM does not copy the FPP source files to the deployment and installation directories.
@@ -981,7 +990,7 @@ for %%C in ("!list_fc:;=" "!") do (
                                 cd "!paramonte_bld_dir!"
                                 cmake !paramonte_dir! !flag_G! -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON !flag_build! !flag_checking! !flag_lib! !flag_mem! !flag_par! !flag_fc! ^
                                 !flag_ddir! !flag_bench! !flag_benchpp! !flag_blas! !flag_codecov! !flag_cfi! !flag_deps! !flag_exam! !flag_exampp! !flag_fpp! !flag_fresh! !flag_lapack! !flag_matlabroot! ^
-                                !flag_lang! !flag_me! !flag_mod! !flag_nproc! !flag_perfprof! !flag_pdt! !flag_purity! !flag_test! !flag_ski! !flag_iki! !flag_lki! !flag_cki! !flag_rki! ^
+                                !flag_lang! !flag_me! !flag_mod! !flag_nproc! !flag_perfprof! !flag_pdt! !flag_purity! !flag_test! !flag_ski! !flag_iki! !flag_lki! !flag_cki! !flag_rki! !flag_dev! ^
                                 && (
                                     echo.
                                     echo.!pmnote! !BoldGreen!ParaMonte configuration with CMake appears to have succeeded.!ColorReset!

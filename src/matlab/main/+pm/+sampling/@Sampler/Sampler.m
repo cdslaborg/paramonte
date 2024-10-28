@@ -189,7 +189,7 @@ classdef Sampler < pm.matlab.Handle
                         );
             end
             %filePath = mfilename("fullpath"); addpath(genpath(filePath),"-begin");
-            self.name = inputname(1);
+            self.name = string(inputname(1));
         end
 
         reportList = readReport(self, pattern)
@@ -201,6 +201,7 @@ classdef Sampler < pm.matlab.Handle
     end
 
     methods(Hidden)
+        getppm(self);
         finalize(self);
         run(self, getLogFunc, ndim)
         fileList = findfile(self, ftype, pattern);
