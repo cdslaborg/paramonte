@@ -140,7 +140,7 @@ module pm_clusTest
     !>
     !>  \todo
     !>  \phigh
-    !>  This type must be geenralized to accept `real` components of arbitrary kind, once GNU compiler support for PDTs is strong.<br>
+    !>  This type must be generalized to accept `real` components of arbitrary kind, once GNU compiler support for PDTs is strong.<br>
     !>
     !>  \final{mmvue_type}
     !>
