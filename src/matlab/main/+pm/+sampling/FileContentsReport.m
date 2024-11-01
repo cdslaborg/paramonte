@@ -43,6 +43,16 @@ classdef FileContentsReport < pm.io.FileContents
         %>                      and New Line characters removed.<br>
         %>
         lineList = [];
+        %>
+        %>  ``vis``         :   The scalar MATLAB ``struct`` containing the set of
+        %>                      predefined visualizations for the output data.<br>
+        %>
+        vis = [];
+        %>
+        %>  ``banner``      :   The scalar MATLAB ``string`` containing the ParaMonte
+        %>                      library banner as appearing in the report file.<br>
+        %>
+        banner = "";
         % %
         % %   setup
         % %
@@ -57,7 +67,6 @@ classdef FileContentsReport < pm.io.FileContents
         % %       simulation specifications extracted from the report file.
         % %
         % spec = struct();
-        banner = "";
     end
 
     properties(Hidden)
@@ -112,6 +121,7 @@ classdef FileContentsReport < pm.io.FileContents
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = FileContentsReport(file, silent, method)
+
             if  nargin < 2
                 silent = [];
             end
@@ -120,7 +130,11 @@ classdef FileContentsReport < pm.io.FileContents
                 self.method = convertStringsToChars(method);
                 self.prefix = [self.method, self.prefix];
             end
-            % remove any CARRIAGE RETURN.
+
+            %%%%
+            %%%% remove any CARRIAGE RETURN.
+            %%%%
+
             self.contents = strrep(fileread(file), char(13), '');
             self.contents = strrep(self.contents, newline, [' ', newline]);
             self.lineList = strsplit(self.contents, newline);
@@ -131,7 +145,9 @@ classdef FileContentsReport < pm.io.FileContents
             %%%% determine the decoration symbol and read the banner.
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            % Here we assume the first non-empty line starts with the symbol character (likely ``%``).
+            %%%%
+            %%%% Here we assume the first non-empty line starts with the symbol character (likely ``%``).
+            %%%%
 
             ibeg = self.skipNull(iend);
             failed = self.lineListLen < ibeg || length(self.lineList{ibeg}) < 4;
@@ -206,7 +222,10 @@ classdef FileContentsReport < pm.io.FileContents
                 end
                 if  strcmp(item(1 : min(6, length(item))), 'stats.')
 
-                    % first non-empty line.
+                    %%%%
+                    %%%% First non-empty line.
+                    %%%%
+
                     ibeg = self.skipNull(iend + 1);
                     failed = self.lineListLen < ibeg;
                     if ~failed
@@ -226,7 +245,9 @@ classdef FileContentsReport < pm.io.FileContents
                         end
                     end
 
-                    % Retrieve the description.
+                    %%%%
+                    %%%% Retrieve the description.
+                    %%%%
 
                     ibeg = self.skipNull(iend + 1);
                     iend = self.skipFull(ibeg + 1);
@@ -251,6 +272,91 @@ classdef FileContentsReport < pm.io.FileContents
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             self.checkpoint();
+
+            %%%%
+            %%%% Add the parallel scaling visualizations.
+            %%%%
+
+            try
+                %self.vis = struct();
+                %self.vis.parallelism = struct();
+                %self.vis.parallelism = struct();
+                for parcond = ["optimal", "perfect"]
+                    %self.vis.parallelism.(parcond) = struct();
+                    %self.vis.parallelism.(parcond).scaling = struct();
+                    %self.vis.parallelism.(parcond).scaling.strong = struct();
+                    %self.vis.parallelism.(parcond).scaling.strong.lineScatter = ...
+                    self.stats.parallelism.(parcond).scaling.strong.vis = struct();
+                    self.stats.parallelism.(parcond).scaling.strong.vis.desc = ...
+                    "This component is added in the post-processing phase to facilitate quick " + ...
+                    "visualization of the parallel scaling behavior of the sampler under the " + parcond + " parallel conditions.";
+                    self.stats.parallelism.(parcond).scaling.strong.vis.lineScatter = ...
+                    pm.vis.PlotLineScatter  ( self.stats.parallelism.(parcond).scaling.strong.value ...
+                                            , "colx", 1, "coly", 2, "colc", 2, "axes", {"xscale", "log"} ...
+                                            , "scatter", {"size", 10, "color", pm.vis.color.rgb("red")} ...
+                                            ..., "colormap", {"enabled", false, "map", "autumn"} ...
+                                            , "plot", {"linewidth", 2.5} ...
+                                            );
+                end
+            catch me
+                warning ( newline ...
+                        + "Failed to create the visualizations for the parallelization scaling behavior of the sampler." + newline ...
+                        + "It is possible that the component ``stats.parallelism.(parcond).scaling.strong.value`` of the " + newline ...
+                        + "output ``report`` object of class ``pm.sampling.FileContentsReport`` does not exist, where " + newline ...
+                        + "the string `parcond` can be either ``optimal`` or ``perfect``." + newline ...
+                        + "Here is the error message:" + newline ...
+                        + newline ...
+                        + string(me.identifier) + newline + string(me.message) + newline ...
+                        + newline ...
+                        );
+            end
+
+            %%%%
+            %%%% Add the parallel process contribution visualizations.
+            %%%%
+
+            try
+                %%%%
+                %%%% Set up the Cyclic Geometric fit to parallel processes contributions.
+                %%%%
+
+                cgfit = @(iproc, successProb, normFac, processCount) successProb .* normFac .* (1 - successProb).^(iproc - 1) ./ (1 - (1 - successProb).^processCount);
+
+                %%%%
+                %%%% Set up the data frame containing the processes contributions and its Cyclic Geometric fit to parallel processes contributions.
+                %%%%
+
+                dfpc = self.stats.parallelism.current.process.contribution.count.value;
+                dfpc.cyclicGeometricFit = cgfit ( dfpc.processID ...
+                                                , self.stats.parallelism.current.process.contribution.fit.value.successProb ...
+                                                , self.stats.parallelism.current.process.contribution.fit.value.normFac ...
+                                                , self.stats.parallelism.current.process.count.value.Var1 ...
+                                                );
+                self.stats.parallelism.current.process.contribution.vis = struct();
+                self.stats.parallelism.current.process.contribution.vis.desc = ...
+                "This component is added in the post-processing phase to facilitate quick " + ...
+                "visualization of the contributions of the parallel processes to the final chain.";
+                self.stats.parallelism.current.process.contribution.vis.line = ...
+                pm.vis.PlotLine ( dfpc ...
+                                , "colx", "processID", "coly", 2:3, "axes", {"xscale", "log", "yscale", "log"} ...
+                                , "ylabel", {"txt", "Accepted-Sample Contribution"} ...
+                                , "xlabel", {"txt", "Process ID"} ...
+                                , "colormap", {"enabled", false} ...
+                                , "legend", {"enabled", true} ...
+                                , "plot", {"linewidth", 2.5} ...
+                                );
+            catch me
+                warning ( newline ...
+                        + "Failed to create the visualizations for the parallel processes contributions and their Cyclic Geomtric fit." + newline ...
+                        + "It is possible that the component ``stats.parallelism.current.process.contribution`` of the " + newline ...
+                        + "output ``report`` object of class ``pm.sampling.FileContentsReport`` does not exist, or " + newline ...
+                        + "its sub-components are missing." + newline ...
+                        + "Here is the error message:" + newline ...
+                        + newline ...
+                        + string(me.identifier) + newline + string(me.message) + newline ...
+                        + newline ...
+                        );
+            end
 
         end % constructor
 

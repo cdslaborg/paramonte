@@ -396,8 +396,9 @@ end if;
                     end do
                     call spec%disp%skip(count = spec%disp%bmsize)
                     spec%msg = SKG_"These are the contributions of individual processes to the construction of the output chain of the "//spec%method%val//SKG_" sampler. &
-                    &Essentially, they represent the total number of accepted states (useful contributions to the simulation) by the corresponding processor, &
-                    &starting from the first processor to the last. This information is mostly informative in parallel Fork-Join (singleChain) simulations."
+                    &Each count value represents the total number of accepted states (useful contributions to the simulation) by the corresponding processor, starting &
+                    &from the first processor to the last. This information is mainly useful in synchronous parallel Fork-Join (singleChain) simulations. &
+                    &Ideally, one would desire equal contributions from all processes to the final output chain, although this is never the case."
                     call spec%disp%note%show(spec%msg)
 
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -513,7 +514,7 @@ end if;
                     end do
                     call spec%disp%skip(count = spec%disp%bmsize)
                     spec%msg = SKG_"This is the predicted strong-scaling speedup behavior of the "//spec%parallelism%val//SKG_" parallelization model, &
-                    &given the current sampling efficiency and parallel communication overhead, for increasing numbers of processes, starting from a single process."
+                    &given the current parallel communication overhead in the above and the current sampling efficiency, for increasing numbers of processes, starting from a single process."
                     call spec%disp%note%show(spec%msg)
 
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -552,7 +553,8 @@ end if;
 
                     call spec%disp%show("stats.parallelism.perfect.speedup")
                     call spec%disp%show(scalingMaxVal, format = format)
-                    spec%msg = SKG_"This is the predicted optimal maximum speedup gained via "//spec%parallelism%val//SKG_" parallelization model, under a perfect scenario (approaching 0% sampling efficiency)."
+                    spec%msg = SKG_"This is the predicted optimal maximum speedup gained via "//spec%parallelism%val//SKG_" parallelization model, &
+                    &given the current parallel communication overhead in the above and under a perfect scenario (approaching 0% sampling efficiency)."
                     call spec%disp%note%show(spec%msg)
 
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

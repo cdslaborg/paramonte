@@ -258,6 +258,10 @@ classdef Paradram < pm.sampling.Sampler
         %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.proposalCov.png width=700
         %>  <br><br>
         %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.proposalAdaptation.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.parallelism.optimal.scaling.strong.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.parallelism.perfect.scaling.strong.png width=700
         %>
         %>  \final{Paradram}
         %>

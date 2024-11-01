@@ -92,7 +92,9 @@ report = sampler.readReport();
 report = report{1};
 
 for partype = ["optimal", "perfect"]
-    p = pm.vis.PlotLineScatter(report.stats.parallelism.(partype).scaling.strong.value, "colx", "1", "coly", "2", "colc", "2");
-    p.make("axes", {"xscale", "log"}, "plot", {"linewidth", 2}, "scatter", {"size", 7});
-    p.savefig("Paradram.himmelblau.parallelism." + partype + ".scaling.strong.png", "-m3");
+    report.stats.parallelism.(partype).scaling.strong.vis.lineScatter.make();
+    report.stats.parallelism.(partype).scaling.strong.vis.lineScatter.savefig("Paradram.himmelblau.parallelism." + partype + ".scaling.strong.png", "-m3");
+    %p = pm.vis.PlotLineScatter(report.stats.parallelism.(partype).scaling.strong.value, "colx", "1", "coly", "2", "colc", "2");
+    %p.make("axes", {"xscale", "log"}, "plot", {"linewidth", 2}, "scatter", {"size", 7});
+    %p.savefig("Paradram.himmelblau.parallelism." + partype + ".scaling.strong.png", "-m3");
 end
