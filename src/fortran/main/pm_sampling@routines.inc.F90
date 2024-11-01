@@ -340,15 +340,15 @@ end if;
 
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                call spec%disp%show("stats.time.perInterProcessCommunication")
-                call spec%disp%show(stat%avgCommPerFunCall, format = format)
-                call spec%disp%note%show("This is the average time cost of parallel inter-process communications per used (accepted or rejected or delayed-rejection) function call, in seconds.")
-
-                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
                 call spec%disp%show("stats.time.perFuncCall")
                 call spec%disp%show(stat%avgTimePerFunCall, format = format)
                 call spec%disp%note%show("This is the average pure time cost of each function call, in seconds.")
+
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                call spec%disp%show("stats.time.perInterProcessCommunication")
+                call spec%disp%show(stat%avgCommPerFunCall, format = format)
+                call spec%disp%note%show("This is the average time cost of parallel inter-process communications per used (accepted or rejected or delayed-rejection) function call, in seconds.")
 
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -358,8 +358,8 @@ end if;
 
 #if             CAF_ENABLED || MPI_ENABLED || OMP_ENABLED
                 if (spec%image%count == 1_IK) then
-                    spec%msg = spec%method%val//SKG_" is used in parallel mode with only one processor. This can be computationally inefficient. &
-                    &Consider using the serial version of the code or provide more processes at runtime if it seems to be beneficial."
+                    spec%msg = spec%method%val//SKG_" is used in parallel mode with only one image/process/thread. This can be computationally inefficient. &
+                    &Consider using the serial version of the code or provide more processes at runtime if it seems to be beneficial as discussed below."
                     call spec%disp%note%show(spec%msg, unit = output_unit)!, format = format, tmsize = 3_IK, bmsize = 1_IK)
                 end if
 #endif
@@ -505,7 +505,7 @@ end if;
 
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                    call spec%disp%show("stats.parallelism.optimal.scaling.strong.speedup")
+                    call spec%disp%show("stats.parallelism.optimal.scaling.strong")
                     call spec%disp%show(css_type([character(15) :: "processCount", "speedup"]), format = spec%reportFile%format%fixform, bmsize = 0_IK)
                     do iell = 1, size(scaling, 1, IK)
                         write(spec%reportFile%unit, spec%reportFile%format%intreal) numproc(iell), scaling(iell)
@@ -517,12 +517,12 @@ end if;
                     call spec%disp%note%show(spec%msg)
 
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                    ! compute the absolute parallelism efficiency under any sampling efficiency.
+                    ! Compute the perfect-efficiency parallel scaling under any sampling efficiency.
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                     ! \todo
-                    ! The specified epsilon values for `parSecTime` and `comSecTime` are points of weakness of the following call
-                    ! if the computers of the future civilization are roughly 1 billion times or more faster than the current 2020 technologies.
+                    ! The specified epsilon double precision values for `parSecTime` and `comSecTime` are points of weakness of the following
+                    ! call if the computers of the future civilization are roughly 1 billion times or more faster than the current 2020 technologies.
                     ! Therefore, a more robust solution is required for cases where the entire simulation is a dry run of the old existing simulation.
                     ! This situation is, however, such a rare occurrence that does not merit further investment in the current version of the library.
                     call setForkJoinScaling ( conProb = 0._RKG & ! LCOV_EXCL_LINE
@@ -538,34 +538,34 @@ end if;
 
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                    call spec%disp%show("stats.parallelism.absolute.process.count")
+                    call spec%disp%show("stats.parallelism.perfect.process.count")
                     call spec%disp%show(scalingMaxLoc, format = format)
-                    spec%msg = "This is the predicted absolute number of physical computing processes for "//spec%parallelism%val// & ! LCOV_EXCL_LINE
-                    SKG_" parallelization model, under any sampling efficiency for this sampling problem, given the current parallel communication overhead."
-                    call spec%disp%note%show(spec%msg)
-
-                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-                    call spec%disp%show("stats.parallelism.absolute.speedup")
-                    call spec%disp%show(scalingMaxVal, format = format)
-                    spec%msg = SKG_"This is the predicted absolute optimal maximum speedup gained via "//spec%parallelism%val//SKG_" parallelization model, under any sampling efficiency. &
-                    &This simulation will likely NOT benefit from any additional computing processors beyond the predicted absolute optimal number, "//getStr(scalingMaxLoc)//SKG_", in the above. &
-                    &This is true for any value of MCMC sampling efficiency given the current parallel communication overhead. Keep in mind that the predicted absolute optimal number of processors &
-                    &is just an estimate whose accuracy depends on many runtime factors, including the topology of the communication network being used, the number of processors per node, &
+                    spec%msg = "This is the predicted number of physical computing processes for "//spec%parallelism%val// & ! LCOV_EXCL_LINE
+                    SKG_" parallelization model, under a perfect scenario (approaching 0% sampling efficiency) for this sampling problem, given the current parallel communication overhead. &
+                    &This simulation will likely NOT benefit from any additional computing processors beyond the predicted perfect-scenario optimal number, "//getStr(scalingMaxLoc)//SKG_", in the above. &
+                    &This is true for any value of sampling efficiency given the current parallel communication overhead. Keep in mind that the predicted optimal number of processors in a perfect-scenario &
+                    &(approaching 0% sampling efficiency) is just an estimate whose accuracy depends on many runtime factors, including the topology of the communication network being used, the number of processors per node, &
                     &and the number of tasks to each processor or node."
                     call spec%disp%note%show(spec%msg)
 
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                    call spec%disp%show("stats.parallelism.absolute.scaling.strong.speedup")
+                    call spec%disp%show("stats.parallelism.perfect.speedup")
+                    call spec%disp%show(scalingMaxVal, format = format)
+                    spec%msg = SKG_"This is the predicted optimal maximum speedup gained via "//spec%parallelism%val//SKG_" parallelization model, under a perfect scenario (approaching 0% sampling efficiency)."
+                    call spec%disp%note%show(spec%msg)
+
+                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                    call spec%disp%show("stats.parallelism.perfect.scaling.strong")
                     call spec%disp%show(css_type([character(15) :: "processCount", "speedup"]), format = spec%reportFile%format%fixform, bmsize = 0_IK)
                     do iell = 1, size(scaling, 1, IK)
                         write(spec%reportFile%unit, spec%reportFile%format%intreal) numproc(iell), scaling(iell)
                         !call spec%disp%show(scaling(iell : min(iell + nscol - 1_IK, size(scaling, 1, IK))), format = scalingFormat, tmsize = 0_IK, bmsize = 0_IK)
                     end do
                     call spec%disp%skip(count = spec%disp%bmsize)
-                    spec%msg = SKG_"This is the predicted absolute strong-scaling speedup behavior of the "//spec%parallelism%val//&
-                    SKG_" parallelization model, under any MCMC sampling efficiency, given the current parallel communication overhead,&
+                    spec%msg = SKG_"This is the predicted strong-scaling speedup behavior of the "//spec%parallelism%val//SKG_" parallelization model, &
+                    &under a perfect scenario (approaching 0% sampling efficiency), given the current parallel communication overhead, &
                     &for increasing numbers of processes, starting from a single process."
                     call spec%disp%note%show(spec%msg)
 

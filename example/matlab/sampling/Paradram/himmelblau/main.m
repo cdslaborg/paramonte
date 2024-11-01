@@ -83,3 +83,16 @@ restart = restart{1};
 p = pm.vis.PlotEllipse3(restart.proposalCov, restart.proposalMean, transpose(restart.uniqueStateVisitCount));
 p.make("axes", {"zscale", "log"});
 p.savefig("Paradram.himmelblau.proposalCov.png", "-m3");
+
+%%%%
+%%%% Postprocess the output report file.
+%%%%
+
+report = sampler.readReport();
+report = report{1};
+
+for partype = ["optimal", "perfect"]
+    p = pm.vis.PlotLineScatter(report.stats.parallelism.(partype).scaling.strong.value, "colx", "1", "coly", "2", "colc", "2");
+    p.make("axes", {"xscale", "log"}, "plot", {"linewidth", 2}, "scatter", {"size", 7});
+    p.savefig("Paradram.himmelblau.parallelism." + partype + ".scaling.strong.png", "-m3");
+end

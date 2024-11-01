@@ -37,6 +37,7 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
 #endif
 
     use pm_val2str, only: getStr
+    use pm_arraySpace, only: setLinSpace
     use pm_arrayResize, only: setResized
     use pm_distGeomCyclic, only: getGeomCyclicLogPMF
 
