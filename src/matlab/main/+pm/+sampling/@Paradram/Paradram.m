@@ -271,6 +271,7 @@ classdef Paradram < pm.sampling.Sampler
             self = self@pm.sampling.Sampler("ParaDRAM")
         end
         failed = run(self, getLogFunc, ndim);
+        chainList = readChain(self, pattern, sep);
         chainMarkovList = readChainMarkov(self, pattern, sep);
     end
 end

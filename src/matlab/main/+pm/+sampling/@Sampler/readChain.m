@@ -78,6 +78,7 @@
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function chainList = readChain(self, pattern, sep)
+
     if nargin < 3
         if 0 < pm.array.len(self.spec.outputSeparator)
             sep = string(self.spec.outputSeparator);
@@ -92,6 +93,7 @@ function chainList = readChain(self, pattern, sep)
             pattern = [];
         end
     end
+
     ftype = "chain";
     pathList = self.findfile(ftype, pattern);
     chainList = cell(length(pathList), 1);
@@ -101,4 +103,5 @@ function chainList = readChain(self, pattern, sep)
         end
         chainList{ifile} = pm.sampling.FileContentsChain(pathList(ifile), self.silent, sep);
     end
+
 end

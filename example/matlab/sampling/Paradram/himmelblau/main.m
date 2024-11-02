@@ -40,9 +40,19 @@ end
 chain = sampler.readChain();
 chain = chain{1};
 
+%%%%
+%%%% Make plots of proposal adaptation.
+%%%%
+
 p = pm.vis.PlotScatter(chain.df, "coly", "proposalAdaptation");
 p.make("axes", {"yscale", "log"});
 p.savefig("Paradram.himmelblau.proposalAdaptation.png", "-m3");
+
+chain.vis.proposalAdaptation.line.make()
+chain.vis.proposalAdaptation.line.savefig("Paradram.himmelblau.proposalAdaptation.line.png", "-m3");
+
+chain.vis.proposalAdaptation.scatter.make()
+chain.vis.proposalAdaptation.scatter.savefig("Paradram.himmelblau.proposalAdaptation.scatter.png", "-m3");
 
 %%%%
 %%%% Make triplet (corner) plots from the chain file.
