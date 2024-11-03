@@ -9,7 +9,7 @@
 %>  \section ParaMonte What is ParaMonte?
 %>  <!--==============================-->
 %>
-%>  ParaMonte is a library of serial and parallel Monte Carlo and Machine Learning routines
+%>  ParaMonte is a multi-language library of serial and parallel Monte Carlo and Machine Learning routines
 %>  scientific inference, e.g., for sampling mathematical density functions of arbitrary-dimensions,
 %>  with the design goal of unifying
 %>
@@ -54,13 +54,13 @@
 %>  The documentation for the latest version of the ParaMonte MATLAB library is always <a href="../../matlab/latest/index.html" target="_blank"><b>available on this page</b></a>.<br>
 %>
 %>  [⛓](#ParaMonteUsage)
-%>  <!--=====================================-->
-%>  \section ParaMonteUsage ParaMonte QuickStart
-%>  <!--=====================================-->
+%>  <!--============================================-->
+%>  \section ParaMonteUsage ParaMonte MATLAB QuickStart
+%>  <!--============================================-->
 %>
 %>  For more information on the installation, general usage, and examples, visit:
 %>
-%>  &emsp;<a href="https://www.cdslab.org/paramonte" target="_blank"><b>https://www.cdslab.org/paramonte</b></a>
+%>  &emsp;<a href="https://www.cdslab.org/paramonte/generic/latest/installation/matlab/" target="_blank"><b>https://www.cdslab.org/paramonte/generic/latest/installation/matlab/</b></a>
 %>
 %>  To get started with the library once you download it, simply add the path to the ParaMonte library `+pm`
 %>  package to access the routines and functionalities available in the library.<br>

@@ -9,7 +9,7 @@
 /// \section ParaMonte What is ParaMonte?
 /// <!--==============================-->
 ///
-/// ParaMonte is a library of serial and parallel Monte Carlo and Machine Learning routines
+/// ParaMonte is a multi-language library of serial and parallel Monte Carlo and Machine Learning routines
 /// scientific inference, e.g., for sampling mathematical density functions of arbitrary-dimensions,
 /// with the design goal of unifying
 ///
