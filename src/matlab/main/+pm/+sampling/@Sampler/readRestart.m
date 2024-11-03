@@ -1,5 +1,5 @@
 %>  \brief
-%>  Return a list of objects of class [pm.sampling.FileContentsRestartDRAM](@ref FileContentsRestartDRAM)
+%>  Return a list of objects of class [pm.sampling.FileContentsRestart](@ref FileContentsRestart)
 %>  containing the content(s) of the ParaMonte simulation output restart
 %>  file(s) whose path(s) match the specified input ``pattern`` or the
 %>  simulation specification ``sampler.spec.outputFileName``.<br>
@@ -46,7 +46,7 @@
 %>                          If the input ``pattern`` is empty, then the method will search
 %>                          for any possible candidate files with the appropriate suffix
 %>                          in the current working directory.<br>
-%>                          (optional, default = ``sampler.spec.outputFileName`` or ``"./"``)
+%>                          (**optional**, default = ``sampler.spec.outputFileName`` or ``"./"``)
 %>
 %>  \return
 %>  ``restartList``     :   The output MATLAB cell array of objects
@@ -78,13 +78,6 @@
 %>
 %>      sampler.readRestart("./out/test_run_", ",");
 %>
-%>      sampler.spec.outputSeparator = ",";
-%>      sampler.readRestart("./out/test_run_");
-%>
-%>      sampler.spec.outputFileName = "./out/test_run_";
-%>      sampler.spec.outputSeparator = ",";
-%>      sampler.readRestart();
-%>
 %>  \endcode
 %>
 %>  \final{readRestart}
@@ -95,20 +88,11 @@
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 %>
 function restartList = readRestart(self, pattern)
-    if nargin < 2
-        if 0 < pm.array.len(self.spec.outputFileName)
-            pattern = string(self.spec.outputFileName);
-        else
-            pattern = [];
-        end
+
+    if  nargin < 2
+        pattern = [];
     end
-    ftype = "restart";
-    pathList = self.findfile(ftype, pattern);
-    restartList = cell(length(pathList), 1);
-    for ifile = length(pathList) : -1 : 1
-        if ~self.silent
-            disp("processing file: """ + pathList(ifile) + """");
-        end
-        restartList{ifile} = pm.sampling.FileContentsRestartDRAM(pathList(ifile), self.silent);
-    end
+
+    restartList = pm.sampling.readRestart(self, pattern);
+
 end

@@ -320,6 +320,7 @@ contains
         use pm_val2str, only: getStr
         use pm_io, only: setContentsFrom
         use pm_sysShell, only: isFailedExec
+        use pm_sysPath, only: isFailedRemove
         use pm_sysPath, only: getPathTemp
         use pm_sysShell, only: shell_type
         use pm_container, only: css_type
@@ -335,7 +336,9 @@ contains
 
         sysInfo = SKG_""
 
-        ! Infer the shell type.
+        !!!!
+        !!!! Infer the shell type.
+        !!!!
 
         shell = shell_type(failed, errmsg)
         if (failed) then
@@ -355,14 +358,18 @@ contains
         !    end if
         !end if
 
-        ! Standard error output for error-catching.
+        !!!!
+        !!!! Standard error output for error-catching.
+        !!!!
 
        !stderr = SK_" 2> "//cache_def//SK_".stderr"
         stdout = getPathTemp(prefix = SK_".sysInfo", failed = failed)
         stderr = stdout//SK_".stderr"
         dumper = SK_" 1> "//stdout//SK_" 2> "//stderr
 
-        ! Define the shell command.
+        !!!!
+        !!!! Define the shell command.
+        !!!!
 
         failed = isFailedInitOS(errmsg)
         if (failed) return ! LCOV_EXCL_LINE
@@ -385,7 +392,9 @@ contains
             return ! LCOV_EXCL_LINE
         end if
 
-        ! Get sysinfo.
+        !!!!
+        !!!! Get sysinfo.
+        !!!!
 
         done = .false._LK
         do icmd = 1, size(cmd, 1, IK)
@@ -397,7 +406,11 @@ contains
                 end if
             end if
         end do
-        ! At least one of the loop cycles must succeed to not fail.
+
+        !!!!
+        !!!! At least one of the loop cycles must succeed to not fail.
+        !!!!
+
         failed = .not. done
         if (failed) then
             errmsg = PROCEDURE_NAME//SK_": "//trim(errmsg) ! LCOV_EXCL_LINE
@@ -416,6 +429,12 @@ contains
         !   This needs a more robust solution in the future.
         !failed = .true._LK ! LCOV_EXCL_LINE
         !return ! LCOV_EXCL_LINE
+
+        !!!!
+        !!!! Delete the stderr file.
+        !!!!
+
+        failed = isFailedRemove(stderr, errmsg = errmsg)
 
     end procedure
 

@@ -1,7 +1,11 @@
 %>  \brief
 %>  This is the ParaDRAM class for generating instances of serial and parallel
 %>  Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo
-%>  sampler of the ParaMonte MATLAB library.
+%>  sampler of the ParaMonte MATLAB library.<br>
+%>
+%>  \details
+%>  For more information, see the documentation of the class
+%>  constructor [pm.sampling.Paradram::Paradram](@ref Paradram::Paradram).<br>
 %>
 %>  \note
 %>  See the documentation of the class constructor for usage interface and examples.<br>
@@ -11,7 +15,13 @@
 %>  \author
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef Paradram < pm.sampling.Sampler
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     methods(Access = public)
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
         %>  \brief
         %>  Generate and return an instance of the serial and parallel
         %>  Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo
@@ -259,6 +269,10 @@ classdef Paradram < pm.sampling.Sampler
         %>  <br><br>
         %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.proposalAdaptation.png width=700
         %>  <br><br>
+        %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.proposalAdaptation.line.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.proposalAdaptation.scatter.png width=700
+        %>  <br><br>
         %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.parallelism.optimal.scaling.strong.png width=700
         %>  <br><br>
         %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.parallelism.perfect.scaling.strong.png width=700
@@ -270,8 +284,197 @@ classdef Paradram < pm.sampling.Sampler
         function self = Paradram()
             self = self@pm.sampling.Sampler("ParaDRAM")
         end
-        failed = run(self, getLogFunc, ndim);
-        chainList = readChain(self, pattern, sep);
-        chainMarkovList = readChainMarkov(self, pattern, sep);
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        %>  \brief
+        %>  Run the ParaDRAM sampler and return nothing.
+        %>
+        %>  \details
+        %>  For example usage, see the documentation of the parent class of this method [pm.sampler.Paradram](@ref Paradram).<br>
+        %>
+        %>  \param[inout]   self        :   The input/output parent object of class [pm.sampling.Paradram](@ref Paradram)
+        %>                                  which is **implicitly** passed to this dynamic method (not by the user).<br>
+        %>  \param[in]      getLogFunc  :   The input MATLAB function handle or anonymous (lambda) function
+        %>                                  containing the implementation of the objective function to be sampled.<br>
+        %>                                  This user-specified function must have the following interface,
+        %>                                  \code{.m}
+        %>                                      function logFunc = getLogFunc(state)
+        %>                                      end
+        %>                                  \endcode
+        %>                                  where,
+        %>                                  <ol>
+        %>                                      <li>    the input argument ``state`` is a vector of type MATLAB ``double``
+        %>                                              of size ``ndim`` representing a single point from within the ``ndim``
+        %>                                              dimensional domain of the mathematical object function to be explored.<br>
+        %>                                      <li>    the output argument `logFunc` is a scalar of the same type as the
+        %>                                              input ``state`` containing the natural logarithm of the objective
+        %>                                              function at the specified input ``state`` within its domain.<br>
+        %>                                  </ol>
+        %>  \param[in]      ndim        :   The input scalar positive-valued whole-number representing the number of dimensions
+        %>                                  of the domain of the user-specified objective function in the input ``getLogFunc()``.
+        %>
+        %>  \interface{run}
+        %>  \code{.m}
+        %>
+        %>      sampler = pm.sampling.Paradram();
+        %>      sampler.run(getLogFunc, ndim);
+        %>
+        %>  \endcode
+        %>
+        %>  \final{run}
+        %>
+        %>  \author
+        %>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin%>
+        function run(self, getLogFunc, ndim)
+            if nargin < 3
+                help("pm.sampling.Paradram.run");
+                error   ( newline ...
+                        + "The `run()` method of the " + self.method + " sampler" + newline ...
+                        + "requires at least two input arguments: ``getLogFunc()`` and ``ndim``" + newline ...
+                        + "For more information on the input arguments," + newline ...
+                        + "see the method documentation shown above." + newline ...
+                        + newline ...
+                        );
+            end
+            self.name = string(inputname(1));
+            run@pm.sampling.Sampler(self, getLogFunc, ndim);
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        %>  \brief
+        %>  Return a list of objects of class [pm.sampling.FileContentsChainDRAM](@ref FileContentsChainDRAM)
+        %>  containing the content(s) of the ParaMonte simulation output chain file(s) whose path(s)
+        %>  match the specified input ``pattern`` or the simulation specification
+        %>  [sampler.spec.outputFileName](\pmdoc_usage_sampling/paradram/specifications/#outputfilename).<br>
+        %>
+        %>  \param[in]  self    :   The input/output parent object of class [pm.sampling.Paradram](@ref Paradram)
+        %>                          which is **implicitly** passed to this dynamic method (not by the user).<br>
+        %>  \param[in]  pattern :   See the documentation of the corresponding argument of
+        %>                          the constructor of the method [pm.sampling.Sampler.readChain](@ref Sampler::readChain).<br>
+        %>                          (**optional**, The default is set by [pm.sampling.Sampler.readChain](@ref Sampler::readChain))
+        %>  \param[in]  sep     :   See the documentation of the corresponding argument of
+        %>                          the constructor of the method [pm.sampling.Sampler.readChain](@ref Sampler::readChain).<br>
+        %>                          (**optional**, The default is set by [pm.sampling.Sampler.readChain](@ref Sampler::readChain))
+        %>
+        %>  \return
+        %>  ``chainMarkovList`` :   The output cell array of objects of class
+        %>                          [pm.sampling.FileContentsChainDRAM](@ref FileContentsChainDRAM),
+        %>                          each of which corresponds to the contents of a unique chain file.<br>
+        %>                          Try ``doc pm.sampling.FileContentsChainDRAM`` to see the documentation
+        %>                          of the contents of the objects of the output list.<br>
+        %>
+        %>  \interface{Paradram}
+        %>  \code{.m}
+        %>
+        %>      sampler = pm.sampling.Paradram();
+        %>      chainMarkovList = sampler.readChainMarkov();
+        %>      chainMarkovList = sampler.readChainMarkov([]);
+        %>      chainMarkovList = sampler.readChainMarkov(file);
+        %>      chainMarkovList = sampler.readChainMarkov([], []);
+        %>      chainMarkovList = sampler.readChainMarkov(file, []);
+        %>      chainMarkovList = sampler.readChainMarkov(file, sep);
+        %>
+        %>  \endcode
+        %>
+        %>  \warning
+        %>  Avoid using this routine for very large compact chains.<br>
+        %>  Reading the full Markov chain of large-scale simulation problems
+        %>  can be extremely memory-intensive without any potential benefits.<br>
+        %>
+        %>  \warning
+        %>  This method is to be only used for post-processing of the output
+        %>  chain file(s) of an already finished simulation. It is NOT meant to
+        %>  be called by all processes in parallel mode, although it is possible.<br>
+        %>
+        %>  \note
+        %>  This routine is identical to [pm.sampling.Sampler.readChain](@ref Sampler::readChain)
+        %>   method, except for the fact that upon reading the output chain files, it will also
+        %>  convert the chain contents from the default efficient compact format stored
+        %>  in the file to the full verbose Markov chain format.<br>
+        %>
+        %>  \example{readChainMarkov}
+        %>  \include{lineno} example/sampling/Paradram/readChainMarkov/main.m
+        %>  \include{lineno} example/sampling/Paradram/readChainMarkov/main.out.m
+        %>  \vis{readChainMarkov}
+        %>  \image html example/sampling/Paradram/readChainMarkov/readChainMarkov.domain.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/Paradram/readChainMarkov/readChainMarkov.traceplot.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/Paradram/readChainMarkov/readChainMarkov.proposalAdaptation.png width=700
+        %>
+        %>  \final{readChainMarkov}
+        %>
+        %>  \author
+        %>  \JoshuaOsborne, May 21 2024, 12:06 AM, University of Texas at Arlington<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
+        function chainMarkovList = readChainMarkov(self, pattern, sep)
+
+            if nargin < 3
+                sep = [];
+            end
+
+            if nargin < 2
+                pattern = [];
+            end
+
+            chainMarkovList = self.readChain(pattern, sep);
+
+            %%%%
+            %%%% Unpack the chain data frames.
+            %%%%
+
+            for ichain = 1 : length(chainMarkovList)
+                chainMarkovList{ichain}.df = pm.array.verbose(chainMarkovList{ichain}.df, 1, chainMarkovList{ichain}.df.sampleWeight);
+                chainMarkovList{ichain}.df.sampleWeight(:) = 1;
+            end
+
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     end
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    methods(Hidden)
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        %>  \brief
+        %>  Generate and return the relevant Post-Processing Message (ppm) for the current ParaMonte
+        %>  sampler to be displayed on the MATLAB command line after the sampling is complete.<br>
+        %>
+        %>  \details
+        %>  This is a ``private`` dynamic method of the [pm.sampling.Paradram](@ref Paradram) sampler class.<br>
+        %>  This method is not meant to be used or accessed by the end users.<br>
+        %>
+        %>  \param[in]  self    :   The input parent object of class [pm.sampling.Sampler](@ref Sampler)
+        %>                          which is **implicitly** passed to this dynamic method (not by the user).<br>
+        %>
+        %>  \note
+        %>  This is an internal method of the class [pm.sampling.Sampler](@ref Sampler).
+        %>
+        %>  \final{getppm}
+        %>
+        %>  \author
+        %>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin%>
+        function ppm = getppm(self)
+            ppm = getppm@pm.sampling.Sampler(self) + newline ...
+                + "Use the following object method to read the generated basic output chain file and and unroll the contents as a Markov Chain: " + newline ...
+                + newline ...
+                + pm.io.tab + self.name + ".readChainMarkov() % Return a list of the unrolled contents of the output chain file(s) as Markov Chains." + newline ...
+                + newline ...
+                + "Beware that the chain unrolling significantly increases the chain size and can be very slow." + newline ...
+                + "It can potentially overflow the computer RAM for high-dimensional target density functions." + newline ...
+                ;
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    end
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 end

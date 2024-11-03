@@ -22,6 +22,8 @@
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef FileContentsSample < pm.io.FileContentsTabular
 
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     properties(Access = public)
         %>
         %>  ``ndim``    :   The scalar MATLAB integer representing the number of
@@ -58,6 +60,8 @@ classdef FileContentsSample < pm.io.FileContentsTabular
         vis = [];
     end
 
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     properties(Hidden)
         %>
         %>  ``slfcname``    :   The scalar MATLAB string representing the column
@@ -68,7 +72,11 @@ classdef FileContentsSample < pm.io.FileContentsTabular
         slfcname = "sampleLogFunc";
     end
 
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     methods(Access = public)
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         %>  \brief
         %>  Return a scalar object of class [pm.sampling.FileContentsSample](@ref FileContentsSample).<br>
@@ -240,6 +248,7 @@ classdef FileContentsSample < pm.io.FileContentsTabular
             if nargin < 2
                 silent = [];
             end
+
             self = self@pm.io.FileContentsTabular(file, silent, sep);
 
             for icol = 1 : self.ncol
@@ -247,6 +256,7 @@ classdef FileContentsSample < pm.io.FileContentsTabular
                     break;
                 end
             end
+
             self.slfc = icol;
             self.ndim = self.ncol - self.slfc;
             if  self.nrow <= self.ndim
@@ -382,6 +392,53 @@ classdef FileContentsSample < pm.io.FileContentsTabular
 
         end
 
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        % %>  \brief
+        % %>  Visualize, quickly and minimally, a selected subset of the contents of the parent object and return nothing.<br>
+        % %>
+        % %>  \details
+        % %>  All visualizations created belong to the ``vis`` component of the parent object.<br>
+        % %>  This method is merely convenience to automate some of the most desired visualizations in the ``vis`` component.<br>
+        % %>
+        % %>  \param[in]  self    :   The input/output parent object of class [pm.sampling.FileContentsSample](@ref FileContentsSample)
+        % %>                          which is **implicitly** passed to this dynamic method (not by the user).<br>
+        % %>
+        % %>  \interface{visit}
+        % %>  \code{.m}
+        % %>
+        % %>      sample = pm.sampling.FileContentsSample(file);
+        % %>      sample.visit();
+        % %>
+        % %>  \endcode
+        % %>
+        % %>  \warning
+        % %>  This method is to be only used for post-processing of the output
+        % %>  chain file(s) of an already finished simulation. It is NOT meant to
+        % %>  be called by all processes in parallel mode, although it is possible.<br>
+        % %>
+        % %>  \example{visit}
+        % %>  \include{lineno} example/sampling/Paradram/visit/main.m
+        % %>  \include{lineno} example/sampling/Paradram/visit/main.out.m
+        % %>  \vis{visit}
+        % %>  \image html example/sampling/FileContentsSample/visit/FileContentsSample.visit.domain.png width=700
+        % %>  <br><br>
+        % %>  \image html example/sampling/FileContentsSample/visit/FileContentsSample.visit.traceplot.png width=700
+        % %>  <br><br>
+        % %>  \image html example/sampling/FileContentsSample/visit/FileContentsSample.visit.proposalAdaptation.png width=700
+        % %>
+        % %>  \final{visit}
+        % %>
+        % %>  \author
+        % %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
+        % function visit(self, pattern, sep)
+        % 
+        % end
+        % 
+        % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     end
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end

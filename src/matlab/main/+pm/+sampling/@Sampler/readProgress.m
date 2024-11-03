@@ -27,9 +27,9 @@
 %>                          If the input ``pattern`` is empty, then the method will search
 %>                          for any possible candidate files with the appropriate suffix
 %>                          in the current working directory.<br>
-%>                          (optional, default = ``sampler.spec.outputFileName`` or ``"./"``)
+%>                          (**optional**, default = ``sampler.spec.outputFileName`` or ``"./"``)
 %>  \param[in]  sep     :   The input MATLAB string containing the field separator used in the file(s).<br>
-%>                          (optional, default = ``sampler.spec.outputSeparator`` or automatically inferred.)
+%>                          (**optional**, default = ``sampler.spec.outputSeparator`` or automatically inferred.)
 %>
 %>  \return
 %>  ``progressList``    :   The output MATLAB cell array of objects
@@ -82,27 +82,15 @@
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function progressList = readProgress(self, pattern, sep)
-    if nargin < 3
-        if 0 < pm.array.len(self.spec.outputSeparator)
-            sep = string(self.spec.outputSeparator);
-        else
-            sep = [];
-        end
+
+    if  nargin < 3
+        sep = [];
     end
-    if nargin < 2
-        if 0 < pm.array.len(self.spec.outputFileName)
-            pattern = string(self.spec.outputFileName);
-        else
-            pattern = [];
-        end
+
+    if  nargin < 2
+        pattern = [];
     end
-    ftype = "progress";
-    pathList = self.findfile(ftype, pattern);
-    progressList = cell(length(pathList), 1);
-    for ifile = length(pathList) : -1 : 1
-        if ~self.silent
-            disp("processing file: """ + pathList(ifile) + """");
-        end
-        progressList{ifile} = pm.sampling.FileContentsProgress(pathList(ifile), self.silent, sep);
-    end
+
+    progressList = pm.sampling.readProgress(self, pattern, sep);
+
 end

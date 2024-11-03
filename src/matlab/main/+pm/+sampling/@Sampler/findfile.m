@@ -52,9 +52,11 @@
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function fileList = findfile(self, ftype, pattern)
+
     if nargin < 3
         pattern = [];
     end
+
     ftype = string(ftype);
     suffix = ftype + ".txt";
     if isempty(pattern)
@@ -86,8 +88,13 @@ function fileList = findfile(self, ftype, pattern)
             pattern = self.spec.outputFileName;
         end
     end
+
     if isfile(pattern)
-        % Check if the input path is a full path to a file.
+
+        %%%%
+        %%%% Check if the input path is a full path to a file.
+        %%%%
+
         fileList = string(pattern);
         if ~self.silent && ~endsWith(pattern, suffix)
             warning ( newline ...
@@ -99,7 +106,11 @@ function fileList = findfile(self, ftype, pattern)
                     );
         end
     else
-        % search for files matching the input pattern.
+
+        %%%%
+        %%%% search for files matching the input pattern.
+        %%%%
+
         if isfolder(pattern) && ~endsWith(pattern, filesep)
             % Ensure pattern is a directory with an explicit directory separator.
             pattern = pattern + filesep;
@@ -118,8 +129,12 @@ function fileList = findfile(self, ftype, pattern)
                 fileList = [fileList, filePathModified];
             end
         end
+
+        %%%%
+        %%%% check if the input path is a url.
+        %%%%
+
         if isempty(fileList)
-            % check if the input path is a url.
             if pm.web.isurl(pattern)
                 try
                     fileList = [string(websave(fullfile(tempdir, pm.web.basename(pattern)), pattern))];
@@ -133,6 +148,7 @@ function fileList = findfile(self, ftype, pattern)
                 end
             end
         end
+
         if  isempty(fileList)
             msg = newline ...
                 + "Failed to detect any " + ftype + " files with the requested pattern:" + newline ...
@@ -170,7 +186,9 @@ function fileList = findfile(self, ftype, pattern)
             error(msg);
         end
     end
+
     if ~self.silent
         disp(string(length(fileList)) + " files were detected matching pattern: """ +  pattern + """");
     end
+
 end

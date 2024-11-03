@@ -6,7 +6,7 @@ addpath('../../../'); % Add the ParaMonte library root directory to the search p
 url = "https://raw.githubusercontent.com/cdslaborg/paramontex/fbeca6745684c798ff28c1bf57cfae0c190db478/MATLAB/mlx/";
 file = "regression_powerlaw_data_paradram/out/regression_powerlaw_process_1_chain.txt";
 sampler = pm.sampling.Paradram();
-chain = sampler.readSample(url + file);
+chain = sampler.readChain(url + file);
 chain = chain{1};
 
 for vistype = string(fields(chain.vis))'

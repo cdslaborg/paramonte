@@ -200,11 +200,87 @@ classdef Sampler < pm.matlab.Handle
 
     end
 
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     methods(Hidden)
-        getppm(self);
-        finalize(self);
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
         run(self, getLogFunc, ndim)
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
         fileList = findfile(self, ftype, pattern);
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        %>  \brief
+        %>  Generate and return the relevant Post-Processing Message (ppm) for the current ParaMonte
+        %>  sampler to be displayed on the MATLAB command line after the sampling is complete.<br>
+        %>
+        %>  \details
+        %>  This is a ``private`` dynamic method of the [pm.sampling.Paradram](@ref Paradram) sampler class.<br>
+        %>  This method is not meant to be used or accessed by the end users.<br>
+        %>
+        %>  \param[in]  self    :   The input parent object of class [pm.sampling.Sampler](@ref Sampler)
+        %>                          which is **implicitly** passed to this dynamic method (not by the user).<br>
+        %>
+        %>  \note
+        %>  This is an internal method of the class [pm.sampling.Sampler](@ref Sampler).
+        %>
+        %>  \final{getppm}
+        %>
+        %>  \author
+        %>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin%>
+        function ppm = getppm(self)
+            ppm = "Use the following object methods to read the generated basic output files: " + newline ...
+                + newline ...
+                + pm.io.tab + self.name + ".readChain()    % Return a list of the contents of the output chain file(s)." + newline ...
+                + pm.io.tab + self.name + ".readSample()   % Return a list of i.i.d. sample(s) from the output sample file(s)." + newline ...
+                + pm.io.tab + self.name + ".readReport()   % Return a list of summary report(s) from the output report file(s)." + newline ...
+                + pm.io.tab + self.name + ".readRestart()  % Return a list of the contents of the ASCII output restart file(s)." + newline ...
+                + pm.io.tab + self.name + ".readProgress() % Return a list of the contents of the output progress file(s)." + newline ...
+                ;
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        %>  \brief
+        %>  Finalize the ParaMonte MATLAB sampler simulation run and return nothing.<br>
+        %>
+        %>  \details
+        %>  This is a ``private`` and ``Hidden`` dynamic method of the class [pm.sampling.Sampler](@ref Sampler).<br>
+        %>
+        %>  \param[in]  self    :   The input parent object of class [pm.sampling.Sampler](@ref Sampler)
+        %>                          which is **implicitly** passed to this dynamic method (not by the user).<br>
+        %>
+        %>  \final{finalize}
+        %>
+        %>  \author
+        %>  \JoshuaOsborne, May 21 2024, 12:10 AM, University of Texas at Arlington<br>
+        %>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin%>
+        function finalize(self)
+            if  self.partype == "openmp"
+                if ~self.silent
+                    delete(gcp("nocreate"));
+                else
+                    evalc('delete(gcp("nocreate"))');
+                end
+            end
+            munlock(self.mexname);
+            clear(self.mexname);
+            path(self.matpath);
+            if  self.clstype == "gnu"
+                setenv('GFORTRAN_STDIN_UNIT' , '-1');
+                setenv('GFORTRAN_STDOUT_UNIT', '-1');
+                setenv('GFORTRAN_STDERR_UNIT', '-1');
+            end
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     end
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end

@@ -27,7 +27,7 @@
 %>                          If the input ``pattern`` is empty, then the method will search
 %>                          for any possible candidate files with the appropriate suffix
 %>                          in the current working directory.<br>
-%>                          (optional, default = ``sampler.spec.outputFileName`` or ``"./"``)
+%>                          (**optional**, default = ``sampler.spec.outputFileName`` or ``"./"``)
 %>
 %>  \return
 %>  ``reportList``      :   The output MATLAB cell array of objects
@@ -57,15 +57,6 @@
 %>      sampler.spec.outputFileName = "./out/test_run_";
 %>      sampler.readReport();
 %>
-%>      sampler.readReport("./out/test_run_", ",");
-%>
-%>      sampler.spec.outputSeparator = ",";
-%>      sampler.readReport("./out/test_run_");
-%>
-%>      sampler.spec.outputFileName = "./out/test_run_";
-%>      sampler.spec.outputSeparator = ",";
-%>      sampler.readReport();
-%>
 %>  \endcode
 %>
 %>  \final{readReport}
@@ -75,20 +66,11 @@
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function reportList = readReport(self, pattern)
-    if nargin < 2
-        if 0 < pm.array.len(self.spec.outputFileName)
-            pattern = string(self.spec.outputFileName);
-        else
-            pattern = [];
-        end
+
+    if  nargin < 2
+        pattern = [];
     end
-    ftype = "report";
-    pathList = self.findfile(ftype, pattern);
-    reportList = cell(length(pathList), 1);
-    for ifile = length(pathList) : -1 : 1
-        if ~self.silent
-            disp("processing file: """ + pathList(ifile) + """");
-        end
-        reportList{ifile} = pm.sampling.FileContentsReport(pathList(ifile), self.silent, self.method);
-    end
+
+    reportList = pm.sampling.readReport(self, pattern);
+
 end

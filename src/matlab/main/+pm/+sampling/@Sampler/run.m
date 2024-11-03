@@ -39,7 +39,9 @@
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function run(self, getLogFunc, ndim)
 
+    %%%%
     %%%% Sanitize ``sampler.silent``.
+    %%%%
 
     if ~pm.introspection.istype(self.silent, "logical", 1)
         help("pm.sampling.Sampler.silent");
@@ -52,7 +54,9 @@ function run(self, getLogFunc, ndim)
                 );
     end
 
+    %%%%
     %%%% Sanitize parallelism method to set reporting permission.
+    %%%%
 
     % global mpiname;
     % ismember('mpiname', who('global'));
@@ -61,6 +65,7 @@ function run(self, getLogFunc, ndim)
     % end
 
     if ~pm.introspection.istype(self.mpiname, "string", 1) % Sanitize ``mpiname``.
+
         help("pm.sampling.Sampler.mpiname");
         disp("mpiname =");
         disp(self.mpiname);
@@ -69,7 +74,9 @@ function run(self, getLogFunc, ndim)
                 + "For more information, see the documentation displayed above." + newline ...
                 + newline ...
                 );
+
     elseif 0 < pm.array.len(self.mpiname) % MPI enabled.
+
         self.silent = true; % Otherwise, we keep the default value of self.silent.
         self.partype = string(pm.lib.mpi.name(self.mpiname));
         %if  self.partype ~= pm.lib.mpi.choice()
@@ -81,7 +88,9 @@ function run(self, getLogFunc, ndim)
         %            + newline ...
         %            );
         %end
+
     elseif ~isempty(self.spec.parallelismNumThread) % Sanitize ``self.spec.parallelismNumThread``.
+
         % The following separate conditions are crucial to remain separate.
         failed = ~pm.introspection.istype(self.spec.parallelismNumThread, "integer", 1);
         if ~failed
@@ -122,9 +131,12 @@ function run(self, getLogFunc, ndim)
                     + newline ...
                     );
         end
+
     end
 
+    %%%%
     %%%% Sanitize ``getLogFunc``.
+    %%%%
 
     if ~isa(getLogFunc, "function_handle")
         help("pm.sampling.Sampler.run");
@@ -140,7 +152,9 @@ function run(self, getLogFunc, ndim)
                 );
     end
 
+    %%%%
     %%%% Sanitize ``ndim``.
+    %%%%
 
     failed = ~pm.introspection.istype(ndim, "integer", 1);
     if ~failed
@@ -161,7 +175,9 @@ function run(self, getLogFunc, ndim)
                 );
     end
 
+    %%%%
     %%%% Sanitize ``input`` specifications/file string.
+    %%%%
 
     if ~pm.introspection.istype(self.input, "string", 1)
         help("pm.sampling.Sampler.input");
@@ -197,7 +213,9 @@ function run(self, getLogFunc, ndim)
         end
     end
 
+    %%%%
     %%%% Sanitize ``checked``.
+    %%%%
 
     if ~isempty(self.checked)
         if ~pm.introspection.istype(self.checked, "logical", 1)
@@ -218,12 +236,15 @@ function run(self, getLogFunc, ndim)
         chktypes = ["nocheck", "checked"];
     end
 
+    %%%%
     %%%% Setup the ParaMonter sampler library name.
+    %%%%
 
     libspecs = [pm.os.namel(), pm.sys.arch(), self.libtype, self.memtype, self.partype];
     mexdirs = pm.lib.path.mexdir(self.mexname, libspecs);
 
-    % We will choose the checking mode, compiler suite, and build mode based on the availability below.
+    % We will choose the checking mode, compiler suite,
+    % and build mode based on the availability below.
 
     if  self.bldtype == ""
         bldtypes = pm.lib.bldtypes();
@@ -245,7 +266,9 @@ function run(self, getLogFunc, ndim)
                 for ibld = 1 : length(bldtypes)
                     bldtype = filesep + bldtypes(ibld) + filesep;
                     for imex = 1 : length(mexdirs)
-                        if  contains(mexdirs(imex), clstype) && contains(mexdirs(imex), bldtype) && contains(mexdirs(imex), chktype)
+                        if  contains(mexdirs(imex), clstype) ...
+                        &&  contains(mexdirs(imex), bldtype) ...
+                        &&  contains(mexdirs(imex), chktype)
                             mexdir = mexdirs(imex);
                             if  self.bldtype == ""
                                 self.bldtype = bldtypes(ibld);
@@ -289,7 +312,9 @@ function run(self, getLogFunc, ndim)
                 );
     end
 
+    %%%%
     %%%% Add the identified MEX path to the MATLAB pat list, only temporarily.
+    %%%%
 
     pm.lib.path.clean();
     self.matpath = path;
@@ -311,7 +336,9 @@ function run(self, getLogFunc, ndim)
         setenv('GFORTRAN_STDERR_UNIT', '0');
     end
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%
+    %%%% Set up the MEX file to call.
+    %%%%
 
     if  self.partype == "openmp"
         mexcall = string(self.mexname + "(convertStringsToChars(self.method), @getLogFuncConcurrent, ndim, convertStringsToChars(self.nml))");
@@ -338,9 +365,17 @@ function run(self, getLogFunc, ndim)
         %getLogFuncSpec = functions(getLogFunc);
     end
 
+    %%%%
+    %%%% Define the ``getLogFunc`` wrapper function for serial/MPI sampling.
+    %%%%
+
     function logFunc = getLogFuncWrapped(state)
         logFunc = getLogFunc(state);
     end
+
+    %%%%
+    %%%% Define the ``getLogFunc`` wrapper function for OpenMP sampling.
+    %%%%
 
     %getLogFuncConst = parallel.pool.Constant(@(state) getLogFunc(state));
     function [logFunc, avgTimePerFunCall, avgCommPerFunCall] = getLogFuncConcurrent(state)
@@ -393,6 +428,10 @@ function run(self, getLogFunc, ndim)
         avgTimePerFunCall = avgTimePerFunCall / njob;
         avgCommPerFunCall = toc(avgCommPerFunCall) - avgTimePerFunCall;
     end
+
+    %%%%
+    %%%% Call the MEX sampler.
+    %%%%
 
     try
         eval(mexcall);
