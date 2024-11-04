@@ -310,7 +310,7 @@ classdef FileContentsSample < pm.io.FileContentsTabular
             %%%%
 
             colf = self.slfc;
-            cols = self.slfc + [0 : self.ndim];
+            cols = self.slfc + [1 : self.ndim];
 
             self.vis = struct();
 
