@@ -63,13 +63,13 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
         %
         proposalCov = [];
         %
-        %   ``proposalLogVolume``               :   The real-valued MATLAB array of rank ``1`` of
+        %   ``proposalCovLogVol``               :   The real-valued MATLAB array of rank ``1`` of
         %                                           shape ``(1:self.count)`` containing the set of
         %                                           ``log(determinant(covmat))`` of the proposal distribution
         %                                           representing the evolution of mean of proposal distribution
         %                                           over the course of the simulation.<br>
         %
-        proposalLogVolume = [];
+        proposalCovLogVol = [];
         %
         %   ``proposalMean``                    :   The real-valued MATLAB array of rank ``2`` of
         %                                           shape ``(1:self.ndim, 1:self.count)`` containing
@@ -85,6 +85,11 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
         %                                           within the specified restart file.<br>
         %
         uniqueStateVisitCount = [];
+        %>
+        %>  ``vis``                             :   The scalar MATLAB ``struct`` containing the set of
+        %>                                          predefined visualizations for the restart data.<br>
+        %>
+        vis = [];
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -116,6 +121,22 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
         %>
         %>  \endcode
         %>
+        %>  \example{FileContentsRestartDRAM}
+        %>  \include{lineno} example/sampling/FileContentsRestartDRAM/main.m
+        %>  \vis{FileContentsRestartDRAM}
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsRestartDRAM/FileContentsRestartDRAM.proposalCor.ellipse.12.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsRestartDRAM/FileContentsRestartDRAM.proposalCov.ellipse.12.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsRestartDRAM/FileContentsRestartDRAM.proposalCor.ellipse3.12.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsRestartDRAM/FileContentsRestartDRAM.proposalCov.ellipse3.12.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsRestartDRAM/FileContentsRestartDRAM.proposalCovLogVol.line.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsRestartDRAM/FileContentsRestartDRAM.meanAcceptanceRateSinceStart.line.png width=700
+        %>
         %>  \final{FileContentsRestartDRAM}
         %>
         %>  \author
@@ -129,7 +150,7 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
             self = self@pm.sampling.FileContentsRestart(file, silent, "ParaDRAM");
 
             %%%%
-            %%%% find the update count in the file.
+            %%%% Find the update count in the file.
             %%%%
 
             self.count = count(self.contents, 'uniqueStateVisitCount');
@@ -141,7 +162,7 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
             cholupp = zeros(self.ndim, self.ndim);
             self.meanAcceptanceRateSinceStart   = zeros(self.count, 1);
             self.proposalAdaptiveScaleSq        = zeros(self.count, 1);
-            self.proposalLogVolume              = zeros(self.count, 1);
+            self.proposalCovLogVol              = zeros(self.count, 1);
             self.proposalMean                   = zeros(self.ndim, self.count);
             self.proposalCov                    = zeros(self.ndim, self.ndim, self.count);
             self.proposalCor                    = zeros(self.ndim, self.ndim, self.count);
@@ -160,7 +181,7 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
                     self.meanAcceptanceRateSinceStart   (icount) = str2double(self.lineList(self.ilast + istart + 1));
                     self.uniqueStateVisitCount          (icount) = str2double(self.lineList(self.ilast + istart + 3));
                     self.proposalAdaptiveScaleSq        (icount) = str2double(self.lineList(self.ilast + istart + 5));
-                    self.proposalLogVolume              (icount) = str2double(self.lineList(self.ilast + istart + 7));
+                    self.proposalCovLogVol              (icount) = str2double(self.lineList(self.ilast + istart + 7));
                     istart = istart + 9;
                     iend = istart + self.ndim;
                     self.proposalMean(1 : self.ndim, icount) = str2double(self.lineList(self.ilast + istart : self.ilast + iend - 1));
@@ -178,7 +199,7 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
             end
 
             %%%%
-            %%%% Ensure the instrinc ``corrcov`` is installed.
+            %%%% Ensure the intrinsic ``corrcov`` is installed.
             %%%%
 
             try
@@ -201,6 +222,91 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
             if ~self.silent
                 self.spinner.spin(1);
                 self.checkpoint([]);
+            end
+
+            %%%%
+            %%%% Add the restart visualizations.
+            %%%%
+
+            try
+
+                self.vis = struct();
+                self.vis.cascade = struct();
+
+                self.checkpoint("adding restart data visualization tools for proposal evolution...");
+
+                dims = self.ndim * (self.ndim - 1) / 2;
+                dimx = zeros(dims, 1);
+                dimy = zeros(dims, 1);
+                counter = 1;
+                for ix = 1 : self.ndim - 1
+                    for iy = 2 : self.ndim
+                        dimx(counter) = ix;
+                        dimy(counter) = iy;
+                        counter = counter + 1;
+                    end
+                end
+
+                for field = ["proposalCor", "proposalCov"]
+                    self.vis.(field) = struct();
+                    self.vis.(field).cascade = struct();
+                    self.vis.(field).cascade.ellipse = pm.vis.CascadeEllipse( @()self.(field) ...
+                                                                            , @()self.proposalMean ...
+                                                                            , [] ... color data
+                                                                            , "dimx", dimx, "dimy", dimy ...
+                                                                            , "names", self.domainAxisName ...
+                                                                            );
+                    self.vis.(field).cascade.ellipse3 = pm.vis.CascadeEllipse3  ( @()self.(field) ...
+                                                                                , @()self.proposalMean ...
+                                                                                , @()transpose(self.uniqueStateVisitCount) ...
+                                                                                , [] ... color data
+                                                                                , "axes", {"zscale", "log"} ...
+                                                                                , "dimx", dimx, "dimy", dimy ...
+                                                                                , "names", self.domainAxisName ...
+                                                                                , "zlabel", {"txt", "Unique State Visit Count"} ...
+                                                                                );
+                end
+
+                self.checkpoint("adding restart data visualization tools for other proposal properties...");
+
+                colnames =  [ "uniqueStateVisitCount" ...
+                            , "meanAcceptanceRateSinceStart" ...
+                            , "proposalAdaptiveScaleSq" ...
+                            , "proposalCovLogVol" ...
+                            ];
+                %fullnames = [ "Unique State Visit Count" ...
+                %            , "Mean Acceptance Rate Since Start" ...
+                %            , "Proposal Adaptive Scale-Squared" ...
+                %            , "Proposal Covriance Log-Volume" ...
+                %            ];
+                cdf = array2table(  [ self.(colnames(1))(:) ...
+                                    , self.(colnames(2))(:) ...
+                                    , self.(colnames(3))(:) ...
+                                    , self.(colnames(4))(:) ...
+                                    ]);
+                cdf.Properties.VariableNames = colnames;
+                self.vis.cascade.line = pm.vis.CascadeLine  ( cdf ...
+                                                            , "colx", colnames(1) ...
+                                                            , "coly", colnames(2 : end) ...
+                                                            , "axes", {"xscale", "log"} ...
+                                                            , "colormap", {"enabled", false} ...
+                                                            ..., "xlabel", {"txt", fullnames(1)} ...
+                                                            ..., "ylabel", {"txt", fullnames(2 : end)} ...
+                                                            , "plot", {"linewidth", 3} ...
+                                                            );
+
+                self.checkpoint([]);
+
+            catch me
+
+                warning ( newline ...
+                        + "Failed to create the visualizations for the restart data." + newline ...
+                        + "Here is the error message:" + newline ...
+                        + newline ...
+                        + string(me.identifier) + newline + string(me.message) + newline ...
+                        + newline ...
+                        );
+
             end
 
         end % constructor

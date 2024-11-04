@@ -366,7 +366,7 @@ contains
                                                                     , proposal%sampleSizeOld & ! LCOV_EXCL_LINE
                                                                     , "proposalAdaptiveScaleSq" & ! LCOV_EXCL_LINE
                                                                     , proposal%scaleSq%running * proposal%scaleSq%default & ! LCOV_EXCL_LINE
-                                                                    , "proposalLogVolume" & ! LCOV_EXCL_LINE
+                                                                    , "proposalCovLogVol" & ! LCOV_EXCL_LINE
                                                                     , proposal%logSqrtDetOld & ! LCOV_EXCL_LINE
                                                                     , "proposalMean" & ! LCOV_EXCL_LINE
                                                                     , proposal%meanOld & ! LCOV_EXCL_LINE
