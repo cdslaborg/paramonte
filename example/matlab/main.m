@@ -25,20 +25,21 @@ else
 end
 
 % Loop over all examples to run.
+outfile = "main.out.m";
 for ipath = 1 : length(examlist)
     exampath = examlist(ipath);
     if ~strcmp(exampath, srcpath)
         cd(fileparts(exampath));
-        outfile = "main.out.m";
         if  isfile(outfile)
             delete(outfile);
         end
         disp("Running example: " + exampath);
-        diary main.out.m;
+        diary(outfile);
         path(defpath);
         runExample(exampath);
         diary off;
         close all;
+        sanitize(outfile);
     end
 end
 
@@ -48,4 +49,21 @@ function runExample(exampath)
     % This function ensures all example variables remain in local scopes
     % and do not interfere with variables and scopes of other examples.
     run(exampath);
+end
+
+%%%% ensure Carriage Return, Backspace, and other special characters
+%%%% are correctly interpreted or at least taken as new line characters.
+function sanitize(outfile)
+    output = fileread(outfile);
+    searchlist = [string(char(8)), string(char(13))]; % Backspace, CR
+    for search = searchlist
+        double = search + search;
+        while contains(output, double)
+            output = strrep(output, double, search);
+        end
+        output = strrep(output, search, newline);
+    end
+    fid = fopen(outfile, "w");
+    fprintf(fid, "%s", output);
+    fclose(fid);
 end

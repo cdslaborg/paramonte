@@ -89,6 +89,12 @@
 %>  The ParaMonte MATLAB library is currently under active development to extend the library functionalities to other tasks supported by the [ParaMonte Fortran library](../../../fortran/latest/index.html).<br>
 %>  For a full list of all available functionalities and modules, see the [files listing](./files.html) and [class listing](./annotated.html) of this documentation website.<br>
 %>
+%>  [⛓⛓](#ParaMonteLangModulesSamplers)
+%>  \section ParaMonteLangModulesSamplers ParaMonte MATLAB Library Samplers
+%>
+%>  Perhaps the most relevant ParaMonte MATLAB modules to the end users are the ParaMonte samplers in the `pm.sampling` package of the library.<br>
+%>  See for example, the documentation of the parallel Delayed-Rejection Adaptive Metropolis Markov Chain Monte Carlo sampler [pm.sampling.Paradram](@ref Paradram).<br>
+%>
 %>  [⛓](#ParaMonteLangNamingConventions)
 %>  \section ParaMonteLangNamingConventions ParaMonte MATLAB Naming Conventions
 %>
