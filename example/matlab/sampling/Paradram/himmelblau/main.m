@@ -104,10 +104,10 @@ p.savefig("Paradram.himmelblau.proposalCov.png", "-m3");
 report = sampler.readReport();
 report = report{1};
 
-for parcond = ["optimal", "perfect"]
-    report.stats.parallelism.(parcond).scaling.strong.vis.lineScatter.make();
-    report.stats.parallelism.(parcond).scaling.strong.vis.lineScatter.savefig("Paradram.himmelblau.parallelism." + parcond + ".scaling.strong.png", "-m3");
-    %p = pm.vis.PlotLineScatter(report.stats.parallelism.(parcond).scaling.strong.value, "colx", "1", "coly", "2", "colc", "2");
+for parcond = ["current", "zeroeff"]
+    report.stats.parallelism.scaling.strong.(parcond).vis.lineScatter.make();
+    report.stats.parallelism.scaling.strong.(parcond).vis.lineScatter.savefig("Paradram.himmelblau.parallelism.scaling.strong." + parcond + ".png", "-m3");
+    %p = pm.vis.PlotLineScatter(report.stats.parallelism.scaling.strong.(parcond).value, "colx", "1", "coly", "2", "colc", "2");
     %p.make("axes", {"xscale", "log"}, "plot", {"linewidth", 2}, "scatter", {"size", 7});
-    %p.savefig("Paradram.himmelblau.parallelism." + parcond + ".scaling.strong.png", "-m3");
+    %p.savefig("Paradram.himmelblau.parallelism.scaling.strong." + parcond + ".png", "-m3");
 end

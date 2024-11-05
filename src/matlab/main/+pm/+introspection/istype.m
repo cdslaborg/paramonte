@@ -3,6 +3,11 @@
 %>  specified input type ``vartype`` and the specified maximum size ``varsize``.
 %>  Otherwise, return ``false``.
 %>
+%>  \details
+%>  Beware that this algorithm converts input values of type ``char`` to ``string``
+%>  before further processing and type checking, that is, the types ``char`` to ``string``
+%>  are assumed to be conformable and compatible with each other, like most other sane languages.<br>
+%>
 %>  \param[in]  varval  :   The input value to be converted to namelist-compatible value.
 %>  \param[in]  vartype :   The input scalar MATLAB string containing the
 %>                          expected type of the value given by the input ``varval``.<br>
@@ -10,6 +15,8 @@
 %>                          <ol>
 %>                              <li>    if ``vartype`` is ``"string"``, then ``varval`` can be
 %>                                      either a MATLAB ``string`` or ``char``.<br>
+%>                                      An input value of type ``char`` is always
+%>                                      converted to ``string`` before further processing.<br>
 %>                              <li>    if ``vartype`` is ``"integer"``, then ``varval`` can be
 %>                                      either a MATLAB ``int8``, ``int16``, ``int32``, ``int64``,
 %>                                      or a whole-number ``real`` value.<br>
@@ -56,6 +63,9 @@
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function itis = istype(varval, vartype, varsize)
+    if  ischar(varval)
+        varval = string(varval);
+    end
     varvalen = numel(varval);
     itis = false;
     if  2 < nargin
@@ -70,7 +80,7 @@ function itis = istype(varval, vartype, varsize)
         else
             value = varval(i);
         end
-        if  strcmpi(vartype, "string")
+        if  strcmpi(vartype, "string") || strcmpi(vartype, "char")
             itis = isa(value, "string") || isa(value, "char");
         elseif strcmpi(vartype, "integer")
             itis = isa(value, "int8") || isa(value, "int16") || isa(value, "int32") || isa(value, "int64");

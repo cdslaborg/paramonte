@@ -127,19 +127,34 @@ classdef SpecMCMC < pm.sampling.SpecBase
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function entries = getEntriesNML(self, ndim)
+
             entries = getEntriesNML@pm.sampling.SpecBase(self, ndim);
-            if  ~isempty(self.outputChainSize                   ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("outputChainSize                  ", self.outputChainSize                     , "integer" , 1); end
-            if  ~isempty(self.outputSampleRefinementCount       ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("outputSampleRefinementCount      ", self.outputSampleRefinementCount         , "integer" , 1); end
-            if  ~isempty(self.outputSampleRefinementMethod      ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("outputSampleRefinementMethod     ", self.outputSampleRefinementMethod        , "string"  , 1); end
-            if  ~isempty(self.proposal                          ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposal                         ", self.proposal                            , "string"  , 1); end
-            if  ~isempty(self.proposalCor                       ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalCor                      ", self.proposalCor                         , "real"    , ndim^2); end
-            if  ~isempty(self.proposalCov                       ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalCov                      ", self.proposalCov                         , "real"    , ndim^2); end
-            if  ~isempty(self.proposalScale                     ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalScale                    ", self.proposalScale                       , "string"  , 1); end
-            if  ~isempty(self.proposalStart                     ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalStart                    ", self.proposalStart                       , "real"    , ndim); end
-            if  ~isempty(self.proposalStartDomainCubeLimitLower ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalStartDomainCubeLimitLower", self.proposalStartDomainCubeLimitLower   , "real"    , ndim); end
-            if  ~isempty(self.proposalStartDomainCubeLimitUpper ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalStartDomainCubeLimitUpper", self.proposalStartDomainCubeLimitUpper   , "real"    , ndim); end
-            if  ~isempty(self.proposalStartRandomized           ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalStartRandomized          ", self.proposalStartRandomized             , "logical" , 1); end
-            if  ~isempty(self.proposalStd                       ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalStd                      ", self.proposalStd                         , "real"    , ndim); end
+
+            %%%%
+            %%%% The NML entry ``proposalScale`` must be a string, but could also be implicitly converted to string if it is a real number.
+            %%%%
+
+            if  isreal(self.proposalScale)
+                self.proposalScale = string(self.proposalScale);
+            end
+
+            %%%%
+            %%%% Verify the rest of the NML entries.
+            %%%%
+
+            if  ~isempty(self.outputChainSize                   ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("outputChainSize                  ", self.outputChainSize                     , "integer" , 1)        ; end
+            if  ~isempty(self.outputSampleRefinementCount       ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("outputSampleRefinementCount      ", self.outputSampleRefinementCount         , "integer" , 1)        ; end
+            if  ~isempty(self.outputSampleRefinementMethod      ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("outputSampleRefinementMethod     ", self.outputSampleRefinementMethod        , "string"  , 1)        ; end
+            if  ~isempty(self.proposal                          ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposal                         ", self.proposal                            , "string"  , 1)        ; end
+            if  ~isempty(self.proposalCor                       ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalCor                      ", self.proposalCor                         , "real"    , ndim^2)   ; end
+            if  ~isempty(self.proposalCov                       ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalCov                      ", self.proposalCov                         , "real"    , ndim^2)   ; end
+            if  ~isempty(self.proposalScale                     ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalScale                    ", self.proposalScale                       , "string"  , 1)        ; end
+            if  ~isempty(self.proposalStart                     ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalStart                    ", self.proposalStart                       , "real"    , ndim)     ; end
+            if  ~isempty(self.proposalStartDomainCubeLimitLower ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalStartDomainCubeLimitLower", self.proposalStartDomainCubeLimitLower   , "real"    , ndim)     ; end
+            if  ~isempty(self.proposalStartDomainCubeLimitUpper ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalStartDomainCubeLimitUpper", self.proposalStartDomainCubeLimitUpper   , "real"    , ndim)     ; end
+            if  ~isempty(self.proposalStartRandomized           ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalStartRandomized          ", self.proposalStartRandomized             , "logical" , 1)        ; end
+            if  ~isempty(self.proposalStd                       ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalStd                      ", self.proposalStd                         , "real"    , ndim)     ; end
+
         end
 
     end

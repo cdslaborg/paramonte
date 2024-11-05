@@ -273,9 +273,9 @@ classdef Paradram < pm.sampling.Sampler
         %>  <br><br>
         %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.proposalAdaptation.scatter.png width=700
         %>  <br><br>
-        %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.parallelism.optimal.scaling.strong.png width=700
+        %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.parallelism.scaling.strong.current.png width=700
         %>  <br><br>
-        %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.parallelism.perfect.scaling.strong.png width=700
+        %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.parallelism.scaling.strong.zeroeff.png width=700
         %>
         %>  \final{Paradram}
         %>
