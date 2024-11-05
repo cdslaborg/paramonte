@@ -53,8 +53,6 @@
 %>
 %>  \endcode
 %>
-%>  \final{readProgress}
-%>
 %>  \note
 %>  See the documentation of the ParaMonte MATLAB samplers
 %>  (e.g., [pm.sampling.Paradram](@ref Paradram)) for example usage.<br>

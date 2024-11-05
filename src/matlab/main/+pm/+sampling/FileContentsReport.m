@@ -14,9 +14,6 @@
 %>  \note
 %>  See below for information on the methods.<br>
 %>
-%>  \return
-%>  An object of class [pm.sampling.FileContentsReport](@ref FileContentsReport).<br>
-%>
 %>  \final{FileContentsReport}
 %>
 %>  \author
@@ -70,13 +67,50 @@ classdef FileContentsReport < pm.io.FileContents
     end
 
     properties(Hidden)
-        %iend = 0;
+        %>
+        %>  ``lineListLen``
+        %>
+        %>  This is an internal class variable inaccessible to the end users.<br>
+        %>
         lineListLen = [];
+        %>
+        %>  ``indentLen``
+        %>
+        %>  The scalar MATLAB integer representing the number of indentation
+        %>  characters at the beginning of each description line in the report file.<br>
+        %>  This is an internal class variable inaccessible to the end users.<br>
+        %>
         indentLen = 4; % indent length of the records
-        dsymLen = 2; % assume a minimum length of two of decoration symbols.
-        dsym = ''; % decoration symbol to be determined at runtime (currently ``%``).
+        %>
+        %>  ``dsymLen``
+        %>
+        %>  The scalar MATLAB integer representing the minimum length of two of decoration symbols.<br>
+        %>  This is an internal class variable inaccessible to the end users.<br>
+        %>
+        dsymLen = 2;
+        %>
+        %>  ``dsym``
+        %>
+        %>  The scalar MATLAB string representing the decoration symbol used in
+        %>  the report file, to be determined at runtime (currently ``%``).<br>
+        %>  This is an internal class variable inaccessible to the end users.<br>
+        %>
+        dsym = '';
+        %>
+        %>  ``prefix``
+        %>
+        %>  The scalar MATLAB string representing the prefix used in the description lines of the report file.<br>
+        %>  This is an internal class variable inaccessible to the end users.<br>
+        %>
         prefix = ' - NOTE: ';
+        %>
+        %>  ``method``
+        %>
+        %>  The scalar MATLAB string representing the sample name.<br>
+        %>  This is an internal class variable inaccessible to the end users.<br>
+        %>
         method = '';
+        %iend = 0;
     end
 
     methods(Access = public)
@@ -277,6 +311,8 @@ classdef FileContentsReport < pm.io.FileContents
             %%%% Add the parallel scaling visualizations.
             %%%%
 
+            silent_kws = {"silent", self.silent};
+
             try
                 %self.vis = struct();
                 %self.vis.parallelism = struct();
@@ -296,6 +332,7 @@ classdef FileContentsReport < pm.io.FileContents
                                             , "scatter", {"size", 10, "color", pm.vis.color.rgb("red")} ...
                                             ..., "colormap", {"enabled", false, "map", "autumn"} ...
                                             , "plot", {"linewidth", 2.5} ...
+                                            , silent_kws{:} ...
                                             );
                 end
             catch me
@@ -344,6 +381,7 @@ classdef FileContentsReport < pm.io.FileContents
                                 , "colormap", {"enabled", false} ...
                                 , "legend", {"enabled", true} ...
                                 , "plot", {"linewidth", 2.5} ...
+                                , silent_kws{:} ...
                                 );
             catch me
                 warning ( newline ...

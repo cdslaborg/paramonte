@@ -50,8 +50,6 @@
 %>
 %>  \endcode
 %>
-%>  \final{readProgress}
-%>
 %>  \note
 %>  See the documentation of the sampler subclasses
 %>  (e.g., [pm.sampling.Paradram](@ref Paradram)) for example usage in action.<br>

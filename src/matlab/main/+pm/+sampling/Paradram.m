@@ -257,11 +257,11 @@ classdef Paradram < pm.sampling.Sampler
         %>  <br><br>
         %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.domain.3d.png width=700
         %>  <br><br>
-        %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.triplex.lshc2.png width=900
+        %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.triplex.lshc2.png width=700
         %>  <br><br>
-        %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.triplex.lshc3.png width=900
+        %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.triplex.lshc3.png width=700
         %>  <br><br>
-        %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.triplex.lshcf.png width=900
+        %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.triplex.lshcf.png width=700
         %>  <br><br>
         %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.traceplot.png width=700
         %>  <br><br>

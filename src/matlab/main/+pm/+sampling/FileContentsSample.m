@@ -311,76 +311,80 @@ classdef FileContentsSample < pm.io.FileContentsTabular
 
             colf = self.slfc;
             cols = self.slfc + [1 : self.ndim];
+            silent_kws = {"silent", self.silent};
 
             self.vis = struct();
 
             self.vis.cascade = struct();
 
-            self.vis.cascade.line = pm.vis.CascadeLine(@()self.df, "coly", cols, "colc", colf);
-            self.vis.cascade.scatter = pm.vis.CascadeScatter(@()self.df, "coly", cols, "colc", colf);
-            self.vis.cascade.lineScatter = pm.vis.CascadeLineScatter(@()self.df, "coly", cols, "colc", colf);
+            self.vis.cascade.line = pm.vis.CascadeLine(@()self.df, "coly", cols, "colc", colf, silent_kws{:});
+            self.vis.cascade.scatter = pm.vis.CascadeScatter(@()self.df, "coly", cols, "colc", colf, silent_kws{:});
+            self.vis.cascade.lineScatter = pm.vis.CascadeLineScatter(@()self.df, "coly", cols, "colc", colf, silent_kws{:});
 
-            self.vis.cascade.line3 = pm.vis.CascadeLine3(@()self.df, "coly", cols, "colz", colf, "colc", colf);
-            self.vis.cascade.scatter3 = pm.vis.CascadeScatter3(@()self.df, "coly", cols, "colz", colf, "colc", colf);
-            self.vis.cascade.lineScatter3 = pm.vis.CascadeLineScatter3(@()self.df, "coly", cols, "colz", colf, "colc", colf);
+            self.vis.cascade.line3 = pm.vis.CascadeLine3(@()self.df, "coly", cols, "colz", colf, "colc", colf, silent_kws{:});
+            self.vis.cascade.scatter3 = pm.vis.CascadeScatter3(@()self.df, "coly", cols, "colz", colf, "colc", colf, silent_kws{:});
+            self.vis.cascade.lineScatter3 = pm.vis.CascadeLineScatter3(@()self.df, "coly", cols, "colz", colf, "colc", colf, silent_kws{:});
 
-            self.vis.cascade.histfit = pm.vis.CascadeHistfit(@()self.df, "colx", cols);
-            self.vis.cascade.histogram = pm.vis.CascadeHistogram(@()self.df, "colx", cols);
-            self.vis.cascade.histogram2 = pm.vis.CascadeHistogram2(@()self.df, "colx", cols, "coly", colf);
+            self.vis.cascade.histfit = pm.vis.CascadeHistfit(@()self.df, "colx", cols, silent_kws{:});
+            self.vis.cascade.histogram = pm.vis.CascadeHistogram(@()self.df, "colx", cols, silent_kws{:});
+            self.vis.cascade.histogram2 = pm.vis.CascadeHistogram2(@()self.df, "colx", cols, "coly", colf, silent_kws{:});
 
-            self.vis.cascade.contour = pm.vis.CascadeContour(@()self.df, "colx", cols, "coly", colf);
-            self.vis.cascade.contourf = pm.vis.CascadeContourf(@()self.df, "colx", cols, "coly", colf);
-            self.vis.cascade.contour3 = pm.vis.CascadeContour3(@()self.df, "colx", cols, "coly", colf);
+            self.vis.cascade.contour = pm.vis.CascadeContour(@()self.df, "colx", cols, "coly", colf, silent_kws{:});
+            self.vis.cascade.contourf = pm.vis.CascadeContourf(@()self.df, "colx", cols, "coly", colf, silent_kws{:});
+            self.vis.cascade.contour3 = pm.vis.CascadeContour3(@()self.df, "colx", cols, "coly", colf, silent_kws{:});
 
             self.vis.plot = struct();
 
-            self.vis.plot.line = pm.vis.PlotLine(@()self.df, "coly", cols, "colc", colf);
-            self.vis.plot.scatter = pm.vis.PlotScatter(@()self.df, "coly", cols, "colc", colf);
-            self.vis.plot.lineScatter = pm.vis.PlotLineScatter(@()self.df, "coly", cols, "colc", colf);
+            self.vis.plot.line = pm.vis.PlotLine(@()self.df, "coly", cols, "colc", colf, silent_kws{:});
+            self.vis.plot.scatter = pm.vis.PlotScatter(@()self.df, "coly", cols, "colc", colf, silent_kws{:});
+            self.vis.plot.lineScatter = pm.vis.PlotLineScatter(@()self.df, "coly", cols, "colc", colf, silent_kws{:});
 
-            self.vis.plot.line3 = pm.vis.PlotLine3(@()self.df, "coly", cols, "colc", colf);
-            self.vis.plot.scatter3 = pm.vis.PlotScatter3(@()self.df, "coly", cols, "colz", colf, "colc", colf);
-            self.vis.plot.lineScatter3 = pm.vis.PlotLineScatter3(@()self.df, "coly", cols, "colz", colf, "colc", colf);
+            self.vis.plot.line3 = pm.vis.PlotLine3(@()self.df, "coly", cols, "colc", colf, silent_kws{:});
+            self.vis.plot.scatter3 = pm.vis.PlotScatter3(@()self.df, "coly", cols, "colz", colf, "colc", colf, silent_kws{:});
+            self.vis.plot.lineScatter3 = pm.vis.PlotLineScatter3(@()self.df, "coly", cols, "colz", colf, "colc", colf, silent_kws{:});
 
-            self.vis.plot.histfit = pm.vis.PlotHistfit(@()self.df, "colx", cols);
-            self.vis.plot.histogram = pm.vis.PlotHistogram(@()self.df, "colx", cols);
-            self.vis.plot.histogram2 = pm.vis.PlotHistogram2(@()self.df, "colx", colf, "coly", cols);
+            self.vis.plot.histfit = pm.vis.PlotHistfit(@()self.df, "colx", cols, silent_kws{:});
+            self.vis.plot.histogram = pm.vis.PlotHistogram(@()self.df, "colx", cols, silent_kws{:});
+            self.vis.plot.histogram2 = pm.vis.PlotHistogram2(@()self.df, "colx", colf, "coly", cols, silent_kws{:});
 
-            self.vis.plot.contour = pm.vis.PlotContour(@()self.df, "colx", cols, "coly", colf);
-            self.vis.plot.contourf = pm.vis.PlotContourf(@()self.df, "colx", cols, "coly", colf);
-            self.vis.plot.contour3 = pm.vis.PlotContour3(@()self.df, "colx", cols, "coly", colf);
+            self.vis.plot.contour = pm.vis.PlotContour(@()self.df, "colx", cols, "coly", colf, silent_kws{:});
+            self.vis.plot.contourf = pm.vis.PlotContourf(@()self.df, "colx", cols, "coly", colf, silent_kws{:});
+            self.vis.plot.contour3 = pm.vis.PlotContour3(@()self.df, "colx", cols, "coly", colf, silent_kws{:});
 
             self.vis.tile = struct();
 
-            self.vis.tile.line = pm.vis.TileLine(@()self.df, "coly", cols, "colc", colf);
-            self.vis.tile.scatter = pm.vis.TileScatter(@()self.df, "coly", cols, "colc", colf);
-            self.vis.tile.lineScatter = pm.vis.TileLineScatter(@()self.df, "coly", cols, "colc", colf);
+            self.vis.tile.line = pm.vis.TileLine(@()self.df, "coly", cols, "colc", colf, silent_kws{:});
+            self.vis.tile.scatter = pm.vis.TileScatter(@()self.df, "coly", cols, "colc", colf, silent_kws{:});
+            self.vis.tile.lineScatter = pm.vis.TileLineScatter(@()self.df, "coly", cols, "colc", colf, silent_kws{:});
 
-            self.vis.tile.line3 = pm.vis.TileLine3(@()self.df, "coly", cols, "colc", colf);
-            self.vis.tile.scatter3 = pm.vis.TileScatter3(@()self.df, "coly", cols, "colz", colf, "colc", colf);
-            self.vis.tile.lineScatter3 = pm.vis.TileLineScatter3(@()self.df, "coly", cols, "colz", colf, "colc", colf);
+            self.vis.tile.line3 = pm.vis.TileLine3(@()self.df, "coly", cols, "colc", colf, silent_kws{:});
+            self.vis.tile.scatter3 = pm.vis.TileScatter3(@()self.df, "coly", cols, "colz", colf, "colc", colf, silent_kws{:});
+            self.vis.tile.lineScatter3 = pm.vis.TileLineScatter3(@()self.df, "coly", cols, "colz", colf, "colc", colf, silent_kws{:});
 
-            self.vis.tile.histfit = pm.vis.TileHistfit(@()self.df, "colx", cols);
-            self.vis.tile.histogram = pm.vis.TileHistogram(@()self.df, "colx", cols);
-            self.vis.tile.histogram2 = pm.vis.TileHistogram2(@()self.df, "colx", colf, "coly", cols);
+            self.vis.tile.histfit = pm.vis.TileHistfit(@()self.df, "colx", cols, silent_kws{:});
+            self.vis.tile.histogram = pm.vis.TileHistogram(@()self.df, "colx", cols, silent_kws{:});
+            self.vis.tile.histogram2 = pm.vis.TileHistogram2(@()self.df, "colx", colf, "coly", cols, silent_kws{:});
 
-            self.vis.tile.contour = pm.vis.TileContour(@()self.df, "colx", cols, "coly", colf);
-            self.vis.tile.contourf = pm.vis.TileContourf(@()self.df, "colx", cols, "coly", colf);
-            self.vis.tile.contour3 = pm.vis.TileContour3(@()self.df, "colx", cols, "coly", colf);
+            self.vis.tile.contour = pm.vis.TileContour(@()self.df, "colx", cols, "coly", colf, silent_kws{:});
+            self.vis.tile.contourf = pm.vis.TileContourf(@()self.df, "colx", cols, "coly", colf, silent_kws{:});
+            self.vis.tile.contour3 = pm.vis.TileContour3(@()self.df, "colx", cols, "coly", colf, silent_kws{:});
 
             self.vis.triplex.lshc2 = pm.vis.Triplex ( pm.vis.SubplotLineScatter(@()self.df, "colx", cols, "coly", cols, "colc", colf, "colorbar", {"enabled", false}) ...
                                                     , pm.vis.SubplotHistogram(@()self.df, "colx", cols) ...
                                                     , pm.vis.SubplotContour(@()self.df, "colx", cols, "coly", cols, "colorbar", {"enabled", false}) ...
+                                                    , silent_kws{:} ...
                                                     );
 
             self.vis.triplex.lshcf = pm.vis.Triplex ( pm.vis.SubplotLineScatter(@()self.df, "colx", cols, "coly", cols, "colc", colf, "colorbar", {"enabled", false}) ...
                                                     , pm.vis.SubplotHistogram(@()self.df, "colx", cols) ...
                                                     , pm.vis.SubplotContourf(@()self.df, "colx", cols, "coly", cols, "colorbar", {"enabled", false}) ...
+                                                    , silent_kws{:} ...
                                                     );
 
             self.vis.triplex.lshc3 = pm.vis.Triplex ( pm.vis.SubplotLineScatter(@()self.df, "colx", cols, "coly", cols, "colc", colf, "colorbar", {"enabled", false}) ...
                                                     , pm.vis.SubplotHistogram(@()self.df, "colx", cols) ...
                                                     , pm.vis.SubplotContour3(@()self.df, "colx", cols, "coly", cols, "colorbar", {"enabled", false}) ...
+                                                    , silent_kws{:} ...
                                                     );
 
             %if  5 < ndim
@@ -432,9 +436,9 @@ classdef FileContentsSample < pm.io.FileContentsTabular
         % %>  \author
         % %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         % function visit(self, pattern, sep)
-        % 
+        %
         % end
-        % 
+        %
         % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     end

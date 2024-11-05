@@ -76,6 +76,13 @@ classdef Figure < pm.matlab.Handle
         %>  various plotting tools used to make the current axis.<br>
         %>
         fout = struct();
+        %>
+        %>  ``silent``
+        %>
+        %>  The scalar MATLAB logical (Boolean) indicator which is ``false`` by default.<br>
+        %>  If it is set to ``true``, it will silence all output postprocessing messages (except warnings and errors).<br>
+        %>
+        silent = false;
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

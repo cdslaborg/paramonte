@@ -453,7 +453,9 @@ classdef Triplex < pm.vis.figure.Figure
                 for irow = 1 : self.layout.tiling.nrow
 
                     iplt = iplt + 1;
-                    spinner.spin(iplt / numel(self.tile));
+                    if ~self.silent
+                        spinner.spin(iplt / numel(self.tile));
+                    end
 
                     %%%%
                     %%%% Copy data from template to the current tile.
@@ -629,7 +631,9 @@ classdef Triplex < pm.vis.figure.Figure
                 end
             end
 
-            disp("done in " + sprintf("%.6f", string(timer.toc())) + " seconds.");
+            if ~self.silent
+                disp("done in " + sprintf("%.6f", string(timer.toc())) + " seconds.");
+            end
 
         end % function
 

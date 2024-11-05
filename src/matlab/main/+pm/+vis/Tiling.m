@@ -180,7 +180,9 @@ classdef Tiling < pm.vis.figure.Figure
             for irow = 1 : size(self.subplot, 1)
                 for icol = 1 : size(self.subplot, 2)
                     iplt = iplt + 1;
-                    spinner.spin(iplt / numel(self.subplot));
+                    if ~self.silent
+                        spinner.spin(iplt / numel(self.subplot));
+                    end
                     if  pm.introspection.istype(self.subplot{irow, icol}, "pm.vis.Subplot")
                         try
                             nexttile;
@@ -191,7 +193,7 @@ classdef Tiling < pm.vis.figure.Figure
                     end
                 end
             end
-            if  0 < iplt
+            if ~self.silent && 0 < iplt
                 disp("done in " + sprintf("%.6f", string(timer.toc())) + " seconds.");
             end
 
