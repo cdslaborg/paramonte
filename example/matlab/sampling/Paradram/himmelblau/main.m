@@ -105,9 +105,9 @@ report = sampler.readReport();
 report = report{1};
 
 for parcond = ["sameeff", "zeroeff"]
-    report.stats.parallelism.scaling.strong.(parcond).vis.lineScatter.make();
-    report.stats.parallelism.scaling.strong.(parcond).vis.lineScatter.savefig("Paradram.himmelblau.parallelism.scaling.strong." + parcond + ".png", "-m3");
-    %p = pm.vis.PlotLineScatter(report.stats.parallelism.scaling.strong.(parcond).value, "colx", "1", "coly", "2", "colc", "2");
+    report.stats.parallelism.speedup.scaling.strong.(parcond).vis.lineScatter.make();
+    report.stats.parallelism.speedup.scaling.strong.(parcond).vis.lineScatter.savefig("Paradram.himmelblau.parallelism.speedup.scaling.strong." + parcond + ".png", "-m3");
+    %p = pm.vis.PlotLineScatter(report.stats.parallelism.speedup.scaling.strong.(parcond).value, "colx", "1", "coly", "2", "colc", "2");
     %p.make("axes", {"xscale", "log"}, "plot", {"linewidth", 2}, "scatter", {"size", 7});
-    %p.savefig("Paradram.himmelblau.parallelism.scaling.strong." + parcond + ".png", "-m3");
+    %p.savefig("Paradram.himmelblau.parallelism.speedup.scaling.strong." + parcond + ".png", "-m3");
 end

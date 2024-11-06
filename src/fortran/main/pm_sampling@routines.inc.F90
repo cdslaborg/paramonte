@@ -572,7 +572,7 @@ end if;
 
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                    call spec%disp%show("stats.parallelism.scaling.strong.sameeff")
+                    call spec%disp%show("stats.parallelism.speedup.scaling.strong.sameeff")
                     call spec%disp%show(css_type([character(15) :: "processCount", "speedup"]), format = spec%reportFile%format%fixform, bmsize = 0_IK)
                     do iell = 1, size(speedup%sameeff%scaling, 1, IK)
                         write(spec%reportFile%unit, spec%reportFile%format%intreal) speedup%sameeff%numproc(iell), speedup%sameeff%scaling(iell)
@@ -585,7 +585,7 @@ end if;
 
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                    call spec%disp%show("stats.parallelism.scaling.strong.zeroeff")
+                    call spec%disp%show("stats.parallelism.speedup.scaling.strong.zeroeff")
                     call spec%disp%show(css_type([character(15) :: "processCount", "speedup"]), format = spec%reportFile%format%fixform, bmsize = 0_IK)
                     do iell = 1, size(speedup%zeroeff%scaling, 1, IK)
                         write(spec%reportFile%unit, spec%reportFile%format%intreal) speedup%zeroeff%numproc(iell), speedup%zeroeff%scaling(iell)

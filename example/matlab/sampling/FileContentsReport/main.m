@@ -32,6 +32,6 @@ report = sampler.readReport();
 report = report{1};
 
 for parcond = ["sameeff", "zeroeff"]
-    report.stats.parallelism.scaling.strong.(parcond).vis.lineScatter.make();
-    report.stats.parallelism.scaling.strong.(parcond).vis.lineScatter.savefig("Paradram.himmelblau.parallelism.scaling.strong." + parcond + ".png", "-m3");
+    report.stats.parallelism.speedup.scaling.strong.(parcond).vis.lineScatter.make();
+    report.stats.parallelism.speedup.scaling.strong.(parcond).vis.lineScatter.savefig("Paradram.himmelblau.parallelism.speedup.scaling.strong." + parcond + ".png", "-m3");
 end
