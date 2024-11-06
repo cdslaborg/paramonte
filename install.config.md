@@ -28,7 +28,7 @@ The general usage syntax of the flags with the `install.sh` installation script 
 ./install.sh flag value
 ```
 
-where `flag` can be any of the following installation flags and `value` is the user-specified value for the flag. 
+where `flag` can be any of the following installation flags and `value` is the user-specified value for the flag.
 
 > **NOTE** There can be as many `flag` with `value` pairs as needed, although only one pair is shown above as an example.
 
@@ -44,7 +44,7 @@ The general usage syntax of the flags with the `install.bat` installation script
 ./install.bat flag value
 ```
 
-where `flag` can be any of the following installation flags and `value` is the user-specified value for the flag. 
+where `flag` can be any of the following installation flags and `value` is the user-specified value for the flag.
 
 > **NOTE** There can be as many `flag` with `value` pairs as needed, although only one pair is shown above as an example.
 
@@ -777,10 +777,15 @@ Value               | Usage
 
 > This is a low level option and mostly useful to the developers of the ParaMonte library.
 
-> **NOTE** 
+> **NOTE**
 > The primary goal of this flag is to bypass an implementation bug in the current CMake scripts of the ParaMonte library
-> and enhance the library development experience by reducing the redundant builds and file and folder copies, 
+> and enhance the library development experience by reducing the redundant builds and file and folder copies,
 > thus, speeding up the library development and testing.
+
+> **WARNING**
+> Beware that specifying this flag will **disable** the deployment to the default or user-specified deploy directory.
+> The default deployment directory is the `bin` subdirectory in the root directory of
+> the ParaMonte GitHub repository where the install scripts are located.
 
 **optional**. The default value for `value` is `0`.
 

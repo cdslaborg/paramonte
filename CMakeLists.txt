@@ -39,7 +39,6 @@
 #       make example
 #       make benchmark
 
-
 cmake_minimum_required(VERSION 3.18)
 
 #cmake_policy(VERSION 3.10...3.23)

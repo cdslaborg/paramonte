@@ -645,6 +645,20 @@ module pm_sampling
     !>  \test
     !>  [test_pm_sampling](@ref test_pm_sampling)
     !>
+    !>  \bug
+    !>  \status \unresolved
+    !>  \source \ifx{2024.0.2 20231213}
+    !>  \desc
+    !>  \ifx cannot handle compilation of the `pm_sampling` implementation include file.<br>
+    !>  \code{.sh}
+    !>      /home/amir/git/paramonte/src/fortran/main/pm_sampling@routines.inc.F90(454): error #5623: **Internal compiler error: internal abort** Please report this error along with the circumstances in which it occurred in a Software Problem Report.  Note: File and line given may not be explicit cause of this error.
+    !>                         if (spec%parallelism%is%forkJoin .and. scalings%current%scaling(spec%image%count) < 1._RKG) then
+    !>      ------------------------------------------------------------------------------------------------------^
+    !>      compilation aborted for /home/amir/git/paramonte/src/fortran/main/pm_sampling@routines.F90 (code 3)
+    !>  \endcode
+    !>  \remedy{2.0.0}
+    !>  The new interface allocatable output arguments entirely, thus obviating the need to handle this gracefully.<br>
+    !>
     !>  \final{getErrSampling}
     !>
     !>  \author

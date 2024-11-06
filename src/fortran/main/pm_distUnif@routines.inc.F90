@@ -82,7 +82,7 @@
 #elif   !DD_ENABLED
 #error  "Unrecognized interface."
 #endif
-        CHECK_ASSERTION(__LINE__, size(cdf, kind = IK) == size(X, kind = IK), SK_"setUnifCDF(): The condition `size(cdf) == size(X)` must hold. size(cdf), size(X) = "//getStr([size(cdf, kind = IK), size(X, kind = IK)])) ! fpp
+        CHECK_ASSERTION(__LINE__, size(cdf, kind = IK) == size(x, kind = IK), SK_"setUnifCDF(): The condition `size(cdf) == size(x)` must hold. size(cdf), size(x) = "//getStr([size(cdf, kind = IK), size(x, kind = IK)])) ! fpp
 #elif   !D0_ENABLED
 #error  "Unrecognized interface."
 #endif
@@ -95,19 +95,19 @@
 #endif
         ! Begin the computation.
 #if     D1_ENABLED
-        do concurrent(i = 1 : size(X, kind = IK))
+        do concurrent(i = 1 : size(x, kind = IK))
 #endif
             ! integer.
 #if         IK_ENABLED
-            if (GET_ELEMENT(X) < lower) then
+            if (GET_ELEMENT(x) < lower) then
                 GET_ELEMENT(cdf) = 0._RKG
-            elseif (GET_ELEMENT(X) < upper) then
+            elseif (GET_ELEMENT(x) < upper) then
 #if             DD_ENABLED
-                GET_ELEMENT(cdf) = real(GET_ELEMENT(X) + 1_IKG, RKG) * 0.5_RKG
+                GET_ELEMENT(cdf) = real(GET_ELEMENT(x) + 1_IKG, RKG) * 0.5_RKG
 #elif           LU_ENABLED && D0_ENABLED
-                GET_ELEMENT(cdf) = real(GET_ELEMENT(X) + 1_IKG - lower, RKG) / real(upper - lower + 1_IKG, RKG)
+                GET_ELEMENT(cdf) = real(GET_ELEMENT(x) + 1_IKG - lower, RKG) / real(upper - lower + 1_IKG, RKG)
 #elif           LU_ENABLED && D1_ENABLED
-                GET_ELEMENT(cdf) = real(GET_ELEMENT(X) + 1_IKG - lower, RKG) * inverseUpperMinusLowerPlusOne
+                GET_ELEMENT(cdf) = real(GET_ELEMENT(x) + 1_IKG - lower, RKG) * inverseUpperMinusLowerPlusOne
 #else
 #error          "Unrecognized interface."
 #endif
@@ -116,15 +116,15 @@
             end if
             ! real.
 #elif       RK_ENABLED
-            if (GET_ELEMENT(X) < lower) then
+            if (GET_ELEMENT(x) < lower) then
                 GET_ELEMENT(cdf) = 0._RKG
-            elseif (GET_ELEMENT(X) < upper) then
+            elseif (GET_ELEMENT(x) < upper) then
 #if             DD_ENABLED
-                GET_ELEMENT(cdf) = GET_ELEMENT(X)
+                GET_ELEMENT(cdf) = GET_ELEMENT(x)
 #elif           LU_ENABLED && D0_ENABLED
-                GET_ELEMENT(cdf) = (GET_ELEMENT(X) - lower) / (upper - lower)
+                GET_ELEMENT(cdf) = (GET_ELEMENT(x) - lower) / (upper - lower)
 #elif           LU_ENABLED && D1_ENABLED
-                GET_ELEMENT(cdf) = (GET_ELEMENT(X) - lower) * inverseUpperMinusLowerPlusOne
+                GET_ELEMENT(cdf) = (GET_ELEMENT(x) - lower) * inverseUpperMinusLowerPlusOne
 #else
 #error          "Unrecognized interface."
 #endif
@@ -134,15 +134,15 @@
             ! complex.
 #elif       CK_ENABLED
             ! real part.
-            if (GET_ELEMENT(X)%re < real(lower,CKG)) then
+            if (GET_ELEMENT(x)%re < real(lower,CKG)) then
                 GET_ELEMENT(cdf)%re = 0._CKG ! fpp
-            elseif (GET_ELEMENT(X)%re < real(upper,CKG)) then
+            elseif (GET_ELEMENT(x)%re < real(upper,CKG)) then
 #if             DD_ENABLED
-                GET_ELEMENT(cdf)%re = GET_ELEMENT(X)%re
+                GET_ELEMENT(cdf)%re = GET_ELEMENT(x)%re
 #elif           LU_ENABLED && D0_ENABLED
-                GET_ELEMENT(cdf)%re = (GET_ELEMENT(X)%re - real(lower,CKG)) / (real(upper,CKG) - real(lower,CKG))
+                GET_ELEMENT(cdf)%re = (GET_ELEMENT(x)%re - real(lower,CKG)) / (real(upper,CKG) - real(lower,CKG))
 #elif           LU_ENABLED && D1_ENABLED
-                GET_ELEMENT(cdf)%re = (GET_ELEMENT(X)%re - real(lower,CKG)) * inverseUpperMinusLowerPlusOne%re
+                GET_ELEMENT(cdf)%re = (GET_ELEMENT(x)%re - real(lower,CKG)) * inverseUpperMinusLowerPlusOne%re
 #else
 #error          "Unrecognized interface."
 #endif
@@ -150,15 +150,15 @@
                 GET_ELEMENT(cdf)%re = 1._CKG ! fpp
             end if
             ! imaginary part.
-            if (GET_ELEMENT(X)%im < aimag(lower)) then
+            if (GET_ELEMENT(x)%im < aimag(lower)) then
                 GET_ELEMENT(cdf)%im = 0._CKG ! fpp
-            elseif (GET_ELEMENT(X)%im < aimag(upper)) then
+            elseif (GET_ELEMENT(x)%im < aimag(upper)) then
 #if             DD_ENABLED
-                GET_ELEMENT(cdf)%im = GET_ELEMENT(X)%im
+                GET_ELEMENT(cdf)%im = GET_ELEMENT(x)%im
 #elif           LU_ENABLED && D0_ENABLED
-                GET_ELEMENT(cdf)%im = (GET_ELEMENT(X)%im - aimag(lower)) / (aimag(upper) - aimag(lower))
+                GET_ELEMENT(cdf)%im = (GET_ELEMENT(x)%im - aimag(lower)) / (aimag(upper) - aimag(lower))
 #elif           LU_ENABLED && D1_ENABLED
-                GET_ELEMENT(cdf)%im = (GET_ELEMENT(X)%im - aimag(lower)) * inverseUpperMinusLowerPlusOne%im
+                GET_ELEMENT(cdf)%im = (GET_ELEMENT(x)%im - aimag(lower)) * inverseUpperMinusLowerPlusOne%im
 #else
 #error          "Unrecognized interface."
 #endif
@@ -575,6 +575,8 @@
         if (lb /= ub) then
             call setUnifRand(RNG rand%re, lb%re, ub%re)
             call setUnifRand(RNG rand%im, lb%im, ub%im)
+            !call setUnifRand(RNG rand%re, real(lb, CKG), real(ub, CKG))
+            !call setUnifRand(RNG rand%im, aimag(lb), aimag(ub))
         else
             rand = lb
         end if

@@ -1116,7 +1116,7 @@ if [ -d "${ddir}" ]; then
     fi
 elif ! [ "${flag_deps}" = "" ]; then
     echo >&2
-    echo >&2 "${pmwarn} The requested input target directory ${ddir} specified with the input flag --dir does not exist."
+    echo >&2 "${pmwarn} The requested input target directory ${ddir} specified with the input flag --ddir does not exist."
     echo >&2
 fi
 

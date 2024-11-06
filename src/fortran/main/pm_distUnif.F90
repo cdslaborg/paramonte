@@ -35,7 +35,7 @@
 !>  All intervals of the same length on the distribution's support are equally probable.<br>
 !>
 !>  \note
-!>  The Uniform distribution is the maximum entropy probability distribution for a random variable \f$X\f$ under no constraint other than that it is contained in the distribution's support.<br>
+!>  The Uniform distribution is the maximum entropy probability distribution for a random variable \f$x\f$ under no constraint other than that it is contained in the distribution's support.<br>
 !>
 !>  **Probability density function (PDF)**<br>
 !>
@@ -329,15 +329,15 @@ module pm_distUnif
     !>
     !>  \param[in]  x       :   The input scalar or array of the same shape as other input array arguments, of either <br>
     !>                          <ol>
-    !>                              <li>    If `X` is `integer`, the discrete Uniform distribution CDF with support `[lower, upper]` will be returned.<br>
-    !>                              <li>    If `X` is `integer`, the output argument `CDF` must be of type `real` of kind \RK.<br>
-    !>                              <li>    If `X` is `real`, the continuous Uniform distribution CDF with support `[lower, upper]` will be returned.<br>
-    !>                              <li>    If `X` is `complex`, the two real and imaginary components of `CDF` will correspond to two independent distributions.<br>
+    !>                              <li>    If `x` is `integer`, the discrete Uniform distribution CDF with support `[lower, upper]` will be returned.<br>
+    !>                              <li>    If `x` is `integer`, the output argument `CDF` must be of type `real` of kind \RK.<br>
+    !>                              <li>    If `x` is `real`, the continuous Uniform distribution CDF with support `[lower, upper]` will be returned.<br>
+    !>                              <li>    If `x` is `complex`, the two real and imaginary components of `CDF` will correspond to two independent distributions.<br>
     !>                          </ol>
-    !>  \param[in]  lower   :   The input scalar or array of the same shape as other input array arguments, of the same type and kind as `X`,
+    !>  \param[in]  lower   :   The input scalar or array of the same shape as other input array arguments, of the same type and kind as `x`,
     !>                          representing the lower bound of the Uniform distribution.<br>
     !>                          (**optional**, default = `0`. It must be present **if and only if** the input argument `upper` is also present.)
-    !>  \param[in]  upper   :   The input scalar or array of the same shape as other input array arguments, of the same type and kind as `X`,
+    !>  \param[in]  upper   :   The input scalar or array of the same shape as other input array arguments, of the same type and kind as `x`,
     !>                          representing the upper bound of the Uniform distribution.<br>
     !>                          (**optional**, default = `1`. It must be present **if and only if** the input argument `lower` is also present.)
     !>
@@ -771,20 +771,20 @@ module pm_distUnif
     !>
     !>  \param[out] cdf     :   The output scalar or `contiguous` array of rank `1` of either <br>
     !>                          <ol>
-    !>                              <li>    type `complex` of kind \CKALL (if the input value `X` is of type `complex`) or, <br>
-    !>                              <li>    type `real` of kind \RKALL (if the input value `X` is of type `integer` or `real`), <br>
+    !>                              <li>    type `complex` of kind \CKALL (if the input value `x` is of type `complex`) or, <br>
+    !>                              <li>    type `real` of kind \RKALL (if the input value `x` is of type `integer` or `real`), <br>
     !>                          </ol>
     !>                          containing the CDF of the specified discrete or continuous Uniform distribution.
-    !>  \param[in]  X       :   The input scalar or `contiguous` array of the same shape as `cdf`, containing the values at which the CDF must be computed.<br>
-    !>                          If `X` is of type `integer`, the CDF of the discrete Uniform distribution with support `[lower, upper]` will be returned.<br>
-    !>                          If `X` is of type `integer`, the output argument `CDF` must be of type `real` of kind \RKALL.<br>
-    !>                          If `X` is of type `real`, the output argument `CDF` must have the same type, kind, and rank as `X`,
+    !>  \param[in]  x       :   The input scalar or `contiguous` array of the same shape as `cdf`, containing the values at which the CDF must be computed.<br>
+    !>                          If `x` is of type `integer`, the CDF of the discrete Uniform distribution with support `[lower, upper]` will be returned.<br>
+    !>                          If `x` is of type `integer`, the output argument `CDF` must be of type `real` of kind \RKALL.<br>
+    !>                          If `x` is of type `real`, the output argument `CDF` must have the same type, kind, and rank as `x`,
     !>                          and will contain the CDF of the continuous Uniform distribution with support `[lower, upper)`.<br>
-    !>                          If `X` is of type `complex`, the output argument `CDF` must have the same type, kind, and rank as `X`.<br>
-    !>                          If `X` is of type `complex`, the two real and imaginary components of `CDF` will correspond to two independent distributions.<br>
-    !>  \param[in]  lower   :   The input scalar of the same type and kind as `X`, representing the lower bound of the Uniform distribution.<br>
+    !>                          If `x` is of type `complex`, the output argument `CDF` must have the same type, kind, and rank as `x`.<br>
+    !>                          If `x` is of type `complex`, the two real and imaginary components of `CDF` will correspond to two independent distributions.<br>
+    !>  \param[in]  lower   :   The input scalar of the same type and kind as `x`, representing the lower bound of the Uniform distribution.<br>
     !>                          (**optional**, default = `0`. If present, then `upper` must also be present.)
-    !>  \param[in]  upper   :   The input scalar of the same type and kind as `X`, representing the upper bound of the Uniform distribution.<br>
+    !>  \param[in]  upper   :   The input scalar of the same type and kind as `x`, representing the upper bound of the Uniform distribution.<br>
     !>                          (**optional**, default = `1`. If present, then `lower` must also be present.)
     !>
     !>  \interface{setUnifCDF}
@@ -792,8 +792,8 @@ module pm_distUnif
     !>
     !>      use pm_distUnif, only: setUnifCDF
     !>
-    !>      call setUnifCDF(cdf, X)
-    !>      call setUnifCDF(cdf, X, lower, upper)
+    !>      call setUnifCDF(cdf, x)
+    !>      call setUnifCDF(cdf, x, lower, upper)
     !>
     !>  \endcode
     !>
@@ -1262,285 +1262,285 @@ module pm_distUnif
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED && IK5_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK5_IK5(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK5_IK5(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK5_IK5
 #endif
         use pm_kind, only: IKG => IK5, RKG => RK5
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if RK4_ENABLED && IK5_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK4_IK5(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK4_IK5(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK4_IK5
 #endif
         use pm_kind, only: IKG => IK5, RKG => RK4
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if RK3_ENABLED && IK5_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK3_IK5(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK3_IK5(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK3_IK5
 #endif
         use pm_kind, only: IKG => IK5, RKG => RK3
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if RK2_ENABLED && IK5_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK2_IK5(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK2_IK5(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK2_IK5
 #endif
         use pm_kind, only: IKG => IK5, RKG => RK2
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if RK1_ENABLED && IK5_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK1_IK5(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK1_IK5(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK1_IK5
 #endif
         use pm_kind, only: IKG => IK5, RKG => RK1
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED && IK4_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK5_IK4(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK5_IK4(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK5_IK4
 #endif
         use pm_kind, only: IKG => IK4, RKG => RK5
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if RK4_ENABLED && IK4_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK4_IK4(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK4_IK4(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK4_IK4
 #endif
         use pm_kind, only: IKG => IK4, RKG => RK4
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if RK3_ENABLED && IK4_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK3_IK4(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK3_IK4(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK3_IK4
 #endif
         use pm_kind, only: IKG => IK4, RKG => RK3
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if RK2_ENABLED && IK4_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK2_IK4(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK2_IK4(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK2_IK4
 #endif
         use pm_kind, only: IKG => IK4, RKG => RK2
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if RK1_ENABLED && IK4_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK1_IK4(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK1_IK4(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK1_IK4
 #endif
         use pm_kind, only: IKG => IK4, RKG => RK1
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED && IK3_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK5_IK3(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK5_IK3(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK5_IK3
 #endif
         use pm_kind, only: IKG => IK3, RKG => RK5
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if RK4_ENABLED && IK3_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK4_IK3(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK4_IK3(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK4_IK3
 #endif
         use pm_kind, only: IKG => IK3, RKG => RK4
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if RK3_ENABLED && IK3_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK3_IK3(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK3_IK3(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK3_IK3
 #endif
         use pm_kind, only: IKG => IK3, RKG => RK3
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if RK2_ENABLED && IK3_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK2_IK3(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK2_IK3(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK2_IK3
 #endif
         use pm_kind, only: IKG => IK3, RKG => RK2
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if RK1_ENABLED && IK3_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK1_IK3(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK1_IK3(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK1_IK3
 #endif
         use pm_kind, only: IKG => IK3, RKG => RK1
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED && IK2_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK5_IK2(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK5_IK2(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK5_IK2
 #endif
         use pm_kind, only: IKG => IK2, RKG => RK5
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if RK4_ENABLED && IK2_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK4_IK2(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK4_IK2(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK4_IK2
 #endif
         use pm_kind, only: IKG => IK2, RKG => RK4
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if RK3_ENABLED && IK2_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK3_IK2(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK3_IK2(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK3_IK2
 #endif
         use pm_kind, only: IKG => IK2, RKG => RK3
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if RK2_ENABLED && IK2_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK2_IK2(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK2_IK2(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK2_IK2
 #endif
         use pm_kind, only: IKG => IK2, RKG => RK2
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if RK1_ENABLED && IK2_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK1_IK2(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK1_IK2(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK1_IK2
 #endif
         use pm_kind, only: IKG => IK2, RKG => RK1
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED && IK1_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK5_IK1(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK5_IK1(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK5_IK1
 #endif
         use pm_kind, only: IKG => IK1, RKG => RK5
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if RK4_ENABLED && IK1_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK4_IK1(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK4_IK1(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK4_IK1
 #endif
         use pm_kind, only: IKG => IK1, RKG => RK4
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if RK3_ENABLED && IK1_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK3_IK1(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK3_IK1(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK3_IK1
 #endif
         use pm_kind, only: IKG => IK1, RKG => RK3
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if RK2_ENABLED && IK1_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK2_IK1(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK2_IK1(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK2_IK1
 #endif
         use pm_kind, only: IKG => IK1, RKG => RK2
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if RK1_ENABLED && IK1_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK1_IK1(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK1_IK1(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK1_IK1
 #endif
         use pm_kind, only: IKG => IK1, RKG => RK1
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
@@ -1553,57 +1553,57 @@ module pm_distUnif
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK5_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_CK5(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_CK5(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_CK5
 #endif
         use pm_kind, only: CKG => CK5
         complex(CKG), intent(out)   , contiguous    :: cdf(:)
-        complex(CKG), intent(in)    , contiguous    :: X(:)
+        complex(CKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if CK4_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_CK4(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_CK4(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_CK4
 #endif
         use pm_kind, only: CKG => CK4
         complex(CKG), intent(out)   , contiguous    :: cdf(:)
-        complex(CKG), intent(in)    , contiguous    :: X(:)
+        complex(CKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if CK3_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_CK3(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_CK3(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_CK3
 #endif
         use pm_kind, only: CKG => CK3
         complex(CKG), intent(out)   , contiguous    :: cdf(:)
-        complex(CKG), intent(in)    , contiguous    :: X(:)
+        complex(CKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if CK2_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_CK2(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_CK2(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_CK2
 #endif
         use pm_kind, only: CKG => CK2
         complex(CKG), intent(out)   , contiguous    :: cdf(:)
-        complex(CKG), intent(in)    , contiguous    :: X(:)
+        complex(CKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if CK1_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_CK1(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_CK1(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_CK1
 #endif
         use pm_kind, only: CKG => CK1
         complex(CKG), intent(out)   , contiguous    :: cdf(:)
-        complex(CKG), intent(in)    , contiguous    :: X(:)
+        complex(CKG), intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
@@ -1616,57 +1616,57 @@ module pm_distUnif
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK5(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK5(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK5
 #endif
         use pm_kind, only: RKG => RK5
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        real(RKG)   , intent(in)    , contiguous    :: X(:)
+        real(RKG)   , intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if RK4_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK4(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK4(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK4
 #endif
         use pm_kind, only: RKG => RK4
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        real(RKG)   , intent(in)    , contiguous    :: X(:)
+        real(RKG)   , intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if RK3_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK3(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK3(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK3
 #endif
         use pm_kind, only: RKG => RK3
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        real(RKG)   , intent(in)    , contiguous    :: X(:)
+        real(RKG)   , intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if RK2_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK2(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK2(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK2
 #endif
         use pm_kind, only: RKG => RK2
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        real(RKG)   , intent(in)    , contiguous    :: X(:)
+        real(RKG)   , intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
 #if RK1_ENABLED
-    PURE module subroutine setUnifCDF_DD_D1_RK1(cdf, X)
+    PURE module subroutine setUnifCDF_DD_D1_RK1(cdf, x)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK1
 #endif
         use pm_kind, only: RKG => RK1
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        real(RKG)   , intent(in)    , contiguous    :: X(:)
+        real(RKG)   , intent(in)    , contiguous    :: x(:)
     end subroutine
 #endif
 
@@ -2145,61 +2145,61 @@ module pm_distUnif
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED && IK5_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK5_IK5(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK5_IK5(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK5_IK5
 #endif
         use pm_kind, only: IKG => IK5, RKG => RK5
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if RK4_ENABLED && IK5_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK4_IK5(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK4_IK5(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK4_IK5
 #endif
         use pm_kind, only: IKG => IK5, RKG => RK4
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if RK3_ENABLED && IK5_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK3_IK5(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK3_IK5(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK3_IK5
 #endif
         use pm_kind, only: IKG => IK5, RKG => RK3
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if RK2_ENABLED && IK5_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK2_IK5(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK2_IK5(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK2_IK5
 #endif
         use pm_kind, only: IKG => IK5, RKG => RK2
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if RK1_ENABLED && IK5_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK1_IK5(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK1_IK5(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK1_IK5
 #endif
         use pm_kind, only: IKG => IK5, RKG => RK1
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
@@ -2207,61 +2207,61 @@ module pm_distUnif
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED && IK4_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK5_IK4(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK5_IK4(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK5_IK4
 #endif
         use pm_kind, only: IKG => IK4, RKG => RK5
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if RK4_ENABLED && IK4_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK4_IK4(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK4_IK4(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK4_IK4
 #endif
         use pm_kind, only: IKG => IK4, RKG => RK4
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if RK3_ENABLED && IK4_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK3_IK4(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK3_IK4(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK3_IK4
 #endif
         use pm_kind, only: IKG => IK4, RKG => RK3
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if RK2_ENABLED && IK4_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK2_IK4(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK2_IK4(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK2_IK4
 #endif
         use pm_kind, only: IKG => IK4, RKG => RK2
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if RK1_ENABLED && IK4_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK1_IK4(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK1_IK4(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK1_IK4
 #endif
         use pm_kind, only: IKG => IK4, RKG => RK1
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
@@ -2269,61 +2269,61 @@ module pm_distUnif
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED && IK3_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK5_IK3(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK5_IK3(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK5_IK3
 #endif
         use pm_kind, only: IKG => IK3, RKG => RK5
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if RK4_ENABLED && IK3_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK4_IK3(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK4_IK3(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK4_IK3
 #endif
         use pm_kind, only: IKG => IK3, RKG => RK4
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if RK3_ENABLED && IK3_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK3_IK3(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK3_IK3(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK3_IK3
 #endif
         use pm_kind, only: IKG => IK3, RKG => RK3
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if RK2_ENABLED && IK3_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK2_IK3(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK2_IK3(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK2_IK3
 #endif
         use pm_kind, only: IKG => IK3, RKG => RK2
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if RK1_ENABLED && IK3_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK1_IK3(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK1_IK3(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK1_IK3
 #endif
         use pm_kind, only: IKG => IK3, RKG => RK1
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
@@ -2331,61 +2331,61 @@ module pm_distUnif
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED && IK2_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK5_IK2(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK5_IK2(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK5_IK2
 #endif
         use pm_kind, only: IKG => IK2, RKG => RK5
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if RK4_ENABLED && IK2_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK4_IK2(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK4_IK2(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK4_IK2
 #endif
         use pm_kind, only: IKG => IK2, RKG => RK4
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if RK3_ENABLED && IK2_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK3_IK2(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK3_IK2(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK3_IK2
 #endif
         use pm_kind, only: IKG => IK2, RKG => RK3
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if RK2_ENABLED && IK2_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK2_IK2(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK2_IK2(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK2_IK2
 #endif
         use pm_kind, only: IKG => IK2, RKG => RK2
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if RK1_ENABLED && IK2_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK1_IK2(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK1_IK2(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK1_IK2
 #endif
         use pm_kind, only: IKG => IK2, RKG => RK1
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
@@ -2393,61 +2393,61 @@ module pm_distUnif
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED && IK1_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK5_IK1(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK5_IK1(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK5_IK1
 #endif
         use pm_kind, only: IKG => IK1, RKG => RK5
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if RK4_ENABLED && IK1_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK4_IK1(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK4_IK1(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK4_IK1
 #endif
         use pm_kind, only: IKG => IK1, RKG => RK4
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if RK3_ENABLED && IK1_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK3_IK1(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK3_IK1(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK3_IK1
 #endif
         use pm_kind, only: IKG => IK1, RKG => RK3
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if RK2_ENABLED && IK1_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK2_IK1(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK2_IK1(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK2_IK1
 #endif
         use pm_kind, only: IKG => IK1, RKG => RK2
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if RK1_ENABLED && IK1_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK1_IK1(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK1_IK1(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK1_IK1
 #endif
         use pm_kind, only: IKG => IK1, RKG => RK1
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)    , contiguous    :: x(:)
         integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
@@ -2461,61 +2461,61 @@ module pm_distUnif
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK5_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_CK5(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_CK5(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_CK5
 #endif
         use pm_kind, only: CKG => CK5
         complex(CKG), intent(out)   , contiguous    :: cdf(:)
-        complex(CKG), intent(in)    , contiguous    :: X(:)
+        complex(CKG), intent(in)    , contiguous    :: x(:)
         complex(CKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if CK4_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_CK4(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_CK4(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_CK4
 #endif
         use pm_kind, only: CKG => CK4
         complex(CKG), intent(out)   , contiguous    :: cdf(:)
-        complex(CKG), intent(in)    , contiguous    :: X(:)
+        complex(CKG), intent(in)    , contiguous    :: x(:)
         complex(CKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if CK3_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_CK3(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_CK3(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_CK3
 #endif
         use pm_kind, only: CKG => CK3
         complex(CKG), intent(out)   , contiguous    :: cdf(:)
-        complex(CKG), intent(in)    , contiguous    :: X(:)
+        complex(CKG), intent(in)    , contiguous    :: x(:)
         complex(CKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if CK2_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_CK2(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_CK2(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_CK2
 #endif
         use pm_kind, only: CKG => CK2
         complex(CKG), intent(out)   , contiguous    :: cdf(:)
-        complex(CKG), intent(in)    , contiguous    :: X(:)
+        complex(CKG), intent(in)    , contiguous    :: x(:)
         complex(CKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if CK1_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_CK1(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_CK1(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_CK1
 #endif
         use pm_kind, only: CKG => CK1
         complex(CKG), intent(out)   , contiguous    :: cdf(:)
-        complex(CKG), intent(in)    , contiguous    :: X(:)
+        complex(CKG), intent(in)    , contiguous    :: x(:)
         complex(CKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
@@ -2529,61 +2529,61 @@ module pm_distUnif
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK5(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK5(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK5
 #endif
         use pm_kind, only: RKG => RK5
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        real(RKG)   , intent(in)    , contiguous    :: X(:)
+        real(RKG)   , intent(in)    , contiguous    :: x(:)
         real(RKG)   , intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if RK4_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK4(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK4(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK4
 #endif
         use pm_kind, only: RKG => RK4
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        real(RKG)   , intent(in)    , contiguous    :: X(:)
+        real(RKG)   , intent(in)    , contiguous    :: x(:)
         real(RKG)   , intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if RK3_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK3(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK3(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK3
 #endif
         use pm_kind, only: RKG => RK3
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        real(RKG)   , intent(in)    , contiguous    :: X(:)
+        real(RKG)   , intent(in)    , contiguous    :: x(:)
         real(RKG)   , intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if RK2_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK2(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK2(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK2
 #endif
         use pm_kind, only: RKG => RK2
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        real(RKG)   , intent(in)    , contiguous    :: X(:)
+        real(RKG)   , intent(in)    , contiguous    :: x(:)
         real(RKG)   , intent(in)                    :: lower, upper
     end subroutine
 #endif
 
 #if RK1_ENABLED
-    PURE module subroutine setUnifCDF_LU_D1_RK1(cdf, X, lower, upper)
+    PURE module subroutine setUnifCDF_LU_D1_RK1(cdf, x, lower, upper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK1
 #endif
         use pm_kind, only: RKG => RK1
         real(RKG)   , intent(out)   , contiguous    :: cdf(:)
-        real(RKG)   , intent(in)    , contiguous    :: X(:)
+        real(RKG)   , intent(in)    , contiguous    :: x(:)
         real(RKG)   , intent(in)                    :: lower, upper
     end subroutine
 #endif

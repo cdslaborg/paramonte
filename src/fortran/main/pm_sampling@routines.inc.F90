@@ -485,8 +485,8 @@ end if;
 
                     imageContribution_block: block
 
+                        integer(IK) :: pidSuccessLen
                         real(RKG) :: successProbNormFac(2)
-                        integer(IK) :: pidSuccessLen, iell
                         integer(IK), allocatable :: index(:), cntSuccess(:), pidSuccess(:)
 
                         call setResized(index, spec%image%count)
