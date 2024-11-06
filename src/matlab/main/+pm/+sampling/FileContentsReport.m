@@ -148,6 +148,14 @@ classdef FileContentsReport < pm.io.FileContents
         %>
         %>  \endcode
         %>
+        %>  \example{FileContentsReport}
+        %>  \include{lineno} example/sampling/FileContentsReport/main.m
+        %>  \vis{FileContentsReport}
+        %>  <br><br>
+        %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.parallelism.scaling.strong.current.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.parallelism.scaling.strong.zeroeff.png width=700
+        %>
         %>  \final{FileContentsReport}
         %>
         %>  \author
@@ -314,7 +322,7 @@ classdef FileContentsReport < pm.io.FileContents
             silent_kws = {"silent", self.silent};
 
             try
-                for parcond = ["current", "zeroeff"]
+                for parcond = ["sameeff", "zeroeff"]
                     self.stats.parallelism.scaling.strong.(parcond).vis = struct();
                     self.stats.parallelism.scaling.strong.(parcond).vis.desc ...
                     = "This component is added in the post-processing phase to facilitate quick " ...

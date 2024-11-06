@@ -180,6 +180,40 @@ end if;
 #else
 #error  "Unrecognized interface."
 #endif
+        !>  \bug
+        !>  \status \unresolved
+        !>  \source \ifort{2021.11.1 20231117}
+        !>  \desc
+        !>  \ifort returns an *already allocated error with the statement `call setResized(scaling, lenScaling)` which persists in both release and debug modes.<br>
+        !>  The full debug message is the following:<br>
+        !>  \code{.sh}
+        !>      forrtl: severe (151): allocatable array is already allocated
+        !>      Image              PC                Routine            Line        Source
+        !>      libparamonte.so    00007FCFBA641EB8  Unknown               Unknown  Unknown
+        !>      libparamonte.so    00007FCFB6E6D4A3  pm_arrayresize_MP         170  pm_arrayResize@routines.inc.F90
+        !>      libparamonte.so    00007FCFB72B5BD6  pm_parallelism_MP          77  pm_parallelism@routines.inc.F90
+        !>      libparamonte.so    00007FCFB6263F43  pm_sampling_MP_ge         394  pm_sampling@routines.inc.F90
+        !>      libparamonte.so    00007FCFB61F0194  runParaDRAMD              136  pm_sampling@routines.inc.F90
+        !>  \endcode
+        !>  Note that the line numbers for this file in the message above have changed because of code change in this file.<br>
+        !>  This error does not occur when the library is compiled with \gfortran{13}.<br>
+        !>  This error does not occur when the library is compiled with \ifx{2025.0.0 20241008}.<br>
+        !>  It seems like this error occurs because of placing the following typed variable `speedup`
+        !>  in the `forkjoin_parallelism_block` below.<br>
+        !>  \remedy{2.0.0}
+        !>  For now, the type definition and the typed variable declaration are taken out of the block and placed below.<br>
+        !>  This must be checked with newer Intel compilers as `ifort` is being phased out by Intel.<br>
+        type :: scaling_type
+            real(RKG) :: maxval
+            integer(IK) :: maxloc
+            real(RKG), allocatable :: scaling(:)
+            integer(IK), allocatable :: numproc(:)
+        end type
+        type :: speedup_type
+            type(scaling_type) :: sameeff, zeroeff
+        end type
+        type(speedup_type) :: speedup
+
         character(*,SKG), parameter :: PROCEDURE_NAME = MODULE_NAME//SKG_"@getErrSampling()"
        !character(*,SKG), parameter :: NL1 = new_line(SKG_"a"), NL2 = NL1//NL1
         integer(IK) :: ndimp1, idim, iq
@@ -356,24 +390,11 @@ end if;
 
                 forkjoin_parallelism_block: block
 
-                    integer(IK), parameter :: nscol = 5_IK
                     integer(IK) :: iell
-
-                    type :: scaling_type
-                        real(RKG) :: maxval
-                        integer(IK) :: maxloc
-                        real(RKG), allocatable :: scaling(:)
-                        integer(IK), allocatable :: numproc(:)
-                    end type
-
-                    type :: scalings_type
-                        type(scaling_type) :: current, zeroeff
-                    end type
-
-                    type(scalings_type) :: scalings
+                    integer(IK), parameter :: nscol = 5_IK
 
                     !!!!
-                    !!!! First compute the fork-join strong scaling for the current and zero-efficiency scenarios.
+                    !!!! First compute the fork-join strong scaling for the same and zero efficiency scenarios.
                     !!!!
 
                     ! \todo
@@ -386,20 +407,20 @@ end if;
                                             , comSecTime = real(stat%avgCommPerFunCall, RKG) / spec%image%count & ! LCOV_EXCL_LINE
                                             , parSecTime = real(stat%avgTimePerFunCall, RKG) & ! LCOV_EXCL_LINE
                                             , scalingMinLen = max(10_IK, spec%image%count * 2_IK) & ! LCOV_EXCL_LINE
-                                            , scalingMaxLoc = scalings%current%maxloc & ! LCOV_EXCL_LINE
-                                            , scalingMaxVal = scalings%current%maxval & ! LCOV_EXCL_LINE
-                                            , numproc = scalings%current%numproc & ! LCOV_EXCL_LINE
-                                            , scaling = scalings%current%scaling & ! LCOV_EXCL_LINE
+                                            , scalingMaxLoc = speedup%sameeff%maxloc & ! LCOV_EXCL_LINE
+                                            , scalingMaxVal = speedup%sameeff%maxval & ! LCOV_EXCL_LINE
+                                            , numproc = speedup%sameeff%numproc & ! LCOV_EXCL_LINE
+                                            , scaling = speedup%sameeff%scaling & ! LCOV_EXCL_LINE
                                             )
                     call setForkJoinScaling ( conProb = 0._RKG & ! zero sampling efficiency. ! LCOV_EXCL_LINE
                                             , seqSecTime = epsilon(1._RKG) & ! LCOV_EXCL_LINE time cost of the sequential section of the code, which is negligible here
                                             , comSecTime = real(stat%avgCommPerFunCall, RKG) / spec%image%count & ! LCOV_EXCL_LINE
                                             , parSecTime = real(stat%avgTimePerFunCall, RKG) & ! LCOV_EXCL_LINE
                                             , scalingMinLen = max(10_IK, spec%image%count * 2_IK) & ! LCOV_EXCL_LINE
-                                            , scalingMaxLoc = scalings%zeroeff%maxloc & ! LCOV_EXCL_LINE
-                                            , scalingMaxVal = scalings%zeroeff%maxval & ! LCOV_EXCL_LINE
-                                            , numproc = scalings%zeroeff%numproc & ! LCOV_EXCL_LINE
-                                            , scaling = scalings%zeroeff%scaling & ! LCOV_EXCL_LINE
+                                            , scalingMaxLoc = speedup%zeroeff%maxloc & ! LCOV_EXCL_LINE
+                                            , scalingMaxVal = speedup%zeroeff%maxval & ! LCOV_EXCL_LINE
+                                            , numproc = speedup%zeroeff%numproc & ! LCOV_EXCL_LINE
+                                            , scaling = speedup%zeroeff%scaling & ! LCOV_EXCL_LINE
                                             )
 
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -418,30 +439,30 @@ end if;
 
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                    call spec%disp%show("stats.parallelism.process.count.optimal")
-                    call spec%disp%show(scalings%current%maxloc, format = format)
+                    call spec%disp%show("stats.parallelism.process.count.optimal.sameeff")
+                    call spec%disp%show(speedup%sameeff%maxloc, format = format)
                     spec%msg = SKG_"This is the predicted optimal number of physical computing processes for "//spec%parallelism%val// & ! LCOV_EXCL_LINE
-                    SKG_" parallelization model, given the current sampling efficiency and parallel communication overhead."
+                    SKG_" parallelization model, assuming the same (current) sampling efficiency and parallel communication overhead as in this simulation."
                     call spec%disp%note%show(spec%msg)
 
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                    call spec%disp%show("stats.parallelism.process.count.zeroeff")
-                    call spec%disp%show(scalings%zeroeff%maxloc, format = format)
+                    call spec%disp%show("stats.parallelism.process.count.optimal.zeroeff")
+                    call spec%disp%show(speedup%zeroeff%maxloc, format = format)
                     spec%msg = "This is the predicted number of physical computing processes for "//spec%parallelism%val// & ! LCOV_EXCL_LINE
-                    SKG_" parallelization model, under the ideal synchronous fork-join parallelism scenario (with 0% sampling efficiency) for this &
-                    &sampling problem, given the current parallel communication overhead. This simulation will likely NOT benefit from any additional computing processes &
-                    &beyond this predicted optimal count, "//getStr(scalings%zeroeff%maxloc)//SKG_", in the above, under the ideal synchronous fork-join parallelism scenario. &
-                    &This is true for any value of sampling efficiency given the current parallel communication overhead. Keep in mind that the predicted optimal number &
-                    &of processes in an ideal synchronous fork-join parallelism scenario (with 0% sampling efficiency) is just an estimate whose accuracy depends &
-                    &on many runtime factors, including the topology of the communication network being used, the number of processes per node, &
-                    &and the number of tasks to each processor or node."
+                    SKG_" parallelization model, assuming zero sampling efficiency and the same (current) parallel communication overhead as in this simulation. &
+                    &This sampling task will likely NOT benefit from any additional computing processes beyond this predicted optimal count, "// & ! LCOV_EXCL_LINE
+                    getStr(speedup%zeroeff%maxloc)//SKG_", in the above, under the ideal synchronous fork-join parallelism scenario. &
+                    &This is true for any value of sampling efficiency given the current parallel communication overhead. &
+                    &Keep in mind that the predicted optimal number of processes in this zero-efficiency sampling scenario is only an &
+                    &estimate whose accuracy depends on many runtime factors, including the topology of the parallel communication network used, &
+                    &the number of processes per node, and the number of tasks to each processor or node."
                     call spec%disp%note%show(spec%msg)
 
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                     call spec%disp%show("stats.parallelism.speedup.current")
-                    call spec%disp%show(scalings%current%scaling(spec%image%count), format = format)
+                    call spec%disp%show(speedup%sameeff%scaling(spec%image%count), format = format)
                     spec%msg = "This is the estimated maximum speedup gained via "//spec%parallelism%val// & ! LCOV_EXCL_LINE
                     SKG_" parallelization model compared to serial mode given the current parallel communication overhead."
                     call spec%disp%note%show(spec%msg)
@@ -449,16 +470,16 @@ end if;
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                     spec%msg = ""
-                    call spec%disp%show("stats.parallelism.speedup.optimal")
-                    call spec%disp%show(scalings%current%maxval, format = format)
-                    if (spec%parallelism%is%forkJoin .and. scalings%current%scaling(spec%image%count) < 1._RKG) then
-                        spec%msg = "The time cost of calling the user-provided objective function must be at least "//getStr(1._RKG / scalings%current%scaling(spec%image%count), SK_"(g0.6)")//&
-                        SKG_" times more (that is, ~"//getStr(10**6 * stat%avgTimePerFunCall / scalings%current%scaling(spec%image%count), SK_"(g0.6)")//" microseconds) to see any performance benefits from "//&
+                    call spec%disp%show("stats.parallelism.speedup.optimal.sameeff")
+                    call spec%disp%show(speedup%sameeff%maxval, format = format)
+                    if (spec%parallelism%is%forkJoin .and. speedup%sameeff%scaling(spec%image%count) < 1._RKG) then
+                        spec%msg = "The time cost of calling the user-provided objective function must be at least "//getStr(1._RKG / speedup%sameeff%scaling(spec%image%count), SK_"(g0.6)")//&
+                        SKG_" times more (that is, ~"//getStr(10**6 * stat%avgTimePerFunCall / speedup%sameeff%scaling(spec%image%count), SK_"(g0.6)")//" microseconds) to see any performance benefits from "//&
                         spec%parallelism%val//SKG_" parallelization model for this simulation. "
-                        if (scalings%current%maxloc == 1_IK) then
+                        if (speedup%sameeff%maxloc == 1_IK) then
                             spec%msg = spec%msg//SKG_"Consider simulating in serial mode in the future (if used within the same computing environment and with the same configuration as used here)."
                         else
-                            spec%msg = spec%msg//SKG_"Consider simulating on "//getStr(scalings%current%maxloc)//&
+                            spec%msg = spec%msg//SKG_"Consider simulating on "//getStr(speedup%sameeff%maxloc)//&
                             SKG_" processes in the future (if used within the same computing environment and with the same configuration as used here)."
                         end if
                         if (.not. spec%outputSplashMode%is%silent) call spec%disp%note%show(spec%msg, unit = output_unit, tmsize = spec%disp%tmsize, bmsize = spec%disp%bmsize)
@@ -470,11 +491,11 @@ end if;
 
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                    call spec%disp%show("stats.parallelism.speedup.zeroeff")
-                    call spec%disp%show(scalings%zeroeff%maxval, format = format)
-                    spec%msg = SKG_"This is the predicted optimal maximum speedup gained via "//spec%parallelism%val// & ! LCOV_EXCL_LINE
-                    SKG_" parallelization model, given the current parallel communication overhead in the above and &
-                    &assuming an ideal synchronous fork-join parallelism scenario, with 0% sampling efficiency."
+                    call spec%disp%show("stats.parallelism.speedup.optimal.zeroeff")
+                    call spec%disp%show(speedup%zeroeff%maxval, format = format)
+                    spec%msg = SKG_"This is the predicted optimal maximum speedup gained via `"//spec%parallelism%val// & ! LCOV_EXCL_LINE
+                    SKG_"` parallelization model, assuming the ideal zero-efficiency sampling and &
+                    &the same (current) parallel communication overhead as in this simulation."
                     call spec%disp%note%show(spec%msg)
 
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -551,11 +572,11 @@ end if;
 
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                    call spec%disp%show("stats.parallelism.scaling.strong.current")
+                    call spec%disp%show("stats.parallelism.scaling.strong.sameeff")
                     call spec%disp%show(css_type([character(15) :: "processCount", "speedup"]), format = spec%reportFile%format%fixform, bmsize = 0_IK)
-                    do iell = 1, size(scalings%current%scaling, 1, IK)
-                        write(spec%reportFile%unit, spec%reportFile%format%intreal) scalings%current%numproc(iell), scalings%current%scaling(iell)
-                        !call spec%disp%show(scalings%current%scaling(iell : min(iell + nscol - 1_IK, size(scalings%current%scaling, 1, IK))), format = scalingFormat, tmsize = 0_IK, bmsize = 0_IK)
+                    do iell = 1, size(speedup%sameeff%scaling, 1, IK)
+                        write(spec%reportFile%unit, spec%reportFile%format%intreal) speedup%sameeff%numproc(iell), speedup%sameeff%scaling(iell)
+                        !call spec%disp%show(speedup%sameeff%scaling(iell : min(iell + nscol - 1_IK, size(speedup%sameeff%scaling, 1, IK))), format = scalingFormat, tmsize = 0_IK, bmsize = 0_IK)
                     end do
                     call spec%disp%skip(count = spec%disp%bmsize)
                     spec%msg = SKG_"This is the predicted strong-scaling speedup behavior of the "//spec%parallelism%val//SKG_" parallelization model, &
@@ -566,9 +587,9 @@ end if;
 
                     call spec%disp%show("stats.parallelism.scaling.strong.zeroeff")
                     call spec%disp%show(css_type([character(15) :: "processCount", "speedup"]), format = spec%reportFile%format%fixform, bmsize = 0_IK)
-                    do iell = 1, size(scalings%zeroeff%scaling, 1, IK)
-                        write(spec%reportFile%unit, spec%reportFile%format%intreal) scalings%zeroeff%numproc(iell), scalings%zeroeff%scaling(iell)
-                        !call spec%disp%show(scalings%zeroeff%scaling(iell : min(iell + nscol - 1_IK, size(scalings%zeroeff%scaling, 1, IK))), format = scalingFormat, tmsize = 0_IK, bmsize = 0_IK)
+                    do iell = 1, size(speedup%zeroeff%scaling, 1, IK)
+                        write(spec%reportFile%unit, spec%reportFile%format%intreal) speedup%zeroeff%numproc(iell), speedup%zeroeff%scaling(iell)
+                        !call spec%disp%show(speedup%zeroeff%scaling(iell : min(iell + nscol - 1_IK, size(speedup%zeroeff%scaling, 1, IK))), format = scalingFormat, tmsize = 0_IK, bmsize = 0_IK)
                     end do
                     call spec%disp%skip(count = spec%disp%bmsize)
                     spec%msg = SKG_"This is the predicted strong-scaling speedup behavior of the "//spec%parallelism%val//SKG_" parallelization model, &

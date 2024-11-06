@@ -77,26 +77,6 @@
 
             !if (allocated(scaling)) deallocate(scaling); allocate(scaling(lenScaling))
             !if (allocated(numproc)) deallocate(numproc); allocate(numproc(lenScaling))
-            !>  \bug
-            !>  \status \unresolved
-            !>  \source \ifort{2021.11.1 20231117}
-            !>  \desc
-            !>  \ifort returns an *already allocated error with the statement `call setResized(scaling, lenScaling)` which persists in both release and debug modes.<br>
-            !>  The full debug message is the following:<br>
-            !>  \code{.sh}
-            !>      forrtl: severe (151): allocatable array is already allocated
-            !>      Image              PC                Routine            Line        Source
-            !>      libparamonte.so    00007FCFBA641EB8  Unknown               Unknown  Unknown
-            !>      libparamonte.so    00007FCFB6E6D4A3  pm_arrayresize_MP         170  pm_arrayResize@routines.inc.F90
-            !>      libparamonte.so    00007FCFB72B5BD6  pm_parallelism_MP          77  pm_parallelism@routines.inc.F90
-            !>      libparamonte.so    00007FCFB6263F43  pm_sampling_MP_ge         394  pm_sampling@routines.inc.F90
-            !>      libparamonte.so    00007FCFB61F0194  runParaDRAMD              136  pm_sampling@routines.inc.F90
-            !>  \endcode
-            !>  Note that this issue does not exist when the code is compiled with \gfortran{13}.<br>
-            !>  \remedy{2.0.0}
-            !>  For now, the above intrinsic allocation statements are added and the following are commented out.<br>
-            !>  This must be checked with newer Intel compilers as `ifort` is being phased out by Intel.<br>
-            !>
             call setResized(scaling, lenScaling)
             call setResized(numproc, lenScaling)
 
