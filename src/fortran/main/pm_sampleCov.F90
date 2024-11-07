@@ -6968,7 +6968,7 @@ module pm_sampleCov
     !>  \final{getCovMerged}
     !>
     !>  \author
-    !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     ! RDP_ULD
 
@@ -7190,7 +7190,7 @@ module pm_sampleCov
     !>  \final
     !>
     !>  \author
-    !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     ! New_RDP_UXD
 
@@ -7876,7 +7876,7 @@ module pm_sampleCov
     !>  \final
     !>
     !>  \author
-    !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     ! New_RDP_UXD
 
@@ -8546,7 +8546,7 @@ module pm_sampleCov
     !>  \final
     !>
     !>  \author
-    !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     ! Old_RDP_UXD
 
@@ -8915,7 +8915,7 @@ module pm_sampleCov
     !>  \final
     !>
     !>  \author
-    !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     ! New_RDP_UXD
 

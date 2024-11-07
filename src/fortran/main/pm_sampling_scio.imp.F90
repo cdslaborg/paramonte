@@ -205,7 +205,7 @@
     !>  \final{cfcbase_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     type, abstract                          :: cfcbase_type
         integer(IK)                         :: numDefCol                !<  \public The scalar of type `integer` of default kind \IK. containing the number of the set of default columns that always appear in the chain file before columns corresponding to `sampleState` components appear.
         integer(IK)                         :: nsam                     !<  \public The scalar of type `integer` of default kind \IK containing the chain size which may be less than the size of the chain components below (the number of (potentially weighted) sampled states).<br>
@@ -258,7 +258,7 @@
     !>  \final{cfcbase_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     type, extends(cfcbase_type)             :: cfcmcmc_type
         integer(IK)         , allocatable   :: burninLocation(:)    !<  \public The `allocatable` vector of type `integer` of default kind \IK, containing the burnin locations at the given locations in the chains.<br>
         integer(IK)         , allocatable   :: sampleWeight(:)      !<  \public The `allocatable` vector of type `integer` of default kind \IK, containing the weights of the accepted states.<br>
@@ -313,7 +313,7 @@
     !>  \final{cfcbase_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     type, extends(cfcmcmc_type)             :: cfcdram_type
         real(RKG)           , allocatable   :: proposalAdaptation(:)     !<  \public The `allocatable` vector of type `real` of kind \RKALL, containing the vector of the adaptation measures at the accepted states.<br>
         integer(IK)         , allocatable   :: delayedRejectionStage(:) !<  \public The `allocatable` vector of type `integer` of default kind \IK, containing the delayed rejection stages at which the proposed states were accepted.<br>
@@ -365,7 +365,7 @@
     !>  \final{cfcbase_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     type, extends(cfcdram_type)             :: cfcdise_type
     end type
 
@@ -425,7 +425,7 @@
     !>  \final{chainParaNest_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     type, extends(cfcbase_type)             :: cfcnest_type
         real(RKG)           , allocatable   :: domainLogVol(:)      !<  \public The `allocatable` vector of type `real` of kind \RKALL, containing the natural logarithm of the size of the domain of integration at the corresponding stage in the chain of sampling/integration.<br>
         real(RKG)           , allocatable   :: logMaxRelErr(:)      !<  \public The `allocatable` vector of type `real` of kind \RKALL, containing the natural logarithm of the size of the domain of integration at the corresponding stage in the chain of sampling/integration.<br>

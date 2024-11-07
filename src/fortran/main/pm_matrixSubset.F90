@@ -32,7 +32,7 @@
 !>  \final
 !>
 !>  \author
-!>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+!>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -73,7 +73,7 @@ module pm_matrixSubset
     !>  \final{subset_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, abstract :: subset_type
     end type
 
@@ -113,7 +113,7 @@ module pm_matrixSubset
     !>  \final{upp_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(subset_type) :: upp_type
     end type
 
@@ -142,7 +142,7 @@ module pm_matrixSubset
     !>  \final{upp}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(upp_type), parameter :: upp = upp_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: upp
@@ -184,7 +184,7 @@ module pm_matrixSubset
     !>  \final{low_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(subset_type) :: low_type
     end type
 
@@ -213,7 +213,7 @@ module pm_matrixSubset
     !>  \final{low}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(low_type), parameter :: low = low_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: low
@@ -255,7 +255,7 @@ module pm_matrixSubset
     !>  \final{dia_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(subset_type) :: dia_type
     end type
 
@@ -284,7 +284,7 @@ module pm_matrixSubset
     !>  \final{dia}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(dia_type), parameter :: dia = dia_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: dia
@@ -326,7 +326,7 @@ module pm_matrixSubset
     !>  \final{uppLow_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(subset_type) :: uppLow_type
     end type
 
@@ -355,7 +355,7 @@ module pm_matrixSubset
     !>  \final{uppLow}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(uppLow_type), parameter :: uppLow = uppLow_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: uppLow
@@ -397,7 +397,7 @@ module pm_matrixSubset
     !>  \final{uppLowDia_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(subset_type) :: uppLowDia_type
     end type
 
@@ -426,7 +426,7 @@ module pm_matrixSubset
     !>  \final{uppLowDia}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(uppLowDia_type), parameter :: uppLowDia = uppLowDia_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: uppLowDia
@@ -468,7 +468,7 @@ module pm_matrixSubset
     !>  \final{uppDia_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(subset_type) :: uppDia_type
     end type
 
@@ -497,7 +497,7 @@ module pm_matrixSubset
     !>  \final{uppDia}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(uppDia_type), parameter :: uppDia = uppDia_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: uppDia
@@ -534,7 +534,7 @@ module pm_matrixSubset
     !>  \final{lowDia_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(subset_type) :: lowDia_type
     end type
 
@@ -563,7 +563,7 @@ module pm_matrixSubset
     !>  \final{lowDia}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(lowDia_type), parameter :: lowDia = lowDia_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: lowDia
@@ -623,7 +623,7 @@ module pm_matrixSubset
     !>  \final{getSubComp}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getSubComp
 
     pure elemental module function getSubCompUXX(sub) result(subComp)
@@ -736,7 +736,7 @@ module pm_matrixSubset
     !>  \final{getSubSymm}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getSubSymm
 
     pure elemental module function getSubSymmUXX(sub) result(subSymm)
@@ -855,7 +855,7 @@ module pm_matrixSubset
     !>  \final{getSubUnion}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     ! XXX
 

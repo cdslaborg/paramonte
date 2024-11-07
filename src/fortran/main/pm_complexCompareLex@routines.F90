@@ -18,7 +18,7 @@
 !>  This file contains procedure implementations of [pm_complexCompareLex](@ref pm_complexCompareLex).
 !>
 !>  \author
-!>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+!>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
 submodule (pm_complexCompareLex) routines ! LCOV_EXCL_LINE
 

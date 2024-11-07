@@ -26,8 +26,10 @@ classdef FileContentsProgress < pm.io.FileContentsTabular
 
     properties(Access = public)
     %    %>
-    %    %>  ``vis``     :   The scalar MATLAB ``struct`` containing the set of
-    %    %>                  predefined visualizations for the output data.<br>
+    %    %>  ``vis``
+    %    %>  
+    %    %>  The scalar MATLAB ``struct`` containing the set of
+    %    %>  predefined visualizations for the output data.<br>
     %    %>
     %    vis = [];
     end

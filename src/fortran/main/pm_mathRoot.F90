@@ -496,7 +496,7 @@ module pm_mathRoot
     !>  \final{method_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, abstract :: method_type
     end type
 
@@ -537,7 +537,7 @@ module pm_mathRoot
     !>  \final{bracket_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, abstract, extends(method_type) :: bracket_type
     end type
 
@@ -578,7 +578,7 @@ module pm_mathRoot
     !>  \final{iteration_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, abstract, extends(method_type) :: iteration_type
     end type
 
@@ -619,7 +619,7 @@ module pm_mathRoot
     !>  \final{hybrid_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, abstract, extends(method_type) :: hybrid_type
     end type
 
@@ -666,7 +666,7 @@ module pm_mathRoot
     !>  \final{brent_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(hybrid_type) :: brent_type
     end type
 
@@ -705,7 +705,7 @@ module pm_mathRoot
     !>  \final{brent}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(brent_type), parameter :: brent = brent_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: brent
@@ -754,7 +754,7 @@ module pm_mathRoot
     !>  \final{toms748_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(hybrid_type) :: toms748_type
     end type
 
@@ -793,7 +793,7 @@ module pm_mathRoot
     !>  \final{toms748}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(toms748_type), parameter :: toms748 = toms748_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: toms748
@@ -842,7 +842,7 @@ module pm_mathRoot
     !>  \final{false_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(bracket_type) :: false_type
     end type
 
@@ -881,7 +881,7 @@ module pm_mathRoot
     !>  \final{false}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(false_type), parameter :: false = false_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: false
@@ -930,7 +930,7 @@ module pm_mathRoot
     !>  \final{secant_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(iteration_type) :: secant_type
     end type
 
@@ -969,7 +969,7 @@ module pm_mathRoot
     !>  \final{secant}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(secant_type), parameter :: secant = secant_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: secant
@@ -1018,7 +1018,7 @@ module pm_mathRoot
     !>  \final{newton_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(iteration_type) :: newton_type
     end type
 
@@ -1057,7 +1057,7 @@ module pm_mathRoot
     !>  \final{newton}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(newton_type), parameter :: newton = newton_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: newton
@@ -1106,7 +1106,7 @@ module pm_mathRoot
     !>  \final{halley_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(iteration_type) :: halley_type
     end type
 
@@ -1145,7 +1145,7 @@ module pm_mathRoot
     !>  \final{halley}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(halley_type), parameter :: halley = halley_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: halley
@@ -1194,7 +1194,7 @@ module pm_mathRoot
     !>  \final{schroder_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(iteration_type) :: schroder_type
     end type
 
@@ -1233,7 +1233,7 @@ module pm_mathRoot
     !>  \final{schroder}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(schroder_type), parameter :: schroder = schroder_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: schroder
@@ -1282,7 +1282,7 @@ module pm_mathRoot
     !>  \final{ridders_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(hybrid_type) :: ridders_type
     end type
 
@@ -1321,7 +1321,7 @@ module pm_mathRoot
     !>  \final{ridders}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(ridders_type), parameter :: ridders = ridders_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: ridders
@@ -1370,7 +1370,7 @@ module pm_mathRoot
     !>  \final{bisection_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(bracket_type) :: bisection_type
     end type
 
@@ -1409,7 +1409,7 @@ module pm_mathRoot
     !>  \final{bisection}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(bisection_type), parameter :: bisection = bisection_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: bisection

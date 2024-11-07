@@ -24,44 +24,54 @@ classdef FileContentsReport < pm.io.FileContents
 
     properties(Access = public)
         %>
-        %>  ``stats``       :   The scalar MATLAB ``struct`` containing the set of
-        %>                      computed properties extracted from the report file.<br>
+        %>  ``stats``
+        %>
+        %>  The scalar MATLAB ``struct`` containing the set of
+        %>  computed properties extracted from the report file.<br>
         %>
         stats = struct();
         %>
-        %>  ``contents``    :   The scalar MATLAB string containing the entire
-        %>                      contents of the report file with all Carriage Return
-        %>                      characters removed (relevant only to Windows OS).<br>
+        %>  ``contents``
+        %>
+        %>  The scalar MATLAB string containing the entire
+        %>  contents of the report file with all Carriage Return
+        %>  characters removed (relevant only to Windows OS).<br>
         %>
         contents = [];
         %>
-        %>  ``lineList``    :   The vector of MATLAB strings containing the set of
-        %>                      all lines in the report file with all Carriage Return
-        %>                      and New Line characters removed.<br>
+        %>  ``lineList``
+        %>
+        %>  The vector of MATLAB strings containing the set of
+        %>  all lines in the report file with all Carriage Return
+        %>  and New Line characters removed.<br>
         %>
         lineList = [];
         %>
-        %>  ``vis``         :   The scalar MATLAB ``struct`` containing the set of
-        %>                      predefined visualizations for the output data.<br>
+        %>  ``vis``
+        %>
+        %>  The scalar MATLAB ``struct`` containing the set of
+        %>  predefined visualizations for the output data.<br>
         %>
         vis = [];
         %>
-        %>  ``banner``      :   The scalar MATLAB ``string`` containing the ParaMonte
-        %>                      library banner as appearing in the report file.<br>
+        %>  ``banner``
+        %>
+        %>  The scalar MATLAB ``string`` containing the ParaMonte
+        %>  library banner as appearing in the report file.<br>
         %>
         banner = "";
         % %
-        % %   setup
+        % %   ``setup``
         % %
-        % %       The scalar MATLAB ``struct`` containing the sampler
-        % %       setup information extracted from the report file.
+        % %   The scalar MATLAB ``struct`` containing the sampler
+        % %   setup information extracted from the report file.
         % %
         % setup = struct();
         % %
-        % %   spec
+        % %   ``spec``
         % %
-        % %       The scalar MATLAB ``struct`` containing the set of
-        % %       simulation specifications extracted from the report file.
+        % %   The scalar MATLAB ``struct`` containing the set of
+        % %   simulation specifications extracted from the report file.
         % %
         % spec = struct();
     end

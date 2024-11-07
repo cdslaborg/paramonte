@@ -28,7 +28,7 @@
 !>  \final
 !>
 !>  \author
-!>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+!>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -74,7 +74,7 @@ module pm_parallelism
     !>  \final{imageis_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type                                :: imageis_type
         logical(LK)                     :: first    = .false._LK    !<  \public The scalar `logical` of default kind \LK indicating whether the current process is ID #1.
         logical(LK)                     :: extra    = .false._LK    !<  \public The scalar `logical` of default kind \LK indicating whether the current process is NOT ID #1.
@@ -129,7 +129,7 @@ module pm_parallelism
     !>  \final{image_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type                                :: image_type
         integer(IK)                     :: count        = -huge(1_IK)       !<  \public The scalar `integer` of default kind \IK representing the total count of runtime parallel processes available within the current communication.
         integer(IK)                     :: id           = -huge(1_IK)       !<  \public The scalar `integer` of default kind \IK representing the ID of the runtime parallel process starting with `1`: `1`, `2`, `3`, ...
@@ -224,7 +224,7 @@ module pm_parallelism
     !>  \final{setForkJoinScaling}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 4:13 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 4:13 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     interface setForkJoinScaling
 
@@ -359,7 +359,7 @@ contains
     !>  \final{image_typer}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     function image_typer() result(image)
         type(image_type) :: image
         !integer(IK), intent(in), optional :: nthread
@@ -408,7 +408,7 @@ contains
     !>  \final{setImageSynced}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 4:13 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 4:13 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     subroutine setImageSynced()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setImageSynced
@@ -461,7 +461,7 @@ contains
     !>  \final{setImageFinalized}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 4:13 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 4:13 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     subroutine setImageFinalized() ! LCOV_EXCL_LINE
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setImageFinalized
@@ -519,7 +519,7 @@ contains
     !>  \final{getImageID}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 4:13 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 4:13 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     function getImageID() result(imageID)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getImageID
@@ -595,7 +595,7 @@ contains
     !>  \final{getImageCount}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 4:13 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 4:13 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     function getImageCount() result(imageCount)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getImageCount
@@ -650,7 +650,7 @@ contains
     !>  \final{getImageCountMPI}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 4:13 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 4:13 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     function getImageCountMPI() result(imageCount) bind(C, name = "getImageCountMPI")
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getImageCountMPI
@@ -708,7 +708,7 @@ contains
     !>  \final{getImageCountOMP}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 4:13 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 4:13 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     function getImageCountOMP() result(imageCount) bind(C, name = "getImageCountOMP")
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getImageCountOMP
@@ -757,7 +757,7 @@ contains
     !>  \final{setImageCount}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     subroutine setImageCount(count)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setImageCount
@@ -824,7 +824,7 @@ contains
         !>  \final{isFailedImage}
         !>
         !>  \author
-        !>  \AmirShahmoradi, 9:49 PM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin
+        !>  \AmirShahmoradi, 9:49 PM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas Austin<br>
         function isFailedImage(failed) result(failedParallelism)
 #if     __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
             !DEC$ ATTRIBUTES DLLEXPORT :: isFailedImage

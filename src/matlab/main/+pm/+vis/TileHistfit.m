@@ -1,17 +1,21 @@
 %>  \brief
-%>  This is the TileHistfit class for generating
+%>  This is the [pm.vis.TileHistfit](@ref TileHistfit) class for generating
 %>  instances of 1-dimensional Histfit [Tile visualizations](@ref Tile)
-%>  based on the relevant MATLAB
-%>  intrinsic functions.
+%>  based on the relevant MATLAB intrinsic functions.<br>
 %>
-%>  \note
-%>  See the documentation of the attributes
-%>  of the superclass [pm.vis.Tile](@ref Tile).
+%>  \see
+%>  [pm.vis.Cascade](@ref Cascade)<br>
+%>  [pm.vis.Subplot](@ref Subplot)<br>
+%>  [pm.vis.Triplex](@ref Triplex)<br>
+%>  [pm.vis.Figure](@ref Figure)<br>
+%>  [pm.vis.Plot](@ref Plot)<br>
+%>  [pm.vis.Tile](@ref Tile)<br>
 %>
-%>  \note
-%>  The input ``varargin`` can also contain the components
-%>  of the ``subplot`` component of the parent object.
+%>  \final
 %>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef TileHistfit < pm.vis.Tile
 
     methods(Access = public)
@@ -26,12 +30,12 @@ classdef TileHistfit < pm.vis.Tile
         %>                              argument of the class [pm.vis.Subplot](@ref Subplot).<br>
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
-        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
         %>                              Note that all of these property-value pairs can be also directly set via the
-        %>                              parent object attributes, before calling the ``make()`` method.
+        %>                              parent object attributes, before calling the ``make()`` method.<br>
         %>
         %>  \return
-        %>  An object of [pm.vis.TileHistfit](@ref TileHistfit) class.
+        %>  ``self``                :   An object of [pm.vis.TileHistfit](@ref TileHistfit) class.<br>
         %>
         %>  \interface{TileHistfit}
         %>  \code{.m}
@@ -40,6 +44,14 @@ classdef TileHistfit < pm.vis.Tile
         %>      t = pm.vis.TileHistfit(dfref, varargin);
         %>
         %>  \endcode
+        %>
+        %>  \note
+        %>  See the documentation of the attributes
+        %>  of the superclass [pm.vis.Tile](@ref Tile).<br>
+        %>
+        %>  \note
+        %>  The input ``varargin`` can also contain the components
+        %>  of the ``subplot`` component of the parent object.<br>
         %>
         %>  \final{TileHistfit}
         %>

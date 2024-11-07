@@ -118,7 +118,7 @@
 !>  \final
 !>
 !>  \author
-!>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+!>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -156,7 +156,7 @@ module pm_matrixPack
     !>  \final{package_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, abstract :: package_type
     end type
 
@@ -194,7 +194,7 @@ module pm_matrixPack
     !>  \final{ldpack_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(package_type) :: ldpack_type
     end type
 
@@ -232,7 +232,7 @@ module pm_matrixPack
     !>  \final{rdpack_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(package_type) :: rdpack_type
     end type
 
@@ -259,7 +259,7 @@ module pm_matrixPack
     !>  \final{rdpack}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(rdpack_type), parameter :: rdpack = rdpack_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: rdpack
@@ -298,7 +298,7 @@ module pm_matrixPack
     !>  \final{lcpack_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(ldpack_type) :: lcpack_type
     end type
 
@@ -332,7 +332,7 @@ module pm_matrixPack
     !>  \final{rcpack_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(rdpack_type) :: rcpack_type
     end type
 
@@ -370,7 +370,7 @@ module pm_matrixPack
     !>  \final{lfpack_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(lcpack_type) :: lfpack_type
     end type
 
@@ -397,7 +397,7 @@ module pm_matrixPack
     !>  \final{lfpack}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(lfpack_type), parameter :: lfpack = lfpack_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: lfpack
@@ -437,7 +437,7 @@ module pm_matrixPack
     !>  \final{rfpack_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(rcpack_type) :: rfpack_type
     end type
 
@@ -464,7 +464,7 @@ module pm_matrixPack
     !>  \final{rfpack}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(rfpack_type), parameter :: rfpack = rfpack_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: rfpack

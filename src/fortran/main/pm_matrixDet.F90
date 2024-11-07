@@ -212,7 +212,7 @@ module pm_matrixDet
     !>  \final{getMatDet}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Apr 21, 2017, 1:43 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Apr 21, 2017, 1:43 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getMatDet
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -391,7 +391,7 @@ module pm_matrixDet
     !>  \final{setMatDet}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Apr 21, 2017, 1:43 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Apr 21, 2017, 1:43 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface setMatDet
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -595,7 +595,7 @@ module pm_matrixDet
     !>  \final{getMatDetSqrtLog}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Apr 21, 2017, 1:43 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Apr 21, 2017, 1:43 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     interface getMatDetSqrt
 
@@ -815,7 +815,7 @@ module pm_matrixDet
     !>  \final{setMatDetSqrtLog}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Apr 21, 2017, 1:43 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Apr 21, 2017, 1:43 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     ! nothing
 
@@ -1520,7 +1520,7 @@ module pm_matrixDet
     !>  \final{getMatDetSqrtLog}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Apr 21, 2017, 1:43 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Apr 21, 2017, 1:43 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     interface getMatDetSqrtLog
 
@@ -1740,7 +1740,7 @@ module pm_matrixDet
     !>  \final{setMatDetSqrtLog}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Apr 21, 2017, 1:43 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Apr 21, 2017, 1:43 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     ! nothing
 

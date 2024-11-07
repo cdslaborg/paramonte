@@ -56,7 +56,7 @@
 %>  \final{getFunc}
 %>
 %>  \author
-%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function func = getFunc(x, y)
     func = (x.^2 + y - 11).^2 + (x + y.^2 - 7).^2;
 end

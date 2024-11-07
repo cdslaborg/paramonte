@@ -1,8 +1,21 @@
 %>  \brief
-%>  This is the TileEllipse3 class for generating
+%>  This is the [pm.vis.TileEllipse3](@ref TileEllipse3) class for generating
 %>  instances of 3-dimensional Ellipse [Tile visualizations](@ref Tile)
-%>  based on the relevant MATLAB
-%>  intrinsic functions.
+%>  based on the relevant MATLAB intrinsic functions.<br>
+%>
+%>  \see
+%>  [pm.vis.Cascade](@ref Cascade)<br>
+%>  [pm.vis.Subplot](@ref Subplot)<br>
+%>  [pm.vis.Triplex](@ref Triplex)<br>
+%>  [pm.vis.Figure](@ref Figure)<br>
+%>  [pm.vis.Plot](@ref Plot)<br>
+%>  [pm.vis.Tile](@ref Tile)<br>
+%>
+%>  \final
+%>
+%>  \author
+%>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef TileEllipse3 < pm.vis.Tile
 
     methods(Access = public)
@@ -21,20 +34,12 @@ classdef TileEllipse3 < pm.vis.Tile
         %>  \param[in]  cval        :   See the corresponding input argument to the class [pm.vis.SubplotEllipse3](@ref SubplotEllipse3).
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
-        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.
+        %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
         %>                              Note that all of these property-value pairs can be also directly set via the
-        %>                              parent object attributes, before calling the ``make()`` method.
-        %>
-        %>  \note
-        %>  The input ``varargin`` can also contain the components
-        %>  of the ``subplot`` component of the parent object.
-        %>
-        %>  \note
-        %>  See below and also the documentation of the
-        %>  attributes of the superclass [pm.vis.Tile](@ref Tile).
+        %>                              parent object attributes, before calling the ``make()`` method.<br>
         %>
         %>  \return
-        %>  An object of class [pm.vis.TileEllipse3](@ref TileEllipse3).
+        %>  ``self``                :   An object of [pm.vis.TileEllipse3](@ref TileEllipse3) class.<br>
         %>
         %>  \interface{TileEllipse3}
         %>  \code{.m}
@@ -46,6 +51,14 @@ classdef TileEllipse3 < pm.vis.Tile
         %>      t = pm.vis.TileEllipse3(gramian, center, zval, cval, varargin);
         %>
         %>  \endcode
+        %>
+        %>  \note
+        %>  The input ``varargin`` can also contain the components
+        %>  of the ``subplot`` component of the parent object.<br>
+        %>
+        %>  \note
+        %>  See below and also the documentation of the
+        %>  attributes of the superclass [pm.vis.Tile](@ref Tile).<br>
         %>
         %>  \example{TileEllipse3}
         %>

@@ -26,7 +26,7 @@
 /// \final
 ///
 /// \author
-/// \AmirShahmoradi, Monday 00:01 AM, January 1, 2018, Institute for Computational Engineering and Sciences, University of Texas Austin
+/// \AmirShahmoradi, Monday 00:01 AM, January 1, 2018, Institute for Computational Engineering and Sciences, University of Texas Austin<br>
 ///
 #include <stdint.h>
 #ifndef pm_sampling
@@ -157,7 +157,7 @@
 /// \final{runParaDRAM}
 ///
 /// \author
-/// \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin
+/// \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 ///
 
 /// \ingroup runParaDRAM

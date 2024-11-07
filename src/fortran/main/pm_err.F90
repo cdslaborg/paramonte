@@ -45,7 +45,7 @@
 !>  \final
 !>
 !>  \author
-!>  \AmirShahmoradi, 3:43 AM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin
+!>  \AmirShahmoradi, 3:43 AM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas Austin<br>
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -75,7 +75,7 @@ module pm_err
     !>  \final{SOFT_EXIT_ENABLED}
     !>
     !>  \author
-    !>  \AmirShahmoradi, 3:43 AM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, 3:43 AM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas Austin<br>
     logical(LK)     , parameter         :: SOFT_EXIT_ENABLED = .false._LK
 #endif
 
@@ -94,7 +94,7 @@ module pm_err
     !>  \final{STATNULL}
     !>
     !>  \author
-    !>  \AmirShahmoradi, 3:43 AM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, 3:43 AM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas Austin<br>
     integer(IK)                         :: STATNULL = -huge(0_IK)
 
    !logical(LK)     , parameter :: ERR_HANDLING_REQUESTED = .false._LK
@@ -153,7 +153,7 @@ module pm_err
     !>  \final{err_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, 3:43 AM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, 3:43 AM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas Austin<br>
     type :: err_type
         logical(LK)                     :: iswarned = .false._LK    !<  The scalar `logical` of default kind \LK that is `.true.` if a runtime warning occurs.<br>
         logical(LK)                     :: occurred = .false._LK    !<  The scalar `logical` of default kind \LK that is `.true.` if a runtime error occurs.<br>
@@ -198,7 +198,7 @@ module pm_err
 !    !>  \final{message_type}
 !    !>
 !    !>  \author
-!    !>  \AmirShahmoradi, 3:43 AM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin
+!    !>  \AmirShahmoradi, 3:43 AM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas Austin<br>
 !    type :: message_type
 !        logical(LK)                     :: occurred = .false._LK        !<  The scalar `logical` of default kind \LK that is `.true.` if a runtime error occurs.<br>
 !        integer(IK)                     :: stat     = -huge(0_IK)       !<  The scalar `integer` of default kind \IK to contain the error flag or status
@@ -378,7 +378,7 @@ module pm_err
     !>  \pmed Adding an example usage to this interface can be helpful.<br>
     !>
     !>  \author
-    !>  \AmirShahmoradi, 3:43 AM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, 3:43 AM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas Austin<br>
     interface getFine
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -500,7 +500,7 @@ module pm_err
     !>  \pmed Adding an example usage to this interface can be helpful.<br>
     !>
     !>  \author
-    !>  \AmirShahmoradi, 3:43 AM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, 3:43 AM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas Austin<br>
     interface getFile
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -617,7 +617,7 @@ module pm_err
     !>  \pmed Adding an example usage to this interface can be helpful.<br>
     !>
     !>  \author
-    !>  \AmirShahmoradi, 3:43 AM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, 3:43 AM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas Austin<br>
     interface getLine
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -731,7 +731,7 @@ module pm_err
     !>  \pmed Adding an example usage to this interface can be helpful.<br>
     !>
     !>  \author
-    !>  \AmirShahmoradi, 3:43 AM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, 3:43 AM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas Austin<br>
     interface setAsserted
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -885,7 +885,7 @@ module pm_err
     !>  \final{message_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, abstract :: message_type
         character(:, SK), allocatable   , public    :: prefix                       !<  \public  See the corresponding definition in the documentation of [getStrWrapped](@ref pm_str::getStrWrapped).<br>
         character(:, SK), allocatable   , public    :: indent                       !<  \public  See the corresponding definition in the documentation of [getStrWrapped](@ref pm_str::getStrWrapped).<br>
@@ -969,7 +969,7 @@ module pm_err
     !>  \final{mark_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(message_type) :: mark_type
     contains
         !>  \cond excluded
@@ -1035,7 +1035,7 @@ module pm_err
     !>  \final{mark_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     pure module function mark_typer(prefix, indent, break, newline, width, maxwidth, tmsize, bmsize, unit, sticky) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: mark_typer
@@ -1123,7 +1123,7 @@ module pm_err
     !>  \final{note_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(message_type) :: note_type
     contains
         !>  \cond excluded
@@ -1189,7 +1189,7 @@ module pm_err
     !>  \final{note_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     pure module function note_typer(prefix, indent, break, newline, width, maxwidth, tmsize, bmsize, unit, sticky) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: note_typer
@@ -1274,7 +1274,7 @@ module pm_err
     !>  \final{warn_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(message_type) :: warn_type
     contains
         !>  \cond excluded
@@ -1340,7 +1340,7 @@ module pm_err
     !>  \final{warn_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     pure module function warn_typer(prefix, indent, break, newline, width, maxwidth, tmsize, bmsize, unit, sticky) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: warn_typer
@@ -1438,7 +1438,7 @@ module pm_err
     !>  \final{stop_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(message_type) :: stop_type
         character(:, SK)    , allocatable, public   :: help     !<  \public See the corresponding definition in the documentation of the default constructor of the derived type [stop_type](@ref pm_err::stop_type).<br>
         integer(IK)         , allocatable, public   :: stat     !<  \public See the corresponding definition in the documentation of the default constructor of the derived type [stop_type](@ref pm_err::stop_type).<br>
@@ -1507,7 +1507,7 @@ module pm_err
     !>  \final{stop_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     pure module function stop_typer(prefix, indent, break, newline, width, maxwidth, tmsize, bmsize, unit, sticky, help, stat, renabled) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: stop_typer
@@ -1614,7 +1614,7 @@ module pm_err
     !>  \final{show}
     !>
     !>  \author
-    !>  \AmirShahmoradi, 9:49 PM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, 9:49 PM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas Austin<br>
     interface show
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1995,7 +1995,7 @@ module pm_err
     !>  \final
     !>
     !>  \author
-    !>  \AmirShahmoradi, 9:49 PM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, 9:49 PM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas Austin<br>
     interface setMarked
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2137,7 +2137,7 @@ module pm_err
     !>  \final
     !>
     !>  \author
-    !>  \AmirShahmoradi, 9:49 PM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, 9:49 PM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas Austin<br>
     interface setNoted
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2279,7 +2279,7 @@ module pm_err
     !>  \final
     !>
     !>  \author
-    !>  \AmirShahmoradi, 9:49 PM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, 9:49 PM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas Austin<br>
     interface setWarned
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2432,7 +2432,7 @@ module pm_err
     !>  \final
     !>
     !>  \author
-    !>  \AmirShahmoradi, 9:49 PM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, 9:49 PM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas Austin<br>
     interface setAborted
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

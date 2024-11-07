@@ -280,7 +280,7 @@ module pm_arraySplit
     !>  \final
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     !                                   <li>    An output `contiguous` vector of shape `(:)` of type `integer` of default kind \IK, <br>
     !                                           representing the positions of the last elements of the split parts in the input `array` such that,<br>

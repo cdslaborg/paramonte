@@ -75,7 +75,7 @@ module pm_clusTest
     !>  \final{range_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     type :: range_type
         integer(IK) :: ndim(2) = [2, 2]                     !<  \public The vector of size `2` of type `integer` of default kind \IK, containing the positive-integer lower and upper limits of the randomly chosen number of dimensions of the domain of the [MMVUE distribution](@ref pm_distUnifElls).<br>
         integer(IK) :: nell(2) = [1, 20]                    !<  \public The vector of size `2` of type `integer` of default kind \IK, containing the positive-integer lower and upper limits of the randomly chosen number of ellipsoids in the domain of the [MMVUE distribution](@ref pm_distUnifElls).<br>
@@ -145,7 +145,7 @@ module pm_clusTest
     !>  \final{mmvue_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     type :: mmvue_type
         type(range_type)                :: range                    !<  \public The scalar object of type [range_type](@ref pm_clusTest::range_type) containing the specifications of the [MMVUE distribution](@ref pm_distUnifElls).<br>
         integer(IK)                     :: ndim                     !<  \public The number of dimensions of the domain of the [MMVUE distribution](@ref pm_distUnifElls).<br>

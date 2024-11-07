@@ -184,7 +184,7 @@ module pm_matrixLUP
     !>  \final{setMatLUP}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Apr 21, 2017, 1:43 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Apr 21, 2017, 1:43 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     ! implicit interface.
 

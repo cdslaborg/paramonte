@@ -20,7 +20,7 @@
 !>  \final
 !>
 !>  \author
-!>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+!>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -48,7 +48,7 @@
         !>  \final{MAX_NUM_IMAGE}
         !>
         !>  \author
-        !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+        !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
         !integer(IK)    , parameter :: MAX_NUM_IMAGE = (huge(0_IK) - mod(huge(0_IK), 2_IK)) / 2_IK ! maximum number of images supported by this algorithm.
         integer(IK)     , parameter :: POWER_BASE = 2_IK
         integer(IK)     , parameter :: MAX_NUM_IMAGE = (huge(0_IK) - mod(huge(0_IK), POWER_BASE)) / POWER_BASE

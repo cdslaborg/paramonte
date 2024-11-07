@@ -113,7 +113,7 @@ module pm_sysInfo
     !>  \final{kernelis_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: kernelis_type
         logical(LK) :: windows  = .false._LK    !<  \public The scalar `logical` value indicating whether the OS is Windows.
         logical(LK) :: cygwin   = .false._LK    !<  \public The scalar `logical` value indicating whether the OS is Cygwin.
@@ -240,7 +240,7 @@ module pm_sysInfo
     !>  \final{kernel_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: kernel_type
         character(:, SK), allocatable       :: name !<  \public The `allocatable` scalar of type `character` of default kind \SK, containing the operating system name.
         type(kernelis_type)                 :: is   !<  \public The scalar object of type [kernelis_type](@ref pm_sysInfo::kernelis_type) containing the logical components indicating the OS.
@@ -420,7 +420,7 @@ module pm_sysInfo
     !>  \final{getSysInfo}
     !>
     !>  \author
-    !>  Amir Shahmoradi, Tuesday March 7, 2017, 3:09 AM, ICES, The University of Texas at Austin
+    !>  Amir Shahmoradi, Tuesday March 7, 2017, 3:09 AM, ICES, The University of Texas Austin<br>
 
     interface getSysInfo
 
@@ -511,7 +511,7 @@ module pm_sysInfo
     !>  \final{isKernelWindows}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isKernelWindows
 
     module function isKernelWindows() result(itis)
@@ -599,7 +599,7 @@ module pm_sysInfo
     !>  \final{isKernelDarwin}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isKernelDarwin
 
     module function isKernelDarwin() result(itis)
@@ -687,7 +687,7 @@ module pm_sysInfo
     !>  \final{isKernelLinux}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isKernelLinux
 
     module function isKernelLinux() result(itis)

@@ -284,7 +284,7 @@ module pm_matrixInit
     !>  \final{getMatInit}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Apr 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Apr 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     interface getMatInit
 
@@ -4132,7 +4132,7 @@ module pm_matrixInit
     !>  \final{setMatInit}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Apr 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Apr 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     ! EXP_XLX
 

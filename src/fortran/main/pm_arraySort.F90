@@ -82,7 +82,7 @@
 !>  \final
 !>
 !>  \author
-!>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+!>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -226,7 +226,7 @@ module pm_arraySort
     !>  \final{isAscendingAll}
     !>
     !>  \author
-    !>  \AmirShahmoradi, April 21, 2017, 3:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, April 21, 2017, 3:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     interface isAscendingAll
 
@@ -725,7 +725,7 @@ module pm_arraySort
     !>  \final{isDescendingAll}
     !>
     !>  \author
-    !>  \AmirShahmoradi, April 21, 2017, 3:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, April 21, 2017, 3:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     interface isDescendingAll
 
@@ -1224,7 +1224,7 @@ module pm_arraySort
     !>  \final{isAscending}
     !>
     !>  \author
-    !>  \AmirShahmoradi, April 21, 2017, 3:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, April 21, 2017, 3:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     interface isAscending
 
@@ -1720,7 +1720,7 @@ module pm_arraySort
     !>  \final{isDescending}
     !>
     !>  \author
-    !>  \AmirShahmoradi, April 21, 2017, 3:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, April 21, 2017, 3:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isDescending
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2247,7 +2247,7 @@ module pm_arraySort
     !>  \final{isSorted}
     !>
     !>  \author
-    !>  \AmirShahmoradi, April 21, 2017, 3:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, April 21, 2017, 3:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isSorted
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3342,7 +3342,7 @@ module pm_arraySort
     !>  \final{getSorted}
     !>
     !>  \author
-    !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     ! getSortedIndCusComDef
 
@@ -5533,7 +5533,7 @@ module pm_arraySort
     !>  \final{setSorted}
     !>
     !>  \author
-    !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     ! setSortedIndDefComDef
 

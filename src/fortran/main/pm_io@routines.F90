@@ -20,7 +20,7 @@
 !>  \final
 !>
 !>  \author
-!>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+!>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -330,7 +330,7 @@ contains
     !>  \final{isFalseAssertion}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 2:22 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 2:22 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     function isFalseAssertion(assertion, msg, iostat, iomsg) result(assertionIsFalse)
         #if __INTEL_COMPILER
                 !DEC$ ATTRIBUTES INLINE :: isFalseAssertion

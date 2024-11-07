@@ -1,15 +1,12 @@
 %>  \brief
-%>  This is the base class for generating objects with methods
-%>  and storage components for computing and storing the
-%>  covariance matrix of an input data.<br>
+%>  This is the base class for generating objects with methods and
+%>  storage components for computing and storing and visualizing
+%>  the covariance matrix of an input data.<br>
 %>
 %>  \details
-%>  This is convenience class for easy computation
-%>  of covariance and its storage all in one place.<br>
-%>  The primary advantage of this class over the MATLAB
-%>  intrinsic functions is in the ability of this class
-%>  to compute the result for input dataframe table and
-%>  return the results always in MATLAB ``table`` format.<br>
+%>  This is merely a convenience class for easy computation of covariance and its storage all in one place.<br>
+%>  The primary advantage of this class over the MATLAB intrinsic functions is in the ability of this class to
+%>  compute the result for input dataframe table and return the results always in MATLAB ``table`` format.<br>
 %>
 %>  \note
 %>  See the documentation of the class constructor [pm.stats.Cov](@ref Cov::Cov) below.<br>
@@ -46,6 +43,11 @@ classdef Cov < pm.matlab.Handle
         %>  It must be populated manually at all other times.<br>
         %>
         val = [];
+        %>
+        %>  ``vis``         :   The scalar MATLAB ``struct`` containing the set of
+        %>                      predefined visualizations for the output data.<br>
+        %>
+        vis = [];
     end
 
     methods(Access = public)

@@ -33,61 +33,77 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
 
     properties(Access = public)
         %>
-        %>  ``meanAcceptanceRateSinceStart``    :   The real-valued MATLAB array of rank ``1`` of
-        %>                                          shape ``(1:self.count)`` containing the set of
-        %>                                          average MCMC acceptance rates of the sampler proposal
-        %>                                          distribution over the course of the simulation.<br>
+        %>  ``meanAcceptanceRateSinceStart``
+        %>
+        %>  The real-valued MATLAB array of rank ``1`` of
+        %>  shape ``(1:self.count)`` containing the set of
+        %>  average MCMC acceptance rates of the sampler proposal
+        %>  distribution over the course of the simulation.<br>
         %>
         meanAcceptanceRateSinceStart = [];
-        %
-        %   ``proposalAdaptiveScaleSq``         :   The real-valued MATLAB array of rank ``1`` of
-        %                                           shape ``(1:self.count)`` containing the set of
-        %                                           adaptive squared scale factors of the sampler proposal
-        %                                           distribution over the course of the simulation.<br>
-        %
+        %>
+        %>  ``proposalAdaptiveScaleSq``
+        %>
+        %>  The real-valued MATLAB array of rank ``1`` of
+        %>  shape ``(1:self.count)`` containing the set of
+        %>  adaptive squared scale factors of the sampler proposal
+        %>  distribution over the course of the simulation.<br>
+        %>
         proposalAdaptiveScaleSq = [];
-        %
-        %   ``proposalCor``                     :   The real-valued MATLAB array of rank ``3`` of
-        %                                           shape ``(self.ndim, self.ndim, self.count)`` containing
-        %                                           the set of correlation matrices of the proposal distribution
-        %                                           of the sampler, representing the evolution of the proposal
-        %                                           correlation matrix over the course of the simulation.<br>
-        %
+        %>
+        %>  ``proposalCor``
+        %>
+        %>  The real-valued MATLAB array of rank ``3`` of
+        %>  shape ``(self.ndim, self.ndim, self.count)`` containing
+        %>  the set of correlation matrices of the proposal distribution
+        %>  of the sampler, representing the evolution of the proposal
+        %>  correlation matrix over the course of the simulation.<br>
+        %>
         proposalCor = [];
-        %
-        %   ``proposalCov``                     :   The real-valued MATLAB array of rank ``3`` of
-        %                                           shape ``(1:self.ndim, 1:self.ndim, 1:self.count)`` containing
-        %                                           the set of covariance matrices of the proposal distribution
-        %                                           of the sampler, representing the evolution of the proposal
-        %                                           covariance matrix over the course of the simulation.<br>
-        %
+        %>
+        %>  ``proposalCov``
+        %>
+        %>  The real-valued MATLAB array of rank ``3`` of
+        %>  shape ``(1:self.ndim, 1:self.ndim, 1:self.count)`` containing
+        %>  the set of covariance matrices of the proposal distribution
+        %>  of the sampler, representing the evolution of the proposal
+        %>  covariance matrix over the course of the simulation.<br>
+        %>
         proposalCov = [];
-        %
-        %   ``proposalCovLogVol``               :   The real-valued MATLAB array of rank ``1`` of
-        %                                           shape ``(1:self.count)`` containing the set of
-        %                                           ``log(determinant(covmat))`` of the proposal distribution
-        %                                           representing the evolution of mean of proposal distribution
-        %                                           over the course of the simulation.<br>
-        %
+        %>
+        %>  ``proposalCovLogVol``
+        %>
+        %>  The real-valued MATLAB array of rank ``1`` of
+        %>  shape ``(1:self.count)`` containing the set of
+        %>  ``log(determinant(covmat))`` of the proposal distribution
+        %>  representing the evolution of mean of proposal distribution
+        %>  over the course of the simulation.<br>
+        %>
         proposalCovLogVol = [];
-        %
-        %   ``proposalMean``                    :   The real-valued MATLAB array of rank ``2`` of
-        %                                           shape ``(1:self.ndim, 1:self.count)`` containing
-        %                                           the set of mean vectors of the proposal distribution
-        %                                           of the sampler, representing the evolution of the proposal
-        %                                           mean over the course of the simulation.<br>
-        %
+        %>
+        %>  ``proposalMean``
+        %>
+        %>  The real-valued MATLAB array of rank ``2`` of
+        %>  shape ``(1:self.ndim, 1:self.count)`` containing
+        %>  the set of mean vectors of the proposal distribution
+        %>  of the sampler, representing the evolution of the proposal
+        %>  mean over the course of the simulation.<br>
+        %>
         proposalMean = [];
-        %
-        %   ``uniqueStateVisitCount``           :   The scalar MATLAB integer containing the number of
-        %                                           states uniquely visited within the domain of the
-        %                                           objective function up to the stage specified
-        %                                           within the specified restart file.<br>
-        %
+        %>
+        %>  ``uniqueStateVisitCount``
+        %>
+        %>  The scalar MATLAB integer containing the number of
+        %>  states uniquely visited within the domain of the
+        %>  objective function up to the stage specified
+        %>  within the specified restart file.<br>
+        %>
         uniqueStateVisitCount = [];
         %>
-        %>  ``vis``                             :   The scalar MATLAB ``struct`` containing the set of
-        %>                                          predefined visualizations for the restart data.<br>
+        %>  ``vis``
+        %>
+        %>  The scalar MATLAB ``struct`` containing the set of
+        %>  predefined visualizations for the restart data.<br>
         %>
         vis = [];
     end

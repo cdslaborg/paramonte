@@ -240,7 +240,7 @@
             elseif (2.e-24_RKG < abserr) then
                 !	This algorithm is based on the approximate formulae of Mathematics of Computation 22, (1968) PP144-158, which he claims to be accurate up to 23 decimal points.
                 !	Amir Shahmoradi, Nov 10, 2009, 8:53 PM, Michigan
-                !	Amir Shahmoradi, Wednesday 5:30 AM, XXX XX, 2012, Institute for Fusion Studies, The University of Texas Austin
+                !	Amir Shahmoradi, Wednesday 5:30 AM, XXX XX, 2012, Institute for Fusion Studies, The University of Texas Austin<br>
                 !	HAPPY BIRTHDAY AMIR! (Self-congrats syndrome caused by lack of sleep)
                 if (x == 0._RKG) then
                     erfinv = 0._RKG

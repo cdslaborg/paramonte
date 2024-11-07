@@ -104,7 +104,7 @@ module pm_quadTest
     !>  \final{integrand_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, abstract :: integrand_type
         real(RKH)                           :: lb           !<  \public The scalar of type `real` of the highest kind supported by the library \RKH, containing the lower limit of integration.
         real(RKH)                           :: ub           !<  \public The scalar of type `real` of the highest kind supported by the library \RKH, containing the upper limit of integration.

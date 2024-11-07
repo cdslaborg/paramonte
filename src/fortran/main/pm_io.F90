@@ -237,7 +237,7 @@
 !>  \final{pm_io}
 !>
 !>  \author
-!>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+!>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -280,7 +280,7 @@ module pm_io
     !>  \final{filext_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: filext_type
         character(4, SK)    :: ascii        = SK_".txt"
         character(4, SK)    :: binary       = SK_".bin"
@@ -312,7 +312,7 @@ module pm_io
     !>  \final{filext}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(filext_type), parameter :: filext = filext_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: filext
@@ -478,7 +478,7 @@ module pm_io
     !>  \final{field_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: field_type
         character(:, SK), allocatable :: string     !<  \public The scalar `character` of default kind \SK representing the **default left or right delimiter** to be used for wrapping `character` fields before displaying them.
         character(:, SK), allocatable :: integer    !<  \public The scalar `character` of default kind \SK representing the **default left or right delimiter** to be used for wrapping `integer` fields before displaying them.
@@ -525,7 +525,7 @@ module pm_io
     !>  \final{form_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, abstract :: form_type
     end type
 
@@ -561,7 +561,7 @@ module pm_io
     !>  \final{unknown_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(form_type) :: unknown_type
     end type
 
@@ -588,7 +588,7 @@ module pm_io
     !>  \final{unknown}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(unknown_type), parameter :: unknown = unknown_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: unknown
@@ -626,7 +626,7 @@ module pm_io
     !>  \final{unformatted_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(form_type) :: unformatted_type
     end type
 
@@ -653,7 +653,7 @@ module pm_io
     !>  \final{unformatted}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(unformatted_type), parameter :: unformatted = unformatted_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: unformatted
@@ -691,7 +691,7 @@ module pm_io
     !>  \final{formatted_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(form_type) :: formatted_type
     end type
 
@@ -718,7 +718,7 @@ module pm_io
     !>  \final{formatted}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(formatted_type), parameter :: formatted = formatted_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: formatted
@@ -756,7 +756,7 @@ module pm_io
     !>  \final{csv_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(formatted_type) :: csv_type
     end type
 
@@ -783,7 +783,7 @@ module pm_io
     !>  \final{csv}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(csv_type), parameter :: csv = csv_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: csv
@@ -821,7 +821,7 @@ module pm_io
     !>  \final{fld_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(formatted_type) :: fld_type
     end type
 
@@ -848,7 +848,7 @@ module pm_io
     !>  \final{fld}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(fld_type), parameter :: fld = fld_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: fld
@@ -907,7 +907,7 @@ module pm_io
 !   >  \final{getRecl}
 !   >
 !   >  \author
-!   >  Amir Shahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+!   >  Amir Shahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 !    interface getRecl
 !
 !    impure elemental function getRecl() result(recl)
@@ -1035,7 +1035,7 @@ module pm_io
     !>  \final{openArg_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: openArg_type
         character(10,SK)                :: access       = SK_"sequential"           !<  \public A scalar `character`    of default kind \SK of length `10`  containing the `access`         attribute of the file: `"sequential"` (default), `"direct"`, `"stream"`
         character( 9,SK)                :: action       = SK_"readwrite"            !<  \public A scalar `character`    of default kind \SK of length `9`   containing the `action`         attribute of the file: `"readwrite"` (default), `"read"`, `"write"`
@@ -1186,7 +1186,7 @@ module pm_io
     !>  \final{openArg_typer}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface openArg_type
     impure elemental module function openArg_typer  ( access        &
                                                     , action        &
@@ -1285,7 +1285,7 @@ module pm_io
     !>  \final{isOpen}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isOpen
 
     impure elemental module function isOpenUnit(unit) result(opened)
@@ -1380,7 +1380,7 @@ module pm_io
     !>  \final{getAction}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getAction
 
     impure elemental module function getActionUnit(unit) result(action)
@@ -1498,7 +1498,7 @@ module pm_io
     !>  \final{getCountRecord}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getCountRecord
 
     module function getCountRecordFile(file, isCountable, del, iostat, iomsg) result(nrecord)
@@ -1582,7 +1582,7 @@ module pm_io
     !>  \final{getContentsFrom}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getContentsFrom
 
     module function getContentsFromUnit_SK(unit, del) result(contents)
@@ -1674,7 +1674,7 @@ module pm_io
     !>  \final{setContentsFrom}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface setContentsFrom
 
     module subroutine setContentsFromUnitCDD_SK(unit, contents, del)
@@ -1787,7 +1787,7 @@ module pm_io
     !>  \final{setContentsTo}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface setContentsTo
 
 !    module subroutine setContentsToUnitCDD_SK(unit, contents)
@@ -1885,7 +1885,7 @@ module pm_io
     !>  \final{setFileClosed}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface setFileClosed
     module subroutine setFileClosed_IK(unit, del, iostat, iomsg)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -1967,7 +1967,7 @@ module pm_io
     !>  \final{getRecordFrom}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getRecordFrom
 
     module function getRecordFromUnit_SK(unit, iostat, iomsg, linefed) result(record)
@@ -2110,7 +2110,7 @@ module pm_io
     !>  \final{setRecordFrom}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface setRecordFrom
 
     module subroutine setRecordFromUR_SK(unit, record, lb, ub, linefed)
@@ -2222,7 +2222,7 @@ module pm_io
     !>  \final{getCountRecordLeft}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getCountRecordLeft
     module function getCountRecordLeft_IK(unit, isCountable, reset, iostat, iomsg) result(nrecord)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -2383,7 +2383,7 @@ module pm_io
     !>  \final{getErrTableRead}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     ! D1 file NO
 
@@ -5933,7 +5933,7 @@ module pm_io
     !>  \final{getErrTableWrite}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     ! D1 file NO
 
@@ -9400,7 +9400,7 @@ module pm_io
     !>  \final{getFieldSep}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     ! seps scalar character scalar nfield missing XX
 
@@ -9826,7 +9826,7 @@ module pm_io
     !>  \final{wrap_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: wrap_type
         character(:, SK), allocatable   , public    :: newline              !<  \public See the description of the corresponding argument in the default constructor of [wrap_type](@ref pm_io::wrap_type).
         character(:, SK), allocatable   , public    :: fill                 !<  \public See the description of the corresponding argument in the default constructor of [wrap_type](@ref pm_io::wrap_type).
@@ -9991,7 +9991,7 @@ module pm_io
     !>  \final
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface wrap
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -10278,7 +10278,7 @@ module pm_io
     !>  \final{display_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type                                            :: display_type
         logical(LK)                     , private   :: sticky = .false._LK  !<  \private    The scalar `logical` of default kind \LK. If `.true.` the relevant properties of the current object can be later changed by its methods.
         logical(LK)                     , private   :: uninit = .true._LK   !<  \private    The scalar `logical` of default kind \LK that is internally set to `.false.` once the object is constructed.<br>
@@ -11389,7 +11389,7 @@ module pm_io
     !>  \final{disp}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(display_type) :: disp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: disp
@@ -11504,7 +11504,7 @@ module pm_io
     !>  \final
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface skip
     module subroutine skip_IK(self, count, unit, sticky)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -19181,7 +19181,7 @@ contains
 !    !>  \final{setStatIO}
 !    !>
 !    !>  \author
-!    !>  \AmirShahmoradi, Tuesday March 7, 2017, 2:22 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+!    !>  \AmirShahmoradi, Tuesday March 7, 2017, 2:22 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 !    pure subroutine setStatIO(stat, msg, iostat, iomsg)
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setStatIO
@@ -19360,7 +19360,7 @@ contains
     !>  \final{isPreconnected}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     pure elemental function isPreconnected(unit) result(preconnected)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isPreconnected
@@ -19430,7 +19430,7 @@ contains
     !>  \final{getFileUnit}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     impure elemental function getFileUnit(file) result(unit)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFileUnit

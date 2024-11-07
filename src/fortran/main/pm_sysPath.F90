@@ -346,7 +346,7 @@ module pm_sysPath
     !>  \final{verbatim_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: verbatim_type; end type
 
     !>  \brief
@@ -363,7 +363,7 @@ module pm_sysPath
     !>  \final{verbatim_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(verbatim_type), parameter :: verbatim = verbatim_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: verbatim
@@ -398,7 +398,7 @@ module pm_sysPath
     !>  \final{WIN32_NAMESPACE_FILE}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     character(*, SK), parameter ::  WIN32_NAMESPACE_FILE = SK_"\\?\"
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: WIN32_NAMESPACE_FILE
@@ -426,7 +426,7 @@ module pm_sysPath
     !>  \final{WIN32_NAMESPACE_DEVICE}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     character(*, SK), parameter ::  WIN32_NAMESPACE_DEVICE = SK_"\\.\"
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: WIN32_NAMESPACE_DEVICE
@@ -444,7 +444,7 @@ module pm_sysPath
     !>  \final{ASCII_CONTROL_STR}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     character(*, SK), parameter ::  ASCII_CONTROL_STR = achar( 1, SK)   // &
                                                         achar( 2, SK)   // &
                                                         achar( 3, SK)   // &
@@ -492,7 +492,7 @@ module pm_sysPath
     !>  \final{WINDOWS_RESERVED_STR}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     character(*, SK), parameter :: WINDOWS_RESERVED_STR =  SK_'\/<>:"|?*'//ASCII_CONTROL_STR ! do not change the first character here.<br>
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: WINDOWS_RESERVED_STR
@@ -508,7 +508,7 @@ module pm_sysPath
     !>  \final{WINDOWS_RESERVED_CHR}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     character(1, SK), parameter :: WINDOWS_RESERVED_CHR(*) = [( WINDOWS_RESERVED_STR(i:i), i = 1_IK, len(WINDOWS_RESERVED_STR,IK) )]
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: WINDOWS_RESERVED_CHR
@@ -525,7 +525,7 @@ module pm_sysPath
     !>  \final{WINDOWS_CMD_METACHAR_STR}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     character(*, SK), parameter :: WINDOWS_CMD_METACHAR_STR = SK_'()%!^"<>&|'
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: WINDOWS_CMD_METACHAR_STR
@@ -538,7 +538,7 @@ module pm_sysPath
     !>  \final{WINDOWS_CMD_METACHAR_CHR}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     character(1, SK), parameter :: WINDOWS_CMD_METACHAR_CHR(*) = [( WINDOWS_CMD_METACHAR_STR(i:i), i = 1_IK, len(WINDOWS_CMD_METACHAR_STR,IK) )]
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: WINDOWS_CMD_METACHAR_CHR
@@ -553,7 +553,7 @@ module pm_sysPath
     !>  \final{WINDOWS_RESERVED_DEVICE_NAME}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     character(4, SK), parameter :: WINDOWS_RESERVED_DEVICE_NAME(*) =[ SK_"CON " &
                                                                     , SK_"PRN " &
                                                                     , SK_"AUX " &
@@ -632,7 +632,7 @@ module pm_sysPath
     !>  \final{POSIX_RESERVED_STR}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     character(*, SK), parameter :: POSIX_RESERVED_STR = SK_" " // & ! space character
                                                         SK_"!" // & ! history expansion.<br>
                                                         SK_'"' // & ! shell syntax.<br>
@@ -672,7 +672,7 @@ module pm_sysPath
     !>  \final{POSIX_RESERVED_CHR}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     character(1, SK), parameter :: POSIX_RESERVED_CHR(*) = [( POSIX_RESERVED_STR(i:i), i = 1_IK, len(POSIX_RESERVED_STR,IK) )]
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: POSIX_RESERVED_CHR
@@ -690,7 +690,7 @@ module pm_sysPath
     !>  \final{POSIX_RESERVED_DQUOTE_STR}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     character(*, SK), parameter :: POSIX_RESERVED_DQUOTE_STR = SK_"`$\"""//achar(10, SK) ! space character
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: POSIX_RESERVED_DQUOTE_STR
@@ -702,7 +702,7 @@ module pm_sysPath
     !>  \final{POSIX_RESERVED_DQUOTE_CHR}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     character(1, SK), parameter :: POSIX_RESERVED_DQUOTE_CHR(*) = [( POSIX_RESERVED_DQUOTE_STR(i:i), i = 1_IK, len(POSIX_RESERVED_DQUOTE_STR,IK) )]
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: POSIX_RESERVED_DQUOTE_CHR
@@ -723,7 +723,7 @@ module pm_sysPath
 !!>  \final
 !!>
 !!>  \author
-!!>  Amir Shahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+!!>  Amir Shahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 !type :: PathPart_type
 !    character(:, SK), allocatable   :: val      !< The `allocatable` scalar `character` of default kind \SK to contain the path value.<br>
 !    character(1, SK)                :: sep      !< The scalar `character` of default kind \SK of length `1` to contain the directory separator (`\` or `/`) recognized by the system Shell.<br>
@@ -878,7 +878,7 @@ module pm_sysPath
     !>  \final{ls}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface ls
 
     module function ls_BSSK(path, sort, showdir, showfile, showhidden, reversed) result(list)
@@ -950,7 +950,7 @@ module pm_sysPath
     !>  \final{glob}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface glob
 
     module function glob_BSSK(pattern) result(list)
@@ -1100,7 +1100,7 @@ module pm_sysPath
     !>  \final{isFailedGlob}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isFailedGlob
 
     module function isFailedGlob_SK(pattern, list, index, errmsg) result(failed)
@@ -1253,7 +1253,7 @@ module pm_sysPath
     !>  \final{isFailedList}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isFailedList
 
     module function isFailedList_SK(path, list, index, sort, showdir, showfile, showhidden, reversed, errmsg) result(failed)
@@ -1336,7 +1336,7 @@ module pm_sysPath
     !>  \final
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getPathPosixEscaped
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1450,7 +1450,7 @@ module pm_sysPath
     !>  \final
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface setPathPosixEscaped
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1573,7 +1573,7 @@ module pm_sysPath
     !>  \final
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getPathPosix
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1722,7 +1722,7 @@ module pm_sysPath
     !>  \final
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface setPathPosix
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1853,7 +1853,7 @@ module pm_sysPath
     !>  \final
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getPathWindows
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1995,7 +1995,7 @@ module pm_sysPath
     !>  \final
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface setPathWindows
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2131,7 +2131,7 @@ module pm_sysPath
     !>  \final
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getPathHostNameIndex
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2243,7 +2243,7 @@ module pm_sysPath
     !>  \final{hasDriveLetter}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface hasDriveLetter
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2368,7 +2368,7 @@ module pm_sysPath
     !>  \final{isPathAbsWindows}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isPathAbsWindows
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2480,7 +2480,7 @@ module pm_sysPath
     !>  \final{isPathAbsPosix}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isPathAbsPosix
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2637,7 +2637,7 @@ module pm_sysPath
     !>  \final{getPathAbs}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getPathAbs
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2755,7 +2755,7 @@ module pm_sysPath
     !>  \final{getDirCurrent}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getDirCurrent
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2875,7 +2875,7 @@ module pm_sysPath
     !>  \final{getDirHome}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getDirHome
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2983,7 +2983,7 @@ module pm_sysPath
     !>  \final{getPathExpandedUser}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getPathExpandedUser
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3081,7 +3081,7 @@ module pm_sysPath
     !>  \final{isFailedChangeDir}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isFailedChangeDir
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3221,7 +3221,7 @@ module pm_sysPath
     !>  \final{isFailedMakeDir}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isFailedMakeDir
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3304,7 +3304,7 @@ module pm_sysPath
     !>  \final{isFailedMakeDirTemp}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isFailedMakeDirTemp
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3480,7 +3480,7 @@ module pm_sysPath
     !>  \final{isFailedCopy}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isFailedCopy
     module function isFailedCopy(from, to, recursive, forced, wait, ntry, errmsg) result(failed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -3622,7 +3622,7 @@ module pm_sysPath
     !>  \final{isFailedMove}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isFailedMove
     module function isFailedMove(from, to, forced, wait, ntry, errmsg) result(failed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -3745,7 +3745,7 @@ module pm_sysPath
     !>  \final{isFailedCopy}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isFailedRemove
     recursive module function isFailedRemove(path, recursive, forced, wait, ntry, errmsg) result(failed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -3839,7 +3839,7 @@ module pm_sysPath
     !>  \final{getDirSep}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getDirSep
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -4005,7 +4005,7 @@ module pm_sysPath
     !>  \final{getDirSeps}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getDirSeps
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -4161,7 +4161,7 @@ module pm_sysPath
     !>  \final{getPathSep}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getPathSep
 
     impure module function getPathSep_SK(failed, errmsg) result(pathsep)
@@ -4363,7 +4363,7 @@ module pm_sysPath
     !>  \final{getPathNew}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getPathNew
     module function getPathNew(dir, prefix, sep, ext, pid, failed) result(pathNew)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -4494,7 +4494,7 @@ module pm_sysPath
     !>  \final{getPathTemp}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getPathTemp
     module function getPathTemp(prefix, sep, ext, pid, failed) result(pathTemp)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -4570,7 +4570,7 @@ module pm_sysPath
     !>  \final{getPathJoined}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getPathJoined
 
     impure module function getPathJoined(p1, p2) result(pathJoined)
@@ -4668,7 +4668,7 @@ module pm_sysPath
     !>  \final{isFile}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isFile
 
     impure elemental module function isFileDD(path) result(pathIsFile)
@@ -4767,7 +4767,7 @@ module pm_sysPath
     !>  \final{isDir}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isDir
 
     impure elemental module function isDirDD(path) result(pathIsDir)
@@ -4855,7 +4855,7 @@ module pm_sysPath
     !>  \final{isExtant}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isExtant
 
     impure elemental module function isExtantDD(path) result(extant)
@@ -4951,7 +4951,7 @@ module pm_sysPath
     !>  \final{getPathVerbatimCMD}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getPathVerbatimCMD
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -5073,7 +5073,7 @@ module pm_sysPath
     !>  \final{getPathVerbatimPowerShell}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getPathVerbatimPowerShell
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -5195,7 +5195,7 @@ module pm_sysPath
     !>  \final{getPathVerbatimPosix}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getPathVerbatimPosix
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -5318,7 +5318,7 @@ module pm_sysPath
     !>  \final{getPathVerbatimFish}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getPathVerbatimFish
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -5450,7 +5450,7 @@ module pm_sysPath
     !>  \final{getPathVerbatim}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getPathVerbatim
 
     impure module function getPathVerbatim(path, failed, errmsg) result(pathVerbatim)
@@ -5557,7 +5557,7 @@ module pm_sysPath
     !>  \final{getIndexDirName}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getIndexDirName
 
     PURE elemental module function getIndexDirNameDef(path, dirsep) result(index)
@@ -5662,7 +5662,7 @@ module pm_sysPath
     !>  \final{getIndexBaseName}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getIndexBaseName
 
     PURE elemental module function getIndexBaseNameDef(path, dirsep) result(index)
@@ -5754,7 +5754,7 @@ module pm_sysPath
     !>  \final{getIndexExtName}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getIndexExtName
     PURE elemental module function getIndexExtName(path, dirsep) result(indexExtName)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -5870,7 +5870,7 @@ module pm_sysPath
     !>  \final{getDirName}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getDirName
 
     PURE module function getDirNameDef(path, dirsep) result(dirname)
@@ -5957,7 +5957,7 @@ module pm_sysPath
     !>  \final{getExtName}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getExtName
     PURE module function getExtName(path, dirsep) result(extname)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -6046,7 +6046,7 @@ module pm_sysPath
     !>  \final{getBaseName}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getBaseName
 
     PURE module function getBaseNameDef(path, dirsep) result(basename)
@@ -6136,7 +6136,7 @@ module pm_sysPath
     !>  \final{getFileName}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getFileName
     PURE module function getFileName(path, dirsep) result(filename)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -6223,7 +6223,7 @@ module pm_sysPath
     !>  \final{getPathMatch}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getPathMatch
     module function getPathMatch(key, sep, inc, failed, errmsg) result(list)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -6334,7 +6334,7 @@ module pm_sysPath
     !>  \final{setPathMatch}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface setPathMatch
     module subroutine setPathMatch(key, inc, sep, list, lenList) !BIND2("setPathMatch")
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)

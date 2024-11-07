@@ -39,17 +39,29 @@ classdef Spinner < pm.matlab.Handle
         %>
         %>  The MATLAB integer containing the length of ``tickmarks``.
         %>
+        %>  \warning
+        %>  This is an internal ``Hidden`` class attribute
+        %>  that is inaccessible to the end users.<br>
+        %>
         tickCount = 4;
         %>
         %>  ``format``
         %>
         %>  The MATLAB ``char`` vector containing the spinner display format.
         %>
+        %>  \warning
+        %>  This is an internal ``Hidden`` class attribute
+        %>  that is inaccessible to the end users.<br>
+        %>
         format = [repmat('\b', 1, 4 + 1), '%s'];
         %>
         %>  ``clock``
         %>
         %>  The scalar integer representing the index of the ``tickmarks`` attribute.
+        %>
+        %>  \warning
+        %>  This is an internal ``Hidden`` class attribute
+        %>  that is inaccessible to the end users.<br>
         %>
         clock = 0;
     end

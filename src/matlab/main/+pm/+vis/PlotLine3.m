@@ -43,7 +43,7 @@ classdef PlotLine3 < pm.vis.Plot
         %>  ``self``                :   The output object of class [pm.vis.PlotLine3](@ref PlotLine3).<br>
         %>
         %>  \return
-        %>  An object of [pm.vis.PlotLine3](@ref PlotLine3) class.
+        %>  An object of [pm.vis.PlotLine3](@ref PlotLine3) class.<br>
         %>
         %>  \interface{PlotLine3}
         %>  \code{.m}

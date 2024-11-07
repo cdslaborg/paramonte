@@ -68,7 +68,7 @@ module pm_sysShell
     !>  \final{VARENV_DIRTEMP_WINDOWS}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     character(4, SK), parameter :: VARENV_DIRTEMP_WINDOWS(*) = [character(4, SK) :: "TEMP", "TMP"]
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: VARENV_DIRTEMP_WINDOWS
@@ -96,7 +96,7 @@ module pm_sysShell
     !>  \final{VARENV_DIRTEMP_UNIX}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     character(7, SK), parameter :: VARENV_DIRTEMP_UNIX(*) = [character(7, SK) :: "TMPDIR", "TMP", "TEMP", "TEMPDIR"]
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: VARENV_DIRTEMP_UNIX
@@ -192,7 +192,7 @@ module pm_sysShell
     !>  \final{shellis_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: shellis_type
         logical(LK)                     :: ash        = .false._LK    !<  \public The scalar `logical` value indicating whether the shell is Unix Almquist shell (**dash**).
         logical(LK)                     :: bash       = .false._LK    !<  \public The scalar `logical` value indicating whether the shell is Unix GNU Bourne-Again shell (**Bash**).
@@ -317,7 +317,7 @@ module pm_sysShell
     !>  \final{shell_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: shell_type
         type(shellis_type)              :: is               !<  \public The scalar object of type [shellis_type](@ref pm_sysShell::shellis_type) whose `logical` components indicate the shell name.
         character(1, SK)                :: dirsep = SK_"/"  !<  \public The scalar `character` of default kind \SK of length `1` containing the **preferred** single-character shell **directory separator** (e.g., `\` (Windows) or `/` (POSIX or if the shell type is unknown)).
@@ -422,7 +422,7 @@ module pm_sysShell
     !>  \final{isFailedGetEnvVar}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isFailedGetEnvVar
 
     impure module function isFailedGetEnvVar(name, value, length) result(failed)
@@ -501,7 +501,7 @@ module pm_sysShell
     !>  \final{isFailedPutEnvVar}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isFailedPutEnvVar
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -582,7 +582,7 @@ module pm_sysShell
     !>  This generic interface should be extended to support character `output` of non-default kind once non-default characters is support by all relevant Fortran compilers.
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isFailedGetOutput
 
     impure module function isFailedGetOutput(command, output, exitstat) result(failed)
@@ -686,7 +686,7 @@ module pm_sysShell
     !>  \final{isFailedGetDirTemp}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isFailedGetDirTemp
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -769,7 +769,7 @@ module pm_sysShell
     !>  \final{isShellPosix}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isShellPosix
 
     impure module function isShellPosix() result(shellIsPosix)
@@ -853,7 +853,7 @@ module pm_sysShell
     !>  \final{isShellWindows}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isShellWindows
 
     impure module function isShellWindows() result(shellIsWindows)
@@ -938,7 +938,7 @@ module pm_sysShell
     !>  \final{isShellCMD}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isShellCMD
 
     impure module function isShellCMD() result(shellIsCMD)
@@ -1023,7 +1023,7 @@ module pm_sysShell
     !>  \final{isShellPowerShell}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isShellPowerShell
 
     impure module function isShellPowerShell() result(shellIsPowerShell)
@@ -1137,7 +1137,7 @@ module pm_sysShell
     !>  \final{isFailedExec}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isFailedExec
     impure elemental module function isFailedExec(command, wait, exitstat, cmdstat, cmdmsg) result(failed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -1211,7 +1211,7 @@ module pm_sysShell
     !>  \final{isFailedGetShellShape}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isFailedGetShellShape
     impure module function isFailedGetShellShape(width, height) result(failed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -1279,7 +1279,7 @@ module pm_sysShell
     !>  \final{isFailedGetShellWidth}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isFailedGetShellWidth
     impure module function isFailedGetShellWidth(width) result(failed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -1346,7 +1346,7 @@ module pm_sysShell
     !>  \final{isFailedGetShellHeight}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface isFailedGetShellHeight
     impure module function isFailedGetShellHeight(height) result(failed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)

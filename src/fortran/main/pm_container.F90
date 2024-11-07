@@ -187,7 +187,7 @@ module pm_container
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: css_type
         character(:, SK), allocatable :: val
     end type
@@ -257,7 +257,7 @@ module pm_container
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: csi_type
         integer(IK), allocatable :: val
     end type
@@ -326,7 +326,7 @@ module pm_container
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: csl_type
         logical(LK), allocatable :: val
     end type
@@ -395,7 +395,7 @@ module pm_container
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: csc_type
         complex(CK), allocatable :: val
     end type
@@ -464,7 +464,7 @@ module pm_container
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: csr_type
         real(RK), allocatable :: val
     end type
@@ -529,7 +529,7 @@ module pm_container
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: csp_type
         class(*), allocatable :: val
     end type
@@ -779,7 +779,7 @@ module pm_container
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: css_pdt(kind)
         integer             , kind          :: kind = SK
         character(:, kind)  , allocatable   :: val
@@ -925,7 +925,7 @@ module pm_container
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: csi_pdt(kind)
         integer             , kind          :: kind = IK
         integer(kind)       , allocatable   :: val
@@ -1064,7 +1064,7 @@ module pm_container
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: csl_pdt(kind)
         integer             , kind          :: kind = LK
         integer(kind)       , allocatable   :: val
@@ -1203,7 +1203,7 @@ module pm_container
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: csc_pdt(kind)
         integer             , kind          :: kind = CK
         complex(kind)       , allocatable   :: val
@@ -1342,7 +1342,7 @@ module pm_container
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday, April 30, 2019, 12:58 PM, SEIR, UTA
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: csr_pdt(kind)
         integer             , kind          :: kind = RK
         real(kind)          , allocatable   :: val
@@ -1514,7 +1514,7 @@ module pm_container
     !>  \final{isless}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface operator(<)
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2000,7 +2000,7 @@ module pm_container
     !>  \final{ismore}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface operator(>)
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2444,7 +2444,7 @@ module pm_container
     !>  \final{isleq}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface operator(<=)
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2888,7 +2888,7 @@ module pm_container
     !>  \final{ismeq}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface operator(>=)
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3332,7 +3332,7 @@ module pm_container
     !>  \final{isneq}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface operator(/=)
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3777,7 +3777,7 @@ module pm_container
     !>  \final{iseq}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface operator(==)
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -4223,7 +4223,7 @@ module pm_container
     !>  \final{assignment}
     !>
     !>  \author
-    !>  \AmirShahmoradi, April 21, 2017, 3:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, April 21, 2017, 3:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface assignment(=)
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -4628,7 +4628,7 @@ module pm_container
     ! >
     ! >  \author
     ! >  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
-    ! >  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    ! >  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     !type :: csis_type
     !    integer(IK) :: int
     !    character(:, SK), allocatable :: str
@@ -4694,7 +4694,7 @@ module pm_container
 !    !>  \final{getVal}
 !    !>
 !    !>  \author
-!    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+!    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 !    interface getVal
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

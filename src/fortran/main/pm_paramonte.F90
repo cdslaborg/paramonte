@@ -32,7 +32,7 @@
 !>  \final
 !>
 !>  \author
-!>  \AmirShahmoradi, Monday 00:01 AM, January 1, 2018, Institute for Computational Engineering and Sciences, University of Texas Austin
+!>  \AmirShahmoradi, Monday 00:01 AM, January 1, 2018, Institute for Computational Engineering and Sciences, University of Texas Austin<br>
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -64,7 +64,7 @@ module pm_paramonte
     !>  \final{PARAMONTE_WEB_REPOSITORY}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     character(*, SK), parameter :: PARAMONTE_WEB_REPOSITORY = SK_"https://github.com/cdslaborg/paramonte"
 
     !>  \brief
@@ -85,7 +85,7 @@ module pm_paramonte
     !>  \final{PARAMONTE_WEB_ISSUES}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     character(*, SK), parameter :: PARAMONTE_WEB_ISSUES = SK_"https://github.com/cdslaborg/paramonte/issues"
 
     !>  \brief
@@ -106,7 +106,7 @@ module pm_paramonte
     !>  \final{PARAMONTE_WEB_DOC}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     character(*, SK), parameter :: PARAMONTE_WEB_DOC = SK_"https://www.cdslab.org/paramonte/"
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -129,7 +129,7 @@ module pm_paramonte
     !>  \final{PARAMONTE_COMPILER_VERSION}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     character(*, SK), parameter :: PARAMONTE_COMPILER_VERSION = compiler_version()
 
     !>  \brief
@@ -150,7 +150,7 @@ module pm_paramonte
     !>  \final{PARAMONTE_COMPILER_OPTIONS}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     character(*, SK), parameter :: PARAMONTE_COMPILER_OPTIONS = compiler_options()
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -173,7 +173,7 @@ module pm_paramonte
     !>  \final{paramonte_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: paramonte_type
     end type
 
@@ -195,7 +195,7 @@ module pm_paramonte
     !>  \final{paramonte}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(paramonte_type), parameter :: paramonte = paramonte_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: paramonte
@@ -308,7 +308,7 @@ module pm_paramonte
     !>  \final{filext_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     character(*, SK), parameter :: envname = PROGNAME//" programming language"
 
     !>  \brief
@@ -327,7 +327,7 @@ module pm_paramonte
     !>  \final{envis_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: envis_type
         logical(LK) :: c            = .false._LK
         logical(LK) :: cobol        = .false._LK
@@ -359,7 +359,7 @@ module pm_paramonte
     !>  \final{envis}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(envis_type), parameter :: envis = envis_type(PROGLANG = .true._LK)
 
 !>  \cond excluded
@@ -403,7 +403,7 @@ module pm_paramonte
     !>  \final{PARAMONTE_BUILD_DATE}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
 #if INTEL_ENABLED || GNU_ENABLED
     character(*, SK), parameter :: PARAMONTE_BUILD_DATE = __TIMESTAMP__
     !>  \cond excluded
@@ -448,7 +448,7 @@ module pm_paramonte
     !>  \final{PARAMONTE_VERSION}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
 #if defined __PARAMONTE_VERSION__
     character(*, SK), parameter :: PARAMONTE_VERSION = __PARAMONTE_VERSION__
     !>  \cond excluded
@@ -503,7 +503,7 @@ module pm_paramonte
     !>  \final{PARAMONTE_SPLASH}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     character(*, SK), parameter :: PARAMONTE_SPLASH =   NLC//NLC// &
                                                         SK_"ParaMonte"//NLC// &
                                                         SK_"Parallel Monte Carlo and"//NLC// &
@@ -618,7 +618,7 @@ contains
     !>  \final{getParaMonteSplash}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     PURE function getParaMonteSplash(width, lwsize, twsize, rwsize, bwsize, fill, lwfill, twfill, rwfill, bwfill) result(splash)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParaMonteSplash

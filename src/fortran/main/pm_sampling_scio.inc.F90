@@ -204,7 +204,7 @@ end if;
     !>  \final{getErrChainRead}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     function getErrChainRead(cfc, file, form, pre, pos) result(err)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrChainRead

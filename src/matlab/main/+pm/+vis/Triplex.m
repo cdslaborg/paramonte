@@ -87,6 +87,10 @@ classdef Triplex < pm.vis.figure.Figure
         %>
         %>  The MATLAB ``cell`` vector of length `nrow``, containing the diagonal y-tick labels.<br>
         %>
+        %>  \warning
+        %>  This is an internal ``Hidden`` class attribute
+        %>  that is inaccessible to the end users.<br>
+        %>
         diagYTick = struct();
     end
 
@@ -312,10 +316,6 @@ classdef Triplex < pm.vis.figure.Figure
         %>  \brief
         %>  Preset the tiling settings before making it.<br>
         %>
-        %>  \warning
-        %>  This method causes side-effects by manipulating
-        %>  the existing attributes of the object.<br>
-        %>
         %>  \param[in]  self        :   The **implicitly-passed** input argument representing the parent object of the method.<br>
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
@@ -330,6 +330,10 @@ classdef Triplex < pm.vis.figure.Figure
         %>      g.premake(varargin);
         %>
         %>  \endcode
+        %>
+        %>  \warning
+        %>  This method causes side-effects by manipulating
+        %>  the existing attributes of the object.<br>
         %>
         %>  \final{premake}
         %>
@@ -406,10 +410,6 @@ classdef Triplex < pm.vis.figure.Figure
         %>  \details
         %>  The subplots are made by calling their ``make()`` methods.<br>
         %>
-        %>  \warning
-        %>  This method has side-effects by manipulating
-        %>  the existing attributes of the parent object.<br>
-        %>
         %>  \param[in]  self        :   The **implicitly-passed** input argument representing the parent object of the method.<br>
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
@@ -424,6 +424,10 @@ classdef Triplex < pm.vis.figure.Figure
         %>      g.make(varargin);
         %>
         %>  \endcode
+        %>
+        %>  \warning
+        %>  This method has side-effects by manipulating
+        %>  the existing attributes of the parent object.<br>
         %>
         %>  \final{make}
         %>

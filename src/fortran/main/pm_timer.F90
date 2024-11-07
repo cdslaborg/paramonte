@@ -92,7 +92,7 @@
 !>  \final
 !>
 !>  \author
-!>  \AmirShahmoradi, March 22, 2012, 2:21 PM, National Institute for Fusion Studies, The University of Texas at Austin
+!>  \AmirShahmoradi, March 22, 2012, 2:21 PM, National Institute for Fusion Studies, The University of Texas Austin<br>
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -125,7 +125,7 @@ end block;
     !>  \final{getTime_proc}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 23, 2012, 2:21 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 23, 2012, 2:21 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     abstract interface
     function getTime_proc(since) result(timeInSec)
         use pm_kind, only: RKD
@@ -149,7 +149,7 @@ end block;
     !>  \final{setIdle_proc}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 23, 2012, 2:21 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 23, 2012, 2:21 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     abstract interface
     subroutine setIdle_proc(seconds)
         use pm_kind, only: RKD
@@ -208,7 +208,7 @@ end block;
     !>  \final{timer_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 2:21 PM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 2:21 PM, National Institute for Fusion Studies, The University of Texas Austin<br>
     type, abstract  :: timer_type
         real(RKD)   :: start    !<  \public The `protected` scalar `real` of kind `double precision` \RKD provided as a convenience for the user to contain the start time of the timer since the processor epoch (a processor-dependent past time) in seconds.<br>
                                 !!          \warning The object of class [timer_type](@ref pm_timer::timer_type) must be initialized with the constructor (e.g., `timer = timer_type()`) to appropriately set the object `start` component to the processor epoch.<br>
@@ -267,7 +267,7 @@ end block;
     !>  \final{timerCPU_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     type, extends(timer_type)       :: timerCPU_type
     contains
         procedure, nopass           :: time => getTimeCPU   !<  \public See [getTime_proc](@ref pm_timer::getTime_proc).
@@ -318,7 +318,7 @@ end block;
     !>  \final{timerDAT_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     type, extends(timer_type)       :: timerDAT_type
     contains
         procedure, nopass           :: time => getTimeDAT   !<  \public See [getTime_proc](@ref pm_timer::getTime_proc).
@@ -372,7 +372,7 @@ end block;
     !>  \final{timerMPI_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
 #if MPI_ENABLED
     type, extends(timer_type)       :: timerMPI_type
     contains
@@ -428,7 +428,7 @@ end block;
     !>  \final{timerOMP_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
 #if OMP_ENABLED
     type, extends(timer_type)       :: timerOMP_type
     contains
@@ -449,7 +449,7 @@ end block;
     !!>  \final{Count_type}
     !!>
     !!>  \author
-    !!>  Amir Shahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !!>  Amir Shahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     !type                            :: SysClockCount_type
     !    integer(IKD)                :: start = 0_IKD    !< The scalar `integer` of kind double precision \IKD containing the processor-dependent starting clock counts of the system.
     !    integer(IKD)                :: clock = 0_IKD    !< The scalar `integer` of kind double precision \IKD containing the total processor clock counts since `start`.
@@ -498,7 +498,7 @@ end block;
     !>  \final{timerSYS_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     type, extends(timer_type)       :: timerSYS_type
        !type(SysClockCount_type)    :: Count    !< An object of type [SysClockCount_type](@ref pm_timer::SysClockCount_type) containing information about the system clock.
     contains
@@ -552,7 +552,7 @@ contains
     !>  \final{timer_typer}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     function timer_typer() result(timer)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: timer_typer
@@ -597,7 +597,7 @@ contains
     !>  \final{timerCPU_typer}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     function timerCPU_typer() result(timer)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: timerCPU_typer
@@ -637,7 +637,7 @@ contains
     !>  \final{timerDAT_typer}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     function timerDAT_typer() result(timer)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: timerDAT_typer
@@ -684,7 +684,7 @@ contains
     !>  \final{timerMPI_typer}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 02:51 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 02:51 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
 #if MPI_ENABLED
     function timerMPI_typer() result(timer)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -747,7 +747,7 @@ contains
     !>  \final{timerOMP_typer}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
 #if OMP_ENABLED
     function timerOMP_typer() result(timer)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -790,7 +790,7 @@ contains
     !>  \final{timerSYS_typer}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 03:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 03:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     function timerSYS_typer() result(timer)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: timerSYS_typer
@@ -853,7 +853,7 @@ contains
     !>  \final{getTime}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     function getTime(since) result(timeInSec)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getTime
@@ -913,7 +913,7 @@ contains
     !>  \final{getTimeCPU}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     function getTimeCPU(since) result(timeInSec)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getTimeCPU
@@ -968,7 +968,7 @@ contains
     !>  \final{getTimeDAT}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     function getTimeDAT(since) result(timeInSec)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getTimeDAT
@@ -1030,7 +1030,7 @@ contains
     !>  \final{getTimeMPI}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
 #if MPI_ENABLED
     function getTimeMPI(since) result(timeInSec)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -1091,7 +1091,7 @@ contains
     !>  \final{getTimeOMP}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
 #if OMP_ENABLED
     function getTimeOMP(since) result(timeInSec)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -1193,7 +1193,7 @@ contains
     !>  \final{getTimeSYS}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     function getTimeSYS(since) result(timeInSec)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getTimeSYS
@@ -1256,7 +1256,7 @@ contains
     !>  \final{getResTimer}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     function getResTimer() result(resolution)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getResTimer
@@ -1311,7 +1311,7 @@ contains
     !>  \final{getResTimerCPU}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     function getResTimerCPU() result(resolution)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getResTimerCPU
@@ -1368,7 +1368,7 @@ contains
     !>  \final{getResTimerDAT}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     pure function getResTimerDAT() result(resolution)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getResTimerDAT
@@ -1418,7 +1418,7 @@ contains
     !>  \final{getResTimerMPI}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
 #if MPI_ENABLED
     function getResTimerMPI() result(resolution)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -1471,7 +1471,7 @@ contains
     !>  \final{getResTimerOMP}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
 #if OMP_ENABLED
     function getResTimerOMP() result(resolution)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -1523,7 +1523,7 @@ contains
     !>  \final{getResTimerSYS}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     function getResTimerSYS() result(resolution)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getResTimerSYS
@@ -1588,7 +1588,7 @@ contains
     !>  \final{setIdle}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     subroutine setIdle(seconds)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setIdle
@@ -1653,7 +1653,7 @@ contains
     !>  \final{setIdleCPU}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     subroutine setIdleCPU(seconds)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setIdleCPU
@@ -1716,7 +1716,7 @@ contains
     !>  \final{setIdleDAT}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     subroutine setIdleDAT(seconds)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setIdleDAT
@@ -1781,7 +1781,7 @@ contains
     !>  \final{setIdleMPI}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
 #if MPI_ENABLED
     subroutine setIdleMPI(seconds)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -1844,7 +1844,7 @@ contains
     !>  \final{setIdleOMP}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
 #if OMP_ENABLED
     subroutine setIdleOMP(seconds)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -1909,7 +1909,7 @@ contains
     !>  \final{setIdleSYS}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     subroutine setIdleSYS(seconds)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setIdleSYS

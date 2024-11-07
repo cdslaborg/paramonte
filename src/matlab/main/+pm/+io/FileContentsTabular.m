@@ -29,26 +29,34 @@ classdef FileContentsTabular < pm.io.FileContents
 
     properties(Access = public)
         %>
-        %>  sep     :   The scalar MATLAB string representing
-        %>              the field separator used in the file.<br>
-        %>              This property is either specified by
-        %>              the user or is inferred from the
-        %>              file to be read.
+        %>  ``sep``
+        %>
+        %>  The scalar MATLAB string representing
+        %>  the field separator used in the file.<br>
+        %>  This property is either specified by
+        %>  the user or is inferred from the
+        %>  file to be read.<br>
         %>
         sep = [];
         %>
-        %>  ncol    :   The scalar MATLAB integer representing
-        %>              the number of columns identified in the file.
+        %>  ``ncol``
+        %>
+        %>  The scalar MATLAB integer representing
+        %>  the number of columns identified in the file.<br>
         %>
         ncol = 0;
         %>
-        %>  nrow    :   The scalar MATLAB integer representing
-        %>              the number of rows identified in the file.
+        %>  ``nrow``
+        %>
+        %>  The scalar MATLAB integer representing
+        %>  the number of rows identified in the file.<br>
         %>
         nrow = 0;
         %>
-        %>  df      :   The scalar MATLAB table containing the
-        %>              contents of the file as a dataframe.
+        %>  ``df``
+        %>
+        %>  The scalar MATLAB table containing the
+        %>  contents of the file as a dataframe.<br>
         %>
         df = [];
     end

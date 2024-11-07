@@ -26,36 +26,46 @@ classdef FileContentsSample < pm.io.FileContentsTabular
 
     properties(Access = public)
         %>
-        %>  ``ndim``    :   The scalar MATLAB integer representing the number of
-        %>                  dimensions of the domain of the objective function sampled.<br>
-        %>                  This integer is also the number of columns in the file that
-        %>                  correspond that contain the sampled states from the domain
-        %>                  of the mathematical objective function.<br>
+        %>  ``ndim``
+        %>
+        %>  The scalar MATLAB integer representing the number of
+        %>  dimensions of the domain of the objective function sampled.<br>
+        %>  This integer is also the number of columns in the file that
+        %>  correspond that contain the sampled states from the domain
+        %>  of the mathematical objective function.<br>
         %>
         ndim = 0;
         %>
-        %>  ``slfc``    :   The scalar MATLAB integer representing the column
-        %>                  index of the dataframe component ``df`` that contains
-        %>                  the natural logarithm of the objective function values
-        %>                  corresponding to the sampled states next to this column,
-        %>                  such that the following relationship holds.<br>
-        %>                  \code{.m}
-        %>                      FileContentsSample.ndim = FileContentsSample.ncol - FileContentsSample.slfc;
-        %>                  \endcode
-        %>                  While this column index can be readily inferred by exploring
-        %>                  the contents of the dataframe component, this column index is also
-        %>                  computed and explicitly offered to conveniently slice the values of
-        %>                  the sampled states and their corresponding log-function values.<br>
+        %>  ``slfc``
+        %>
+        %>  The scalar MATLAB integer representing the column
+        %>  index of the dataframe component ``df`` that contains
+        %>  the natural logarithm of the objective function values
+        %>  corresponding to the sampled states next to this column,
+        %>  such that the following relationship holds.<br>
+        %>
+        %>  \code{.m}
+        %>      FileContentsSample.ndim = FileContentsSample.ncol - FileContentsSample.slfc;
+        %>  \endcode
+        %>
+        %>  While this column index can be readily inferred by exploring
+        %>  the contents of the dataframe component, this column index is also
+        %>  computed and explicitly offered to conveniently slice the values of
+        %>  the sampled states and their corresponding log-function values.<br>
         %>
         slfc = 0;
         %>
-        %>  ``stats``   :   The scalar MATLAB object containing the set of
-        %>                  computed properties of the contents of the file.<br>
+        %>  ``stats``
+        %>
+        %>  The scalar MATLAB object containing the set of
+        %>  computed properties of the contents of the file.<br>
         %>
         stats = [];
         %>
-        %>  ``vis``     :   The scalar MATLAB ``struct`` containing the set of
-        %>                  predefined visualizations for the output data.<br>
+        %>  ``vis``
+        %>
+        %>  The scalar MATLAB ``struct`` containing the set of
+        %>  predefined visualizations for the output data.<br>
         %>
         vis = [];
     end
@@ -64,10 +74,16 @@ classdef FileContentsSample < pm.io.FileContentsTabular
 
     properties(Hidden)
         %>
-        %>  ``slfcname``    :   The scalar MATLAB string representing the column
-        %>                      name of the dataframe component ``df`` that contains
-        %>                      the natural logarithm of the objective function values
-        %>                      corresponding to the sampled states next to this column.<br>
+        %>  ``slfcname``
+        %>
+        %>  The ``Hidden`` scalar MATLAB string representing
+        %>  the column name of the dataframe component ``df`` that
+        %>  contains the natural logarithm of the objective function
+        %>  values corresponding to the sampled states next to this column.<br>
+        %>
+        %>  \warning
+        %>  This is an internal ``Hidden`` class attribute
+        %>  that is inaccessible to the end users.<br>
         %>
         slfcname = "sampleLogFunc";
     end

@@ -48,7 +48,7 @@ classdef PlotHeatmap < pm.vis.Plot
         %>  ``self``                :   The output object of class [pm.vis.PlotHeatmap](@ref PlotHeatmap).<br>
         %>
         %>  \return
-        %>  An object of [pm.vis.PlotHeatmap](@ref PlotHeatmap) class.
+        %>  An object of [pm.vis.PlotHeatmap](@ref PlotHeatmap) class.<br>
         %>
         %>  \interface{PlotHeatmap}
         %>  \code{.m}

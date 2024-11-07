@@ -343,7 +343,7 @@ module pm_dateTime
     !>  \final{ORIGIN}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     integer(IK) , parameter :: ORIGIN(8) = [integer(IK) :: 1, 1, 1, 0, 0, 0, 0, 0]
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: ORIGIN
@@ -378,7 +378,7 @@ module pm_dateTime
     !>  \final{WEEKDAY_NAME}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     character(9,SK), parameter :: WEEKDAY_NAME(0:6) =   [ "Sunday   " &
                                                         , "Monday   " &
                                                         , "Tuesday  " &
@@ -417,7 +417,7 @@ module pm_dateTime
     !>  \final{WEEKDAY_NAME_ISO}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     character(9,SK), parameter :: WEEKDAY_NAME_ISO(1:7) =   [ "Monday   " &
                                                             , "Tuesday  " &
                                                             , "Wednesday" &
@@ -451,7 +451,7 @@ module pm_dateTime
     !>  \final{MONTH_NAME}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     character(*, SK), parameter :: MONTH_NAME(12) = [ "January  " &
                                                     , "February " &
                                                     , "March    " &
@@ -489,7 +489,7 @@ module pm_dateTime
     !>  \final{DAYS_OF_MONTH}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     integer(IK) , parameter :: DAYS_OF_MONTH(12) = [integer(IK) :: 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: DAYS_OF_MONTH
@@ -519,7 +519,7 @@ module pm_dateTime
     !>  \final{DAYS_OF_MONTH_LEAP}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     integer(IK) , parameter :: DAYS_OF_MONTH_LEAP(12) = [integer(IK) :: 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: DAYS_OF_MONTH_LEAP
@@ -536,7 +536,7 @@ module pm_dateTime
     !>  \final{SECONDS_PER_DAY}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     integer(IK) , parameter :: SECONDS_PER_DAY = 86400_IK
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: SECONDS_PER_DAY
@@ -553,7 +553,7 @@ module pm_dateTime
     !>  \final{MINUTES_PER_DAY}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     integer(IK) , parameter :: MINUTES_PER_DAY = 1440_IK
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: MINUTES_PER_DAY
@@ -582,7 +582,7 @@ module pm_dateTime
     !>  \final{MEAN_DAYS_PER_MONTH}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     real(RK)    , parameter :: MEAN_DAYS_PER_MONTH = 0.25_RK * (0.25_RK * sum(DAYS_OF_MONTH) + sum(DAYS_OF_MONTH_LEAP) / 12._RK) ! = 30.4375_RK
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: MEAN_DAYS_PER_MONTH
@@ -611,7 +611,7 @@ module pm_dateTime
     !>  \final{MEAN_WEEKS_PER_MONTH}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     real(RK)    , parameter :: MEAN_WEEKS_PER_MONTH = MEAN_DAYS_PER_MONTH / 7._RK ! = 4.34821428571428571428571428571429_RK
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: MEAN_WEEKS_PER_MONTH
@@ -640,7 +640,7 @@ module pm_dateTime
     !>  \final{MEAN_HOURS_PER_MONTH}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     real(RK)    , parameter :: MEAN_HOURS_PER_MONTH = 24_IK * MEAN_DAYS_PER_MONTH ! = 730.5_RK
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: MEAN_HOURS_PER_MONTH
@@ -669,7 +669,7 @@ module pm_dateTime
     !>  \final{MEAN_MINUTES_PER_MONTH}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     real(RK)    , parameter :: MEAN_MINUTES_PER_MONTH = 60_IK * MEAN_HOURS_PER_MONTH ! = 43830._RK
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: MEAN_MINUTES_PER_MONTH
@@ -698,7 +698,7 @@ module pm_dateTime
     !>  \final{MEAN_SECONDS_PER_MONTH}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     real(RK)    , parameter :: MEAN_SECONDS_PER_MONTH = 60_IK * MEAN_MINUTES_PER_MONTH ! = 2629800._RK
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: MEAN_SECONDS_PER_MONTH
@@ -727,7 +727,7 @@ module pm_dateTime
     !>  \final{MEAN_DAYS_PER_YEAR}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     real(RK)    , parameter :: MEAN_DAYS_PER_YEAR = 0.25_RK * (3 * 365 + 366) ! = 365.25_RK
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: MEAN_DAYS_PER_YEAR
@@ -756,7 +756,7 @@ module pm_dateTime
     !>  \final{MEAN_WEEKS_PER_YEAR}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     real(RK)    , parameter :: MEAN_WEEKS_PER_YEAR = MEAN_DAYS_PER_YEAR / 7._RK ! = 52.1785714285714285714285714285714_RK
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: MEAN_WEEKS_PER_YEAR
@@ -785,7 +785,7 @@ module pm_dateTime
     !>  \final{MEAN_HOURS_PER_YEAR}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     real(RK)    , parameter :: MEAN_HOURS_PER_YEAR = 24_IK * MEAN_DAYS_PER_YEAR ! = 8766._RK
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: MEAN_HOURS_PER_YEAR
@@ -814,7 +814,7 @@ module pm_dateTime
     !>  \final{MEAN_MINUTES_PER_YEAR}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     real(RK)    , parameter :: MEAN_MINUTES_PER_YEAR = 60_IK * MEAN_HOURS_PER_YEAR ! = 525960._RK
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: MEAN_MINUTES_PER_YEAR
@@ -843,7 +843,7 @@ module pm_dateTime
     !>  \final{MEAN_SECONDS_PER_YEAR}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     real(RK)    , parameter :: MEAN_SECONDS_PER_YEAR = 60_IK * MEAN_MINUTES_PER_YEAR ! = 31557600._RK
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: MEAN_SECONDS_PER_YEAR
@@ -891,7 +891,7 @@ module pm_dateTime
     !>  \final{dateTimeInt_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     type                    :: dateTimeInt_type
        !integer(IK), private:: values(8)    = 0_IK  !   \private    The vector `integer` of default kind \IK of length `8` containing `[year, month, day, zone, hour, minute, millisecond]`.
         integer(IK)         :: year         = 1_IK  !<  \public     The scalar `integer` of default kind \IK containing the year of the Gregorian calendar.
@@ -953,7 +953,7 @@ module pm_dateTime
     !>  \final{dateTimeStr_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     type                            :: dateTimeStr_type
        !character(8, SK), private   :: date         = "00000000"    !<  \private    The scalar `character` of default kind \SK of length `8`    containing the Gregorian calendar date in the form `yyyymmdd`.
        !character(10,SK), private   :: time         = "0000000000"  !<  \private    The scalar `character` of default kind \SK of length `10`   containing the Gregorian calendar date in the form `hhmmss.sss`.
@@ -1014,7 +1014,7 @@ module pm_dateTime
     ! >  \final{DateTime_type}
     ! >
     ! >  \author
-    ! >  Amir Shahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    ! >  Amir Shahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     !type                        :: DateTime_type
     !    type(dateTimeInt_type)  :: Int  !<  \public The scalar object of type [dateTimeInt_type](@ref pm_dateTime::dateTimeInt_type) containing the Gregorian calendar date and time in integer format.
     !    type(dateTimeStr_type)  :: Str  !<  \public The scalar object of type [dateTimeStr_type](@ref pm_dateTime::dateTimeStr_type) containing the Gregorian calendar date and time in string format.
@@ -1648,7 +1648,7 @@ module pm_dateTime
     !>  \final{getDateTimeShifted}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 3:59 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 3:59 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     interface getDateTimeShifted
 
     impure module function getDateTimeShiftedC(amount) result(dateTimeShifted)
@@ -1807,7 +1807,7 @@ module pm_dateTime
     !>  \final{getDateTimeDiff}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 3:59 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 3:59 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     interface getDateTimeDiff
 
     PURE module function getDateTimeDiffValues(Values1, Values2) result(dateTimeDiff)
@@ -1913,7 +1913,7 @@ module pm_dateTime
     !>  \final{getDateTimeUTC}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 3:59 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 3:59 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     interface getDateTimeUTC
 
     impure module function getDateTimeUTCC() result(DateTimeUTC)
@@ -2093,7 +2093,7 @@ module pm_dateTime
     !>  \final{getDateTimeNewZone}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 3:59 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 3:59 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     interface getDateTimeNewZone
 
     impure module function getDateTimeNewZoneC(newzone) result(DateTimeNewZone)
@@ -2363,7 +2363,7 @@ module pm_dateTime
     !>  \final{getDateTime}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     interface getDateTime
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2569,7 +2569,7 @@ module pm_dateTime
     !>  \final{getWeekDate}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     interface getWeekDate
 
     impure module function getWeekDateCurrent() result(WeekDate)
@@ -2665,7 +2665,7 @@ module pm_dateTime
     !>  \final{getWeekYear}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     interface getWeekYear
 
     impure module function getWeekYearCurrent() result(weekYear)
@@ -2791,7 +2791,7 @@ module pm_dateTime
     !>  \final{isValidDateTime}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     interface isValidDateTime
 
     PURE module function isValidDateTimeV(values) result(isValid)
@@ -2932,7 +2932,7 @@ module pm_dateTime
     !>  \final{isLastDayInMonth}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     interface isLastDayInMonth
 
     module function isLastDayInMonthC() result(lastDayInMonth)
@@ -3024,7 +3024,7 @@ module pm_dateTime
     !>  \final{getDateAfter}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     interface getDateAfter
 
     module function getDateAfterC() result(dateAfter)
@@ -3116,7 +3116,7 @@ module pm_dateTime
     !>  \final{getDateBefore}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     interface getDateBefore
 
     module function getDateBeforeC() result(dateBefore)
@@ -3219,7 +3219,7 @@ module pm_dateTime
     !>  \final{getOrdinalDay}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     interface getOrdinalDay
 
     impure module function getOrdinalDayCurrent() result(ordinalDay)
@@ -3331,7 +3331,7 @@ module pm_dateTime
     !>  \final{getWeekNumber}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     interface getWeekNumber
 
     impure module function getWeekNumberCurrent() result(weekNumber)
@@ -3432,7 +3432,7 @@ module pm_dateTime
     !>  \final{getWeekDay}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     interface getWeekDay
 
     impure module function getWeekDayCurrent() result(weekday)
@@ -3539,7 +3539,7 @@ module pm_dateTime
     !>  \final{getWeekDayISO}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     interface getWeekDayISO
 
     impure module function getWeekDayISOCurrent() result(weekday)
@@ -3624,7 +3624,7 @@ module pm_dateTime
     !>  \final{getCountDays}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     interface getCountDays
 
     PURE elemental module function getCountDaysInYear(year) result(countDays)
@@ -3705,7 +3705,7 @@ module pm_dateTime
     !>  \final{getCountWeeks}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     interface getCountWeeks
 
     PURE elemental module function getCountWeeksInYear(year) result(countWeeks)
@@ -3779,7 +3779,7 @@ module pm_dateTime
     !>  \final{getCountLeapYears}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     interface getCountLeapYears
 
     PURE elemental module function getCountLeapYears(until) result(countLeapYear)
@@ -4088,7 +4088,7 @@ end block;
     !>  \final{dateTimeInt_typer}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     function dateTimeInt_typer() result(dateTimeInt)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: dateTimeInt_typer
@@ -4140,7 +4140,7 @@ end block;
     !>  \final{getDateTimeIntValues}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     function getDateTimeIntValues(self) result(values)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDateTimeIntValues
@@ -4189,7 +4189,7 @@ end block;
     !>  \final{dateTimeStr_typer}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     function dateTimeStr_typer() result(dateTimeStr)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: dateTimeStr_typer

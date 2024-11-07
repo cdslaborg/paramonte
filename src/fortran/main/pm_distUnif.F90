@@ -2833,7 +2833,7 @@ module pm_distUnif
     !>  \final{rngf_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(rngu_type) :: rngf_type
     end type
 
@@ -2882,7 +2882,7 @@ module pm_distUnif
     !>  \final{rngf}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(rngf_type) :: rngf! = rngf_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: rngf
@@ -2925,7 +2925,7 @@ module pm_distUnif
     !>  \final{rngf_typer}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface rngf_typer
     module function rngf_typer(seed, imageID) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -3589,7 +3589,7 @@ module pm_distUnif
     !>  \final{splitmix64_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(rngu_type) :: splitmix64_type
         !>  \brief
         !>  The scalar of type `integer` of kind \IK64, containing the most recently generated random 64-bit stream.
@@ -3678,7 +3678,7 @@ module pm_distUnif
     !>  \final{splitmix64_typer}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface splitmix64_typer
     impure elemental module function splitmix64_typer(seed, imageID) result(rng)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -3829,7 +3829,7 @@ module pm_distUnif
     !>  \final{getUnifRandStateSize}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getUnifRandStateSize
     impure module function getUnifRandStateSizeDef() result(unifRandStateSize)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -3898,7 +3898,7 @@ module pm_distUnif
     !>  \final{getUnifRandState}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getUnifRandState
     impure module function getUnifRandStateDef(seed, imageID) result(unifRandState)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -3989,7 +3989,7 @@ module pm_distUnif
     !>  \final{setUnifRandState}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface setUnifRandState
     impure module subroutine setUnifRandStateDef(seed, imageID)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)

@@ -51,10 +51,10 @@ classdef Cor < pm.matlab.Handle
     methods(Access = public)
 
         %>  \brief
-        %>  Return an object of class ``Cor``.<br>
+        %>  Return an object of class [pm.stats.Cor](@ref Cor).<br>
         %>
         %>  \details
-        %>  This is the constructor of the ``Cor`` class.<br>
+        %>  This is the constructor of the [pm.stats.Cor](@ref Cor) class.<br>
         %>
         %>  \param[in]  df      :   The input MATLAB matrix or table of rank ``2``
         %>                          containing the data as ``ncol`` columns of ``nrow``
@@ -107,7 +107,7 @@ classdef Cor < pm.matlab.Handle
         %>  Return the correlation matrix of the input data.<br>
         %>
         %>  \details
-        %>  This is a dynamic method of the ``Cor`` class.
+        %>  This is a dynamic method of the ``Cor`` class.<br>
         %>  This method automatically stores any input information
         %>  in the corresponding components of the parent object.<br>
         %>  However, any components of the parent object

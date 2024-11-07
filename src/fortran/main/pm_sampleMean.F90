@@ -222,7 +222,7 @@ module pm_sampleMean
     !>  \final
     !>
     !>  \author
-    !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     ! ALL D1
 
@@ -2001,7 +2001,7 @@ module pm_sampleMean
     !>  \final
     !>
     !>  \author
-    !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     ! ALL XY
 
@@ -4187,7 +4187,7 @@ module pm_sampleMean
     !>  \final{getMeanMerged}
     !>
     !>  \author
-    !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     ! D0
 
@@ -4541,7 +4541,7 @@ module pm_sampleMean
     !>  \final{setMeanMerged}
     !>
     !>  \author
-    !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
     ! New_D0
 

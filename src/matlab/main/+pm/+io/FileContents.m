@@ -27,19 +27,53 @@ classdef FileContents < pm.matlab.Handle
 
     properties(Access = public)
         %>
-        %>  silent  :   The scalar MATLAB logical (Boolean) indicator which is ``false`` by default.<br>
-        %>              If it is set to ``true``, it will silence all output postprocessing messages.<br>
+        %>  ``silent``
+        %>
+        %>  The scalar MATLAB logical (Boolean) indicator which is ``false`` by default.<br>
+        %>  If it is set to ``true``, it will silence all output postprocessing messages.<br>
         %>
         silent = false;
         %>
-        %>  file    :   The scalar MATLAB string containing the path to the file whose contents are read.
+        %>  ``file``
+        %>
+        %>  The scalar MATLAB string containing the path to the file whose contents are read.<br>
         %>
         file = "";
     end
 
     properties(Hidden)
+        %>
+        %>  ``weblinks``
+        %>
+        %>  The scalar ``Hidden`` MATLAB ``struct`` returned by [pm.lib.weblinks](@ref weblinks)
+        %>  used internally for displaying the ParaMonte library web links.<br>
+        %>
+        %>  \warning
+        %>  This is an internal ``Hidden`` class attribute
+        %>  that is inaccessible to the end users.<br>
+        %>
         weblinks;
+        %>
+        %>  ``spinner``
+        %>
+        %>  The scalar ``Hidden`` MATLAB object of class [pm.timing.Spinner](@ref Spinner)
+        %>  used internally for displaying the progress in file contents processing.<br>
+        %>
+        %>  \warning
+        %>  This is an internal ``Hidden`` class attribute
+        %>  that is inaccessible to the end users.<br>
+        %>
         spinner;
+        %>
+        %>  ``timer``
+        %>
+        %>  The scalar ``Hidden`` MATLAB object of class [pm.timing.Timer](@ref Timer)
+        %>  used internally for displaying the timing of the progress in file contents processing.<br>
+        %>
+        %>  \warning
+        %>  This is an internal ``Hidden`` class attribute
+        %>  that is inaccessible to the end users.<br>
+        %>
         timer;
     end
 

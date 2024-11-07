@@ -17,13 +17,16 @@
 !>  \brief
 !>  This module contains procedures and generic interfaces for the ParaMonte library sampler routines.
 !>
+!>  \details
+!>  See the documentation of [getErrSampling](@ref pm_sampling::getErrSampling) for example usage.<br>
+!>
 !>  \test
 !>  [test_pm_sampling](@ref test_pm_sampling)<br>
 !>
 !>  \final
 !>
 !>  \author
-!>  \AmirShahmoradi, Monday 00:01 AM, January 1, 2018, Institute for Computational Engineering and Sciences, University of Texas Austin
+!>  \AmirShahmoradi, Monday 00:01 AM, January 1, 2018, Institute for Computational Engineering and Sciences, University of Texas Austin<br>
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -46,6 +49,7 @@ module pm_sampling
     !>  the **optional** simulation properties of the ParaMonte library explorers and samplers.<br>
     !>
     !>  \details
+    !>  See the documentation of [getErrSampling](@ref pm_sampling::getErrSampling) for example usage.<br>
     !>  Objects of this derived type are not meant to be used directly by the end users.<br>
     !>  Instead use one of the appropriate derived types:<br>
     !>  <ol>
@@ -72,7 +76,7 @@ module pm_sampling
     !>  \final{sampler_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type                                        :: sampler_type
         character(:,SKG)        , allocatable   :: description                          !<  \specdram{description}
         character(:,SKG)        , allocatable   :: domain                               !<  \specdram{domain}
@@ -172,6 +176,7 @@ module pm_sampling
     !>  the **optional** simulation properties of the ParaMonte library MCMC explorers and samplers.<br>
     !>
     !>  \details
+    !>  See the documentation of [getErrSampling](@ref pm_sampling::getErrSampling) for example usage.<br>
     !>  Objects of this derived type are not meant to be used directly by the end users.<br>
     !>  Instead use one of the appropriate derived types:<br>
     !>  <ol>
@@ -200,7 +205,7 @@ module pm_sampling
     !>  \final{paramcmc_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(sampler_type)                 :: paramcmc_type
         integer(IK)             , allocatable   :: outputChainSize                      !<  \specdram{outputchainsize}
         integer(IK)             , allocatable   :: outputSampleRefinementCount          !<  \specdram{outputsamplerefinementcount}
@@ -221,6 +226,7 @@ module pm_sampling
     !>  properties of the ParaMonte library Delayed-Rejection Adaptive Metropolis (DRAM) MCMC explorers and samplers.<br>
     !>
     !>  \note
+    !>  See the documentation of [getErrSampling](@ref pm_sampling::getErrSampling) for example usage.<br>
     !>  For more information on any of the components of this derived type,
     !>  see the output `_report.txt` files from the corresponding sampler simulations.<br>
     !>  Alternatively, see the ParaMonte library cross-language sampler documentation
@@ -240,7 +246,7 @@ module pm_sampling
     !>  \final{paradram_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(paramcmc_type)                :: paradram_type
         real(RKH)               , allocatable   :: proposalAdaptationBurnin             !<  \specdram{proposaladaptationburnin}
         integer(IK)             , allocatable   :: proposalAdaptationCount              !<  \specdram{proposaladaptationcount}
@@ -255,6 +261,7 @@ module pm_sampling
     !>  properties of the ParaMonte library DRAM-enhanced MCMC explorers and samplers.<br>
     !>
     !>  \note
+    !>  See the documentation of [getErrSampling](@ref pm_sampling::getErrSampling) for example usage.<br>
     !>  For more information on any of the components of this derived type,
     !>  see the output `_report.txt` files from the corresponding sampler simulations.<br>
     !>  Alternatively, see the ParaMonte library cross-language sampler documentation
@@ -274,7 +281,7 @@ module pm_sampling
     !>  \final{paradise_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(paradram_type)                :: paradise_type
     end type
 
@@ -283,6 +290,7 @@ module pm_sampling
     !>  properties of the ParaMonte library Nested explorers and samplers.<br>
     !>
     !>  \note
+    !>  See the documentation of [getErrSampling](@ref pm_sampling::getErrSampling) for example usage.<br>
     !>  For more information on any of the components of this derived type,
     !>  see the output `_report.txt` files from the corresponding sampler simulations.<br>
     !>  Alternatively, see the ParaMonte library cross-language sampler documentation
@@ -303,7 +311,7 @@ module pm_sampling
     !>  \final{paradise_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(sampler_type)                 :: paranest_type
         integer(IK)             , allocatable   :: domainPartitionAdaptationCount
         integer(IK)             , allocatable   :: domainPartitionAdaptationPeriod
@@ -662,7 +670,7 @@ module pm_sampling
     !>  \final{getErrSampling}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     interface getErrSampling
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -819,6 +827,7 @@ contains
     !>  sampling of the specified input mathematical objective function, otherwise, return `0`.
     !>
     !>  \details
+    !>  See the documentation of [getErrSampling](@ref pm_sampling::getErrSampling) for example usage in Fortran programming language.<br>
     !>  This interface group is the entry point to all **C-style interfaces** to the ParaDRAM samplers of mathematical density functions.<br>
     !>  Although the procedures of this generic interface return a single scalar of type `int32_t`, the procedures generate
     !>  massive amounts of information about each simulation which are stored in appropriate external hard drive files.<br>
@@ -915,7 +924,7 @@ contains
     !>  \final{runParaDRAM}
     !>
     !>  \author
-    !>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin
+    !>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
     function runParaDRAML(getLogFunc, ndim, input) result(stat) bind(C, name = "runParaDRAML")
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: runParaDRAML

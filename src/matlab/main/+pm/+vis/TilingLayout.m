@@ -218,10 +218,6 @@ classdef TilingLayout < pm.matlab.Handle
         %>  For example, change the tiling or colorbar positions or the tile counts through the relevant object components,
         %>  then use this method to renormalize all positions (to range ``[0, 1]``) and update the individual tile positions.<br>
         %>
-        %>  \warning
-        %>  This method causes side-effects by manipulating
-        %>  the existing attributes of the object.<br>
-        %>
         %>  \param[in]  self        :   The **implicitly-passed** input argument representing the parent object of the method.<br>
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the parent object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
@@ -236,6 +232,10 @@ classdef TilingLayout < pm.matlab.Handle
         %>      g.update(varargin);
         %>
         %>  \endcode
+        %>
+        %>  \warning
+        %>  This method causes side-effects by manipulating
+        %>  the existing attributes of the object.<br>
         %>
         %>  \example{update}
         %>

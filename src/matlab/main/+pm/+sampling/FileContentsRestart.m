@@ -29,24 +29,32 @@ classdef FileContentsRestart < pm.io.FileContents
 
     properties(Access = public)
         %>
-        %>  ``count``           :   The scalar MATLAB integer containing the number of
-        %>                          restart entries in the specified restart file.<br>
+        %>  ``count``
+        %>
+        %>  The scalar MATLAB integer containing the number of
+        %>  restart entries in the specified restart file.<br>
         %>
         count = [];
         %>
-        %>  ``ndim``            :   The scalar MATLAB integer containing the number of
-        %>                          dimensions of the domain of the objective function.<br>
+        %>  ``ndim``
+        %>
+        %>  The scalar MATLAB integer containing the number of
+        %>  dimensions of the domain of the objective function.<br>
         %>
         ndim = [];
         %>
-        %>  ``domainAxisName``  :   The vector of MATLAB strings of size ``ndim`` containing
-        %>                          the domain axes names of the density function explored.<br>
+        %>  ``domainAxisName``
+        %>
+        %>  The vector of MATLAB strings of size ``ndim`` containing
+        %>  the domain axes names of the density function explored.<br>
         %>
         domainAxisName = [];
         %>
-        %>  ``contents``        :   The scalar MATLAB string containing the entire
-        %>                          contents of the restart file with all Carriage Return
-        %>                          characters removed (relevant only to Windows OS).<br>
+        %>  ``contents``
+        %>
+        %>  The scalar MATLAB string containing the entire
+        %>  contents of the restart file with all Carriage Return
+        %>  characters removed (relevant only to Windows OS).<br>
         %>
         contents = [];
     end
@@ -54,9 +62,50 @@ classdef FileContentsRestart < pm.io.FileContents
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     properties(Hidden)
+        %>
+        %>  ``method``
+        %>
+        %>  The ``Hidden`` scalar MATLAB string component
+        %>  containing the sampling method name.<br>
+        %>
+        %>  \warning
+        %>  This is an internal class attribute that
+        %>  is inaccessible to the end users.<br>
+        %>
         method = '';
+        %>
+        %>  ``lineList``
+        %>
+        %>  The ``Hidden`` scalar MATLAB string array
+        %>  containing the list of all restart file lines.<br>
+        %>
+        %>  \warning
+        %>  This is an internal class attribute that
+        %>  is inaccessible to the end users.<br>
+        %>
         lineList = [];
+        %>
+        %>  ``lineListLen``
+        %>
+        %>  The ``Hidden`` scalar MATLAB whole-number containing
+        %>  the length of the class component ``lineList``.<br>
+        %>
+        %>  \warning
+        %>  This is an internal class attribute that
+        %>  is inaccessible to the end users.<br>
+        %>
         lineListLen = [];
+        %>
+        %>  ``ilast``
+        %>
+        %>  The ``Hidden`` scalar MATLAB whole-number component
+        %>  containing the number of the lines parsed up a given
+        %>  point in the internals of the class methods.<br>
+        %>
+        %>  \warning
+        %>  This is an internal class attribute that
+        %>  is inaccessible to the end users.<br>
+        %>
         ilast = 0; % index that is always set to the last line number read.
     end
 

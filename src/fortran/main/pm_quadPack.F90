@@ -134,7 +134,7 @@
 !>  \final
 !>
 !>  \author
-!>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+!>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -641,7 +641,7 @@ module pm_quadPack
     !>  \final{GK15_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: GK15_type
     end type
 
@@ -670,7 +670,7 @@ module pm_quadPack
     !>  \final{GK15}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(GK15_type) , parameter :: GK15 = GK15_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: GK15
@@ -694,7 +694,7 @@ module pm_quadPack
     !>  \final{nodeG7}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real(RKB)   , parameter :: nodeG7(4) = &
     [ 0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e+00_RKB &
     , 4.0584515137739716690660641207696146334738201409937012638704325179466381322612565532831268972774658776528675866604802e-01_RKB &
@@ -722,7 +722,7 @@ module pm_quadPack
     !>  \final{weightG7}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real(RKB)   , parameter :: weightG7(4) = &
     [ 4.1795918367346938775510204081632653061224489795918367346938775510204081632653061224489795918367346938775510204081633e-01_RKB &
     , 3.8183005050511894495036977548897513387836508353386273475108345103070554643412970834868465934404480145031467176458536e-01_RKB &
@@ -750,7 +750,7 @@ module pm_quadPack
     !>  \final{nodeK15}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real(RKB)   , parameter :: nodeK15(8) = &
     [ 0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e+00_RKB &
     , 2.0778495500789846760068940377324491347978440714517064971384573461986693844943520226910343227183698530560857645062738e-01_RKB &
@@ -782,7 +782,7 @@ module pm_quadPack
     !>  \final{weightK15}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real(RKB)   , parameter :: weightK15(8) = &
     [ 2.0948214108472782801299917489171426369776208022370431671299800656137515132325648616816908211675949102392971459688215e-01_RKB &
     , 2.0443294007529889241416199923464908471651760418071835742447095312045467698546598879348374292009347554167803659293064e-01_RKB &
@@ -836,7 +836,7 @@ module pm_quadPack
     !>  \final{GK21_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: GK21_type
     end type
 
@@ -866,7 +866,7 @@ module pm_quadPack
     !>  \final{GK21}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(GK21_type) , parameter :: GK21 = GK21_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: GK21
@@ -890,7 +890,7 @@ module pm_quadPack
     !>  \final{nodeG10}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real(RKB)   , parameter :: nodeG10(5) = &
     [ 1.4887433898163121088482600112971998461756485942069169570798925351590361735566852137117762979946369123003116080525534e-01_RKB &
     , 4.3339539412924719079926594316578416220007183765624649650270151314376698907770350122510275795011772122368293504099894e-01_RKB &
@@ -919,7 +919,7 @@ module pm_quadPack
     !>  \final{weightG10}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real(RKB)   , parameter :: weightG10(5) = &
     [ 2.9552422471475287017389299465133832942104671702685360135430802975599593821715232927035659579375421672271716440125256e-01_RKB &
     , 2.6926671930999635509122692156946935285975993846088379580056327624215343231917927676422663670925276075559581145036870e-01_RKB &
@@ -948,7 +948,7 @@ module pm_quadPack
     !>  \final{nodeK21}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real(RKB)   , parameter :: nodeK21(11) = &
     [ 0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e+00_RKB &
     , 1.4887433898163121088482600112971998461756485942069169570798925351590361735566852137117762979946369123003116080525534e-01_RKB &
@@ -983,7 +983,7 @@ module pm_quadPack
     !>  \final{weightK21}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real(RKB)   , parameter :: weightK21(11) = &
     [ 1.4944555400291690566493646838982120374523631668747280383560851873698964478511841925721030705689540264726493367634340e-01_RKB &
     , 1.4773910490133849137484151597206804552373162548520660451819195439885993016735696405732703959182882254268727823258502e-01_RKB &
@@ -1040,7 +1040,7 @@ module pm_quadPack
     !>  \final{GK31_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: GK31_type
     end type
 
@@ -1070,7 +1070,7 @@ module pm_quadPack
     !>  \final{GK31}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(GK31_type) , parameter :: GK31 = GK31_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: GK31
@@ -1094,7 +1094,7 @@ module pm_quadPack
     !>  \final{nodeG15}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real(RKB)   , parameter :: nodeG15(8) = &
     [ 0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e+00_RKB &
     , 2.0119409399743452230062830339459620781283645446263767961594972460994823900302018760183625806752105908967902257386509e-01_RKB &
@@ -1126,7 +1126,7 @@ module pm_quadPack
     !>  \final{weightG15}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real(RKB)   , parameter :: weightG15(8) = &
     [ 2.0257824192556127288062019996751931483866215800947735679670411605143539875474607409339344071278803213535148267082999e-01_RKB &
     , 1.9843148532711157645611832644383932481869255995754199348473792792912479753343426813331499916481782320766020854889310e-01_RKB &
@@ -1158,7 +1158,7 @@ module pm_quadPack
     !>  \final{nodeK31}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real(RKB)   , parameter :: nodeK31(16) = &
     [ 0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e+00_RKB &
     , 1.0114206691871749902707423144739233878745105740164180495800189504151097862454083050931321451540380998341273193681967e-01_RKB &
@@ -1198,7 +1198,7 @@ module pm_quadPack
     !>  \final{weightK31}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real(RKB)   , parameter :: weightK31(16) = &
     [ 1.0133000701479154901737479276749254677092627259659629246734858372174107615774696665932418050683956749891773195816338e-01_RKB &
     , 1.0076984552387559504494666261756972191634838013536373069278929029488122760822761077475060185965408326901925180106227e-01_RKB &
@@ -1260,7 +1260,7 @@ module pm_quadPack
     !>  \final{GK41_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: GK41_type
     end type
 
@@ -1290,7 +1290,7 @@ module pm_quadPack
     !>  \final{GK41}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(GK41_type) , parameter :: GK41 = GK41_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: GK41
@@ -1314,7 +1314,7 @@ module pm_quadPack
     !>  \final{nodeG20}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real(RKB)   , parameter :: nodeG20(10) = &
     [ 7.6526521133497333754640409398838211004796266813497500804795244384256342048336978241545114181556215606998505646364133e-02_RKB &
     , 2.2778585114164507808049619536857462474308893768292747231463573920717134186355582779495212519096870803177373131560430e-01_RKB &
@@ -1348,7 +1348,7 @@ module pm_quadPack
     !>  \final{weightG20}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real(RKB)   , parameter :: weightG20(10) = &
     [ 1.5275338713072585069808433195509759349194864511237859727470104981759745316273778153557248783650390593544001842813788e-01_RKB &
     , 1.4917298647260374678782873700196943669267990408136831649621121780984442259558678069396132603521048105170913854567338e-01_RKB &
@@ -1382,7 +1382,7 @@ module pm_quadPack
     !>  \final{nodeK41}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real(RKB)   , parameter :: nodeK41(21) = &
     [ 0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e+00_RKB &
     , 7.6526521133497333754640409398838211004796266813497500804795244384256342048336978241545114181556215606998505646364133e-02_RKB &
@@ -1427,7 +1427,7 @@ module pm_quadPack
     !>  \final{weightK41}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real(RKB)   , parameter :: weightK41(21) = &
     [ 7.6600711917999656445049901530101740827932500628670118055485349620314721456712029449597396569857880493210849110825276e-02_RKB &
     , 7.6377867672080736705502835038061001800801036764945996714946431116936745542061941050008345047482501253320401746334511e-02_RKB &
@@ -1494,7 +1494,7 @@ module pm_quadPack
     !>  \final{GK51_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: GK51_type
     end type
 
@@ -1524,7 +1524,7 @@ module pm_quadPack
     !>  \final{GK51}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(GK51_type) , parameter :: GK51 = GK51_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: GK51
@@ -1548,7 +1548,7 @@ module pm_quadPack
     !>  \final{nodeG25}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real(RKB)   , parameter :: nodeG25(13) = &
     [ 0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e+00_RKB &
     , 1.2286469261071039638735981880803680553220534604978373842389353789270883496885841582643884994633105537597765980412320e-01_RKB &
@@ -1585,7 +1585,7 @@ module pm_quadPack
     !>  \final{weightG25}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real(RKB)   , parameter :: weightG25(13) = &
     [ 1.2317605372671545120390287307905014243823362751815166539135219731691200794926142128460112517504958377310054583945994e-01_RKB &
     , 1.2224244299031004168895951894585150583505924756305904090758008223203896721918010243033540891078906637115620156845304e-01_RKB &
@@ -1622,7 +1622,7 @@ module pm_quadPack
     !>  \final{nodeK51}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real(RKB)   , parameter :: nodeK51(26) = &
     [ 0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e+00_RKB &
     , 6.1544483005685078886546392366796631281724348039823545274305431751687279361558658545141048781022691067898008423227288e-02_RKB &
@@ -1672,7 +1672,7 @@ module pm_quadPack
     !>  \final{weightK51}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real(RKB)   , parameter :: weightK51(26) = &
     [ 6.1580818067832935078759824240064553190436936903140808056908996403358367244202623293256774502185186717703954810463664e-02_RKB &
     , 6.1471189871425316661544131965264177586537962876885022711111683500151700796198726558483367566537422877227096643444043e-02_RKB &
@@ -1744,7 +1744,7 @@ module pm_quadPack
     !>  \final{GK61_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: GK61_type
     end type
 
@@ -1774,7 +1774,7 @@ module pm_quadPack
     !>  \final{GK61}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(GK61_type) , parameter :: GK61 = GK61_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: GK61
@@ -1798,7 +1798,7 @@ module pm_quadPack
     !>  \final{nodeG30}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real(RKB)   , parameter :: nodeG30(15) = &
     [ 5.1471842555317695833025213166722573749141453666569564255160843987964755210427109055870090707285485841217089963590678e-02_RKB &
     , 1.5386991360858354696379467274325592041855197124433846171896298291578714851081610139692310651074078557990111754952062e-01_RKB &
@@ -1837,7 +1837,7 @@ module pm_quadPack
     !>  \final{weightG30}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real(RKB)   , parameter :: weightG30(15) = &
     [ 1.0285265289355884034128563670541504386837555706492822258631898667601623865660942939262884632188870916503815852709086e-01_RKB &
     , 1.0176238974840550459642895216855404463270628948712684086426094541964251360531767494547599781978391198881693385887696e-01_RKB &
@@ -1876,7 +1876,7 @@ module pm_quadPack
     !>  \final{nodeK61}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real(RKB)   , parameter :: nodeK61(31) = &
     [ 0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e+00_RKB &
     , 5.1471842555317695833025213166722573749141453666569564255160843987964755210427109055870090707285485841217089963590678e-02_RKB &
@@ -1931,7 +1931,7 @@ module pm_quadPack
     !>  \final{weightK61}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real(RKB)   , parameter :: weightK61(31) = &
     [ 5.1494729429451567558340433647099307532736880396464168074637323362474083844397567724480716864880173808112573901197920e-02_RKB &
     , 5.1426128537459025933862879215781259829552034862395987263855824172761589259406892072066110681184224608133314131500422e-02_RKB &
@@ -4497,7 +4497,7 @@ module pm_quadPack
     !>  \final{MAXLEN_EPSTAB}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer(IK) , parameter :: MAXLEN_EPSTAB = 50_IK
 
     !>  \brief
@@ -4526,7 +4526,7 @@ module pm_quadPack
     !>  \final{weps_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: weps_type
     end type
 
@@ -4547,7 +4547,7 @@ module pm_quadPack
     !>  \final{weps}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type(weps_type) , parameter :: weps = weps_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: weps

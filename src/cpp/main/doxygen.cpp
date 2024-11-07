@@ -413,7 +413,7 @@
 /// \final{runParaDRAM}
 ///
 /// \author
-/// \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin
+/// \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 ///
 ///     \endverbatim
 ///     <br>

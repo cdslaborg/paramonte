@@ -261,7 +261,7 @@
 !>  \final
 !>
 !>  \author
-!>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+!>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -584,7 +584,7 @@ module pm_kind
     !>  \final{SKALL}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter             :: SKALL(*) = pack([SK1, SK2, SK3, SK4, SK5], 0 < [SK1, SK2, SK3, SK4, SK5])
 
     !>  \brief
@@ -596,7 +596,7 @@ module pm_kind
     !>  \final{SKALL}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter             :: IKALL(*) = pack([IK1, IK2, IK3, IK4, IK5], 0 < [IK1, IK2, IK3, IK4, IK5])
 
     !>  \brief
@@ -608,7 +608,7 @@ module pm_kind
     !>  \final{SKALL}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter             :: LKALL(*) = pack([LK1, LK2, LK3, LK4, LK5], 0 < [LK1, LK2, LK3, LK4, LK5])
 
     !>  \brief
@@ -620,7 +620,7 @@ module pm_kind
     !>  \final{SKALL}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter             :: CKALL(*) = pack([CK1, CK2, CK3, CK4, CK5], 0 < [CK1, CK2, CK3, CK4, CK5])
 
     !>  \brief
@@ -632,7 +632,7 @@ module pm_kind
     !>  \final{SKALL}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter             :: RKALL(*) = pack([RK1, RK2, RK3, RK4, RK5], 0 < [RK1, RK2, RK3, RK4, RK5])
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -645,7 +645,7 @@ module pm_kind
     !>  \final{IRL}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
      integer    , parameter             :: IRL = minval([IR1, IR2, IR3, IR4, IR5], mask = 0 < [IR1, IR2, IR3, IR4, IR5]) ! Integer Range Lowest
 
     !>  \brief
@@ -654,7 +654,7 @@ module pm_kind
     !>  \final{IRH}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
      integer    , parameter             :: IRH = maxval([IR1, IR2, IR3, IR4, IR5], mask = 0 < [IR1, IR2, IR3, IR4, IR5]) ! Integer Range Highest
 
     !>  \brief
@@ -663,7 +663,7 @@ module pm_kind
     !>  \final{CPL}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
      integer    , parameter             :: CPL = minval([CP1, CP2, CP3, CP4, CP5], mask = 0 < [CP1, CP2, CP3, CP4, CP5]) ! Complex Precision Lowest
 
     !>  \brief
@@ -672,7 +672,7 @@ module pm_kind
     !>  \final{CPH}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
      integer    , parameter             :: CPH = maxval([CP1, CP2, CP3, CP4, CP5], mask = 0 < [CP1, CP2, CP3, CP4, CP5]) ! Complex Precision Highest
 
     !>  \brief
@@ -681,7 +681,7 @@ module pm_kind
     !>  \final{CRL}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
      integer    , parameter             :: CRL = minval([CR1, CR2, CR3, CR4, CR5], mask = 0 < [CR1, CR2, CR3, CR4, CR5]) ! Complex Range Lowest
 
     !>  \brief
@@ -690,7 +690,7 @@ module pm_kind
     !>  \final{CRH}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
      integer    , parameter             :: CRH = maxval([CR1, CR2, CR3, CR4, CR5], mask = 0 < [CR1, CR2, CR3, CR4, CR5]) ! Complex Range Lowest
 
     !>  \brief
@@ -699,7 +699,7 @@ module pm_kind
     !>  \final{RPL}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
      integer    , parameter             :: RPL = minval([RP1, RP2, RP3, RP4, RP5], mask = 0 < [RP1, RP2, RP3, RP4, RP5]) ! Real Precision Lowest
 
     !>  \brief
@@ -708,7 +708,7 @@ module pm_kind
     !>  \final{RPH}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
      integer    , parameter             :: RPH = maxval([RP1, RP2, RP3, RP4, RP5], mask = 0 < [RP1, RP2, RP3, RP4, RP5]) ! Real Precision Highest
 
     !>  \brief
@@ -717,7 +717,7 @@ module pm_kind
     !>  \final{RRL}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
      integer    , parameter             :: RRL = minval([RR1, RR2, RR3, RR4, RR5], mask = 0 < [RR1, RR2, RR3, RR4, RR5]) ! Real Range Lowest
 
     !>  \brief
@@ -726,7 +726,7 @@ module pm_kind
     !>  \final{RRH}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
      integer    , parameter             :: RRH = maxval([RR1, RR2, RR3, RR4, RR5], mask = 0 < [RR1, RR2, RR3, RR4, RR5]) ! Real Range Lowest
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -745,7 +745,7 @@ module pm_kind
     !>  \final{IKL}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter             :: IKL  = selected_int_kind(IRL)
 
     !>  \brief
@@ -760,7 +760,7 @@ module pm_kind
     !>  \final{CKL}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter             :: CKL  = selected_real_kind(CPL)
 
     !>  \brief
@@ -775,7 +775,7 @@ module pm_kind
     !>  \final{RKL}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter             :: RKL  = selected_real_kind(RPL)
 
     !>  \brief
@@ -790,7 +790,7 @@ module pm_kind
     !>  \final{CKL}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter             :: CKLR = selected_real_kind(r = CRL)
 
     !>  \brief
@@ -805,7 +805,7 @@ module pm_kind
     !>  \final{RKL}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter             :: RKLR = selected_real_kind(r = RRL)
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -824,7 +824,7 @@ module pm_kind
     !>  \final{IKH}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter             :: IKH  = selected_int_kind(IRH)
 
     !>  \brief
@@ -839,7 +839,7 @@ module pm_kind
     !>  \final{CKH}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter             :: CKH  = selected_real_kind(CPH)
 
     !>  \brief
@@ -854,7 +854,7 @@ module pm_kind
     !>  \final{RKH}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter             :: RKH  = selected_real_kind(RPH)
 
     integer     , parameter , private   :: CKHR_VEC_RAW(*)= [ selected_real_kind(merge(huge(1), CP5, CP5 < 1), r = CRH) &
@@ -876,7 +876,7 @@ module pm_kind
     !>  \final{CKH}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter             :: CKHR = CKHR_VEC(1)
 
     integer     , parameter , private   :: RKHR_VEC_RAW(*)= [ selected_real_kind(merge(huge(1), RP5, RP5 < 1), r = RRH) &
@@ -898,7 +898,7 @@ module pm_kind
     !>  \final{RKH}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter             :: RKHR = RKHR_VEC(1)
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -917,7 +917,7 @@ module pm_kind
     !>  \final{IKW}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter             :: IKW  = selected_int_kind(1)
 
     !>  \brief
@@ -932,7 +932,7 @@ module pm_kind
     !>  \final{CKW}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter             :: CKW  = selected_real_kind(1)
 
     !>  \brief
@@ -947,7 +947,7 @@ module pm_kind
     !>  \final{RKW}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter             :: RKW  = selected_real_kind(1)
 
     !>  \brief
@@ -962,7 +962,7 @@ module pm_kind
     !>  \final{CKWR}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter             :: CKWR = selected_real_kind(r = 1)
 
     !>  \brief
@@ -977,7 +977,7 @@ module pm_kind
     !>  \final{RKWR}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter             :: RKWR = selected_real_kind(r = 1)
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -998,7 +998,7 @@ module pm_kind
     !>  \final{integer_kinds_range}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter , private   :: integer_kinds_range(*) = [ range(int(0, kind = integer_kinds(min(size(integer_kinds),  1)))) &
                                                                     , range(int(0, kind = integer_kinds(min(size(integer_kinds),  2)))) &
                                                                     , range(int(0, kind = integer_kinds(min(size(integer_kinds),  3)))) &
@@ -1066,7 +1066,7 @@ module pm_kind
     !>  \final{real_kinds_range}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter , private   :: real_kinds_range(*) =    [ range(real(0, kind = real_kinds(min(size(real_kinds),  1)))) &
                                                                     , range(real(0, kind = real_kinds(min(size(real_kinds),  2)))) &
                                                                     , range(real(0, kind = real_kinds(min(size(real_kinds),  3)))) &
@@ -1134,7 +1134,7 @@ module pm_kind
     !>  \final{real_kinds_precision}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter , private   :: real_kinds_precision(*)= [ precision(real(0, kind = real_kinds(min(size(real_kinds),  1)))) &
                                                                     , precision(real(0, kind = real_kinds(min(size(real_kinds),  2)))) &
                                                                     , precision(real(0, kind = real_kinds(min(size(real_kinds),  3)))) &
@@ -1195,7 +1195,7 @@ module pm_kind
     !>  \final{real_kinds_range_max}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter , private   :: real_kinds_range_max = maxval(real_kinds_range, dim = 1)
 
     !>  \brief
@@ -1205,7 +1205,7 @@ module pm_kind
     !>  \final{real_kinds_precision_max}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter , private   :: real_kinds_precision_max = maxval(real_kinds_precision, dim = 1)
 
     !>  \brief
@@ -1215,7 +1215,7 @@ module pm_kind
     !>  \final{real_kinds_precision_min}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter , private   :: real_kinds_precision_min = minval(real_kinds_precision, dim = 1)
 
     !>  \brief
@@ -1228,7 +1228,7 @@ module pm_kind
     !>  \final{real_kinds_precision_hop}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     real        , parameter , private   :: real_kinds_precision_hop = real(real_kinds_precision_max - real_kinds_precision_min) / size(real_kinds_precision)
 
     !>  \brief
@@ -1245,7 +1245,7 @@ module pm_kind
     !>  \final{real_kinds_prmax_kind}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter , private   :: real_kinds_prmax_kind(*) =   [ selected_real_kind(p = real_kinds_precision_max, r = real_kinds_range_max) &
                                                                         , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop *  0)), r = real_kinds_range_max) &
                                                                         , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop *  1)), r = real_kinds_range_max) &
@@ -1311,7 +1311,7 @@ module pm_kind
     !>  \final{real_kinds_prmax_kind_avail}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter , private   :: real_kinds_prmax_kind_avail(*) = pack(real_kinds_prmax_kind, 0 <= real_kinds_prmax_kind)
 
     !>  \brief
@@ -1329,7 +1329,7 @@ module pm_kind
     !>  \final{IKB}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     ! maxval([(selected_int_kind(i), i = 1, 1000)]) ! merge(IKH6, merge(IKH5, merge(IKH4, merge(IKH3, merge(IKH2, IKS, IKH2 > 0), IKH3 > 0), IKH4 > 0), IKH5 > 0), IKH6 > 0) ! only up to `3` times more precise than the double range kind.
     integer     , parameter             :: IKB = selected_int_kind(maxval(integer_kinds_range, dim = 1))
 
@@ -1348,7 +1348,7 @@ module pm_kind
     !>  \final{CKB}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter             :: CKB = selected_real_kind(maxval(real_kinds_precision, dim = 1))
 
     !>  \brief
@@ -1366,7 +1366,7 @@ module pm_kind
     !>  \final{RKB}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     ! maxval([(selected_real_kind(i), i = 1, 1000)]) ! merge(RKH6, merge(RKH5, merge(RKH4, merge(RKH3, merge(RKH2, RKS, RKH2 > 0), RKH3 > 0), RKH4 > 0), RKH5 > 0), RKH6 > 0) ! only up to `3` times more precise than the double precision kind.
     integer     , parameter             :: RKB = selected_real_kind(maxval(real_kinds_precision, dim = 1))
 
@@ -1385,7 +1385,7 @@ module pm_kind
     !>  \final{CKBR}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter             :: CKBR = real_kinds_prmax_kind_avail(1)
 
     !>  \brief
@@ -1403,7 +1403,7 @@ module pm_kind
     !>  \final{RKBR}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     integer     , parameter             :: RKBR = real_kinds_prmax_kind_avail(1)
 
     ! Constants for kind precisions.<br>
@@ -1500,7 +1500,7 @@ module pm_kind
     !>  \final{model_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, abstract :: model_type
         integer(IK) :: kind         !<  \public The scalar `integer` of default kind \IK, representing the processor-dependent `kind` type-parameter of data type of interest.<br>
         integer(IK) :: storage_size !<  \public The scalar `integer` of default kind \IK, whose value is the size, in bits,
@@ -1540,7 +1540,7 @@ module pm_kind
     !>  \final{modeln_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, abstract, extends(model_type) :: modeln_type
         integer(IK) :: digits   !<  \public The scalar `integer` of default kind \IK, whose value is the number of significant bit digits in the model that includes the numeric data type of interest,
                                 !!          that is `q` or `p` in the `integer` and `real` models detailed in [model_type](@ref pm_kind::model_type).<br>
@@ -1611,7 +1611,7 @@ module pm_kind
     !>  \final{modeli_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(modeln_type) :: modeli_type
         integer(IKH) :: huge    !<  \public The scalar `integer` of the highest kind \IKH supported by the ParaMonte library,
                                 !!          representing the largest value in the model that includes the `integer` data type of interest.<br>
@@ -1676,7 +1676,7 @@ module pm_kind
     !>  \final{modelb_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(modeli_type) :: modelb_type
         integer(IK) :: bit_size !<  \public The scalar `integer` of default kind \IK, whose value is the number of bits in the model
                                 !!          for bits within an integer of the same type parameter the bit (integer) data type of interest.<br>
@@ -1742,7 +1742,7 @@ module pm_kind
     !>  \final{modelr_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(modeln_type) :: modelr_type
         real(RKH)   :: epsilon          !<  \public The scalar `real` of the highest kind \RKH supported by the ParaMonte library,
                                         !!          whose value is almost negligible compared with the value `1.0` in the model that includes the `real` data type of interest,

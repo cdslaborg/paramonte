@@ -35,7 +35,7 @@
 !>  \final
 !>
 !>  \author
-!>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+!>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -88,7 +88,7 @@ module pm_test
     !>  \final{dir_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: dir_type
         character(:, SK)    , allocatable   :: inp !<  \public The scalar `allocatable` of type `character` of default kind \SK containing the path to the input  directory for the current test.
         character(:, SK)    , allocatable   :: out !<  \public The scalar `allocatable` of type `character` of default kind \SK containing the path to the output directory for the current test.
@@ -109,7 +109,7 @@ module pm_test
     !>  \final{file_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: file_type
         integer(IK)                         :: unit
         character(:, SK)    , allocatable   :: path
@@ -205,7 +205,7 @@ module pm_test
     !>  \final{test_typer}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type :: test_type
         integer(IK)                         , private   :: counter = 0_IK           !<  \private    The `private` scalar object of type `integer` of default kind \IK, containing count of individual assertions made by the `run()` method of an object of type [test_type](@ref pm_test::test_type).<br>
         logical(LK)                         , private   :: asserted = .true._LK     !<  \private    The `private` scalar of type `logical` of default kind \LK that is `.true.` <b>if and only if</b> all tests within the current test suite performed by an object of [test_type](@ref pm_test::test_type) have passed successfully. It is used for test summary.<br>
@@ -256,7 +256,7 @@ contains
     !>  \final{setInitial}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     subroutine setInitial()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInitial
@@ -303,7 +303,7 @@ contains
     !>  \final{setSummary}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     subroutine setSummary()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSummary
@@ -408,7 +408,7 @@ contains
     !>  \final{test_typer}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     function test_typer(host, inp, out, traceable) result(test)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: test_typer
@@ -504,7 +504,7 @@ contains
     !>  \final{setTestFunc}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     subroutine setTestFunc(self, getAssertion, name)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setTestFunc
@@ -588,7 +588,7 @@ contains
     !>  \final{setTestAsserted}
     !>
     !>  \author
-    !>  \AmirShahmoradi, April 20, 2015, 1:11 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, April 20, 2015, 1:11 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     subroutine setTestAsserted(self, assertion, desc, line)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setTestAsserted
@@ -678,7 +678,7 @@ contains
     !>  \final{setTestSummary}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     subroutine setTestSummary(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setTestSummary

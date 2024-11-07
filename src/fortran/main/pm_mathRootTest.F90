@@ -81,7 +81,7 @@ module pm_mathRootTest
     !>  \final{func_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, abstract :: func_type
         real(RKH)                       :: lb       !<  \public The scalar of type `real` of the highest kind supported by the processor \RKH, containing the lower limit of function.
         real(RKH)                       :: ub       !<  \public The scalar of type `real` of the highest kind supported by the processor \RKH, containing the upper limit of function.

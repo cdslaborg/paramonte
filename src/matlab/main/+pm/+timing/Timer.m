@@ -38,6 +38,10 @@ classdef Timer < pm.matlab.Handle
         %>  The scalar MATLAB real containing the most recent
         %>  timing since the construction of the timer.<br>
         %>
+        %>  \warning
+        %>  This is an internal ``protected`` class attribute
+        %>  that is inaccessible to the end users.<br>
+        %>
         clock = 0;
     end
 
@@ -48,6 +52,10 @@ classdef Timer < pm.matlab.Handle
         %>  ``start``
         %>
         %>  The scalar MATLAB real containing the timer start.<br>
+        %>
+        %>  \warning
+        %>  This is an internal ``Hidden`` class attribute
+        %>  that is inaccessible to the end users.<br>
         %>
         start;
     end

@@ -34,7 +34,7 @@
 !>  \final{pm_bench}
 !>
 !>  \author
-!>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+!>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -65,7 +65,7 @@ module pm_bench
     !>  \final{exec_proc}
     !>
     !>  \author
-    !>  \AmirShahmoradi, March 23, 2012, 2:21 AM, National Institute for Fusion Studies, The University of Texas at Austin
+    !>  \AmirShahmoradi, March 23, 2012, 2:21 AM, National Institute for Fusion Studies, The University of Texas Austin<br>
     abstract interface
         subroutine exec_proc()
         end subroutine exec_proc
@@ -89,7 +89,7 @@ module pm_bench
     !!>  \final{Stat_type}
     !!>
     !!>  \author
-    !!>  Amir Shahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !!>  Amir Shahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     !type                :: Stat_type
     !    real(RKD)       :: min      = -huge(0._RKD) !<  @public The minimum of the timing vector of the benchmark (in seconds).
     !    real(RKD)       :: max      = -huge(0._RKD) !<  @public The maximum of the timing vector of the benchmark (in seconds).
@@ -123,7 +123,7 @@ module pm_bench
     !>  \final{timing_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type                                :: timing_type
        !type(Stat_type)                 :: stat                     !<  @public The object of type [Stat_type](@ref Stat_type) containing the statistics of the `values` component.
         real(RKD)                       :: overhead = 0._RKD        !<  @public The average timing overhead in units of seconds.
@@ -196,7 +196,7 @@ module pm_bench
     !>  \final{benchBase_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type                                        :: benchBase_type
         real(RKD)                               :: minsec = 0.05_RKD    !<  @public The minimum time in units of seconds that the benchmark should last. It could take longer, but not less than `minsec`.
         integer(IK)                             :: miniter = 1_IK       !<  @public The minimum number of timing of the user-specified wrapper procedure. It could run more, but not fewer than `miniter`.
@@ -304,7 +304,7 @@ module pm_bench
     !>  \final{benchBase_typer}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface benchBase_typer
     module function benchBase_typer(name, minsec, miniter, timer) result(benchBase)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -382,7 +382,7 @@ module pm_bench
     !>  \final{bench_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(benchBase_type)                       :: bench_type
        !logical(LK)                          , private  :: isdone = .false._LK          !<  \private    The scalar `logical` of default kind \LK that is set to `.true.` once the benchmark is over (used internally to finalize the pointer components of the type).
         procedure(exec_proc), pointer, nopass, private  :: exec => null()               !<  \private    Procedure Pointer to the user-provided wrapper with explicit interface [exec_proc](@ref pm_bench::exec_proc).
@@ -494,7 +494,7 @@ module pm_bench
     !>  \final{bench_typer}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface bench_typer
     module function bench_typer(name, exec, overhead, minsec, miniter, timer) result(bench)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -570,7 +570,7 @@ module pm_bench
     !>  \final{getTiming}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface getTiming
     module function getTimingMethod(self, minsec, miniter) result(timing)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -639,7 +639,7 @@ module pm_bench
     !>  \final{setTiming}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface setTiming
     module subroutine setTimingMethod(self, minsec, miniter)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -676,7 +676,7 @@ module pm_bench
     !!>  \final{timing_type}
     !!>
     !!>  \author
-    !!>  Amir Shahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !!>  Amir Shahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     !type                                :: timing_type
     !    real(RKD)                       :: overhead = 0._RKD        !<  \public The average timing overhead in units of seconds.
     !    real(RKD)                       :: min      = -huge(0._RKD) !<  \public The minimum of the timing vector of the benchmark (in seconds).
@@ -731,7 +731,7 @@ module pm_bench
     !>  \final{benchMulti_type}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type                                    :: benchMulti_type
         integer(IK)                         :: ncase                        !<  The scalar `integer` of default kind \IK
                                                                             !!  containing the number of user-specified benchmark cases.
@@ -811,7 +811,7 @@ module pm_bench
     !>  \final{benchMulti_typer}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface benchMulti_typer
     module function benchMulti_typer(case, sorted, repeat) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -869,7 +869,7 @@ module pm_bench
     !>  \final{showsum}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     interface showsum
     module subroutine showsum_(self, unit, tabular)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -918,7 +918,7 @@ contains
     !>  \final{doNothing}
     !>
     !>  \author
-    !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     impure subroutine doNothing()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: doNothing
