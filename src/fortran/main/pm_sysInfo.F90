@@ -338,6 +338,85 @@ module pm_sysInfo
     !>  \test
     !>  [test_pm_sys](@ref test_pm_sys)
     !>
+    !>  \bug
+    !>  \status \unresolved
+    !>  \source \ifx{2025.0.0 20241008}
+    !>  \desc
+    !>  \ifx{2025.0.0 20241008} yields the following segfault error at runtime
+    !>  for using the [css_type](@ref pm_container::css_type) array constructor syntax.<br>
+    !>  deallocate the array of origin in a call to intrinsic `move_alloc`:
+    !>  \code{.F90}
+    !>
+    !>      --------------------------------------------------------------------------------
+    !>             !Segmentation violation detected at 2024-11-06 22:46:51 -0600
+    !>      --------------------------------------------------------------------------------
+    !>
+    !>      Configuration:
+    !>      Crash Decoding           : Disabled - No sandbox or build area path
+    !>      Crash Mode               : continue (default)
+    !>      Default Encoding         : UTF-8
+    !>      Deployed                 : false
+    !>      GNU C Library            : 2.35 stable
+    !>      Graphics Driver          : Uninitialized software
+    !>      Graphics card 1          : 0x1414 ( 0x1414 ) 0x8e Version 2.0.3.0 (0-0-0)
+    !>      Graphics card 2          : 0x1414 ( 0x1414 ) 0x8e Version 2.0.3.0 (0-0-0)
+    !>      Java Version             : Java 1.8.0_202-b08 with Oracle Corporation Java HotSpot(TM) 64-Bit Server VM mixed mode
+    !>      MATLAB Architecture      : glnxa64
+    !>      MATLAB Entitlement ID    : 2406435
+    !>      MATLAB Root              : /usr/local/MATLAB/R2023b
+    !>      MATLAB Version           : 23.2.0.2428915 (R2023b) Update 4
+    !>      OpenGL                   : software
+    !>      Operating System         : Ubuntu 22.04.4 LTS
+    !>      Process ID               : 24027
+    !>      Processor ID             : x86 Family 6 Model 151 Stepping 2, GenuineIntel
+    !>      Session Key              : 4af1c654-3fca-4695-8780-e5de2107934f
+    !>      Window System            : Microsoft Corporation (12010000), display :0
+    !>
+    !>      Fault Count: 1
+    !>
+    !>
+    !>      Abnormal termination:
+    !>      Segmentation violation
+    !>
+    !>      Current Thread: 'MCR 0 interpret' id 23329188607552
+    !>
+    !>      Register State (from fault):
+    !>      RAX = 0000000000000000  RBX = 00001537bffc8ef8
+    !>      RCX = 0000000000000001  RDX = 0000000000000000
+    !>      RSP = 00001537bffc8690  RBP = 00001537bffc8710
+    !>      RSI = 00001537bffc8ef8  RDI = 000002a6db74779d
+    !>
+    !>      R8 = 0000000000000000   R9 = 0000000000040002
+    !>      R10 = 00001537c00d6fe8  R11 = 0000000000000000
+    !>      R12 = 0000000000000000  R13 = 00000000000004e0
+    !>      R14 = 0000000000000000  R15 = 00001536dba470f0
+    !>
+    !>      RIP = 00001536db95e473  EFL = 0000000000010202
+    !>
+    !>      CS = 0033   FS = 0000   GS = 0000
+    !>
+    !>      Stack Trace (from fault):
+    !>      [  0] 0x00001536db95e473 /home/amir/git/paramonte/bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+38818931
+    !>      [  1] 0x00001536db95f54e /home/amir/git/paramonte/bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+38823246
+    !>      [  2] 0x00001536db95e69e /home/amir/git/paramonte/bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+38819486
+    !>      [  3] 0x00001536da893fbe /home/amir/git/paramonte/bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+21213118 pm_sysinfo_MP_getsysinfofailedmsg_+00012510
+    !>      [  4] 0x00001536da890b31 /home/amir/git/paramonte/bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+21199665 pm_sysinfo_MP_getsysinfofailed_+00000177
+    !>      [  5] 0x00001536d982d6fe /home/amir/git/paramonte/bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+04015870 pm_sampling_base_rk2_MP_openfiles_+00126718
+    !>      [  6] 0x00001536d980c391 /home/amir/git/paramonte/bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+03879825 pm_sampling_base_rk2_MP_set_+00135649
+    !>      [  7] 0x00001536d9902171 /home/amir/git/paramonte/bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+04886897 pm_sampling_mcmc_rk2_MP_set_+00030945
+    !>      [  8] 0x00001536d998e393 /home/amir/git/paramonte/bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+05460883 pm_sampling_dram_rk2_MP_set_+00037203
+    !>      [  9] 0x00001536d9b51923 /home/amir/git/paramonte/bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+07309603 pm_sampling_MP_geterrparadram_rk2_+00047939
+    !>      [ 10] 0x00001536d9b43448 /home/amir/git/paramonte/bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+07251016 runParaDRAMD+00007992
+    !>      [ 11] 0x00001536f64624a9 /home/amir/git/paramonte/bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/pm_sampling.mexa64+00005289 mexFunction+00000537
+    !>
+    !>  \endcode
+    !>  Note that `ifort` can readily compile the above lines of code.<br>
+    !>  \remedy
+    !>  Currently, a preprocessor fence is added specifically for Intel compilers that first allocates the
+    !>  vector of type [css_type](@ref pm_container::css_type) and then assigns the vector elements one by one.<br>
+    !>  Note that the above segfault error was discovered while testing the MATLAB interface to the ParaMonte library.<br>
+    !>  However, the nature and cause of the error is entirely contained within the Fortran programming language.<br>
+    !>
     !>  \final{getSysInfo}
     !>
     !>  \author

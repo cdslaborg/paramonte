@@ -13,5 +13,5 @@ pm.introspection.verify(int32(1), "int32", 1);
 try
     pm.introspection.verify(10000, "string", 1);
 catch me
-    disp(string(me.identifier) + string(me.message));
+    warning(string(me.identifier) + string(me.message));
 end

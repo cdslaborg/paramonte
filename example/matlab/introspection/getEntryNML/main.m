@@ -16,11 +16,11 @@ disp( pm.introspection.getEntryNML("description", "This is the description", "st
 try
     pm.introspection.getEntryNML("varname", "value", "cell", 1);
 catch me
-    disp(string(me.identifier) + newline + string(me.message));
+    warning(string(me.identifier) + newline + string(me.message));
 end
 
 try
     pm.introspection.getEntryNML("varname", [1, 2], "array", 1);
 catch me
-    disp(string(me.identifier) + newline + string(me.message));
+    warning(string(me.identifier) + newline + string(me.message));
 end

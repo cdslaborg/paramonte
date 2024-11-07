@@ -11051,6 +11051,28 @@ module pm_distUnif
     !>  \remedy
     !>  For now, the expression is replaced with `rand = int(0.5d0 + temp, kind = IKG)`.<br>
     !>
+    !>  \bug
+    !>  \status \unresolved
+    !>  \source \ifx{2025.0.0 20241008}
+    !>  \desc
+    !>  \ifx{2025.0.0 20241008} cannot compile the following two lines of code in the include file `pm_distUnif@routines.inc.F90`.<br>
+    !>  \code{.F90}
+    !>
+    !>      call setUnifRand(RNG rand%re, lb%re, ub%re)
+    !>      call setUnifRand(RNG rand%im, lb%im, ub%im)
+    !>
+    !>  \endcode
+    !>  Note that `ifort` can readily compile the above lines of code.<br>
+    !>  Uncomment the above two lines to regenerate the compile-time error.<br>
+    !>  \remedy
+    !>  For now, these two lines are commented out for Intel compilers and replaced with the following.<br>
+    !>  \code{.F90}
+    !>
+    !>      call setUnifRand(RNG rand%re, real(lb, CKG), real(ub, CKG))
+    !>      call setUnifRand(RNG rand%im, aimag(lb), aimag(ub))
+    !>
+    !>  \endcode
+    !>
     !>  \final{setUnifRand}
     !>
     !>  \author

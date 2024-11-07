@@ -551,7 +551,7 @@
 #elif   setUnifRand_ENABLED && D0_ENABLED && CK_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        ! Curse you Intel.
+        ! Curse you Intel bug.
 #if     __INTEL_COMPILER
         real(CKG) :: temp(2)
 #if     DD_ENABLED
@@ -560,6 +560,8 @@
         if (lb /= ub) then
             call setUnifRand(RNG temp(1), lb%re, ub%re)
             call setUnifRand(RNG temp(2), lb%im, ub%im)
+            !call setUnifRand(RNG temp(1), real(lb, CKG), real(ub, CKG))
+            !call setUnifRand(RNG temp(2), aimag(lb), aimag(ub))
         else
             rand = lb
         end if

@@ -77,11 +77,11 @@ function logFunc = getLogUDF(x, y, epsilon)
         epsilon = 1;
     end
     logFunc = -log(pm.math.func.himmelblau.getFunc(x, y) + epsilon);
-    %if false
-    %    nsim = 100000;
-    %    for i = 1 : nsim
-    %        logFunc = logFunc - log((state(1)^2 + state(2) - 11)^2 + (state(1) + state(2)^2 - 7)^2 + 0.1);
-    %    end
-    %    logFunc = logFunc / (nsim + 1);
-    %end
+    if false
+        nsim = 100000;
+        for i = 1 : nsim
+            logFunc = logFunc - log((x^2 + y - 11)^2 + (x + y^2 - 7)^2 + 0.1);
+        end
+        logFunc = logFunc / (nsim + 1);
+    end
 end
