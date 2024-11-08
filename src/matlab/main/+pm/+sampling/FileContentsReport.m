@@ -162,7 +162,7 @@ classdef FileContentsReport < pm.io.FileContents
         %>  \include{lineno} example/sampling/FileContentsReport/main.m
         %>  \vis{FileContentsReport}
         %>  <br><br>
-        %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.parallelism.speedup.scaling.strong.current.png width=700
+        %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.parallelism.speedup.scaling.strong.sameeff.png width=700
         %>  <br><br>
         %>  \image html example/sampling/Paradram/himmelblau/Paradram.himmelblau.parallelism.speedup.scaling.strong.zeroeff.png width=700
         %>

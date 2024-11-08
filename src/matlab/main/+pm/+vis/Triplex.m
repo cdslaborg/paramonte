@@ -721,6 +721,7 @@ classdef Triplex < pm.vis.figure.Figure
         %>  Set the axes x-y limits of the subplots that are currently
         %>  present in the GridPlot to the input user-provided values.<br>
         %>
+        %>  \param[in]  self    :   The **implicitly-passed** input argument representing the parent object of the method.<br>
         %>  \param[in]  limits  :   A MATLAB ``cell`` vector of maximum length ``max(size(self.tile))``,
         %>                          each element of which corresponds to one row of the Triplex plot, from the top-left corner.<br>
         %>                          Each element of the cell array must be a real vector of length ``2`` whose values determine the
