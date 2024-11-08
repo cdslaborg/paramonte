@@ -97,7 +97,7 @@ classdef DataRef < pm.matlab.Handle
         %>  \param[inout]   self    :   The **implicitly-passed** input argument representing the parent object of the method.<br>
         %>
         %>  \return
-        %>  ``df``                  :   The output scalar MATLAB table a full copy of the data (reference)
+        %>  ``df``                  :   The output scalar MATLAB ``table`` a full copy of the data (reference)
         %>                              contained in the user-specified input ``dfref`` passed
         %>                              to the constructor of the parent object.<br>
         %>

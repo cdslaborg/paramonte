@@ -609,6 +609,19 @@ end if;
 
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if             ParaDRAM_ENABLED || ParaDISE_ENABLED
+                if (spec%image%is%first .and. .not. spec%outputSplashMode%is%silent) then
+                    call spec%disp%note%show("Computing the statistical properties of the Markov chain...", unit = output_unit)
+                end if
+                call spec%disp%text%wrap(NL1//SKG_"The statistical properties of the Markov chain"//NL1)
+#elif           ParaNest_ENABLED
+                if (spec%image%is%first .and. .not. spec%outputSplashMode%is%silent) then
+                    call spec%disp%note%show("Computing the statistical properties of the output chain...", unit = output_unit)
+                end if
+                call spec%disp%text%wrap(NL1//SKG_"The statistical properties of the output chain"//NL1)
+#else
+#error          "Unrecognized sampler."
+#endif
                 SET_DRAMDISE(call spec%disp%show("stats.chain.verbose.logFunc.max.val"))
                 SET_ParaNest(call spec%disp%show("stats.chain.uniques.logFunc.max.val"))
                 call spec%disp%show(stat%chain%mode%val, format = format)
@@ -671,11 +684,6 @@ end if;
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 ! Compute the statistical properties of the MCMC chain
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-                if (spec%image%is%first .and. .not. spec%outputSplashMode%is%silent) then
-                    call spec%disp%note%show("Computing the statistical properties of the Markov chain...", unit = output_unit)
-                end if
-                call spec%disp%text%wrap(NL1//SKG_"The statistical properties of the Markov chain"//NL1)
 
                 ! Compute the covariance and correlation upper-triangle matrices.
 

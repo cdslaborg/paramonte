@@ -1,6 +1,7 @@
 %>  \brief
 %>  This is the base class for generating objects containing
-%>  information about autocorrelation of the input data.<br>
+%>  information about autocorrelation of the input data and
+%>  tools for visualizing it.<br>
 %>
 %>  \note
 %>  This is convenience class for easy computation
@@ -9,10 +10,10 @@
 %>  intrinsic functions is in the ability of this class
 %>  to compute the result for input dataframe table and
 %>  return the results always in MATLAB ``table`` format.<br>
-%>  See the documentation of the class constructor below.<br>
 %>
 %>  \note
-%>  See the documentation of the class constructor below.<br>
+%>  See the documentation of the class constructor
+%>  [pm.stats.AutoCorr::AutoCorr](@ref AutoCorr::AutoCorr) below.<br>
 %>
 %>  \final{AutoCorr}
 %>
@@ -22,7 +23,16 @@
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef AutoCorr < pm.matlab.Handle
 
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     properties(Access = public)
+        %>
+        %>  ``df``
+        %>
+        %>  A scalar object of class [pm.container.DataFrame](@ref DataFrame)
+        %>  containing the user-specified data whose covariance must be computed.<br>
+        %>
+        df = [];
         %>
         %>  ``numlag``
         %>
@@ -45,7 +55,7 @@ classdef AutoCorr < pm.matlab.Handle
         %>
         %>  ``bnd``
         %>
-        %>  The MATLAB table of rank ``2`` serving as a convenient
+        %>  The MATLAB ``table`` of rank ``2`` serving as a convenient
         %>  storage component each column of which corresponds to the
         %>  absolute ``numstd``-significance bound for the corresponding
         %>  computed autocorrelations of the input data (that is optionally
@@ -62,8 +72,6 @@ classdef AutoCorr < pm.matlab.Handle
         %>
         %>  ``lag``
         %>
-        %>  The MATLAB vector integers representing the
-        %>  lags for which the autocorrelation is computed.<br>
         %>  This component is automatically populated when constructing
         %>  an object of class [pm.stats.AutoCorr](@ref AutoCorr).<br>
         %>  It must be populated manually at all other times.<br>
@@ -72,14 +80,27 @@ classdef AutoCorr < pm.matlab.Handle
         %>
         %>  ``val``
         %>
-        %>  The MATLAB table of rank ``2`` serving as a
+        %>  The MATLAB ``table`` of rank ``2`` serving as a
         %>  convenient storage component for the autocorrelation.<br>
         %>  This component is automatically populated when constructing
         %>  an object of class [pm.stats.AutoCorr](@ref AutoCorr).<br>
         %>  It must be populated manually at all other times.<br>
         %>
+        %>  \note
+        %>  The first column of ``vall`` always contains the set
+        %>  of lags for which the autocorrelation is computed.<br>
+        %>
         val = [];
+        %>
+        %>  ``vis``
+        %>
+        %>  The scalar MATLAB ``struct`` containing the set of
+        %>  predefined visualizations for the output data.<br>
+        %>
+        vis = [];
     end
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     methods(Access = public)
 
@@ -87,9 +108,12 @@ classdef AutoCorr < pm.matlab.Handle
         %>  Return an object of class [pm.stats.AutoCorr](@ref AutoCorr).<br>
         %>  This is the constructor of the [pm.stats.AutoCorr](@ref AutoCorr) class.<br>
         %>
-        %>  \param[in]  df      :   The input MATLAB matrix or table of rank ``2``
+        %>  \param[in]  dfref   :   The input MATLAB matrix or table of rank ``2``
         %>                          containing the data as ``ncol`` columns of ``nrow``
         %>                          observations whose autocorrelation must be computed.<br>
+        %>                          Ideally, the user would want to pass a reference
+        %>                          to a dataframe (e.g., as a function handle ``@()df``)
+        %>                          so that the data remains dynamically up-to-date.<br>
         %>                          (**optional**. If missing, the autocorrelation will not be computed.)
         %>  \param[in]  numlag  :   The input scalar MATLAB positive whole number representing the number
         %>                          of lags for which the autocorrelation must be computed.<br>
@@ -109,17 +133,29 @@ classdef AutoCorr < pm.matlab.Handle
         %>  \code{.m}
         %>
         %>      acf = pm.stats.AutoCorr()
-        %>      acf = pm.stats.AutoCorr(df)
-        %>      acf = pm.stats.AutoCorr(df, numlag)
-        %>      acf = pm.stats.AutoCorr(df, [], numstd)
-        %>      acf = pm.stats.AutoCorr(df, numlag, numstd)
+        %>      acf = pm.stats.AutoCorr([])
+        %>      acf = pm.stats.AutoCorr(dfref)
+        %>      acf = pm.stats.AutoCorr(dfref, numlag)
+        %>      acf = pm.stats.AutoCorr(dfref, [], numstd)
+        %>      acf = pm.stats.AutoCorr(dfref, numlag, numstd)
         %>
         %>  \endcode
         %>
         %>  \example{AutoCorr}
         %>  \include{lineno} example/stats/AutoCorr/main.m
         %>  \vis{AutoCorr}
-        %>  \image html example/stats/AutoCorr/AutoCorr.unifrnd.png width=700
+        %>  <br><br>
+        %>  \image html example/stats/AutoCorr/AutoCorr.unifrnd.plot.line.png width=700
+        %>  <br><br>
+        %>  \image html example/stats/AutoCorr/AutoCorr.unifrnd.tile.line.png width=700
+        %>  <br><br>
+        %>  \image html example/stats/AutoCorr/AutoCorr.unifrnd.cascade.line.1.png width=700
+        %>  <br><br>
+        %>  \image html example/stats/AutoCorr/AutoCorr.unifrnd.cascade.line.2.png width=700
+        %>  <br><br>
+        %>  \image html example/stats/AutoCorr/AutoCorr.unifrnd.cascade.line.3.png width=700
+        %>  <br><br>
+        %>  \image html example/stats/AutoCorr/AutoCorr.unifrnd.cascade.line.4.png width=700
         %>
         %>  \final{AutoCorr}
         %>
@@ -127,23 +163,31 @@ classdef AutoCorr < pm.matlab.Handle
         %>  \JoshuaOsborne, May 21 2024, 4:10 AM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
-        function self = AutoCorr(df, numlag, numstd)
-            if nargin < 3
+        function self = AutoCorr(dfref, numlag, numstd)
+
+            if  nargin < 3
                 numstd = 1;
             end
-            if nargin < 2
+
+            if  nargin < 2
                 numlag = [];
             end
-            if 0 < nargin
-                if  isempty(numlag)
-                    numlag = size(df, 1) - 1;
-                end
-                [self.val, self.lag, self.bnd] = self.get(df, numlag, numstd);
-            else
+
+            if  nargin < 1
                 self.numlag = numlag;
                 self.numstd = numstd;
+            else
+                if  isempty(numlag)
+                    numlag = size(dfref, 1) - 1;
+                end
+                [self.val, self.bnd] = self.get(dfref, numlag, numstd);
             end
+
+            self.setvis();
+
         end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         %>  \brief
         %>  Return the autocorrelation of the input
@@ -159,9 +203,14 @@ classdef AutoCorr < pm.matlab.Handle
         %>
         %>  \param[inout]   self    :   The input/output parent object of class [pm.stats.AutoCorr](@ref AutoCorr)
         %>                              which is **implicitly** passed to this dynamic method (not by the user).<br>
-        %>  \param[in]      df      :   The input MATLAB matrix or table of rank ``2``
+        %>  \param[in]      dfref   :   The input MATLAB matrix or table of rank ``2``
         %>                              containing the data as ``ncol`` columns of ``nrow``
         %>                              observations whose autocorrelation must be computed.<br>
+        %>                              Ideally, the user would want to pass a reference
+        %>                              to a dataframe (e.g., as a function handle ``@()df``)
+        %>                              so that the data remains dynamically up-to-date.<br>
+        %>                              (**optional**. If missing, the contents of the corresponding
+        %>                              internal component of the parent object will be used.)
         %>  \param[in]      numlag  :   The input positive scalar MATLAB integer representing the
         %>                              number of lags to be used in computing the autocorrelation.<br>
         %>                              The default value will be used if the input ``numlag``
@@ -178,8 +227,8 @@ classdef AutoCorr < pm.matlab.Handle
         %>  \return
         %>  ``val``                 :   The output MATLAB ``table`` of size ``numlag + 1``
         %>                              containing the autocorrelation from lag ``0`` to ``numlag``.<br>
-        %>  ``lag``                 :   The output MATLAB ``table`` of size ``numlag + 1``
-        %>                              containing the autocorrelation lags from ``0`` to ``numlag``.<br>
+        %>                              The first column of ``val`` always contains the set of ``numlag + 1``
+        %>                              autocorrelation lags from ``0`` to ``numlag``.<br>
         %>  ``bnd``                 :   The output MATLAB ``table`` of ``size(df, 2)`` rows by one column
         %>                              containing the absolute ``numstd``-significance level of the
         %>                              computed autocorrelations. Any autocorrelation value whose
@@ -190,11 +239,11 @@ classdef AutoCorr < pm.matlab.Handle
         %>  \code{.m}
         %>
         %>      acf = pm.stats.AutoCorr()
-        %>      [acf.val, acf.lag, acf.bnd] = acf.get(df)
-        %>      [acf.val, acf.lag, acf.bnd] = acf.get(df, [])
-        %>      [acf.val, acf.lag, acf.bnd] = acf.get(df, numlag)
-        %>      [acf.val, acf.lag, acf.bnd] = acf.get(df, [], numstd)
-        %>      [acf.val, acf.lag, acf.bnd] = acf.get(df, numlag, numstd)
+        %>      [acf.val, acf.bnd] = acf.get(dfref)
+        %>      [acf.val, acf.bnd] = acf.get(dfref, [])
+        %>      [acf.val, acf.bnd] = acf.get(dfref, numlag)
+        %>      [acf.val, acf.bnd] = acf.get(dfref, [], numstd)
+        %>      [acf.val, acf.bnd] = acf.get(dfref, numlag, numstd)
         %>
         %>  \endcode
         %>
@@ -208,42 +257,77 @@ classdef AutoCorr < pm.matlab.Handle
         %>  \JoshuaOsborne, May 21 2024, 4:14 AM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
-        function [val, lag, bnd] = get(self, df, numlag, numstd)
-            if nargin < 2
+        function [val, bnd] = get(self, dfref, numlag, numstd)
+
+            %%%%
+            %%%% Define the data.
+            %%%%
+
+            if  nargin < 2
+                dfref = [];
+            end
+
+            if ~isempty(dfref)
+                self.df = pm.container.DataFrame(dfref);
+            end
+
+            dfcopy = self.df.copy();
+
+            if ~isempty(dfcopy)
+                data = dfcopy{:,:};
+            else
                 help("pm.stats.AutoCorr");
                 error   ( newline ...
-                        + "The input ``df`` argument is required for computing the autocorrelation." + newline ...
+                        + "A non-mepty ``dfref`` attribute or input argument is required for computing the autocorrelation." + newline ...
                         + newline ...
                         );
             end
-            if  nargin < 4
-                numstd = 1;
-            end
+
+            %%%%
+            %%%% Define the number of lags.
+            %%%%
+
             if  nargin < 3
                 numlag = [];
             end
-            self.numlag = numlag;
-            self.numstd = numstd;
-            if isa(df, "table")
-                data = table2array(df);
-            else
-                data = df;
+
+            if ~isempty(numlag)
+                self.numlag = numlag;
+            elseif isempty(self.numlag)
+                self.numlag = size(data, 1) - 1;
             end
-            if ~isempty(self.numlag)
-                numlag = self.numlag;
-            else
-                numlag = size(data, 1) - 1;
+
+            %%%%
+            %%%% Define the number of standard deviations for the bounds.
+            %%%%
+
+            if  nargin < 4
+                numstd = [];
             end
-            val = zeros(numlag + 1, size(data, 2));
-            lag = zeros(numlag + 1, 1);
+
+            if ~isempty(numstd)
+                self.numstd = numstd;
+            elseif isempty(self.numstd)
+                self.numstd = 1;
+            end
+
+            %%%%
+            %%%% Compute the ACF.
+            %%%%
+
             bnd = zeros(size(data, 2), 1);
+            val = zeros(self.numlag + 1, size(data, 2) + 1);
+
             try
+
                 for icol = 1 : size(data, 2)
-                    [val(:, icol), lag, bounds] = autocorr(data(:, icol), "numlags", numlag);
-                    bnd(icol) = abs(bounds(1)) * numstd;
+                    [val(:, icol + 1), val(:, 1), bounds] = autocorr(data(:, icol), "numlags", self.numlag);
+                    bnd(icol) = abs(bounds(1)) * self.numstd;
                 end
                 val = array2table(val);
+
             catch me
+
                 %val = NaN(numlag, size(data, 2));
                 warning ( newline ...
                         + string(me.identifier) + " : " + string(me.message) + newline ...
@@ -251,12 +335,98 @@ classdef AutoCorr < pm.matlab.Handle
                         + newline ...
                         );
                 return;
+
             end
-            if isa(df, "table")
-                val.Properties.VariableNames = df.Properties.VariableNames;
-            end
+
+            val.Properties.VariableNames = ["Lag", "ACF(" + string(dfcopy.Properties.VariableNames) + ")"];
+
         end
 
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     end
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    methods(Access = public, Hidden)
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        %>  \brief
+        %>  Set up the visualization tools of the autocorrelation.<br>
+        %>
+        %>  \details
+        %>  This is a dynamic ``Hidden`` method of the [pm.stats.AutoCorr](@ref AutoCorr) class.<br>
+        %>  This method is inaccessible to the end users of the ParaMonte MATLAB library.<br>
+        %>
+        %>  \param[inout]   self    :   The **implicitly-passed** input argument representing the parent object of the method.<br>
+        %>  \param[in]      val     :   The input (reference of function handle returning a) MATLAB matrix or table of rank ``2``
+        %>                              containing the computed autocorrelation to be visualized.<br>
+        %>                              Ideally, the user would want to pass a reference to a dataframe (e.g., as a function handle ``@()df``)
+        %>                              so that the data remains dynamically up-to-date.<br>
+        %>                              (**optional**. If missing, the contents of the corresponding ``var`` attribute of the parent object will be used.)
+        %>
+        %>  \interface{get}
+        %>  \code{.m}
+        %>
+        %>      mat = pm.stats.AutoCorr(dfref, method)
+        %>      mat.setvis(); % This method is automatically called within the object constructor.
+        %>
+        %>  \endcode
+        %>
+        %>  \final{get}
+        %>
+        %>  \author
+        %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
+        %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
+        function setvis(self, val)
+
+            if  1 < nargin
+                self.val = val;
+            end
+
+            self.vis = struct();
+
+            self.vis.plot = struct();
+            self.vis.plot.line = pm.vis.PlotLine( @()self.val ...
+                                                , "colx", 1, "coly", 2 : size(self.val, 2) ...
+                                                , "legend", {"enabled", true} ..., "labels", self.val.Properties.VariableNames(2:end)} ...
+                                                , "ylabel", {"txt", "Autocorrelation Function (ACF)"} ...
+                                                , "xlabel", {"txt", "Autocorrelation Lag"} ...
+                                                , "colormap", {"enabled", false} ...
+                                                , "axes", {"xscale", "log"} ...
+                                                , "ylim", [-1, 1] ...
+                                                );
+
+            self.vis.tile = struct();
+            self.vis.tile.line = pm.vis.TileLine( @()self.val ...
+                                                , "colx", 1, "coly", 2 : size(self.val, 2) ...
+                                                , "ylabel", {"txt", "Autocorrelation Function (ACF)"} ...
+                                                , "xlabel", {"txt", "Autocorrelation Lag"} ...
+                                                , "colormap", {"enabled", false} ...
+                                                , "legend", {"enabled", true} ...
+                                                , "axes", {"xscale", "log"} ...
+                                                , "tiledlayout", {"TileSpacing", "tight"} ...
+                                                , "ylim", [-1, 1] ...
+                                                );
+
+            self.vis.cascade = struct();
+            self.vis.cascade.line = pm.vis.CascadeLine  ( @()self.val ...
+                                                        , "colx", 1, "coly", 2 : size(self.val, 2) ...
+                                                        , "ylabel", {"txt", "Autocorrelation Function (ACF)"} ...
+                                                        , "xlabel", {"txt", "Autocorrelation Lag"} ...
+                                                        , "colormap", {"enabled", false} ...
+                                                        , "legend", {"enabled", true} ...
+                                                        , "axes", {"xscale", "log"} ...
+                                                        , "ylim", [-1, 1] ...
+                                                        );
+
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    end
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end

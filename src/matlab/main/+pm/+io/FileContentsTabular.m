@@ -55,7 +55,7 @@ classdef FileContentsTabular < pm.io.FileContents
         %>
         %>  ``df``
         %>
-        %>  The scalar MATLAB table containing the
+        %>  The scalar MATLAB ``table`` containing the
         %>  contents of the file as a dataframe.<br>
         %>
         df = [];

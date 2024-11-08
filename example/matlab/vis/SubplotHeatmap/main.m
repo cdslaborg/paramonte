@@ -9,7 +9,7 @@ df.Properties.VariableNames = ["X = r cos(theta)", "Y = r sin(theta)", "Z = r"];
 figure("color", "white");
 dfcor = pm.stats.Cor(df(:, 1 : 2));
 sv = pm.vis.SubplotHeatmap(dfcor.val);
-sv.title.titletxt = "Heatmap Subplot";
+sv.title.titletext = "Heatmap Subplot";
 sv.make();
 sv.setColorLim();
 pm.vis.figure.savefig("SubplotHeatmap.1.png", "-m3");

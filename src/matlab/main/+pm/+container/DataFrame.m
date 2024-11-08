@@ -1,7 +1,7 @@
 %>  \brief
 %>  This is the abstract class for generating instances of objects
 %>  that can contain basic attributes required for tabular read-only
-%>  access to a MATLAB table-compatible data stored externally.<br>
+%>  access to a MATLAB ``table``-compatible data stored externally.<br>
 %>
 %>  \details
 %>  This class is merely a convenience read-only wrapper
@@ -87,7 +87,7 @@ classdef DataFrame < pm.container.DataRef
         %>  \param[inout]   self    :   The **implicitly-passed** input argument representing the parent object of the method.<br>
         %>
         %>  \return
-        %>  ``df``                  :   The output scalar MATLAB table a full copy of the dataframe
+        %>  ``df``                  :   The output scalar MATLAB ``table`` a full copy of the dataframe
         %>                              contained in the user-specified input ``dfref`` passed
         %>                              to the constructor of the parent object.<br>
         %>
