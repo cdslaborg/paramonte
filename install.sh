@@ -674,7 +674,7 @@ for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
                                     "${flag_mem}" \
                                     "${flag_par}" \
                                     "${flag_dev}" \
-                                    "${flag_matlabroot}" \
+                                    ${flag_matlabroot} \
                                     ${flag_fc} \
                                     ${flag_bench} \
                                     ${flag_benchpp} \
