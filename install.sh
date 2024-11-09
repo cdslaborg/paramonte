@@ -101,6 +101,16 @@ if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
     flag_dev="-Ddev_enabled=0"
     ntry=2
 
+    ####
+    #### MATLAB MEX variables (must be removed once CMake FindMatlab.cmake module bug for Windows is resolved.)
+    ####
+
+    unset matlabroot
+
+    ####
+    #### Parse input args.
+    ####
+
     while [ "$1" != "" ]; do
         case "$1" in
 
@@ -220,6 +230,7 @@ if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
                             verifyArgNotKey "$1" --matlabroot
                             #verifyArgNotEmpty "$1" --matlabroot
                             flag_matlabroot="-Dmatlabroot=\"$1\""
+                            matlabroot="$1"
                             ;;
 
             --me )          shift
@@ -379,7 +390,7 @@ if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
         #   on Unix systems, try suffixing the extension to the compiler file path. If it fails, use the default specified path.
         #fccompilers=("ifort" "ifx" "gfortran" "gfortran-10" "gfortran-11" "gfortran-12" "gfortran-13" "gfortran-14" "gfortran-15" "gfortran-16" "gfortran-17" "gfortran-18" "gfortran-19" "gfortran-20")
         fccompilers=("ifort" "ifx" "gfortran-20" "gfortran-19" "gfortran-18" "gfortran-17" "gfortran-16" "gfortran-15" "gfortran-14" "gfortran-13" "gfortran-12" "gfortran-11" "gfortran-10" "gfortran")
-        if [ "${os}" = "mingw" ] || [ "${os}" = "msys" ] || [ "${os}" = "cygwin" ]; then
+        if [ "${iswin}" = "true" ]; then
             extensions=(".exe" "")
         else
             extensions=("")
@@ -663,6 +674,7 @@ for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
                                     "${flag_mem}" \
                                     "${flag_par}" \
                                     "${flag_dev}" \
+                                    "${flag_matlabroot}" \
                                     ${flag_fc} \
                                     ${flag_bench} \
                                     ${flag_benchpp} \
@@ -675,7 +687,6 @@ for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
                                     ${flag_fpp} \
                                     ${flag_fresh} \
                                     ${flag_lapack} \
-                                    ${flag_matlabroot} \
                                     ${flag_me} \
                                     ${flag_mod} \
                                     ${flag_nproc} \
@@ -702,6 +713,215 @@ for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
                                    #(cd "${paramonte_bld_dir}" && $makename install)
                                     (cd "${paramonte_bld_dir}" && cmake --build "${paramonte_bld_dir}" --target install ${flag_j})
                                     verify $? "installation"
+
+                                    echo >&2 ""
+                                    echo >&2 "########################################################################################%%"
+                                    echo >&2 ""
+
+                                    ####
+                                    #### Search for MATLAB installations and build MEX files before deploying the package.
+                                    ####
+
+                                    #### The following block is commented out because the MEX compile command is problematic
+                                    #### and non-functional as it calls a Windows batch script from within Bash.
+
+                                    if [ 1 -lt 1 ]; then # just to allow toggling in notepad++.
+
+                                        if [ "${lang}" = "matlab" ] && [ "${iswin}" = "true" ]; then
+
+                                            unset MATLAB_ROOT_DIR
+                                            unset MATLAB_EXE_PATH
+                                            unset MATLAB_BIN_DIR
+                                            unset MATLAB_LIB_DIR
+                                            unset MATLAB_INC_DIR
+                                            unset MATLAB_LIBMX_FILE
+                                            unset MATLAB_LIBMEX_FILE
+                                            unset MATLAB_LIBMAT_FILE
+                                            unset MATLAB_VERSION_FILE
+                                            # unset MATLAB_INC_DIR_FLAG
+
+                                            echo >&2 ""
+                                            echo >&2 "${pmnote} Searching for a MATLAB installations on your system..."
+
+                                            INSTALL_LOC_LIST="/c/Program Files/MATLAB:/c/Program Files (x86)/MATLAB"
+                                            MATLAB_VERSION_LIST="R2035b:R2035a:R2034b:R2034a:R2033b:R2033a:R2032b:R2032a:R2031b:R2031a:R2030b:R2030a:R2029b:R2029a:R2028b:R2028a:R2027b:R2027a:R2026b:R2026a"
+                                            MATLAB_VERSION_LIST="${MATLAB_VERSION_LIST}:R2025b:R2025a:R2024b:R2024a:R2023b:R2023a:R2022b:R2022a:R2021b:R2021a:R2020b:R2020a:R2019b:R2019a:R2018b:R2018a:R2017b:R2017a"
+
+                                            ####
+                                            #### Amir Shahmoradi Oct 25, 2024:
+                                            #### The following block is currently was added despite its functionality being already implemented within CMake.
+                                            #### The reason for its existence is to resolve the vicious bug that exists in CMake intrinsic module FindMatlab.cmake yielding the following runtime error:
+                                            ####
+                                            ####     Error using pm.sampling.Sampler/run MATLAB:mex:ErrInvalidMEXFile : Invalid MEX-file 'pm_sampling.mexw64': Gateway function is missing
+                                            ####
+                                            #### See also,
+                                            ####
+                                            ####     https://gitlab.kitware.com/cmake/cmake/-/issues/25068#note_1580985
+                                            ####
+                                            #### for a relevant discussion of this bug faced by others and the status of a resolution to fix it.
+                                            #### Note that this CMake bug is different from another vicious MATLAB-MEX-version related bug that causes the MEX files to fail at runtime
+                                            #### while the same MEX compilation and run for ParaMonte 1 succeeds with MATLAB R2022b and older.
+                                            #### See
+                                            ####
+                                            ####     https://www.mathworks.com/matlabcentral/answers/2157360-matlab-mex-errinvalidmexfile-invalid-mex-file-the-specified-procedure-could-not-be-found?s_tid=prof_contriblnk
+                                            ####
+                                            #### for more relevant discussion of this bug and possible causes.
+                                            ####
+                                            #### As of today, both CMake and MATLAB MEX compatibility bugs remain unresolved.
+                                            #### The following block can be commented out by setting the value of
+                                            #### `MATLAB_FOUND` to `none` in the following `set` command.
+                                            ####
+                                            #### \todo
+                                            #### \pvhigh
+                                            #### Once the CMake bug in FindMatlab.cmake intrinsic modules is resolved, the whole shenanigan above and below for MEX compilation must be removed.
+                                            ####
+
+                                            MATLAB_FOUND="false"
+                                            IFS_TEMP="${IFS}"
+                                            IFS=:
+                                            for INSTALL_LOC in "${INSTALL_LOC_LIST}"; do
+                                                for MATLAB_VERSION in "${MATLAB_VERSION_LIST}"; do
+
+                                                    if [ "${MATLAB_FOUND}" = "false" ]; then
+
+                                                        if  [ "${matlabroot}" = "" ]; then
+                                                            MATLAB_ROOT_DIR_TEMP="${INSTALL_LOC}"/"${MATLAB_VERSION}"
+                                                        else
+                                                            MATLAB_ROOT_DIR_TEMP="${matlabroot}"
+                                                            echo >&2 "${pmnote} ${BoldYellow}Searching for user-specified MATLAB installation at: ${MATLAB_ROOT_DIR_TEMP} ${ColorReset}"
+                                                        fi
+                                                        MATLAB_BIN_DIR_TEMP="${MATLAB_ROOT_DIR_TEMP}/bin"
+                                                        MATLAB_EXE_PATH_TEMP="${MATLAB_BIN_DIR_TEMP}/matlab"
+                                                        if  ! [ -f "${MATLAB_BIN_DIR_TEMP}/matlab" ]; then
+                                                            MATLAB_EXE_PATH_TEMP="${MATLAB_EXE_PATH_TEMP}.exe"
+                                                        fi
+
+                                                        if  [ -f "${MATLAB_EXE_PATH_TEMP}" ]; then
+
+                                                            MATLAB_FOUND="true"
+                                                            MATLAB_ROOT_DIR="${MATLAB_ROOT_DIR_TEMP}"
+                                                            MATLAB_EXE_PATH="${MATLAB_EXE_PATH_TEMP}"
+                                                            MATLAB_BIN_DIR="${MATLAB_BIN_DIR_TEMP}"
+                                                            MATLAB_INC_DIR="${MATLAB_ROOT_DIR}/extern/include"
+                                                            MATLAB_LIB_DIR="${MATLAB_ROOT_DIR}/extern/lib/win64/microsoft"
+                                                            MATLAB_LIBMX_FILE="${MATLAB_LIB_DIR}/libmx.lib"
+                                                            MATLAB_LIBMEX_FILE="${MATLAB_LIB_DIR}/libmex.lib"
+                                                            MATLAB_LIBMAT_FILE="${MATLAB_LIB_DIR}/libmat.lib"
+                                                            MATLAB_VERSION_FILE="${MATLAB_ROOT_DIR}/extern/version/fortran_mexapi_version.F"
+                                                            echo >&2 "${pmnote} ${BoldYellow}MATLAB installation detected at: ${MATLAB_EXE_PATH} ${ColorReset}"
+                                                            #### MATLAB_INC_DIR_FLAG=/I:!MATLAB_INC_DIR!"
+                                                            #### FPP_FLAGS=/define:MATLAB_MEX_FILE
+
+                                                            ####
+                                                            ####  Build MATLAB MEX files.
+                                                            ####
+
+                                                            MEX_FLAGS="-v -nojvm"
+
+                                                            ####
+                                                            #### If openmp is enabled, define the macro OMP_ENABLED=1.
+                                                            #### \todo
+                                                            #### \pvhigh
+                                                            #### This is a weakness point as the input value for `--par` flag may not be completely lower case.
+                                                            ####
+
+                                                            if [[ "${par}" =~ [Oo][Pp][Ee][Nn][Mm][Pp] ]] || [[ "${par}" =~ [Oo][Mm][Pp] ]]; then
+                                                                MEX_FLAGS="${MEX_FLAGS} -DOMP_ENABLED"
+                                                            fi
+                                                            echo >&2 "${pmnote} ${BoldYellow}Generating the ParaMonte MATLAB MEX files...${ColorReset}"
+                                                            echo >&2 "${pmnote} ${BoldYellow}Compiler command: \"${MATLAB_BIN_DIR}/mex.bat\" ${MEX_FLAGS} \"${paramonte_src_dir}/matlab/xrc/pm_sampling.c\" libparamonte.lib -output pm_sampling${ColorReset}"
+
+                                                            cd "${paramonte_bld_dir}/lib"
+                                                            #### we cannot use the version variable when MATLAB directory is user-specified.
+                                                            #### if not exist "${MATLAB_VERSION}" (mkdir "${MATLAB_VERSION}")
+                                                            #### cd "${MATLAB_VERSION}"
+
+                                                            #### The following command is problematic and non-functional as it calls a Windows batch script from within Bash.
+
+                                                            cmd /c "${MATLAB_BIN_DIR}/mex.bat" ${MEX_FLAGS} "${paramonte_src_dir}/matlab/xrc/pm_sampling.c" libparamonte.dll -output pm_sampling && {
+                                                                echo >&2 "${pmnote} ${BoldGreen}The ParaMonte MATLAB shared library build appears to have succeeded.${ColorReset}"
+                                                            } || {
+                                                                echo >&2 ""
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}The ParaMonte MATLAB library build failed.${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}Please make sure you have the following components installed${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}on your system before rerunning the installation script:${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}    -- MATLAB, including MATLAB MEX compilers.${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}    -- Intel OneAPI icx/icl and ifx/ifort compilers 2023 or newer.${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}Once you are sure of the existence of these components in your ${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}Windows command line environment, run the following command:${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}    \"${MATLAB_BIN_DIR}/mex.bat\" -setup C${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}Among the options displayed, you should see the command to setup${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}the Intel OneAPI icl/icx or Microsoft cl compiler for C on your system.${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}This command should look similar to the following,${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}    \"${MATLAB_BIN_DIR_TEMP}/mex.bat\" -setup:\"/c/Program Files/MATLAB/R2024a/bin/win64/mexopts/intel_c_24_vs2022.xml\" C${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}with minor differences in the xml file name depending on your specific installations of ${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}    -- the Intel OneAPI or Microsoft compiler version${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}    -- the Microsoft Visual Studio version${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}    -- the MATLAB version${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}Copy and paste this command into your terminal, run it, and then rerun the ParaMonte MATLAB installation script.${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}Please report this or any other issues at:${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}    https://github.com/cdslaborg/paramonte/issues ${ColorReset}"
+                                                                echo >&2 "${pmwarn} ${BoldMagenta}${ColorReset}"
+                                                                echo >&2 ""
+                                                                # exit 1
+                                                            }
+                                                            cd "${paramonte_dir}"
+
+                                                        fi
+
+                                                        unset MATLAB_ROOT_DIR_TEMP
+                                                        unset MATLAB_BIN_DIR_TEMP
+                                                        unset MATLAB_EXE_PATH_TEMP
+
+                                                    fi
+
+                                                done
+                                            done
+                                            IFS="${IFS_TEMP}"
+
+                                            if  [ "${MATLAB_FOUND}" = "false" ]; then
+                                                echo >&2 "${pmwarn} ${BoldMagenta}Exhausted all possible search paths for a MATLAB installation, but failed to find MATLAB.${ColorReset}"
+                                                echo >&2 "${pmwarn} ${BoldMagenta}The ParaMonte MATLAB kernel will not be functional without building the required DLL libraries.${ColorReset}"
+                                                echo >&2 "${pmwarn} ${BoldMagenta}Please add MATLAB to your environmental variable PATH and rerun the install script.${ColorReset}"
+                                                echo >&2 "${pmwarn} ${BoldMagenta}For example, on your current Windows command-line, try:${ColorReset}"
+                                                echo >&2 "${pmwarn} ${BoldMagenta}${ColorReset}"
+                                                echo >&2 "${pmwarn} ${BoldMagenta}    \"PATH=PATH_TO_MATLAB_BIN_DIR:\$PATH\""
+                                                echo >&2 "${pmwarn} ${BoldMagenta}${ColorReset}"
+                                                echo >&2 "${pmwarn} ${BoldMagenta}where PATH_TO_MATLAB_BIN_DIR must be replaced with path to the bin folder of the current${ColorReset}"
+                                                echo >&2 "${pmwarn} ${BoldMagenta}installation of MATLAB on your system. Typical MATLAB bin installation path on a 64-bit Windows${ColorReset}"
+                                                echo >&2 "${pmwarn} ${BoldMagenta}Operating Systems is a string like the following:${ColorReset}"
+                                                echo >&2 "${pmwarn} ${BoldMagenta}${ColorReset}"
+                                                echo >&2 "${pmwarn} ${BoldMagenta}    \"/c/Program Files/MATLAB/2020a/bin/\"${ColorReset}"
+                                                echo >&2 "${pmwarn} ${BoldMagenta}${ColorReset}"
+                                                echo >&2 "${pmwarn} ${BoldMagenta}where 2020a in the path points to the MATLAB 2020a version installation on the system. You can also${ColorReset}"
+                                                echo >&2 "${pmwarn} ${BoldMagenta}find the installation location of MATLAB by typing the following command in your MATLAB session:${ColorReset}"
+                                                echo >&2 "${pmwarn} ${BoldMagenta}${ColorReset}"
+                                                echo >&2 "${pmwarn} ${BoldMagenta}    matlabroot${ColorReset}"
+                                                echo >&2 "${pmwarn} ${BoldMagenta}"
+                                                echo >&2 "${pmwarn} ${BoldMagenta}skipping the ParaMonte MATLAB build...${ColorReset}"
+                                            fi
+
+                                        fi
+
+                                        ####
+                                        #### End of MATLAB MEX build.
+                                        ####
+
+                                    fi
+
+                                    echo >&2 ""
+                                    echo >&2 "########################################################################################%%"
+                                    echo >&2 ""
 
                                    #(cd "${paramonte_bld_dir}" && $makename deploy)
                                     (cd "${paramonte_bld_dir}" && cmake --build "${paramonte_bld_dir}" --target deploy ${flag_j})

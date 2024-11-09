@@ -371,6 +371,11 @@ os="${os//$'\r'/}" # Remove all carriage returns.
 os="${os//$'\n'/}" # Remove all newlines.
 export os
 
+unset iswin
+if [ "${os}" = "mingw" ] || [ "${os}" = "msys" ] || [ "${os}" = "cygwin" ]; then
+    iswin="true"
+fi
+
 # uname_os_FULL="$(uname -a)"
 # if [[ "$uname_os_FULL" =~ .*"Microsoft".* && "$uname_os_FULL" =~ .*"Linux".* ]]; then
 #     isWSL=true
