@@ -14,13 +14,10 @@
 %>
 %>  \param[in]  varval  :   The input value to whose type and
 %>                          number of elements is to be verified.
-%>
 %>  \param[in]  vartype :   See the documentation of the corresponding
 %>                          argument of [pm.introspection.istype()](@ref istype).
-%>
 %>  \param[in]  varsize :   See the documentation of the corresponding
 %>                          argument of [pm.introspection.istype()](@ref istype).
-%>
 %>  \param[in]  varname :   The input scalar MATLAB string containing the label to assign
 %>                          to the namelist-converted value in the output ``entry``.<br>
 %>                          The specified value of ``varname`` will be trimmed

@@ -1308,7 +1308,7 @@ if  "!zipperFound!"=="" (
     echo.
 ) else (
     echo.
-    echo.!pmnote! !BoldGreen!Generating the the binary archive zip file using !zipperName! at:!ColorReset! "!ddir!"
+    echo.!pmnote! !BoldGreen!Generating the binary archive zip file using !zipperName! at:!ColorReset! "!ddir!"
     echo.
     call :NORMALIZEPATH "!ddir!"
     if  exist "!ddir!" (

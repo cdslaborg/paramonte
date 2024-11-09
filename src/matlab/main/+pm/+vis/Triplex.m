@@ -107,7 +107,7 @@ classdef Triplex < pm.vis.figure.Figure
         %>  This is the constructor of the class [pm.vis.Triplex](@ref Triplex).<br>
         %>  The input dataset to each plot section is assumed to be common among all plots (though not necessarily).<br>
         %>  As such, all axes labels and tick marks of all subplots are dropped by default,
-        %>  except for subplots in the the left and bottom boundaries of the figure.<br>
+        %>  except for subplots in the left and bottom boundaries of the figure.<br>
         %>
         %>  If any of the three input subplot types has colorbar, it is disabled for individual subplots.<br>
         %>  Instead, universal colorbar(s) will be added to the right and top sides of the Triplex plot.<br>

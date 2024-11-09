@@ -13,7 +13,7 @@ for vistype = string(fields(sample.vis))'
     disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     for plottype = string(fields(sample.vis.(vistype)))'
         sample.vis.(vistype).(plottype).make("figure", {"visible", "off"});
-        figname = join(["FileContentsSample", vistype, plottype], ".");
+        figname = join(["FileContentsSampleDRAM", vistype, plottype], ".");
         if  strcmpi(vistype, "cascade")
             figname = [figname + "." + string(1 : numel(sample.vis.(vistype).(plottype).window))];
         end

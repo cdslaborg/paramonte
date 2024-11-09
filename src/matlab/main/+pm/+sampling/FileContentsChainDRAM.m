@@ -8,10 +8,11 @@
 %>  specific to the [pm.sampling.Paradram](@ref Paradram) sampler.<br>
 %>
 %>  \note
-%>  See also the documentation of the class constructor [pm.sampling.FileContentsChainDRAM::FileContentsChainDRAM](@ref FileContentsChainDRAM::FileContentsChainDRAM).<br>
+%>  See also the documentation of the class constructor
+%>  [pm.sampling.FileContentsChainDRAM::FileContentsChainDRAM](@ref FileContentsChainDRAM::FileContentsChainDRAM).<br>
 %>
 %>  \note
-%>  See also the documentation of the superclass [pm.sampling.FileContentsChainDRAM](@ref FileContentsChainDRAM).<br>
+%>  See also the documentation of the superclass [pm.sampling.FileContentsChainMCMC](@ref FileContentsChainMCMC).<br>
 %>
 %>  \note
 %>  See below for information on the attributes (properties).<br>
@@ -24,7 +25,7 @@
 %>  \author
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
-classdef FileContentsChainDRAM < pm.sampling.FileContentsChain
+classdef FileContentsChainDRAM < pm.sampling.FileContentsChainMCMC
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -49,10 +50,24 @@ classdef FileContentsChainDRAM < pm.sampling.FileContentsChain
         %>  This is the constructor of the class [pm.sampling.FileContentsChainDRAM](@ref FileContentsChainDRAM).<br>
         %>
         %>  \param[in]  file    :   The input scalar MATLAB string containing the path or web address to an external file.<br>
-        %>  \param[in]  silent  :   See the corresponding argument of the superclass constructor [pm.sampling.FileContentsChain::FileContentsChain](@ref FileContentsChain::FileContentsChain).<br>
-        %>                          (**optional**. The default is set by the superclass constructor [pm.sampling.FileContentsChain::FileContentsChain](@ref FileContentsChain::FileContentsChain).)
-        %>  \param[in]  sep     :   See the corresponding argument of the superclass constructor [pm.sampling.FileContentsChain::FileContentsChain](@ref FileContentsChain::FileContentsChain).<br>
-        %>                          (**optional**. The default is set by the superclass constructor [pm.sampling.FileContentsChain::FileContentsChain](@ref FileContentsChain::FileContentsChain).)
+        %>  \param[in]  silent  :   See the corresponding argument of the superclass constructor [pm.sampling.FileContentsChainMCMC::FileContentsChainMCMC](@ref FileContentsChainMCMC::FileContentsChainMCMC).<br>
+        %>                          (**optional**. The default is set by the superclass constructor [pm.sampling.FileContentsChainMCMC::FileContentsChainMCMC](@ref FileContentsChainMCMC::FileContentsChainMCMC).)
+        %>  \param[in]  sep     :   See the corresponding argument of the superclass constructor [pm.sampling.FileContentsChainMCMC::FileContentsChainMCMC](@ref FileContentsChainMCMC::FileContentsChainMCMC).<br>
+        %>                          (**optional**. The default is set by the superclass constructor [pm.sampling.FileContentsChainMCMC::FileContentsChainMCMC](@ref FileContentsChainMCMC::FileContentsChainMCMC).)
+        %>  \param[in]  format  :   The input scalar MATLAB string containing the reading format of the Markov chain:
+        %>                          <ol>
+        %>                              <li>    If ``format`` is set to ``"compact"``,
+        %>                                      the Markov chain will be read in compact (weighted) format.<br>
+        %>                                      This format is fast and potentially highly memory-efficient.<br>
+        %>                                      Beware that this format does not necessarily generate a compact chain
+        %>                                      when the specified chain file is already written in verbose format.<br>
+        %>                              <li>    If ``format`` is set to ``"verbose"``,
+        %>                                      the Markov chain will be read in verbose (unweighted or unrolled) format.<br>
+        %>                                      While the chain in this format is the **actual Markov chain**,
+        %>                                      reading the chain in this format can be highly inefficient as it
+        %>                                      can use too much memory for high-dimensional density functions.<br>
+        %>                          </ol>
+        %>                          (**optional**, default = ``"compact"``.)
         %>
         %>  \return
         %>  ``self``            :   The output scalar object of class [pm.sampling.FileContentsChainDRAM](@ref FileContentsChainDRAM).<br>
@@ -68,14 +83,135 @@ classdef FileContentsChainDRAM < pm.sampling.FileContentsChain
         %>
         %>  \endcode
         %>
-        %>  \remark
-        %>  See also the documentation of the superclass the superclass constructor
-        %>  [pm.sampling.FileContentsChain::FileContentsChain](@ref FileContentsChain::FileContentsChain)
-        %>  for more example usage and visualizations.<br>
-        %>
         %>  \example{FileContentsChainDRAM}
         %>  \include{lineno} example/sampling/FileContentsChainDRAM/main.m
         %>  \vis{FileContentsChainDRAM}
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.contour.1.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.contour.2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.contour.3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.contour3.1.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.contour3.2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.contour3.3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.contourf.1.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.contourf.2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.contourf.3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.histfit.1.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.histfit.2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.histfit.3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.histogram.1.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.histogram.2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.histogram.3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.histogram2.1.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.histogram2.2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.histogram2.3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.line.1.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.line.2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.line.3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.line3.1.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.line3.2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.line3.3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.lineScatter.1.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.lineScatter.2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.lineScatter.3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.lineScatter3.1.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.lineScatter3.2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.lineScatter3.3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.scatter.1.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.scatter.2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.scatter.3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.scatter3.1.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.scatter3.2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.cascade.scatter3.3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.plot.contour.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.plot.contour3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.plot.contourf.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.plot.histfit.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.plot.histogram.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.plot.histogram2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.plot.line.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.plot.line3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.plot.lineScatter.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.plot.lineScatter3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.plot.scatter.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.plot.scatter3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.tile.contour.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.tile.contour3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.tile.contourf.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.tile.histfit.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.tile.histogram.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.tile.histogram2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.tile.line.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.tile.line3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.tile.lineScatter.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.tile.lineScatter3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.tile.scatter.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.tile.scatter3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.triplex.lshc2.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.triplex.lshc3.png width=700
+        %>  <br><br>
+        %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.triplex.lshcf.png width=700
         %>  <br><br>
         %>  \image html example/sampling/FileContentsChainDRAM/FileContentsChainDRAM.proposalAdaptation.scatter.png width=700
         %>  <br><br>
@@ -90,142 +226,33 @@ classdef FileContentsChainDRAM < pm.sampling.FileContentsChain
         %>  \author
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
-        function self = FileContentsChainDRAM(file, silent, sep)
+        function self = FileContentsChainDRAM(file, silent, sep, format)
 
-            if nargin < 3
+            if  nargin < 4
+                format = [];
+            end
+
+            if  nargin < 3
                 sep = [];
             end
 
-            if nargin < 2
+            if  nargin < 2
                 silent = [];
             end
 
-            self = self@pm.sampling.FileContentsChain(file, silent, sep);
+            self = self@pm.sampling.FileContentsChainMCMC(file, silent, sep, format);
+
+            %%%%
+            %%%% Compute the ParaDRAM-specific statistics.
+            %%%%
+
+            self.setstats();
 
             %%%%
             %%%% Add the ParaDRAM-specific visualizations.
             %%%%
 
-            silent_kws = {"silent", self.silent};
-            self.checkpoint("adding DRAM-specific visualizations to the chain object...", false);
-
-            %%%%
-            %%%% Add the visualizations for ``meanAcceptanceRate``.
-            %%%%
-
-            try
-
-                %%%% Find the keywords in the column names.
-                %%%% This avoids exact matching, which is problematic between ParaMonte 1 and 2).
-                for colname = string(self.df.Properties.VariableNames)
-                    if  contains(lower(colname), "mean")
-                        break;
-                    end
-                end
-
-                self.vis.(colname) = struct();
-                self.vis.(colname).line = pm.vis.PlotLine   ( @()self.df, "coly", colname, "colc", self.slfc ...
-                                                            , "ylabel", {"txt", "Mean Acceptance Rate"} ...
-                                                            , "xlabel", {"txt", "Sampling Step"} ...
-                                                            , "axes", {"xscale", "log"} ...
-                                                            , "plot", {"linewidth", 3} ...
-                                                            , silent_kws{:} ...
-                                                            );
-
-            catch me
-
-                warning ( newline ...
-                        + "Failed to create the visualizations for the " + colname + " data column of the chain file." + newline ...
-                        + "Here is the error message:" + newline ...
-                        + newline ...
-                        + string(me.identifier) + newline + string(me.message) + newline ...
-                        + newline ...
-                        );
-
-            end
-
-            %%%%
-            %%%% Add the visualizations for ``burninLocation``.
-            %%%%
-
-            try
-
-                %%%% Find the keywords in the column names.
-                %%%% This avoids exact matching, which is problematic between ParaMonte 1 and 2).
-                for colname = [string(self.df.Properties.VariableNames)]
-                    if  contains(lower(colname), "burnin")
-                        break;
-                    end
-                end
-
-                self.vis.(colname) = struct();
-                self.vis.(colname).line = pm.vis.PlotLine   ( @()self.df, "coly", colname, "colc", self.slfc ...
-                                                            , "ylabel", {"txt", "MCMC Burnin Location"} ...
-                                                            , "xlabel", {"txt", "Sampling Step"} ...
-                                                            , "axes", {"xscale", "log"} ...
-                                                            , "plot", {"linewidth", 3} ...
-                                                            , silent_kws{:} ...
-                                                            );
-
-            catch me
-
-                warning ( newline ...
-                        + "Failed to create the visualizations for the " + colname + " data column of the chain file." + newline ...
-                        + "Here is the error message:" + newline ...
-                        + newline ...
-                        + string(me.identifier) + newline + string(me.message) + newline ...
-                        + newline ...
-                        );
-
-            end
-
-            %%%%
-            %%%% Add the visualizations for ``proposalAdaptation``.
-            %%%%
-
-            try
-
-
-                %%%% Find the keywords in the column names.
-                %%%% This avoids exact matching, which is problematic between ParaMonte 1 and 2).
-                for colname = [string(self.df.Properties.VariableNames)]
-                    if  contains(lower(colname), "adaptation")
-                        break;
-                    end
-                end
-
-                self.vis.(colname) = struct();
-                self.vis.(colname).line = pm.vis.PlotLine   ( @()self.df, "coly", colname, "colc", self.slfc ...
-                                                            , "ylabel", {"txt", "Proposal Adaptation"} ...
-                                                            , "xlabel", {"txt", "Sampling Step"} ...
-                                                            , "axes", {"yscale", "log"} ...
-                                                            , "plot", {"linewidth", 2} ...
-                                                            , silent_kws{:} ...
-                                                            );
-                self.vis.(colname).scatter = pm.vis.PlotScatter ( @()self.df, "coly", colname, "colc", self.slfc ...
-                                                                , "ylabel", {"txt", "Proposal Adaptation"} ...
-                                                                , "xlabel", {"txt", "Sampling Step"} ...
-                                                                , "axes", {"yscale", "log"} ...
-                                                                , silent_kws{:} ...
-                                                                );
-
-            catch me
-
-                warning ( newline ...
-                        + "Failed to create the visualizations for the " + colname + " data column of the chain file." + newline ...
-                        + "Here is the error message:" + newline ...
-                        + newline ...
-                        + string(me.identifier) + newline + string(me.message) + newline ...
-                        + newline ...
-                        );
-
-            end
-
-            %%%%
-            %%%% Report the timing.
-            %%%%
-
-            self.checkpoint();
+            self.setvis();
 
         end
 

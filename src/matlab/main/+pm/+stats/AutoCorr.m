@@ -177,9 +177,6 @@ classdef AutoCorr < pm.matlab.Handle
                 self.numlag = numlag;
                 self.numstd = numstd;
             else
-                if  isempty(numlag)
-                    numlag = size(dfref, 1) - 1;
-                end
                 [self.val, self.bnd] = self.get(dfref, numlag, numstd);
             end
 

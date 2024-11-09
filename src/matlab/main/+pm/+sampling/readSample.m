@@ -52,7 +52,7 @@
 %>  \endcode
 %>
 %>  \note
-%>  See the documentation of the sampler subclasses
+%>  See the documentation of the subclasses of [pm.sampling.Sampler](@ref Sampler)
 %>  (e.g., [pm.sampling.Paradram](@ref Paradram)) for example usage in action.<br>
 %>
 %>  \example{readSample}
@@ -114,8 +114,10 @@ function sampleList = readSample(sampler, pattern, sep)
             disp("processing file: """ + pathList(ifile) + """");
         end
 
-        if  isequal(class(sampler), "pm.sampling.Sampler") || isequal(class(sampler), "pm.sampling.Paradram")
+        if  isequal(class(sampler), "pm.sampling.Sampler")
             sampleList{ifile} = pm.sampling.FileContentsSample(pathList(ifile), sampler.silent, sep);
+        elseif isequal(class(sampler), "pm.sampling.Paradram")
+            sampleList{ifile} = pm.sampling.FileContentsSampleDRAM(pathList(ifile), sampler.silent, sep);
         else
             help("pm.sampling.readSample")
             disp("class(sampler)");

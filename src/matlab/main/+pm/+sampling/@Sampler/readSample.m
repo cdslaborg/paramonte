@@ -1,5 +1,5 @@
 %>  \brief
-%>  Return a list of objects of class [pm.sampling.FileContentsSample](@ref FileContentsSample)
+%>  Return a list of objects of superclass [pm.sampling.FileContentsSample](@ref FileContentsSample)
 %>  containing the content(s) of the ParaMonte simulation output sample
 %>  file(s) whose path(s) match the specified input ``pattern`` or the
 %>  simulation specification ``sampler.spec.outputFileName``.<br>
@@ -52,7 +52,7 @@
 %>  \endcode
 %>
 %>  \note
-%>  See the documentation of the sampler subclasses
+%>  See the documentation of the subclasses of [pm.sampling.Sampler](@ref Sampler)
 %>  (e.g., [pm.sampling.Paradram](@ref Paradram)) for example usage in action.<br>
 %>
 %>  \example{readSample}

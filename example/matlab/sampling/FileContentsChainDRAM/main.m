@@ -29,6 +29,17 @@ for visfield = string(fields(chain.vis))'
             chain.vis.(visfield).(plottype).make();
             chain.vis.(visfield).(plottype).savefig(join(["FileContentsChainDRAM", varname, plottype], ".") + ".png", "-m3");
         end
+    else
+        for plottype = string(fields(chain.vis.(visfield)))'
+            chain.vis.(visfield).(plottype).make("figure", {"visible", "off"});
+            figname = join(["FileContentsChainDRAM", visfield, plottype], ".");
+            if  strcmpi(visfield, "cascade")
+                figname = figname + "." + string(1 : numel(chain.vis.(visfield).(plottype).window));
+            end
+            disp("figname")
+            disp( figname )
+            chain.vis.(visfield).(plottype).savefig(figname + ".png", "-m3");
+        end
     end
 
     disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
