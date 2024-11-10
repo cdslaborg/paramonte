@@ -47,7 +47,7 @@ classdef DataFrame < pm.container.DataRef
         %>  \interface{DataFrame}
         %>  \code{.m}
         %>
-        %>      df = pm.container.DataFrame(dfref);
+        %>      dfref = pm.container.DataFrame(dfref);
         %>
         %>  \endcode
         %>

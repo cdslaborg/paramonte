@@ -1268,8 +1268,6 @@ if (TRUE)
                     "${pmfatal} Allowed values:\n"
                     "\n"
                     "${pmfatal} none: Source files will not be preprocessed.\n"
-                    "${pmfatal} gnu: Source files will be preprocessed according to the GNU Compiler syntax and toolset.\n"
-                    "${pmfatal} intel: Source files will be preprocessed according to the Intel Compiler syntax and toolset.\n"
                     "${pmfatal} generic: Source files will be preprocessed assuming a generic Compiler syntax and toolset.\n"
                     "${pmfatal} default: Source files will be preprocessed assuming the default Compiler syntax and toolset.\n"
                     "\n"

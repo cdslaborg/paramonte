@@ -563,6 +563,8 @@ for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
 
                             flag_checking="-Dchecking=${checking}"
 
+                            flag_fresh_current="${flag_fresh}"
+
                             #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
                             # Set the ParaMonte CMake build directory.
                             #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -622,7 +624,7 @@ for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
                                     paramonte_bld_dir="${bdir}"
                                 fi
 
-                                if  [[ "${flag_fresh}" =~ .*"all".* ]]; then
+                                if  [[ "${flag_fresh_current}" =~ .*"all".* ]]; then
                                     if  [ -d "${paramonte_bld_dir}" ]; then
                                         echo >&2 "${pmnote} Removing the old prerequisites of the ParaMonte library build at: paramonte_bld_dir=\"${paramonte_bld_dir}\""
                                         rm -rf "${paramonte_bld_dir}"
@@ -685,7 +687,7 @@ for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
                                     ${flag_exam} \
                                     ${flag_exampp} \
                                     ${flag_fpp} \
-                                    ${flag_fresh} \
+                                    ${flag_fresh_current} \
                                     ${flag_lapack} \
                                     ${flag_me} \
                                     ${flag_mod} \
@@ -701,6 +703,12 @@ for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
                                     ${flag_rki} \
                                     )
                                     verify $? "configuration with cmake"
+
+                                    ####
+                                    #### Reset the fresh flag to ensure the build is not erased during the second CMake configure cycle.
+                                    ####
+
+                                    flag_fresh_current="-Dfresh=none"
 
                                     echo >&2 ""
                                     echo >&2 "########################################################################################%%"

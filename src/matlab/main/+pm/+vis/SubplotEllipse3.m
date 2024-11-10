@@ -848,7 +848,7 @@ classdef SubplotEllipse3 < pm.vis.SubplotLineScatter3
             %%%% Generate the dataframe.
             %%%%
 
-            self.df = pm.container.DataFrame(bcrd);
+            self.dfref = pm.container.DataFrame(bcrd);
 
         end
 

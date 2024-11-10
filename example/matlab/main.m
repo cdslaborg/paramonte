@@ -54,16 +54,18 @@ end
 %%%% ensure Carriage Return, Backspace, and other special characters
 %%%% are correctly interpreted or at least taken as new line characters.
 function sanitize(outfile)
-    output = fileread(outfile);
-    searchlist = [string(char(8)), string(char(13))]; % Backspace, CR
-    for search = searchlist
-        double = search + search;
-        while contains(output, double)
-            output = strrep(output, double, search);
+    try
+        output = fileread(outfile);
+        searchlist = [string(char(8)), string(char(13))]; % Backspace, CR
+        for search = searchlist
+            double = search + search;
+            while contains(output, double)
+                output = strrep(output, double, search);
+            end
+            output = strrep(output, search, newline);
         end
-        output = strrep(output, search, newline);
+        fid = fopen(outfile, "w");
+        fprintf(fid, "%s", output);
+        fclose(fid);
     end
-    fid = fopen(outfile, "w");
-    fprintf(fid, "%s", output);
-    fclose(fid);
 end

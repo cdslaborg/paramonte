@@ -168,10 +168,10 @@ classdef Cor < pm.stats.Cov
 
             self.method = method;
             if ~isempty(dfref)
-                self.df = pm.container.DataFrame(dfref);
+                self.dfref = pm.container.DataFrame(dfref);
             end
 
-            dfcopy = self.df.copy();
+            dfcopy = self.dfref.copy();
 
             if ~isempty(dfcopy)
                 data = dfcopy{:,:};

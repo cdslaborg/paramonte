@@ -23,12 +23,12 @@ classdef Cov < pm.matlab.Handle
 
     properties(Access = public)
         %>
-        %>  ``df``
+        %>  ``dfref``
         %>
         %>  A scalar object of class [pm.container.DataFrame](@ref DataFrame)
         %>  containing the user-specified data whose covariance must be computed.<br>
         %>
-        df = [];
+        dfref = [];
         %>
         %>  ``method``
         %>
@@ -196,9 +196,9 @@ classdef Cov < pm.matlab.Handle
             end
 
             if ~isempty(dfref)
-                self.df = pm.container.DataFrame(dfref);
+                self.dfref = pm.container.DataFrame(dfref);
             end
-            dfcopy = self.df.copy();
+            dfcopy = self.dfref.copy();
 
             if ~isempty(dfcopy)
                 data = dfcopy{:,:};

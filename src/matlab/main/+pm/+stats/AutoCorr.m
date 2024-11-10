@@ -27,19 +27,19 @@ classdef AutoCorr < pm.matlab.Handle
 
     properties(Access = public)
         %>
-        %>  ``df``
+        %>  ``dfref``
         %>
-        %>  A scalar object of class [pm.container.DataFrame](@ref DataFrame)
-        %>  containing the user-specified data whose covariance must be computed.<br>
+        %>  A scalar object of class [pm.container.DataFrame](@ref DataFrame) containing
+        %>  (a refernece to) the user-specified data whose covariance must be computed.<br>
         %>
-        df = [];
+        dfref = [];
         %>
         %>  ``numlag``
         %>
         %>  The positive scalar MATLAB whole number representing the
         %>  number of lags for which the autocorrelation must be computed.<br>
         %>  This argument is directly passed to the corresponding argument
-        %>  of the MATLAB intrinsic ``autocorr()`` in the Econometrics Toolbox.<br>
+        %>  of the MATLAB intrinsic ``autocorr()`` in the MATLAB Econometrics Toolbox.<br>
         %>
         numlag = [];
         %>
@@ -49,7 +49,7 @@ classdef AutoCorr < pm.matlab.Handle
         %>  number of standard deviations to be used in computing the
         %>  lower and upper significance levels of the autocorrelation.<br>
         %>  This argument is directly passed to the corresponding argument
-        %>  of the MATLAB intrinsic ``autocorr()`` in the Econometrics Toolbox.<br>
+        %>  of the MATLAB intrinsic ``autocorr()`` in the MATLAB Econometrics Toolbox.<br>
         %>
         numstd = 1;
         %>
@@ -70,14 +70,6 @@ classdef AutoCorr < pm.matlab.Handle
         %>
         bnd = [];
         %>
-        %>  ``lag``
-        %>
-        %>  This component is automatically populated when constructing
-        %>  an object of class [pm.stats.AutoCorr](@ref AutoCorr).<br>
-        %>  It must be populated manually at all other times.<br>
-        %>
-        lag = [];
-        %>
         %>  ``val``
         %>
         %>  The MATLAB ``table`` of rank ``2`` serving as a
@@ -87,7 +79,7 @@ classdef AutoCorr < pm.matlab.Handle
         %>  It must be populated manually at all other times.<br>
         %>
         %>  \note
-        %>  The first column of ``vall`` always contains the set
+        %>  The first column of ``val`` always contains the set
         %>  of lags for which the autocorrelation is computed.<br>
         %>
         val = [];
@@ -118,12 +110,12 @@ classdef AutoCorr < pm.matlab.Handle
         %>  \param[in]  numlag  :   The input scalar MATLAB positive whole number representing the number
         %>                          of lags for which the autocorrelation must be computed.<br>
         %>                          This argument is directly passed to the corresponding argument
-        %>                          of the MATLAB intrinsic ``autocorr()`` in the Econometrics Toolbox.<br>
+        %>                          of the MATLAB intrinsic ``autocorr()`` in the MATLAB Econometrics Toolbox.<br>
         %>  \param[in]  numstd  :   The input positive scalar MATLAB double representing the
         %>                          number of standard deviations to be used in computing the
         %>                          lower and upper significance levels of the autocorrelation.<br>
         %>                          This argument is directly passed to the corresponding argument
-        %>                          of the MATLAB intrinsic ``autocorr()`` in the Econometrics Toolbox.<br>
+        %>                          of the MATLAB intrinsic ``autocorr()`` in the MATLAB Econometrics Toolbox.<br>
         %>                          (**optional**, default = ``1``)
         %>
         %>  \return
@@ -212,12 +204,12 @@ classdef AutoCorr < pm.matlab.Handle
         %>                              number of lags to be used in computing the autocorrelation.<br>
         %>                              The default value will be used if the input ``numlag``
         %>                              is unspecified or empty ``[]``.<br>
-        %>                              (**optional**, default = ``size(df, 1) - 1``)
+        %>                              (**optional**, default = ``size(dfref.copy(), 1) - 1``)
         %>  \param[in]      numstd  :   The input positive scalar MATLAB double representing the
         %>                              number of standard deviations to be used in computing the
         %>                              lower and upper significance levels of the autocorrelation.<br>
         %>                              This argument is directly passed to the corresponding argument
-        %>                              of the MATLAB intrinsic ``autocorr()`` in the Econometrics Toolbox.<br>
+        %>                              of the MATLAB intrinsic ``autocorr()`` in the MATLAB Econometrics Toolbox.<br>
         %>                              The default value will be used if the input ``numstd`` is empty ``[]``.<br>
         %>                              (**optional**, default = ``1``)
         %>
@@ -226,7 +218,7 @@ classdef AutoCorr < pm.matlab.Handle
         %>                              containing the autocorrelation from lag ``0`` to ``numlag``.<br>
         %>                              The first column of ``val`` always contains the set of ``numlag + 1``
         %>                              autocorrelation lags from ``0`` to ``numlag``.<br>
-        %>  ``bnd``                 :   The output MATLAB ``table`` of ``size(df, 2)`` rows by one column
+        %>  ``bnd``                 :   The output MATLAB ``table`` of ``size(dfref.copy(), 2)`` rows by one column
         %>                              containing the absolute ``numstd``-significance level of the
         %>                              computed autocorrelations. Any autocorrelation value whose
         %>                              magnitude is smaller than the corresponding ``bnd`` element
@@ -265,10 +257,10 @@ classdef AutoCorr < pm.matlab.Handle
             end
 
             if ~isempty(dfref)
-                self.df = pm.container.DataFrame(dfref);
+                self.dfref = pm.container.DataFrame(dfref);
             end
 
-            dfcopy = self.df.copy();
+            dfcopy = self.dfref.copy();
 
             if ~isempty(dfcopy)
                 data = dfcopy{:,:};
@@ -366,8 +358,8 @@ classdef AutoCorr < pm.matlab.Handle
         %>  \interface{get}
         %>  \code{.m}
         %>
-        %>      mat = pm.stats.AutoCorr(dfref, method)
-        %>      mat.setvis(); % This method is automatically called within the object constructor.
+        %>      acf = pm.stats.AutoCorr(dfref, method)
+        %>      acf.setvis(); % This method is automatically called within the object constructor.
         %>
         %>  \endcode
         %>

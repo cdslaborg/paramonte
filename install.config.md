@@ -979,6 +979,7 @@ other               | Any build generator supported by CMake.
 > This optional flag can be used to enforce a particular CMake build generator when
 > the install scripts fail to identify the right build generator for CMake.
 
+> **WARNING**
 > This build flag **must be explicitly set** when CMake executable is directly invoked.
 
 **optional**. Only when specified for the install scripts.

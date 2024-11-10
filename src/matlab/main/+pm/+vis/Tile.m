@@ -375,7 +375,7 @@ classdef Tile < pm.vis.Tiling
 
                 self.fout.colorbar = colorbar(kws.colorbar{:});
                 self.fout.colorbar.Layout.Tile = 'east';
-                dfcopy = self.template.df.copy();
+                dfcopy = self.template.dfref.copy();
                 [~, colnamc] = pm.str.locname(dfcopy.Properties.VariableNames, self.template.colc);
                 ylabel(self.fout.colorbar, colnamc(1));
 

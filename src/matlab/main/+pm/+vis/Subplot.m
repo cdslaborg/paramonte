@@ -190,12 +190,12 @@ classdef Subplot < pm.vis.axes.Axes
 
     properties(Access = public)
         %>
-        %>  ``df``
+        %>  ``dfref``
         %>
         %>  A scalar object of class [pm.container.DataFrame](@ref DataFrame)
-        %>  containing the user-specified data to visualize.<br>
+        %>  containing (a reference to) the user-specified data to visualize.<br>
         %>
-        df = [];
+        dfref = [];
         %>
         %>  ``fout``
         %>
@@ -319,14 +319,14 @@ classdef Subplot < pm.vis.axes.Axes
                 ptype = [];
             end
             self@pm.vis.axes.Axes(ptype, varargin{:});
-            self.df = pm.container.DataFrame(dfref);
+            self.dfref = pm.container.DataFrame(dfref);
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         %>  \brief
         %>  Generate a plot from the selected columns
-        %>  of the parent object component ``df``.<br>
+        %>  of the parent object component ``dfref``.<br>
         %>
         %>  \param[inout]   self        :   The input/output parent object of class [pm.vis.Subplot](@ref Subplot)
         %>                                  which is **implicitly** passed to this dynamic method (not by the user).<br>
@@ -416,7 +416,7 @@ classdef Subplot < pm.vis.axes.Axes
                         );
             end
 
-            dfcopy = self.df.copy();
+            dfcopy = self.dfref.copy();
             if  isempty(dfcopy)
                 help("pm.vis.Subplot");
                 error   ( newline ...
@@ -437,7 +437,7 @@ classdef Subplot < pm.vis.axes.Axes
             if pm.array.len(self.rows)
                 rowsindex = self.rows(:);
             else
-                rowsindex = [1 : self.df.nrow()]';
+                rowsindex = [1 : self.dfref.nrow()]';
             end
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%

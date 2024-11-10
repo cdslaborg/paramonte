@@ -1,22 +1,22 @@
 cd(fileparts(mfilename('fullpath'))); % Change working directory to source code directory.
 addpath('../../../'); % Add the ParaMonte library root directory to the search path.
 
-df = pm.container.DataFrame()
-df.copy()
+dfref = pm.container.DataFrame()
+dfref.copy()
 
 data = randi([0, 9], 10, 5)
-df = pm.container.DataFrame(data)
-df.copy()
+dfref = pm.container.DataFrame(data)
+dfref.copy()
 
-df = pm.container.DataFrame(table(data))
-df.copy()
+dfref = pm.container.DataFrame(table(data))
+dfref.copy()
 
-df.ncol()
-df.nrow()
-df.rowslog()
-df.rowslog(10)
-df.rowslog(10, 5, 100)
-df.rowslog(10, 5, 1000)
-df.rowslog([], 5, 1000)
-df.rowslog(10, -1, 1000)
-df.rowslog(10, -1, -2)
+dfref.ncol()
+dfref.nrow()
+dfref.rowslog()
+dfref.rowslog(10)
+dfref.rowslog(10, 5, 100)
+dfref.rowslog(10, 5, 1000)
+dfref.rowslog([], 5, 1000)
+dfref.rowslog(10, -1, 1000)
+dfref.rowslog(10, -1, -2)
