@@ -916,8 +916,6 @@ for %%C in ("!list_fc:;=" "!") do (
 
                             set "flag_checking=-Dchecking=%%~H"
 
-                            set "flag_fresh_current=!flag_fresh!"
-
                             REM
                             REM First, determine the parallelism and MPI library name to be used in build directory.
                             REM
@@ -967,27 +965,29 @@ for %%C in ("!list_fc:;=" "!") do (
                                 mkdir "!paramonte_bld_dir!"
                             )
 
-                            REM
-                            REM Configure and build the library via CMake.
-                            REM
-
-                            echo.!pmnote! All generated build files will be stored at "!paramonte_bld_dir!"
-                            echo.!pmnote! Changing directory to "!paramonte_bld_dir!"
-                            echo.
-                            echo.****************************************************************************************************
-                            echo.
-                            echo.!pmnote! Invoking CMake as:
-                            echo.
-
-                            echo.cd "!paramonte_bld_dir!"
-                            echo.cmake !paramonte_dir! !flag_G! -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON !flag_build! !flag_checking! !flag_lib! !flag_mem! !flag_par! !flag_fc!
-                            echo.!flag_ddir! !flag_bench! !flag_benchpp! !flag_blas! !flag_codecov! !flag_cfi! !flag_deps! !flag_exam! !flag_exampp! !flag_fpp! !flag_fresh_current! !flag_lapack! !flag_matlabroot!
-                            echo.!flag_lang! !flag_me! !flag_mod! !flag_nproc! !flag_perfprof! !flag_pdt! !flag_purity! !flag_test! !flag_ski! !flag_iki! !flag_lki! !flag_cki! !flag_rki! !flag_dev!
-
                             REM The following loop temporarily bypasses an existing bug where the first fresh installation
                             REM does not copy the FPP source files to the deployment and installation directories.
 
+                            set "flag_fresh_current=!flag_fresh!"
+
                             for /l %%x in (1, 1, !ntry!) do (
+
+                                REM
+                                REM Configure and build the library via CMake.
+                                REM
+
+                                echo.!pmnote! All generated build files will be stored at "!paramonte_bld_dir!"
+                                echo.!pmnote! Changing directory to "!paramonte_bld_dir!"
+                                echo.
+                                echo.****************************************************************************************************
+                                echo.
+                                echo.!pmnote! Invoking CMake as:
+                                echo.
+
+                                echo.cd "!paramonte_bld_dir!"
+                                echo.cmake !paramonte_dir! !flag_G! -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON !flag_build! !flag_checking! !flag_lib! !flag_mem! !flag_par! !flag_fc!
+                                echo.!flag_ddir! !flag_bench! !flag_benchpp! !flag_blas! !flag_codecov! !flag_cfi! !flag_deps! !flag_exam! !flag_exampp! !flag_fpp! !flag_fresh_current! !flag_lapack! !flag_matlabroot!
+                                echo.!flag_lang! !flag_me! !flag_mod! !flag_nproc! !flag_perfprof! !flag_pdt! !flag_purity! !flag_test! !flag_ski! !flag_iki! !flag_lki! !flag_cki! !flag_rki! !flag_dev!
 
                                 cd "!paramonte_bld_dir!"
                                 cmake !paramonte_dir! !flag_G! -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON !flag_build! !flag_checking! !flag_lib! !flag_mem! !flag_par! !flag_fc! ^

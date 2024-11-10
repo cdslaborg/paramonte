@@ -15,7 +15,10 @@ sampler.spec.parallelismNumThread = []; % Set this to a positive number to reque
 sampler.spec.outputRestartFileFormat = "ascii";
 % Set ``mpiname`` to ``pm.lib.mpi.choice()`` or your choice of MPI
 % library ("intel", "openmpi", "mpich", ...) for MPI-parallel applications.
-sampler.mpiname = ''; %pm.lib.mpi.choice();
+% sampler.mpiname = "openmpi";
+% sampler.mpiname = "intel";
+% sampler.mpiname = "mpich";
+sampler.mpiname = '';
 
 %%%% Developer Warning:
 %%%% Enable `silent` mode when generating the ParaMonte MATLAB documentation for a cleaner doc.
