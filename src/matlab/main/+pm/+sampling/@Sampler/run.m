@@ -64,7 +64,11 @@ function run(self, getLogFunc, ndim)
     %     self.mpiname = mpiname;
     % end
 
-    if ~pm.introspection.istype(self.mpiname, "string", 1) % Sanitize ``mpiname``.
+    if ~pm.introspection.istype(self.mpiname, "string", 1)
+
+        %%%%
+        %%%% Sanitize ``mpiname``.
+        %%%%
 
         help("pm.sampling.Sampler.mpiname");
         disp("mpiname =");
@@ -75,7 +79,21 @@ function run(self, getLogFunc, ndim)
                 + newline ...
                 );
 
-    elseif 0 < pm.array.len(self.mpiname) % MPI enabled.
+    elseif 0 == pm.array.len(self.mpiname)
+
+        %%%%
+        %%%% Detect potential MPI launcher.
+        %%%%
+
+        [self.mpiname, ~, ~, ~] = pm.lib.mpi.detect();
+
+    end
+
+    %%%%
+    %%%% First detect potential use of MPI, then check for thread parallelism.
+    %%%%
+
+    if  0 < pm.array.len(self.mpiname) % MPI enabled.
 
         self.silent = true; % Otherwise, we keep the default value of self.silent.
         self.partype = string(pm.lib.mpi.name(self.mpiname));
@@ -89,7 +107,11 @@ function run(self, getLogFunc, ndim)
         %            );
         %end
 
-    elseif ~isempty(self.spec.parallelismNumThread) % Sanitize ``self.spec.parallelismNumThread``.
+    elseif ~isempty(self.spec.parallelismNumThread)
+
+        %%%%
+        %%%% Sanitize ``self.spec.parallelismNumThread``.
+        %%%%
 
         % The following separate conditions are crucial to remain separate.
         failed = ~pm.introspection.istype(self.spec.parallelismNumThread, "integer", 1);
@@ -441,7 +463,7 @@ function run(self, getLogFunc, ndim)
                 + self.getppm() + newline ...
                 + "For more information and examples on the usage, visit:" + newline ...
                 + newline ...
-                + pm.io.tab + pm.web.href(self.weblinks.home.url) + newline ...
+                + pm.io.tab + pm.web.href(self.weblinks.docs.url) + newline ...
                 + newline ...
                 );
         end
@@ -454,7 +476,7 @@ function run(self, getLogFunc, ndim)
                 + "(SIP) of your macOS interfering with the ParaMonte MATLAB MEX files." + newline ...
                 + "You can follow the guidelines in the documentation to resolve this error:" + newline ...
                 + newline ...
-                + pm.io.tab + pm.web.href(self.weblinks.home.url + "/notes/troubleshooting/macos-developer-cannot-be-verified/") + newline ...
+                + pm.io.tab + pm.web.href(self.weblinks.docs.url + "/notes/troubleshooting/macos-developer-cannot-be-verified/") + newline ...
                 + newline ...
                 + "If the problem persists even after following the guidelines" + newline ...
                 + "in the above page, please report this issue to the developers at:" + newline ...

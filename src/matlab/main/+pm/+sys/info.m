@@ -53,8 +53,9 @@ function [str, cache] = info()
         if isunix && ~ismac
             cmd = "uname -a; lscpu";
         end
-        [errorOccurred, str] = system(cmd);
-        if errorOccurred
+        [failed, str] = system(cmd);
+        failed = failed ~= 0;
+        if  failed
             warning ( newline ...
                     + "Failed to fetch the system information on the current system. skipping..." ...
                     + newline ...

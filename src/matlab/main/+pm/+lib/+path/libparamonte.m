@@ -74,7 +74,7 @@ function mexpaths = mex(mexname, config)
                     break;
                 end
             end
-            if  matching
+            if matching
                 indices = [indices, i];
             end
         end

@@ -36,6 +36,7 @@
 function str = arch()
     if isunix
         [failed, str] = system("uname -m");
+        failed = failed ~= 0;
         if failed
             error   ( newline ...
                     + "Failed to detect the processor architecture via" + newline ...

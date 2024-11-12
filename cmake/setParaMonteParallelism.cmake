@@ -304,11 +304,11 @@ if ("${CAF_ENABLED}" OR "${MPI_ENABLED}")
     set(MPIEXEC_EXECUTABLE "${MPIEXEC_EXECUTABLE}" CACHE BOOL "mpiexec path" FORCE)
     set(MPI_Fortran_FOUND "${MPI_Fortran_FOUND}" CACHE BOOL "MPI found." FORCE)
 
-    if (${csid_is_intel} AND ${MPI_ENABLED})
-        set(MPI_LINK_FLAGS "${MPI_LINK_FLAGS}" "-static_mpi")
-        set(MPI_COMPILER_FLAGS "${MPI_COMPILER_FLAGS}" "-static_mpi")
-        set(MPI_Fortran_LINK_FLAGS "${MPI_Fortran_LINK_FLAGS}" "-static_mpi")
-        set(MPI_Fortran_COMPILE_OPTIONS "${MPI_Fortran_COMPILE_OPTIONS}" "-static_mpi")
-    endif()
+    #if (${csid_is_intel} AND ${MPI_ENABLED})
+    #    set(MPI_LINK_FLAGS "${MPI_LINK_FLAGS}" "-static_mpi")
+    #    set(MPI_COMPILER_FLAGS "${MPI_COMPILER_FLAGS}" "-static_mpi")
+    #    set(MPI_Fortran_LINK_FLAGS "${MPI_Fortran_LINK_FLAGS}" "-static_mpi")
+    #    set(MPI_Fortran_COMPILE_OPTIONS "${MPI_Fortran_COMPILE_OPTIONS}" "-static_mpi")
+    #endif()
 
 endif() # CAF_ENABLED OR MPI_ENABLED

@@ -7,9 +7,6 @@ addpath('../../../'); % Add the ParaMonte library root directory to the search p
 
 sampler = pm.sampling.Paradram();
 sampler.spec.outputStatus = "retry";
-% Set ``mpiname`` to ``pm.lib.mpi.choice()`` or your choice of MPI
-% library ("intel", "openmpi", "mpich", ...) for MPI-parallel applications.
-sampler.mpiname = ''; %pm.lib.mpi.choice();
 
 %%%%
 %%%% Run the sampler.

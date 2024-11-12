@@ -25,6 +25,11 @@
 %>
 %>  \endcode
 %>
+%>  \see
+%>  [pm.lib.mpi.name()](@ref name)<br>
+%>  [pm.lib.mpi.vendor()](@ref vendor)<br>
+%>  [pm.sys.path.mpiexec.vendor()](@ref vendor)<br>
+%>
 %>  \example{vendor}
 %>  \include{lineno} example/sys/path/mpiexec/vendor/main.m
 %>  \output{vendor}
@@ -58,6 +63,7 @@ function name = vendor(path)
         failed = pm.os.is.lin() && startsWith(path, "/mnt/"); % A Windows-path application in WSL freezes MATLAB.
         if ~failed
             [failed, version] = system("""" + path + """" + " --version");
+            failed = failed ~= 0;
         end
         if ~failed
             versionLower = lower(version);

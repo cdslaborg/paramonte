@@ -37,6 +37,7 @@ function path = home()
     %if freshRequested
     if ispc
         [failed, homePathPersistent] = system("echo %HOMEPATH%");
+        failed = failed ~= 0;
         if failed
             error   ( newline ...
                     + "Failed to capture the path to the home directory of the Windows system." + newline ...

@@ -1,9 +1,9 @@
 %>  \brief
 %>  Return a structure containing tree of weblinks for the
-%>  ParaMonte MATLAB library source file and documentation website.
+%>  ParaMonte MATLAB library source file and documentation website.<br>
 %>
 %>  \return
-%>  ``tree``    :   The output MATLAB ``struct`` containing the ParaMonte website information.
+%>  ``tree``    :   The output MATLAB ``struct`` containing the ParaMonte website information.<br>
 %>
 %>  \interface{weblinks}
 %>  \code{.m}
@@ -33,138 +33,188 @@ function tree = weblinks()
     end
 
     stree = struct();
-    stree.home = struct();
-    stree.home.url = "https://www.cdslab.org/paramonte";
-    stree.home.install = struct();
-    stree_home_install_url = stree.home.url + "/notes/installation";
 
-    %%%% installation Linux
+    %%%% docs
 
-    stree.home.overview = struct();
-    stree_home_overview_url = stree.home.url + "/notes/overview";
-    stree.home.overview.preface = struct();
-    stree.home.overview.changes = struct();
-    stree.home.overview.preface.url = stree_home_overview_url + "/preface";
-    stree.home.overview.changes.fortran = struct();
-    stree.home.overview.changes.python = struct();
-    stree.home.overview.changes.matlab = struct();
-    stree.home.overview.changes.fortran.url = stree_home_overview_url + "/paramonte-kernel-release-notes";
-    stree.home.overview.changes.python.url = stree_home_overview_url + "/paramonte-python-release-notes";
-    stree.home.overview.changes.matlab.url = stree_home_overview_url + "/paramonte-matlab-release-notes";
+    stree.docs = struct();
+    stree.docs.url = "https://www.cdslab.org/paramonte";
 
-    %%%% installation Linux
+    %%%% docs generic
 
-    stree.home.install.linux = struct();
-    stree.home.install.linux.url = stree_home_install_url + "/linux";
+    stree.docs.generic = struct();
+    stree.docs.generic.url = stree.docs.url + "/generic/" + pm.lib.version("generic", "major");
 
-    %%%% installation Windows
+    %%%% docs lang
 
-    stree.home.install.windows = struct();
-    stree.home.install.windows.url = stree_home_install_url + "/windows";
+    for lang = ["matlab"]; %["c", "cpp", "fortran", "matlab", "python"];
+        stree.docs.(lang) = struct();
+        stree.docs.(lang).url = stree.docs.url + "/" + lang + "/" + pm.lib.version(lang, "major");
+    end
 
-    %%%% installation MATLAB
+    %%%% docs generic overview
 
-    stree.home.install.matlab = struct();
-    stree.home.install.matlab.url = stree_home_install_url + "/matlab";
+    stree.docs.generic.overview = struct();
+    stree.docs.generic.overview.url = stree.docs.generic.url + "/overview";
 
-    %%%% installation Python
+    stree.docs.generic.overview.preface = struct();
+    stree.docs.generic.overview.preface.url = stree.docs.generic.overview.url + "/preface";
 
-    stree.home.install.python = struct();
-    stree.home.install.python.url = stree_home_install_url + "/python";
+    stree.docs.generic.overview.fortran = struct();
+    stree.docs.generic.overview.fortran.url = stree.docs.generic.overview.url + "/paramonte-kernel-release-notes";
 
-    %%%% installation macOS
+    stree.docs.generic.overview.matlab = struct();
+    stree.docs.generic.overview.matlab.url = stree.docs.generic.overview.url + "/paramonte-matlab-release-notes";
 
-    stree.home.install.macos = struct();
-    stree.home.install.macos.url = stree_home_install_url + "/macos";
-    stree.home.install.macos.prereqs = struct();
-    stree.home.install.macos.prereqs.url = stree.home.install.macos.url + "/#the-compile-time-and-runtime-prerequisites";
-    stree.home.install.macos.prereqs.cmd = struct();
-    stree.home.install.macos.prereqs.cmd.url = stree.home.install.macos.url + "/#prereqs-install";
+    stree.docs.generic.overview.python = struct();
+    stree.docs.generic.overview.python.url = stree.docs.generic.overview.url + "/paramonte-python-release-notes";
 
-    %%%% MATLAB examples
+    %%%% docs generic installation
 
-    stree.home.examples = struct();
-    stree_home_examples_url = stree.home.url + "/notes/examples";
-    stree.home.examples.matlab = struct();
-    stree.home.examples.matlab.jupyter = struct();
-    stree.home.examples.matlab.postprocess = struct();
-    stree.home.examples.matlab.jupyter.url = stree_home_examples_url + "/matlab/jupyter";
-    stree.home.examples.matlab.postprocess.url = stree_home_examples_url + "/matlab/postprocess";
+    stree.docs.generic.installation = struct();
+    stree.docs.generic.installation.url = stree.docs.generic.url + "/installation";
 
-    %%%% Python examples
+    %%%% docs generic installation Linux
 
-    stree.home.examples = struct();
-    stree_home_examples_url = stree.home.url + "/notes/examples";
-    stree.home.examples.python = struct();
-    stree.home.examples.python.jupyter = struct();
-    stree.home.examples.python.postprocess = struct();
-    stree.home.examples.python.jupyter.url = stree_home_examples_url + "/python/jupyter";
-    stree.home.examples.python.postprocess.url = stree_home_examples_url + "/python/postprocess";
+    stree.docs.generic.installation.linux = struct();
+    stree.docs.generic.installation.linux.url = stree.docs.generic.installation.url + "/linux";
 
-    %%%% Python API
+    %%%% docs generic installation Windows
 
-    stree.home.api = struct();
-    stree_home_api_url = stree.home.url + "/notes/api";
-    stree.home.api.python = struct();
-    stree.home.api.python.url = stree_home_api_url + "/python/autoapi/paramonte";
+    stree.docs.generic.installation.windows = struct();
+    stree.docs.generic.installation.windows.url = stree.docs.generic.installation.url + "/windows";
 
-    %%%% ParaDRAM
+    %%%% docs generic installation MATLAB
 
-    stree.home.usage = struct();
-    stree_home_usage_url = stree.home.url + "/notes/usage";
-    stree.home.usage.paradram = struct();
-    stree_home_usage_paradram_url = stree_home_usage_url + "/paradram";
-    stree.home.usage.paradram.quickstart = struct();
-    stree.home.usage.paradram.quickstart.url = stree_home_usage_paradram_url + "/interface";
-    stree.home.usage.paradram.input = struct();
-    stree.home.usage.paradram.input.url = stree_home_usage_paradram_url + "/input";
-    stree.home.usage.paradram.specifications = struct();
-    stree.home.usage.paradram.specifications.url = stree_home_usage_paradram_url + "/specifications";
-    stree.home.usage.paradram.restart = struct();
-    stree.home.usage.paradram.restart.url = stree_home_usage_paradram_url + "/restart";
-    stree.home.usage.paradram.output = struct();
-    stree.home.usage.paradram.output.url = stree_home_usage_paradram_url + "/output";
+    stree.docs.generic.installation.matlab = struct();
+    stree.docs.generic.installation.matlab.url = stree.docs.generic.installation.url + "/matlab";
+
+    %%%% docs generic installation Python
+
+    stree.docs.generic.installation.python = struct();
+    stree.docs.generic.installation.python.url = stree.docs.generic.installation.url + "/python";
+
+    %%%% docs generic installation macOS
+
+    stree.docs.generic.installation.macos = struct();
+    stree.docs.generic.installation.macos.url = stree.docs.generic.installation.url + "/macos";
+    stree.docs.generic.installation.macos.prereqs = struct();
+    stree.docs.generic.installation.macos.prereqs.url = stree.docs.generic.installation.macos.url + "/#the-compile-time-and-runtime-prerequisites";
+    stree.docs.generic.installation.macos.prereqs.cmd = struct();
+    stree.docs.generic.installation.macos.prereqs.cmd.url = stree.docs.generic.installation.macos.url + "/#prereqs-install";
+
+    %%%% docs generic MATLAB examples
+
+    stree.docs.generic.examples = struct();
+    stree.docs.generic.examples.url = stree.docs.generic.url + "/examples";
+    stree.docs.generic.examples.matlab = struct();
+    stree.docs.generic.examples.matlab.jupyter = struct();
+    stree.docs.generic.examples.matlab.postprocess = struct();
+    stree.docs.generic.examples.matlab.jupyter.url = stree.docs.generic.examples.url + "/matlab/jupyter";
+    stree.docs.generic.examples.matlab.postprocess.url = stree.docs.generic.examples.url + "/matlab/postprocess";
+
+    %%%% docs generic Python examples
+
+    stree.docs.generic.examples = struct();
+    stree.docs.generic.examples.url = stree.docs.generic.url + "/examples";
+    stree.docs.generic.examples.python = struct();
+    stree.docs.generic.examples.python.jupyter = struct();
+    stree.docs.generic.examples.python.postprocess = struct();
+    stree.docs.generic.examples.python.jupyter.url = stree.docs.generic.examples.url + "/python/jupyter";
+    stree.docs.generic.examples.python.postprocess.url = stree.docs.generic.examples.url + "/python/postprocess";
+
+    %%%% docs generic Python API
+
+    stree.docs.generic.api = struct();
+    stree.docs.generic.api.url = stree.docs.generic.url + "/api";
+    stree.docs.generic.api.python = struct();
+    stree.docs.generic.api.python.url = stree.docs.generic.api.url + "/python/autoapi/paramonte";
+
+    %%%% docs generic usage
+
+    stree.docs.generic.usage = struct();
+    stree.docs.generic.usage.url = stree.docs.generic.url + "/usage";
+
+    %%%% docs generic usage ParaDRAM
+
+    stree.docs.generic.usage.paradram = struct();
+    stree.docs.generic.usage.paradram.url = stree.docs.generic.usage.url + "/paradram";
+    stree.docs.generic.usage.paradram.quickstart = struct();
+    stree.docs.generic.usage.paradram.quickstart.url = stree.docs.generic.usage.paradram.url + "/interface";
+    stree.docs.generic.usage.paradram.input = struct();
+    stree.docs.generic.usage.paradram.input.url = stree.docs.generic.usage.paradram.url + "/input";
+    stree.docs.generic.usage.paradram.specifications = struct();
+    stree.docs.generic.usage.paradram.specifications.url = stree.docs.generic.usage.paradram.url + "/specifications";
+    stree.docs.generic.usage.paradram.restart = struct();
+    stree.docs.generic.usage.paradram.restart.url = stree.docs.generic.usage.paradram.url + "/restart";
+    stree.docs.generic.usage.paradram.output = struct();
+    stree.docs.generic.usage.paradram.output.url = stree.docs.generic.usage.paradram.url + "/output";
 
     %%%% GitHub issues
 
     stree.github = struct();
     stree.github.url = "https://github.com/cdslaborg/paramonte";
+
     stree.github.issues = struct();
     stree.github.issues.url = "https://github.com/cdslaborg/paramonte/issues";
-    stree.github.release = struct();
-    stree.github.release.url = stree.github.url + "/releases";
-    stree.github.release.latest = struct();
-    stree.github.release.latest.url = stree.github.release.url + "/latest";
+
+    %%%% GitHub releases
+
+    stree.github.releases = struct();
+    stree.github.releases.url = stree.github.url + "/releases";
+
+    stree.github.releases.latest = struct();
+    stree.github.releases.latest.url = stree.github.releases.url + "/latest";
+
+    stree.github.releases.tag = struct();
+    stree.github.releases.tag.url = stree.github.releases.url + "/tag";
+
+    stree.github.releases.tag.auxil = struct();
+    stree.github.releases.tag.auxil.url = stree.github.releases.tag.url + "/auxil";
+
+    stree.github.releases.download = struct();
+    stree.github.releases.download.url = stree.github.releases.url + "/download";
+
+    stree.github.releases.download.auxil = struct();
+    stree.github.releases.download.auxil.url = stree.github.releases.download.url + "/auxil";
+
+    %%%% GitHub archive
+
     stree.github.archive = struct();
-    stree_github_archive_url = stree.github.url + "/archive";
+    stree.github.archive.url = stree.github.url + "/archive";
+
     stree.github.archive.main = struct();
+
     stree.github.archive.main.zip = struct();
+    stree.github.archive.main.zip.url = stree.github.archive.url + "/main.zip";
+
     stree.github.archive.main.tar = struct();
-    stree.github.archive.main.zip.url = stree_github_archive_url + "/main.zip";
-    stree.github.archive.main.tar.url = stree_github_archive_url + "/main.tar.gz";
+    stree.github.archive.main.tar.url = stree.github.archive.url + "/main.tar.gz";
 
     %%%% GitHub examples
 
     stree.github.examples = struct();
     stree.github.examples.url = "https://github.com/cdslaborg/paramontex";
 
-    %%%% Intel MPI
+    %%%% external
 
-    stree.intel = struct();
-    stree.intel.mpi = struct();
-    stree.intel.mpi.home = struct();
-    stree.intel.mpi.home.url = "https://software.intel.com/en-us/mpi-library";
+    stree.external = struct();
 
-    %%%% Intel MPI Windows
+    %%%% external Intel
 
-    stree.intel.mpi.windows = struct();
-    stree.intel.mpi.windows.url = "https://software.intel.com/en-us/get-started-with-mpi-for-windows";
+    stree.external.intel = struct();
+    stree.external.intel.url = "https://software.intel.com/en-us";
 
-    %%%% OpenMPI
+    stree.external.intel.mpi = struct();
+    stree.external.intel.mpi.url = stree.external.intel.url + "/mpi-library";
 
-    stree.openmpi = struct();
-    stree.openmpi.home = struct();
-    stree.openmpi.home.url = "https://www.open-mpi.org/";
+    %%%% external OpenMPI
+
+    stree.external.openmpi = struct();
+    stree.external.openmpi.url = "https://www.open-mpi.org/";
+
+    %%%%
+    %%%% Copy the tree.
+    %%%%
 
     tree = stree;
 

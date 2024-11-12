@@ -66,6 +66,7 @@ function path = which(vendor)
         else
             [failed, stdout] = system("command -v " + appName);
         end
+        failed = failed ~= 0;
         if ~failed
             path = string(strip(stdout, newline));
             %   On Windows, ``where()`` returns a list of all identified paths.

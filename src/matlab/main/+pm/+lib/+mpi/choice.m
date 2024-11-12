@@ -10,6 +10,13 @@
 %>  ``name``    :   The output scalar MATLAB string containing the
 %>                  the ParaMonte-preferred MPI library vendor name as
 %>                  used in naming the ParaMonte MATLAB shared libraries.<br>
+%>                  Possible values are (but potentially not limited to):<br>
+%>                  <ol>
+%>                      <li>    ``""``          :   No ParaMonte-compatible MPI runtime library were detected.<br>
+%>                      <li>    ``"impi"``      :   The Intel MPI runtime library (Windows/Linux).<br>
+%>                      <li>    ``"mpich"``     :   The MPICH MPI runtime library (Linux/macOS).<br>
+%>                      <li>    ``"openmpi"``   :   The OpenMPI runtime library (Linux/macOS).<br>
+%>                  </ol>
 %>
 %>  \interface{choice}
 %>  \code{.m}
@@ -30,9 +37,10 @@
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function name = choice()
-    if ispc() || pm.os.is.lin()
-        name = "impi";
-    elseif ismac()
-        name = "openmpi";
-    end
+    [name, ~, ~, ~] = pm.lib.mpi.detect();
+    %if ispc() || pm.os.is.lin()
+    %    name = "impi";
+    %elseif ismac()
+    %    name = "openmpi";
+    %end
 end
