@@ -1200,12 +1200,12 @@ if (TRUE)
     add_compile_definitions("OMP_ENABLED=${OMP_ENABLED}")
 endif()
 
-if (${csid_is_intel} AND ${MPI_ENABLED})
-    #set(MPI_LINK_FLAGS "${MPI_LINK_FLAGS}" "-static_mpi")
-    set(MPI_COMPILER_FLAGS "${MPI_COMPILER_FLAGS}" "-static_mpi")
-    set(MPI_Fortran_LINK_FLAGS "${MPI_Fortran_LINK_FLAGS}" "-static_mpi")
-    set(MPI_Fortran_COMPILE_OPTIONS "${MPI_Fortran_COMPILE_OPTIONS}" "-static_mpi")
-endif()
+#if (${csid_is_intel} AND ${MPI_ENABLED})
+#    #set(MPI_LINK_FLAGS "${MPI_LINK_FLAGS}" "-static_mpi")
+#    set(MPI_COMPILER_FLAGS "${MPI_COMPILER_FLAGS}" "-static_mpi")
+#    set(MPI_Fortran_LINK_FLAGS "${MPI_Fortran_LINK_FLAGS}" "-static_mpi")
+#    set(MPI_Fortran_COMPILE_OPTIONS "${MPI_Fortran_COMPILE_OPTIONS}" "-static_mpi")
+#endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Determine the supported types kinds by the specified Fortran compiler.
