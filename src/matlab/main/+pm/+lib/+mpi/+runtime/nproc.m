@@ -1,21 +1,16 @@
 %>  \brief
-%>  Return the runtime number of MPI cores
+%>  Return the runtime number of MPI processes
 %>  with which the `mpiexec` launcher may have been invoked.<br>
 %>
 %>  \details
-%>  Otherwise, return `1` if no use of `mpiexec` launcher is detected
-%>  or it is invoked with only ``1`` MPI process.<br>
+%>  Otherwise, return `1` if no use of `mpiexec` launcher is
+%>  detected or it is invoked with only ``1`` MPI process.<br>
 %>
-%>  An output value of ``1`` can be used as an indication of
-%>  the ``mpiexec`` launcher in launching the ParaMonte library.<br>
+%>  An output value of ``>1`` can be used as an indication of the use
+%>  of the ``mpiexec`` launcher in launching the ParaMonte library.<br>
 %>
-%>  \warning
-%>  This routine can lead to a full MATLAB session crash if the
-%>  required MPI library dependencies are not detected on the system.<br>
-%>  This issue severely limits the utility of this routine.<br>
-%>
-%>  \param[in]  vendor  :   See the corresponding argument of [pm.lib.mpi.detect](@ref detect).<br>
-%>                          (**optional**. The default is set by [pm.lib.mpi.detect](@ref detect).)
+%>  \param[in]  vendor  :   See the corresponding argument of [pm.lib.mpi.runtime.detect](@ref detect).<br>
+%>                          (**optional**. The default is set by [pm.lib.mpi.runtime.detect](@ref detect).)
 %>
 %>  \return
 %>  ``value``           :   The output MATLAB scalar positive whole number, containing the number
@@ -27,11 +22,16 @@
 %>  \interface{nproc}
 %>  \code{.m}
 %>
-%>      value = pm.lib.mpi.nproc()
-%>      value = pm.lib.mpi.nproc([])
-%>      value = pm.lib.mpi.nproc(vendor)
+%>      value = pm.lib.mpi.runtime.nproc()
+%>      value = pm.lib.mpi.runtime.nproc([])
+%>      value = pm.lib.mpi.runtime.nproc(vendor)
 %>
 %>  \endcode
+%>
+%>  \example{nproc}
+%>  \include{lineno} example/lib/mpi/runtime/nproc/main.m
+%>  \output{nproc}
+%>  \include{lineno} example/lib/mpi/runtime/nproc/main.out.m
 %>
 %>  \final{nproc}
 %>
@@ -42,7 +42,7 @@ function value = nproc(vendor)
     if  nargin < 1
         vendor = [];
     end
-    [~, ~, value, ~] = pm.lib.mpi.detect(vendor);
+    [~, value, ~] = pm.lib.mpi.runtime.detect(vendor);
     value = max(1, value);
     %if  nargin < 1
     %    vendorList = [];

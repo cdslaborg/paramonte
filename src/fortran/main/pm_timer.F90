@@ -706,6 +706,7 @@ contains
 !            call setAsserted(ierrMPI /= 0 .and. finalized, MODULE_NAME//SK_"@timerMPI_typer(): The MPI library must not be finalized prior to calling the MPI timer.")
 !        end block
 !#endif
+        ierrMPI = 0
         call mpi_initialized(initialized, ierrMPI)
         if (.not. initialized .and. ierrMPI == 0) call mpi_init(ierrMPI)
         if (ierrMPI /= 0) error stop MODULE_NAME//SK_"@timerMPI_typer(): Failed to initialize the MPI library."

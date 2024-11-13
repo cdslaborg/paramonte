@@ -85,7 +85,10 @@ function run(self, getLogFunc, ndim)
         %%%% Detect potential MPI launcher.
         %%%%
 
-        [self.mpiname, ~, ~, ~] = pm.lib.mpi.detect();
+        [mpiname, nproc, ~] = pm.lib.mpi.runtime.detect();
+        if  pm.array.len(mpiname) > 0 && nproc > 1
+            self.mpiname = mpiname;
+        end
 
     end
 
@@ -97,15 +100,6 @@ function run(self, getLogFunc, ndim)
 
         self.silent = true; % Otherwise, we keep the default value of self.silent.
         self.partype = string(pm.lib.mpi.name(self.mpiname));
-        %if  self.partype ~= pm.lib.mpi.choice()
-        %    warning ( newline ...
-        %            + "The specified mpi library name (mpiname = """ + self.mpiname + """) does not match" + newline ...
-        %            + "the ParaMonte-preferred MPI library name (""" + pm.lib.mpi.choice() + """) for the current operating system." + newline ...
-        %            + "The MPI-parallel simulations may fail depending on the availability" + newline ...
-        %            + "of the ParaMonte shared libraries for the requested MPI library." + newline ...
-        %            + newline ...
-        %            );
-        %end
 
     elseif ~isempty(self.spec.parallelismNumThread)
 
@@ -315,12 +309,12 @@ function run(self, getLogFunc, ndim)
 
     if  failed
         help("pm.sampling.Sampler");
-        disp("libspecs =");
-        disp(libspecs);
-        disp("bldtypes =");
-        disp(bldtypes);
-        disp("clstypes =");
-        disp(clstypes);
+        disp("libspecs");
+        disp( libspecs );
+        disp("bldtypes");
+        disp( bldtypes );
+        disp("clstypes");
+        disp( clstypes );
         error   ( newline ...
                 + "There are no MEX libraries associated with the configurations displayed above:" + newline ...
                 + "Either the user has compromised internal structure of the ParaMonte library" + newline ...

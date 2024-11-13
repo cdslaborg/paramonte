@@ -41,18 +41,13 @@ if  true % set to ``false`` to only post-process an existing simulation in the c
     sampler.run ( @(x) pm.stats.dist.himmelblau.getLogUDF(x(1), x(2)) ...
                 , 2 ...
                 );
-    if  pm.array.len(sampler.mpiname) > 0
-        % We do not want to do any post-processing in distributed MPI-parallel mode.
-        % It would be at least redundant but more importantly, potentially troubling.
-        return;
-    end
 end
 
 %%%%
 %%%% Ensure postprocessing is done by only one parallel process if distributed (MPI) parallelism is enabled.
 %%%%
 
-if  pm.lib.mpi.rankp1() == 1
+if  pm.lib.mpi.runtime.rankp1() == 1
 
     %%%%
     %%%% Postprocess the output chain file.

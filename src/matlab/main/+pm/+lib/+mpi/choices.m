@@ -33,7 +33,7 @@
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function names = choices()
-    bindirs = pm.sys.path.glob(pm.lib.path.lib() + "**xgetImageStatMPI*");
+    bindirs = pm.sys.path.glob(pm.lib.path.lib() + "**pm_parallelism*");
     mpinames = ["mpi", "impi", "mpich", "openmpi"];
     names = strings(numel(bindirs), 1);
     for iname = 1 : numel(bindirs)

@@ -15,20 +15,20 @@ sampler.spec.outputStatus = "retry";
 sampler.run ( @(x) pm.stats.dist.himmelblau.getLogUDF(x(1), x(2)) ...
             , 2 ...
             );
-if  pm.array.len(sampler.mpiname) > 0
-    % We do not want to do any post-processing in distributed MPI-parallel mode.
-    % It would be at least redundant but more importantly, potentially troubling.
-    return;
-end
 
 %%%%
-%%%% Postprocess the output report file.
+%%%% Ensure postprocessing the output report file is done by only
+%%%% one parallel process if distributed (MPI) parallelism is enabled.
 %%%%
 
-report = sampler.readReport();
-report = report{1};
+if  pm.lib.mpi.runtime.rankp1() == 1
 
-for parcond = ["sameeff", "zeroeff"]
-    report.stats.parallelism.speedup.scaling.strong.(parcond).vis.lineScatter.make();
-    report.stats.parallelism.speedup.scaling.strong.(parcond).vis.lineScatter.savefig("Paradram.himmelblau.parallelism.speedup.scaling.strong." + parcond + ".png", "-m3");
+    report = sampler.readReport();
+    report = report{1};
+
+    for parcond = ["sameeff", "zeroeff"]
+        report.stats.parallelism.speedup.scaling.strong.(parcond).vis.lineScatter.make();
+        report.stats.parallelism.speedup.scaling.strong.(parcond).vis.lineScatter.savefig("Paradram.himmelblau.parallelism.speedup.scaling.strong." + parcond + ".png", "-m3");
+    end
+
 end

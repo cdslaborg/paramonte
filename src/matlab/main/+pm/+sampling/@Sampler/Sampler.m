@@ -60,7 +60,7 @@ classdef Sampler < pm.matlab.Handle
         %>      <li>    ``"openmpi"``   :   The OpenMPI runtime library (Linux/macOS).<br>
         %>  </ol>
         %>  These names are normally one of the possible
-        %>  values returned by [pm.lib.mpi.choice()](@ref choice).<br>
+        %>  values returned by [pm.lib.mpi.choices()](@ref choices).<br>
         %>  By default, the ParaMonte samplers should be capable of detecting
         %>  the right MPI runtime libraries and the ParaMonte library files.<br>
         %>  If the automated MPI detection fails or for any reason, you want to use a

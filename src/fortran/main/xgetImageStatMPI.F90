@@ -71,5 +71,5 @@ program xgetImageStatMPI
     ! All images report their rank and the MPI image count.
     ! The current bash process is responsible for capturing it.
     write(*, "(*(g0))") "imageCountRank", imageCount, "imageCountRank", imageRank, "imageCountRank"
-    call mpi_finalize(ierrMPI)
+    !call mpi_finalize(ierrMPI)
 end program xgetImageStatMPI

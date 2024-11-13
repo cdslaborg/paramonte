@@ -1,6 +1,6 @@
 %>  \brief
-%>  Verify the existence of ParaMonte-compatible MPI library
-%>  installations on the current system and return nothing
+%>  Verify the existence of ParaMonte-compatible
+%>  MPI library installations on the current system
 %>  using a brute-force system path search.<br>
 %>
 %>  \details

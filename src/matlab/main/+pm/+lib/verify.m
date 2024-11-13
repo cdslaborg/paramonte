@@ -1,5 +1,5 @@
 %>  \brief
-%>  Check the requirements of the installed ParaMonte MATLAB library.
+%>  Verify the existence of the requirements of the installed ParaMonte MATLAB library.
 %>
 %>  \details
 %>  This function takes no input arguments and returns nothing.

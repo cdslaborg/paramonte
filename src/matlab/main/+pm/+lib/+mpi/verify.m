@@ -1,6 +1,6 @@
 %>  \brief
-%>  Verify the existence of ParaMonte-compatible MPI library
-%>  installations on the current system and return nothing.<br>
+%>  Verify the existence of ParaMonte-compatible MPI
+%>  library installations on the current system.<br>
 %>
 %>  \param[in]  vendor  :   The input scalar MATLAB string, containing the MPI
 %>                          library vendor supported by the ParaMonte library.<br>
@@ -63,41 +63,41 @@ function failed = verify(vendor)
         vendor = "";
     end
 
-    isall = strcmpi(vendor, "all");
-    isany = strcmpi(vendor, "any");
-    if  isany || isall
-        vendors = ["Intel", "MPICH", "OpenMPI"];
-    else
-        vendors = string(vendor);
-    end
-
-    mpiFound = false(numel(vendors), 1);
-    for iven = numel(vendors)
-
-        mpiVendor = vendors(iven);
-        mpiVendorLower = lower(mpiVendor);
-
-        disp("Checking for the " + mpiVendor + " MPI library installations...")
-
-        [mpiname, ~, ~, ~] = pm.lib.mpi.detect(mpiVendor);
-
-        mpiFound(iven) = ~strcmp(mpiname, "");
-        if  mpiFound(iven)
-            disp(pm.io.tab + "An " + mpiVendor + " MPI (runtime) library installation possibly exists on the system.")
-        else
-            disp(pm.io.tab + "None detected.")
-        end
-
-    end
+    % isall = strcmpi(vendor, "all");
+    % isany = strcmpi(vendor, "any");
+    % if  isany || isall
+    %     vendors = ["Intel", "MPICH", "OpenMPI"];
+    % else
+    %     vendors = string(vendor);
+    % end
+    %
+    % mpiFound = false(numel(vendors), 1);
+    % for iven = numel(vendors)
+    %
+    %     mpiVendor = vendors(iven);
+    %     mpiVendorLower = lower(mpiVendor);
+    %
+    %     disp("Checking for the " + mpiVendor + " MPI library installations...")
+    %
+    %     [mpiname, ~, ~] = pm.lib.mpi.runtime.detect(mpiVendor);
+    %
+    %     mpiFound(iven) = ~strcmp(mpiname, "");
+    %     if  mpiFound(iven)
+    %         disp(pm.io.tab + "An " + mpiVendor + " MPI (runtime) library installation possibly exists on the system.")
+    %     else
+    %         disp(pm.io.tab + "None detected.")
+    %     end
+    %
+    % end
 
     %%%%
     %%%% Perform a brute-force search for MPI installations.
     %%%%
 
-    if ~any(mpiFound)
+    % if ~any(mpiFound)
         if  pm.sys.path.mpiexec.verify(vendor);
             failed = true;
         end
-    end
+    % end
 
 end

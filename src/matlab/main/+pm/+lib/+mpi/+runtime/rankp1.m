@@ -15,8 +15,8 @@
 %>  be done only by a specific (normally the first) parallel process.<br>
 %>  See the documentation of [pm.sampling.Paradram](@ref Paradram) for example usage.<br>
 %>
-%>  \param[in]  vendor  :   See the corresponding argument of [pm.lib.mpi.detect](@ref detect).<br>
-%>                          (**optional**. The default is set by [pm.lib.mpi.detect](@ref detect).)
+%>  \param[in]  vendor  :   See the corresponding argument of [pm.lib.mpi.runtime.detect](@ref detect).<br>
+%>                          (**optional**. The default is set by [pm.lib.mpi.runtime.detect](@ref detect).)
 %>
 %>  \return
 %>  ``value``           :   The output MATLAB scalar positive whole-number containing the
@@ -28,16 +28,16 @@
 %>  \interface{rankp1}
 %>  \code{.m}
 %>
-%>      value = pm.lib.mpi.rankp1()
-%>      value = pm.lib.mpi.rankp1([])
-%>      value = pm.lib.mpi.rankp1(vendor)
+%>      value = pm.lib.mpi.runtime.rankp1()
+%>      value = pm.lib.mpi.runtime.rankp1([])
+%>      value = pm.lib.mpi.runtime.rankp1(vendor)
 %>
 %>  \endcode
 %>
-%>  \example{install}
-%>  \include{lineno} example/lib/mpi/install/main.m
-%>  \output{install}
-%>  \include{lineno} example/lib/mpi/install/main.out.m
+%>  \example{rankp1}
+%>  \include{lineno} example/lib/mpi/runtime/rankp1/main.m
+%>  \output{rankp1}
+%>  \include{lineno} example/lib/mpi/runtime/rankp1/main.out.m
 %>
 %>  \final{rankp1}
 %>
@@ -48,6 +48,6 @@ function value = rankp1(vendor)
     if  nargin < 1
         vendor = [];
     end
-    [~, ~, ~, value] = pm.lib.mpi.detect(vendor);
+    [~, ~, value] = pm.lib.mpi.runtime.detect(vendor);
     value = max(1, value);
 end

@@ -670,21 +670,21 @@ add_library(${libnamec} OBJECT "${paramonte_src_main_c_paths}")
 # Add the executable for MPI image counts for dynamic languages.
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-if (MPI_ENABLED)
-    if (MATHEMATICA_ENABLED OR MATLAB_ENABLED OR PYTHON_ENABLED OR R_ENABLED)
-        message(NOTICE "${pmattn} Adding the MPI image counter binary for the ${lang} programming language environment: xgetImageStatMPI")
-        add_executable(xgetImageStatMPI "${paramonte_src_fortran_main_dir}/xgetImageStatMPI.F90")
-        set_target_properties(xgetImageStatMPI PROPERTIES INSTALL_RPATH "${MPI_Fortran_INCLUDE_DIRS}")
-        target_include_directories(xgetImageStatMPI PUBLIC ${MPI_Fortran_INCLUDE_PATH})
-        target_link_libraries(xgetImageStatMPI PUBLIC ${MPI_Fortran_LIBRARIES})
-        install(TARGETS xgetImageStatMPI
-                CONFIGURATIONS "${CMAKE_BUILD_TYPE}"
-                DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
-                RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
-                #RUNTIME_DEPENDENCY_SET pmdeps
-                )
-    endif()
-endif()
+#if (MPI_ENABLED)
+#    if (MATHEMATICA_ENABLED OR MATLAB_ENABLED OR PYTHON_ENABLED OR R_ENABLED)
+#        message(NOTICE "${pmattn} Adding the MPI image counter binary for the ${lang} programming language environment: xgetImageStatMPI")
+#        add_executable(xgetImageStatMPI "${paramonte_src_fortran_main_dir}/xgetImageStatMPI.F90")
+#        set_target_properties(xgetImageStatMPI PROPERTIES INSTALL_RPATH "${MPI_Fortran_INCLUDE_DIRS}")
+#        target_include_directories(xgetImageStatMPI PUBLIC ${MPI_Fortran_INCLUDE_PATH})
+#        target_link_libraries(xgetImageStatMPI PUBLIC ${MPI_Fortran_LIBRARIES})
+#        install(TARGETS xgetImageStatMPI
+#                CONFIGURATIONS "${CMAKE_BUILD_TYPE}"
+#                DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+#                RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+#                #RUNTIME_DEPENDENCY_SET pmdeps
+#                )
+#    endif()
+#endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Add the library and compile/link flags.
