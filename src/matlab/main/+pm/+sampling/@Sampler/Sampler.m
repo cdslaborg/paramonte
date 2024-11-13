@@ -63,29 +63,32 @@ classdef Sampler < pm.matlab.Handle
         %>  values returned by [pm.lib.mpi.choices()](@ref choices).<br>
         %>  By default, the ParaMonte samplers should be capable of detecting
         %>  the right MPI runtime libraries and the ParaMonte library files.<br>
-        %>  If the automated MPI detection fails or for any reason, you want to use a
-        %>  non-preferred non-default MPI library, you can set this argument explicitly
-        %>  to enable the right preferred choice of MPI-enabled ParaMonte libraries.<br>
+        %>  If the automated MPI detection fails or for any reason, or you want to use
+        %>  a non-preferred non-default MPI library, you can set this argument explicitly
+        %>  to one of the values returned by [pm.lib.mpi.choices()](@ref choices) to enable
+        %>  your preferred choice of MPI-enabled ParaMonte libraries.<br>
         %>
         %>  Beware that you must launch MATLAB with an ``mpiexec`` binary that
-        %>  comes from the same MPI library vendor specified for ``mpiname``.<br>
+        %>  comes with the same MPI library vendor string specified for ``mpiname``.<br>
         %>
-        %>  The simulation task will likely fail if the MPI-parallel ParaMonte
+        %>  The simulation task will mostly likely fail if the MPI-parallel ParaMonte
         %>  shared libraries corresponding to the specified value for ``mpiname``
         %>  do not exist in the ParaMonte package.<br>
         %>  For example,<br>
         %>  <ol>
         %>      <li>    On Windows, only ParaMonte library
-        %>              builds with Intel MPI may be supported.<br>
+        %>              builds with Intel MPI are generally supported.<br>
         %>      <li>    On Linux, the ParaMonte library builds with
         %>              all MPI libraries listed above are supported,
         %>              but there is no guarantee of their availability in
-        %>              the package. Only the ParaMonte library builds with
-        %>              Intel MPI (``"impi"``) may be guaranteed to exist.<br>
-        %>      <li>    On Darwin (macOS), only the ParaMonte shared library
-        %>              builds with MPICH and OpenMPI libraries are supported,
-        %>              but there is no guarantee of the availability of all
-        %>              of them in the ParaMonte package.<br>
+        %>              the package. Only the MPI-parallel ParaMonte library
+        %>              names returned by [pm.lib.mpi.choices()](@ref choices)
+        %>              are guaranteed to exist.<br>
+        %>      <li>    On Darwin (macOS), the ParaMonte shared library builds
+        %>              with MPICH and OpenMPI libraries are generally supported,
+        %>              but there is no guarantee of the availability of all of them
+        %>              in the ParaMonte package, unless the corresponding name is among
+        %>              the names returned by [pm.lib.mpi.choices()](@ref choices).<br>
         %>  </ol>
         %>
         %>  \warning
