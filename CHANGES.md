@@ -14,20 +14,35 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
     +   The ParaMonte Fortran library has grown extensively into a full-blown Machine Learning library.  
     +   The ParaMonte MATLAB and Python libraries have also grown extensively with modernized simple interfaces.  
 
-All the above changes are backward-incompatible.  
-The current pre-release contains only the ParaMonte C, C++, Fortran implementations.  
-Work and significant testing is underway to release the ParaMonte MATLAB, Python, and R implementations.  
+The current pre-release contains only the ParaMonte C, C++, Fortran, and MATLAB implementations.  
+Work and significant testing is underway to release the ParaMonte Python and R implementations.  
 To learn about language-specific changes, visit:  
 
 +   [ParaMonte C CHANGES.md](./src/c/CHANGES.md).  
 +   [ParaMonte C++ CHANGES.md](./src/cpp/CHANGES.md).  
 +   [ParaMonte Fortran CHANGES.md](./src/fortran/CHANGES.md).  
-  
-| Compiler Suite                    | Windows (64bit) | Linux | macOS |  
-|----------------------------------:|:---------------:|:-----:|:-----:|  
-| Intel OneAPI > 2023.0.0           | ✅              | ✅    | ✅    |  
-| GNU Compiler Collection > 10.3    | ✅              | ✅    | ✅    |  
-| Microsoft C/C++ Compiler > 16.0.0 | ✅              | ❌    | ❌    |  
++   [ParaMonte MATLAB CHANGES.md](./src/matlab/CHANGES.md).  
+
+**Compiler Compatibility**  
+
+| Compiler Suite                    | Windows (amd64) | Linux (amd64) | macOS (amd64) | macOS (arm64) |  
+|----------------------------------:|:---------------:|:-------------:|:-------------:|:-------------:|  
+| GNU Compiler Collection >= 10.3   | ✅              | ✅            | ✅             | ✅            |  
+| Intel OneAPI >= 2023.0.0          | ✅              | ✅            | ✅             | ❌            |  
+
+**Essential Dependency Compatibility**  
+
+| Dependency                        | Windows (amd64) | Linux (amd64) | macOS (amd64) | macOS (arm64) |  
+|----------------------------------:|:---------------:|:-------------:|:-------------:|:-------------:|  
+| CMake >= 3.21                     | ✅              | ✅            | ✅             | ✅            |  
+
+**Optional Dependency Compatibility**  
+
+| Dependency                        | Windows (amd64) | Linux (amd64) | macOS (amd64) | macOS (arm64) |  
+|----------------------------------:|:---------------:|:-------------:|:-------------:|:-------------:|  
+| Intel MPI (IMPI) >= 2021.11       | ✅              | ✅            | ✅             | ❌            |  
+| MPICH MPI (MMPI) >= 3             | ✅              | ✅            | ✅             | ✅            |  
+| OpenMPI (OMPI) >= 4               | ✅              | ✅            | ✅             | ✅            |  
 
 ## **Version 1.x.x**  
 

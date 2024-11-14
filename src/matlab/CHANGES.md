@@ -6,28 +6,56 @@ or [the ParaMonte page on MathWorks FileExchange central package repository](htt
 
 ## **Version 3.x.x**  
 
-### Version  3.0.0 -- Work in progress  
+### Version  3.0.0 -- Nov 13, 2024 (pre-release)  
 
 **Major enhancements**  
 
-+   This is a major release of the ParaMonte library. 
-    The library's usage syntax has changed in all programming language environments. 
-
-+   The C/C++/Fortran libraries now behave similar to the MATLAB/Python/R libraries 
-    in that all now return gracefully upon occurrence of a fatal error, instead of 
-    abruptly ending the program. Each ParaMonte sampler in C/C++/Fortran returns 
-    an error code that indicates successful completion of the simulation if 0.
++   This is a major release of the ParaMonte MATLAB library. 
+    The library's usage syntax has changed in all programming language environments, including MATLAB. 
 
 +   This update presents major performance, accuracy, and verification 
     enhancements to the ParaMonte kernel routines, in particular, 
     to the ParaDRAM sampler of the ParaMonte library.  
 
-+   The current major release of ParaMonte MATLAB is currently 
-    undergoing pre-release internal testing and verifications.
++   The ParaMonte MATLAB library now has a package structure, 
+    allowing the use of different library functionalities without name clashes.
 
-+   Users are referred to the last stable release of ParaMonte MATLAB available for download at the 
-    repository's [GitHub release page](https://github.com/cdslaborg/paramonte/releases/tag/v1.5.1)
-    before the impending major version is publicly released.
++   The ParaMonte MATLAB library now has a dedicated 
+    [user and developer API documentation website](https://www.cdslab.org/paramonte/matlab/3/), 
+    in addition to the generic documentation website containing the installation 
+    and guidelines that apply to all programming language environments.
+
++   Numerous examples have been added to the library, all collected in 
+    the `example` subfolder in the new ParaMonte MATLAB binary releases.
+
++   The visualization tools of the library have dramatically improved, expanded, and publicized.
+
++   The ParaMonte MATLAB samplers functionalities have significantly improved.
+
++   The ParaMonte MATLAB samplers can now take advantage of 
+    MATLAB parallelism toolbox for shared-memory parallelism.
+    For usage, see the sampling examples of the library.
+
++   The ParaMonte MATLAB MPI-parallel samplers are now significantly easier to use.
+    For usage, see the sampling examples of the library.
+
++   Users are encouraged to test the most recent releases of the ParaMonte MATLAB available for 
+    download at the repository's [GitHub release page](https://github.com/cdslaborg/paramonte/releases).
+
+**Essential Dependency Compatibility**  
+
+| Dependency                        | Windows (amd64) | Linux (amd64) | macOS (amd64) | macOS (arm64) |  
+|----------------------------------:|:---------------:|:-------------:|:-------------:|:-------------:|  
+| MATLAB >= R2023a (tested)         | ✅              | ✅            | ✅             | ✅            |  
+| MATLAB <= R2022b (untested)       | ❓              | ❓            | ❓             | ❓            |  
+
+**Optional Dependency Compatibility**  
+
+| Dependency                        | Windows (amd64) | Linux (amd64) | macOS (amd64) | macOS (arm64) |  
+|----------------------------------:|:---------------:|:-------------:|:-------------:|:-------------:|  
+| Intel MPI (IMPI) >= 2021.11       | ✅              | ✅            | ✅             | ❌            |  
+| MPICH MPI (MMPI) >= 3             | ✅              | ✅            | ✅             | ✅            |  
+| OpenMPI (OMPI) >= 4               | ✅              | ✅            | ✅             | ✅            |  
 
 ## **Version 2.x.x**  
 
