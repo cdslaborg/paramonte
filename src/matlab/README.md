@@ -155,6 +155,14 @@ The ParaMonte library relies on three independent parallelism paradigms for para
         depending on the prebuilt version of the ParaMonte library that you have downloaded or
         the configuration with which you intend to build the library.
 
+**Optional Dependency Compatibility**  
+
+| Dependency                        | Windows (amd64) | Linux (amd64) | macOS (amd64) | macOS (arm64) |  
+|----------------------------------:|:---------------:|:-------------:|:-------------:|:-------------:|  
+| Intel MPI (IMPI) >= 2021.8        | ✅              | ✅            | ✅             | ❌            |  
+| MPICH MPI (MMPI) >= 3             | ❌              | ✅            | ✅             | ✅            |  
+| OpenMPI (OMPI) >= 4               | ❌              | ✅            | ✅             | ✅            |  
+
 Read the [`install.md` installation instruction notes](install.md) to learn more about the library's optional parallel build configurations.<br>
 
 For more information, visit [https://www.cdslab.org/paramonte/](https://www.cdslab.org/paramonte/).

@@ -111,15 +111,6 @@ Dependencies
 
 Beyond an optional MPI runtime library for MPI-parallel simulations, the ParaMonte library core has **zero dependency** on external third-party libraries or packages. 
 
-**Optional Dependency Compatibility**  
-
-| Dependency                        | Windows (amd64) | Linux (amd64) | macOS (amd64) | macOS (arm64) |  
-|----------------------------------:|:---------------:|:-------------:|:-------------:|:-------------:|  
-| Intel MPI (IMPI) >= 2021.8        | ✅              | ✅            | ✅             | ❌            |  
-| MPICH MPI (MMPI) >= 3             | ❌              | ✅            | ✅             | ✅            |  
-| OpenMPI (OMPI) >= 4               | ❌              | ✅            | ✅             | ✅            |  
-
-
 
 Parallelism
 ===========
@@ -136,6 +127,14 @@ The ParaMonte library relies on three independent parallelism paradigms for para
         [Open-MPI](https://www.open-mpi.org/) or [MPICH](https://www.mpich.org/) MPI runtime libraries
         depending on the prebuilt version of the ParaMonte library that you have downloaded or
         the configuration with which you intend to build the library.
+
+**Optional Dependency Compatibility**  
+
+| Dependency                        | Windows (amd64) | Linux (amd64) | macOS (amd64) | macOS (arm64) |  
+|----------------------------------:|:---------------:|:-------------:|:-------------:|:-------------:|  
+| Intel MPI (IMPI) >= 2021.8        | ✅              | ✅            | ✅             | ❌            |  
+| MPICH MPI (MMPI) >= 3             | ❌              | ✅            | ✅             | ✅            |  
+| OpenMPI (OMPI) >= 4               | ❌              | ✅            | ✅             | ✅            |  
 
 Read the [`install.md` installation instruction notes](install.md) to learn more about the library's optional parallel build configurations.<br>
 
