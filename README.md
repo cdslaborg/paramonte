@@ -154,8 +154,9 @@ Example Usage Instructions
     +   **C**: [https://github.com/cdslaborg/paramonte/tree/main/src/c](https://github.com/cdslaborg/paramonte/tree/main/src/c)
     +   **C++**: [https://github.com/cdslaborg/paramonte/tree/main/src/cpp](https://github.com/cdslaborg/paramonte/tree/main/src/cpp)
     +   **Fortran**: [https://github.com/cdslaborg/paramonte/tree/main/src/fortran](https://github.com/cdslaborg/paramonte/tree/main/src/fortran)
+    +   **MATLAB**: [https://github.com/cdslaborg/paramonte/tree/main/src/matlab](https://github.com/cdslaborg/paramonte/tree/main/src/matlab)
 
-+   The ParaMonte libraries for MATLAB and Python are currently undergoing internal testing before their impending release.
++   The ParaMonte library for Python is currently undergoing internal testing before their impending release.
 +   For now, the previous versions (1) of the ParaMonte MATLAB and Python libraries can be downloaded 
     and used from the previous library major release on [GitHub Release Page](https://github.com/cdslaborg/paramonte/releases/tag/v1.5.1).
 
