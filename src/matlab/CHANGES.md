@@ -53,9 +53,9 @@ or [the ParaMonte page on MathWorks FileExchange central package repository](htt
 
 | Dependency                        | Windows (amd64) | Linux (amd64) | macOS (amd64) | macOS (arm64) |  
 |----------------------------------:|:---------------:|:-------------:|:-------------:|:-------------:|  
-| Intel MPI (IMPI) >= 2021.11       | ✅              | ✅            | ✅             | ❌            |  
-| MPICH MPI (MMPI) >= 3             | ✅              | ✅            | ✅             | ✅            |  
-| OpenMPI (OMPI) >= 4               | ✅              | ✅            | ✅             | ✅            |  
+| Intel MPI (IMPI) >= 2021.8        | ✅              | ✅            | ✅             | ❌            |  
+| MPICH MPI (MMPI) >= 3             | ❌              | ✅            | ✅             | ✅            |  
+| OpenMPI (OMPI) >= 4               | ❌              | ✅            | ✅             | ✅            |  
 
 ## **Version 2.x.x**  
 

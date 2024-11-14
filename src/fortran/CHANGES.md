@@ -27,7 +27,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 | Compiler Suite                    | Windows (amd64) | Linux (amd64) | macOS (amd64) | macOS (arm64) |  
 |----------------------------------:|:---------------:|:-------------:|:-------------:|:-------------:|  
 | GNU Compiler Collection >= 10.3   | ✅              | ✅            | ✅             | ✅            |  
-| Intel OneAPI >= 2023.0.0          | ✅              | ✅            | ✅             | ❌            |  
+| Intel OneAPI >= 2021.8.0          | ✅              | ✅            | ✅             | ❌            |  
 
 **Essential Dependency Compatibility**  
 
@@ -39,9 +39,9 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 | Dependency                        | Windows (amd64) | Linux (amd64) | macOS (amd64) | macOS (arm64) |  
 |----------------------------------:|:---------------:|:-------------:|:-------------:|:-------------:|  
-| Intel MPI (IMPI) >= 2021.11       | ✅              | ✅            | ✅             | ❌            |  
-| MPICH MPI (MMPI) >= 3             | ✅              | ✅            | ✅             | ✅            |  
-| OpenMPI (OMPI) >= 4               | ✅              | ✅            | ✅             | ✅            |  
+| Intel MPI (IMPI) >= 2021.8        | ✅              | ✅            | ✅             | ❌            |  
+| MPICH MPI (MMPI) >= 3             | ❌              | ✅            | ✅             | ✅            |  
+| OpenMPI (OMPI) >= 4               | ❌              | ✅            | ✅             | ✅            |  
 
 ## **Version 1.x.x**  
 

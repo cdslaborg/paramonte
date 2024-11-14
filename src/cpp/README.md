@@ -89,14 +89,20 @@ Each prebuilt ParaMonte library automatically ships with a full-fledged set of e
 
 Alternatively, you can build the library from the source in the project's [GitHub repository](https://github.com/cdslaborg/paramonte).
 The ParaMonte library installation/build process is fully automated for all supported programming languages.
-Currently, the following compiler suites are supported **for builds from source**:
+Currently, the following compiler suites are supported **for builds from source**,
 
-| Compiler Suite                    | Linux | macOS | Windows (64bit) |
-|----------------------------------:|:-----:|:-----:|:---------------:|
-| GNU Compiler Collection > 10.3    |&check;|&check;| &cross;         |
-| Intel OneAPI > 2021.8.0           |&check;|&check;| &check;         |
+| Compiler Suite                    | Windows (amd64) | Linux (amd64) | macOS (amd64) | macOS (arm64) |  
+|----------------------------------:|:---------------:|:-------------:|:-------------:|:-------------:|  
+| GNU Compiler Collection >= 10.3   | ✅              | ✅            | ✅             | ✅            |  
+| Intel OneAPI >= 2021.8.0          | ✅              | ✅            | ✅             | ❌            |  
 
-+   Read the [`install.md` installation instruction notes](install.md) to learn more about the library's many optional build configurations.
+with the following essential build systems,
+
+| Dependency                        | Windows (amd64) | Linux (amd64) | macOS (amd64) | macOS (arm64) |  
+|----------------------------------:|:---------------:|:-------------:|:-------------:|:-------------:|  
+| CMake >= 3.21                     | ✅              | ✅            | ✅             | ✅            |  
+
++   Read the [`install.md` installation instruction notes](install.md) to learn about the library's optional build configurations.
 +   For more information and a quickstart in the programming language of your choice, visit the [ParaMonte library homepage](https://www.cdslab.org/paramonte).
 
 
@@ -104,6 +110,15 @@ Dependencies
 ============
 
 Beyond an optional MPI runtime library for MPI-parallel simulations, the ParaMonte library core has **zero dependency** on external third-party libraries or packages. 
+
+**Optional Dependency Compatibility**  
+
+| Dependency                        | Windows (amd64) | Linux (amd64) | macOS (amd64) | macOS (arm64) |  
+|----------------------------------:|:---------------:|:-------------:|:-------------:|:-------------:|  
+| Intel MPI (IMPI) >= 2021.8        | ✅              | ✅            | ✅             | ❌            |  
+| MPICH MPI (MMPI) >= 3             | ❌              | ✅            | ✅             | ✅            |  
+| OpenMPI (OMPI) >= 4               | ❌              | ✅            | ✅             | ✅            |  
+
 
 
 Parallelism
@@ -203,7 +218,7 @@ Authors and Contributors
     +   PhD in Astronomy,
     +   PhD in Space Physics,
     +   Deep philosophical thinker,
-    +   Currently at NASA Goddard Space Flight Center (GSFC),
+    +   Currently at NASA Goddard Space Flight Center,
     +   Contact: [bagheri.fateme@gmail.com](mailto:"bagheri.fateme@gmail.com")
 
 

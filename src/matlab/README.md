@@ -274,7 +274,7 @@ Authors and Contributors
     +   PhD in Astronomy,
     +   PhD in Space Physics,
     +   Deep philosophical thinker,
-    +   Currently at NASA Goddard Space Flight Center (GSFC),
+    +   Currently at NASA Goddard Space Flight Center,
     +   Contact: [bagheri.fateme@gmail.com](mailto:"bagheri.fateme@gmail.com")
 
 
