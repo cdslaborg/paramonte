@@ -68,12 +68,46 @@ on your PC to successfully run `install.sh` script.
     +   Building via GNU compilers requires a recent version (`>10`) 
         installation of GNU C and Fortran compilers.  
 
-    +   Building for **MPI-parallelism** requires either,
+    +   Building for **MPI-parallelism** requires one of the following MPI libraries.
 
-        +   the Intel MPI library with Intel compilers, or
-        +   the MPICH MPI library with GNU compilers, or
-        +   the Open-MPI library with GNU compilers, or
-        +   the Microsoft MPI library with GNU compilers (on Windows).
+        +   The Intel MPI library with Intel compilers.
+            The Intel MPI library can be downloaded as part of the 
+            Intel OneAPI + HPC compiler suite from the Intel website.
+        +   The MPICH MPI library with GNU compilers. 
+            For download instructions visit the MPICH library website.
+            You can also install the MPICH library via your preferred package managers.
+            For example, 
+            +   on **Linux Ubuntu** operating systems using the APT package manager, 
+                you can try the following command in a Bash terminal to install MPICH MPI library:
+                ```bash
+                sudo apt install mpich
+                ```
+            +   on **macOS (Darwin)** operating systems using the `brew` package manager, 
+                you can try the following command in a ZSH or Bash terminal to install MPICH MPI library:
+                ```bash
+                brew install mpich && brew link mpich
+                ```
+        +   The Open-MPI library with GNU compilers.
+            For download instructions visit the Open-MPI library website.
+            You can also install the Open-MPI library via your preferred package managers.
+            For example, 
+            +   on **Linux Ubuntu** operating systems using the APT package manager, 
+                you can try the following command in a Bash terminal to install Open-MPI MPI library:
+                ```bash
+                sudo apt install openmpi-bin openmpi-common libopenmpi-dev
+                ```
+            +   on **macOS (Darwin)** operating systems using the `brew` package manager, 
+                you can try the following command in a ZSH or Bash terminal to install Open-MPI MPI library:
+                ```bash
+                brew install openmpi && brew link openmpi
+                ```
+        +   The Microsoft MPI library with GNU compilers (on Windows).
+            The ParaMonte library has never been tested against Microsoft MPI library.
+            Microsoft claims full compatibility of their MPI library with the MPI standard.
+            Yet, it is unclear whether their library has any Fortran bindings.
+            If you have any luck building ParaMonte and linking it against 
+            Microsoft MPI library, please share your success with us at
+            [ParaMonte GitHub Disussions Page](https://github.com/cdslaborg/paramonte/discussions).
 
 3.  Once all the above components are installed, open a Windows CMD terminal that
     recognizes all applications installed above (that is, all applications can
@@ -83,15 +117,15 @@ on your PC to successfully run `install.sh` script.
 
 7.  Type `install.sh` with the desired build configuration flags. Example:
 
-    ```shch
+    ```batch
     ./install.sh --lang c
     ```
 
-    ```shch
+    ```bash
     ./install.sh --lang c --build release --par mpi --checking nocheck
     ```
 
-    ```shch
+    ```bash
     ./install.sh --lang c --build release --par "mpi;omp" --checking nocheck
     ```
 

@@ -77,9 +77,8 @@ Quick Start
 ===========
 
 
-For a quick start with ParaMonte MATLAB Script examples, visit the documentation of the corresponding function [this ParaMonte documentation page](https://www.cdslab.org/paramonte/generic/latest/examples/matlab/mlx/).
-The corresponding example source files (the `*.mlx` files) can be downloaded from the [paramontex GitHub repository](https://github.com/cdslaborg/paramontex/tree/main/MATLAB/mlx),
-a repository dedicated to the ParaMonte library examples.
+For a quick start with ParaMonte MATLAB Script examples, visit the documentation of the corresponding function 
+[this ParaMonte documentation page](https://www.cdslab.org/paramonte/generic/latest/examples/matlab/mlx/).
 
 The following example code samples a 4-dimensional MultiVariate Normal (MNV) distribution via the ParaDRAM sampler in serial mode,
 
@@ -151,7 +150,8 @@ For more information, visit [https://www.cdslab.org/paramonte/](https://www.cdsl
 Example Usage Instructions
 ==========================
 
-See the [ParaMonte MATLAB installation instructions page](https://www.cdslab.org/paramonte/generic/latest/installation/matlab/) for a quick start with examples.
++   For complete clear organized, up-to-date instructions on the build process and the 
+    installation of the ParaMonte library, visit the [ParaMonte MATLAB examples guidelines](usage/examples/matlab/).  
 
 
 Citing ParaMonte

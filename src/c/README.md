@@ -78,7 +78,7 @@ Quick Start
 
 +   Follow the quick start instructions in this [QUICKSTART.md](https://github.com/cdslaborg/paramonte/blob/main/QUICKSTART.md) file. 
 +   For programming languages other than C, C++, Fortran, see the quick start section of the README.md file in the corresponding 
-    language's source subfolder in the [src folder](./src) in the root directory of the ParaMonte repository.
+    language's source subfolder in the [src folder](https://github.com/cdslaborg/paramonte/src) in the root directory of the ParaMonte repository.
 
 
 Installation  
@@ -154,38 +154,7 @@ Example Usage Instructions
 ==========================
 
 +   For complete clear organized, up-to-date instructions on the build process and the 
-    installation of the ParaMonte library, visit: [cdslab.org/pm](https://www.cdslab.org/paramonte)
-
-## Quick start
-
-+   Go to the [release page of the ParaMonte library on GitHub](https://github.com/cdslaborg/paramonte/releases).
-+   Decide on the parallelism paradigm you want to use: serial / MPI / OpenMP.
-+   Decide on the operating system (OS) you want to run the ParaMonte simulations: Windows, macOS, or Linux.
-+   Learn about the naming convention used for the ParaMonte prebuilt libraries
-    [here](https://www.cdslab.org/paramonte/generic/latest/installation/readme/#naming-convention-used-for-paramonte-library-builds).
-+   Download the prebuilt ParaMonte library of your choice based on the decisions you have made above.
-    If you are unsure which prebuilt library is suitable for your needs, use the prebuilt library recommended
-    [here for Windows](https://www.cdslab.org/paramonte/generic/latest/installation/windows/#using-the-prebuilt-paramonte-library),
-    or [here for Linux](https://www.cdslab.org/paramonte/generic/latest/installation/linux/#using-the-prebuilt-paramonte-library),
-    or [here for macOS](https://www.cdslab.org/paramonte/generic/latest/installation/macos/#using-the-prebuilt-paramonte-library).
-+   Each prebuilt library ships with a full-fledged set of example codes and build scripts. Uncompress the prebuilt library:
-    +   On **Windows**: Simply double-click on the zip-file and select **extract files** from the Windows Explorer menu.
-    +   On **macOS/Linux**: Open a Bash terminal and navigate to the compressed library folder.
-        Use the following command to untar the compressed file,
-        ```
-        ls libparamonte*.tar.gz* | xargs -i tar xvzf {}
-        ```
-        to extract all `libparamonte` tar files in the current directory.
-
-### Building and running ParaMonte simulations  
-
-+   **Note**: Theoretically, you can use any C/C++ compiler on Windows to build and link your applications against the ParaMonte library. 
-    However, remember that the ParaMonte library example build scripts have only been tested with the GNU, Microsoft, and Intel C/C++ compilers. 
-
-+   **Note**: Theoretically, you can use any C/C++ compiler on macOS or Linux to build and link your applications against the ParaMonte library. 
-    However, as described below, the ParaMonte library example build scripts only recognize the Intel and GNU C/C++ compilers. 
-
-+   For the generic library build instructions, follow the guidelines provided in [install.md](../../install.md) in the root directory of the repository. 
+    installation of the ParaMonte library, visit the [ParaMonte C examples guidelines](usage/examples/c/).  
 
 
 Citing ParaMonte

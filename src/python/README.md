@@ -159,7 +159,8 @@ For more information, visit [https://www.cdslab.org/paramonte/](https://www.cdsl
 Example Usage Instructions
 ==========================
 
-See the [ParaMonte Python installation instructions page](https://www.cdslab.org/paramonte/generic/latest/installation/python/) for a quick start with examples.
++   For complete clear organized, up-to-date instructions on the build process and the 
+    installation of the ParaMonte library, visit the [ParaMonte Python examples guidelines](usage/examples/python/).  
 
 
 Citing ParaMonte
