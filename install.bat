@@ -999,6 +999,9 @@ for %%C in ("!list_fc:;=" "!") do (
                                 ) || (
                                     echo.
                                     echo.!pmfatal! !BoldRed!ParaMonte configuration with CMake appears to have failed.!ColorReset!
+                                    echo.!pmfatal! !BoldRed!This error could happen for a variety of silly reasons such Dropbox interference with the build files.!ColorReset!
+                                    echo.!pmfatal! !BoldRed!Make sure to disable intensive applications such as Google Drive and Dropbox which lock file ownerships.!ColorReset!
+                                    echo.!pmfatal! !BoldRed!Then retry the build. Keep in mind that this is only one probable cause of the build failure.!ColorReset!
                                     goto LABEL_ERR
                                 )
 
