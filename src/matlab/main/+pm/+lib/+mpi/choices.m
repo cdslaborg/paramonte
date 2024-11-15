@@ -33,16 +33,19 @@
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function names = choices()
-    bindirs = pm.sys.path.glob(pm.lib.path.lib() + "**libparamonte*");
+    bindirs = pm.sys.path.glob(pm.lib.path.lib() + "**pm_sampling*");
     mpinames = ["mpi", "impi", "mpich", "openmpi"];
     names = strings(numel(bindirs), 1);
-    for iname = 1 : numel(bindirs)
-        [basedir, ~, ~] = fileparts(bindirs(iname));
+    iname = 0;
+    for ibin = 1 : numel(bindirs)
+        [basedir, ~, ~] = fileparts(bindirs(ibin));
         [basedir, ~, ~] = fileparts(basedir);
         [~, dirname, ~] = fileparts(string(basedir)); % This is the library checking mode.
         [~, dirname, ~] = fileparts(string(dirname)); % This is the parallelism name used in the folder naming.
-        names(iname) = string(dirname);
-        if ~any(strcmp(["mpi", "impi", "mpich", "openmpi"], names(iname)))
+        if  any(strcmp(["mpi", "impi", "mpich", "openmpi"], dirname))
+            iname = iname + 1;
+            names(iname) = string(dirname);
+        elseif ~strcmp(["serial", "openmp"], dirname)
             warning ( newline ...
                     + "Unrecognized MPI library name detected among the ParaMonte library paths:" + newline ...
                     + newline ...
@@ -50,7 +53,7 @@ function names = choices()
                     + newline ...
                     + "The corresponding ParaMonte library path is: " + newline ...
                     + newline ...
-                    + pm.io.tab + bindirs(iname) + newline ...
+                    + pm.io.tab + bindirs(ibin) + newline ...
                     + newline ...
                     + "The expected MPI library names are: " + newline ...
                     + newline ...
@@ -59,7 +62,7 @@ function names = choices()
                     );
         end
     end
-    names = unique(names);
+    names = unique(names(1 : iname));
     %if  ispc()
     %    names = "impi";
     %elseif pm.os.is.lin()
