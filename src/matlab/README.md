@@ -95,6 +95,9 @@ getLogFunc = @(x) -0.5 * sum( x.^2 );
 sampler.run ( getLogFunc ...           the objective function
             , 4 ... assume a 4-dimensional objective function
             );
+sample = sampler.readSample(); % read the output sample(s).
+sample{1}.vis.triplex.lshc3.make() % Make a triplex (corner) plot of the first output sample.
+sample{1}.vis.triplex.lshc2.make() % Make a triplex (corner) plot of the first output sample.
 ```
 
 
