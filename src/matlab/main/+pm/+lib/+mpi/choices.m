@@ -33,13 +33,14 @@
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function names = choices()
-    bindirs = pm.sys.path.glob(pm.lib.path.lib() + "**pm_parallelism*");
+    bindirs = pm.sys.path.glob(pm.lib.path.lib() + "**libparamonte*");
     mpinames = ["mpi", "impi", "mpich", "openmpi"];
     names = strings(numel(bindirs), 1);
     for iname = 1 : numel(bindirs)
         [basedir, ~, ~] = fileparts(bindirs(iname));
         [basedir, ~, ~] = fileparts(basedir);
-        [~, dirname, ~] = fileparts(string(basedir));
+        [~, dirname, ~] = fileparts(string(basedir)); % This is the library checking mode.
+        [~, dirname, ~] = fileparts(string(dirname)); % This is the parallelism name used in the folder naming.
         names(iname) = string(dirname);
         if ~any(strcmp(["mpi", "impi", "mpich", "openmpi"], names(iname)))
             warning ( newline ...

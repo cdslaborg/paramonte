@@ -1147,7 +1147,8 @@ for %%C in ("!list_fc:;=" "!") do (
                                                     REM This is a weakness point as the input value for `--par` flag may not be completely lower case.
                                                     REM
 
-                                                    set "list_mex=pm_sampling;pm_parallelism"
+                                                    REM ;pm_parallelism
+                                                    set "list_mex=pm_sampling"
 
                                                     set "ismatlabomp=false"
                                                     if omp==%%~P set "ismatlabomp=true"
