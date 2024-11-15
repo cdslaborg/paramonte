@@ -114,8 +114,9 @@ with the following essential build systems,
 Dependencies
 ============
 
-Besides an optional MPI runtime library for MPI-parallel simulations, 
+Aside from a optional MPI runtime library for MPI-parallel simulations, 
 the ParaMonte library core has **zero dependency** on external third-party libraries or packages.  
+
 
 
 Parallelism

@@ -110,6 +110,9 @@ to either download the pre-built ParaMonte MATLAB libraries for your platform or
 Dependencies
 ============
 
+Aside from a optional MPI runtime library for MPI-parallel simulations, 
+the ParaMonte library core has **zero dependency** on external third-party libraries or packages.  
+
 
 
 Parallelism

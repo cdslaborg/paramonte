@@ -114,6 +114,9 @@ to either download the pre-built ParaMonte Python libraries for your platform or
 Dependencies
 ============
 
+Aside from a optional MPI runtime library for MPI-parallel simulations, 
+the ParaMonte library core has **zero dependency** on external third-party libraries or packages.  
+
 The Python interface of ParaMonte depends on very few third-party libraries. 
 These include `numpy`, `scipy`, `pandas`, and `matplotlib`. 
 The last two (plotting) libraries are only used for the post-processing of simulation 
