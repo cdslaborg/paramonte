@@ -65,6 +65,16 @@ for more details on library build options and guidelines.
 
 ## Example install commands  
 
+1.  To build for the C, C++, and Fortran programming languages and build and run all their corresponding examples in serial, try, 
+    +   On **Windows**,
+        ```batch
+        install.bat --lang "c;cpp;fortran" --exam all
+        ```
+    +   On **Linux** and **macOS**,
+        ```batch
+        ./install.sh --lang "c;cpp;fortran" --exam all
+        ```
+
 1.  As of 2024, the following commands can be used to generate 
     minimal `serial`, `openmp` and `mpi` ParaMonte MATLAB binaries.  
     +   On **Windows**,
