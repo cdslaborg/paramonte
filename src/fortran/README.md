@@ -38,39 +38,39 @@
 <a href="#authors-and-contributors">Authors</a>
 </div>
 
-ParaMonte: Parallel Monte Carlo and Machine Learning
-====================================================
+ParaMonte: Parallel Monte Carlo and Machine Learning  
+====================================================  
 
 ParaMonte is a serial/parallel library of Monte Carlo routines for sampling mathematical density functions of arbitrary dimensions and 
-Machine Learning (ML) algorithms for scientific inference, with the design goal of unifying **automation** (of simulations and tasks),
-**user-friendliness** (of algorithms), **accessibility** (from any platform or programming environment),
-**high-performance** (at runtime), and **scalability** (across many parallel processors).
+Machine Learning (ML) algorithms for scientific inference, with the design goal of unifying **automation** (of simulations and tasks), 
+**user-friendliness** (of algorithms), **accessibility** (from any platform or programming environment), 
+**high-performance** (at runtime), and **scalability** (across many parallel processors).  
 
-For more information on the installation, usage, and examples, visit https://www.cdslab.org/paramonte
+For more information on the installation, usage, and examples, visit https://www.cdslab.org/paramonte  
 
-ParaMonte Design Goals
-======================
+ParaMonte Design Goals  
+======================  
 
-ParaMonte has been developed while bearing the following design goals in mind:
+ParaMonte has been developed while bearing the following design goals in mind:  
 
--   **Full automation** of Monte Carlo and Machine Learning simulations as much as possible to ensure user-friendliness
-    of the library and minimal time investment requirements for building, running, and post-processing simulation models.
+-   **Full automation** of Monte Carlo and Machine Learning simulations as much as possible to ensure user-friendliness 
+    of the library and minimal time investment requirements for building, running, and post-processing simulation models. 
 
--   **Interoperability** of the core library with as many programming languages as currently possible,
-    including C, C++, Fortran, MATLAB, and Python, with ongoing efforts to support other popular programming languages.
+-   **Interoperability** of the core library with as many programming languages as currently possible, 
+    including C, C++, Fortran, MATLAB, and Python, with ongoing efforts to support other popular programming languages.  
 
--   **High-Performance** meticulously-low-level library implementation to ensure the fastest-possible inferences.
+-   **High-Performance** meticulously-low-level library implementation to ensure the fastest-possible inferences.  
 
 -   **Parallelizability** of all simulations via shared-memory OpenMP threads and two-sided and one-sided 
-    MPI/Coarray distributed communications while requiring zero-parallel-coding efforts by the user.
+    MPI/Coarray distributed communications while requiring zero-parallel-coding efforts by the user.  
 
--   **Zero-dependence** on external libraries to ensure hassle-free ParaMonte library builds and ParaMonte simulation runs.
+-   **Zero-dependence** on external libraries to ensure hassle-free ParaMonte library builds and ParaMonte simulation runs.  
 
--   **Fully-deterministic reproducibility** and automatically-enabled restart functionality
-    for all simulations with arbitrary digits of precision as requested by the user.
+-   **Fully-deterministic reproducibility** and automatically-enabled restart functionality 
+    for all simulations with arbitrary digits of precision as requested by the user.  
 
--   **Comprehensive reporting and post-processing** of simulations and ML tasks, as well as their automatic storage in
-    external files to ensure the simulation results will be understandable and reproducible at any time in the foreseeable future.
+-   **Comprehensive reporting and post-processing** of simulations and ML tasks, as well as their automatic storage in 
+    external files to ensure the simulation results will be understandable and reproducible at any time in the foreseeable future.  
 
 
 Quick Start
@@ -81,15 +81,18 @@ Quick Start
     language's source subfolder in the [src folder](./src) in the root directory of the ParaMonte repository.
 
 
-Installation
-============
+Installation  
+============  
 
-The prebuilt, ready-to-use libraries are available on [the release page of the ParaMonte library on GitHub](https://github.com/cdslaborg/paramonte/releases).
-Each prebuilt ParaMonte library automatically ships with a full-fledged set of example codes and build scripts.
 
-Alternatively, you can build the library from the source in the project's [GitHub repository](https://github.com/cdslaborg/paramonte).
-The ParaMonte library installation/build process is fully automated for all supported programming languages.
-Currently, the following compiler suites are supported **for builds from source**,
+The prebuilt, ready-to-use libraries are available on 
+[the release page of the ParaMonte library on GitHub](https://github.com/cdslaborg/paramonte/releases).  
+Each prebuilt ParaMonte library automatically ships with a full-fledged set of example codes and build scripts.  
+
+Alternatively, you can build the library from the source 
+in the project's [GitHub repository](https://github.com/cdslaborg/paramonte).  
+The ParaMonte library installation/build process is fully automated for all supported programming languages.  
+Currently, the following compiler suites are supported **for builds from source**,  
 
 | Compiler Suite                    | Windows (amd64) | Linux (amd64) | macOS (amd64) | macOS (arm64) |  
 |----------------------------------:|:---------------:|:-------------:|:-------------:|:-------------:|  
@@ -102,31 +105,36 @@ with the following essential build systems,
 |----------------------------------:|:---------------:|:-------------:|:-------------:|:-------------:|  
 | CMake >= 3.21                     | ✅              | ✅            | ✅             | ✅            |  
 
-+   Read the [`install.md` installation instruction notes](install.md) to learn about the library's optional build configurations.
-+   For more information and a quickstart in the programming language of your choice, visit the [ParaMonte library homepage](https://www.cdslab.org/paramonte).
++   Read the [`install.md` installation instruction notes](install.md) 
+    to learn about the library's optional build configurations.  
++   For a quickstart in the programming language of your choice, 
+    visit the [ParaMonte library homepage](https://www.cdslab.org/paramonte).  
 
 
 Dependencies
 ============
 
-Beyond an optional MPI runtime library for MPI-parallel simulations, the ParaMonte library core has **zero dependency** on external third-party libraries or packages. 
+Besides an optional MPI runtime library for MPI-parallel simulations, 
+the ParaMonte library core has **zero dependency** on external third-party libraries or packages.  
 
 
 Parallelism
 ===========
 
-The ParaMonte library relies on three independent parallelism paradigms for parallel applications:
+The ParaMonte library relies on three independent parallelism paradigms for parallel applications:  
 
 1.  The Coarray parallelism (only available for select routines in the Fortran programming language).  
 2.  The Message Passing Interface (MPI) standard for inter-processor distributed parallelism.  
-    +   On **Windows** and **Linux** operating systems, we highly recommend downloading and installing the
-        [Intel MPI runtime libraries](https://software.intel.com/en-us/mpi-library),
-        which is available to the public free of charge. This requires the ParaMonte 
-        library to be (or have been prebuilt) using the Intel compilers.
-    +   On **macOS**, the Intel MPI library is not available. Therefore, we recommend installing either
-        [Open-MPI](https://www.open-mpi.org/) or [MPICH](https://www.mpich.org/) MPI runtime libraries
-        depending on the prebuilt version of the ParaMonte library that you have downloaded or
-        the configuration with which you intend to build the library.
+    +   On **Windows** and **Linux** operating systems, we highly recommend downloading and 
+        installing the [Intel MPI runtime libraries](https://software.intel.com/en-us/mpi-library), 
+        which is available to the public free of charge.  
+        The [ParaMonte auxil prerelease](https://github.com/cdslaborg/paramonte/releases/tag/auxil)
+        exclusively contains the optional Intel MPI runtime libraries for users' convenience.  
+        The Intel MPI requires the ParaMonte library to be (or have been prebuilt) using the Intel compilers.  
+    +   On **macOS** (where Intel MPI is unavailable) and **Linux** operating systems, users can install
+        either [Open-MPI](https://www.open-mpi.org/) or [MPICH](https://www.mpich.org/) MPI runtime 
+        libraries depending on the prebuilt version of the ParaMonte library that you have 
+        downloaded or the configuration with which you intend to build the library.  
 
 **Optional Dependency Compatibility**  
 
@@ -136,7 +144,8 @@ The ParaMonte library relies on three independent parallelism paradigms for para
 | MPICH MPI (MMPI) >= 3             | ❌              | ✅            | ✅             | ✅            |  
 | OpenMPI (OMPI) >= 4               | ❌              | ✅            | ✅             | ✅            |  
 
-Read the [`install.md` installation instruction notes](install.md) to learn more about the library's optional parallel build configurations.<br>
+Read the [`install.md` installation instruction notes](install.md) to 
+learn more about the library's optional parallel build configurations.<br>
 
 For more information, visit [https://www.cdslab.org/paramonte/](https://www.cdslab.org/paramonte/).
 
@@ -144,8 +153,8 @@ For more information, visit [https://www.cdslab.org/paramonte/](https://www.cdsl
 Example Usage Instructions
 ==========================
 
-+   For complete, clear, organized, up-to-date instructions on the build process and the installation
-    of the ParaMonte library, visit: [cdslab.org/pm](https://www.cdslab.org/paramonte)
++   For complete, clear, organized, up-to-date instructions on the build process and the 
+    installation of the ParaMonte library, visit: [cdslab.org/pm](https://www.cdslab.org/paramonte)
 
 ## Quick start
 
@@ -153,7 +162,8 @@ Example Usage Instructions
 +   Decide on the parallelism paradigm that you want to use: serial / MPI / OpenMP
     (the Coarray Fortran implementation is not available as a prebuilt dynamic library),
 +   Decide on the Operating System (OS) on which you want to run the ParaMonte simulations: Windows / macOS / Linux,
-+   Learn about the naming convention used for the ParaMonte prebuilt libraries [here](https://www.cdslab.org/paramonte/generic/latest/installation/readme/#naming-convention-used-for-paramonte-library-builds),
++   Learn about the naming convention used for the ParaMonte prebuilt libraries 
+    [here](https://www.cdslab.org/paramonte/generic/latest/installation/readme/#naming-convention-used-for-paramonte-library-builds),
 +   Download the prebuilt ParaMonte library of your choice based on the decisions you have made above.
     If you are unsure which prebuilt library is suitable for your needs, use the prebuilt library recommended
     [here for Windows](https://www.cdslab.org/paramonte/generic/latest/installation/windows/#using-the-prebuilt-paramonte-library), or
@@ -170,39 +180,39 @@ Example Usage Instructions
 
 ### Building and running ParaMonte simulations  
 
-+   **Note**: Theoretically, you can use any C/C++ compiler on Windows to build and link your applications against the ParaMonte library.
-    However, remember that the ParaMonte library example build scripts have only been tested with the GNU, Microsoft, and Intel C/C++ compilers.
++   **Note**: Theoretically, you can use any Fortran compiler on Windows, Linux, 
+    and macOS to build and link your applications against the ParaMonte library.
+    However, remember that the ParaMonte library example build scripts 
+    have only been tested with the GNU and Intel Fortran compilers.  
 
-+   **Note**: Theoretically, you can use any C/C++ compiler on macOS or Linux to build and link your applications against the ParaMonte library.
-    However, as described below, the ParaMonte library example build scripts only recognize the Intel and GNU C/C++ compilers.
-
-+   For the generic library build instructions, follow the guidelines provided in [install.md](../../install.md) in the root directory of the repository.
++   For the generic library build instructions, follow the guidelines provided 
+    in [install.md](../../install.md) in the root directory of the repository.
 
 
 Citing ParaMonte
 ================
 
-The ParaMonte library is an honor-ware and its currency is acknowledgment and citations.
+The ParaMonte library is an honor-ware and its currency is acknowledgment and citations. 
 
-If you use ParaMonte or any ideas from this software, please acknowledge it by citing the ParaMonte library's
-main publications as listed in [ACKNOWLEDGMENT.md](https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md).
+If you use ParaMonte or any ideas from this software, please acknowledge it by citing the ParaMonte library's 
+main publications as listed in [ACKNOWLEDGMENT.md](https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md).  
 
 Visit [the ParaMonte library homepage](https://www.cdslab.org/paramonte/generic/latest/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work)
-to access the PDF version of these files free of charge.
+to access the PDF version of these files free of charge.  
 
 
 License
 =======
 
-The majority of the ParaMonte library routines are distributed under the permissive [MIT License](LICENSE.md) 
-plus acknowledgments that are detailed in [LICENSE.md](LICENSE.md).
+The majority of the ParaMonte library routines are distributed under the permissive 
+[MIT License](LICENSE.md) plus acknowledgments that are detailed in [LICENSE.md](LICENSE.md).  
 
-However, there are occasionally modernized and extended routines from external projects, particularly within the ParaMonte Fortran library.
-These routines may have a license that does not fully overlap with the default ParaMonte library license [LICENSE.md](LICENSE.md).
-In such cases, the documentation and source code of the specific routine explicitly list the original license information.
+However, there are occasionally modernized and extended routines from external projects, particularly within the ParaMonte Fortran library. 
+These routines may have a license that does not fully overlap with the default ParaMonte library license [LICENSE.md](LICENSE.md). 
+In such cases, the documentation and source code of the specific routine explicitly list the original license information. 
 
-This is free software, so help us keep it freely available to the public by acknowledging the usage and contributing to it.
-If you have questions or concerns about the license, please get in touch with the project's lead (shahmoradi@utexas.edu).
+This is free software, so help us keep it freely available to the public by acknowledging the usage and contributing to it. 
+If you have questions or concerns about the license, please get in touch with the project's lead (shahmoradi@utexas.edu). 
 
 
 Authors and Contributors
