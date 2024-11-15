@@ -83,11 +83,11 @@ for more details on library build options and guidelines.
         ```
     +   On **Linux**,
         ```batch
-        ./install.sh --lang matlab --par serial;openmp;mpi --ski 1 --iki "3;4" --lki 3 --rki "1;2" --cki "1;2" --matlabroot "/usr/local/MATLAB/R2023a"
+        ./install.sh --lang matlab --par "serial;openmp;mpi" --ski 1 --iki "3;4" --lki 3 --rki "1;2" --cki "1;2" --matlabroot "/usr/local/MATLAB/R2023a"
         ```
     +   On **macOS**,
         ```batch
-        ./install.sh --lang matlab --par serial;openmp;mpi --ski 1 --iki "3;4" --lki 3 --rki "1;2" --cki "1;2" --matlabroot "/Applications/MATLAB_R2023b.app"
+        ./install.sh --lang matlab --par "serial;openmp;mpi" --ski 1 --iki "3;4" --lki 3 --rki "1;2" --cki "1;2" --matlabroot "/Applications/MATLAB_R2023b.app"
         ```
 
 See [install.config.md](./install.config.md) for the meaning 
