@@ -86,10 +86,10 @@ The following example code samples a 4-dimensional MultiVariate Normal (MNV) dis
 import numpy as np
 import paramonte as pm
 def getLogFunc(point): return -0.5 * np.dot(point, point)
-pmpd = pm.ParaDRAM()
-pmpd.runSampler ( ndim = 4 # assume 4-dimensional objective function
-                , getLogFunc = getLogFunc   # the objective function
-                )
+sampler = pm.sampling.Paradram()
+sampler.run ( getLogFunc = getLogFunc   # the objective function
+            , ndim = 4 # assume 4-dimensional objective function
+            )
 ```
 
 To learn about the ParaMonte Python library's post-processing and visualization tools, visit [this documentation page](https://www.cdslab.org/paramonte/generic/latest/examples/python/jupyter/).

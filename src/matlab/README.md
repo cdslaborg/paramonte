@@ -92,9 +92,9 @@ The following example code samples a 4-dimensional MultiVariate Normal (MNV) dis
 addpath(genpath("./"),"-begin") % change this path to the root directory of paramonte
 sampler = pm.sampling.Paradram();
 getLogFunc = @(x) -0.5 * sum( x.^2 );
-pmpd.run( getLogFunc ...           the objective function
-        , 4 ... assume a 4-dimensional objective function
-        );
+sampler.run ( getLogFunc ...           the objective function
+            , 4 ... assume a 4-dimensional objective function
+            );
 ```
 
 
