@@ -288,9 +288,9 @@ The following example code samples a 4-dimensional MultiVariate Normal (MNV) dis
 addpath(genpath("./"),"-begin") % change this path to the root directory of paramonte
 sampler = pm.sampling.Paradram();
 getLogFunc = @(x) -0.5 * sum( x.^2 );
-pmpd.run( getLogFunc ...           the objective function
-        , 4 ... assume a 4-dimensional objective function
-        );
+sampler.run ( getLogFunc ...           the objective function
+            , 4 ... assume a 4-dimensional objective function
+            );
 ```
 """
 
@@ -305,10 +305,10 @@ The following example code samples a 4-dimensional MultiVariate Normal (MNV) dis
 import numpy as np
 import paramonte as pm
 def getLogFunc(point): return -0.5 * np.dot(point, point)
-pmpd = pm.ParaDRAM()
-pmpd.runSampler ( ndim = 4 # assume 4-dimensional objective function
-                , getLogFunc = getLogFunc   # the objective function
-                )
+sampler = pm.sampling.Paradram()
+sampler.run ( getLogFunc = getLogFunc   # the objective function
+            , ndim = 4 # assume 4-dimensional objective function
+            )
 ```
 
 To learn about the ParaMonte Python library's post-processing and visualization tools, visit [this documentation page](https://www.cdslab.org/paramonte/generic/latest/examples/python/jupyter/).
