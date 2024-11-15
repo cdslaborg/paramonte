@@ -163,11 +163,12 @@ readme["dependencies"]["title"] = """
 
 Dependencies
 ============
+
+Aside from a optional MPI runtime library for MPI-parallel simulations, 
+the ParaMonte library core has **zero dependency** on external third-party libraries or packages.  
 """
 
 readme["dependencies"]["main"] = readme["dependencies"]["title"] + """
-Besides an optional MPI runtime library for MPI-parallel simulations, 
-the ParaMonte library core has **zero dependency** on external third-party libraries or packages.  
 """
 
 readme["dependencies"]["c"] = readme["dependencies"]["main"]
