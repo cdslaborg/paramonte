@@ -160,7 +160,7 @@ Example Usage Instructions
 ==========================
 
 +   For complete clear organized, up-to-date instructions on the build process and the 
-    installation of the ParaMonte library, visit the [ParaMonte Python examples guidelines](usage/examples/python/).  
+    installation of the ParaMonte library, visit the [ParaMonte Python examples guidelines](https://www.cdslab.org/paramonte/generic/latest/usage/examples/python/).  
 
 
 Citing ParaMonte

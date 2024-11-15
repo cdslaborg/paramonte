@@ -273,22 +273,25 @@ readme["quickstart"]["fortran"] = readme["quickstart"]["main"]
 #a repository dedicated to the ParaMonte library examples.
 readme["quickstart"]["matlab"] = readme["quickstart"]["title"] + """
 
-For a quick start with ParaMonte MATLAB Script examples, visit the documentation of the corresponding function 
-[this ParaMonte documentation page](https://www.cdslab.org/paramonte/generic/latest/examples/matlab/mlx/).
++   To build the library from source or download the prebuilt ParaMonte MATLAB libraries, visit
+    [https://www.cdslab.org/paramonte/generic/latest/installation/matlab/](https://www.cdslab.org/paramonte/generic/latest/installation/matlab/).
+
++   For a quick start with ParaMonte MATLAB examples, visit 
+    [this ParaMonte documentation page](https://www.cdslab.org/paramonte/generic/latest/usage/examples/matlab/).
+
++   For a quick start with all ParaMonte MATLAB functionalities, visit 
+    [the ParaMonte MATAB documentation website](https://www.cdslab.org/paramonte/matlab/3/).
 
 The following example code samples a 4-dimensional MultiVariate Normal (MNV) distribution via the ParaDRAM sampler in serial mode,
 
 ```matlab
 addpath(genpath("./"),"-begin") % change this path to the root directory of paramonte
-pm = paramonte();
-pmpd = pm.ParaDRAM();
+sampler = pm.sampling.Paradram();
 getLogFunc = @(x) -0.5 * sum( x.^2 );
-pmpd.runSampler ( 4 ... assume a 4-dimensional objective function
-                , getLogFunc ...           the objective function
-                );
+pmpd.run( getLogFunc ...           the objective function
+        , 4 ... assume a 4-dimensional objective function
+        );
 ```
-
-To learn about the post-processing and visualization tools of the ParaMonte MATLAB library, visit [this documentation page](https://www.cdslab.org/paramonte/generic/latest/examples/matlab/mlx/).
 """
 
 readme["quickstart"]["python"] = readme["quickstart"]["title"] + """
@@ -471,12 +474,12 @@ readme["examples"]["main"] = readme["examples"]["title"] + """
 #+   For the generic library build instructions, follow the guidelines provided in [install.md](../../install.md) in the root directory of the repository. 
 readme["examples"]["c"] = readme["examples"]["title"] + """
 +   For complete clear organized, up-to-date instructions on the build process and the 
-    installation of the ParaMonte library, visit the [ParaMonte C examples guidelines](usage/examples/c/).  
+    installation of the ParaMonte library, visit the [ParaMonte C examples guidelines](https://www.cdslab.org/paramonte/generic/latest/usage/examples/c/).  
 """
 
 readme["examples"]["cpp"] = readme["examples"]["title"] + """
 +   For complete clear organized, up-to-date instructions on the build process and the 
-    installation of the ParaMonte library, visit the [ParaMonte C++ examples guidelines](usage/examples/cpp/).  
+    installation of the ParaMonte library, visit the [ParaMonte C++ examples guidelines](https://www.cdslab.org/paramonte/generic/latest/usage/examples/cpp/).  
 """
 
 ### Quick start
@@ -512,7 +515,7 @@ readme["examples"]["cpp"] = readme["examples"]["title"] + """
 #    in [install.md](../../install.md) in the root directory of the repository.
 readme["examples"]["fortran"] = readme["examples"]["title"] + """
 +   For complete clear organized, up-to-date instructions on the build process and the 
-    installation of the ParaMonte library, visit the [ParaMonte Fortran examples guidelines](usage/examples/fortran/).  
+    installation of the ParaMonte library, visit the [ParaMonte Fortran examples guidelines](https://www.cdslab.org/paramonte/generic/latest/usage/examples/fortran/).  
 """
 
 #
@@ -583,7 +586,7 @@ readme["examples"]["fortran"] = readme["examples"]["title"] + """
 #        To learn about the many advanced features of the ParaMonte samplers, visit: https://www.cdslab.org/paramonte
 readme["examples"]["matlab"] = readme["examples"]["title"] + """
 +   For complete clear organized, up-to-date instructions on the build process and the 
-    installation of the ParaMonte library, visit the [ParaMonte MATLAB examples guidelines](usage/examples/matlab/).  
+    installation of the ParaMonte library, visit the [ParaMonte MATLAB examples guidelines](https://www.cdslab.org/paramonte/generic/latest/usage/examples/matlab/).  
 """
 
 #+   **Install a Python 3 distribution**, preferably, the Anaconda distribution of Python.
@@ -623,7 +626,7 @@ readme["examples"]["matlab"] = readme["examples"]["title"] + """
 #        To learn about the many advanced features of the ParaMonte routines, visit: https://www.cdslab.org/paramonte
 readme["examples"]["python"] = readme["examples"]["title"] + """
 +   For complete clear organized, up-to-date instructions on the build process and the 
-    installation of the ParaMonte library, visit the [ParaMonte Python examples guidelines](usage/examples/python/).  
+    installation of the ParaMonte library, visit the [ParaMonte Python examples guidelines](https://www.cdslab.org/paramonte/generic/latest/usage/examples/python/).  
 """
 
 ####################################################################################################################################

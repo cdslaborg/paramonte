@@ -77,22 +77,25 @@ Quick Start
 ===========
 
 
-For a quick start with ParaMonte MATLAB Script examples, visit the documentation of the corresponding function 
-[this ParaMonte documentation page](https://www.cdslab.org/paramonte/generic/latest/examples/matlab/mlx/).
++   To build the library from source or download the prebuilt ParaMonte MATLAB libraries, visit
+    [https://www.cdslab.org/paramonte/generic/latest/installation/matlab/](https://www.cdslab.org/paramonte/generic/latest/installation/matlab/).
+
++   For a quick start with ParaMonte MATLAB examples, visit 
+    [this ParaMonte documentation page](https://www.cdslab.org/paramonte/generic/latest/usage/examples/matlab/).
+
++   For a quick start with all ParaMonte MATLAB functionalities, visit 
+    [the ParaMonte MATAB documentation website](https://www.cdslab.org/paramonte/matlab/3/).
 
 The following example code samples a 4-dimensional MultiVariate Normal (MNV) distribution via the ParaDRAM sampler in serial mode,
 
 ```matlab
 addpath(genpath("./"),"-begin") % change this path to the root directory of paramonte
-pm = paramonte();
-pmpd = pm.ParaDRAM();
+sampler = pm.sampling.Paradram();
 getLogFunc = @(x) -0.5 * sum( x.^2 );
-pmpd.runSampler ( 4 ... assume a 4-dimensional objective function
-                , getLogFunc ...           the objective function
-                );
+pmpd.run( getLogFunc ...           the objective function
+        , 4 ... assume a 4-dimensional objective function
+        );
 ```
-
-To learn about the post-processing and visualization tools of the ParaMonte MATLAB library, visit [this documentation page](https://www.cdslab.org/paramonte/generic/latest/examples/matlab/mlx/).
 
 
 Installation  
@@ -151,7 +154,7 @@ Example Usage Instructions
 ==========================
 
 +   For complete clear organized, up-to-date instructions on the build process and the 
-    installation of the ParaMonte library, visit the [ParaMonte MATLAB examples guidelines](usage/examples/matlab/).  
+    installation of the ParaMonte library, visit the [ParaMonte MATLAB examples guidelines](https://www.cdslab.org/paramonte/generic/latest/usage/examples/matlab/).  
 
 
 Citing ParaMonte
