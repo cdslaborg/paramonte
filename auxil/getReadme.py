@@ -255,7 +255,7 @@ Quick Start
 readme["quickstart"]["main"] = readme["quickstart"]["title"] + """
 +   Follow the quick start instructions in this [QUICKSTART.md](https://github.com/cdslaborg/paramonte/blob/main/QUICKSTART.md) file. 
 +   For programming languages other than C, C++, Fortran, see the quick start section of the README.md file in the corresponding 
-    language's source subfolder in the [src folder](./src) in the root directory of the ParaMonte repository.
+    language's source subfolder in the [src folder](https://github.com/cdslaborg/paramonte/src) in the root directory of the ParaMonte repository.
 """
 
 readme["quickstart"]["c"] = readme["quickstart"]["main"]
@@ -269,11 +269,12 @@ readme["quickstart"]["fortran"] = readme["quickstart"]["main"]
 #> We encourage you to build the library from source on your system and test or use it and let us know any comments you may have.  
 #> Remember that the previous major release of ParaMonte MATLAB remains fully functional, albeit with entirely different API.  
 #> The following guidelines apply to the previous major release of [ParaMonte MATLAB](https://www.cdslab.org/paramonte/generic/1/installation/matlab/).  
+#The corresponding example source files (the `*.mlx` files) can be downloaded from the [paramontex GitHub repository](https://github.com/cdslaborg/paramontex/tree/main/MATLAB/mlx),
+#a repository dedicated to the ParaMonte library examples.
 readme["quickstart"]["matlab"] = readme["quickstart"]["title"] + """
 
-For a quick start with ParaMonte MATLAB Script examples, visit the documentation of the corresponding function [this ParaMonte documentation page](https://www.cdslab.org/paramonte/generic/latest/examples/matlab/mlx/).
-The corresponding example source files (the `*.mlx` files) can be downloaded from the [paramontex GitHub repository](https://github.com/cdslaborg/paramontex/tree/main/MATLAB/mlx),
-a repository dedicated to the ParaMonte library examples.
+For a quick start with ParaMonte MATLAB Script examples, visit the documentation of the corresponding function 
+[this ParaMonte documentation page](https://www.cdslab.org/paramonte/generic/latest/examples/matlab/mlx/).
 
 The following example code samples a 4-dimensional MultiVariate Normal (MNV) distribution via the ParaDRAM sampler in serial mode,
 
