@@ -666,6 +666,7 @@ program example
     do imodel = 1, 4
 
         sampler = paradram_type()
+        sampler%parallelismMpiFinalizeEnabled = .false.
 
         if (imodel == 1) then
             sampler%outputFileName = "./mixLogNormLogNorm"
