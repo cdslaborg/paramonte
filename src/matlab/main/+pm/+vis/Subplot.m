@@ -908,21 +908,21 @@ classdef Subplot < pm.vis.axes.Axes
             %%%% add title.
 
             if  self.title.enabled
-                titletxt = {};
+                titletext = {};
                 for field = ["titletext", "subtitletext"] % do not change the order of elements here.
                     if  isfield(self.title, field) && pm.array.len(self.title.(field))
-                        titletxt = [titletxt(:); self.title.(field)(:)];
+                        titletext = [titletext(:); self.title.(field)(:)];
                     end
                 end
-                if ~isempty(titletxt)
+                if ~isempty(titletext)
                     if ~self.type.is.heatmap
                         %if ~isempty(kws)
-                        %    kws.title = {titletxt{:}, kws.title(:)};
+                        %    kws.title = {titletext{:}, kws.title(:)};
                         %end
-                        self.fout.title = title(self.fout.axes, titletxt{:}, kws.title{:});
+                        self.fout.title = title(self.fout.axes, titletext{:}, kws.title{:});
                     else
                         %%%% Neither input nor output arguments are not supported when using title with heatmap.
-                        title(titletxt);
+                        title(titletext);
                     end
                 end
             end
