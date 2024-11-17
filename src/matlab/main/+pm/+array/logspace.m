@@ -54,7 +54,7 @@ function array = logspace(loglb, logub, logskip, base)
         logskip = (logub - loglb) / 100;
     end
     if ~isempty(base)
-        array = base .^ ((loglb : logskip : logub));
+        array = base .^ (loglb : logskip : logub);
         %array = base .^ ((loglb : logskip : logub) ./ log(base));
     else
         array = exp(loglb : logskip : logub);

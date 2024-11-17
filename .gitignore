@@ -129,9 +129,8 @@ Thumbs.db
 **/pm_clusPartition*
 **/pm_paramonte@version.inc.F90
 **/.ipynb_checkpoints
-**/src/python/setup
-**/src/python/main
-**/src/python/test
+**/example/python
+**/src/python
 **/codecov
 **/build
 **/trash

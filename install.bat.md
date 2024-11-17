@@ -68,7 +68,8 @@ on your PC to successfully run `install.bat` script.
 
         d.  Once all the above components are installed, open the
             Intel Command Prompt from the Windows Start Menu.  
-            Here is an [illustrative image](./img/intel-command-prompt-windows.png).
+            Below is an illustrative image.  
+            ![intel-command-prompt-windows.png](https://raw.githubusercontent.com/cdslaborg/paramonte/refs/heads/main/img/intel-command-prompt-windows.png).
 
     +   Using **GNU Compiler Collection** on Windows CMD
 
@@ -87,11 +88,11 @@ on your PC to successfully run `install.bat` script.
             recognizes all applications installed above (that is, all applications can
             be found in the `PATH` environment variable).  
             Two excellent choices are the **Intel Command Prompt** that 
-            can be opened from the Windows Start Menu, as illustrated below,
-            ![intel-command-prompt-windows.png](https://github.com/cdslaborg/paramonte/img/intel-command-prompt-windows.png)
+            can be opened from the Windows Start Menu, as illustrated below.  
+            ![intel-command-prompt-windows.png](https://raw.githubusercontent.com/cdslaborg/paramonte/refs/heads/main/img/intel-command-prompt-windows.png)
             and the **x64 Native Tools Command Prompt for VS** that 
             can be opened from the Windows Start Menu, as illustrated below.  
-            ![msvs-command-prompt-windows.png](https://github.com/cdslaborg/paramonte/img/msvs-command-prompt-windows.png)
+            ![msvs-command-prompt-windows.png](https://raw.githubusercontent.com/cdslaborg/paramonte/refs/heads/main/img/msvs-command-prompt-windows.png)
 
 3.  Navigate to the folder containing the ParaMonte repository on your system.
 

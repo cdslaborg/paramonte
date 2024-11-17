@@ -10,5 +10,5 @@ This software is distributed under the [MIT license](LICENSE.MIT) with additiona
     environment other than those currently supported by this ParaMonte library, 
     you must also ask the end users to cite this original ParaMonte library.
 3.  There are occasionally modernized and extended routines from external projects, particularly within the ParaMonte Fortran library.  
-    These routines may have a license that does not fully overlap with the default ParaMonte library license [LICENSE.md](LICENSE.md).  
+    These routines may have a license that does not fully overlap with the default ParaMonte library license [LICENSE.md](./LICENSE.md).  
     In such cases, the documentation and source code of the specific routine explicitly list the original license information.  

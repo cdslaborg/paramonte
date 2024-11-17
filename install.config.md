@@ -7,7 +7,7 @@ optional flags that can be used to configure the library build.
 
 Nearly all configuration flags can be specified as command line arguments
 to the [install.bat](./install.bat.md), [install.sh](./install.sh.md), or
-the [CMake binary executable](./CMakeLists.md). Some flags may be essential
+the [CMake binary executable](CMakeLists.md). Some flags may be essential
 to directly call the CMake executable binary, while others are available
 only as optional arguments to the library install scripts mentioned above.
 

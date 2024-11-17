@@ -3,8 +3,8 @@
 The ParMonte library ships with an extensive set of CMake scripts that build the library. 
 While it is possible to build the library via CMake, the build process involves several
 steps that must be carried out manually by the user, in addition to what is normally 
-required for builds via the [install.bat](install.bat.md) 
-and [install.sh](install.sh.md) installation scripts.  
+required for builds via the [install.bat](./install.bat.md) 
+and [install.sh](./install.sh.md) installation scripts.  
 
 For more information on automated build mechanisms, see the contents of [install.md](./install.md).
 

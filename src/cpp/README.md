@@ -174,10 +174,10 @@ License
 =======
 
 The majority of the ParaMonte library routines are distributed under the permissive 
-[MIT License](LICENSE.md) plus acknowledgments that are detailed in [LICENSE.md](LICENSE.md).  
+[MIT License](LICENSE.md) plus acknowledgments that are detailed in [LICENSE.md](./LICENSE.md).  
 
 However, there are occasionally modernized and extended routines from external projects, particularly within the ParaMonte Fortran library. 
-These routines may have a license that does not fully overlap with the default ParaMonte library license [LICENSE.md](LICENSE.md). 
+These routines may have a license that does not fully overlap with the default ParaMonte library license [LICENSE.md](./LICENSE.md). 
 In such cases, the documentation and source code of the specific routine explicitly list the original license information. 
 
 This is free software, so help us keep it freely available to the public by acknowledging the usage and contributing to it. 
@@ -204,7 +204,7 @@ Authors and Contributors
 Contributing to ParaMonte
 =========================
 
-Please read the generic contribution guidelines listed in [CONTRIBUTING.md](CONTRIBUTING.md).
+Please read the generic contribution guidelines listed in [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 
 **For more information**, visit [cdslab.org/pm](https://www.cdslab.org/paramonte) or contact Amir Shahmoradi: [shahmoradi@utexas.edu](mailto:"shahmoradi@utexas.edu")

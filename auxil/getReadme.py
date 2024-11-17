@@ -286,7 +286,7 @@ readme["quickstart"]["matlab"] = readme["quickstart"]["title"] + """
 The following example code samples a 4-dimensional MultiVariate Normal (MNV) distribution via the ParaDRAM sampler in serial mode,
 
 ```matlab
-addpath(genpath("./"),"-begin") % change this path to the root directory of paramonte
+addpath(genpath("./"),"-begin") % change this path to the root directory of paramonte where +pm folder exists.
 sampler = pm.sampling.Paradram();
 getLogFunc = @(x) -0.5 * sum( x.^2 );
 sampler.run ( getLogFunc ...           the objective function
@@ -356,10 +356,10 @@ License
 
 readme["license"]["main"] = readme["license"]["title"] + """
 The majority of the ParaMonte library routines are distributed under the permissive 
-[MIT License](LICENSE.md) plus acknowledgments that are detailed in [LICENSE.md](LICENSE.md).  
+[MIT License](LICENSE.md) plus acknowledgments that are detailed in [LICENSE.md](./LICENSE.md).  
 
 However, there are occasionally modernized and extended routines from external projects, particularly within the ParaMonte Fortran library. 
-These routines may have a license that does not fully overlap with the default ParaMonte library license [LICENSE.md](LICENSE.md). 
+These routines may have a license that does not fully overlap with the default ParaMonte library license [LICENSE.md](./LICENSE.md). 
 In such cases, the documentation and source code of the specific routine explicitly list the original license information. 
 
 This is free software, so help us keep it freely available to the public by acknowledging the usage and contributing to it. 
@@ -642,7 +642,7 @@ Contributing to ParaMonte
 """
 
 readme["contribution"]["main"] = readme["contribution"]["title"] + """
-Please read the generic contribution guidelines listed in [CONTRIBUTING.md](CONTRIBUTING.md).
+Please read the generic contribution guidelines listed in [CONTRIBUTING.md](./CONTRIBUTING.md).
 """
 
 readme["contribution"]["c"] = readme["contribution"]["main"]
