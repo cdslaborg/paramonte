@@ -591,13 +591,14 @@ contains
 
             use pm_io, only: getErrTableRead
             use pm_sysPath, only: glob, css_type
+            use pm_parallelism, only: getImageID
 
             integer(IK) :: stat, ibest!, offset = 1
             type(css_type), allocatable :: path(:)
             real(RKG), allocatable :: logx(:), logPDF(:)
             real(RKG), allocatable :: table(:,:), state(:)
 
-            write(*, "(A)") "Searching for files: "//self%sampler%outputFileName//SK_"*"
+            if (getImageID() == 1) write(*, "(A)") "Searching for files: "//self%sampler%outputFileName//SK_"*"
             path = glob(self%sampler%outputFileName//SK_"*")
             if (size(path) == 0) error stop "There is no sample file in the output folder."
 
