@@ -308,7 +308,7 @@ module pm_sampling
     !>  [getErrSampling](@ref pm_sampling::getErrSampling)<br>
     !>  [getErrSampling](@ref pm_sampling::getErrSampling)<br>
     !>
-    !>  \final{paradise_type}
+    !>  \final{paranest_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>

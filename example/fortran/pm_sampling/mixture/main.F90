@@ -372,9 +372,13 @@ contains
         logModelInt1 = log(self%break - self%limx(1))
         logNF = max(self%logbreak, self%alphap1 * self%loglimx(2) - self%alpha * self%logbreak - self%beta * (self%limx(2) - self%break))
         failed = isFailedQuad(getDensity, lb = self%logbreak, ub = self%loglimx(2), help = weps, integral = logModelInt2, msg = msg)
-        if (failed) error stop "@getLogModelInt(): "//trim(msg)
-        logModelInt2 = log(logModelInt2) + logNF
-        self%logPDFNF = -getLogAddExp(getMinMax(logModelInt1, logModelInt2))
+        if (failed) then
+            !error stop "@getLogModelInt(): "//trim(msg)
+            self%logPDFNF = sqrt(huge(self%logPDFNF))
+        else
+            logModelInt2 = log(logModelInt2) + logNF
+            self%logPDFNF = -getLogAddExp(getMinMax(logModelInt1, logModelInt2))
+        end if
     contains
         function getDensity(logx) result(density)
             real(RKG), intent(in) :: logx
