@@ -37,6 +37,9 @@ module pm_sampling
     use, intrinsic :: iso_c_binding, only: c_char, c_funptr, c_null_char, c_f_procpointer
     use pm_kind, only: SK, IK, LK, RKL, RKD, RKH, RKALL, SKG => SK ! LCOV_EXCL_LINE
     use pm_sysPath, only: PATHLEN => MAX_LEN_FILE_PATH
+    use pm_sampling_spec, only: specdram_type
+    use pm_sampling_spec, only: specdise_type
+    use pm_sampling_spec, only: specnest_type
 
     implicit none
 
@@ -46,7 +49,7 @@ module pm_sampling
 
     !>  \brief
     !>  This is a derived type for constructing objects containing
-    !>  the **optional** simulation properties of the ParaMonte library explorers and samplers.<br>
+    !>  an instance of the ParaMonte library explorers and samplers.<br>
     !>
     !>  \details
     !>  See the documentation of [getErrSampling](@ref pm_sampling::getErrSampling) for example usage.<br>
@@ -67,113 +70,95 @@ module pm_sampling
     !>      <li>    [ParaDRAM simulation options](\pmdoc_usage_sampling/paradram/specifications/)
     !>  </ol>
     !>
+    !>  \note
+    !>  This derived type has no custom constructor.<br>
+    !>
+    !>  \note
+    !>  All derived type components can be set after creating an object of the type.<br>
+    !>
     !>  \see
+    !>  [specdram_type](@ref pm_sampling_spec::specdram_type)<br>
+    !>  [specnest_type](@ref pm_sampling_spec::specnest_type)<br>
+    !>  [specdise_type](@ref pm_sampling_spec::specdise_type)<br>
+    !>  [getErrSampling](@ref pm_sampling::getErrSampling)<br>
     !>  [paradram_type](@ref pm_sampling::paradram_type)<br>
     !>  [paranest_type](@ref pm_sampling::paranest_type)<br>
     !>  [paradise_type](@ref pm_sampling::paradise_type)<br>
-    !>  [getErrSampling](@ref pm_sampling::getErrSampling)<br>
+    !>  [sampler_type](@ref pm_sampling::sampler_type)<br>
     !>
     !>  \final{sampler_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
-    type                                        :: sampler_type
-        character(:,SKG)        , allocatable   :: description                          !<  \specdram{description}
-        character(:,SKG)        , allocatable   :: domain                               !<  \specdram{domain}
-        character(:,SKG)        , allocatable   :: domainAxisName(:)                    !<  \specdram{domainaxisname}
-        real(RKH)               , allocatable   :: domainBallAvg(:)                     !<  \specdram{domainballavg}
-        real(RKH)               , allocatable   :: domainBallCor(:,:)                   !<  \specdram{domainballcor}
-        real(RKH)               , allocatable   :: domainBallCov(:,:)                   !<  \specdram{domainballcov}
-        real(RKH)               , allocatable   :: domainBallStd(:)                     !<  \specdram{domainballstd}
-        real(RKH)               , allocatable   :: domainCubeLimitLower(:)              !<  \specdram{domaincubelimitlower}
-        real(RKH)               , allocatable   :: domainCubeLimitUpper(:)              !<  \specdram{domaincubelimitupper}
-        integer(IK)             , allocatable   :: domainErrCount                       !<  \specdram{domainerrcount}
-        integer(IK)             , allocatable   :: domainErrCountMax                    !<  \specdram{domainerrcountmax}
-        character(:,SKG)        , allocatable   :: inputFile                            !<  \public The input scalar `character` of default kind \SK which be either,
-                                                                                        !!  <ol>
-                                                                                        !!      <li>    The path to an external input `namelist` file containing the simulation settings.<br>
-                                                                                        !!      <li>    A string containing the simulation settings in `namelist` format.<br>
-                                                                                        !!              The following rules apply to variable assignments in namelist-style input:<br>
-                                                                                        !!              <ol>
-                                                                                        !!                  <li>    Comments must begin with an exclamation mark `!`.
-                                                                                        !!                  <li>    Comments can appear anywhere on an empty line or, after a variable assignment
-                                                                                        !!                          (but not in the middle of a variable assignment whether in single or multiple lines).
-                                                                                        !!                  <li>    All variable assignments are optional and can be commented out. In such cases, appropriate default values will be used.
-                                                                                        !!                  <li>    All variable assignments must appear within a `namelist` group which starts with either
-                                                                                        !!                          <ol>
-                                                                                        !!                              <li>    the (case-INsensitive) keyword `&paradise` to be used for specifying [paradram_type](@ref pm_sampling::paradram_type) simulation specifications.<br>
-                                                                                        !!                              <li>    the (case-INsensitive) keyword `&paradram` to be used for specifying [paradram_type](@ref pm_sampling::paradram_type) simulation specifications.<br>
-                                                                                        !!                              <li>    the (case-INsensitive) keyword `&paranest` to be used for specifying [paradram_type](@ref pm_sampling::paradram_type) simulation specifications.<br>
-                                                                                        !!                          </ol>
-                                                                                        !!                          and ends with a forward slash `/` on the last line of the namelist group.
-                                                                                        !!                  <li>    Every time a sampler opens an input file, it will first search for the namelist group with the corresponding sampler name.<br>
-                                                                                        !!                  <li>    The order of the input variables in the namelist groups is irrelevant and unimportant.
-                                                                                        !!                  <li>    Variables can be defined multiple times, but **only the last definition** will be considered as input.
-                                                                                        !!                  <li>    All variable names are case-insensitive.
-                                                                                        !!                          However, for clarity, this software follows the camelCase code-writing practice for simulation specification names.
-                                                                                        !!                  <li>    String values must be enclosed with either single or double quotation marks.
-                                                                                        !!                  <li>    Logical values are case-insensitive and can be either<br>
-                                                                                        !!                          <ol>
-                                                                                        !!                              <li>    `.true.`, `true`, or `t` (all case-insensitive) representing the truth, or,
-                                                                                        !!                              <li>    `.false.`, `false`, or `f` (all case-insensitive) representing the falsehood.
-                                                                                        !!                          </ol>
-                                                                                        !!                  <li>    All vectors and arrays specified within the input file start with a lower-bound of `1` as opposed to `0` in the C family of languages.<br>
-                                                                                        !!                          This follows the convention of the majority of science-oriented programming languages: Fortran, Julia, Mathematica, MATLAB, and R.
-                                                                                        !!                  <li>    Specifying multiple values is as simple as listing the elements as comma or space -separated values.
-                                                                                        !!                  <li>    Individual vector or element values can be specified by an explicit index or index range:<br>
-                                                                                        !!                          \code{.F90}
-                                                                                        !!                              &paranest
-                                                                                        !!                                  domainAxisName(1 : 2) = "sampleVariable1", "sampleVariable2"
-                                                                                        !!                                  domainAxisName(3) = "sampleVariable3"
-                                                                                        !!                              /
-                                                                                        !!                          \endcode
-                                                                                        !!                  <li>    If a sequence of elements of a vector or array are equal,
-                                                                                        !!                          the assignment can be succinctly expressed via the following convention:<br>
-                                                                                        !!                          \code{.F90}
-                                                                                        !!                              &paradram
-                                                                                        !!                                  proposalStart = 4 * 0. ! assign value `0.` to the first four elements of proposalStart.
-                                                                                        !!                              /
-                                                                                        !!                          \endcode
-                                                                                        !!                  <li>    Matrix assignments follow the [column-major](https://en.wikipedia.org/wiki/Row-_and_column-major_order) storage scheme in memory.<br>
-                                                                                        !!                          \code{.F90}
-                                                                                        !!                              &paradram
-                                                                                        !!                                  proposalCor = 1, 0, 0, 0
-                                                                                        !!                                              , 0, 1, 0, 0
-                                                                                        !!                                              , 0, 0, 1, 0
-                                                                                        !!                                              , 0, 0, 0, 1
-                                                                                        !!                              /
-                                                                                        !!                          \endcode
-                                                                                        !!              </ol>
-                                                                                        !!  </ol>
-                                                                                        !!  For detailed descriptions of the input simulation settings see,
-                                                                                        !!  <ol>
-                                                                                        !!      <li>    [ParaDRAM simulation options](\pmdoc_usage_sampling/paradram/specifications/)
-                                                                                        !!      <li>    [ParaDISE simulation options](\pmdoc_usage_sampling/paradise/specifications/)
-                                                                                        !!      <li>    [ParaNest simulation options](\pmdoc_usage_sampling/paranest/specifications/)
-                                                                                        !!  </ol>
-                                                                                        !!  (**optional**. If missing, the default simulation settings will be used.)
-       !logical(LK)             , allocatable   :: inputFileHasPriority                 !<
-        character(:,SKG)        , allocatable   :: outputChainFileFormat                !<  \specdram{outputchainfileformat}
-        integer(IK)             , allocatable   :: outputColumnWidth                    !<  \specdram{outputcolumnwidth}
-        character(:,SKG)        , allocatable   :: outputFileName                       !<  \specdram{outputfilename}
-        character(:,SKG)        , allocatable   :: outputStatus                         !<  \specdram{outputstatus}
-        integer(IK)             , allocatable   :: outputPrecision                      !<  \specdram{outputprecision}
-        integer(IK)             , allocatable   :: outputReportPeriod                   !<  \specdram{outputreportperiod}
-        character(:,SKG)        , allocatable   :: outputRestartFileFormat              !<  \specdram{outputrestartfileformat}
-        integer(IK)             , allocatable   :: outputSampleSize                     !<  \specdram{outputsamplesize}
-        character(:,SKG)        , allocatable   :: outputSeparator                      !<  \specdram{outputseparator}
-        character(:,SKG)        , allocatable   :: outputSplashMode                     !<  \specdram{outputsplashmode}
-        character(:,SKG)        , allocatable   :: parallelism                          !<  \specdram{parallelism}
-        logical(LK)             , allocatable   :: parallelismMpiFinalizeEnabled        !<  \specdram{parallelismmpifinalizeenabled}
-        integer(IK)             , allocatable   :: parallelismNumThread                 !<  \specdram{parallelismnumthread}
-        integer(IK)             , allocatable   :: randomSeed                           !<  \specdram{randomseed}
-        character(:,SKG)        , allocatable   :: sysInfoFilePath                      !<  \specdram{sysinfofilepath}
-        real(RKH)               , allocatable   :: targetAcceptanceRate(:)              !<  \specdram{targetacceptancerate}
+    type                                    :: sampler_type
+        character(:,SKG)    , allocatable   :: inputFile        !<  \public The input scalar `character` of default kind \SK which be either,
+                                                                !!  <ol>
+                                                                !!      <li>    The path to an external input `namelist` file containing the simulation settings.<br>
+                                                                !!      <li>    A string containing the simulation settings in `namelist` format.<br>
+                                                                !!              The following rules apply to variable assignments in namelist-style input:<br>
+                                                                !!              <ol>
+                                                                !!                  <li>    Comments must begin with an exclamation mark `!`.
+                                                                !!                  <li>    Comments can appear anywhere on an empty line or, after a variable assignment
+                                                                !!                          (but not in the middle of a variable assignment whether in single or multiple lines).
+                                                                !!                  <li>    All variable assignments are optional and can be commented out. In such cases, appropriate default values will be used.
+                                                                !!                  <li>    All variable assignments must appear within a `namelist` group which starts with either
+                                                                !!                          <ol>
+                                                                !!                              <li>    the (case-INsensitive) keyword `&paradise` to be used for specifying [paradram_type](@ref pm_sampling::paradram_type) simulation specifications.<br>
+                                                                !!                              <li>    the (case-INsensitive) keyword `&paradram` to be used for specifying [paradram_type](@ref pm_sampling::paradram_type) simulation specifications.<br>
+                                                                !!                              <li>    the (case-INsensitive) keyword `&paranest` to be used for specifying [paradram_type](@ref pm_sampling::paradram_type) simulation specifications.<br>
+                                                                !!                          </ol>
+                                                                !!                          and ends with a forward slash `/` on the last line of the namelist group.
+                                                                !!                  <li>    Every time a sampler opens an input file, it will first search for the namelist group with the corresponding sampler name.<br>
+                                                                !!                  <li>    The order of the input variables in the namelist groups is irrelevant and unimportant.
+                                                                !!                  <li>    Variables can be defined multiple times, but **only the last definition** will be considered as input.
+                                                                !!                  <li>    All variable names are case-insensitive.
+                                                                !!                          However, for clarity, this software follows the camelCase code-writing practice for simulation specification names.
+                                                                !!                  <li>    String values must be enclosed with either single or double quotation marks.
+                                                                !!                  <li>    Logical values are case-insensitive and can be either<br>
+                                                                !!                          <ol>
+                                                                !!                              <li>    `.true.`, `true`, or `t` (all case-insensitive) representing the truth, or,
+                                                                !!                              <li>    `.false.`, `false`, or `f` (all case-insensitive) representing the falsehood.
+                                                                !!                          </ol>
+                                                                !!                  <li>    All vectors and arrays specified within the input file start with a lower-bound of `1` as opposed to `0` in the C family of languages.<br>
+                                                                !!                          This follows the convention of the majority of science-oriented programming languages: Fortran, Julia, Mathematica, MATLAB, and R.
+                                                                !!                  <li>    Specifying multiple values is as simple as listing the elements as comma or space -separated values.
+                                                                !!                  <li>    Individual vector or element values can be specified by an explicit index or index range:<br>
+                                                                !!                          \code{.F90}
+                                                                !!                              &paranest
+                                                                !!                                  domainAxisName(1 : 2) = "sampleVariable1", "sampleVariable2"
+                                                                !!                                  domainAxisName(3) = "sampleVariable3"
+                                                                !!                              /
+                                                                !!                          \endcode
+                                                                !!                  <li>    If a sequence of elements of a vector or array are equal,
+                                                                !!                          the assignment can be succinctly expressed via the following convention:<br>
+                                                                !!                          \code{.F90}
+                                                                !!                              &paradram
+                                                                !!                                  proposalStart = 4 * 0. ! assign value `0.` to the first four elements of proposalStart.
+                                                                !!                              /
+                                                                !!                          \endcode
+                                                                !!                  <li>    Matrix assignments follow the [column-major](https://en.wikipedia.org/wiki/Row-_and_column-major_order) storage scheme in memory.<br>
+                                                                !!                          \code{.F90}
+                                                                !!                              &paradram
+                                                                !!                                  proposalCor = 1, 0, 0, 0
+                                                                !!                                              , 0, 1, 0, 0
+                                                                !!                                              , 0, 0, 1, 0
+                                                                !!                                              , 0, 0, 0, 1
+                                                                !!                              /
+                                                                !!                          \endcode
+                                                                !!              </ol>
+                                                                !!  </ol>
+                                                                !!  For detailed descriptions of the input simulation settings see,
+                                                                !!  <ol>
+                                                                !!      <li>    [ParaDRAM simulation options](\pmdoc_usage_sampling/paradram/specifications/)
+                                                                !!      <li>    [ParaDISE simulation options](\pmdoc_usage_sampling/paradise/specifications/)
+                                                                !!      <li>    [ParaNest simulation options](\pmdoc_usage_sampling/paranest/specifications/)
+                                                                !!  </ol>
+                                                                !!  (**optional**. If missing, the default simulation settings will be used.)
     end type
 
     !>  \brief
     !>  This is a derived type for constructing objects containing
-    !>  the **optional** simulation properties of the ParaMonte library MCMC explorers and samplers.<br>
+    !>  an instance of the ParaMonte library MCMC explorers and samplers.<br>
     !>
     !>  \details
     !>  See the documentation of [getErrSampling](@ref pm_sampling::getErrSampling) for example usage.<br>
@@ -196,34 +181,32 @@ module pm_sampling
     !>      <li>    [ParaNest simulation options](\pmdoc_usage_sampling/paranest/specifications/)
     !>  </ol>
     !>
+    !>  \note
+    !>  This derived type has no custom constructor.<br>
+    !>
+    !>  \note
+    !>  All derived type components can be set after creating an object of the type.<br>
+    !>
     !>  \see
+    !>  [specdram_type](@ref pm_sampling_spec::specdram_type)<br>
+    !>  [specnest_type](@ref pm_sampling_spec::specnest_type)<br>
+    !>  [specdise_type](@ref pm_sampling_spec::specdise_type)<br>
+    !>  [getErrSampling](@ref pm_sampling::getErrSampling)<br>
     !>  [paradram_type](@ref pm_sampling::paradram_type)<br>
     !>  [paranest_type](@ref pm_sampling::paranest_type)<br>
     !>  [paradise_type](@ref pm_sampling::paradise_type)<br>
-    !>  [getErrSampling](@ref pm_sampling::getErrSampling)<br>
+    !>  [sampler_type](@ref pm_sampling::sampler_type)<br>
     !>
     !>  \final{paramcmc_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(sampler_type)                 :: paramcmc_type
-        integer(IK)             , allocatable   :: outputChainSize                      !<  \specdram{outputchainsize}
-        integer(IK)             , allocatable   :: outputSampleRefinementCount          !<  \specdram{outputsamplerefinementcount}
-        character(:,SKG)        , allocatable   :: outputSampleRefinementMethod         !<  \specdram{outputsamplerefinementmethod}
-        character(:,SKG)        , allocatable   :: proposal                             !<  \specdram{proposal}
-        real(RKH)               , allocatable   :: proposalCor(:,:)                     !<  \specdram{proposalcor}
-        real(RKH)               , allocatable   :: proposalCov(:,:)                     !<  \specdram{proposalcov}
-        character(:,SKG)        , allocatable   :: proposalScale                        !<  \specdram{proposalscale}
-        real(RKH)               , allocatable   :: proposalStart(:)                     !<  \specdram{proposalstart}
-        real(RKH)               , allocatable   :: proposalStartDomainCubeLimitLower(:) !<  \specdram{proposalstartdomaincubelimitlower}
-        real(RKH)               , allocatable   :: proposalStartDomainCubeLimitUpper(:) !<  \specdram{proposalstartdomaincubelimitupper}
-        logical(LK)             , allocatable   :: proposalStartRandomized              !<  \specdram{proposalstartrandomized}
-        real(RKH)               , allocatable   :: proposalStd(:)                       !<  \specdram{proposalstd}
     end type
 
     !>  \brief
-    !>  This is a derived type for constructing objects containing the **optional** simulation
-    !>  properties of the ParaMonte library Delayed-Rejection Adaptive Metropolis (DRAM) MCMC explorers and samplers.<br>
+    !>  This is a derived type for constructing objects containing an instance of the
+    !>  ParaMonte library Delayed-Rejection Adaptive Metropolis (DRAM) MCMC explorers and samplers.<br>
     !>
     !>  \note
     !>  See the documentation of [getErrSampling](@ref pm_sampling::getErrSampling) for example usage.<br>
@@ -237,23 +220,27 @@ module pm_sampling
     !>      <li>    [ParaNest simulation options](\pmdoc_usage_sampling/paranest/specifications/) (work in progress)
     !>  </ol>
     !>
+    !>  \note
+    !>  This derived type has no custom constructor.<br>
+    !>
+    !>  \note
+    !>  All derived type components can be set after creating an object of the type.<br>
+    !>
     !>  \see
+    !>  [specdram_type](@ref pm_sampling_spec::specdram_type)<br>
+    !>  [specnest_type](@ref pm_sampling_spec::specnest_type)<br>
+    !>  [specdise_type](@ref pm_sampling_spec::specdise_type)<br>
+    !>  [getErrSampling](@ref pm_sampling::getErrSampling)<br>
     !>  [paradram_type](@ref pm_sampling::paradram_type)<br>
     !>  [paranest_type](@ref pm_sampling::paranest_type)<br>
     !>  [paradise_type](@ref pm_sampling::paradise_type)<br>
-    !>  [getErrSampling](@ref pm_sampling::getErrSampling)<br>
+    !>  [sampler_type](@ref pm_sampling::sampler_type)<br>
     !>
     !>  \final{paradram_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(paramcmc_type)                :: paradram_type
-        real(RKH)               , allocatable   :: proposalAdaptationBurnin             !<  \specdram{proposaladaptationburnin}
-        integer(IK)             , allocatable   :: proposalAdaptationCount              !<  \specdram{proposaladaptationcount}
-        integer(IK)             , allocatable   :: proposalAdaptationCountGreedy        !<  \specdram{proposaladaptationcountgreedy}
-        integer(IK)             , allocatable   :: proposalAdaptationPeriod             !<  \specdram{proposaladaptationperiod}
-        integer(IK)             , allocatable   :: proposalDelayedRejectionCount        !<  \specdram{proposaldelayedrejectioncount}
-        real(RKH)               , allocatable   :: proposalDelayedRejectionScale(:)     !<  \specdram{proposaldelayedrejectionscale}
     end type
 
     !>  \brief
@@ -301,41 +288,27 @@ module pm_sampling
     !>      <li>    [ParaNest simulation options](\pmdoc_usage_sampling/paranest/specifications/) (work in progress)
     !>  </ol>
     !>
+    !>  \note
+    !>  This derived type has no custom constructor.<br>
+    !>
+    !>  \note
+    !>  All derived type components can be set after creating an object of the type.<br>
+    !>
     !>  \see
+    !>  [specdram_type](@ref pm_sampling_spec::specdram_type)<br>
+    !>  [specnest_type](@ref pm_sampling_spec::specnest_type)<br>
+    !>  [specdise_type](@ref pm_sampling_spec::specdise_type)<br>
+    !>  [getErrSampling](@ref pm_sampling::getErrSampling)<br>
     !>  [paradram_type](@ref pm_sampling::paradram_type)<br>
     !>  [paranest_type](@ref pm_sampling::paranest_type)<br>
     !>  [paradise_type](@ref pm_sampling::paradise_type)<br>
-    !>  [getErrSampling](@ref pm_sampling::getErrSampling)<br>
-    !>  [getErrSampling](@ref pm_sampling::getErrSampling)<br>
+    !>  [sampler_type](@ref pm_sampling::sampler_type)<br>
     !>
-    !>  \final{paradise_type}
+    !>  \final{paranest_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
     type, extends(sampler_type)                 :: paranest_type
-        integer(IK)             , allocatable   :: domainPartitionAdaptationCount
-        integer(IK)             , allocatable   :: domainPartitionAdaptationPeriod
-        logical(LK)             , allocatable   :: domainPartitionBiasCorrectionEnabled
-        integer(IK)             , allocatable   :: domainPartitionCountMax
-        real(RKH)               , allocatable   :: domainPartitionFactorExpansion
-        real(RKH)               , allocatable   :: domainPartitionFactorShrinkage
-        integer(IK)             , allocatable   :: domainPartitionKmeansClusterCountMax
-        integer(IK)             , allocatable   :: domainPartitionKmeansClusterSizeMin
-        logical(LK)             , allocatable   :: domainPartitionKmeansNormalizationEnabled
-        integer(IK)             , allocatable   :: domainPartitionKmeansNumFailMax
-        integer(IK)             , allocatable   :: domainPartitionKmeansNumRecursionMax
-        integer(IK)             , allocatable   :: domainPartitionKmeansNumTry
-        integer(IK)             , allocatable   :: domainPartitionKvolumeNumRecursionMax
-        real(RKH)               , allocatable   :: domainPartitionKvolumeWeightExponent
-        character(:,SKG)        , allocatable   :: domainPartitionMethod
-        character(:,SKG)        , allocatable   :: domainPartitionObject
-        logical(LK)             , allocatable   :: domainPartitionOptimizationScaleEnabled
-        logical(LK)             , allocatable   :: domainPartitionOptimizationShapeEnabled
-        logical(LK)             , allocatable   :: domainPartitionOptimizationShapeScaleEnabled
-        real(RKH)               , allocatable   :: domainPartitionScaleFactor
-        character(:,SKG)        , allocatable   :: domainSampler
-        integer(IK)             , allocatable   :: liveSampleSize
-        real(RKH)               , allocatable   :: tolerance
     end type
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
