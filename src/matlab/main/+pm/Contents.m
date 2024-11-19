@@ -538,7 +538,7 @@
 %>  [⛓](#ParaMonteLangExamples)
 %>  \section ParaMonteLangExamples ParaMonte MATLAB Language Examples
 %>
-%>  The ParaMonte MATLAB library ships with tens of thousands of example usage that are available in the `example/matlab` folder in the [root directory of the project repository](https://github.com/cdslaborg/paramonte).<br>
+%>  The ParaMonte MATLAB library ships with hundreds of example usage that are available in the `example/matlab` folder in the [root directory of the project repository](https://github.com/cdslaborg/paramonte).<br>
 %>  These examples are also available and discussed in the documentations of individual modules and procedures of this this documentation website.<br>
 %>
 %>  [⛓](#ParaMonteLangBenchmarks)

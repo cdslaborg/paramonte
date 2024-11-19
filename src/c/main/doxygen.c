@@ -421,8 +421,11 @@
 /// [⛓](#ParaMonteLangExamples)
 /// \section ParaMonteLangExamples ParaMonte C Language Examples
 ///
-/// The ParaMonte C library ships with tens of thousands of example usage that are available in the `example/c` folder in the [root directory of the project repository](https://github.com/cdslaborg/paramonte).<br>
+/// The ParaMonte C library ships with ample example usage that are available in the `example/c` folder in the [root directory of the project repository](https://github.com/cdslaborg/paramonte).<br>
 /// These examples are also available and discussed in the documentations of individual modules and procedures of this this documentation website.<br>
+/// The best way to build and run the examples is to build the library to generate the final binary folder for your specific build.<br>
+/// This binary folder will contains the library along with all available example source codes and build instructions and scripts.<br>
+/// See [the ParaMonte generic documentation](\pmdoc) for build and installation instructions on all supported platforms.<br>
 ///
 /// [⛓](#ParaMonteLangBenchmarks)
 /// \section ParaMonteLangBenchmarks ParaMonte C Language Benchmarks

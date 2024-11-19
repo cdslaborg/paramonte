@@ -65,9 +65,8 @@
 !>  The **Regularized Inverse Incomplete Beta Function** is also the quantile function of the [Beta distribution](@ref pm_distBeta).<br>
 !>
 !>  \see
+!>  [pm_distBeta](@ref pm_distBeta)<br>
 !>  [pm_mathGamma](@ref pm_mathGamma)<br>
-!>  [pm_distBeta](@ref pm_distBeta)<br>
-!>  [pm_distBeta](@ref pm_distBeta)<br>
 !>  Newby, 1991, *The incomplete Beta Integral*, TH Eindhoven. THE/BDK/ORS, Vakgroep ORS: rapporten, Volume 9106.<br>
 !>  Majumder and Bhattacharjee, 1973, *Algorithm AS 63: The incomplete Beta Integral*, Applied Statistics, Volume 22, Number 3, pages 409-411.<br>
 !>
