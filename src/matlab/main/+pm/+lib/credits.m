@@ -1,8 +1,8 @@
 %>  \brief
-%>  Return a  MATLAB string containing the ParaMonte MATLAB library acknowledgment statement.
+%>  Return a MATLAB string containing the ParaMonte MATLAB library acknowledgment statement.
 %>
 %>  \return
-%>  A MATLAB string containing the ParaMonte MATLAB library acknowledgment statement.
+%>  ``txt`` :   The output scalar MATLAB string containing the ParaMonte MATLAB library acknowledgment statement.
 %>
 %>  \interface{credits}
 %>  \code{.m}

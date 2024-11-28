@@ -908,9 +908,72 @@ contains
     !>
     !>  \bug
     !>  \status \unresolved
+    !>  \source \ifort{2021.11.1 20231117}
+    !>  \desc
+    !>  \ifort returns an *already allocated error with the statement `call setResized(scaling, lenScaling)` which persists in both release and debug modes.<br>
+    !>  The full debug message is the following:<br>
+    !>  \code{.sh}
+    !>
+    !>      forrtl: severe (151): allocatable array is already allocated
+    !>      Image              PC                Routine            Line        Source
+    !>      libparamonte.so    00007FCFBA641EB8  Unknown               Unknown  Unknown
+    !>      libparamonte.so    00007FCFB6E6D4A3  pm_arrayresize_MP         170  pm_arrayResize@routines.inc.F90
+    !>      libparamonte.so    00007FCFB72B5BD6  pm_parallelism_MP          77  pm_parallelism@routines.inc.F90
+    !>      libparamonte.so    00007FCFB6263F43  pm_sampling_MP_ge         394  pm_sampling@routines.inc.F90
+    !>      libparamonte.so    00007FCFB61F0194  runParaDRAMD              136  pm_sampling@routines.inc.F90
+    !>
+    !>  \endcode
+    !>  Note that the line numbers for this file in the message above have changed because of code change in this file.<br>
+    !>  This error does not occur when the library is compiled with \gfortran{13}.<br>
+    !>  This error does not occur when the library is compiled with \ifx{2025.0.0 20241008}.<br>
+    !>  It seems like this error occurs because of placing the following typed variable `speedup`
+    !>  in the `forkjoin_parallelism_block` below.<br>
+    !>  \remedy{2.0.0}
+    !>  For now, the type definition and the typed variable declaration are taken out of the block and placed below.<br>
+    !>  This must be checked with newer Intel compilers as \ifort{2021.11.1 20231117} is being phased out by Intel.<br>
+    !>
+    !>  \bug
+    !>  \status \unresolved
+    !>  \source \ifort{2021.11.1 20231117}
+    !>  \desc
+    !>  The following declarations belong to only parallel multichain modes within a nested `block`.<br>
+    !>  \code{.F90}
+    !>
+    !>      type :: probKS_type
+    !>          real(RKG)       , allocatable   :: values(:)
+    !>          real(RKG)                       :: minval
+    !>          integeR(IK)                     :: minloc
+    !>          integeR(IK)                     :: minpid
+    !>      end type
+    !>
+    !>      type :: sampleLogFuncState_type
+    !>          character(:, SK), allocatable   :: filePath
+    !>          real(RKG)       , allocatable   :: thisImage(:,:)
+    !>          real(RKG)       , allocatable   :: thatImage(:,:)
+    !>          type(probKS_type)               :: probKS
+    !>      end type
+    !>
+    !>  \endcode
+    !>  But they had to be taken out of their local scope because
+    !>  \ifort{2021.11.1 20231117} cannot compile them with an ICE message as below.<br>
+    !>  \code{.sh}
+    !>
+    !>      pm_sampling@routines.inc.F90(1267): catastrophic error:
+    !>      **Internal compiler error: internal abort** Please report this error along with the circumstances in which it occurred in a Software Problem Report.
+    !>      Note: File and line given may not be explicit cause of this error.
+    !>      compilation aborted for /home/amir/git/paramonte/src/fortran/main/pm_sampling@routines.F90 (code 1)
+    !>
+    !>  \endcode
+    !>  \remedy{2.0.0}
+    !>  For now, the type definition and the typed variable declaration are taken out of the block and placed below.<br>
+    !>  This must be checked with newer Intel compilers as \ifort{2021.11.1 20231117} is being phased out by Intel.<br>
+    !>  This bug may have the same origins as the bug in the above.<br>
+    !>
+    !>  \bug
+    !>  \status \unresolved
     !>  \source \ifort{2021.11.0 20231010}
     !>  \desc
-    !>  The `runParaDRAML` interface for `long double` yields a segmentation fault error.
+    !>  The `runParaDRAML` interface for `long double` yields a segmentation fault error.<br>
     !>  \remedy
     !>  None as of today.<br>
     !>

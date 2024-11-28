@@ -23,12 +23,12 @@
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function str = banner()
-    verlen = pm.lib.version();
-    verlen = length(verlen{1});
+    pmvers = pm.lib.version();
+    verlen = length(pmvers{1});
     offset = fix((verlen - 4) / 2);
     bannerFile = fullfile(pm.lib.path.auxil(), ".paramonte.banner");
     try
-        str = strrep(fileread(bannerFile), string(repmat(' ', 1, offset)) + "Version 0.0.0", "Version " + pm.lib.version());
+        str = strrep(fileread(bannerFile), string(repmat(' ', 1, offset)) + "Version 0.0.0", "Version " + pmvers);
         str = newline + strrep(str, string(char(13)), "") + newline;
     catch me
         weblinks = pm.lib.weblinks;

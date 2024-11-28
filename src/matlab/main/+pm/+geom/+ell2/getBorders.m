@@ -57,6 +57,7 @@
 %>  \JoshuaOsborne, May 21 2024, 5:33 PM, University of Texas at Arlington<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function bcrd = getBorders(gramian, center, zval, npnt)
+
     if  nargin < 4
         npnt = [];
     end
@@ -83,6 +84,7 @@ function bcrd = getBorders(gramian, center, zval, npnt)
         gramian = zeros(2, 2, 1);
         gramian(:, :, 1) = eye(2);
     end
+
     nell = max(size(gramian, 3), size(center, 2));
     asserted = size(gramian, 3) == size(center, 2) || size(gramian, 3) == 1 || size(center, 2) == 1;
     if ~asserted
@@ -97,15 +99,25 @@ function bcrd = getBorders(gramian, center, zval, npnt)
                 + newline ...
                 );
     end
+
+    %%%%
     %%%% Make the 2D ellipsoid boundaries.
-    if ~isempty(zval)
+    %%%%
+
+    if  isempty(zval)
+        bcrd = zeros(npnt, 2);
+        for iell = 1 : nell
+            icol = (iell - 1) * 2 + 1;
+            bcrd(:, icol : icol + 1) = pm.geom.ell2.getBorder(gramian(:, :, min(iell, size(gramian, 3))), center(:, min(iell, size(center, 2))), npnt);
+        end
+    else
         asserted = nell == size(zval, 2) || size(zval, 2) == 1 || (size(gramian, 3) == 1 || size(center, 2) == 1);
         if ~asserted
             help("pm.geom.ell2.getBorders")
             disp("size(gramian, 3)")
             disp( size(gramian, 3) )
-            disp("size(canter, 3)")
-            disp( size(canter, 3) )
+            disp("size(canter, 2)")
+            disp( size(canter, 2) )
             disp("size(zval)")
             disp( size(zval) )
             error   ( newline ...
@@ -116,7 +128,7 @@ function bcrd = getBorders(gramian, center, zval, npnt)
         end
         zvalScalar = numel(zval) == 1;
         nell = max(nell, size(zval, 2));
-        bcrd = zeros(npnt, 3);
+        bcrd = zeros(npnt, 3 * nell);
         for iell = 1 : nell
             icol = (iell - 1) * 3 + 1;
             bcrd(:, icol : icol + 1) = pm.geom.ell2.getBorder(gramian(:, :, min(iell, size(gramian, 3))), center(:, min(iell, size(center, 2))), npnt);
@@ -126,11 +138,6 @@ function bcrd = getBorders(gramian, center, zval, npnt)
                 bcrd(:, icol + 2) = zval(:, min(iell, size(zval, 2)));
             end
         end
-    else
-        bcrd = zeros(npnt, 2);
-        for iell = 1 : nell
-            icol = (iell - 1) * 2 + 1;
-            bcrd(:, icol : icol + 1) = pm.geom.ell2.getBorder(gramian(:, :, min(iell, size(gramian, 3))), center(:, min(iell, size(center, 2))), npnt);
-        end
     end
+
 end

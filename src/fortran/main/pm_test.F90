@@ -143,7 +143,7 @@ module pm_test
 
     type, extends(scope_type)               :: func_type
         integer(IK)                         :: counter = 0_IK   !<  \private    The `private` scalar object of type `integer` of default kind \IK, containing count of individual assertions made within a
-                                                                !!              specified test function passed, via a single call, to the `run()` method of an object of type [test_type](@ref pm_test::testt_type).<br>
+                                                                !!              specified test function passed, via a single call, to the `run()` method of an object of type [test_type](@ref pm_test::test_type).<br>
         character(:, SK)    , allocatable   :: id               !<  \public     The `public` scalar `allocatable` of type `character` of default kind \SK, containing the ID of the current test for a given procedure to be tested.<br>
                                                                 !!              The presence of this component is historical when individual tests for a single target procedure were implemented in separate test functions.<br>
                                                                 !!              In such a case, the test functions of a given procedure can be suffixed with a unique ID as in `test_*_ID()` where `ID` is replaced with the test function number.<br>

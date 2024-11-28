@@ -51,7 +51,6 @@ classdef SpecDRAM < pm.sampling.SpecMCMC
         %>                          the name of the specific ParaMonte sampler
         %>                          whose simulation specifications are to be
         %>                          stored in the output of this constructor.<br>
-        %>
         %>  \param[in]  silent  :   The input scalar MATLAB logical.<br>
         %>                          If ``true``, all descriptive messages on
         %>                          the MATLAB command line will be suppressed.<br>

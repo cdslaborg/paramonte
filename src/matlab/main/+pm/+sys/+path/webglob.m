@@ -30,7 +30,6 @@
 %>                                      </ol>
 %>                              <li>    the weblink to download and save locally on the system temporary folder.<br>
 %>                          </ol>
-%>
 %>  \param[in]  anycase :   The input scalar MATLAB logical.<br>
 %>                          If ``true``, the search will be case-sensitive.<br>
 %>                          If ``false``, the search will be case-insensitive.<br>

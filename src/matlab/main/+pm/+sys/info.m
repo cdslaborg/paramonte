@@ -1,8 +1,9 @@
 %>  \brief
-%>  Return a MATLAB string containing the current system information.<br>
+%>  Return a MATLAB string  and the corresponding cache
+%>  file path containing the current system information.<br>
 %>
 %>  \return
-%>  ``str``     :   The output scalar MATLAB string containing the current system information.<br>
+%>  ``txt``     :   The output scalar MATLAB string containing the current system information.<br>
 %>  ``cache``   :   The output scalar MATLAB string representing the path to the
 %>                  cache file containing the current system information.<br>
 %>                  The returned cache file path has the form:<br>
@@ -22,7 +23,7 @@
 %>  \interface{info}
 %>  \code{.m}
 %>
-%>      [str, cache] = pm.sys.info()
+%>      [txt, cache] = pm.sys.info()
 %>
 %>  \endcode
 %>
@@ -37,7 +38,7 @@
 %>  \JoshuaOsborne, May 21 2024, 5:31 AM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
-function [str, cache] = info()
+function [txt, cache] = info()
     prefix = ".info";
     suffix = ".cache";
     [dirname, ~, ~] = fileparts(mfilename('fullpath'));
@@ -53,7 +54,7 @@ function [str, cache] = info()
         if isunix && ~ismac
             cmd = "uname -a; lscpu";
         end
-        [failed, str] = system(cmd);
+        [failed, txt] = system(cmd);
         failed = failed ~= 0;
         if  failed
             warning ( newline ...
@@ -62,10 +63,10 @@ function [str, cache] = info()
                     );
         end
         fid = fopen(cache, 'wt');
-        fprintf(fid, "%s", str);
+        fprintf(fid, "%s", txt);
         fclose(fid);
     else
-        str = fileread(cache);
+        txt = fileread(cache);
     end
-    str = string(str);
+    txt = string(txt);
 end

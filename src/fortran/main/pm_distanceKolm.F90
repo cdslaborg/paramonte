@@ -180,6 +180,10 @@ module pm_distanceKolm
     !>
     !>  \warnpure
     !>
+    !>  \see
+    !>  [getProbKS](@ref pm_statest::getProbKS)<br>
+    !>  [setProbKS](@ref pm_statest::setProbKS)<br>
+    !>
     !>  \example{getDisKolm}
     !>  \include{lineno} example/pm_distanceKolm/getDisKolm/main.F90
     !>  \compilef{getDisKolm}
@@ -2085,6 +2089,10 @@ module pm_distanceKolm
     !>  The returned distance is `0` if any of the two samples are empty.<br>
     !>
     !>  \warnpure
+    !>
+    !>  \see
+    !>  [getProbKS](@ref pm_statest::getProbKS)<br>
+    !>  [setProbKS](@ref pm_statest::setProbKS)<br>
     !>
     !>  \example{setDisKolm}
     !>  \include{lineno} example/pm_distanceKolm/setDisKolm/main.F90

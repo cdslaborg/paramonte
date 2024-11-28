@@ -63,7 +63,7 @@ function str = getFileName(prefix)
     str = datestr(now, 'yyyymmdd_HHMMSS_FFF');
     % MATLAB recommends replacing the above with the following.
     % The plan was to keep the old syntax as it is not clear
-    % when the new syntax was instroduces.
+    % when the new syntax was introduced.
     %str = string(datetime('now', 'format', 'yyyyMMdd_HHmmss_SSS'))
     if ~isempty(prefix)
         str = string(prefix) + "_" + str;

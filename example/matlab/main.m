@@ -17,9 +17,11 @@ else
     % Prepend the base directory to all directory paths.
     examlist = strings(length(examdirs), 1);
     for idir = 1 : length(examdirs)
-        examlist(idir) = rootdir + "/" + string(examdirs(idir)) + "main.m";
-        if ~isdir(examlist(idir))
-            warning("The specified example directory does not exist: """ + examlist(idir) + """")
+        examfile = fullfile(rootdir, string(examdirs(idir)), "main.m");
+        if ~isfile(examfile)
+            warning("The corresponding example file for the specified example directory does not exist: """ + examfile + """")
+        else
+            examlist(idir) = examfile;
         end
     end
 end

@@ -393,7 +393,17 @@
 %>                  );
 %>      samples = sampler.readSample();
 %>      sample = samples{1};
-%>      pm.vis.tile(sample.contents)
+%>      sample.vis.tile.line.make();
+%>
+%>  \endcode
+%>
+%>  The statement ``sample.vis.tile.line.make();`` in
+%>  the above is equivalent to the following set of lines:
+%>
+%>  \code{.m}
+%>
+%>      tile = pm.vis.TileLine(sample.df);
+%>      tile.make("coly", sample.slfc + 1 : sample.slfc + 4, "colc", "sampleLogFunc");
 %>
 %>  \endcode
 %>

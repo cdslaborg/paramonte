@@ -637,7 +637,7 @@ module pm_statest
     !>      call setProbKS(probKS, quanKS, statKS, weisum1, weisum2) ! only unweighted or (integer) frequency-weighted samples.
     !>      call setProbKS(probKS, quanKS, statKS, weisum1, weisum2, wsqsum1) ! only if `sample1` is reliability weighted and `sample2` is unweighted or frequency-weighted.
     !>      call setProbKS(probKS, quanKS, statKS, weisum1, weisum2, wsqsum1, wsqsum2) ! only if both samples are reliability-real-weighted samples.
-    !>
+    !>      !
     !>  \endcode
     !>
     !>  \warning

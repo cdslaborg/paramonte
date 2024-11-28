@@ -92,11 +92,10 @@ classdef FileContents < pm.matlab.Handle
         %>
         %>  \param[in]  file    :   The input scalar MATLAB string
         %>                          containing the path to an external file.
-        %>
         %>  \param[in]  silent  :   The input scalar MATLAB logical.<br>
         %>                          If ``true``, all descriptive messages will be suppressed.<br>
-        %>                          Setting this option to ``false`` is particularly useful
-        %>                          in MPI-parallel simulations.<br>
+        %>                          Setting this option to ``false`` is particularly
+        %>                          useful in MPI-parallel simulations.<br>
         %>                          (**optional**, default = ``false``)
         %>
         %>  \return
@@ -218,7 +217,6 @@ classdef FileContents < pm.matlab.Handle
         %>  \param[in]      msg     :   The input scalar MATLAB string containing a
         %>                              message to display on the MATLAB console.<br>
         %>                              (**optional**, default = ``"done in " + sprintf("%.6f", string(self.timer.del())) + " seconds."``)
-        %>
         %>  \param[in]      advance :   The input scalar MATLAB ``logical``.<br>
         %>                              If ``true``, an end of line character will be added at the end of the printed message.<br>
         %>                              (**optional**, default = ``true``)

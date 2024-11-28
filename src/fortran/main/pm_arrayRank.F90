@@ -93,6 +93,9 @@
 !>  Obtaining the **ordinal ranking** of an array is very similar to obtaining the sorted indices of the array.<br>
 !>  For more information see this [article](https://en.wikipedia.org/wiki/Ranking).<br>
 !>
+!>  \see
+!>  [OrderPack](http://www.fortran-2000.com/)<br>
+!>
 !>  \todo
 !>  \plow
 !>  The relevant benchmarks comparing the functional and subroutine interfaces should be added here.<br>

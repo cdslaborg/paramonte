@@ -88,6 +88,7 @@ classdef Spinner < pm.matlab.Handle
         %>  \code{.m}
         %>
         %>      self = pm.timing.Spinner()
+        %>      self = pm.timing.Spinner(tickmarks)
         %>
         %>  \endcode
         %>
@@ -102,8 +103,11 @@ classdef Spinner < pm.matlab.Handle
         %>  \JoshuaOsborne, May 21 2024, 5:43 AM, University of Texas at Arlington<br>
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
-        function self = Spinner()
-            self.tickmarks = '|/-\';
+        function self = Spinner(tickmarks)
+            if  nargin < 1
+                tickmarks = '|/-\';
+            end
+            self.tickmarks = tickmarks;
             self.tickCount = length(self.tickmarks);
             self.format = [repmat('\b', 1, self.tickCount + 3), '%s'];
             self.clock = 0;

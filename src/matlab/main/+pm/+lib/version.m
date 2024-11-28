@@ -103,19 +103,18 @@ function vernum = version(lang, type)
         fid = fopen(version_file);
         vernum = string(strip(fgetl(fid)));
         fclose(fid);
+        if ~strcmp(type, "all")
+            triplet = strsplit(vernum, ".");
+            if  strcmp(type, "major")
+                vernum = string(triplet(1));
+            elseif strcmp(type, "minor") && numel(triplet) > 1
+                vernum = string(triplet(2));
+            elseif strcmp(type, "patch") && numel(triplet) > 2
+                vernum = string(triplet(3));
+            end
+        end
     catch
         vernum = "UNKNOWN";
-    end
-
-    if ~strcmp(type, "all")
-        triplet = strsplit(vernum, ".");
-        if  strcmp(type, "major")
-            vernum = string(triplet(1));
-        elseif strcmp(type, "minor") && numel(triplet) > 1
-            vernum = string(triplet(2));
-        elseif strcmp(type, "patch") && numel(triplet) > 2
-            vernum = string(triplet(3));
-        end
     end
 
 end
