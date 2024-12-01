@@ -19,6 +19,7 @@
 %>  \code{.m}
 %>
 %>      str = pm.lib.update.version()
+%>      str = pm.lib.update.version(silent)
 %>
 %>  \endcode
 %>
@@ -40,7 +41,6 @@ function str = version(silent)
     if  isempty(silent)
         silent = false;
     end
-    weblinks = pm.lib.weblinks();
     versionLink = "https://raw.githubusercontent.com/cdslaborg/paramonte/main/src/matlab/VERSION.md";
     try
         versionFileLineList = strsplit(webread(versionLink), newline);
@@ -48,6 +48,7 @@ function str = version(silent)
     catch me
         str = "";
         if ~silent
+            weblinks = pm.lib.weblinks();
             warning ( newline ...
                     + string(me.identifier) + " : " + string(me.message) + newline ...
                     + "Failed to fetch the latest version number from the weblink:" + newline ...

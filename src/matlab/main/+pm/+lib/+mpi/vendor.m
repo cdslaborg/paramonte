@@ -8,10 +8,10 @@
 %>                          string ``"mpi"`` is returned as the value of ``str``.<br>
 %>                          Possible values are:<br>
 %>                          <ol>
-%>                              <li>    ``"mpi"``       : The corresponding output ``vendor`` name would be unknown and set to ``"MPI"``.<br>
-%>                              <li>    ``"impi"``      : The corresponding output ``vendor`` name would be set to ``"Intel"``.<br>
-%>                              <li>    ``"mpich"``     : The corresponding output ``vendor`` name would be set to ``"MPICH"``.<br>
-%>                              <li>    ``"openmpi"``   : The corresponding output ``vendor`` name would be set to ``"OpenMPI"``.<br>
+%>                              <li>    ``"mpi"``       : The corresponding output vendor name ``txt`` would be unknown and set to ``"MPI"``.<br>
+%>                              <li>    ``"impi"``      : The corresponding output vendor name ``txt`` would be set to ``"Intel"``.<br>
+%>                              <li>    ``"mpich"``     : The corresponding output vendor name ``txt`` would be set to ``"MPICH"``.<br>
+%>                              <li>    ``"openmpi"``   : The corresponding output vendor name ``txt`` would be set to ``"OpenMPI"``.<br>
 %>                          </ol>
 %>                          Note that **all values are case-insensitive**.<br>
 %>

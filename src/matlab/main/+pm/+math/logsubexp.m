@@ -6,7 +6,6 @@
 %>
 %>  \param[in]  logSmaller  :   The input scalar MATLAB ``real`` representing
 %>                              the natural logarithm of the smaller value.
-%>
 %>  \param[in]  logLarger   :   The input scalar MATLAB ``real`` representing
 %>                              the natural logarithm of the larger value.
 %>

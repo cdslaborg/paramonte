@@ -5,7 +5,6 @@
 %>  \param[in]  mexname :   The input scalar MATLAB string containing
 %>                          the (partial) name of a MEX file name without MEX extension.<br>
 %>                          (**optional**. If missing, all detected paths will be returned.)
-%>
 %>  \param[in]  config  :   The input scalar (or vector of) MATLAB string(s) containing the
 %>                          (set of) keyword(s) to match in the identified MEX files paths.<br>
 %>                          (**optional**. If missing, all detected paths will be returned.)

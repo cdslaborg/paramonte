@@ -90,9 +90,9 @@
 %>  Specifying an input argument value will always
 %>
 %>  \example{detect}
-%>  \include{lineno} example/lib/mpi/detect/main.m
+%>  \include{lineno} example/lib/mpi/runtime/detect/main.m
 %>  \output{detect}
-%>  \include{lineno} example/lib/mpi/detect/main.out.m
+%>  \include{lineno} example/lib/mpi/runtime/detect/main.out.m
 %>
 %>  \todo
 %>  \phigh

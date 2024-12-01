@@ -21,10 +21,6 @@
 %>
 %>  \endcode
 %>
-%>  \impure
-%>
-%>  \elemental
-%>
 %>  \example{pnint}
 %>  \include{lineno} example/math/pnint/main.m
 %>  \output{pnint}
@@ -33,7 +29,7 @@
 %>  \final{pnint}
 %>
 %>  \author
-%>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
+%>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin<br>
 function whole = pnint(val)
     whole = round(val);
     residual = val - whole; % abs(residual) < .5 always holds.

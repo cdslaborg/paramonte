@@ -19,6 +19,7 @@
 %>  \code{.m}
 %>
 %>      url = pm.lib.update.weblink()
+%>      url = pm.lib.update.weblink(silent)
 %>
 %>  \endcode
 %>

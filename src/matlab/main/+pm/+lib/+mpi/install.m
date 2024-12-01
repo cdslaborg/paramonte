@@ -30,7 +30,7 @@
 %>                          If provided, it will serve as the answer to the question displayed on the prompt by
 %>                          the function to confirm whether the user wants to install the MPI libraries or not.<br>
 %>                          This functionality becomes important when interaction with users through the prompt is impossible.<br>
-%>                          (**optional. If missing, the download question will be shown on the user prompt.)
+%>                          (**optional. If missing or empty, the user will be prompted for an answer.)
 %>
 %>  \return
 %>  ``failed``          :   The output scalar MATLAB ``logical`` that is ``true`` if and only if
@@ -119,11 +119,14 @@ function failed = install(vendor, isyes)
         else
             itis = pm.io.isyes(promptmsg);
         end
+
         if  itis
+
+            auxpath = pm.lib.path.auxil()
+            auxfile = fullfile(auxpath, ".deps." + pm.os.namel() + ".mpi.intel");
+
             try
 
-                auxpath = pm.lib.path.auxil()
-                auxfile = fullfile(auxpath, ".deps." + pm.os.namel() + ".mpi.intel");
                 mpifile = strrep(strrep(fileread(auxfile), char(13), ''), char(10), '');
                 binlink = weblinks.github.releases.download.auxil.url + "/" + mpifile;
                 binpath = websave(fullfile(auxpath, mpifile), binlink);
@@ -168,11 +171,12 @@ function failed = install(vendor, isyes)
                         + "The ParaMonte MATLAB library integrity appears compromised." + newline ...
                         + "You can download the latest version of the library from: " + newline ...
                         + newline ...
-                        + pm.io.tab + pm.web.href(weblinks.github.releases.url) + newline ...
+                        + pm.io.tab + pm.web.href(weblinks.github.releases.tag.auxil.url) + newline ...
                         + newline ...
                         );
 
             end
+
         end
 
     end
