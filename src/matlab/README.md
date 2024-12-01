@@ -109,8 +109,8 @@ We strongly advise you to follow the guidelines in
 [this documentation page](https://www.cdslab.org/paramonte/generic/1/installation/matlab/) 
 to either download the pre-built ParaMonte MATLAB libraries for your platform or to build the library from the source code.  
 
-<br><br>
-<iframe src="https://utaedu.questionpro.com/t/AS6OrZ4xIY" style="height:400px;width:100%;border-radius:10px;" title="MATLAB Version Popularity Survey"></iframe> 
+> Help us tailor the ParaMonte library to your needs through 
+> [this single-question survey](https://utaedu.questionpro.com/t/AS6OrZ4xIY).  
 
 
 Dependencies
