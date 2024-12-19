@@ -202,8 +202,8 @@ module pm_arraySplit
     !>  \status \unresolved
     !>  \source \ifort{2021.5}
     !>  \desc
-    !>  This \ifort{2021.5} on WSL platform cannot correctly set the PDT type
-    !>  alias in a module `use` statement generic interface can be extended to 2D input objects.<br>
+    !>  This \ifort{2021.5} on WSL platform cannot correctly
+    !>  set the PDT type alias in a module `use` statement.<br>
     !>  The following is a sample code demonstrating the issue,
     !>  \code{.F90}
     !>
