@@ -22,6 +22,8 @@
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 classdef FileContentsReport < pm.io.FileContents
 
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     properties(Access = public)
         %>
         %>  ``stats``
@@ -76,6 +78,8 @@ classdef FileContentsReport < pm.io.FileContents
         % spec = struct();
     end
 
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     properties(Hidden)
         %>
         %>  ``lineListLen``
@@ -83,21 +87,21 @@ classdef FileContentsReport < pm.io.FileContents
         %>  This is an internal class variable inaccessible to the end users.<br>
         %>
         lineListLen = [];
-        %>
-        %>  ``indentLen``
-        %>
-        %>  The scalar MATLAB integer representing the number of indentation
-        %>  characters at the beginning of each description line in the report file.<br>
-        %>  This is an internal class variable inaccessible to the end users.<br>
-        %>
-        indentLen = 4; % indent length of the records
-        %>
-        %>  ``dsymLen``
-        %>
-        %>  The scalar MATLAB integer representing the minimum length of two of decoration symbols.<br>
-        %>  This is an internal class variable inaccessible to the end users.<br>
-        %>
-        dsymLen = 2;
+        % %>
+        % %>  ``indentLen``
+        % %>
+        % %>  The scalar MATLAB integer representing the number of indentation
+        % %>  characters at the beginning of each description line in the report file.<br>
+        % %>  This is an internal class variable inaccessible to the end users.<br>
+        % %>
+        % indentLen = 4; % indent length of the records
+        % %>
+        % %>  ``dsymLen``
+        % %>
+        % %>  The scalar MATLAB integer representing the minimum length of two of decoration symbols.<br>
+        % %>  This is an internal class variable inaccessible to the end users.<br>
+        % %>
+        % dsymLen = 2;
         %>
         %>  ``dsym``
         %>
@@ -123,10 +127,13 @@ classdef FileContentsReport < pm.io.FileContents
         %iend = 0;
     end
 
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     methods(Access = public)
 
         %>  \brief
         %>  Return a scalar object of class [pm.sampling.FileContentsReport](@ref FileContentsReport).<br>
+        %>
         %>  \details
         %>  This is the constructor of the class [pm.sampling.FileContentsReport](@ref FileContentsReport).<br>
         %>

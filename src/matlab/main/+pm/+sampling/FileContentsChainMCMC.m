@@ -80,6 +80,8 @@ classdef FileContentsChainMCMC < pm.sampling.FileContentsChain
         %>      contents = pm.sampling.FileContentsChainMCMC(file, silent)
         %>      contents = pm.sampling.FileContentsChainMCMC(file, [], sep)
         %>      contents = pm.sampling.FileContentsChainMCMC(file, silent, sep)
+        %>      contents = pm.sampling.FileContentsChainMCMC(file, silent, sep, [])
+        %>      contents = pm.sampling.FileContentsChainMCMC(file, silent, sep, format)
         %>
         %>  \endcode
         %>
@@ -111,24 +113,22 @@ classdef FileContentsChainMCMC < pm.sampling.FileContentsChain
             %%%% Unroll the chain if necessary and add the Markov-specific stats information.
             %%%%
 
-            if  pm.introspection.istype(format, "string") && strcmpi(format, "verbose")
+            if  pm.introspection.verified(format, "string", 1) && strcmpi(format, "verbose")
 
                 %%%% Unpack the chain data frames.
 
                 self.df = pm.array.verbose(self.df, 1, self.df.sampleWeight);
                 self.df.sampleWeight(:) = 1;
+                self.nrow = length(self.df{:, 1});
 
-            elseif ~isempty(format) && ~(pm.introspection.istype(format, "string") && strcmpi(format, "compact"))
+            elseif ~isempty(format) && ~(pm.introspection.verified(format, "string", 1) && strcmpi(format, "compact"))
 
                 help("pm.sampling.Paradram.readChain");
                 disp("format");
                 disp( format );
                 error   ( newline ...
                         + "Unrecognized input value for ``format``." + newline ...
-                        + "See the documnetation displayed above for more information." + newline ...
-                        + "Here is the error message:" + newline ...
-                        + newline ...
-                        + string(me.identifier) + newline + string(me.message) + newline ...
+                        + "See the documentation displayed above for more information." + newline ...
                         + newline ...
                         );
 
@@ -150,7 +150,7 @@ classdef FileContentsChainMCMC < pm.sampling.FileContentsChain
         %>  Compute the statistics of the parent object of class [pm.sampling.FileContentsChainMCMC](@ref FileContentsChainMCMC)
         %>  and store the results in the respective fields of the ``stats`` attribute of the parent object.<br>
         %>
-        %>  \brief
+        %>  \details
         %>  This is a dynamic ``Hidden`` method of class [pm.sampling.FileContentsChainMCMC](@ref FileContentsChainMCMC).<br>
         %>  It is **inaccessible** to the end users of the library.<br>
         %>
@@ -219,7 +219,7 @@ classdef FileContentsChainMCMC < pm.sampling.FileContentsChain
         %>  Compute the statistics of the parent object of class [pm.sampling.FileContentsChainMCMC](@ref FileContentsChainMCMC)
         %>  and store the results in the respective fields of the ``stats`` attribute of the parent object.<br>
         %>
-        %>  \brief
+        %>  \details
         %>  This is a dynamic ``Hidden`` method of class [pm.sampling.FileContentsChainMCMC](@ref FileContentsChainMCMC).<br>
         %>  It is **inaccessible** to the end users of the library.<br>
         %>

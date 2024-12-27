@@ -38,13 +38,13 @@
 %>  \interface{getFunc}
 %>  \code{.m}
 %>
-%>      func = pm.stats.himmelblau.getFunc(x, y);
+%>      func = pm.math.func.himmelblau.getFunc(x, y);
 %>
 %>  \endcode
 %>
 %>  \see
-%>  [pm.stats.himmelblau.getFunc](@ref getFunc)<br>
-%>  [pm.stats.himmelblau.getLogUDF](@ref getLogUDF)<br>
+%>  [pm.math.func.himmelblau.getFunc](@ref getFunc)<br>
+%>  [pm.stats.dist.himmelblau.getLogUDF](@ref getLogUDF)<br>
 %>  [pm.sampling.Paradram](@ref Paradram)<br>
 %>
 %>  \example{getFunc}

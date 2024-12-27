@@ -28,6 +28,7 @@
     namelist /NAMELIST/ parallelism
     namelist /NAMELIST/ parallelismMpiFinalizeEnabled
     namelist /NAMELIST/ parallelismNumThread
+    namelist /NAMELIST/ plang
     namelist /NAMELIST/ randomSeed
     namelist /NAMELIST/ sysInfoFilePath
     namelist /NAMELIST/ targetAcceptanceRate

@@ -202,7 +202,7 @@ module pm_arraySplit
     !>  \status \unresolved
     !>  \source \ifort{2021.5}
     !>  \desc
-    !>  This \ifort{2021.5} on WSL platform cannot correctly
+    !>  The \ifort{2021.5} on WSL platform cannot correctly
     !>  set the PDT type alias in a module `use` statement.<br>
     !>  The following is a sample code demonstrating the issue,
     !>  \code{.F90}

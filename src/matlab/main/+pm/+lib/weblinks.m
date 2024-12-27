@@ -59,14 +59,8 @@ function tree = weblinks()
     stree.docs.generic.overview.preface = struct();
     stree.docs.generic.overview.preface.url = stree.docs.generic.overview.url + "/preface";
 
-    stree.docs.generic.overview.fortran = struct();
-    stree.docs.generic.overview.fortran.url = stree.docs.generic.overview.url + "/paramonte-kernel-release-notes";
-
-    stree.docs.generic.overview.matlab = struct();
-    stree.docs.generic.overview.matlab.url = stree.docs.generic.overview.url + "/paramonte-matlab-release-notes";
-
-    stree.docs.generic.overview.python = struct();
-    stree.docs.generic.overview.python.url = stree.docs.generic.overview.url + "/paramonte-python-release-notes";
+    stree.docs.generic.overview.changes = struct();
+    stree.docs.generic.overview.changes.url = stree.docs.generic.overview.url + "/CHANGES.md";
 
     %%%% docs generic installation
 
@@ -134,20 +128,32 @@ function tree = weblinks()
     stree.docs.generic.usage = struct();
     stree.docs.generic.usage.url = stree.docs.generic.url + "/usage";
 
-    %%%% docs generic usage ParaDRAM
+    %%%% docs generic usage sampling
 
-    stree.docs.generic.usage.paradram = struct();
-    stree.docs.generic.usage.paradram.url = stree.docs.generic.usage.url + "/paradram";
-    stree.docs.generic.usage.paradram.quickstart = struct();
-    stree.docs.generic.usage.paradram.quickstart.url = stree.docs.generic.usage.paradram.url + "/interface";
-    stree.docs.generic.usage.paradram.input = struct();
-    stree.docs.generic.usage.paradram.input.url = stree.docs.generic.usage.paradram.url + "/input";
-    stree.docs.generic.usage.paradram.specifications = struct();
-    stree.docs.generic.usage.paradram.specifications.url = stree.docs.generic.usage.paradram.url + "/specifications";
-    stree.docs.generic.usage.paradram.restart = struct();
-    stree.docs.generic.usage.paradram.restart.url = stree.docs.generic.usage.paradram.url + "/restart";
-    stree.docs.generic.usage.paradram.output = struct();
-    stree.docs.generic.usage.paradram.output.url = stree.docs.generic.usage.paradram.url + "/output";
+    stree.docs.generic.usage.sampling = struct();
+    stree.docs.generic.usage.sampling.url = stree.docs.generic.usage.url + "/sampling";
+
+    %%%% docs generic usage sampling ParaDRAM
+
+    stree.docs.generic.usage.sampling.paradram = struct();
+    stree.docs.generic.usage.sampling.paradram.url = stree.docs.generic.usage.sampling.url + "/paradram";
+
+    %%%% docs generic usage sampling ParaDRAM pages
+
+    stree.docs.generic.usage.sampling.paradram.quickstart = struct();
+    stree.docs.generic.usage.sampling.paradram.quickstart.url = stree.docs.generic.usage.sampling.paradram.url + "/interface";
+
+    stree.docs.generic.usage.sampling.paradram.input = struct();
+    stree.docs.generic.usage.sampling.paradram.input.url = stree.docs.generic.usage.sampling.paradram.url + "/input";
+
+    stree.docs.generic.usage.sampling.paradram.specifications = struct();
+    stree.docs.generic.usage.sampling.paradram.specifications.url = stree.docs.generic.usage.sampling.paradram.url + "/specifications";
+
+    stree.docs.generic.usage.sampling.paradram.restart = struct();
+    stree.docs.generic.usage.sampling.paradram.restart.url = stree.docs.generic.usage.sampling.paradram.url + "/restart";
+
+    stree.docs.generic.usage.sampling.paradram.output = struct();
+    stree.docs.generic.usage.sampling.paradram.output.url = stree.docs.generic.usage.sampling.paradram.url + "/output";
 
     %%%% GitHub issues
 

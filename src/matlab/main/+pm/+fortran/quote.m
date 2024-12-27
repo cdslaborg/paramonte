@@ -7,19 +7,20 @@
 %>  \param[in]  str :   The input scalar MATLAB string to be doubly quoted.<br>
 %>
 %>  \return
-%>  ``strQuoted``   :   The output scalar MATLAB string containing the doubly-quoted escaped input string.<br>
+%>  ``strQuoted``   :   The output scalar MATLAB string containing
+%>                      the doubly-quoted escaped input string.<br>
 %>
 %>  \interface{quote}
 %>  \code{.m}
 %>
-%>      strQuoted = pm.str.quote(str)
+%>      strQuoted = pm.fortran.quote(str)
 %>
 %>  \endcode
 %>
 %>  \example{quote}
-%>  \include{lineno} example/str/quote/main.m
+%>  \include{lineno} example/fortran/quote/main.m
 %>  \output{quote}
-%>  \include{lineno} example/str/quote/main.out.m
+%>  \include{lineno} example/fortran/quote/main.out.m
 %>
 %>  \final{quote}
 %>

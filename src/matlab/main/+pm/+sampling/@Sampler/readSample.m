@@ -7,7 +7,7 @@
 %>  \warning
 %>  This method is to be only used for post-processing of the
 %>  output sample file(s) of an already finished simulation.<br>
-%>  Although possible, this method is NOT meant to be called
+%>  Although possible, this method is **not** meant to be called
 %>  by all processes in MPI-parallel simulations.<br>
 %>
 %>  \param[in]  self    :   The input parent object of class [pm.sampling.Sampler](@ref Sampler)
@@ -17,7 +17,7 @@
 %>                          The specified ``pattern`` only needs to partially identify
 %>                          the name of the simulation to which the sample file belongs.<br>
 %>                          For example, specifying ``"./mydir/mysim"`` as input will
-%>                          lead to a search for file(s) beginning with "mysim" and
+%>                          lead to a search for file(s) beginning with ``"mysim"`` and
 %>                          ending with ``"_sample.txt"`` inside the directory ``"./mydir/"``.<br>
 %>                          If there are multiple files matching in the input ``pattern``,
 %>                          then all such files will be read and returned as elements of a list.<br>
@@ -28,7 +28,6 @@
 %>                          for any possible candidate files with the appropriate suffix
 %>                          in the current working directory.<br>
 %>                          (**optional**, default = ``sampler.spec.outputFileName`` or ``"./"``)
-%>
 %>  \param[in]  sep     :   The input MATLAB string containing the field separator used in the file(s).<br>
 %>                          (**optional**, default = ``sampler.spec.outputSeparator`` or automatically inferred.)
 %>

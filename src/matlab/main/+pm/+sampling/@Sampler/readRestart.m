@@ -7,7 +7,7 @@
 %>  \warning
 %>  This method is to be only used for post-processing of the output
 %>  restart file(s) of an already finished simulation.<br>
-%>  Although possible, this method is NOT meant
+%>  Although possible, this method is **not** meant
 %>  to be called by all processes in
 %>  MPI-parallel simulations.<br>
 %>
@@ -18,7 +18,7 @@
 %>  set the input simulation specification,
 %>
 %>  \code{.m}
-%>      sampler.spec.restartFileFormat = "ascii"
+%>      sampler.spec.outputRestartFileFormat = "ascii"
 %>  \endcode
 %>
 %>  where ``sampler`` can be an instance of any one of the ParaMonte
@@ -36,7 +36,7 @@
 %>                          The specified ``pattern`` only needs to partially identify
 %>                          the name of the simulation to which the restart file belongs.<br>
 %>                          For example, specifying ``"./mydir/mysim"`` as input will
-%>                          lead to a search for file(s) beginning with "mysim" and
+%>                          lead to a search for file(s) beginning with ``"mysim"`` and
 %>                          ending with ``"_restart.txt"`` inside the directory ``"./mydir/"``.<br>
 %>                          If there are multiple files matching in the input ``pattern``,
 %>                          then all such files will be read and returned as elements of a list.<br>

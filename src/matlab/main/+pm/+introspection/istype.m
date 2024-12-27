@@ -1,14 +1,17 @@
 %>  \brief
 %>  Return ``true`` if and only if the input ``varval`` conforms with the
-%>  specified input type ``vartype`` and the specified maximum size ``varsize``.
-%>  Otherwise, return ``false``.
+%>  specified input type ``vartype``, otherwise, return ``false``.<br>
 %>
 %>  \details
-%>  Beware that this algorithm converts input values of type ``char`` to ``string``
+%>  If the input argument ``varval`` is a collection of values and the input ``vartype``
+%>  is one of the five basic types (``string``, ``integer``, ``logical``, ``complex``, ``real``),
+%>  then each element of the ``varval`` sequence will be tested against the input ``vartype``.<br>
+%>
+%>  **Beware** that this algorithm converts input values of type ``char`` to ``string``
 %>  before further processing and type checking, that is, the types ``char`` to ``string``
 %>  are assumed to be conformable and compatible with each other, like most other sane languages.<br>
 %>
-%>  \param[in]  varval  :   The input value to be converted to namelist-compatible value.
+%>  \param[in]  varval  :   The input value whose type must be verified.
 %>  \param[in]  vartype :   The input scalar MATLAB string containing the
 %>                          expected type of the value given by the input ``varval``.<br>
 %>                          The following type-conformance rules apply:<br>
@@ -33,23 +36,24 @@
 %>                                      passing the input ``varval`` and ``vartype`` directly to the
 %>                                      MATLAB intrinsic function ``isa()``.<br>
 %>                          </ol>
-%>  \param[in]  varsize :   The input scalar MATLAB integer representing the
-%>                          maximum allowed size of the input value ``varval``.<br>
-%>                          (**optional**. If missing, the maximum length of the
-%>                          input ``varval`` will not be checked.)
 %>
 %>  \return
 %>  ``itis``            :   The output scalar MATLAB logical that is ``true`` if and only if
-%>                          the input ``varval`` conforms with the specified input type ``vartype``
-%>                          and the specified maximum size ``varsize``, otherwise, it is ``false``.<br>
+%>                          the input ``varval`` conforms with the specified input type ``vartype``,
+%>                          otherwise, it is ``false``.<br>
 %>
 %>  \interface{istype}
 %>  \code{.m}
 %>
 %>      itis = pm.introspection.istype(varval, vartype)
-%>      itis = pm.introspection.istype(varval, vartype, varsize)
 %>
 %>  \endcode
+%>
+%>  \see
+%>  [pm.introspection.verify](@ref verify)<br>
+%>  [pm.introspection.verified](@ref verified)<br>
+%>  [pm.introspection.islenleq](@ref islenleq)<br>
+%>  [pm.introspection.istype](@ref istype)<br>
 %>
 %>  \example{istype}
 %>  \include{lineno} example/introspection/istype/main.m
@@ -62,18 +66,12 @@
 %>  \JoshuaOsborne, May 21 2024, 5:47 PM, University of Texas at Arlington<br>
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
-function itis = istype(varval, vartype, varsize)
+function itis = istype(varval, vartype)
     if  ischar(varval)
         varval = string(varval);
     end
     varvalen = numel(varval);
     itis = false;
-    if  2 < nargin
-        itis = varvalen <= varsize;
-        if ~itis
-            return;
-        end
-    end
     for i = 1 : varvalen
         if isa(varval(i), "cell")
             value = varval{i};

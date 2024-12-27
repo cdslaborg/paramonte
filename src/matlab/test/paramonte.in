@@ -64,7 +64,7 @@ This\n
                                                             ! the output filenames will be assigned a randomly-generated prefix.
    !sampleSize                          = 111
     randomSeed                          = 2136275,
-    chainFileFormat                     = "compact"
+    outputChainFileFormat               = "compact"
     variableNameList                    = "variable1"       ! Notice the missing fourth variable name here. 
                                         , "variable2"       ! Any missing variable name will be automatically assigned an appropriate name. 
                                         , "variable3"
@@ -75,7 +75,7 @@ This\n
     progressReportPeriod                = 1000
     maxNumDomainCheckToWarn             = 100
     maxNumDomainCheckToStop             = 1000
-    restartFileFormat                   = "binary"
+    outputRestartFileFormat             = "binary"
     silentModeRequested                 = false             ! FALSE, false, .false., .f., and f would be also all valid logical values representing False
    !mpiFinalizeRequested                = true              ! TRUE, true, .true., .t., and t would be also all valid logical values representing True
 

@@ -3,6 +3,13 @@
 This project follows [Semantic Versioning](https://semver.org/). 
 To access the latest release of the package, visit [the ParaMonte GitHub repository release page](https://github.com/cdslaborg/paramonte/releases).  
 
+>   To learn about language-specific changes, visit:  
+>
+>   +   [ParaMonte C CHANGES.md](./src/c/CHANGES.md).  
+>   +   [ParaMonte C++ CHANGES.md](./src/cpp/CHANGES.md).  
+>   +   [ParaMonte Fortran CHANGES.md](./src/fortran/CHANGES.md).  
+>   +   [ParaMonte MATLAB CHANGES.md](./src/matlab/CHANGES.md).  
+
 ## **Version 2.x.x**  
 
 ### **Version 2.0.0** -- March 8, 2024 (pre-release)  
@@ -16,12 +23,6 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 The current pre-release contains only the ParaMonte C, C++, Fortran, and MATLAB implementations.  
 Work and significant testing is underway to release the ParaMonte Python and R implementations.  
-To learn about language-specific changes, visit:  
-
-+   [ParaMonte C CHANGES.md](./src/c/CHANGES.md).  
-+   [ParaMonte C++ CHANGES.md](./src/cpp/CHANGES.md).  
-+   [ParaMonte Fortran CHANGES.md](./src/fortran/CHANGES.md).  
-+   [ParaMonte MATLAB CHANGES.md](./src/matlab/CHANGES.md).  
 
 **Compiler Compatibility**  
 

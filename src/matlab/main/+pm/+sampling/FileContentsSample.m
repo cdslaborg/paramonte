@@ -71,6 +71,7 @@ classdef FileContentsSample < pm.io.FileContentsTabular
         %>  This component is populated by the subclasses automatically.<br>
         %>  It can also be manually constructed by calling the ``Hidden`` class method
         %>  [pm.sampling.FileContentsSample::setvis](@ref FileContentsSample::setvis).<br>
+        %>
         vis = [];
     end
 
@@ -105,8 +106,8 @@ classdef FileContentsSample < pm.io.FileContentsTabular
         %>  This is the constructor of the class [pm.sampling.FileContentsSample](@ref FileContentsSample).<br>
         %>
         %>  \param[in]  file    :   The input scalar MATLAB string containing the path to an external file.<br>
-        %>  \param[in]  silent  :   See the corresponding argument of [pm.sampling.FileContentsRestart](@ref FileContentsRestart) class.<br>
-        %>                          (**optional**. The default is set by [pm.sampling.FileContentsRestart](@ref FileContentsRestart).)
+        %>  \param[in]  silent  :   See the corresponding argument of [pm.sampling.FileContentsTabular](@ref FileContentsTabular) class.<br>
+        %>                          (**optional**. The default is set by [pm.sampling.FileContentsTabular](@ref FileContentsTabular).)
         %>  \param[in]  sep     :   The input scalar MATLAB string containing the field separator used in the file.<br>
         %>                          (**optional**, default = ``","``)
         %>
@@ -194,7 +195,7 @@ classdef FileContentsSample < pm.io.FileContentsTabular
         %>  Compute the statistics of the parent object of class [pm.sampling.FileContentsSample](@ref FileContentsSample)
         %>  and store the results in the respective fields of the ``stats`` attribute of the parent object.<br>
         %>
-        %>  \brief
+        %>  \details
         %>  This is a dynamic ``Hidden`` method of class [pm.sampling.FileContentsSample](@ref FileContentsSample).<br>
         %>  It is **inaccessible** to the end users of the library.<br>
         %>
@@ -280,7 +281,7 @@ classdef FileContentsSample < pm.io.FileContentsTabular
         %>  Compute the statistics of the parent object of class [pm.sampling.FileContentsSample](@ref FileContentsSample)
         %>  and store the results in the respective fields of the ``stats`` attribute of the parent object.<br>
         %>
-        %>  \brief
+        %>  \details
         %>  This is a dynamic ``Hidden`` method of class [pm.sampling.FileContentsSample](@ref FileContentsSample).<br>
         %>  It is **inaccessible** to the end users of the library.<br>
         %>

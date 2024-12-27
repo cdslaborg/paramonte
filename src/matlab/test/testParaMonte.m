@@ -25,7 +25,7 @@ fclose('all');
 clear classes;
 format compact; format long;
 pmlibRootDir = './'; % set this path to the paramonte library root dir
-addpath( genpath(pmlibRootDir) ) 
+addpath( genpath(pmlibRootDir) )
 filePath = mfilename('fullpath');
 [scriptPath,fileName,fileExt] = fileparts(filePath); cd(scriptPath); % Change working directory to source code directory.
 cd(fileparts(mfilename('fullpath'))); % Change working directory to source code directory.
@@ -73,9 +73,9 @@ else
 end
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
 %pmpd.spec.outputSeparator                       = "|";                          % Works
-%pmpd.spec.chainFileFormat                       = "compact";                    % Works
+%pmpd.spec.outputChainFileFormat                 = "compact";                    % Works
 %pmpd.spec.variableNameList                      = ["Variable-X", "Variable-Y"]; % Works
-%pmpd.spec.restartFileFormat                     = "ASCII";                      % Works
+%pmpd.spec.outputRestartFileFormat               = "ASCII";                      % Works
 %pmpd.spec.outputColumnWidth                     = 25;                           % Works
 %pmpd.spec.outputRealPrecision                   = 17;                           % Works
 %pmpd.spec.silentModeRequested                   = 0;                            % Works
@@ -122,14 +122,14 @@ fclose('all');
 % plot3(pmpd.Chain.State(1,:),pmpd.Chain.State(2,:),pmpd.Chain.LogFunc);
 
 % for i = 1 : ndim
-% 
+%
 %     figure("color", "white");
 %     histfit(pmpd.Chain.State(i,:));
-%     
+%
 %     figure("color", "white");
 %     plot(pmpd.Chain.State(i,:));
 %     set(gca,'xscale','log')
-%   
+%
 % end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

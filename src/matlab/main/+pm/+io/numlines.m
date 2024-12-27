@@ -38,7 +38,7 @@
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
 function nlines = numlines(idname)
-    if pm.introspection.istype(idname, "string", 1)
+    if  pm.introspection.verified(idname, "string", 1)
         [fid, errmsg] = fopen(idname, 'r');
         if fid < 0
             help("pm.io.numlines");
@@ -51,7 +51,7 @@ function nlines = numlines(idname)
                 + newline ...
                 );
         end
-    elseif pm.introspection.istype(idname, "integer", 1)
+    elseif pm.introspection.verified(idname, "integer", 1)
         fid = idname;
     else
         help("pm.io.numlines");

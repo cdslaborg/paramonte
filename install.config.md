@@ -25,7 +25,7 @@ in tiers sorted by their relevance and importance to the end users.
 
 The general usage syntax of the flags with the `install.sh` installation script is the following:
 ```bash
-./install.sh flag value
+./install.sh --flag value
 ```
 
 where `flag` can be any of the following installation flags and `value` is the user-specified value for the flag.
@@ -41,7 +41,7 @@ where `flag` can be any of the following installation flags and `value` is the u
 
 The general usage syntax of the flags with the `install.bat` installation script is the following:
 ```bash
-./install.bat flag value
+./install.bat --flag value
 ```
 
 where `flag` can be any of the following installation flags and `value` is the user-specified value for the flag.

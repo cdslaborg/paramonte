@@ -9,14 +9,18 @@
 %>  \param[in]  exkeys      :   The input vector of MATLAB strings
 %>                              containing a list of field names of the input ``object``
 %>                              that must be excluded from the output ``hashmap`` cell.<br>
+%>                              If the input argument ``unique`` is set to ``True``,
+%>                              then all elements of ``exkeys`` are compared to the
+%>                              object field and subfield names case-insensitively.<br>
 %>                              (**optional**, default = ``[]``)
 %>  \param[in]  unique      :   The input scalar MATLAB logical.<br>
 %>                              If ``true``, only the first instance of occurrence
 %>                              of any field name is added to the output cell array
 %>                              without considering case-sensitivity of the field names.<br>
+%>                              This argument also affects the input argument ``exkeys``.<br>
 %>                              (**optional**, default = ``false``)
-%>  \param[in]  onlyfull    :   The input scalar MATLAB logical.
-%>                              If ``true``, only the structure field names field values
+%>  \param[in]  onlyfull    :   The input scalar MATLAB logical.<br>
+%>                              If ``true``, only the field names with field values that
 %>                              are nonempty (as assessed by the MATLAB intrinsic ``isempty()``)
 %>                              are included in the output ``hashmap``.<br>
 %>                              (**optional**, default = ``false``)
@@ -60,11 +64,12 @@ function hashmap = struct2hash(object, exkeys, unique, onlyfull)
     if nargin < 2; exkeys = []; end
     if isempty(unique); unique = false; end
     if isempty(onlyfull); onlyfull = false; end
-    if unique
-        fnameListLower = lower(fnameList);
-    end
     hashmap = cell(fnameListLen * 2, 1);
     exkeys = string(exkeys);
+    if  unique
+        fnameListLower = lower(fnameList);
+        exkeys = lower(exkeys);
+    end
     counter = 0;
     for i = 1 : fnameListLen
         fname = string(fnameList{i});

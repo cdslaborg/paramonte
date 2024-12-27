@@ -197,8 +197,10 @@ classdef SpecBase < pm.matlab.Handle
         %>  \example{doc}
         %>  \code{.m}
         %>
-        %>      pmpd.spec.doc()                 % return help for all specifications.
-        %>      pmpd.spec.doc("outputFileName") % return help for the specification ``outputFileName``.
+        %>      spec = pm.sampling.SpecBase();
+        %>
+        %>      spec.doc()                 % return help for all specifications.
+        %>      spec.doc("outputFileName") % return help for the specification ``outputFileName``.
         %>
         %>  \endcode
         %>
@@ -229,8 +231,8 @@ classdef SpecBase < pm.matlab.Handle
                             + "of the sampler as specified in the ``spec`` component." + newline ...
                             + "Example usage:" + newline ...
                             + newline ...
-                            + pm.io.tab + "doc()" + newline ...
-                            + pm.io.tab + "doc(""chainSize"")" + newline ...
+                            + pm.io.tab() + "doc()" + newline ...
+                            + pm.io.tab() + "doc(""chainSize"")" + newline ...
                             + newline ...
                             );
                 end
@@ -275,7 +277,7 @@ classdef SpecBase < pm.matlab.Handle
             if  isempty(self.outputFileName)
                 % First define ``outputFileName`` if it is empty.
                 self.outputFileName = fullfile(string(pwd), pm.io.getFileName(self.method));
-            elseif pm.introspection.istype(self.outputFileName, "string", 1)
+            elseif pm.introspection.verified(self.outputFileName, "string", 1)
                 if ~self.silent && contains(self.outputFileName, " ")
                     warning ( newline ...
                             + "The specified simulation specification ``outputFileName`` contains whitespace characters(s)." + newline ...
@@ -288,33 +290,33 @@ classdef SpecBase < pm.matlab.Handle
                     self.outputFileName = fullfile(string(pm.sys.path.abs(self.outputFileName, "lean")), pm.io.getFileName(self.method));
                 end
             end
-            entries = "";
-            if  ~isempty(self.description                   ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("description                  ", self.description                     , "string" , 1); end
-            if  ~isempty(self.domain                        ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("domain                       ", self.domain                          , "string" , 1); end
-            if  ~isempty(self.domainAxisName                ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("domainAxisName               ", self.domainAxisName                  , "string" , ndim); end
-            if  ~isempty(self.domainBallAvg                 ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("domainBallAvg                ", self.domainBallAvg                   , "real"   , ndim); end
-            if  ~isempty(self.domainBallCor                 ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("domainBallCor                ", self.domainBallCor                   , "real"   , ndim^2); end
-            if  ~isempty(self.domainBallCov                 ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("domainBallCov                ", self.domainBallCov                   , "real"   , ndim^2); end
-            if  ~isempty(self.domainBallStd                 ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("domainBallStd                ", self.domainBallStd                   , "real"   , ndim); end
-            if  ~isempty(self.domainCubeLimitLower          ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("domainCubeLimitLower         ", self.domainCubeLimitLower            , "real"   , ndim); end
-            if  ~isempty(self.domainCubeLimitUpper          ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("domainCubeLimitUpper         ", self.domainCubeLimitUpper            , "real"   , ndim); end
-            if  ~isempty(self.domainErrCount                ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("domainErrCount               ", self.domainErrCount                  , "integer", 1); end
-            if  ~isempty(self.domainErrCountMax             ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("domainErrCountMax            ", self.domainErrCountMax               , "integer", 1); end
-            if  ~isempty(self.outputChainFileFormat         ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("outputChainFileFormat        ", self.outputChainFileFormat           , "string" , 1); end
-            if  ~isempty(self.outputColumnWidth             ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("outputColumnWidth            ", self.outputColumnWidth               , "integer", 1); end
-            if  ~isempty(self.outputFileName                ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("outputFileName               ", self.outputFileName                  , "string" , 1); end
-            if  ~isempty(self.outputStatus                  ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("outputStatus                 ", self.outputStatus                    , "string" , 1); end
-            if  ~isempty(self.outputPrecision               ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("outputPrecision              ", self.outputPrecision                 , "integer", 1); end
-            if  ~isempty(self.outputReportPeriod            ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("outputReportPeriod           ", self.outputReportPeriod              , "integer", 1); end
-            if  ~isempty(self.outputRestartFileFormat       ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("outputRestartFileFormat      ", self.outputRestartFileFormat         , "string" , 1); end
-            if  ~isempty(self.outputSampleSize              ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("outputSampleSize             ", self.outputSampleSize                , "integer", 1); end
-            if  ~isempty(self.outputSeparator               ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("outputSeparator              ", self.outputSeparator                 , "string" , 1); end
-            if  ~isempty(self.outputSplashMode              ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("outputSplashMode             ", self.outputSplashMode                , "string" , 1); end
-            if  ~isempty(self.parallelism                   ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("parallelism                  ", self.parallelism                     , "string" , 1); end
-            if  ~isempty(self.parallelismMpiFinalizeEnabled ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("parallelismMpiFinalizeEnabled", self.parallelismMpiFinalizeEnabled   , "logical", 1); end
-            if  ~isempty(self.parallelismNumThread          ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("parallelismNumThread         ", self.parallelismNumThread            , "integer", 1); end
-            if  ~isempty(self.randomSeed                    ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("randomSeed                   ", self.randomSeed                      , "integer", 1); end
-            if  ~isempty(self.targetAcceptanceRate          ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("targetAcceptanceRate         ", self.targetAcceptanceRate            , "real"   , 2); end
+            entries = "plang=""Version " + string(version()) + """";
+            if  ~isempty(self.description                   ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("description                  ", self.description                     , "string" , 1); end
+            if  ~isempty(self.domain                        ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("domain                       ", self.domain                          , "string" , 1); end
+            if  ~isempty(self.domainAxisName                ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("domainAxisName               ", self.domainAxisName                  , "string" , ndim); end
+            if  ~isempty(self.domainBallAvg                 ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("domainBallAvg                ", self.domainBallAvg                   , "real"   , ndim); end
+            if  ~isempty(self.domainBallCor                 ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("domainBallCor                ", self.domainBallCor                   , "real"   , ndim^2); end
+            if  ~isempty(self.domainBallCov                 ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("domainBallCov                ", self.domainBallCov                   , "real"   , ndim^2); end
+            if  ~isempty(self.domainBallStd                 ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("domainBallStd                ", self.domainBallStd                   , "real"   , ndim); end
+            if  ~isempty(self.domainCubeLimitLower          ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("domainCubeLimitLower         ", self.domainCubeLimitLower            , "real"   , ndim); end
+            if  ~isempty(self.domainCubeLimitUpper          ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("domainCubeLimitUpper         ", self.domainCubeLimitUpper            , "real"   , ndim); end
+            if  ~isempty(self.domainErrCount                ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("domainErrCount               ", self.domainErrCount                  , "integer", 1); end
+            if  ~isempty(self.domainErrCountMax             ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("domainErrCountMax            ", self.domainErrCountMax               , "integer", 1); end
+            if  ~isempty(self.outputChainFileFormat         ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("outputChainFileFormat        ", self.outputChainFileFormat           , "string" , 1); end
+            if  ~isempty(self.outputColumnWidth             ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("outputColumnWidth            ", self.outputColumnWidth               , "integer", 1); end
+            if  ~isempty(self.outputFileName                ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("outputFileName               ", self.outputFileName                  , "string" , 1); end
+            if  ~isempty(self.outputStatus                  ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("outputStatus                 ", self.outputStatus                    , "string" , 1); end
+            if  ~isempty(self.outputPrecision               ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("outputPrecision              ", self.outputPrecision                 , "integer", 1); end
+            if  ~isempty(self.outputReportPeriod            ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("outputReportPeriod           ", self.outputReportPeriod              , "integer", 1); end
+            if  ~isempty(self.outputRestartFileFormat       ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("outputRestartFileFormat      ", self.outputRestartFileFormat         , "string" , 1); end
+            if  ~isempty(self.outputSampleSize              ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("outputSampleSize             ", self.outputSampleSize                , "integer", 1); end
+            if  ~isempty(self.outputSeparator               ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("outputSeparator              ", self.outputSeparator                 , "string" , 1); end
+            if  ~isempty(self.outputSplashMode              ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("outputSplashMode             ", self.outputSplashMode                , "string" , 1); end
+            if  ~isempty(self.parallelism                   ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("parallelism                  ", self.parallelism                     , "string" , 1); end
+            if  ~isempty(self.parallelismMpiFinalizeEnabled ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("parallelismMpiFinalizeEnabled", self.parallelismMpiFinalizeEnabled   , "logical", 1); end
+            if  ~isempty(self.parallelismNumThread          ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("parallelismNumThread         ", self.parallelismNumThread            , "integer", 1); end
+            if  ~isempty(self.randomSeed                    ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("randomSeed                   ", self.randomSeed                      , "integer", 1); end
+            if  ~isempty(self.targetAcceptanceRate          ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("targetAcceptanceRate         ", self.targetAcceptanceRate            , "real"   , 2); end
         end
         %    % These methods have been implemented to override the default 'handle' class methods,
         %    % so that they will not pop-up after pressing 'Tab' button.

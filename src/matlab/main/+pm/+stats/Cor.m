@@ -114,7 +114,7 @@ classdef Cor < pm.stats.Cov
         %>  must be set explicitly manually.<br>
         %>
         %>  \param[inout]   self    :   The **implicitly-passed** input argument representing the parent object of the method.<br>
-        %>  \param[in]      dfref   :   The input (reference of function handle returning a) MATLAB matrix or table of rank ``2``
+        %>  \param[in]      dfref   :   The input (reference to a function handle returning a) MATLAB matrix or table of rank ``2``
         %>                              containing the ``ncol`` columns of ``nrow`` data whose correlation matrix must be computed.<br>
         %>                              Ideally, the user would want to pass a reference to a dataframe (e.g., as a function handle ``@()df``)
         %>                              so that the data remains dynamically up-to-date.<br>
@@ -128,7 +128,7 @@ classdef Cor < pm.stats.Cov
         %>                              (**optional**, default = ``"pearson"``)
         %>
         %>  \return
-        %>  ``val``             :   The output MATLAB ``table`` containing the correlation matrix.<br>
+        %>  ``val``                 :   The output MATLAB ``table`` containing the correlation matrix.<br>
         %>
         %>  \interface{get}
         %>  \code{.m}
@@ -178,7 +178,7 @@ classdef Cor < pm.stats.Cov
             else
                 help("pm.stats.Cov");
                 error   ( newline ...
-                        + "A non-mepty ``dfref`` attribute or input argument is required for computing the covariance matrix." + newline ...
+                        + "A non-empty ``dfref`` attribute or input argument is required for computing the covariance matrix." + newline ...
                         + newline ...
                         );
             end
@@ -227,7 +227,7 @@ classdef Cor < pm.stats.Cov
         %>  This method is inaccessible to the end users of the ParaMonte MATLAB library.<br>
         %>
         %>  \param[inout]   self    :   The **implicitly-passed** input argument representing the parent object of the method.<br>
-        %>  \param[in]      val     :   The input (reference of function handle returning a) MATLAB matrix or table of rank ``2``
+        %>  \param[in]      val     :   The input (reference to a function handle returning a) MATLAB matrix or table of rank ``2``
         %>                              containing the computed correlation matrix to be visualized.<br>
         %>                              Ideally, the user would want to pass a reference to a dataframe (e.g., as a function handle ``@()df``)
         %>                              so that the data remains dynamically up-to-date.<br>
@@ -237,7 +237,9 @@ classdef Cor < pm.stats.Cov
         %>  \code{.m}
         %>
         %>      mat = pm.stats.Cor(dfref, method)
-        %>      mat.setvis(); % This method is automatically called within the object constructor.
+        %>
+        %>      mat.setvis() % This method is automatically called within the object constructor.
+        %>      mat.setvis(val) % This method is automatically called within the object constructor.
         %>
         %>  \endcode
         %>

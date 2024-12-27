@@ -86,7 +86,7 @@
 %>  \endcode
 %>
 %>  The ParaMonte MATLAB library currently contains a myriad of MATLAB *packages*.<br>
-%>  The ParaMonte MATLAB library is currently under active development to extend the library functionalities to other tasks supported by the [ParaMonte Fortran library](../../../fortran/latest/index.html).<br>
+%>  The ParaMonte MATLAB library is currently under active development to extend the library functionalities to other tasks supported by the [ParaMonte Fortran library](../../fortran/latest/index.html).<br>
 %>  For a full list of all available functionalities and modules, see the [files listing](./files.html) and [class listing](./annotated.html) of this documentation website.<br>
 %>
 %>  [⛓⛓](#ParaMonteLangModulesSamplers)

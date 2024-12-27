@@ -81,7 +81,7 @@
     character(63,SKG)                       :: parallelism
     logical(LK)                             :: parallelismMpiFinalizeEnabled
     integer(IK)                             :: parallelismNumThread
-   !character(511,SKG)                      :: plang
+    character(511,SKG)                      :: plang
     integer(IK)                             :: randomSeed
     character(PATHLEN,SKG)                  :: sysInfoFilePath
     real(RKG)                               :: targetAcceptanceRate(2)

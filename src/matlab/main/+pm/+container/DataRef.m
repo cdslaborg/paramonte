@@ -27,15 +27,15 @@ classdef DataRef < pm.matlab.Handle
 
     properties(Access = protected, Hidden)
         %>
-        %>  ``dfref``
+        %>  ``ref``
         %>
         %>  A ``protected`` and ``Hidden`` copy of the user-specified
-        %>  input data (or its handle) ``dfref`` to the class constructor.<br>
+        %>  input data (or its handle) ``ref`` to the class constructor.<br>
         %>  This is an exact copy of the user-specified function handle or data.<br>
         %>  Users are supposed to access this component only via the class
         %>  method [pm.container.DataRef.copy()](@ref DataRef::copy).<br>
         %>
-        dfref;
+        ref;
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -45,10 +45,10 @@ classdef DataRef < pm.matlab.Handle
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         %>  \brief
-        %>  Generate an return an object of class [DataRef](pm.container.DataRef)
+        %>  Generate an return an object of class [pm.container.DataRef](@ref DataRef)
         %>  from the input dataframe or its specified input reference.<br>
         %>
-        %>  \param[in]  dfref   :   The input object containing the target dataset
+        %>  \param[in]  data    :   The input object containing the target dataset
         %>                          or function handle that takes no arguments and returns the dataset.<br>
         %>                          Specifying a function handle is superior to specifying the dataset
         %>                          directly, because the function handle will always allow the use of
@@ -61,7 +61,7 @@ classdef DataRef < pm.matlab.Handle
         %>  \interface{DataRef}
         %>  \code{.m}
         %>
-        %>      df = pm.container.DataRef(dfref);
+        %>      dref = pm.container.DataRef(data);
         %>
         %>  \endcode
         %>
@@ -74,11 +74,11 @@ classdef DataRef < pm.matlab.Handle
         %>
         %>  \author
         %>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin<br>
-        function self = DataRef(dfref)
+        function self = DataRef(data)
             if  nargin < 1
-                dfref = [];
+                data = [];
             end
-            self.dfref = dfref;
+            self.ref = data;
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -97,15 +97,15 @@ classdef DataRef < pm.matlab.Handle
         %>  \param[inout]   self    :   The **implicitly-passed** input argument representing the parent object of the method.<br>
         %>
         %>  \return
-        %>  ``df``                  :   The output scalar MATLAB ``table`` a full copy of the data (reference)
-        %>                              contained in the user-specified input ``dfref`` passed
+        %>  ``dfcopy``              :   The output scalar MATLAB ``table`` a full copy of the data (reference)
+        %>                              contained in the user-specified input ``data`` passed
         %>                              to the constructor of the parent object.<br>
         %>
         %>  \interface{copy}
         %>  \code{.m}
         %>
-        %>      df = pm.container.DataRef(dfref);
-        %>      dfcopy = df.copy();
+        %>      dref = pm.container.DataRef(data);
+        %>      dfcopy = dref.copy();
         %>
         %>  \endcode
         %>
@@ -117,11 +117,11 @@ classdef DataRef < pm.matlab.Handle
         %>  \author
         %>  \JoshuaOsborne, Friday May 17, 2014, 6:40 PM, The University of Texas at Arlington, Dallas, TX<br>
         %>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin<br>
-        function df = copy(self)
-            if  isa(self.dfref, 'function_handle')
-                df = self.dfref();
+        function dfcopy = copy(self)
+            if  isa(self.ref, 'function_handle')
+                dfcopy = self.ref();
             else
-                df = self.dfref;
+                dfcopy = self.ref;
             end
         end
 

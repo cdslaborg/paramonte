@@ -30,7 +30,7 @@ classdef AutoCorr < pm.matlab.Handle
         %>  ``dfref``
         %>
         %>  A scalar object of class [pm.container.DataFrame](@ref DataFrame) containing
-        %>  (a refernece to) the user-specified data whose covariance must be computed.<br>
+        %>  (a reference to) the user-specified data whose auto-correlation must be computed.<br>
         %>
         dfref = [];
         %>
@@ -98,6 +98,8 @@ classdef AutoCorr < pm.matlab.Handle
 
         %>  \brief
         %>  Return an object of class [pm.stats.AutoCorr](@ref AutoCorr).<br>
+        %>
+        %>  \details
         %>  This is the constructor of the [pm.stats.AutoCorr](@ref AutoCorr) class.<br>
         %>
         %>  \param[in]  dfref   :   The input MATLAB matrix or table of rank ``2``
@@ -111,6 +113,7 @@ classdef AutoCorr < pm.matlab.Handle
         %>                          of lags for which the autocorrelation must be computed.<br>
         %>                          This argument is directly passed to the corresponding argument
         %>                          of the MATLAB intrinsic ``autocorr()`` in the MATLAB Econometrics Toolbox.<br>
+        %>                          (**optional**, default = ``size(dfref, 1) - 1``)
         %>  \param[in]  numstd  :   The input positive scalar MATLAB double representing the
         %>                          number of standard deviations to be used in computing the
         %>                          lower and upper significance levels of the autocorrelation.<br>
@@ -267,7 +270,7 @@ classdef AutoCorr < pm.matlab.Handle
             else
                 help("pm.stats.AutoCorr");
                 error   ( newline ...
-                        + "A non-mepty ``dfref`` attribute or input argument is required for computing the autocorrelation." + newline ...
+                        + "A non-empty ``dfref`` attribute or input argument is required for computing the autocorrelation." + newline ...
                         + newline ...
                         );
             end
@@ -349,21 +352,23 @@ classdef AutoCorr < pm.matlab.Handle
         %>  This method is inaccessible to the end users of the ParaMonte MATLAB library.<br>
         %>
         %>  \param[inout]   self    :   The **implicitly-passed** input argument representing the parent object of the method.<br>
-        %>  \param[in]      val     :   The input (reference of function handle returning a) MATLAB matrix or table of rank ``2``
+        %>  \param[in]      val     :   The input (reference to a function handle returning a) MATLAB matrix or table of rank ``2``
         %>                              containing the computed autocorrelation to be visualized.<br>
         %>                              Ideally, the user would want to pass a reference to a dataframe (e.g., as a function handle ``@()df``)
         %>                              so that the data remains dynamically up-to-date.<br>
         %>                              (**optional**. If missing, the contents of the corresponding ``var`` attribute of the parent object will be used.)
         %>
-        %>  \interface{get}
+        %>  \interface{setvis}
         %>  \code{.m}
         %>
         %>      acf = pm.stats.AutoCorr(dfref, method)
+        %>
         %>      acf.setvis(); % This method is automatically called within the object constructor.
+        %>      acf.setvis(val); % This method is automatically called within the object constructor.
         %>
         %>  \endcode
         %>
-        %>  \final{get}
+        %>  \final{setvis}
         %>
         %>  \author
         %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>

@@ -519,8 +519,8 @@ module pm_paramonte
                                                         NLC// &
                                                         SK_"at"//NLC// &
                                                         NLC// &
-                                                        SK_"Department of Physics"//NLC// &
-                                                        SK_"Data Science Program, College of Science"//NLC// &
+                                                        SK_"Division of Data Science"//NLC// &
+                                                        SK_"Department of Physics & Astronomy"//NLC// &
                                                         SK_"The University of Texas at Arlington"//NLC// &
                                                         NLC// &
                                                         SK_"Multiscale Modeling Group"//NLC// &

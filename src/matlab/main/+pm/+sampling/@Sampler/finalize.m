@@ -11,7 +11,7 @@
 %>
 %>  \author
 %>  \JoshuaOsborne, May 21 2024, 12:10 AM, University of Texas at Arlington<br>
-%>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin%>
+%>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin<br>
 function finalize(self)
     if  self.partype == "openmp"
         if ~self.silent

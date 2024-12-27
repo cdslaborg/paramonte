@@ -12,7 +12,7 @@ assert(namlist == "paramonte")
 assert(loclist == 2)
 
 pm.matlab.show()
-pm.matlab.show('[loclist, namlist] = pm.str.locname(["library", "paramonte"], "paramonte")')
+pm.matlab.show('[loclist, namlist] = pm.str.locname(["library", "paramonte"], ["paramonte", 1])')
                 [loclist, namlist] = pm.str.locname(["library", "paramonte"], ["paramonte", 1])
 pm.matlab.show('loclist')
 pm.matlab.show( loclist )

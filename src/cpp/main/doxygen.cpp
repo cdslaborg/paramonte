@@ -51,7 +51,7 @@
 /// [⛓](#ParaMonteLangDocumentation)
 /// \section ParaMonteLangDocumentation ParaMonte C++ Documentation Website
 ///
-/// The documentation for the latest version of the ParaMonte C++ library is always <a href="../../cpp/latest/html/index.html" target="_blank"><b>available on this page</b></a>.<br>
+/// The documentation for the latest version of the ParaMonte C++ library is always <a href="../../cpp/latest/index.html" target="_blank"><b>available on this page</b></a>.<br>
 ///
 /// [⛓](#ParaMonteLangModules)
 /// \section ParaMonteLangModules ParaMonte C++ Library Modules
@@ -63,7 +63,7 @@
 /// </ol>
 ///
 /// The ParaMonte C++ library is currently under active development to extend the library functionalities to other tasks supported by the [ParaMonte Fortran library](../../../fortran/latest/html).<br>
-/// For a full list of all available functionalities and modules, see the [modules listing](./namespaces.html) of this documentation website.<br>
+/// For a full list of all available functionalities and modules, see the [modules listing](./modules.html) of this documentation website.<br>
 ///
 /// Module                  | Functionality
 /// ------------------------|--------------

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/USR/BIN/ENV python
 
 import matplotlib.pyplot as plt
 #import paramonte as pm

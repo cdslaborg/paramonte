@@ -689,7 +689,6 @@ classdef Axes < pm.matlab.Handle
         %>                                  <li>    ``"histfit"``
         %>                                  <li>    ``"heatmap"``
         %>                              </ol>
-        %>
         %>  \param[in]  varargin    :   Any ``property, value`` pair of the object.<br>
         %>                              If the property is a ``struct()``, then its value must be given as a cell array,
         %>                              with consecutive elements representing the struct ``property-name, property-value`` pairs.<br>
@@ -703,6 +702,7 @@ classdef Axes < pm.matlab.Handle
         %>  \code{.m}
         %>
         %>      axes = pm.vis.axes.Axes(ptype);
+        %>      axes = pm.vis.axes.Axes(ptype, varargin);
         %>
         %>  \endcode
         %>
@@ -719,7 +719,7 @@ classdef Axes < pm.matlab.Handle
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function self = Axes(ptype, varargin)
 
-            if  nargin < 1 || ~pm.introspection.istype(ptype, "string", 1) || ~pm.array.len(ptype)
+            if  nargin < 1 || ~pm.introspection.verified(ptype, "string", 1) || ~pm.array.len(ptype)
                 help("pm.vis.axes.Axes");
                 error   ( newline ...
                         + "The input argument ``ptype`` is missing." + newline ...
@@ -1325,7 +1325,7 @@ classdef Axes < pm.matlab.Handle
                 self.setKeyVal(self.type.name, "showEmptyBins", "off");
                %self.setKeyVal(self.type.name, "numbins", [100 100]);
                 if ~self.colormap.enabled
-                    if ~pm.introspection.istype(self.histogram2.faceColor, "string", 1)
+                    if ~pm.introspection.verified(self.histogram2.faceColor, "string", 1)
                         self.setKeyVal(self.type.name, "faceColor", "auto");
                     elseif self.histogram2.faceColor == "flat"
                         % enforce monochrome by removing the colormapping.

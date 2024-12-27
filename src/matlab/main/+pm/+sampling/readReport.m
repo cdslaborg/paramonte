@@ -5,7 +5,7 @@
 %>
 %>  \warning
 %>  This function is to be only used for post-processing of the output report file(s) of an already finished simulation.<br>
-%>  Although possible, this method is NOT meant to be called by all processes in MPI-parallel simulations.<br>
+%>  Although possible, this method is **not** meant to be called by all processes in MPI-parallel simulations.<br>
 %>
 %>  \param[in]  sampler :   The input object of superclass [pm.sampling.Sampler](@ref Sampler)
 %>                          whose type and properties determine the type of the output object(s).<br>
@@ -15,7 +15,7 @@
 %>                          The specified ``pattern`` only needs to partially identify
 %>                          the name of the simulation to which the report file belongs.<br>
 %>                          For example, specifying ``"./mydir/mysim"`` as input will
-%>                          lead to a search for file(s) beginning with "mysim" and
+%>                          lead to a search for file(s) beginning with ``"mysim"`` and
 %>                          ending with ``"_report.txt"`` inside the directory ``"./mydir/"``.<br>
 %>                          If there are multiple files matching in the input ``pattern``,
 %>                          then all such files will be read and returned as elements of a list.<br>
@@ -58,7 +58,6 @@
 %>
 %>      sampler = pm.sampling.Sampler();
 %>
-%>      reportList = pm.sampling.readReport("./out/test_run_");
 %>      reportList = pm.sampling.readReport([], "./out/test_run_");
 %>      reportList = pm.sampling.readReport(sampler, "./out/test_run_");
 %>
@@ -76,19 +75,19 @@
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 function reportList = readReport(sampler, pattern)
 
+    if  nargin < 1
+        sampler = [];
+    end
+    if  isempty(sampler)
+        sampler = pm.sampling.Sampler();
+    end
+
     if  nargin < 2
         if  0 < pm.array.len(sampler.spec.outputFileName)
             pattern = string(sampler.spec.outputFileName);
         else
             pattern = [];
         end
-    end
-
-    if  nargin < 1
-        sampler = [];
-    end
-    if  isempty(sampler)
-        sampler = pm.sampling.Sampler();
     end
 
     pathList = sampler.findfile("report", pattern);

@@ -5,7 +5,7 @@
 %>
 %>  \warning
 %>  This function is to be only used for post-processing of the output sample file(s) of an already finished simulation.<br>
-%>  Although possible, this method is NOT meant to be called by all processes in MPI-parallel simulations.<br>
+%>  Although possible, this method is **not** meant to be called by all processes in MPI-parallel simulations.<br>
 %>
 %>  \param[in]  sampler :   The input object of superclass [pm.sampling.Sampler](@ref Sampler)
 %>                          whose type and properties determine the type of the output object(s).<br>
@@ -15,7 +15,7 @@
 %>                          The specified ``pattern`` only needs to partially identify
 %>                          the name of the simulation to which the sample file belongs.<br>
 %>                          For example, specifying ``"./mydir/mysim"`` as input will
-%>                          lead to a search for file(s) beginning with "mysim" and
+%>                          lead to a search for file(s) beginning with ``"mysim"`` and
 %>                          ending with ``"_sample.txt"`` inside the directory ``"./mydir/"``.<br>
 %>                          If there are multiple files matching in the input ``pattern``,
 %>                          then all such files will be read and returned as elements of a list.<br>
@@ -45,9 +45,11 @@
 %>      sampleList = pm.sampling.readSample();
 %>      sampleList = pm.sampling.readSample([]);
 %>      sampleList = pm.sampling.readSample([], []);
-%>      sampleList = pm.sampling.readSample(pattern);
-%>      sampleList = pm.sampling.readSample([], sep);
-%>      sampleList = pm.sampling.readSample(pattern, sep);
+%>      sampleList = pm.sampling.readSample([], [], []);
+%>      sampleList = pm.sampling.readSample([], pattern);
+%>      sampleList = pm.sampling.readSample([], [], sep);
+%>      sampleList = pm.sampling.readSample([], pattern, sep);
+%>      sampleList = pm.sampling.readSample(sampler, pattern, sep);
 %>
 %>  \endcode
 %>
@@ -82,12 +84,11 @@
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 function sampleList = readSample(sampler, pattern, sep)
 
-    if  nargin < 3
-        if  0 < pm.array.len(sampler.spec.outputSeparator)
-            sep = string(sampler.spec.outputSeparator);
-        else
-            sep = [];
-        end
+    if  nargin < 1
+        sampler = [];
+    end
+    if  isempty(sampler)
+        sampler = pm.sampling.Sampler();
     end
 
     if  nargin < 2
@@ -98,11 +99,12 @@ function sampleList = readSample(sampler, pattern, sep)
         end
     end
 
-    if  nargin < 1
-        sampler = [];
-    end
-    if  isempty(sampler)
-        sampler = pm.sampling.Sampler();
+    if  nargin < 3
+        if  0 < pm.array.len(sampler.spec.outputSeparator)
+            sep = string(sampler.spec.outputSeparator);
+        else
+            sep = [];
+        end
     end
 
     pathList = sampler.findfile("sample", pattern);

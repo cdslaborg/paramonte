@@ -184,17 +184,21 @@ classdef Sampler < pm.matlab.Handle
         %>  \warning
         %>  This ``Hidden`` class component must not be accessed by the end users of the library.<br>
         %>
+        %>  \devnote
+        %>  The attribute name ``clstype`` stands for *Compiler/Linker Suit* type.<br>
+        %>
         clstype = ""; % compiler/linker suite
         %>
         %>  ``name``
         %>
-        %>  A ``Hidden`` scalar MATLAB string containing the name of the user-created object of superclass [pm.sampling.Sampler](@ref Sampler).<br>
+        %>  A ``Hidden`` scalar MATLAB string containing the name of the
+        %>  user-created object of superclass [pm.sampling.Sampler](@ref Sampler).<br>
         %>  This name is determined at runtime via the MATLAB intrinsic function ``inputname()``.<br>
         %>
         %>  \warning
         %>  This ``Hidden`` class component must not be accessed by the end users of the library.<br>
         %>
-        name = "self";
+        name = "sampler";
         %>
         %>  ``weblinks``
         %>
@@ -244,7 +248,7 @@ classdef Sampler < pm.matlab.Handle
         %>
         %>  ``libspec``
         %>
-        %>  Optional scalar MATLAB string containing a list of colon-(:)-separated
+        %>  Optional scalar MATLAB string containing a list of colon-(``:``)-separated
         %>  configurations of the kernel shared library to be used for the sampling task.<br>
         %>  The most important of all is the compiler suite with which the library is built.<br>
         %>
@@ -319,16 +323,13 @@ classdef Sampler < pm.matlab.Handle
         chainList = readChain(self, pattern, sep)
         sampleList = readSample(self, pattern, sep)
         progressList = readProgress(self, pattern, sep)
+        run(self, getLogFunc, ndim)
 
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     methods(Hidden)
-
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-        run(self, getLogFunc, ndim)
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -125,12 +125,12 @@ classdef SpecDRAM < pm.sampling.SpecMCMC
         %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin<br>
         function entries = getEntriesNML(self, ndim)
             entries = getEntriesNML@pm.sampling.SpecMCMC(self, ndim);
-            if  ~isempty(self.proposalAdaptationBurnin      ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalAdaptationBurnin     ", self.proposalAdaptationBurnin        , "real"   , 1); end
-            if  ~isempty(self.proposalAdaptationCount       ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalAdaptationCount      ", self.proposalAdaptationCount         , "integer", 1); end
-            if  ~isempty(self.proposalAdaptationCountGreedy ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalAdaptationCountGreedy", self.proposalAdaptationCountGreedy   , "integer", 1); end
-            if  ~isempty(self.proposalAdaptationPeriod      ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalAdaptationPeriod     ", self.proposalAdaptationPeriod        , "integer", 1); end
-            if  ~isempty(self.proposalDelayedRejectionCount ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalDelayedRejectionCount", self.proposalDelayedRejectionCount   , "integer", 1); end
-            if  ~isempty(self.proposalDelayedRejectionScale ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalDelayedRejectionScale", self.proposalDelayedRejectionScale   , "real"   , self.proposalDelayedRejectionCount); end
+            if  ~isempty(self.proposalAdaptationBurnin      ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("proposalAdaptationBurnin     ", self.proposalAdaptationBurnin        , "real"   , 1); end
+            if  ~isempty(self.proposalAdaptationCount       ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("proposalAdaptationCount      ", self.proposalAdaptationCount         , "integer", 1); end
+            if  ~isempty(self.proposalAdaptationCountGreedy ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("proposalAdaptationCountGreedy", self.proposalAdaptationCountGreedy   , "integer", 1); end
+            if  ~isempty(self.proposalAdaptationPeriod      ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("proposalAdaptationPeriod     ", self.proposalAdaptationPeriod        , "integer", 1); end
+            if  ~isempty(self.proposalDelayedRejectionCount ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("proposalDelayedRejectionCount", self.proposalDelayedRejectionCount   , "integer", 1); end
+            if  ~isempty(self.proposalDelayedRejectionScale ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("proposalDelayedRejectionScale", self.proposalDelayedRejectionScale   , "real"   , intmax); end
         end
 
     end

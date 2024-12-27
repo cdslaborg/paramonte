@@ -41,6 +41,8 @@ classdef FileContentsSampleDRAM < pm.sampling.FileContentsSample
 
         %>  \brief
         %>  Return a scalar object of class [pm.sampling.FileContentsSampleDRAM](@ref FileContentsSampleDRAM).<br>
+        %>
+        %>  \details
         %>  This is the constructor of the class [pm.sampling.FileContentsSampleDRAM](@ref FileContentsSampleDRAM).<br>
         %>
         %>  \param[in]  file    :   The input scalar MATLAB string containing the path to an external file.<br>

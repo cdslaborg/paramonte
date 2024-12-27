@@ -26,10 +26,10 @@
 %>      sampler = pm.sampling.Paradram();
 %>      chainMarkovList = sampler.readChainMarkov();
 %>      chainMarkovList = sampler.readChainMarkov([]);
-%>      chainMarkovList = sampler.readChainMarkov(file);
+%>      chainMarkovList = sampler.readChainMarkov(pattern);
 %>      chainMarkovList = sampler.readChainMarkov([], []);
-%>      chainMarkovList = sampler.readChainMarkov(file, []);
-%>      chainMarkovList = sampler.readChainMarkov(file, sep);
+%>      chainMarkovList = sampler.readChainMarkov(pattern, []);
+%>      chainMarkovList = sampler.readChainMarkov(pattern, sep);
 %>
 %>  \endcode
 %>
@@ -40,7 +40,7 @@
 %>
 %>  \warning
 %>  This method is to be only used for post-processing of the output
-%>  chain file(s) of an already finished simulation. It is NOT meant to
+%>  chain file(s) of an already finished simulation. It is **not** meant to
 %>  be called by all processes in parallel mode, although it is possible.<br>
 %>
 %>  \note

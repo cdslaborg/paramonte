@@ -9,9 +9,9 @@
 %>  see the documentations of the package members.<br>
 %>
 %>  \see
-%>  [pm.introspection.getEntryNML](@ref getEntryNML)<br>
-%>  [pm.introspection.istype](@ref istype)<br>
 %>  [pm.introspection.verify](@ref verify)<br>
+%>  [pm.introspection.istype](@ref istype)<br>
+%>  [pm.introspection.islenleq](@ref islenleq)<br>
 %>
 %>  \final{pm.introspection}
 %>

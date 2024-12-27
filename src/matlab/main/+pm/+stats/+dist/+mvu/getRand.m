@@ -17,9 +17,8 @@
 %>                          This argument can be obtained by passing the Gramian matrix ``gramian``
 %>                          of the distribution to the MATLAB intrinsic function ``chol(gramian, "lower")``.<br>
 %>                          (**optional**. default = ``[]``. It must be present if ``mean`` is missing.)
-%>  \param[in]  s1      :   The input vector of MATLAB ``real``,
-%>                          representing the mean of a Multivariate Uniform
-%>                          distribution in ``size(mean)`` dimensional space.<br>
+%>  \param[in]  s1      :   The input scalar MATLAB whole-number,
+%>                          representing the number of random vectors to generate.<br>
 %>                          (**optional**. default = ``1``)
 %>
 %>  \return

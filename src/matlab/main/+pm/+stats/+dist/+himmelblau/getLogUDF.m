@@ -52,14 +52,14 @@
 %>  \interface{getLogUDF}
 %>  \code{.m}
 %>
-%>      logUDF = pm.stats.himmelblau.getLogUDF(state);
-%>      logUDF = pm.stats.himmelblau.getLogUDF(state, epsilon);
+%>      logUDF = pm.stats.dist.himmelblau.getLogUDF(x, y);
+%>      logUDF = pm.stats.dist.himmelblau.getLogUDF(x, y, epsilon);
 %>
 %>  \endcode
 %>
 %>  \see
-%>  [pm.stats.himmelblau.getFunc](@ref getFunc)<br>
-%>  [pm.stats.himmelblau.getLogUDF](@ref getLogUDF)<br>
+%>  [pm.math.func.himmelblau.getFunc](@ref getFunc)<br>
+%>  [pm.stats.dist.himmelblau.getLogUDF](@ref getLogUDF)<br>
 %>  [pm.sampling.Paradram](@ref Paradram)<br>
 %>
 %>  \example{getLogUDF}
@@ -77,11 +77,11 @@ function logFunc = getLogUDF(x, y, epsilon)
         epsilon = 1;
     end
     logFunc = -log(pm.math.func.himmelblau.getFunc(x, y) + epsilon);
-    if false
-        nsim = 100000;
-        for i = 1 : nsim
-            logFunc = logFunc - log((x^2 + y - 11)^2 + (x + y^2 - 7)^2 + 0.1);
-        end
-        logFunc = logFunc / (nsim + 1);
-    end
+    %if  false
+    %    nsim = 100000;
+    %    for i = 1 : nsim
+    %        logFunc = logFunc - log((x^2 + y - 11)^2 + (x + y^2 - 7)^2 + 0.1);
+    %    end
+    %    logFunc = logFunc / (nsim + 1);
+    %end
 end

@@ -3,8 +3,12 @@
 %>  of the input ``strlist`` that match the input scalar
 %>  (or vector of) string(s) or integer(s) index ``keylist``.<br>
 %>
+%>  \details
+%>  Beware that all specified values in the input ``keylist``
+%>  must exist in the input argument ``strlist``, otherwise,
+%>  the procedure will interrupt the program by raising an exception.
+%>
 %>  \param[in]  strlist :   The input scalar (or vector of) MATLAB string(s).<br>
-%>  
 %>  \param[in]  keylist :   The input scalar (or vector of) MATLAB string(s)
 %>                          or cell array of char vectors or vector of MATLAB
 %>                          integers or a cell array of mix of the element
@@ -14,6 +18,7 @@
 %>  ``loclist``         :   The output scalar (or vector of same size as ``keylist`` of)
 %>                          MATLAB integer(s) containing the location(s) of the occurrence(s)
 %>                          of the input ``keylist``.<br>
+%>                          <br>
 %>  ``namlist``         :   The output scalar (or vector of same size as ``keylist`` of)
 %>                          MATLAB string(s) containing the name(s) of the occurrence(s)
 %>                          of the input ``keylist``.<br>

@@ -445,13 +445,13 @@
     end type
 
    !character(:,SKG)        , allocatable   :: plang ! namelist input
-   !type                                    :: plang_type
-   !   !character(:,SKG)    , allocatable   :: val
-   !   !character(:,SKG)    , allocatable   :: def
-   !   !character(:,SKG)    , allocatable   :: null
-   !   !character(:,SKG)    , allocatable   :: desc
-   !    type(envis_type)                    :: is = envis
-   !end type
+    type                                    :: plang_type ! programming language environment.
+        character(:,SKG)    , allocatable   :: val
+        character(:,SKG)    , allocatable   :: def
+        character(:,SKG)    , allocatable   :: null
+       !character(:,SKG)    , allocatable   :: desc
+       !type(envis_type)                    :: is = envis
+    end type
 
    !integer(IK)                             :: randomSeed ! namelist input
     type                                    :: randomSeed_type
@@ -530,7 +530,7 @@
         type(parallelism_type                   )   :: parallelism
         type(parallelismMpiFinalizeEnabled_type )   :: parallelismMpiFinalizeEnabled
         type(parallelismNumThread_type          )   :: parallelismNumThread
-       !type(plang_type                         )   :: plang
+        type(plang_type                         )   :: plang
         type(randomSeed_type                    )   :: randomSeed
         type(sysInfoFilePath_type               )   :: sysInfoFilePath
         type(targetAcceptanceRate_type          )   :: targetAcceptanceRate
@@ -1383,17 +1383,17 @@ contains
             !$omp end master
         end block parallelismNumThread_block
 
-        !plang_block: block
-        !    use pm_sampling_scio, only: plang
-        !    spec%plang%null = repeat(SUB, len(plang, IK))
-        !    spec%plang%def = envname
-        !    spec%plang%desc = &
-        !    SKG_"The simulation specification `plang` is a scalar string of maximum length `"//getStr(spec%plang%null)//&
-        !    SKG_"`. It is an internal ParaMonte variable used to provide information about other languages interface with the ParaMonte routines."
-        !    !$omp master
-        !    plang = spec%plang%null
-        !    !$omp end master
-        !end block plang_block
+        plang_block: block
+            use pm_sampling_scio, only: plang
+            spec%plang%null = repeat(SUB, len(plang, IK))
+            spec%plang%def = SKG_"The "//envname//SKG_"."
+            !spec%plang%desc = &
+            !SKG_"The simulation specification `plang` is a scalar string of maximum length `"//getStr(spec%plang%null)//&
+            !SKG_"`. It is an internal ParaMonte variable used to provide information about other languages interface with the ParaMonte routines."
+            !$omp master
+            plang = spec%plang%null
+            !$omp end master
+        end block plang_block
 
         randomSeed_block: block
             use pm_sampling_scio, only: randomSeed
@@ -1886,15 +1886,16 @@ contains
 #endif
         end block parallelismNumThread_block
 
-       !plang_block: block
-       !    use pm_sampling_scio, only: plang
-       !    if (spec%overridable .and. allocated(sampler%plang)) then
-       !        spec%plang%val = trim(adjustl(sampler%plang))
-       !    else
-       !        spec%plang%val = trim(adjustl(plang))
-       !    end if
-       !    if (spec%plang%val == trim(adjustl(spec%plang%null))) spec%plang%val = spec%plang%def
-       !end block plang_block
+        ! This is an exceptional internal namelist entry that end users must not access.
+        plang_block: block
+            use pm_sampling_scio, only: plang
+            spec%plang%val = trim(adjustl(plang))
+            if (spec%plang%val == trim(adjustl(spec%plang%null))) then
+                spec%plang%val = spec%plang%def
+            else
+                spec%plang%val = spec%plang%def//SKG_" "//spec%plang%val
+            end if
+        end block plang_block
 
         randomSeed_block: block
             use pm_kind, only: IKD, RKD
@@ -2420,7 +2421,7 @@ contains
                 end if
                 call spec%disp%show(getParaMonteSplash())
                 call spec%disp%text%wrap(NL1//SKG_"ParaMonte.library.interface.specifications"//NL1)
-                call spec%disp%show(getStrWrapped(SKG_"The "//envname//SKG_"."))
+                call spec%disp%show(getStrWrapped(spec%plang%val))
                 call spec%disp%text%wrap(NL1//SKG_"ParaMonte.library.compiler.version"//NL1)
                 call spec%disp%show(getStrWrapped(PARAMONTE_COMPILER_VERSION))
                 call spec%disp%text%wrap(NL1//SKG_"ParaMonte.library.compiler.options"//NL1)

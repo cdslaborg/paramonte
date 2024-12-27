@@ -6,7 +6,7 @@
 %>  \interface{Handle}
 %>  \code{.m}
 %>
-%>      Handle = pm.matlab.Handle()
+%>      handle = pm.matlab.Handle()
 %>
 %>  \endcode
 %>
@@ -113,7 +113,7 @@ classdef Handle < dynamicprops%handle
                 if  propertyDoesNotExist
                     disp("hash{i}");
                     disp( hash{i} );
-                    error("The requested object property displayed above does not exist:");
+                    error("The requested object property displayed above does not exist.");
                 end
             end
         end

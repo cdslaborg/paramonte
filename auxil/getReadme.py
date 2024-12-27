@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/USR/BIN/ENV python
 ####################################################################################################################################
 ####################################################################################################################################
 ####                                                                                                                            ####
@@ -455,7 +455,7 @@ readme["examples"]["main"] = readme["examples"]["title"] + """
 #+   Decide on the parallelism paradigm you want to use: serial / MPI / OpenMP.
 #+   Decide on the operating system (OS) you want to run the ParaMonte simulations: Windows, macOS, or Linux.
 #+   Learn about the naming convention used for the ParaMonte prebuilt libraries
-#    [here](https://www.cdslab.org/paramonte/generic/latest/installation/readme/#naming-convention-used-for-paramonte-library-builds).
+#    [here](https://www.cdslab.org/paramonte/generic/latest/installation/preface/#naming-convention-used-for-paramonte-library-builds).
 #+   Download the prebuilt ParaMonte library of your choice based on the decisions you have made above.
 #    If you are unsure which prebuilt library is suitable for your needs, use the prebuilt library recommended
 #    [here for Windows](https://www.cdslab.org/paramonte/generic/latest/installation/windows/#using-the-prebuilt-paramonte-library),
@@ -496,7 +496,7 @@ readme["examples"]["cpp"] = readme["examples"]["title"] + """
 #    (the Coarray Fortran implementation is not available as a prebuilt dynamic library),
 #+   Decide on the Operating System (OS) on which you want to run the ParaMonte simulations: Windows / macOS / Linux,
 #+   Learn about the naming convention used for the ParaMonte prebuilt libraries 
-#    [here](https://www.cdslab.org/paramonte/generic/latest/installation/readme/#naming-convention-used-for-paramonte-library-builds),
+#    [here](https://www.cdslab.org/paramonte/generic/latest/installation/preface/#naming-convention-used-for-paramonte-library-builds),
 #+   Download the prebuilt ParaMonte library of your choice based on the decisions you have made above.
 #    If you are unsure which prebuilt library is suitable for your needs, use the prebuilt library recommended
 #    [here for Windows](https://www.cdslab.org/paramonte/generic/latest/installation/windows/#using-the-prebuilt-paramonte-library), or

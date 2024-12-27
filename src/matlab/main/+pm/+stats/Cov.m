@@ -143,7 +143,7 @@ classdef Cov < pm.matlab.Handle
         %>  must be set explicitly manually.<br>
         %>
         %>  \param[inout]   self    :   The **implicitly-passed** input argument representing the parent object of the method.<br>
-        %>  \param[in]      dfref   :   The input (reference of function handle returning a) MATLAB matrix or table of rank ``2``
+        %>  \param[in]      dfref   :   The input (reference to a function handle returning a) MATLAB matrix or table of rank ``2``
         %>                              containing the ``ncol`` columns of ``nrow`` data whose covariance matrix must be computed.<br>
         %>                              Ideally, the user would want to pass a reference to a dataframe (e.g., as a function handle ``@()df``)
         %>                              so that the data remains dynamically up-to-date.<br>
@@ -176,7 +176,7 @@ classdef Cov < pm.matlab.Handle
         %>
         %>  \note
         %>  See the documentation of the class constructor
-        %>  [pm.stats.Cor](@ref Cor::Cor) for example usage.<br>
+        %>  [pm.stats.Cov](@ref Cov::Cov) for example usage.<br>
         %>
         %>  \final{get}
         %>
@@ -205,7 +205,7 @@ classdef Cov < pm.matlab.Handle
             else
                 help("pm.stats.Cov");
                 error   ( newline ...
-                        + "A non-mepty ``dfref`` attribute or input argument is required for computing the covariance matrix." + newline ...
+                        + "A non-empty ``dfref`` attribute or input argument is required for computing the covariance matrix." + newline ...
                         + newline ...
                         );
             end
@@ -277,7 +277,7 @@ classdef Cov < pm.matlab.Handle
         %>  This method is inaccessible to the end users of the ParaMonte MATLAB library.<br>
         %>
         %>  \param[inout]   self    :   The **implicitly-passed** input argument representing the parent object of the method.<br>
-        %>  \param[in]      val     :   The input (reference of function handle returning a) MATLAB matrix or table of rank ``2``
+        %>  \param[in]      val     :   The input (reference to a function handle returning a) MATLAB matrix or table of rank ``2``
         %>                              containing the computed covariance matrix to be visualized.<br>
         %>                              Ideally, the user would want to pass a reference to a dataframe (e.g., as a function handle ``@()df``)
         %>                              so that the data remains dynamically up-to-date.<br>
@@ -286,8 +286,10 @@ classdef Cov < pm.matlab.Handle
         %>  \interface{setvis}
         %>  \code{.m}
         %>
-        %>      mat = pm.stats.Cov(dfref, method)
-        %>      mat.setvis(); % This method is automatically called within the object constructor.
+        %>      mat = pm.stats.Cov(dfref, method);
+        %>
+        %>      mat.setvis();       % This method is automatically called within the object constructor.
+        %>      mat.setvis(val);    % This method is automatically called within the object constructor.
         %>
         %>  \endcode
         %>

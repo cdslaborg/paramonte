@@ -153,7 +153,10 @@ function [pathList, isdirList] = glob(pattern, anycase)
     %%%% check anycase option
     %%%%
 
-    if nargin == 2
+    if  nargin < 2
+        anycase = [];
+    end
+    if ~isempty(anycase)
         pm.introspection.verify(anycase, "logical", 1, "anycase");
     else
         % Windows is not case sensitive

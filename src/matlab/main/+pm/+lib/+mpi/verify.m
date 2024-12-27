@@ -83,9 +83,9 @@ function failed = verify(vendor)
     %
     %     mpiFound(iven) = ~strcmp(mpiname, "");
     %     if  mpiFound(iven)
-    %         disp(pm.io.tab + "An " + mpiVendor + " MPI (runtime) library installation possibly exists on the system.")
+    %         disp(pm.io.tab() + "An " + mpiVendor + " MPI (runtime) library installation possibly exists on the system.")
     %     else
-    %         disp(pm.io.tab + "None detected.")
+    %         disp(pm.io.tab() + "None detected.")
     %     end
     %
     % end

@@ -36,7 +36,7 @@
 %>  \final{run}
 %>
 %>  \author
-%>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin%>
+%>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin<br>
 function run(self, getLogFunc, ndim)
 if nargin < 3
     help("pm.sampling.Paradram.run");

@@ -5,7 +5,7 @@
 %>
 %>  \warning
 %>  This function is to be only used for post-processing of the output chain file(s) of an already finished simulation.<br>
-%>  Although possible, this method is NOT meant to be called by all processes in MPI-parallel simulations.<br>
+%>  Although possible, this method is **not** meant to be called by all processes in MPI-parallel simulations.<br>
 %>
 %>  \param[in]  sampler     :   The input object of superclass [pm.sampling.Sampler](@ref Sampler)
 %>                              whose type and properties determine the type of the output object(s).<br>
@@ -15,7 +15,7 @@
 %>                              The specified ``pattern`` only needs to partially identify
 %>                              the name of the simulation to which the chain file belongs.<br>
 %>                              For example, specifying ``"./mydir/mysim"`` as input will
-%>                              lead to a search for file(s) beginning with "mysim" and
+%>                              lead to a search for file(s) beginning with ``"mysim"`` and
 %>                              ending with ``"_chain.txt"`` inside the directory ``"./mydir/"``.<br>
 %>                              If there are multiple files matching in the input ``pattern``,
 %>                              then all such files will be read and returned as elements of a list.<br>
@@ -29,7 +29,7 @@
 %>  \param[in]  sep         :   The input MATLAB string containing the field separator used in the file(s).<br>
 %>                              (**optional**. If empty, it is set to ``sampler.spec.outputSeparator`` or if empty, it is automatically inferred.)
 %>  \param[in]  varargin    :   Any set of arguments that must be directly passed to the relevant file contents parser class.<br>
-%>                              (**optional**. default is empty, corresponding to no extra input arguments.)
+%>                              (**optional**. The default is empty, corresponding to no extra input arguments.)
 %>
 %>  \return
 %>  ``chainList``           :   The output MATLAB cell array of objects of superclass [pm.sampling.FileContentsChain](@ref FileContentsChain),
@@ -92,12 +92,11 @@
 %>  \FatemehBagheri, May 20 2024, 1:25 PM, NASA Goddard Space Flight Center (GSFC), Washington, D.C.<br>
 function chainList = readChain(sampler, pattern, sep, varargin)
 
-    if  nargin < 3
-        if  0 < pm.array.len(sampler.spec.outputSeparator)
-            sep = string(sampler.spec.outputSeparator);
-        else
-            sep = [];
-        end
+    if  nargin < 1
+        sampler = [];
+    end
+    if  isempty(sampler)
+        sampler = pm.sampling.Sampler();
     end
 
     if  nargin < 2
@@ -108,11 +107,12 @@ function chainList = readChain(sampler, pattern, sep, varargin)
         end
     end
 
-    if  nargin < 1
-        sampler = [];
-    end
-    if  isempty(sampler)
-        sampler = pm.sampling.Sampler();
+    if  nargin < 3
+        if  0 < pm.array.len(sampler.spec.outputSeparator)
+            sep = string(sampler.spec.outputSeparator);
+        else
+            sep = [];
+        end
     end
 
     pathList = sampler.findfile("chain", pattern);

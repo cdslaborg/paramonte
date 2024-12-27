@@ -13,7 +13,7 @@
 %>  See the constructor documentation for example usage.<br>
 %>
 %>  \see
-%>  [DataRef](@ref DataRef)<br>
+%>  [pm.container.DataRef](@ref DataRef)<br>
 %>
 %>  \final
 %>
@@ -213,13 +213,13 @@ classdef DataFrame < pm.container.DataRef
         %>
         %>  \param[in]      start   :   The input scalar MATLAB whole-number (integer)
         %>                              representing the starting point of the output range.<br>
-        %>                              It must be a number in the range ``[1, size(self.dfref, 1)]``.
+        %>                              It must be a number in the range ``[1, size(self.copy(), 1)]``.
         %>                              Otherwise, the value ``max(1, min(start, self.nrow()))`` will be used.<br>
         %>                              (**optional**, default = ``1``)
         %>
         %>  \param[in]      stop    :   The input scalar MATLAB whole-number (integer)
         %>                              representing the stopping point of the output range.<br>
-        %>                              It must be a number in the range ``[1, size(self.dfref, 1)]``.
+        %>                              It must be a number in the range ``[1, size(self.copy(), 1)]``.
         %>                              Otherwise, the value ``max(start, min(stop, self.nrow()))`` will be used.<br>
         %>                              (**optional**, default = ``1``)
         %>

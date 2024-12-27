@@ -349,7 +349,7 @@ classdef Tile < pm.vis.Tiling
                 % positions = zeros(4, nplt);
                 % for icol = 1 : ncol
                 %     for irow = 1 : nrow
-                %         if  pm.introspection.istype(self.subplot{irow, icol}, "pm.vis.Subplot")
+                %         if  pm.introspection.verified(self.subplot{irow, icol}, "pm.vis.Subplot", 1)
                 %             iplt = iplt + 1;
                 %             positions(:, iplt) = self.subplot{irow, icol}.fout.axes.Position;
                 %         end

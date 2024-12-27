@@ -35,7 +35,7 @@
 %>                              or match object-cell pattern will be also converted recursively like the parent
 %>                              input ``object`` until all sub-components are obtained recursively.<br>
 %>                              (**optional**, default = ``false``)
-%>  
+%>
 %>  \return
 %>  objnew                  :   The output copy of the input object whose
 %>                              property/field values are overwritten with the
@@ -61,6 +61,13 @@
 %>  \include{lineno} example/matlab/hashmap/hash2comp/main.m
 %>  \output{hash2comp}
 %>  \include{lineno} example/matlab/hashmap/hash2comp/main.out.m
+%>
+%>  \todo
+%>  \pvhigh
+%>  Is the last condition ``~isempty(properties(objnew.(key)))`` in the implementation of this procedure necessary?<br>
+%>  Its presence contradicts the function behavior at the zeroth level of iteration and subsequent iterations.<br>
+%>  This issue must be addressed as soon as the correction is verified to not change the behavior of other
+%>  functions calling this function.<br>
 %>
 %>  \final{hash2comp}
 %>
@@ -125,7 +132,7 @@ function objnew = hash2comp(hashmap, object, insensitive, extensible, recursive)
                 error   ( newline ...
                         + "The requested ``object`` property:" + newline ...
                         + newline ...
-                        +  pm.io.tab + """" + string(hashmap{i}) + """" + newline ...
+                        +  pm.io.tab() + """" + string(hashmap{i}) + """" + newline ...
                         + newline ...
                         + "does not exist in the specified input ``object``." + newline ...
                         + newline ...
@@ -134,6 +141,11 @@ function objnew = hash2comp(hashmap, object, insensitive, extensible, recursive)
                 objnew.addprop(key);
             end
         end
+        % \todo:
+        % Is the last condition ``~isempty(properties(objnew.(key)))`` necessary?
+        % Its presence contradicts the function behavior at the zeroth level of iteration and subsequent iterations.
+        % This issue must be addressed as soon as it is clear the correction does not change the behavior of other
+        % functions calling this function.
         if  recursive && isa(hashmap{i + 1}, "cell") && (isa(objnew.(key), "struct") || isa(objnew.(key), "handle") || ~isempty(properties(objnew.(key))))
             objnew.(key) = pm.matlab.hashmap.hash2comp(hashmap{i + 1}, objnew.(key), insensitive, extensible, recursive);
         else

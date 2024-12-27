@@ -142,18 +142,18 @@ classdef SpecMCMC < pm.sampling.SpecBase
             %%%% Verify the rest of the NML entries.
             %%%%
 
-            if  ~isempty(self.outputChainSize                   ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("outputChainSize                  ", self.outputChainSize                     , "integer" , 1)        ; end
-            if  ~isempty(self.outputSampleRefinementCount       ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("outputSampleRefinementCount      ", self.outputSampleRefinementCount         , "integer" , 1)        ; end
-            if  ~isempty(self.outputSampleRefinementMethod      ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("outputSampleRefinementMethod     ", self.outputSampleRefinementMethod        , "string"  , 1)        ; end
-            if  ~isempty(self.proposal                          ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposal                         ", self.proposal                            , "string"  , 1)        ; end
-            if  ~isempty(self.proposalCor                       ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalCor                      ", self.proposalCor                         , "real"    , ndim^2)   ; end
-            if  ~isempty(self.proposalCov                       ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalCov                      ", self.proposalCov                         , "real"    , ndim^2)   ; end
-            if  ~isempty(self.proposalScale                     ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalScale                    ", self.proposalScale                       , "string"  , 1)        ; end
-            if  ~isempty(self.proposalStart                     ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalStart                    ", self.proposalStart                       , "real"    , ndim)     ; end
-            if  ~isempty(self.proposalStartDomainCubeLimitLower ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalStartDomainCubeLimitLower", self.proposalStartDomainCubeLimitLower   , "real"    , ndim)     ; end
-            if  ~isempty(self.proposalStartDomainCubeLimitUpper ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalStartDomainCubeLimitUpper", self.proposalStartDomainCubeLimitUpper   , "real"    , ndim)     ; end
-            if  ~isempty(self.proposalStartRandomized           ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalStartRandomized          ", self.proposalStartRandomized             , "logical" , 1)        ; end
-            if  ~isempty(self.proposalStd                       ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalStd                      ", self.proposalStd                         , "real"    , ndim)     ; end
+            if  ~isempty(self.outputChainSize                   ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("outputChainSize                  ", self.outputChainSize                     , "integer" , 1)        ; end
+            if  ~isempty(self.outputSampleRefinementCount       ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("outputSampleRefinementCount      ", self.outputSampleRefinementCount         , "integer" , 1)        ; end
+            if  ~isempty(self.outputSampleRefinementMethod      ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("outputSampleRefinementMethod     ", self.outputSampleRefinementMethod        , "string"  , 1)        ; end
+            if  ~isempty(self.proposal                          ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("proposal                         ", self.proposal                            , "string"  , 1)        ; end
+            if  ~isempty(self.proposalCor                       ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("proposalCor                      ", self.proposalCor                         , "real"    , ndim^2)   ; end
+            if  ~isempty(self.proposalCov                       ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("proposalCov                      ", self.proposalCov                         , "real"    , ndim^2)   ; end
+            if  ~isempty(self.proposalScale                     ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("proposalScale                    ", self.proposalScale                       , "string"  , 1)        ; end
+            if  ~isempty(self.proposalStart                     ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("proposalStart                    ", self.proposalStart                       , "real"    , ndim)     ; end
+            if  ~isempty(self.proposalStartDomainCubeLimitLower ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("proposalStartDomainCubeLimitLower", self.proposalStartDomainCubeLimitLower   , "real"    , ndim)     ; end
+            if  ~isempty(self.proposalStartDomainCubeLimitUpper ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("proposalStartDomainCubeLimitUpper", self.proposalStartDomainCubeLimitUpper   , "real"    , ndim)     ; end
+            if  ~isempty(self.proposalStartRandomized           ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("proposalStartRandomized          ", self.proposalStartRandomized             , "logical" , 1)        ; end
+            if  ~isempty(self.proposalStd                       ); entries = entries + self.nmlsep + pm.fortran.getEntryNML("proposalStd                      ", self.proposalStd                         , "real"    , ndim)     ; end
 
         end
 
