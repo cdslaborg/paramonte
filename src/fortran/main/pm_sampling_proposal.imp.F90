@@ -446,7 +446,7 @@ contains
         !>  \param[in]      sampleWeight                    :   The one dimensional integer array of the weights of the sampled states in the sampleState.
         !>  \param[in]      proposalAdaptationGreedyEnabled :   The logical flag indicating whether the adaptation is in greedy mode..
         !>  \param[inout]   meanAccRateSinceStart           :   The mean acceptance rate since the start of the sampling.
-        !>  \param[out]     proposalAdaptationSampleUsed     :   The output logical flag indicating whether the sampling succeeded.
+        !>  \param[out]     proposalAdaptationSampleUsed    :   The output logical flag indicating whether the sampling succeeded.
         !>  \param[out]     proposalAdaptation              :   The output real number in the range `[0,1]` indicating the amount of adaptation,
         !>                                                      with zero indicating no adaptation and one indicating extreme adaptation to the extent
         !>                                                      that the new adapted proposal distribution is completely different from the previous proposal.
