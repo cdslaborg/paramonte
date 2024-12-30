@@ -1401,7 +1401,7 @@ endif()
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 #if ("${ddir}" STREQUAL "")
-#    set(ddir "${CMAKE_SOURCE_DIR}/bin")
+#    set(ddir "${CMAKE_SOURCE_DIR}/_bin")
 #    message(NOTICE "${pmattn} Unspecified ParaMonte binary install directory `ddir`.")
 #    message(NOTICE "${pmattn} Defining and generating the ParaMonte build directory: ddir=\"${ddir}\"")
 #else()

@@ -244,7 +244,7 @@ classdef FileContentsChainMCMC < pm.sampling.FileContentsChain
 
             setvis@pm.sampling.FileContentsChain(self);
 
-            self.checkpoint("adding the ParaDRAM-specific visualization components...", false);
+            self.checkpoint("adding the ParaDRAM-specific visualization components...", true);
 
             silent_kws = {"silent", self.silent};
             self.checkpoint("adding DRAM-specific visualizations to the chain object...", false);

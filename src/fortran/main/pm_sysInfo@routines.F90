@@ -440,18 +440,18 @@ contains
             !>      CS = 0033   FS = 0000   GS = 0000
             !>
             !>      Stack Trace (from fault):
-            !>      [  0] 0x00001536db95e473 /home/amir/git/paramonte/bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+38818931
-            !>      [  1] 0x00001536db95f54e /home/amir/git/paramonte/bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+38823246
-            !>      [  2] 0x00001536db95e69e /home/amir/git/paramonte/bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+38819486
-            !>      [  3] 0x00001536da893fbe /home/amir/git/paramonte/bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+21213118 pm_sysinfo_MP_getsysinfofailedmsg_+00012510
-            !>      [  4] 0x00001536da890b31 /home/amir/git/paramonte/bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+21199665 pm_sysinfo_MP_getsysinfofailed_+00000177
-            !>      [  5] 0x00001536d982d6fe /home/amir/git/paramonte/bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+04015870 pm_sampling_base_rk2_MP_openfiles_+00126718
-            !>      [  6] 0x00001536d980c391 /home/amir/git/paramonte/bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+03879825 pm_sampling_base_rk2_MP_set_+00135649
-            !>      [  7] 0x00001536d9902171 /home/amir/git/paramonte/bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+04886897 pm_sampling_mcmc_rk2_MP_set_+00030945
-            !>      [  8] 0x00001536d998e393 /home/amir/git/paramonte/bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+05460883 pm_sampling_dram_rk2_MP_set_+00037203
-            !>      [  9] 0x00001536d9b51923 /home/amir/git/paramonte/bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+07309603 pm_sampling_MP_geterrparadram_rk2_+00047939
-            !>      [ 10] 0x00001536d9b43448 /home/amir/git/paramonte/bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+07251016 runParaDRAMD+00007992
-            !>      [ 11] 0x00001536f64624a9 /home/amir/git/paramonte/bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/pm_sampling.mexa64+00005289 mexFunction+00000537
+            !>      [  0] 0x00001536db95e473 /home/amir/git/paramonte/_bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+38818931
+            !>      [  1] 0x00001536db95f54e /home/amir/git/paramonte/_bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+38823246
+            !>      [  2] 0x00001536db95e69e /home/amir/git/paramonte/_bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+38819486
+            !>      [  3] 0x00001536da893fbe /home/amir/git/paramonte/_bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+21213118 pm_sysinfo_MP_getsysinfofailedmsg_+00012510
+            !>      [  4] 0x00001536da890b31 /home/amir/git/paramonte/_bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+21199665 pm_sysinfo_MP_getsysinfofailed_+00000177
+            !>      [  5] 0x00001536d982d6fe /home/amir/git/paramonte/_bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+04015870 pm_sampling_base_rk2_MP_openfiles_+00126718
+            !>      [  6] 0x00001536d980c391 /home/amir/git/paramonte/_bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+03879825 pm_sampling_base_rk2_MP_set_+00135649
+            !>      [  7] 0x00001536d9902171 /home/amir/git/paramonte/_bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+04886897 pm_sampling_mcmc_rk2_MP_set_+00030945
+            !>      [  8] 0x00001536d998e393 /home/amir/git/paramonte/_bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+05460883 pm_sampling_dram_rk2_MP_set_+00037203
+            !>      [  9] 0x00001536d9b51923 /home/amir/git/paramonte/_bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+07309603 pm_sampling_MP_geterrparadram_rk2_+00047939
+            !>      [ 10] 0x00001536d9b43448 /home/amir/git/paramonte/_bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/libparamonte.so+07251016 runParaDRAMD+00007992
+            !>      [ 11] 0x00001536f64624a9 /home/amir/git/paramonte/_bin/libparamonte_matlab_linux_amd64/+pm/lib/linux/amd64/intelllvm2025/debug/shared/heap/serial/nocheck/pm_sampling.mexa64+00005289 mexFunction+00000537
             !>
             !>  \endcode
             !>  \remedy

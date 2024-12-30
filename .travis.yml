@@ -49,10 +49,10 @@ matrix:
 #            - openmpi-bin
 #      script:
 #        - pmRootDir="$(pwd)"
-#        - pmBinDir="${pmRootDir}/bin/"
+#        - pmBinDir="${pmRootDir}/_bin/"
 #        - echo "pmRootDir = ${pmRootDir}"
 #        - echo "pmBinDir = ${pmBinDir}"
-#        - if ! [ -d "${pmBinDir}" ]; then mkdir -p ${pmRootDir}/bin/; fi
+#        - if ! [ -d "${pmBinDir}" ]; then mkdir -p ${pmRootDir}/_bin/; fi
 #        - echo "$(dpkg -L libopenmpi-dev)"
 #        - echo "$(dpkg -L openmpi-bin)"
 #        - MPIEXEC_PATH="$(dpkg -L openmpi-bin | egrep bin/mpiexec.openmpi)"
@@ -86,11 +86,11 @@ matrix:
             - mpich
       script:
         - pmRootDir="$(pwd)"
-        - pmBinDir="${pmRootDir}/bin/"
+        - pmBinDir="${pmRootDir}/_bin/"
         - pmAuxilDir="${pmRootDir}/auxil/"
         - echo "pmRootDir = ${pmRootDir}"
         - echo "pmBinDir = ${pmBinDir}"
-        - if ! [ -d "${pmBinDir}" ]; then mkdir -p ${pmRootDir}/bin/; fi
+        - if ! [ -d "${pmBinDir}" ]; then mkdir -p ${pmRootDir}/_bin/; fi
         - echo "$(dpkg -L libopenmpi-dev)"
         - echo "$(dpkg -L mpich)"
         - MPIEXEC_PATH="$(dpkg -L mpich | egrep bin/mpiexec.mpich)"
@@ -157,13 +157,13 @@ matrix:
         - ./install.sh --lang "C C++ Fortran" --build release --lib shared --mem heap --par "none" --yes-to-all ${FCFLAG} ${mpiexecFlag}
         - pmRootDir="$(pwd)"
         - ulimit -s unlimited
-        - ls ${pmRootDir}/bin/
-        - cd ${pmRootDir}/bin/libparamonte_c_linux_amd64_gnu_release_shared_heap && ls && ./build.sh && ./run.sh
-        - cd ${pmRootDir}/bin/libparamonte_cpp_linux_amd64_gnu_release_shared_heap && ls && ./build.sh && ./run.sh
-        - cd ${pmRootDir}/bin/libparamonte_fortran_linux_amd64_gnu_release_shared_heap && ls && ./build.sh && ./run.sh
-        #- cd ${pmRootDir}/bin/libparamonte_c_linux_amd64_gnu_release_shared_heap_openmpi && ./build.sh && ./run.sh --nproc 2
-        #- cd ${pmRootDir}/bin/libparamonte_cpp_linux_amd64_gnu_release_shared_heap_openmpi && ./build.sh && ./run.sh --nproc 2
-        #- cd ${pmRootDir}/bin/libparamonte_fortran_linux_amd64_gnu_release_shared_heap_openmpi && ./build.sh && ./run.sh --nproc 2
+        - ls ${pmRootDir}/_bin/
+        - cd ${pmRootDir}/_bin/libparamonte_c_linux_amd64_gnu_release_shared_heap && ls && ./build.sh && ./run.sh
+        - cd ${pmRootDir}/_bin/libparamonte_cpp_linux_amd64_gnu_release_shared_heap && ls && ./build.sh && ./run.sh
+        - cd ${pmRootDir}/_bin/libparamonte_fortran_linux_amd64_gnu_release_shared_heap && ls && ./build.sh && ./run.sh
+        #- cd ${pmRootDir}/_bin/libparamonte_c_linux_amd64_gnu_release_shared_heap_openmpi && ./build.sh && ./run.sh --nproc 2
+        #- cd ${pmRootDir}/_bin/libparamonte_cpp_linux_amd64_gnu_release_shared_heap_openmpi && ./build.sh && ./run.sh --nproc 2
+        #- cd ${pmRootDir}/_bin/libparamonte_fortran_linux_amd64_gnu_release_shared_heap_openmpi && ./build.sh && ./run.sh --nproc 2
 
     ################################################################################################################################
     #### code coverage
@@ -221,9 +221,9 @@ matrix:
         - cmake --version
         - ./install.sh --lang "C C++ Fortran" --build release --lib shared --mem heap --par "none mpi" #-s gnu
         - pmRootDir=$(pwd)
-        - ls ${pmRootDir}/bin/
+        - ls ${pmRootDir}/_bin/
         - |
-          for buildDir in ${pmRootDir}/bin/*; do
+          for buildDir in ${pmRootDir}/_bin/*; do
             echo ""
             echo "Running example in ${buildDir}"
             echo ""
@@ -267,12 +267,12 @@ matrix:
 #        - ./install.sh --lang "C C++ Fortran" --build release --lib shared --mem heap --par "none mpi" #-s gnu
 #        - echo $(pwd)
 #        - pmRootDir="$(pwd)";
-#        - cd ${pmRootDir}/bin/libparamonte_c_darwin_amd64_gnu_release_shared_heap && ./build.sh && ./run.sh
-#        - cd ${pmRootDir}/bin/libparamonte_cpp_darwin_amd64_gnu_release_shared_heap && ./build.sh && ./run.sh
-#        - cd ${pmRootDir}/bin/libparamonte_fortran_darwin_amd64_gnu_release_shared_heap && ./build.sh && ./run.sh
-#        - cd ${pmRootDir}/bin/libparamonte_c_darwin_amd64_gnu_release_shared_heap_openmpi && ./build.sh && ./run.sh --nproc 2
-#        - cd ${pmRootDir}/bin/libparamonte_cpp_darwin_amd64_gnu_release_shared_heap_openmpi && ./build.sh && ./run.sh --nproc 2
-#        - cd ${pmRootDir}/bin/libparamonte_fortran_darwin_amd64_gnu_release_shared_heap_openmpi && ./build.sh && ./run.sh --nproc 2
+#        - cd ${pmRootDir}/_bin/libparamonte_c_darwin_amd64_gnu_release_shared_heap && ./build.sh && ./run.sh
+#        - cd ${pmRootDir}/_bin/libparamonte_cpp_darwin_amd64_gnu_release_shared_heap && ./build.sh && ./run.sh
+#        - cd ${pmRootDir}/_bin/libparamonte_fortran_darwin_amd64_gnu_release_shared_heap && ./build.sh && ./run.sh
+#        - cd ${pmRootDir}/_bin/libparamonte_c_darwin_amd64_gnu_release_shared_heap_openmpi && ./build.sh && ./run.sh --nproc 2
+#        - cd ${pmRootDir}/_bin/libparamonte_cpp_darwin_amd64_gnu_release_shared_heap_openmpi && ./build.sh && ./run.sh --nproc 2
+#        - cd ${pmRootDir}/_bin/libparamonte_fortran_darwin_amd64_gnu_release_shared_heap_openmpi && ./build.sh && ./run.sh --nproc 2
 
 #    - &ubuntu
 #      os: linux
@@ -301,12 +301,12 @@ matrix:
 #        - gfortran-8 --version
 #        #- echo >&2 "The MPIEXEC binday path: $(which mpiexec) || echo >&2 "MPI library not found...skipping"
 #        - ./install.sh --lang "C C++ Fortran" --build release --lib shared --mem heap --par "none" --yes-to-all
-#        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_amd64_gnu_release_shared_heap && ./build.sh && ./run.sh
-#        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_darwin_amd64_gnu_release_shared_heap && ./build.sh && ./run.sh
-#        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_darwin_amd64_gnu_release_shared_heap && ./build.sh && ./run.sh
-#        #- cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_amd64_gnu_release_shared_heap_mpich && ./build.sh && ./run.sh --nproc 2
-#        #- cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_darwin_amd64_gnu_release_shared_heap_mpich && ./build.sh && ./run.sh --nproc 2
-#        #- cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_darwin_amd64_gnu_release_shared_heap_mpich && ./build.sh && ./run.sh --nproc 2
+#        - cd /Users/travis/build/cdslaborg/paramonte/_bin/libparamonte_c_darwin_amd64_gnu_release_shared_heap && ./build.sh && ./run.sh
+#        - cd /Users/travis/build/cdslaborg/paramonte/_bin/libparamonte_cpp_darwin_amd64_gnu_release_shared_heap && ./build.sh && ./run.sh
+#        - cd /Users/travis/build/cdslaborg/paramonte/_bin/libparamonte_fortran_darwin_amd64_gnu_release_shared_heap && ./build.sh && ./run.sh
+#        #- cd /Users/travis/build/cdslaborg/paramonte/_bin/libparamonte_c_darwin_amd64_gnu_release_shared_heap_mpich && ./build.sh && ./run.sh --nproc 2
+#        #- cd /Users/travis/build/cdslaborg/paramonte/_bin/libparamonte_cpp_darwin_amd64_gnu_release_shared_heap_mpich && ./build.sh && ./run.sh --nproc 2
+#        #- cd /Users/travis/build/cdslaborg/paramonte/_bin/libparamonte_fortran_darwin_amd64_gnu_release_shared_heap_mpich && ./build.sh && ./run.sh --nproc 2
 
 #    - os: linux
 #      addons:

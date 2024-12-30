@@ -1,4 +1,4 @@
-#!/USR/BIN/ENV python
+#!/usr/bin/env python
 #pip install paramonte
 
 import os

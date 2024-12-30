@@ -49,7 +49,7 @@ if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
 
     unset bdir
     export FOR_COARRAY_NUM_IMAGES=3
-    ddir="${paramonte_dir}/bin"
+    ddir="${paramonte_dir}/_bin"
     flag_ddir="-Dddir=${ddir}"
 
     unset list_build
@@ -611,7 +611,7 @@ for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
 
                                #if [ -z ${bdir+x} ]; then
                                 if [ "${bdir}" = "" ]; then
-                                    paramonte_bld_dir="${paramonte_dir}/bld/${os}/${arch}/${csid}/${csvs}/${build}/${lib}/${mem}/${parname}/${checking}/${lang}"
+                                    paramonte_bld_dir="${paramonte_dir}/_bld/${os}/${arch}/${csid}/${csvs}/${build}/${lib}/${mem}/${parname}/${checking}/${lang}"
                                     if [[ "${flag_perfprof}" =~ .*"all".* ]]; then
                                         paramonte_bld_dir="${paramonte_bld_dir}/perfprof"
                                     fi
@@ -1345,7 +1345,7 @@ if ! [ "${ntry}" = "1" ]; then
 fi
 
 echo >&2 ""
-echo >&2 "${pmnote} All build files for all requested build configurations are stored at: \"${paramonte_dir}/bld/\""
+echo >&2 "${pmnote} All build files for all requested build configurations are stored at: \"${paramonte_dir}/_bld/\""
 if [[ ! "${flag_codecov}" =~ .*"true".* ]]; then
     echo >&2 "${pmnote} The installed binary files for all requested build configurations are ready to use at: \"${ddir}/\""
 fi

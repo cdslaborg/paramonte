@@ -148,7 +148,7 @@ echo.
 
 set bdir=
 set FOR_COARRAY_NUM_IMAGES=3
-set "ddir=!paramonte_dir!bin"
+set "ddir=!paramonte_dir!_bin"
 set "flag_ddir=-Dddir="!ddir!""
 set "cmakeBuildGenerator="
 set "makename="
@@ -948,7 +948,7 @@ for %%C in ("!list_fc:;=" "!") do (
                             REM
 
                             if  not defined bdir (
-                                set "paramonte_bld_dir=!paramonte_dir!bld\!os!\!arch!\!csid!\!csvs!\%%~B\%%~L\%%~M\!parname!\%%~H\%%~G"
+                                set "paramonte_bld_dir=!paramonte_dir!_bld\!os!\!arch!\!csid!\!csvs!\%%~B\%%~L\%%~M\!parname!\%%~H\%%~G"
                                 if "!flag_perfprof!" == "-Dperfprof=all" set "paramonte_bld_dir=!paramonte_bld_dir!\perfprof"
                                 if "!flag_codecov!" == "-Dcodecov=all" set "paramonte_bld_dir=!paramonte_bld_dir!\codecov"
                                 if defined makename set "paramonte_bld_dir=!paramonte_bld_dir!\!makename!"

@@ -91,7 +91,7 @@ if "!FLAG_SUPPORTED!"=="true" (
 :: zip subfolders
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-if not defined DESTINATION_DIR set DESTINATION_DIR=!paramonte_dir!\bin
+if not defined DESTINATION_DIR set DESTINATION_DIR=!paramonte_dir!\_bin
 
 call :NORMALIZEPATH "!DESTINATION_DIR!"
 if exist "!DESTINATION_DIR!" (

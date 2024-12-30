@@ -60,7 +60,9 @@
                                 !call disp%show( co_logFuncState(:, 1 : spec%image%count, counterDRS) )
                                 !call disp%skip(count = 2)
                                 !end block
+                                !stat%timer%clock = stat%timer%time()
                                 mold = getLogFunc(co_logFuncState(:, 1 : spec%image%count, counterDRS), avgTimePerFunCall, avgCommPerFunCall)
+                                !avgTimePerFunCall = max(stat%timer%resol * 10, stat%timer%time() - stat%timer%clock - avgCommPerFunCall)
                                 !block
                                 !use pm_io
                                 !call disp%skip(count = 2)

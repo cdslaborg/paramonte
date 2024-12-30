@@ -17,7 +17,7 @@
 #
 # Usage:
 #
-#   ./auxil/btar.sh --dir ./bin/
+#   ./auxil/btar.sh --dir ./_bin/
 #
 #
 ####################################################################################################################################
@@ -46,7 +46,7 @@ reportBadValue()
 #sourceFileDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 sourceFileDir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 workingDir=$(pwd)
-targetDir="${sourceFileDir}/../bin/"
+targetDir="${sourceFileDir}/../_bin/"
 
 echo >&2 
 echo >&2 "-- ParaMonte -    btar.sh file directory: ${sourceFileDir}"

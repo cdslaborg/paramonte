@@ -123,7 +123,7 @@
 %>              Keep in mind that MATLAB keyword arguments are case-INsensitive.<br>
 %>              Hence, ensure you do not add the same keyword as multiple different fields.<br>
 %>
-%>              \example{colormap}
+%>              \example{contour}
 %>              \code{.m}
 %>
 %>                  self.contour.enabled = true;
@@ -161,7 +161,7 @@
 %>              Keep in mind that MATLAB keyword arguments are case-INsensitive.<br>
 %>              Hence, ensure you do not add the same keyword as multiple different fields.<br>
 %>
-%>              \example{colormap}
+%>              \example{contour3}
 %>              \code{.m}
 %>
 %>                  self.contour3.enabled = true;

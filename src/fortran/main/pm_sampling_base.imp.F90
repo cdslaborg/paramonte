@@ -1270,18 +1270,18 @@ contains
                      &This default behavior allows seamless restart functionality while ensuring old potentially valuable computationally &
                      &expensive simulations are not inadvertently erased and replaced by the new simulation output files."//NL2//&
             SKG_"+   `outputStatus = 'repeat'`"//NL2//&
-            SKG_"    This option is nearly identical to 'extend' except that the new simulation specifications &
+            SKG_"    This option is nearly identical to `'extend'` except that the new simulation specifications &
                      &are not initialized from the specifications of the last successful simulation run (if any exist). &
                      &Instead, a new set of simulation files will be generated as if the last simulation run is replicated. &
                      &If the simulation configuration has not changed since the last successful simulation run, then the new simulation &
                      &output sample, chain, and restart files will be identical to those of the last successful simulation. &
                      &This outputting is primarily useful for cross-platform or cross-compiler testing and development."//NL2//&
             SKG_"+   `outputStatus = 'retry'`"//NL2//&
-            SKG_"    This option is nearly identical to 'repeat' except that the new simulation starts afresh and overwrites &
+            SKG_"    This option is nearly identical to `'repeat'` except that the new simulation starts afresh and overwrites &
                      &any potentially existing output files from the most recent simulation with the same names without ever using them. &
                      &There is no restart functionality with this option. The most recent simulation files are deleted regardless of &
                      &completion status. This option is effectively equivalent to deleting the set of output files from the last simulation &
-                     &run and rerunning the simulation with the default value 'extend' for the specification `outputStatus`. &
+                     &run and rerunning the simulation with the default value `'extend'` for the specification `outputStatus`. &
                      &Use this option for quick tests or small exploratory problems where lots of quick runs must be performed."//NL2//&
             SKG_"The default value for `outputStatus` is `'"//spec%outputStatus%def//SKG_"'`. The input values are case-INsensitive."
             !$omp master
@@ -1976,7 +1976,7 @@ contains
             if (.not.(lowerUpperSet(1) .or. lowerUpperSet(2))) spec%targetAcceptanceRate%val(:) = spec%targetAcceptanceRate%def
             spec%targetAcceptanceRate%enabled = logical(any(spec%targetAcceptanceRate%val /= spec%targetAcceptanceRate%def), LK)
             if (spec%targetAcceptanceRate%enabled) then
-                spec%targetAcceptanceRate%aim = sum(spec%targetAcceptanceRate%val) / 2._RKG
+                spec%targetAcceptanceRate%aim = sum(spec%targetAcceptanceRate%val) * .5_RKG
             elseif (spec%method%isParaDISE .or. spec%method%isParaDRAM) then
                 spec%targetAcceptanceRate%aim = .234_RKG
             elseif (spec%method%isParaNest) then

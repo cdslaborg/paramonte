@@ -497,9 +497,11 @@ contains
             sampleSizeOld = proposal%sampleSizeOld ! this is kept only for restoration of proposal%sampleSizeOld, if needed.
             proposalScalingNeeded = spec%targetAcceptanceRate%enabled
 
-            ! First if there are less than spec%ndim%vp1 points for new covariance computation, then just scale the covariance and return.
+            ! First if there are less than spec%ndim%vp1 points for new
+            ! covariance computation, then just scale the covariance and return.
 
-            ! This will be used to recover the old covariance in case of proposal update failure, and to compute the adaptation measure.
+            ! This will be used to recover the old covariance in case of
+            ! proposal update failure, and to compute the adaptation measure.
             sampleStateCovCholOld = proposal%covLowChoUpp(:, :, 0)
 
             nonSingularSample = spec%ndim%val < nsam
@@ -508,18 +510,34 @@ contains
 
             mergeCovMat_block: if (proposalAdaptationSampleUsed) then
 
-                ! Get the upper covariance matrix and mean of the new sample.
+                !!!!
+                !!!! Get the upper covariance matrix and mean of the new sample.
+                !!!!
 
                 if (proposalAdaptationGreedyEnabled) then
                     sampleSizeCurrent = nsam
                     call setMean(sampleStateMeanCurrent, sampleState, dim)
-                    if (nonSingularSample) call setCov(sampleStateCovLowCurrent(:, 1 : spec%ndim%val), lowDia, sampleStateMeanCurrent, sampleState, dim)
+                    if (nonSingularSample) call setCov  ( sampleStateCovLowCurrent(:, 1 : spec%ndim%val) & ! LCOV_EXCL_LINE
+                                                        , lowDia & ! LCOV_EXCL_LINE
+                                                        , sampleStateMeanCurrent & ! LCOV_EXCL_LINE
+                                                        , sampleState & ! LCOV_EXCL_LINE
+                                                        , dim & ! LCOV_EXCL_LINE
+                                                        )
                 else
                     call setMean(sampleStateMeanCurrent, sampleState, dim, sampleWeight, sampleSizeCurrent)
-                    if (nonSingularSample) call setCov(sampleStateCovLowCurrent(:, 1 : spec%ndim%val), lowDia, sampleStateMeanCurrent, sampleState, dim, sampleWeight, sampleSizeCurrent)
+                    if (nonSingularSample) call setCov  ( sampleStateCovLowCurrent(:, 1 : spec%ndim%val) & ! LCOV_EXCL_LINE
+                                                        , lowDia & ! LCOV_EXCL_LINE
+                                                        , sampleStateMeanCurrent & ! LCOV_EXCL_LINE
+                                                        , sampleState & ! LCOV_EXCL_LINE
+                                                        , dim & ! LCOV_EXCL_LINE
+                                                        , sampleWeight & ! LCOV_EXCL_LINE
+                                                        , sampleSizeCurrent & ! LCOV_EXCL_LINE
+                                                        )
                 end if
 
-                ! Combine old and new covariance matrices if both exist.
+                !!!!
+                !!!! Combine old and new covariance matrices if both exist.
+                !!!!
 
                 if (1_IK < proposal%sampleSizeOld) then
 
@@ -538,7 +556,8 @@ contains
                         end if
 
                         ! Now combine it with the old covariance matrix.
-                        ! Do not set the full boundaries' range `(1 : spec%ndim%val)` for `proposal%covLowChoUpp` in the following subroutine call.
+                        ! Do not set the full boundaries' range `(1 : spec%ndim%val)`
+                        ! for `proposal%covLowChoUpp` in the following subroutine call.
                         ! Setting the boundaries forces the compiler to generate a temporary array.
 
                         call setCovMeanMerged   ( proposal%covLowChoUpp(:, 1 : spec%ndim%val, 0) & ! LCOV_EXCL_LINE
@@ -565,7 +584,9 @@ contains
 
                 else ! first occurrence of nonSingularSample.
 
-                    ! There is no prior old Covariance matrix to combine with the new one from the new sampleState
+                    !!!!
+                    !!!! There is no prior old Covariance matrix to combine with the new one from the new sampleState
+                    !!!!
 
                     proposal%meanOld(1 : spec%ndim%val) = sampleStateMeanCurrent
                     proposal%sampleSizeOld = sampleSizeCurrent
@@ -631,7 +652,9 @@ contains
             !    proposal%scaleSq%running = proposal%scaleSq%running * (meanAccRateSinceStart/spec%targetAcceptanceRate%aim)**spec%ndim%inv
             !end if
 
-            ! Read the restart file (in dry mode).
+            !!!!
+            !!!! Read the restart file (in dry mode).
+            !!!!
 
             if (spec%image%is%leader .and. spec%run%is%dry) then
                 if (proposalAdaptationSampleUsed .or. proposalScalingNeeded) then
@@ -641,13 +664,16 @@ contains
                 end if
             end if
 
-            ! Adjust the scale of the covariance matrix and the Cholesky factor, if needed.
+            !!!!
+            !!!! Adjust the scale of the covariance matrix and the Cholesky factor, if needed.
+            !!!!
 
             proposalScaling_block: if (proposalScalingNeeded) then
 
                 if (spec%targetAcceptanceRate%enabled) then
                     if (meanAccRateSinceStart < spec%targetAcceptanceRate%val(1) .or. spec%targetAcceptanceRate%val(2) < meanAccRateSinceStart) then
                         adaptiveScale = (meanAccRateSinceStart / spec%targetAcceptanceRate%aim) ** spec%ndim%invhalf
+                        print *, adaptiveScale
                         proposal%scaleSq%running = adaptiveScale ** 2
                         adaptiveScaleSq = proposal%scaleSq%running
                         !block
@@ -667,7 +693,9 @@ contains
                 end if
 
                 proposal%covLowChoUpp(1 : spec%ndim%val, 1, 0) = proposal%covLowChoUpp(1 : spec%ndim%val, 1, 0) * adaptiveScaleSq ! Update first column of covariance matrix.
-                ! The `do concurrent` version is problematic for OpenMP builds of the ParaMonte library with the Intel ifort 2021.8 on heap, yielding segmentation fault.
+                ! The `do concurrent` version is problematic for OpenMP builds of
+                ! the ParaMonte library with the Intel ifort 2021.8 on heap,
+                ! yielding segmentation fault.
                 !do concurrent(jdim = 2 : spec%ndim%val)
                 do jdim = 2, spec%ndim%val
                     proposal%covLowChoUpp(1 : jdim - 1, jdim, 0) = proposal%covLowChoUpp(1 : jdim - 1, jdim, 0) * adaptiveScale ! Update the Cholesky factor.
@@ -677,7 +705,9 @@ contains
 
             end if proposalScaling_block
 
-            ! Compute the adaptivity only if any updates has occurred.
+            !!!!
+            !!!! Compute the adaptivity only if any updates has occurred.
+            !!!!
 
             proposalAdaptationEstimate_block: if (proposalAdaptationSampleUsed .or. proposalScalingNeeded) then
 
@@ -687,7 +717,9 @@ contains
                 !use pm_io
                 !call disp%show(sampleStateCovLowCurrent)
                 !end block
-                ! The `do concurrent` version is problematic for OpenMP builds of the ParaMonte library with the Intel ifort 2021.8 on heap, yielding segmentation fault.
+                ! The `do concurrent` version is problematic for OpenMP builds of
+                ! the ParaMonte library with the Intel ifort 2021.8 on heap,
+                ! yielding segmentation fault.
                 !do concurrent(jdim = 1 : spec%ndim%val)
                 do jdim = 1, spec%ndim%val
                     sampleStateCovLowCurrent(jdim : spec%ndim%val, jdim) = 0.5_RKG * (proposal%covLowChoUpp(jdim : spec%ndim%val, jdim, 0) + sampleStateCovCholOld(jdim : spec%ndim%val, jdim)) ! dummy
@@ -698,18 +730,21 @@ contains
                 else ! singularityOccurred ! LCOV_EXCL_START
                     err%occurred = .true._LK
                     err%msg = NL1//PROCEDURE_NAME//SKG_"@line::"//getStr(__LINE__)//SKG_": "//&
-                    SKG_"Singular lower covariance matrix detected at column ("//getStr(info)//SKG_") while computing the proposalAdaptation measure:"//NL2
+                    SKG_"Singular lower covariance matrix detected at column ("//getStr(info)//&
+                    SKG_") while computing the proposalAdaptation measure:"//NL2
                     do info = 1, size(sampleStateCovLowCurrent, 1, IK)
                         err%msg = err%msg//getStr(sampleStateCovLowCurrent(info,:))//NL1
                     end do
                     err%msg = err%msg//NL1//&
-                    SKG_": Error occurred while computing the Cholesky factorization of a matrix needed for the computation of the adaptation measure. &
+                    SKG_": Error occurred while computing the Cholesky factorization &
+                    &of a matrix needed for the computation of the adaptation measure. &
                     &Such error is highly unusual, and requires an in depth investigation of the case. &
                     &It may also be due to a runtime computational glitch, in particular, for high-dimensional simulations. &
                     &In such case, consider increasing the value of the input variable proposalAdaptationPeriod. &
                     &It may also be that your input objective function has been incorrectly implemented. &
                     &Also, ensure a correct value of `ndim` to the ParaMonte sampler routine, representing the domain size. &
-                    &Otherwise, restarting the simulation might resolve the error. If the error persists, please inform the developers at: "//NL2//PARAMONTE_WEB_ISSUES
+                    &Otherwise, restarting the simulation might resolve the error. &
+                    &If the error persists, please inform the developers at: "//NL2//PARAMONTE_WEB_ISSUES
                     return
                 end if ! LCOV_EXCL_STOP
                 proposalAdaptation = 1._RKG - exp(0.5_RKG * (proposal%logSqrtDetOld + logSqrtDetNew) - logSqrtDetSum) ! totalVariationUpperBound
@@ -746,7 +781,9 @@ contains
 
             end if proposalAdaptationEstimate_block
 
-            ! Read the restart file (in new mode).
+            !!!!
+            !!!! Read the restart file (in new mode).
+            !!!!
 
             if (spec%image%is%leader .and. spec%run%is%new) then
                 ! This extra check avoids redundant restart writes when no scaling has occurred.

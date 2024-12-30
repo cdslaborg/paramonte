@@ -327,7 +327,7 @@ if (TRUE)
     #if (DEFINED bdir)
     #    message(NOTICE "${pmattn} User-specified ParaMonte build directory detected. bdir=\"${bdir}\"")
     #else()
-    #    set(bdir "${CMAKE_SOURCE_DIR}/bld/${os}/${arch}/${csid}/${CMAKE_Fortran_COMPILER_VERSION}/${build}/${lib}/${mem}/${par}/${lang}")
+    #    set(bdir "${CMAKE_SOURCE_DIR}/_bld/${os}/${arch}/${csid}/${CMAKE_Fortran_COMPILER_VERSION}/${build}/${lib}/${mem}/${par}/${lang}")
     #    message(NOTICE "${pmattn} Defining and generating the ParaMonte build directory: bdir=\"${bdir}\"")
     #    set(ENV{bdir} "${bdir}")
     #    #set(paramonte_bld_dir "${CMAKE_BINARY_DIR}/${csid}/${CMAKE_Fortran_COMPILER_VERSION}/${CMAKE_BUILD_TYPE}/${LTYPE}/${PARALLELISM_DIR}")
@@ -1812,7 +1812,7 @@ endif()
 if (DEFINED ddir)
     set(paramonte_bin_dir "${ddir}")
 else()
-    set(paramonte_bin_dir "${paramonte_dir}/bin")
+    set(paramonte_bin_dir "${paramonte_dir}/_bin")
 endif()
 
 foreach(fitem ${fresh})
@@ -1980,17 +1980,17 @@ if (TRUE)
             file(MAKE_DIRECTORY "${paramonte_bld_test_inc_dir}")
         endif()
 
-        # set up test bin directory
+        # set up test _bin directory
 
         #set(paramonte_bld_test_bin_dir "${paramonte_bld_test_dir}")
-        set(paramonte_bld_test_bin_dir "${paramonte_bld_test_dir}/bin")
+        set(paramonte_bld_test_bin_dir "${paramonte_bld_test_dir}/_bin")
         message(NOTICE "${pmattn} paramonte_bld_test_bin_dir: ${paramonte_bld_test_bin_dir}")
         file(REMOVE_RECURSE "${paramonte_bld_test_bin_dir}/")
         if (NOT EXISTS "${paramonte_bld_test_bin_dir}/")
             file(MAKE_DIRECTORY "${paramonte_bld_test_bin_dir}")
         endif()
 
-        # set up test bin directory
+        # set up test _bin directory
 
         set(paramonte_bld_test_bin_input_dir "${paramonte_bld_test_bin_dir}/input")
         message(NOTICE "${pmattn} paramonte_bld_test_bin_input_dir: ${paramonte_bld_test_bin_input_dir}")

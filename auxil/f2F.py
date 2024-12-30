@@ -1,4 +1,4 @@
-#!/USR/BIN/ENV python3
+#!/usr/bin/env python3
 def f2F(dir):
     """
     Convert all .f90 extensions in the input dir to .F90.

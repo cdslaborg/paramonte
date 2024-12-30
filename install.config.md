@@ -264,7 +264,7 @@ to the directory where the library should be built.
 **optional**. The default value for `cmake_build_directory_path` is,
 
 ```bash
-bdir="${root}/bld/${os}/${arch}/${csid}${csvs}/${build}/${lib}/${mem}/${par}/${checking}/${lang}"
+bdir="${root}/_bld/${os}/${arch}/${csid}${csvs}/${build}/${lib}/${mem}/${par}/${checking}/${lang}"
 ```
 
 where
@@ -290,6 +290,12 @@ where
     `openmpi`           | If the library is built for MPI parallelism using an OpenMPI distribution.
     `openmp`            | If the library is built for OpenMP parallelism.
     `serial`            | If the library is built for serial applications.
+
+>   **NOTE**  
+>   The underscore prefix `_` is intentionally added to the ParaMonte output build directory `_bld` 
+>   to make the folder easily identifiable, but more importantly, to readily distinguish and find 
+>   the folder name within the library implementation among the myriad of other applications 
+>   that use the same folder name without underscore for the application builds.
 
 ### `bench`
 
@@ -412,8 +418,14 @@ where `deploy_directory_path` is the path to the
 directory where the library binaries should be deployed.
 
 **optional**. The default value for `deploy_directory_path` is
-`"./bin"` where `.` refers to the path to the root directory
+`"./_bin"` where `.` refers to the path to the root directory
 of the project where the main `CMakeLists.txt` file exists.
+
+>   **NOTE**  
+>   The underscore prefix `_` is intentionally added to the ParaMonte output deployment directory `_bin`
+>   to make the folder easily identifiable, but more importantly, to readily distinguish and find 
+>   the folder name within the library implementation among the myriad of other applications 
+>   that use the same folder name without underscore for the application binaries.
 
 ### `exam`
 
@@ -755,7 +767,7 @@ Value               | Usage
 
 ### `dev`
 
-Prevents the creation of the deployment (`bin`) directory for the final binary products and
+Prevents the creation of the deployment (`_bin`) directory for the final binary products and
 further avoids the duplicate CMake build which is currently required to properly generate
 all preprocessed Fortran source files in the final package.
 
@@ -784,7 +796,7 @@ Value               | Usage
 
 > **WARNING**
 > Beware that specifying this flag will **disable** the deployment to the default or user-specified deploy directory.
-> The default deployment directory is the `bin` subdirectory in the root directory of
+> The default deployment directory is the `_bin` subdirectory in the root directory of
 > the ParaMonte GitHub repository where the install scripts are located.
 
 **optional**. The default value for `value` is `0`.

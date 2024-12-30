@@ -59,7 +59,7 @@ classdef Figure < pm.matlab.Handle
         %>  For example, ``figure.color`` and ``figure.Color`` are the same,
         %>  and only one of the two will be processed.<br>
         %>
-        %>  \example{colormap}
+        %>  \example{figure}
         %>  \code{.m}
         %>
         %>      self.figure.units = pixels;

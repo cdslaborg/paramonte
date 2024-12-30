@@ -321,7 +321,7 @@ fi
 
 #paramonte_src_fortran_dir="${paramonte_dir}/src/fortran"; export paramonte_src_fortran_dir
 #paramonte_src_fortran_test_dir="${paramonte_dir}/src/fortran/test"; export paramonte_src_fortran_test_dir
-ParaMonte_ROOT_BLD_DIR="${paramonte_dir}/bld"; export ParaMonte_ROOT_BLD_DIR
+ParaMonte_ROOT_BLD_DIR="${paramonte_dir}/_bld"; export ParaMonte_ROOT_BLD_DIR
 if ! [ -d "${ParaMonte_ROOT_BLD_DIR}" ]; then mkdir -p "${ParaMonte_ROOT_BLD_DIR}"; fi
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -540,7 +540,7 @@ else
         cmakeInstallEnabled=true
         echo >&2 "${pmwarn} Failed to detect a ParaMonte-compatible installation of cmake."
     else
-        echo >&2 "${pmnote} The current cmake installation is ParaMonte compatible."
+        echo >&2 "${BoldGreen} The current CMake installation is ParaMonte compatible.${ResetColor}"
     fi
 fi
 #export cmakeInstallEnabled

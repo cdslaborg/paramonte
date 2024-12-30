@@ -556,7 +556,7 @@ message(NOTICE "${pmattn} CMAKE_INSTALL_PREFIX: ${CMAKE_INSTALL_PREFIX}" )
 #    message(NOTICE "CMAKE_FORTRAN_LINK_EXECUTABLE: ${CMAKE_FORTRAN_LINK_EXECUTABLE}")
 #endif ()
 
-# copy input data for testing to the bin folder
+# copy input data for testing to the _bin folder
 
 # enable_testing() # only useful when ctests is used, which is not the case here.
 
