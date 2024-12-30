@@ -30,46 +30,36 @@
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 module pm_sampling_scio_RK5
-#if RK5_ENABLED
     use pm_kind, only: RKG => RK5
+#if RK5_ENABLED
 #include "pm_sampling_scio.imp.F90"
-#else
-    use pm_kind, only: RKG => RK
 #endif
 end module
 
 module pm_sampling_scio_RK4
-#if RK4_ENABLED
     use pm_kind, only: RKG => RK4
+#if RK4_ENABLED
 #include "pm_sampling_scio.imp.F90"
-#else
-    use pm_kind, only: RKG => RK
 #endif
 end module
 
 module pm_sampling_scio_RK3
-#if RK3_ENABLED
     use pm_kind, only: RKG => RK3
+#if RK3_ENABLED
 #include "pm_sampling_scio.imp.F90"
-#else
-    use pm_kind, only: RKG => RK
 #endif
 end module
 
 module pm_sampling_scio_RK2
-#if RK2_ENABLED
     use pm_kind, only: RKG => RK2
+#if RK2_ENABLED
 #include "pm_sampling_scio.imp.F90"
-#else
-    use pm_kind, only: RKG => RK
 #endif
 end module
 
 module pm_sampling_scio_RK1
-#if RK1_ENABLED
     use pm_kind, only: RKG => RK1
+#if RK1_ENABLED
 #include "pm_sampling_scio.imp.F90"
-#else
-    use pm_kind, only: RKG => RK
 #endif
 end module

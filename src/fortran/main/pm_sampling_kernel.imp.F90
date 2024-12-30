@@ -86,7 +86,8 @@ end if;
         use pm_sampling_proposal, only: getErrChainWrite
         use pm_sampling_proposal, only: chainFileColName
         use pm_sampling_proposal, only: isFailedChainResize
-        use pm_sampling_proposal, only: proposal_type, setProposalAdapted, readRestart, writeRestart, setProposalStateNew
+        use pm_sampling_proposal, only: proposal_type, setProposalAdapted
+        use pm_sampling_proposal, only: readRestart, writeRestart, setProposalStateNew
 #if     CAF_ENABLED || MPI_ENABLED
         use pm_sampling_proposal, only: bcastProposalAdaptation
 #endif

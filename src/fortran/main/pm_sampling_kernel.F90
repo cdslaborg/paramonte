@@ -28,7 +28,7 @@
 !>  \author
 !>  \AmirShahmoradi, Monday 00:01 AM, January 1, 2018, Institute for Computational Engineering and Sciences, University of Texas Austin<br>
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #define ParaDISE_ENABLED 1
 
@@ -89,126 +89,106 @@ end module
 
 #undef ParaDISE_ENABLED
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #define ParaDRAM_ENABLED 1
 
 module pm_sampling_kernel_dram_RK5
-#if RK5_ENABLED
     use pm_kind, only: RKG => RK5
+#if RK5_ENABLED
 #define pm_sampling_proposal pm_sampling_proposal_dram_RK5
 #include "pm_sampling_kernel.imp.F90"
 #undef pm_sampling_proposal
-#else
-    use pm_kind, only: RKG => RK
 #endif
 end module
 
 module pm_sampling_kernel_dram_RK4
-#if RK4_ENABLED
     use pm_kind, only: RKG => RK4
+#if RK4_ENABLED
 #define pm_sampling_proposal pm_sampling_proposal_dram_RK4
 #include "pm_sampling_kernel.imp.F90"
 #undef pm_sampling_proposal
-#else
-    use pm_kind, only: RKG => RK
 #endif
 end module
 
 module pm_sampling_kernel_dram_RK3
-#if RK3_ENABLED
     use pm_kind, only: RKG => RK3
+#if RK3_ENABLED
 #define pm_sampling_proposal pm_sampling_proposal_dram_RK3
 #include "pm_sampling_kernel.imp.F90"
 #undef pm_sampling_proposal
-#else
-    use pm_kind, only: RKG => RK
 #endif
 end module
 
 module pm_sampling_kernel_dram_RK2
-#if RK2_ENABLED
     use pm_kind, only: RKG => RK2
+#if RK2_ENABLED
 #define pm_sampling_proposal pm_sampling_proposal_dram_RK2
 #include "pm_sampling_kernel.imp.F90"
 #undef pm_sampling_proposal
-#else
-    use pm_kind, only: RKG => RK
 #endif
 end module
 
 module pm_sampling_kernel_dram_RK1
-#if RK1_ENABLED
     use pm_kind, only: RKG => RK1
+#if RK1_ENABLED
 #define pm_sampling_proposal pm_sampling_proposal_dram_RK1
 #include "pm_sampling_kernel.imp.F90"
 #undef pm_sampling_proposal
-#else
-    use pm_kind, only: RKG => RK
 #endif
 end module
 
 #undef ParaDRAM_ENABLED
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #define ParaNest_ENABLED 1
-!
+
 !module pm_sampling_kernel_nest_RK5
-!#if RK5_ENABLED
 !    use pm_kind, only: RKG => RK5
+!#if RK5_ENABLED
 !#define pm_sampling_proposal pm_sampling_proposal_dram_RK5
 !#include "pm_sampling_kernel.imp.F90"
 !#undef pm_sampling_proposal
-!!#else
-!    use pm_kind, only: RKG => RK
 !#endif
 !end module
 !
 !module pm_sampling_kernel_nest_RK4
-!#if RK4_ENABLED
 !    use pm_kind, only: RKG => RK4
+!#if RK4_ENABLED
 !#define pm_sampling_proposal pm_sampling_proposal_dram_RK4
 !#include "pm_sampling_kernel.imp.F90"
 !#undef pm_sampling_proposal
-!!#else
-!    use pm_kind, only: RKG => RK
 !#endif
 !end module
 !
 !module pm_sampling_kernel_nest_RK3
-!#if RK3_ENABLED
 !    use pm_kind, only: RKG => RK3
+!#if RK3_ENABLED
 !#define pm_sampling_proposal pm_sampling_proposal_dram_RK3
 !#include "pm_sampling_kernel.imp.F90"
 !#undef pm_sampling_proposal
-!!#else
-!    use pm_kind, only: RKG => RK
 !#endif
 !end module
 !
 !module pm_sampling_kernel_nest_RK2
-!#if RK2_ENABLED
 !    use pm_kind, only: RKG => RK2
+!#if RK2_ENABLED
 !#define pm_sampling_proposal pm_sampling_proposal_dram_RK2
 !#include "pm_sampling_kernel.imp.F90"
 !#undef pm_sampling_proposal
-!!#else
-!    use pm_kind, only: RKG => RK
 !#endif
 !end module
 !
 !module pm_sampling_kernel_nest_RK1
-!#if RK1_ENABLED
 !    use pm_kind, only: RKG => RK1
+!#if RK1_ENABLED
 !#define pm_sampling_proposal pm_sampling_proposal_dram_RK1
 !#include "pm_sampling_kernel.imp.F90"
 !#undef pm_sampling_proposal
-!!#else
-!    use pm_kind, only: RKG => RK
 !#endif
 !end module
 
 #undef ParaNest_ENABLED
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

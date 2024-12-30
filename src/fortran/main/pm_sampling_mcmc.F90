@@ -47,66 +47,56 @@
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 module pm_sampling_mcmc_RK5
-#if RK5_ENABLED
     use pm_kind, only: RKG => RK5
+#if RK5_ENABLED
 #define pm_sampling_scio pm_sampling_scio_RK5
 #define pm_sampling_base pm_sampling_base_RK5
 #include "pm_sampling_mcmc.imp.F90"
 #undef pm_sampling_base
 #undef pm_sampling_scio
-#else
-    use pm_kind, only: RKG => RK
 #endif
 end module
 
 module pm_sampling_mcmc_RK4
-#if RK4_ENABLED
     use pm_kind, only: RKG => RK4
+#if RK4_ENABLED
 #define pm_sampling_scio pm_sampling_scio_RK4
 #define pm_sampling_base pm_sampling_base_RK4
 #include "pm_sampling_mcmc.imp.F90"
 #undef pm_sampling_base
 #undef pm_sampling_scio
-#else
-    use pm_kind, only: RKG => RK
 #endif
 end module
 
 module pm_sampling_mcmc_RK3
-#if RK3_ENABLED
     use pm_kind, only: RKG => RK3
+#if RK3_ENABLED
 #define pm_sampling_scio pm_sampling_scio_RK3
 #define pm_sampling_base pm_sampling_base_RK3
 #include "pm_sampling_mcmc.imp.F90"
 #undef pm_sampling_base
 #undef pm_sampling_scio
-#else
-    use pm_kind, only: RKG => RK
 #endif
 end module
 
 module pm_sampling_mcmc_RK2
-#if RK2_ENABLED
     use pm_kind, only: RKG => RK2
+#if RK2_ENABLED
 #define pm_sampling_scio pm_sampling_scio_RK2
 #define pm_sampling_base pm_sampling_base_RK2
 #include "pm_sampling_mcmc.imp.F90"
 #undef pm_sampling_base
 #undef pm_sampling_scio
-#else
-    use pm_kind, only: RKG => RK
 #endif
 end module
 
 module pm_sampling_mcmc_RK1
-#if RK1_ENABLED
     use pm_kind, only: RKG => RK1
+#if RK1_ENABLED
 #define pm_sampling_scio pm_sampling_scio_RK1
 #define pm_sampling_base pm_sampling_base_RK1
 #include "pm_sampling_mcmc.imp.F90"
 #undef pm_sampling_base
 #undef pm_sampling_scio
-#else
-    use pm_kind, only: RKG => RK
 #endif
 end module
