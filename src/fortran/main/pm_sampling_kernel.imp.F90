@@ -72,6 +72,27 @@ end if;
 #if     ParaDISE_ENABLED || ParaDRAM_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if     ParaDISE_ENABLED
+        use pm_sampling_proposal_dise_RK5, only: killMeAlreadyCMake_RK5 => RKG
+        use pm_sampling_proposal_dise_RK4, only: killMeAlreadyCMake_RK4 => RKG
+        use pm_sampling_proposal_dise_RK3, only: killMeAlreadyCMake_RK3 => RKG
+        use pm_sampling_proposal_dise_RK2, only: killMeAlreadyCMake_RK2 => RKG
+        use pm_sampling_proposal_dise_RK1, only: killMeAlreadyCMake_RK1 => RKG
+#elif   ParaDRAM_ENABLED
+        use pm_sampling_proposal_dram_RK5, only: killMeAlreadyCMake_RK5 => RKG
+        use pm_sampling_proposal_dram_RK4, only: killMeAlreadyCMake_RK4 => RKG
+        use pm_sampling_proposal_dram_RK3, only: killMeAlreadyCMake_RK3 => RKG
+        use pm_sampling_proposal_dram_RK2, only: killMeAlreadyCMake_RK2 => RKG
+        use pm_sampling_proposal_dram_RK1, only: killMeAlreadyCMake_RK1 => RKG
+#elif   ParaNest_ENABLED
+        use pm_sampling_proposal_nest_RK5, only: killMeAlreadyCMake_RK5 => RKG
+        use pm_sampling_proposal_nest_RK4, only: killMeAlreadyCMake_RK4 => RKG
+        use pm_sampling_proposal_nest_RK3, only: killMeAlreadyCMake_RK3 => RKG
+        use pm_sampling_proposal_nest_RK2, only: killMeAlreadyCMake_RK2 => RKG
+        use pm_sampling_proposal_nest_RK1, only: killMeAlreadyCMake_RK1 => RKG
+#else
+#error  "Unrecognized interface."
+#endif
         use pm_err, only: getFine
         use pm_err, only: err_type
         use pm_val2str, only: getStr
@@ -131,29 +152,6 @@ end if;
 
 contains
 
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#if     ParaDISE_ENABLED
-        subroutine killMeAlreadyCMake_RK5(); use pm_sampling_proposal_dise_RK5, only: RKG; end subroutine
-        subroutine killMeAlreadyCMake_RK4(); use pm_sampling_proposal_dise_RK4, only: RKG; end subroutine
-        subroutine killMeAlreadyCMake_RK3(); use pm_sampling_proposal_dise_RK3, only: RKG; end subroutine
-        subroutine killMeAlreadyCMake_RK2(); use pm_sampling_proposal_dise_RK2, only: RKG; end subroutine
-        subroutine killMeAlreadyCMake_RK1(); use pm_sampling_proposal_dise_RK1, only: RKG; end subroutine
-#elif   ParaDRAM_ENABLED
-        subroutine killMeAlreadyCMake_RK5(); use pm_sampling_proposal_dram_RK5, only: RKG; end subroutine
-        subroutine killMeAlreadyCMake_RK4(); use pm_sampling_proposal_dram_RK4, only: RKG; end subroutine
-        subroutine killMeAlreadyCMake_RK3(); use pm_sampling_proposal_dram_RK3, only: RKG; end subroutine
-        subroutine killMeAlreadyCMake_RK2(); use pm_sampling_proposal_dram_RK2, only: RKG; end subroutine
-        subroutine killMeAlreadyCMake_RK1(); use pm_sampling_proposal_dram_RK1, only: RKG; end subroutine
-#elif   ParaNest_ENABLED
-        subroutine killMeAlreadyCMake_RK5(); use pm_sampling_proposal_nest_RK5, only: RKG; end subroutine
-        subroutine killMeAlreadyCMake_RK4(); use pm_sampling_proposal_nest_RK4, only: RKG; end subroutine
-        subroutine killMeAlreadyCMake_RK3(); use pm_sampling_proposal_nest_RK3, only: RKG; end subroutine
-        subroutine killMeAlreadyCMake_RK2(); use pm_sampling_proposal_nest_RK2, only: RKG; end subroutine
-        subroutine killMeAlreadyCMake_RK1(); use pm_sampling_proposal_nest_RK1, only: RKG; end subroutine
-#else
-#error  "Unrecognized interface."
-#endif
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         !>  \brief
