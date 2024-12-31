@@ -7,11 +7,16 @@
 %>  this class primarily serves as the superclass for the
 %>  visualization subclasses accessible to the end users.<br>
 %>
-%>  \note
-%>  In case of [pm.vis.SubplotContour](@ref SubplotContour), [pm.vis.SubplotContour3](@ref SubplotContour3), and
-%>  [pm.vis.SubplotContourf](@ref SubplotContourf) visualization objects, the density of the input data
-%>  is first computed and smoothed by a Gaussian kernel density estimator and then passed to the
-%>  MATLAB intrinsic plotting functions ``contour``, ``contourf``, ``contour3``.<br>
+!>  \note
+!>  In case of the following visualization classes,<br>
+!>  <ol>
+!>      <li>    [paramonte.vis.SubplotContour](@ref SubplotContour),
+!>      <li>    [paramonte.vis.SubplotContourf](@ref SubplotContourf),
+!>      <li>    [paramonte.vis.SubplotContour3](@ref SubplotContour3),
+!>  </ol>
+!>  the density of the input data is first computed and smoothed
+!>  by a Gaussian kernel density estimator and then passed to the
+!>  MATLAB ``contour``, ``contourf``, ``contour3`` intrinsics.<br>
 %>
 %>  Dynamic class attributes
 %>  ------------------------
@@ -264,7 +269,7 @@ classdef Subplot < pm.vis.axes.Axes
         %>                              of the ``subplot`` component of the parent object.<br>
         %>
         %>  \return
-        %>  ``self``            :   The output scalar object of class [pm.vis.Subplot](@ref Subplot).<br>
+        %>  ``self``                :   The output scalar object of class [pm.vis.Subplot](@ref Subplot).<br>
         %>
         %>  \interface{Subplot}
         %>  \code{.m}
@@ -281,11 +286,16 @@ classdef Subplot < pm.vis.axes.Axes
         %>  mapping determined by values specified by the elements of ``colc``.<br>
         %>  If it is an empty object having length 0, then the default value will be used.<br>
         %>
-        %>  \note
-        %>  In case of [pm.vis.SubplotContour](@ref SubplotContour)/[pm.vis.SubplotContourf](@ref SubplotContourf)/[pm.vis.SubplotContour3](@ref SubplotContour3)
-        %>  visualization objects, the density of the input data is first computed and smoothed
-        %>  by a Gaussian kernel density estimator and then passed to the MATLAB intrinsic
-        %>  plotting functions , ``contour``, ``contourf``, ``contour3``.<br>
+        !>  \note
+        !>  In case of the following visualization classes,<br>
+        !>  <ol>
+        !>      <li>    [paramonte.vis.SubplotContour](@ref SubplotContour),
+        !>      <li>    [paramonte.vis.SubplotContourf](@ref SubplotContourf),
+        !>      <li>    [paramonte.vis.SubplotContour3](@ref SubplotContour3),
+        !>  </ol>
+        !>  the density of the input data is first computed and smoothed
+        !>  by a Gaussian kernel density estimator and then passed to the
+        !>  MATLAB ``contour``, ``contourf``, ``contour3`` intrinsics.<br>
         %>
         %>  \example{Subplot}
         %>  \include{lineno} example/vis/Subplot/main.m

@@ -66,7 +66,7 @@ end if;
         character(*,SKG), parameter :: MODULE_NAME = SK_"@pm_sampling_proposal_dram"
 #endif
 #if     CAF_ENABLED
-        real(RKG), save     , allocatable   :: comv_covLowChoUpp(:,:)[:] ! lower covariance, upper Cholesky.
+        real(RKG), save     , allocatable   :: comv_choLowCovUpp(:,:)[:] ! lower covariance, upper Cholesky.
 #endif
         type :: scaleSq_type
             real(RKG) :: default
@@ -79,7 +79,7 @@ end if;
             logical(LK)                     :: delRejEnabled
             integer(IK)                     :: sampleSizeOld
             real(RKG)                       :: logSqrtDetOld
-            real(RKG)       , allocatable   :: covLowChoUpp(:,:,:) ! The covariance Matrix of the proposal distribution. Last index belongs to delayed rejection.
+            real(RKG)       , allocatable   :: choLowCovUpp(:,:,:) ! The covariance Matrix of the proposal distribution. Last index belongs to delayed rejection.
             real(RKG)       , allocatable   :: meanOld(:)
 #if         ParaDISE_ENABLED
             real(RKG)                       :: negLogVolUnitBall
@@ -156,9 +156,9 @@ contains
             type(proposal_type), intent(inout) :: proposal
             type(spec_type), intent(in) :: spec
             if (spec%image%is%leader) then
-                comv_covLowChoUpp(1 : spec%ndim%val, 1 : spec%ndim%vp1) = proposal%covLowChoUpp(1: spec%ndim%val, 1 : spec%ndim%vp1, 0)
+                comv_choLowCovUpp(1 : spec%ndim%val, 1 : spec%ndim%vp1) = proposal%choLowCovUpp(1 : spec%ndim%val, 1 : spec%ndim%vp1, 0)
             else
-                proposal%covLowChoUpp(1: spec%ndim%val, 1 : spec%ndim%vp1, 0) = comv_covLowChoUpp(1 : spec%ndim%val, 1 : spec%ndim%vp1)[1]
+                proposal%choLowCovUpp(1 : spec%ndim%val, 1 : spec%ndim%vp1, 0) = comv_choLowCovUpp(1 : spec%ndim%val, 1 : spec%ndim%vp1)[1]
                 if (proposal%delRejEnabled) call setProposalDelRejChol(spec, proposal) ! update the higher-stage delayed-rejection Cholesky Upper matrices.
                 SET_ParaDISE(call setProposalInvCov(proposal))
             end if
@@ -169,10 +169,10 @@ contains
             type(spec_type), intent(in) :: spec
             type(proposal_type), intent(inout) :: proposal
             integer :: ierrMPI
-            call mpi_bcast  ( proposal%covLowChoUpp & ! LCOV_EXCL_LINE
-                           !, size(proposal%covLowChoUpp) & ! LCOV_EXCL_LINE ! count
+            call mpi_bcast  ( proposal%choLowCovUpp & ! LCOV_EXCL_LINE
+                           !, size(proposal%choLowCovUpp) & ! LCOV_EXCL_LINE ! count
                            !, mpi_double_precision & ! LCOV_EXCL_LINE ! datatype
-                            , size(proposal%covLowChoUpp) * NBRK & ! LCOV_EXCL_LINE ! count
+                            , size(proposal%choLowCovUpp) * NBRK & ! LCOV_EXCL_LINE ! count
                             , mpi_byte & ! LCOV_EXCL_LINE ! datatype
                             , 0 & ! LCOV_EXCL_LINE ! root: broadcasting rank
                             , mpi_comm_world & ! LCOV_EXCL_LINE ! comm
@@ -199,17 +199,17 @@ contains
         !>  the corresponding argument of [getMatInvFromChoLow](ref pm_matrixInv::getMatInvfromcholow) to guarantee it to the compiler.
         !>  More than improving performance, this would turn off the pesky compiler warnings about temporary array creation.
         PURE subroutine setProposalInvCov(spec, proposal)
-            use pm_matrixInv, only: setMatInv, choUpp
+            use pm_matrixInv, only: setMatInv, choLow
             type(proposal_type), intent(inout) :: proposal
             type(spec_type), intent(in) :: spec
             integer(IK) :: istage
             ! update the inverse covariance matrix of the proposal from the computed Cholesky factor.
             istage = 0
-            call setMatInv(proposal%invCov(:, 1 : spec%ndim%val, istage), proposal%covLowChoUpp(:, 2 : spec%ndim%vp1, istage), choUpp)
+            call setMatInv(proposal%invCov(:, 1 : spec%ndim%val, istage), proposal%choLowCovUpp(:, 1 : spec%ndim%val, istage), choLow)
             proposal%logSqrtDetInvCov(istage) = -proposal%logSqrtDetOld
             do istage = 0, spec%proposalDelayedRejectionCount%val
-                call setMatInv(proposal%invCov(:, 1 : spec%ndim%val, istage), proposal%covLowChoUpp(:, 2 : spec%ndim%vp1, istage), choUpp)
-                !proposal%logSqrtDetInvCov(istage) = .5_RKG * getMatMulTraceLog(proposal%covLowChoUpp(:, 2 : spec%ndim%vp1, istage))
+                call setMatInv(proposal%invCov(:, 1 : spec%ndim%val, istage), proposal%choLowCovUpp(:, 1 : spec%ndim%val, istage), choLow)
+                !proposal%logSqrtDetInvCov(istage) = .5_RKG * getMatMulTraceLog(proposal%choLowCovUpp(:, 1 : spec%ndim%val, istage))
                 proposal%logSqrtDetInvCov(istage) = proposal%logSqrtDetInvCov(istage) - spec%ndim%val * log(spec%proposalDelayedRejectionScale%val(istage))
             end do
         end subroutine setProposalInvCov
@@ -239,7 +239,7 @@ contains
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function proposal_typer(spec, err) result(proposal)
-            use pm_matrixChol, only: setMatChol, lowDia, transHerm
+            use pm_matrixChol, only: setMatChol, uppDia, transHerm
             use pm_matrixTrace, only: getMatMulTraceLog
             use pm_ellipsoid, only: getLogVolUnitBall ! for uniform proposal.
             use pm_arrayRebind, only: setRebound
@@ -264,19 +264,19 @@ contains
             ! setup covariance matrix
             SET_ParaDISE(call setRebound(proposal%logSqrtDetInvCov, 0_IK, spec%proposalDelayedRejectionCount%val))
             SET_ParaDISE(call setRebound(proposal%invCov, [1_IK, 1_IK, 0_IK], [spec%ndim%val, spec%ndim%vp1, spec%proposalDelayedRejectionCount%val]))
-            call setRebound(proposal%covLowChoUpp, [1_IK, 1_IK, 0_IK], [spec%ndim%val, spec%ndim%vp1, spec%proposalDelayedRejectionCount%val])
-            SET_CAF(if (allocated(comv_covLowChoUpp)) deallocate(comv_covLowChoUpp))
-            SET_CAF(allocate(comv_covLowChoUpp(spec%ndim%val, 1 : spec%ndim%vp1)[*]))
-            proposal%covLowChoUpp(1 : spec%ndim%val, 1 : spec%ndim%val, 0) = spec%proposalCov%val * proposal%scaleSq%default ! Scale the initial covariance matrix
+            call setRebound(proposal%choLowCovUpp, [1_IK, 1_IK, 0_IK], [spec%ndim%val, spec%ndim%vp1, spec%proposalDelayedRejectionCount%val])
+            SET_CAF(if (allocated(comv_choLowCovUpp)) deallocate(comv_choLowCovUpp))
+            SET_CAF(allocate(comv_choLowCovUpp(spec%ndim%val, 1 : spec%ndim%vp1)[*]))
+            proposal%choLowCovUpp(1 : spec%ndim%val, 2 : spec%ndim%vp1, 0) = spec%proposalCov%val * proposal%scaleSq%default ! Scale the initial covariance matrix
             ! The `:` instead of `1 : spec%ndim%val` avoids temporary array creation.
-            call setMatChol(proposal%covLowChoUpp(:, 1 : spec%ndim%val, 0), lowDia, info, proposal%covLowChoUpp(:, 2 : spec%ndim%vp1, 0), transHerm)
+            call setMatChol(proposal%choLowCovUpp(:, 2 : spec%ndim%vp1, 0), uppDia, info, proposal%choLowCovUpp(:, 1 : spec%ndim%val, 0), transHerm)
             err%occurred = info /= 0_IK
             if (err%occurred) then
-                err%msg = "Internal erorr: Cholesky factorization of proposalCov failed at diagonal #"// & ! LCOV_EXCL_LINE
-                getStr(info)//SKG_": "//getStr(transpose(proposal%covLowChoUpp(:, 1 : spec%ndim%val, 0)), proposal%format)
+                err%msg = "Internal erorr: Cholesky factorization of initial proposal covariance matrix failed at diagonal #"// & ! LCOV_EXCL_LINE
+                getStr(info)//SKG_": "//getStr(transpose(proposal%choLowCovUpp(:, 2 : spec%ndim%vp1, 0)), proposal%format)
                 return
             end if
-            proposal%logSqrtDetOld = .5_RKG * getMatMulTraceLog(proposal%covLowChoUpp(:, 2 : spec%ndim%vp1, 0))
+            proposal%logSqrtDetOld = .5_RKG * getMatMulTraceLog(proposal%choLowCovUpp(:, 1 : spec%ndim%val, 0))
             ! Scale the higher-stage delayed-rejection Cholesky Upper matrices.
             if (proposal%delRejEnabled) call setProposalDelRejChol(spec, proposal)
             SET_ParaDISE(proposal%negLogVolUnitBall = -getLogVolUnitBall(real(spec%ndim%val, RKG))) ! only for uniform proposal?
@@ -324,10 +324,11 @@ contains
                 ! The `do concurrent` version is problematic for OpenMP builds of the ParaMonte library with the Intel ifort 2021.8 on heap, yielding segmentation fault.
                 !do concurrent(idim = 1 : spec%ndim%val)
                 do idim = 1, spec%ndim%val
-                    proposal%covLowChoUpp(1 : idim, idim + 1, istage) = proposal%covLowChoUpp(1 : idim, idim + 1, istage - 1) * spec%proposalDelayedRejectionScale%val(istage)
+                   !proposal%choLowCovUpp(1 : idim, idim + 1, istage) = proposal%choLowCovUpp(1 : idim, idim + 1, istage - 1) * spec%proposalDelayedRejectionScale%val(istage)
+                    proposal%choLowCovUpp(idim : spec%ndim%val, idim, istage) = proposal%choLowCovUpp(idim : spec%ndim%val, idim, istage - 1) * spec%proposalDelayedRejectionScale%val(istage)
                 end do
             end do
-            ! There is no need to check for positive-definiteness of the covLowChoUpp, it is already checked on the first image.
+            ! There is no need to check for positive-definiteness of the choLowCovUpp, it is already checked on the first image.
         end subroutine setProposalDelRejChol
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -371,7 +372,7 @@ contains
                                                                     , "proposalMean" & ! LCOV_EXCL_LINE
                                                                     , proposal%meanOld & ! LCOV_EXCL_LINE
                                                                     , "proposalChol" & ! LCOV_EXCL_LINE
-                                                                    , ((proposal%covLowChoUpp(idim, jdim, 0), idim = 1, jdim - 1), jdim = 2, spec%ndim%vp1)
+                                                                    , (proposal%choLowCovUpp(jdim : spec%ndim%val, jdim, 0), jdim = 1, spec%ndim%val)
                                                                     ! Only the upper-triangle of the Cholesky factorization with no delayed rejection.
                                                                     ! We pass Cholesky factorization because the covariance matrix tends to become
                                                                     ! singular in the post-processing step in higher-level languages.
@@ -389,7 +390,7 @@ contains
         ! ATTN: The colon index in place of 1 : ndim below avoids the temporary array creation.
         ! The purity breaks only because of the warn() call.
         subroutine setProposalStateNew(spec, proposal, delayedRejectionStage, stateOld, stateNew, rng, err)
-            use pm_distMultiNorm, only: setMultiNormRand, uppDia
+            use pm_distMultiNorm, only: setMultiNormRand, lowDia
             use pm_distUnif, only: xoshiro256ssw_type
             use pm_distUnifEll, only: setUnifEllRand
             use pm_ellipsoid, only: isMemberEll
@@ -413,9 +414,9 @@ contains
                 ! This could later become problematic because the same state is accepted as new state, potentially corrupting
                 ! the proposal covariance computation based on the newly-collected samples.
                 if (spec%proposal%is%normal) then
-                    call setMultiNormRand(rng, stateNew, stateOld, proposal%covLowChoUpp(:, 2 : spec%ndim%vp1, delayedRejectionStage), uppDia)
+                    call setMultiNormRand(rng, stateNew, stateOld, proposal%choLowCovUpp(:, 1 : spec%ndim%val, delayedRejectionStage), lowDia)
                 elseif (spec%proposal%is%uniform) then
-                    call setUnifEllRand(rng, stateNew, stateOld, proposal%covLowChoUpp(:, 2 : spec%ndim%vp1, delayedRejectionStage), uppDia)
+                    call setUnifEllRand(rng, stateNew, stateOld, proposal%choLowCovUpp(:, 1 : spec%ndim%val, delayedRejectionStage), lowDia)
                 else
                     error stop "Internal error occurred: proposal distribution unrecognized."
                 end if
@@ -471,7 +472,7 @@ contains
             use pm_sampleCov, only: setCovMeanUpdated
             use pm_matrixTrace, only: getMatMulTraceLog
             use pm_sampleCov, only: setCov, setCovMeanMerged
-            use pm_matrixChol, only: setMatChol, lowDia, transHerm
+            use pm_matrixChol, only: setMatChol, uppDia, transHerm
             character(*, SK), parameter :: PROCEDURE_NAME = MODULE_NAME//"@setProposalAdapted()"
             type(spec_type), intent(inout) :: spec
             type(proposal_type), intent(inout) :: proposal
@@ -484,8 +485,8 @@ contains
             type(err_type), intent(inout) :: err
             real(RKG) :: sampleStateMeanNew(size(sampleState, 1, IK))
             real(RKG) :: sampleStateMeanCurrent(size(sampleState, 1, IK))
-            real(RKG) :: sampleStateCovCholOld(size(sampleState, 1, IK), size(sampleState, 1, IK) + 1)
-            real(RKG) :: sampleStateCovLowCurrent(size(sampleState, 1, IK), size(sampleState, 1, IK) + 1)
+            real(RKG) :: sampleStateChoCovOld(size(sampleState, 1, IK), size(sampleState, 1, IK) + 1)
+            real(RKG) :: sampleStateCovUppCurrent(size(sampleState, 1, IK), size(sampleState, 1, IK) + 1)
             real(RKG) :: logSqrtDetNew, logSqrtDetSum, adaptiveScale, adaptiveScaleSq, fracA
             integer(IK) :: sampleSizeOld, sampleSizeCurrent
             integer(IK):: jdim, nsam, info
@@ -502,7 +503,7 @@ contains
 
             ! This will be used to recover the old covariance in case of
             ! proposal update failure, and to compute the adaptation measure.
-            sampleStateCovCholOld = proposal%covLowChoUpp(:, :, 0)
+            sampleStateChoCovOld = proposal%choLowCovUpp(:, :, 0)
 
             nonSingularSample = spec%ndim%val < nsam
            !proposalAdaptationSampleUsed = nonSingularSample ! update proposal only if sample is non-singular.
@@ -517,16 +518,16 @@ contains
                 if (proposalAdaptationGreedyEnabled) then
                     sampleSizeCurrent = nsam
                     call setMean(sampleStateMeanCurrent, sampleState, dim)
-                    if (nonSingularSample) call setCov  ( sampleStateCovLowCurrent(:, 1 : spec%ndim%val) & ! LCOV_EXCL_LINE
-                                                        , lowDia & ! LCOV_EXCL_LINE
+                    if (nonSingularSample) call setCov  ( sampleStateCovUppCurrent(:, 2 : spec%ndim%vp1) & ! LCOV_EXCL_LINE
+                                                        , uppDia & ! LCOV_EXCL_LINE
                                                         , sampleStateMeanCurrent & ! LCOV_EXCL_LINE
                                                         , sampleState & ! LCOV_EXCL_LINE
                                                         , dim & ! LCOV_EXCL_LINE
                                                         )
                 else
                     call setMean(sampleStateMeanCurrent, sampleState, dim, sampleWeight, sampleSizeCurrent)
-                    if (nonSingularSample) call setCov  ( sampleStateCovLowCurrent(:, 1 : spec%ndim%val) & ! LCOV_EXCL_LINE
-                                                        , lowDia & ! LCOV_EXCL_LINE
+                    if (nonSingularSample) call setCov  ( sampleStateCovUppCurrent(:, 2 : spec%ndim%vp1) & ! LCOV_EXCL_LINE
+                                                        , uppDia & ! LCOV_EXCL_LINE
                                                         , sampleStateMeanCurrent & ! LCOV_EXCL_LINE
                                                         , sampleState & ! LCOV_EXCL_LINE
                                                         , dim & ! LCOV_EXCL_LINE
@@ -551,33 +552,33 @@ contains
                             ! The `do concurrent` version is problematic for OpenMP builds of the ParaMonte library with the Intel ifort 2021.8 on heap, yielding segmentation fault.
                             !do concurrent(jdim = 1 : spec%ndim%val)
                             do jdim = 1, spec%ndim%val
-                                sampleStateCovLowCurrent(jdim : spec%ndim%val, jdim) = sampleStateCovLowCurrent(jdim : spec%ndim%val, jdim) * proposal%scaleSq%default
+                                sampleStateCovUppCurrent(1 : jdim, jdim + 1) = sampleStateCovUppCurrent(1 : jdim, jdim + 1) * proposal%scaleSq%default
                             end do
                         end if
 
                         ! Now combine it with the old covariance matrix.
                         ! Do not set the full boundaries' range `(1 : spec%ndim%val)`
-                        ! for `proposal%covLowChoUpp` in the following subroutine call.
+                        ! for `proposal%choLowCovUpp` in the following subroutine call.
                         ! Setting the boundaries forces the compiler to generate a temporary array.
 
-                        call setCovMeanMerged   ( proposal%covLowChoUpp(:, 1 : spec%ndim%val, 0) & ! LCOV_EXCL_LINE
+                        call setCovMeanMerged   ( proposal%choLowCovUpp(:, 2 : spec%ndim%vp1, 0) & ! LCOV_EXCL_LINE
                                                 , sampleStateMeanNew & ! LCOV_EXCL_LINE
-                                                , sampleStateCovLowCurrent(:, 1 : spec%ndim%val) & ! LCOV_EXCL_LINE
+                                                , sampleStateCovUppCurrent(:, 2 : spec%ndim%vp1) & ! LCOV_EXCL_LINE
                                                 , sampleStateMeanCurrent & ! LCOV_EXCL_LINE
-                                                , sampleStateCovCholOld(:, 1 : spec%ndim%val) & ! LCOV_EXCL_LINE
+                                                , sampleStateChoCovOld(:, 2 : spec%ndim%vp1) & ! LCOV_EXCL_LINE
                                                 , proposal%meanOld & ! LCOV_EXCL_LINE
                                                 , fracA & ! LCOV_EXCL_LINE
-                                                , lowDia & ! LCOV_EXCL_LINE
+                                                , uppDia & ! LCOV_EXCL_LINE
                                                 )
                         proposal%meanOld(1 : spec%ndim%val) = sampleStateMeanNew
 
                     else nonSingular_block ! singular new sample.
 
-                        call setCovMeanUpdated  ( covA = proposal%covLowChoUpp(:, 1 : spec%ndim%val, 0) & ! LCOV_EXCL_LINE
+                        call setCovMeanUpdated  ( covA = proposal%choLowCovUpp(:, 2 : spec%ndim%vp1, 0) & ! LCOV_EXCL_LINE
                                                 , meanA = proposal%meanOld & ! LCOV_EXCL_LINE
                                                 , meanB = sampleStateMeanCurrent & ! LCOV_EXCL_LINE
                                                 , fracA = fracA & ! LCOV_EXCL_LINE
-                                                , subset = lowDia & ! LCOV_EXCL_LINE
+                                                , subset = uppDia & ! LCOV_EXCL_LINE
                                                 )
 
                     end if nonSingular_block
@@ -597,22 +598,22 @@ contains
                         ! The `do concurrent` version is problematic for OpenMP builds of the ParaMonte library with the Intel ifort 2021.8 on heap, yielding segmentation fault.
                         !do concurrent(jdim = 1 : spec%ndim%val)
                         do jdim = 1, spec%ndim%val
-                            proposal%covLowChoUpp(jdim : spec%ndim%val, jdim, 0) = sampleStateCovLowCurrent(jdim : spec%ndim%val, jdim)
+                            proposal%choLowCovUpp(1 : jdim, jdim + 1, 0) = sampleStateCovUppCurrent(1 : jdim, jdim + 1)
                         end do
                     else
                         do jdim = 1, spec%ndim%val
-                            proposal%covLowChoUpp(jdim : spec%ndim%val, jdim, 0) = sampleStateCovLowCurrent(jdim : spec%ndim%val, jdim) * proposal%scaleSq%default
+                            proposal%choLowCovUpp(1 : jdim, jdim + 1, 0) = sampleStateCovUppCurrent(1 : jdim, jdim + 1) * proposal%scaleSq%default
                         end do
                     end if
 
                 end if
 
                 ! Now get the Cholesky factorization.
-                ! WARNING: Do not set the full boundaries' range `(1 : spec%ndim%val)` for the first index of `proposal%covLowChoUpp` in the following subroutine call.
+                ! WARNING: Do not set the full boundaries' range `(1 : spec%ndim%val)` for the first index of `proposal%choLowCovUpp` in the following subroutine call.
                 ! WARNING: Setting the boundaries forces the compiler to generate a temporary array.
                 ! The `:` instead of `1 : spec%ndim%val` avoids temporary array creation.
 
-                call setMatChol(proposal%covLowChoUpp(:, 1 : spec%ndim%val, 0), lowDia, info, proposal%covLowChoUpp(:, 2 : spec%ndim%vp1, 0), transHerm)
+                call setMatChol(proposal%choLowCovUpp(:, 2 : spec%ndim%vp1, 0), uppDia, info, proposal%choLowCovUpp(:, 1 : spec%ndim%val, 0), transHerm)
 
                 proposalAdaptationSampleUsed = info == 0_IK
                 posDefCheck_block: if (proposalAdaptationSampleUsed) then
@@ -628,7 +629,7 @@ contains
                     call spec%disp%warn%show(SKG_"Singularity occurred while adapting the proposal distribution covariance matrix.", tmsize = 0_IK, bmsize = 0_IK)
 
                     ! Recover the old covariance matrix + Cholesky factor.
-                    proposal%covLowChoUpp(:, :, 0) = sampleStateCovCholOld
+                    proposal%choLowCovUpp(:, :, 0) = sampleStateChoCovOld
 
                 end if posDefCheck_block
 
@@ -692,16 +693,16 @@ contains
                     adaptiveScaleSq = 0.25_RKG
                 end if
 
-                proposal%covLowChoUpp(1 : spec%ndim%val, 1, 0) = proposal%covLowChoUpp(1 : spec%ndim%val, 1, 0) * adaptiveScaleSq ! Update first column of covariance matrix.
+                proposal%choLowCovUpp(1 : spec%ndim%val, 1, 0) = proposal%choLowCovUpp(1 : spec%ndim%val, 1, 0) * adaptiveScale ! Update first column of lower Cholesky matrix.
                 ! The `do concurrent` version is problematic for OpenMP builds of
                 ! the ParaMonte library with the Intel ifort 2021.8 on heap,
                 ! yielding segmentation fault.
                 !do concurrent(jdim = 2 : spec%ndim%val)
                 do jdim = 2, spec%ndim%val
-                    proposal%covLowChoUpp(1 : jdim - 1, jdim, 0) = proposal%covLowChoUpp(1 : jdim - 1, jdim, 0) * adaptiveScale ! Update the Cholesky factor.
-                    proposal%covLowChoUpp(jdim : spec%ndim%val, jdim, 0) = proposal%covLowChoUpp(jdim : spec%ndim%val, jdim, 0) * adaptiveScaleSq ! Update covariance matrix.
+                    proposal%choLowCovUpp(1 : jdim - 1, jdim, 0) = proposal%choLowCovUpp(1 : jdim - 1, jdim, 0) * adaptiveScaleSq ! Update the upper covariance matrix.
+                    proposal%choLowCovUpp(jdim : spec%ndim%val, jdim, 0) = proposal%choLowCovUpp(jdim : spec%ndim%val, jdim, 0) * adaptiveScale ! Update lower Cholesky matrix.
                 end do
-                proposal%covLowChoUpp(1 : spec%ndim%val, spec%ndim%vp1, 0) = proposal%covLowChoUpp(1 : spec%ndim%val, spec%ndim%vp1, 0) * adaptiveScale ! Update last column of Cholesky factor.
+                proposal%choLowCovUpp(1 : spec%ndim%val, spec%ndim%vp1, 0) = proposal%choLowCovUpp(1 : spec%ndim%val, spec%ndim%vp1, 0) * adaptiveScaleSq ! Update last column of the upper covariance matrix.
 
             end if proposalScaling_block
 
@@ -711,29 +712,29 @@ contains
 
             proposalAdaptationEstimate_block: if (proposalAdaptationSampleUsed .or. proposalScalingNeeded) then
 
-                logSqrtDetNew = getMatMulTraceLog(proposal%covLowChoUpp(:, 2 : spec%ndim%vp1, 0))
+                logSqrtDetNew = getMatMulTraceLog(proposal%choLowCovUpp(:, 1 : spec%ndim%val, 0))
                 ! Use the universal upper bound.
                 !block
                 !use pm_io
-                !call disp%show(sampleStateCovLowCurrent)
+                !call disp%show(sampleStateCovUppCurrent)
                 !end block
                 ! The `do concurrent` version is problematic for OpenMP builds of
                 ! the ParaMonte library with the Intel ifort 2021.8 on heap,
                 ! yielding segmentation fault.
                 !do concurrent(jdim = 1 : spec%ndim%val)
                 do jdim = 1, spec%ndim%val
-                    sampleStateCovLowCurrent(jdim : spec%ndim%val, jdim) = 0.5_RKG * (proposal%covLowChoUpp(jdim : spec%ndim%val, jdim, 0) + sampleStateCovCholOld(jdim : spec%ndim%val, jdim)) ! dummy
+                    sampleStateCovUppCurrent(1 : jdim, jdim + 1) = 0.5_RKG * (proposal%choLowCovUpp(1 : jdim, jdim + 1, 0) + sampleStateChoCovOld(1 : jdim, jdim + 1)) ! dummy
                 end do
-                call setMatChol(sampleStateCovLowCurrent(:, 1 : spec%ndim%val), lowDia, info, sampleStateCovLowCurrent(:, 2 : spec%ndim%vp1), transHerm)
+                call setMatChol(sampleStateCovUppCurrent(:, 2 : spec%ndim%vp1), uppDia, info, sampleStateCovUppCurrent(:, 1 : spec%ndim%val), transHerm)
                 if (info == 0_IK) then
-                    logSqrtDetSum = getMatMulTraceLog(sampleStateCovLowCurrent(:, 2 : spec%ndim%vp1))
+                    logSqrtDetSum = getMatMulTraceLog(sampleStateCovUppCurrent(:, 1 : spec%ndim%val))
                 else ! singularityOccurred ! LCOV_EXCL_START
                     err%occurred = .true._LK
                     err%msg = NL1//PROCEDURE_NAME//SKG_"@line::"//getStr(__LINE__)//SKG_": "//&
                     SKG_"Singular lower covariance matrix detected at column ("//getStr(info)//&
-                    SKG_") while computing the proposalAdaptation measure:"//NL2
-                    do info = 1, size(sampleStateCovLowCurrent, 1, IK)
-                        err%msg = err%msg//getStr(sampleStateCovLowCurrent(info,:))//NL1
+                    SKG_") while computing the proposalAdaptation measure. transpose(sampleStateCovUppCurrent) ="//NL2
+                    do info = 1, size(sampleStateCovUppCurrent, 1, IK)
+                        err%msg = err%msg//getStr(sampleStateCovUppCurrent(1 : info, info + 1))//NL1
                     end do
                     err%msg = err%msg//NL1//&
                     SKG_": Error occurred while computing the Cholesky factorization &

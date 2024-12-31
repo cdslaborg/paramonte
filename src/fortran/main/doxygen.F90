@@ -382,7 +382,7 @@
 !>  +   The abbreviation `msn`      stands for **Multivariate Skew-Normal** mostly used in the context of the statistical MultiVariate Skew-Normal distribution.
 !>  +   The abbreviation `mvn`      stands for **MultiVariate Normal** mostly used in the context of the statistical MultiVariate Normal distribution.
 !>  +   The abbreviation `mvu`      stands for **MultiVariate Uniform** mostly used in the context of the statistical MultiVariate (ellipsoidal) Uniform distribution.
-!>  +   The abbreviation `norm`     stands for **normal** in the context of statistical distributions or **normalization** factor. Example: `DistMultiNorm_type`.
+!>  +   The abbreviation `norm`     stands for **normal** in the context of statistical distributions or **normalization** factor. Example: `distMultiNorm_type`.
 !>  +   The abbreviation `normed`   stands for **normalized** mostly in the context of statistical samples. Example: `NormedSample`.
 !>  +   The abbreviation `pdf`      stands for **Probability Density Function** in the context of statistics. Example: `getNormLogPDF()`.
 !>  +   The abbreviation `pos`      stands for **positive**. Example: `getInvPosDefMat()`.
