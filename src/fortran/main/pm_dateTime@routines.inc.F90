@@ -264,7 +264,23 @@ end if;
         character(9,SKG)                :: workspace9
         integer(IK)                     :: lenString, lenFormat, i, epos, eposnew, lenSeg
         integer(IKG)                    :: century!, WeekDate(3)
-        allocate(character(127,SKG)     :: string)
+#if     __GFORTRAN__
+        !>  \bug
+        !>  Gfortran 13.1 yields a segmentation fault error or a Fortran "End of Record" error at line 479 at other times
+        !>  when the FPP macro `PURE` is defined. The occurrence of this error has only been verified on WSL OS
+        !>  and occurs only when the library is built for MATLAB, while the error has nothing to do with MATLAB.
+        !>  More likely, the error is related to improper lazy allocation of the output `string` by gfortran.
+        !>  Note that only specific subset of kind type parameters are activated for MATLAB.
+        !>  The runtime error appears to resolve automatically when
+        !>  all kind type parameters are enabled in the build process.
+        !>  The same code does not lead to any error for the Fortran library builds.
+        !>  For now, we bypass this potential runtime error by allocating `string`
+        !>  using the Fortran intrinsic `repeat` which guarantees a new clean
+        !>  space allocation for the output string.
+        string = repeat(SKG_" ", 127)
+#else
+        allocate(character(127,SKG) :: string)
+#endif
         lenFormat = len(format, IK)
         lenString = 127_IK
         eposnew = 0_IK ! the last touched (end) position in the string
@@ -474,6 +490,8 @@ end if;
                     string(epos + 1 : eposnew) = workspace9(1:lenSeg)
                 elseif (format(i:i) == SKG_"z") then ! ISO 8601 offset from UTC in timezone in units of minutes
                     RESIZE_STRING(5_IK) ! fpp sets eposnew, and resizes string.
+                    !print *, "values(4), string, epos + 1, eposnew"
+                    !print *, values(4), """"//string//"""", epos + 1, eposnew
                     write(string(epos + 1 : eposnew), "(sp,I0.4)") values(4)
                 elseif (format(i:i) == SKG_"Z") then ! Timezone name or abbreviation.
                     abbr = getZoneAbbr(values(4))
