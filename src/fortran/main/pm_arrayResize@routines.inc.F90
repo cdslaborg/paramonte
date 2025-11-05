@@ -24,7 +24,10 @@
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        ! Set the procedure names.
+        !!!!
+        !!!!    Set the procedure names.
+        !!!!
+
 #if     setResized_ENABLED
         character(*, SK), parameter :: PROCEDURE_NAME = SK_"@setResized()"
 #elif   setRefilled_ENABLED
@@ -37,7 +40,11 @@
 #error  "Unrecognized interface."
 #endif
         integer :: stat
-        ! Set the lower bound of the new `array` for fixed lower bound routines.
+
+        !!!!
+        !!!!    Set the lower bound of the new `array` for fixed lower bound routines.
+        !!!!
+
 #if     setResized_ENABLED || setRefilled_ENABLED
 #define lb lbold
 #endif
@@ -128,12 +135,29 @@
         ! Bypass the gfortran allocation statement error for objects of type `character` of non-zero rank.
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        !!!!
+        !!!!    Damn you gfortran bugs!
+        !!!!    Old gfortran versions require `TYPE_OF_ARRAY` be defined as below.
+        !!!!    But then gfortran-15 does not like what it used to like exclusively.
+        !!!!    Notably, gfortran-13 yields segfault upon `move_alloc()`.
+        !!!!    This becomes a problem only when we have deferred-length
+        !!!!    allocatable characters of non-zero rank?
+        !!!!
+
 #if     SK_ENABLED && !D0_ENABLED && __GFORTRAN__
+#if     __GNUC__ < 15
 #define TYPE_OF_ARRAY character(len(array,IK),SKG) ::
 #else
 #define TYPE_OF_ARRAY
 #endif
-        ! Check the consistency of the fill length with the string array elements length.
+#else
+#define TYPE_OF_ARRAY
+#endif
+
+        !!!!
+        !!!!    Check the consistency of the fill length with the string array elements length.
+        !!!!
+
 #if     SK_ENABLED && !D0_ENABLED && (setRefilled_ENABLED || setRebilled_ENABLED)
         CHECK_ASSERTION(__LINE__, len(fill, IK) <= len(array, IK), PROCEDURE_NAME//SK_": The condition `len(fill) <= len(array)` must hold. len(fill), len(array) = "//getStr([len(fill, IK), len(array, IK)]))
 #endif
@@ -145,11 +169,15 @@
 !else; \
 !allocate(SET_DIM(OBJECT)); \
 !end if;
+
         !%%%%%%%%%%%
 #if     SDDD_ENABLED
         !%%%%%%%%%%%
 
-        ! Check the allocation status.
+        !!!!
+        !!!!    Check the allocation status.
+        !!!!
+
         if (.not. allocated(array)) then
 #if         setResized_ENABLED || setRefilled_ENABLED
 #if         !D0_ENABLED
@@ -202,26 +230,40 @@
         lbold = GET_BOUND(lbound, array)
         ubold = GET_BOUND(ubound, array)
 #endif
-        ! Set the new upper bound of `array` for `setResized` and `setRefilled`.
+
+        !!!!
+        !!!!    Set the new upper bound of `array` for `setResized` and `setRefilled`.
+        !!!!
+
 #if     DDDD_ENABLED && (setResized_ENABLED || setRefilled_ENABLED)
         CHECK_ASSERTION(__LINE__, all([0_IK < GET_SHAPE(array)]), PROCEDURE_NAME//SK_": The condition `all([0 < len/shape(array))` must hold when the input argument `size` is missing. len/shape(array) = "//getStr(GET_SHAPE(array)))
         ub = lbold - 1_IK + 2_IK * (ubold - lbold + 1_IK)
 #elif   setResized_ENABLED || setRefilled_ENABLED
         ub = lbold - 1_IK + size
 #endif
-        ! Check or set the old contents bounds and new contents offset.
+
+        !!!!
+        !!!!    Check or set the old contents bounds and new contents offset.
+        !!!!
+
 #if     SLLU_ENABLED
-        ! Check the contents offset.
-        ! \bug Bypass the Intel compiler bug in processing multiple `CHECK_ASSERTION`
-        ! macros in a single routine in `debug` compile mode by merging all `CHECK_ASSERTION` macros.
+        !!!!
+        !!!!    Check the contents offset.
+        !!!!
+        !!!!    \bug Bypass the Intel compiler bug in processing multiple `CHECK_ASSERTION`
+        !!!!    macros in a single routine in `debug` compile mode by merging all `CHECK_ASSERTION` macros.
+        !!!!
         CHECK_ASSERTION(__LINE__, ALL(lbold <= lbcold .and. lbcold <= ubold), PROCEDURE_NAME//SK_": The condition `all(lbound(array) <= lbcold .and. lbcold <= ubound(array))` must hold. rank(array), lbound(array), lbcold, ubound(array) = "//getStr([int(rank(array), IK), lbold, lbcold, ubold]))
         CHECK_ASSERTION(__LINE__, ALL(lbold <= ubcold .and. ubcold <= ubold), PROCEDURE_NAME//SK_": The condition `all(lbound(array) <= ubcold .and. ubcold <= ubound(array))` must hold. rank(array), lbound(array), ubcold, ubound(array) = "//getStr([int(rank(array), IK), lbold, ubcold, ubold]))
 #elif   SLDD_ENABLED
         lbcold = max(lbold, lb)
         ubcold = lbcold + min(ubold - lbcold, ub - lbc)
-        ! Check the contents lower bound.
-        ! \bug Bypass the Intel compiler bug in processing multiple `CHECK_ASSERTION`
-        ! macros in a single routine in `debug` compile mode by merging all `CHECK_ASSERTION` macros.
+        !!!!
+        !!!!    Check the contents lower bound.
+        !!!!
+        !!!!    \bug Bypass the Intel compiler bug in processing multiple `CHECK_ASSERTION`
+        !!!!    macros in a single routine in `debug` compile mode by merging all `CHECK_ASSERTION` macros.
+        !!!!
         CHECK_ASSERTION(__LINE__, ALL(lb <= lbc), PROCEDURE_NAME//SK_": The condition `all(lb <= lbc)` must hold where `lb` is the lower bound of the output `array`. rank(array), lb, lbc = "//getStr([int(rank(array), IK), lb, lbc]))
         CHECK_ASSERTION(__LINE__, ALL(lbc - lbcold + ubcold <= ub), PROCEDURE_NAME//SK_": The condition `all(lbc - lbcold + ubcold <= ub)` must hold with `ub` as the output `array` ubound. rank(array), lbc, lbcold, ubcold, ub = "//getStr([int(rank(array), IK), lbc, lbcold, ubcold, ub]))
 #else
@@ -229,7 +271,11 @@
         ubcold = min(ubold, ub)
         lbc = lbcold
 #endif
-        ! Check the output `array` size.
+
+        !!!!
+        !!!!    Check the output `array` size.
+        !!!!
+
         CHECK_ASSERTION(__LINE__, ALL(0_IK <= ub - lb + 1_IK), PROCEDURE_NAME//SK_": The condition `all(0_IK <= ub - lb + 1_IK)` must hold where `lb, ub` are the lower and upper bounds of the output `array`. lb, ub = "//getStr([lb, ub]))
         !SET_ALLOCATION(temp)
         if (present(failed)) then
@@ -243,7 +289,11 @@
         else
             allocate(TYPE_OF_ARRAY SET_DIM(temp))
         end if
-        ! Copy contents.
+
+        !!!!
+        !!!!    Copy contents.
+        !!!!
+
 #if     setResized_ENABLED || setRebound_ENABLED
         TEMP_SLICE = ARRAY_SLICE
 #elif   setRefilled_ENABLED || setRebilled_ENABLED
@@ -252,6 +302,7 @@
 #error  "Unrecognized interface."
 #endif
         call move_alloc(from = temp, to = array)
+
 #undef  SET_ALLOCATION
 #undef  TYPE_OF_ARRAY
 #undef  ARRAY_SLICE
