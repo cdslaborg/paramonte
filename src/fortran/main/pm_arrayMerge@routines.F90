@@ -66,35 +66,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMergedDefCom_D0_SK5
-        use pm_kind, only: SKG => SK5
+        use pm_kind, only: TKG => SK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMergedDefCom_D0_SK4
-        use pm_kind, only: SKG => SK4
+        use pm_kind, only: TKG => SK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMergedDefCom_D0_SK3
-        use pm_kind, only: SKG => SK3
+        use pm_kind, only: TKG => SK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMergedDefCom_D0_SK2
-        use pm_kind, only: SKG => SK2
+        use pm_kind, only: TKG => SK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMergedDefCom_D0_SK1
-        use pm_kind, only: SKG => SK1
+        use pm_kind, only: TKG => SK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -117,35 +117,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMergedDefCom_D1_SK5
-        use pm_kind, only: SKG => SK5
+        use pm_kind, only: TKG => SK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMergedDefCom_D1_SK4
-        use pm_kind, only: SKG => SK4
+        use pm_kind, only: TKG => SK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMergedDefCom_D1_SK3
-        use pm_kind, only: SKG => SK3
+        use pm_kind, only: TKG => SK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMergedDefCom_D1_SK2
-        use pm_kind, only: SKG => SK2
+        use pm_kind, only: TKG => SK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMergedDefCom_D1_SK1
-        use pm_kind, only: SKG => SK1
+        use pm_kind, only: TKG => SK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -158,35 +158,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMergedDefCom_D1_IK5
-        use pm_kind, only: IKG => IK5
+        use pm_kind, only: TKG => IK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMergedDefCom_D1_IK4
-        use pm_kind, only: IKG => IK4
+        use pm_kind, only: TKG => IK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMergedDefCom_D1_IK3
-        use pm_kind, only: IKG => IK3
+        use pm_kind, only: TKG => IK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMergedDefCom_D1_IK2
-        use pm_kind, only: IKG => IK2
+        use pm_kind, only: TKG => IK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMergedDefCom_D1_IK1
-        use pm_kind, only: IKG => IK1
+        use pm_kind, only: TKG => IK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -199,35 +199,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMergedDefCom_D1_LK5
-        use pm_kind, only: LKG => LK5
+        use pm_kind, only: TKG => LK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMergedDefCom_D1_LK4
-        use pm_kind, only: LKG => LK4
+        use pm_kind, only: TKG => LK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMergedDefCom_D1_LK3
-        use pm_kind, only: LKG => LK3
+        use pm_kind, only: TKG => LK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMergedDefCom_D1_LK2
-        use pm_kind, only: LKG => LK2
+        use pm_kind, only: TKG => LK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMergedDefCom_D1_LK1
-        use pm_kind, only: LKG => LK1
+        use pm_kind, only: TKG => LK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -240,35 +240,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMergedDefCom_D1_CK5
-        use pm_kind, only: CKG => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMergedDefCom_D1_CK4
-        use pm_kind, only: CKG => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMergedDefCom_D1_CK3
-        use pm_kind, only: CKG => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMergedDefCom_D1_CK2
-        use pm_kind, only: CKG => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMergedDefCom_D1_CK1
-        use pm_kind, only: CKG => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -281,35 +281,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMergedDefCom_D1_RK5
-        use pm_kind, only: RKG => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMergedDefCom_D1_RK4
-        use pm_kind, only: RKG => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMergedDefCom_D1_RK3
-        use pm_kind, only: RKG => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMergedDefCom_D1_RK2
-        use pm_kind, only: RKG => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMergedDefCom_D1_RK1
-        use pm_kind, only: RKG => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -324,35 +324,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMergedDefCom_D1_PSSK5
-        use pm_kind, only: SKG => SK5
+        use pm_kind, only: TKG => SK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMergedDefCom_D1_PSSK4
-        use pm_kind, only: SKG => SK4
+        use pm_kind, only: TKG => SK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMergedDefCom_D1_PSSK3
-        use pm_kind, only: SKG => SK3
+        use pm_kind, only: TKG => SK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMergedDefCom_D1_PSSK2
-        use pm_kind, only: SKG => SK2
+        use pm_kind, only: TKG => SK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMergedDefCom_D1_PSSK1
-        use pm_kind, only: SKG => SK1
+        use pm_kind, only: TKG => SK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -367,7 +367,7 @@ contains
 #define BSSK_ENABLED 1
 
     module procedure getMergedDefCom_D1_BSSK
-        use pm_kind, only: SKG => SK
+        use pm_kind, only: TKG => SK
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 
@@ -402,35 +402,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMergedCusCom_D0_SK5
-        use pm_kind, only: SKG => SK5
+        use pm_kind, only: TKG => SK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMergedCusCom_D0_SK4
-        use pm_kind, only: SKG => SK4
+        use pm_kind, only: TKG => SK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMergedCusCom_D0_SK3
-        use pm_kind, only: SKG => SK3
+        use pm_kind, only: TKG => SK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMergedCusCom_D0_SK2
-        use pm_kind, only: SKG => SK2
+        use pm_kind, only: TKG => SK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMergedCusCom_D0_SK1
-        use pm_kind, only: SKG => SK1
+        use pm_kind, only: TKG => SK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -453,35 +453,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMergedCusCom_D1_SK5
-        use pm_kind, only: SKG => SK5
+        use pm_kind, only: TKG => SK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMergedCusCom_D1_SK4
-        use pm_kind, only: SKG => SK4
+        use pm_kind, only: TKG => SK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMergedCusCom_D1_SK3
-        use pm_kind, only: SKG => SK3
+        use pm_kind, only: TKG => SK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMergedCusCom_D1_SK2
-        use pm_kind, only: SKG => SK2
+        use pm_kind, only: TKG => SK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMergedCusCom_D1_SK1
-        use pm_kind, only: SKG => SK1
+        use pm_kind, only: TKG => SK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -494,35 +494,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMergedCusCom_D1_IK5
-        use pm_kind, only: IKG => IK5
+        use pm_kind, only: TKG => IK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMergedCusCom_D1_IK4
-        use pm_kind, only: IKG => IK4
+        use pm_kind, only: TKG => IK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMergedCusCom_D1_IK3
-        use pm_kind, only: IKG => IK3
+        use pm_kind, only: TKG => IK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMergedCusCom_D1_IK2
-        use pm_kind, only: IKG => IK2
+        use pm_kind, only: TKG => IK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMergedCusCom_D1_IK1
-        use pm_kind, only: IKG => IK1
+        use pm_kind, only: TKG => IK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -535,35 +535,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMergedCusCom_D1_LK5
-        use pm_kind, only: LKG => LK5
+        use pm_kind, only: TKG => LK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMergedCusCom_D1_LK4
-        use pm_kind, only: LKG => LK4
+        use pm_kind, only: TKG => LK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMergedCusCom_D1_LK3
-        use pm_kind, only: LKG => LK3
+        use pm_kind, only: TKG => LK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMergedCusCom_D1_LK2
-        use pm_kind, only: LKG => LK2
+        use pm_kind, only: TKG => LK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMergedCusCom_D1_LK1
-        use pm_kind, only: LKG => LK1
+        use pm_kind, only: TKG => LK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -576,35 +576,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMergedCusCom_D1_CK5
-        use pm_kind, only: CKG => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMergedCusCom_D1_CK4
-        use pm_kind, only: CKG => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMergedCusCom_D1_CK3
-        use pm_kind, only: CKG => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMergedCusCom_D1_CK2
-        use pm_kind, only: CKG => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMergedCusCom_D1_CK1
-        use pm_kind, only: CKG => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -617,35 +617,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMergedCusCom_D1_RK5
-        use pm_kind, only: RKG => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMergedCusCom_D1_RK4
-        use pm_kind, only: RKG => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMergedCusCom_D1_RK3
-        use pm_kind, only: RKG => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMergedCusCom_D1_RK2
-        use pm_kind, only: RKG => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMergedCusCom_D1_RK1
-        use pm_kind, only: RKG => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -661,35 +661,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMergedCusCom_D1_PSSK5
-        use pm_kind, only: SKG => SK5
+        use pm_kind, only: TKG => SK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMergedCusCom_D1_PSSK4
-        use pm_kind, only: SKG => SK4
+        use pm_kind, only: TKG => SK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMergedCusCom_D1_PSSK3
-        use pm_kind, only: SKG => SK3
+        use pm_kind, only: TKG => SK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMergedCusCom_D1_PSSK2
-        use pm_kind, only: SKG => SK2
+        use pm_kind, only: TKG => SK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMergedCusCom_D1_PSSK1
-        use pm_kind, only: SKG => SK1
+        use pm_kind, only: TKG => SK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -704,7 +704,7 @@ contains
 #define BSSK_ENABLED 1
 
     module procedure getMergedCusCom_D1_BSSK
-        use pm_kind, only: SKG => SK
+        use pm_kind, only: TKG => SK
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 
@@ -750,35 +750,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMergedDefCom_D0_SK5
-        use pm_kind, only: SKG => SK5
+        use pm_kind, only: TKG => SK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMergedDefCom_D0_SK4
-        use pm_kind, only: SKG => SK4
+        use pm_kind, only: TKG => SK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMergedDefCom_D0_SK3
-        use pm_kind, only: SKG => SK3
+        use pm_kind, only: TKG => SK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMergedDefCom_D0_SK2
-        use pm_kind, only: SKG => SK2
+        use pm_kind, only: TKG => SK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMergedDefCom_D0_SK1
-        use pm_kind, only: SKG => SK1
+        use pm_kind, only: TKG => SK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -801,35 +801,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMergedDefCom_D1_SK5
-        use pm_kind, only: SKG => SK5
+        use pm_kind, only: TKG => SK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMergedDefCom_D1_SK4
-        use pm_kind, only: SKG => SK4
+        use pm_kind, only: TKG => SK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMergedDefCom_D1_SK3
-        use pm_kind, only: SKG => SK3
+        use pm_kind, only: TKG => SK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMergedDefCom_D1_SK2
-        use pm_kind, only: SKG => SK2
+        use pm_kind, only: TKG => SK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMergedDefCom_D1_SK1
-        use pm_kind, only: SKG => SK1
+        use pm_kind, only: TKG => SK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -842,35 +842,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMergedDefCom_D1_IK5
-        use pm_kind, only: IKG => IK5
+        use pm_kind, only: TKG => IK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMergedDefCom_D1_IK4
-        use pm_kind, only: IKG => IK4
+        use pm_kind, only: TKG => IK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMergedDefCom_D1_IK3
-        use pm_kind, only: IKG => IK3
+        use pm_kind, only: TKG => IK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMergedDefCom_D1_IK2
-        use pm_kind, only: IKG => IK2
+        use pm_kind, only: TKG => IK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMergedDefCom_D1_IK1
-        use pm_kind, only: IKG => IK1
+        use pm_kind, only: TKG => IK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -883,35 +883,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMergedDefCom_D1_LK5
-        use pm_kind, only: LKG => LK5
+        use pm_kind, only: TKG => LK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMergedDefCom_D1_LK4
-        use pm_kind, only: LKG => LK4
+        use pm_kind, only: TKG => LK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMergedDefCom_D1_LK3
-        use pm_kind, only: LKG => LK3
+        use pm_kind, only: TKG => LK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMergedDefCom_D1_LK2
-        use pm_kind, only: LKG => LK2
+        use pm_kind, only: TKG => LK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMergedDefCom_D1_LK1
-        use pm_kind, only: LKG => LK1
+        use pm_kind, only: TKG => LK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -924,35 +924,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMergedDefCom_D1_CK5
-        use pm_kind, only: CKG => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMergedDefCom_D1_CK4
-        use pm_kind, only: CKG => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMergedDefCom_D1_CK3
-        use pm_kind, only: CKG => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMergedDefCom_D1_CK2
-        use pm_kind, only: CKG => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMergedDefCom_D1_CK1
-        use pm_kind, only: CKG => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -965,35 +965,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMergedDefCom_D1_RK5
-        use pm_kind, only: RKG => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMergedDefCom_D1_RK4
-        use pm_kind, only: RKG => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMergedDefCom_D1_RK3
-        use pm_kind, only: RKG => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMergedDefCom_D1_RK2
-        use pm_kind, only: RKG => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMergedDefCom_D1_RK1
-        use pm_kind, only: RKG => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -1009,35 +1009,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMergedDefCom_D1_PSSK5
-        use pm_kind, only: SKG => SK5
+        use pm_kind, only: TKG => SK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMergedDefCom_D1_PSSK4
-        use pm_kind, only: SKG => SK4
+        use pm_kind, only: TKG => SK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMergedDefCom_D1_PSSK3
-        use pm_kind, only: SKG => SK3
+        use pm_kind, only: TKG => SK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMergedDefCom_D1_PSSK2
-        use pm_kind, only: SKG => SK2
+        use pm_kind, only: TKG => SK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMergedDefCom_D1_PSSK1
-        use pm_kind, only: SKG => SK1
+        use pm_kind, only: TKG => SK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -1052,7 +1052,7 @@ contains
 #define BSSK_ENABLED 1
 
     module procedure setMergedDefCom_D1_BSSK
-        use pm_kind, only: SKG => SK
+        use pm_kind, only: TKG => SK
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 
@@ -1087,35 +1087,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMergedCusCom_D0_SK5
-        use pm_kind, only: SKG => SK5
+        use pm_kind, only: TKG => SK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMergedCusCom_D0_SK4
-        use pm_kind, only: SKG => SK4
+        use pm_kind, only: TKG => SK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMergedCusCom_D0_SK3
-        use pm_kind, only: SKG => SK3
+        use pm_kind, only: TKG => SK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMergedCusCom_D0_SK2
-        use pm_kind, only: SKG => SK2
+        use pm_kind, only: TKG => SK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMergedCusCom_D0_SK1
-        use pm_kind, only: SKG => SK1
+        use pm_kind, only: TKG => SK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -1138,35 +1138,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMergedCusCom_D1_SK5
-        use pm_kind, only: SKG => SK5
+        use pm_kind, only: TKG => SK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMergedCusCom_D1_SK4
-        use pm_kind, only: SKG => SK4
+        use pm_kind, only: TKG => SK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMergedCusCom_D1_SK3
-        use pm_kind, only: SKG => SK3
+        use pm_kind, only: TKG => SK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMergedCusCom_D1_SK2
-        use pm_kind, only: SKG => SK2
+        use pm_kind, only: TKG => SK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMergedCusCom_D1_SK1
-        use pm_kind, only: SKG => SK1
+        use pm_kind, only: TKG => SK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -1179,35 +1179,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMergedCusCom_D1_IK5
-        use pm_kind, only: IKG => IK5
+        use pm_kind, only: TKG => IK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMergedCusCom_D1_IK4
-        use pm_kind, only: IKG => IK4
+        use pm_kind, only: TKG => IK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMergedCusCom_D1_IK3
-        use pm_kind, only: IKG => IK3
+        use pm_kind, only: TKG => IK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMergedCusCom_D1_IK2
-        use pm_kind, only: IKG => IK2
+        use pm_kind, only: TKG => IK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMergedCusCom_D1_IK1
-        use pm_kind, only: IKG => IK1
+        use pm_kind, only: TKG => IK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -1220,35 +1220,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMergedCusCom_D1_LK5
-        use pm_kind, only: LKG => LK5
+        use pm_kind, only: TKG => LK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMergedCusCom_D1_LK4
-        use pm_kind, only: LKG => LK4
+        use pm_kind, only: TKG => LK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMergedCusCom_D1_LK3
-        use pm_kind, only: LKG => LK3
+        use pm_kind, only: TKG => LK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMergedCusCom_D1_LK2
-        use pm_kind, only: LKG => LK2
+        use pm_kind, only: TKG => LK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMergedCusCom_D1_LK1
-        use pm_kind, only: LKG => LK1
+        use pm_kind, only: TKG => LK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -1261,35 +1261,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMergedCusCom_D1_CK5
-        use pm_kind, only: CKG => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMergedCusCom_D1_CK4
-        use pm_kind, only: CKG => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMergedCusCom_D1_CK3
-        use pm_kind, only: CKG => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMergedCusCom_D1_CK2
-        use pm_kind, only: CKG => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMergedCusCom_D1_CK1
-        use pm_kind, only: CKG => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -1302,35 +1302,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMergedCusCom_D1_RK5
-        use pm_kind, only: RKG => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMergedCusCom_D1_RK4
-        use pm_kind, only: RKG => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMergedCusCom_D1_RK3
-        use pm_kind, only: RKG => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMergedCusCom_D1_RK2
-        use pm_kind, only: RKG => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMergedCusCom_D1_RK1
-        use pm_kind, only: RKG => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -1346,35 +1346,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMergedCusCom_D1_PSSK5
-        use pm_kind, only: SKG => SK5
+        use pm_kind, only: TKG => SK5
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMergedCusCom_D1_PSSK4
-        use pm_kind, only: SKG => SK4
+        use pm_kind, only: TKG => SK4
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMergedCusCom_D1_PSSK3
-        use pm_kind, only: SKG => SK3
+        use pm_kind, only: TKG => SK3
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMergedCusCom_D1_PSSK2
-        use pm_kind, only: SKG => SK2
+        use pm_kind, only: TKG => SK2
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMergedCusCom_D1_PSSK1
-        use pm_kind, only: SKG => SK1
+        use pm_kind, only: TKG => SK1
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 #endif
@@ -1389,7 +1389,7 @@ contains
 #define BSSK_ENABLED 1
 
     module procedure setMergedCusCom_D1_BSSK
-        use pm_kind, only: SKG => SK
+        use pm_kind, only: TKG => SK
 #include "pm_arrayMerge@routines.inc.F90"
     end procedure
 

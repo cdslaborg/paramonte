@@ -279,7 +279,7 @@ module pm_distUnif
 
     !>  \cond excluded
     !private :: setStateNext, setStateJump
-    !>  \endcond excluded
+    !>  \endcond
 
     character(*, SK), parameter :: MODULE_NAME = "@pm_distUnif"
 
@@ -2723,7 +2723,7 @@ module pm_distUnif
     !>  This is the `abstract` base derived type for defining various Uniform Random Number Generator (URNG) derived types.<br>
     !>
     !>  \see
-    !>  [rngu_type](@ref pm_distUnif::rngu_type)<br>
+    !>  [rngu_class](@ref pm_distUnif::rngu_class)<br>
     !>  [rngf_type](@ref pm_distUnif::rngf_type)<br>
     !>  [splitmix64_type](@ref pm_distUnif::splitmix64_type)<br>
     !>  [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type)<br>
@@ -2732,11 +2732,11 @@ module pm_distUnif
     !>  \test
     !>  [test_pm_distUnif](@ref test_pm_distUnif)
     !>
-    !>  \final{rngu_type}
+    !>  \final{rngu_class}
     !>
     !>  \author
     !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
-    type, abstract :: rngu_type
+    type, abstract :: rngu_class
     end type
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2818,7 +2818,7 @@ module pm_distUnif
     !>  [setUnifRand](@ref pm_distUnif::setUnifRand)<br>
     !>  [getUnifRandState](@ref pm_distUnif::getUnifRandState)<br>
     !>  [setUnifRandState](@ref pm_distUnif::setUnifRandState)<br>
-    !>  [rngu_type](@ref pm_distUnif::rngu_type)<br>
+    !>  [rngu_class](@ref pm_distUnif::rngu_class)<br>
     !>  [rngf_type](@ref pm_distUnif::rngf_type)<br>
     !>  [splitmix64_type](@ref pm_distUnif::splitmix64_type)<br>
     !>  [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type)<br>
@@ -2834,7 +2834,7 @@ module pm_distUnif
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
-    type, extends(rngu_type) :: rngf_type
+    type, extends(rngu_class) :: rngf_type
     end type
 
     !>  \brief
@@ -2860,7 +2860,7 @@ module pm_distUnif
     !>  [setUnifRand](@ref pm_distUnif::setUnifRand)<br>
     !>  [getUnifRandState](@ref pm_distUnif::getUnifRandState)<br>
     !>  [setUnifRandState](@ref pm_distUnif::setUnifRandState)<br>
-    !>  [rngu_type](@ref pm_distUnif::rngu_type)<br>
+    !>  [rngu_class](@ref pm_distUnif::rngu_class)<br>
     !>  [rngf_type](@ref pm_distUnif::rngf_type)<br>
     !>  [splitmix64_type](@ref pm_distUnif::splitmix64_type)<br>
     !>  [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type)<br>
@@ -2892,7 +2892,7 @@ module pm_distUnif
     interface rngf_type
         module procedure :: rngf_typer
     end interface
-    !>  \endcond excluded
+    !>  \endcond
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2913,7 +2913,7 @@ module pm_distUnif
     !>  [setUnifRand](@ref pm_distUnif::setUnifRand)<br>
     !>  [getUnifRandState](@ref pm_distUnif::getUnifRandState)<br>
     !>  [setUnifRandState](@ref pm_distUnif::setUnifRandState)<br>
-    !>  [rngu_type](@ref pm_distUnif::rngu_type)<br>
+    !>  [rngu_class](@ref pm_distUnif::rngu_class)<br>
     !>  [rngf_type](@ref pm_distUnif::rngf_type)<br>
     !>  [splitmix64_type](@ref pm_distUnif::splitmix64_type)<br>
     !>  [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type)<br>
@@ -2943,7 +2943,7 @@ module pm_distUnif
     !>  [Xoshiro256**](https://prng.di.unimi.it/) Uniform Random Number Generator derived types.<br>
     !>
     !>  \see
-    !>  [rngu_type](@ref pm_distUnif::rngu_type)<br>
+    !>  [rngu_class](@ref pm_distUnif::rngu_class)<br>
     !>  [splitmix64_type](@ref pm_distUnif::splitmix64_type)<br>
     !>  [xoshiro256ssg_type](@ref pm_distUnif::xoshiro256ssg_type)<br>
     !>  [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type)<br>
@@ -2981,7 +2981,7 @@ module pm_distUnif
     !>
     !>  \author
     !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
-    type, abstract, extends(rngu_type) :: xoshiro256ss_type
+    type, abstract, extends(rngu_class) :: xoshiro256ss_type
         !>  \brief
         !>  The vector of size [xoshiro256ssStateSize](@ref pm_distUnif::xoshiro256ssStateSize)
         !>  of type `integer` of kind \IK64, containing the most recent RNG state.<br>
@@ -3020,7 +3020,9 @@ module pm_distUnif
     !>  Xoshiro256 has a period of \f$2^{256} - 1\f$ and and supports jumping the sequence in increments of \f$2^128\f$ and \f$2^192\f$.<br>
     !>  This allows the creation of many non-overlapping RNG subsequences for parallel applications.<br>
     !>
-    !>  <b>xoshiro256** random seed</b>
+    !>  xoshiro256** random seed
+    !>  ------------------------
+    !>
     !>  The [xoshiro256**](https://prng.di.unimi.it/) state is determined by a vector of size
     !>  [xoshiro256ssStateSize](@ref pm_distUnif::xoshiro256ssStateSize) of type `integer` of kind \IK64.<br>
     !>  The RNG seed of [xoshiro256**](https://prng.di.unimi.it/) in this module is initialized based on either a user-specified scalar
@@ -3028,7 +3030,9 @@ module pm_distUnif
     !>  In either case, the seed is used as an input for another simple random number generator [splitMix64](@ref pm_distUnif::splitmix64_type)
     !>  and the output of this RNG is used as the initial state of [xoshiro256**](https://prng.di.unimi.it/).<br>
     !>
-    !>  <b>Parallel applications</b>
+    !>  Parallel applications
+    !>  ---------------------
+    !>
     !>  [xoshiro256**](https://prng.di.unimi.it/) has a period of \f$2^{256} - 1\f$ and and supports jumping the sequence in increments of \f$2^128\f$ and \f$2^192\f$.<br>
     !>  This allows the creation of many non-overlapping RNG subsequences for parallel applications.<br>
     !>  [xoshiro256**](https://prng.di.unimi.it/) can be used in parallel applications by passing the `imageID` of the current processor to the RNG constructor.<br>
@@ -3039,7 +3043,9 @@ module pm_distUnif
     !>  In either case, all RNGs on different processors must be initialized with the same original seed and jump vector (but with different processor
     !>  IDs set by the `imageID` argument to the RNG constructor) to ensure that the individual RNG sequences on different processors do not overlap.
     !>
-    !>  <b>Usage instructions</b>
+    !>  Usage instructions
+    !>  ------------------
+    !>
     !>  This derived type contains only the most recently updated state and random bit stream of the RNG.<br>
     !>  To generate random values of arbitrary intrinsic kinds (`character`, `integer`, `logical`, `complex`, `real`)
     !>  the user must,<br>
@@ -3121,7 +3127,7 @@ module pm_distUnif
     !>  [setUnifRand](@ref pm_distUnif::setUnifRand)<br>
     !>  [getUnifRandState](@ref pm_distUnif::getUnifRandState)<br>
     !>  [setUnifRandState](@ref pm_distUnif::setUnifRandState)<br>
-    !>  [rngu_type](@ref pm_distUnif::rngu_type)<br>
+    !>  [rngu_class](@ref pm_distUnif::rngu_class)<br>
     !>  [rngf_type](@ref pm_distUnif::rngf_type)<br>
     !>  [splitmix64_type](@ref pm_distUnif::splitmix64_type)<br>
     !>  [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type)<br>
@@ -3158,7 +3164,7 @@ module pm_distUnif
     interface xoshiro256ssw_type
         module procedure :: xoshiro256ssw_typer
     end interface
-    !>  \endcond excluded
+    !>  \endcond
 
     !>  \brief
     !>  Generate, initialize, and return a scalar object of type [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type).
@@ -3329,7 +3335,7 @@ module pm_distUnif
     !>  [setUnifRand](@ref pm_distUnif::setUnifRand)<br>
     !>  [getUnifRandState](@ref pm_distUnif::getUnifRandState)<br>
     !>  [setUnifRandState](@ref pm_distUnif::setUnifRandState)<br>
-    !>  [rngu_type](@ref pm_distUnif::rngu_type)<br>
+    !>  [rngu_class](@ref pm_distUnif::rngu_class)<br>
     !>  [rngf_type](@ref pm_distUnif::rngf_type)<br>
     !>  [splitmix64_type](@ref pm_distUnif::splitmix64_type)<br>
     !>  [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type)<br>
@@ -3370,7 +3376,7 @@ module pm_distUnif
     interface xoshiro256ssg_type
         module procedure :: xoshiro256ssg_typer
     end interface
-    !>  \endcond excluded
+    !>  \endcond
 
     !>  \brief
     !>  Generate, initialize, and return a scalar object of type [xoshiro256ssg_type](@ref pm_distUnif::xoshiro256ssg_type).
@@ -3560,7 +3566,7 @@ module pm_distUnif
     !>  [setUnifRand](@ref pm_distUnif::setUnifRand)<br>
     !>  [getUnifRandState](@ref pm_distUnif::getUnifRandState)<br>
     !>  [setUnifRandState](@ref pm_distUnif::setUnifRandState)<br>
-    !>  [rngu_type](@ref pm_distUnif::rngu_type)<br>
+    !>  [rngu_class](@ref pm_distUnif::rngu_class)<br>
     !>  [rngf_type](@ref pm_distUnif::rngf_type)<br>
     !>  [splitmix64_type](@ref pm_distUnif::splitmix64_type)<br>
     !>  [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type)<br>
@@ -3590,7 +3596,7 @@ module pm_distUnif
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas Austin<br>
-    type, extends(rngu_type) :: splitmix64_type
+    type, extends(rngu_class) :: splitmix64_type
         !>  \brief
         !>  The scalar of type `integer` of kind \IK64, containing the most recently generated random 64-bit stream.
         integer(IK64)   :: stream
@@ -3603,7 +3609,7 @@ module pm_distUnif
     interface splitmix64_type
         module procedure :: splitmix64_typer
     end interface
-    !>  \endcond excluded
+    !>  \endcond
 
     !>  \brief
     !>  Generate, initialize, and return a scalar object of type [splitmix64_type](@ref pm_distUnif::splitmix64_type).
@@ -3666,7 +3672,7 @@ module pm_distUnif
     !>  [setUnifRand](@ref pm_distUnif::setUnifRand)<br>
     !>  [getUnifRandState](@ref pm_distUnif::getUnifRandState)<br>
     !>  [setUnifRandState](@ref pm_distUnif::setUnifRandState)<br>
-    !>  [rngu_type](@ref pm_distUnif::rngu_type)<br>
+    !>  [rngu_class](@ref pm_distUnif::rngu_class)<br>
     !>  [rngf_type](@ref pm_distUnif::rngf_type)<br>
     !>  [splitmix64_type](@ref pm_distUnif::splitmix64_type)<br>
     !>  [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type)<br>
@@ -3725,7 +3731,7 @@ module pm_distUnif
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     end interface
-    !>  \endcond excluded
+    !>  \endcond
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -3777,7 +3783,7 @@ module pm_distUnif
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     end interface
-    !>  \endcond excluded
+    !>  \endcond
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -3811,7 +3817,7 @@ module pm_distUnif
     !>  [setUnifRand](@ref pm_distUnif::setUnifRand)<br>
     !>  [getUnifRandState](@ref pm_distUnif::getUnifRandState)<br>
     !>  [setUnifRandState](@ref pm_distUnif::setUnifRandState)<br>
-    !>  [rngu_type](@ref pm_distUnif::rngu_type)<br>
+    !>  [rngu_class](@ref pm_distUnif::rngu_class)<br>
     !>  [rngf_type](@ref pm_distUnif::rngf_type)<br>
     !>  [splitmix64_type](@ref pm_distUnif::splitmix64_type)<br>
     !>  [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type)<br>
@@ -3880,7 +3886,7 @@ module pm_distUnif
     !>  [setUnifRand](@ref pm_distUnif::setUnifRand)<br>
     !>  [getUnifRandState](@ref pm_distUnif::getUnifRandState)<br>
     !>  [setUnifRandState](@ref pm_distUnif::setUnifRandState)<br>
-    !>  [rngu_type](@ref pm_distUnif::rngu_type)<br>
+    !>  [rngu_class](@ref pm_distUnif::rngu_class)<br>
     !>  [rngf_type](@ref pm_distUnif::rngf_type)<br>
     !>  [splitmix64_type](@ref pm_distUnif::splitmix64_type)<br>
     !>  [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type)<br>
@@ -3971,7 +3977,7 @@ module pm_distUnif
     !>  [setUnifRand](@ref pm_distUnif::setUnifRand)<br>
     !>  [getUnifRandState](@ref pm_distUnif::getUnifRandState)<br>
     !>  [setUnifRandState](@ref pm_distUnif::setUnifRandState)<br>
-    !>  [rngu_type](@ref pm_distUnif::rngu_type)<br>
+    !>  [rngu_class](@ref pm_distUnif::rngu_class)<br>
     !>  [rngf_type](@ref pm_distUnif::rngf_type)<br>
     !>  [splitmix64_type](@ref pm_distUnif::splitmix64_type)<br>
     !>  [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type)<br>
@@ -4114,7 +4120,7 @@ module pm_distUnif
     !>  [setUnifRand](@ref pm_distUnif::setUnifRand)<br>
     !>  [getUnifRandState](@ref pm_distUnif::getUnifRandState)<br>
     !>  [setUnifRandState](@ref pm_distUnif::setUnifRandState)<br>
-    !>  [rngu_type](@ref pm_distUnif::rngu_type)<br>
+    !>  [rngu_class](@ref pm_distUnif::rngu_class)<br>
     !>  [rngf_type](@ref pm_distUnif::rngf_type)<br>
     !>  [splitmix64_type](@ref pm_distUnif::splitmix64_type)<br>
     !>  [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type)<br>
@@ -11021,7 +11027,7 @@ module pm_distUnif
     !>  [setUnifRand](@ref pm_distUnif::setUnifRand)<br>
     !>  [getUnifRandState](@ref pm_distUnif::getUnifRandState)<br>
     !>  [setUnifRandState](@ref pm_distUnif::setUnifRandState)<br>
-    !>  [rngu_type](@ref pm_distUnif::rngu_type)<br>
+    !>  [rngu_class](@ref pm_distUnif::rngu_class)<br>
     !>  [rngf_type](@ref pm_distUnif::rngf_type)<br>
     !>  [splitmix64_type](@ref pm_distUnif::splitmix64_type)<br>
     !>  [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type)<br>

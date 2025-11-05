@@ -172,9 +172,9 @@
         end do
 #endif
 
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%%%%%%%
 #elif   splitmix64_typer_ENABLED
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK64) :: count
         if (present(seed)) then
@@ -218,9 +218,9 @@
         rng%stream = ieor(rng%stream, shiftr(rng%stream, 27)) * TRIPLE(3)
         rng%stream = ieor(rng%stream, shiftr(rng%stream, 31))
 
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #elif   xoshiro256ssg_typer_ENABLED || xoshiro256ssw_typer_ENABLED
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         use pm_kind, only: IKG => IK64, RKG => RK64
         integer(IKG) :: ijump
@@ -558,10 +558,10 @@
         call setUnifRand(RNG temp)
 #elif   LU_ENABLED
         if (lb /= ub) then
-            call setUnifRand(RNG temp(1), lb%re, ub%re)
-            call setUnifRand(RNG temp(2), lb%im, ub%im)
-            !call setUnifRand(RNG temp(1), real(lb, CKG), real(ub, CKG))
-            !call setUnifRand(RNG temp(2), aimag(lb), aimag(ub))
+            !call setUnifRand(RNG temp(1), lb%re, ub%re) This yields an error with ifx 2025.2.
+            !call setUnifRand(RNG temp(2), lb%im, ub%im) This yields an error with ifx 2025.2.
+            call setUnifRand(RNG temp(1), real(lb, CKG), real(ub, CKG))
+            call setUnifRand(RNG temp(2), aimag(lb), aimag(ub))
         else
             rand = lb
         end if

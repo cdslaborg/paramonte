@@ -33,11 +33,452 @@
 
 module pm_arrayMerge
 
-    use pm_kind, only: IK, LK, RK, SK
+    use pm_kind, only: SK, IK, LK, RK
 
     implicit none
 
     character(*,SK), parameter :: MODULE_NAME = "@pm_arrayMerge"
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if 0
+    !>  \cond{excluded}
+    abstract interface
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if SK5_ENABLED
+    function isSorted_D0_SK5(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D0_SK5
+#endif
+        use pm_kind, only: LK, SKG => SK5
+        character(*,SKG)        , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if SK4_ENABLED
+    function isSorted_D0_SK4(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D0_SK4
+#endif
+        use pm_kind, only: LK, SKG => SK4
+        character(*,SKG)        , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if SK3_ENABLED
+    function isSorted_D0_SK3(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D0_SK3
+#endif
+        use pm_kind, only: LK, SKG => SK3
+        character(*,SKG)        , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if SK2_ENABLED
+    function isSorted_D0_SK2(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D0_SK2
+#endif
+        use pm_kind, only: LK, SKG => SK2
+        character(*,SKG)        , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if SK1_ENABLED
+    function isSorted_D0_SK1(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D0_SK1
+#endif
+        use pm_kind, only: LK, SKG => SK1
+        character(*,SKG)        , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if SK5_ENABLED
+    function isSorted_D1_SK5(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_SK5
+#endif
+        use pm_kind, only: LK, SKG => SK5
+        character(*,SKG)        , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if SK4_ENABLED
+    function isSorted_D1_SK4(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_SK4
+#endif
+        use pm_kind, only: LK, SKG => SK4
+        character(*,SKG)        , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if SK3_ENABLED
+    function isSorted_D1_SK3(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_SK3
+#endif
+        use pm_kind, only: LK, SKG => SK3
+        character(*,SKG)        , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if SK2_ENABLED
+    function isSorted_D1_SK2(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_SK2
+#endif
+        use pm_kind, only: LK, SKG => SK2
+        character(*,SKG)        , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if SK1_ENABLED
+    function isSorted_D1_SK1(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_SK1
+#endif
+        use pm_kind, only: LK, SKG => SK1
+        character(*,SKG)        , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if IK5_ENABLED
+    function isSorted_D1_IK5(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_IK5
+#endif
+        use pm_kind, only: LK, IKG => IK5
+        integer(IKG)            , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if IK4_ENABLED
+    function isSorted_D1_IK4(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_IK4
+#endif
+        use pm_kind, only: LK, IKG => IK4
+        integer(IKG)            , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if IK3_ENABLED
+    function isSorted_D1_IK3(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_IK3
+#endif
+        use pm_kind, only: LK, IKG => IK3
+        integer(IKG)            , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if IK2_ENABLED
+    function isSorted_D1_IK2(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_IK2
+#endif
+        use pm_kind, only: LK, IKG => IK2
+        integer(IKG)            , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if IK1_ENABLED
+    function isSorted_D1_IK1(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_IK1
+#endif
+        use pm_kind, only: LK, IKG => IK1
+        integer(IKG)            , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if LK5_ENABLED
+    function isSorted_D1_LK5(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_LK5
+#endif
+        use pm_kind, only: LK, LKG => LK5
+        logical(LKG)            , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if LK4_ENABLED
+    function isSorted_D1_LK4(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_LK4
+#endif
+        use pm_kind, only: LK, LKG => LK4
+        logical(LKG)            , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if LK3_ENABLED
+    function isSorted_D1_LK3(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_LK3
+#endif
+        use pm_kind, only: LK, LKG => LK3
+        logical(LKG)            , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if LK2_ENABLED
+    function isSorted_D1_LK2(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_LK2
+#endif
+        use pm_kind, only: LK, LKG => LK2
+        logical(LKG)            , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if LK1_ENABLED
+    function isSorted_D1_LK1(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_LK1
+#endif
+        use pm_kind, only: LK, LKG => LK1
+        logical(LKG)            , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if CK5_ENABLED
+    function isSorted_D1_CK5(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_CK5
+#endif
+        use pm_kind, only: LK, CKG => CK5
+        complex(CKG)            , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if CK4_ENABLED
+    function isSorted_D1_CK4(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_CK4
+#endif
+        use pm_kind, only: LK, CKG => CK4
+        complex(CKG)            , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if CK3_ENABLED
+    function isSorted_D1_CK3(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_CK3
+#endif
+        use pm_kind, only: LK, CKG => CK3
+        complex(CKG)            , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if CK2_ENABLED
+    function isSorted_D1_CK2(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_CK2
+#endif
+        use pm_kind, only: LK, CKG => CK2
+        complex(CKG)            , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if CK1_ENABLED
+    function isSorted_D1_CK1(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_CK1
+#endif
+        use pm_kind, only: LK, CKG => CK1
+        complex(CKG)            , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    function isSorted_D1_RK5(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_RK5
+#endif
+        use pm_kind, only: LK, RKG => RK5
+        real(RKG)               , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if RK4_ENABLED
+    function isSorted_D1_RK4(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_RK4
+#endif
+        use pm_kind, only: LK, RKG => RK4
+        real(RKG)               , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if RK3_ENABLED
+    function isSorted_D1_RK3(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_RK3
+#endif
+        use pm_kind, only: LK, RKG => RK3
+        real(RKG)               , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if RK2_ENABLED
+    function isSorted_D1_RK2(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_RK2
+#endif
+        use pm_kind, only: LK, RKG => RK2
+        real(RKG)               , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if RK1_ENABLED
+    function isSorted_D1_RK1(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_RK1
+#endif
+        use pm_kind, only: LK, RKG => RK1
+        real(RKG)               , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if PDT_ENABLED
+
+#if SK5_ENABLED
+    function isSorted_D1_PSSK5(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_PSSK5
+#endif
+        use pm_kind, only: LK, SKG => SK5
+        use pm_container, only: css_pdt
+        type(css_pdt(SKG))      , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if SK4_ENABLED
+    function isSorted_D1_PSSK4(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_PSSK4
+#endif
+        use pm_kind, only: LK, SKG => SK4
+        use pm_container, only: css_pdt
+        type(css_pdt(SKG))      , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if SK3_ENABLED
+    function isSorted_D1_PSSK3(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_PSSK3
+#endif
+        use pm_kind, only: LK, SKG => SK3
+        use pm_container, only: css_pdt
+        type(css_pdt(SKG))      , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if SK2_ENABLED
+    function isSorted_D1_PSSK2(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_PSSK2
+#endif
+        use pm_kind, only: LK, SKG => SK2
+        use pm_container, only: css_pdt
+        type(css_pdt(SKG))      , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#if SK1_ENABLED
+    function isSorted_D1_PSSK1(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_PSSK1
+#endif
+        use pm_kind, only: LK, SKG => SK1
+        use pm_container, only: css_pdt
+        type(css_pdt(SKG))      , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+#endif
+
+#endif
+!PDT_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function isSorted_D1_BSSK(element1, element2) result(itis)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: isSorted_D1_BSSK
+#endif
+        use pm_kind, only: LK, SKG => SK
+        use pm_container, only: css_type
+        type(css_type)          , intent(in)                    :: element1, element2
+        logical(LK)                                             :: itis
+    end function
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    end interface
+    !>  \endcond
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -59,12 +500,17 @@ module pm_arrayMerge
     !>                                      <li>    type [css_type](@ref pm_container::css_type) of default kind \SK,<br>
     !>                                  </ul>
     !>                                  whose elements **are already sorted** in ascending order.<br>
-    !>                                  When the type of the input argument is `complex`, the array must be sorted only based on the real component of the values.<br>
-    !>  \param[in]  sortedArray2    :   The input `contiguous` array of the same type, kind, and rank as the input `sortedArray1` whose elements **are already sorted** in ascending order.<br>
-    !>                                  When the type of the input argument is `complex`, the array must be sorted only based on the real component of the values.<br>
-    !>  \param          isSorted    :   The `external` user-specified function that takes two input **scalar** arguments of the same type and kind as the input `Array`.<br>
-    !>                                  It returns a scalar `logical` of default kind \LK that is `.true.` if the first
-    !>                                  input scalar argument is sorted with respect to the second input argument according to the user-defined condition
+    !>                                  When the type of the input argument is `complex`, the array must
+    !>                                  be sorted only based on the real component of the values.<br>
+    !>  \param[in]  sortedArray2    :   The input `contiguous` array of the same type, kind, and rank as the input
+    !>                                  `sortedArray1` whose elements **are already sorted** in ascending order.<br>
+    !>                                  When the type of the input argument is `complex`, the array must
+    !>                                  be sorted only based on the real component of the values.<br>
+    !>  \param          isSorted    :   The `external` user-specified function that takes two input
+    !>                                  **scalar** arguments of the same type and kind as the input `Array`.<br>
+    !>                                  It returns a scalar `logical` of default kind \LK that is `.true.` if
+    !>                                  the first input scalar argument is sorted with respect to the second
+    !>                                  input argument according to the user-defined condition
     !>                                  within `isSorted`, otherwise, it is `.false.`.<br>
     !>                                  If `array` is a scalar string (i.e., an assumed-length scalar `character`),
     !>                                  then both input arguments to `isSorted()` are scalar characters of length `1` of kind \SKALL.<br>
@@ -76,7 +522,8 @@ module pm_arrayMerge
     !>                                          logical(LK)                 :: sorted
     !>                                      end function
     !>                                  \endcode
-    !>                                  where `TYPE(KIND)` is the same as the type and kind of the input argument `Array`, which can be one of the following.
+    !>                                  where `TYPE(KIND)` is the same as the type and kind of
+    !>                                  the input argument `Array`, which can be one of the following.<br>
     !>                                  \code{.F90}
     !>                                      use pm_container, only: css_type, css_pdt
     !>                                      character(*, SK), intent(in) :: lhs, rhs
