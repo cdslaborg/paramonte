@@ -14,6 +14,7 @@
 ####################################################################################################################################
 ####################################################################################################################################
 
+enable_language(CXX)
 unset(XRC_FILES)
 set(XRC_FILES
     pm_sampling
@@ -60,9 +61,17 @@ add_custom_target(matlabmex)
 unset(xtargets)
 foreach(xtarget ${XRC_FILES})
     set(xlibname "${xtarget}")
-    set(xrcpath "${CMAKE_CURRENT_SOURCE_DIR}/${xtarget}.c")
+    set(xrcpath "${CMAKE_CURRENT_SOURCE_DIR}/${xtarget}.cpp")
+    
+    # EXPLICITLY SET THE LANGUAGE TO C++
+    set_source_files_properties("${xrcpath}" PROPERTIES LANGUAGE CXX)
+    
     #set(xlibname "${xtarget}_${build}_${mem}_${parname}_${checking}")
     matlab_add_mex(NAME "${xtarget}" SHARED SRC "${xrcpath}" OUTPUT_NAME "${xlibname}" LINK_TO "${libname}" R2018a)
+    
+    # Ensure the target language is C++
+    set_target_properties("${xtarget}" PROPERTIES LINKER_LANGUAGE CXX)
+    
     target_compile_definitions("${xtarget}" PUBLIC "OMP_ENABLED=${OMP_ENABLED}")
     set_target_properties("${xtarget}" PROPERTIES BUILD_WITH_INSTALL_RPATH ON)
     set_target_properties("${xtarget}" PROPERTIES POSITION_INDEPENDENT_CODE ON)
