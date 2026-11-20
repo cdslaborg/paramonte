@@ -40,7 +40,7 @@ function hashnew = repKeyVal(key, val, hashmap)
     vararginLen = length(hashnew);
     keyString = string(key);
     failed = true;
-    for i = 1 : vararginLen - 1
+    for i = 1 : 2 : vararginLen - 1
         try
             if strcmpi(string(hashnew{i}), keyString)
                 hashnew{i + 1} = val;

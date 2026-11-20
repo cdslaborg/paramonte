@@ -94,5 +94,8 @@ function itis = istype(varval, vartype)
         else
             itis = isa(value, vartype);
         end
+        if ~itis
+            return;
+        end
     end
 end

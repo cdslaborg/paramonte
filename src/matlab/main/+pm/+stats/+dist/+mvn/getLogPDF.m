@@ -63,7 +63,9 @@ function logPDF = getLogPDF(x, mean, invcov)
         logDetInvCov = 0.;
         invcov = eye(ndim, ndim);
     else
-        logDetInvCov = log(det(invcov));
+        cholupp = chol(invcov);
+        logDetInvCov = 2 * sum(log(diag(cholupp)));
+        %logDetInvCov = log(det(invcov));
     end
     if  isempty(mean)
         mean = zeros(ndim, 1);

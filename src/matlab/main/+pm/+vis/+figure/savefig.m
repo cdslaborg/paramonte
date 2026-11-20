@@ -294,6 +294,27 @@
 %>  This function is a reimplementation of the MATLAB package
 %>  [export_fig](https://github.com/altmany/export_fig).<br>
 %>
+%>  \note
+%>  This is the ParaMonte package exporter, not MATLAB's built-in ``savefig``
+%>  function for saving FIG files. Use the fully qualified name
+%>  ``pm.vis.figure.savefig`` when calling it directly. Internal recursive
+%>  exports and toolbar/menu callbacks likewise use that qualified name.<br>
+%>
+%>  \note
+%>  On MATLAB releases earlier than R2025a, the exporter retains its legacy
+%>  JavaFrame-based figure-conversion path when necessary. The copied graphics
+%>  handle is passed explicitly to the recursive exporter, and the original
+%>  number of requested outputs (zero, one, or two) is preserved. The failure
+%>  path attempts to restore the original UI axes UserData and delete the
+%>  temporary figure before rethrowing the exception.<br>
+%>
+%>  \note
+%>  On R2025a and later, graphics are always smoothed. The exporter skips the
+%>  obsolete GraphicsSmoothing property query and disables the legacy
+%>  JavaFrame-based conversion heuristic, because an empty JavaFrame no longer
+%>  reliably identifies a UI figure. The regular export pipeline is used instead.
+%>  This does not imply that all legacy Java-dependent toolbar or export features
+%>  are supported by modern MATLAB releases.<br>
 %>  \example{savefig}
 %>  \code{.m}
 %>
@@ -451,6 +472,10 @@
 %>  05/12/23: (3.42) Fixed unintended cropping of colorbar title in PDF export with -transparent (issues #382, #383)
 %>  07/12/23: (3.43) Fixed unintended modification of colorbar in bitmap export (issue #385)
 %>  \endverbatim
+%>
+%>  ParaMonte-specific compatibility patch (November 2026): qualified recursive
+%>  and callback calls, preserved recursive output arity, restored UI axes
+%>  UserData on conversion failure, and guarded legacy graphics property access.
 %>  <p></p>
 %>
 %>  \author
@@ -530,10 +555,16 @@ function [imageData, alpha] = savefig(varargin) %#ok<*STRCL1,*DATST,*TNOW1>
         error('savefig:MultipleFigures','savefig can only process one figure at a time');
     elseif ~ishandle(fig)
         error('savefig:InvalidHandle','invalid figure handle specified to savefig');
-    elseif ~isequal(getappdata(fig,'isExportFigCopy'),true)
-        oldWarn = warning('off','MATLAB:HandleGraphics:ObsoletedProperty:JavaFrame');
+    end
+    hFig = handle(ancestor(fig,'figure'));
+
+    % Since R2025a even ordinary figures can have no JavaFrame. Copying to
+    % another figure does not restore the legacy Java graphics backend.
+    % Use the regular export pipeline on these releases.
+    if verLessThan('matlab','25.1') && ~isequal(getappdata(hFig,'isExportFigCopy'),true)
+        oldWarn = warning;
+        warning('off','MATLAB:HandleGraphics:ObsoletedProperty:JavaFrame');
         warning off MATLAB:ui:javaframe:PropertyToBeRemoved
-        hFig = handle(ancestor(fig,'figure'));
         try jf = get(hFig,'JavaFrame_I'); catch, try jf = get(hFig,'JavaFrame'); catch, jf=1; end, end %#ok<JAVFM>
         warning(oldWarn);
         if isempty(jf)  % this is a uifigure
@@ -579,14 +610,26 @@ function [imageData, alpha] = savefig(varargin) %#ok<*STRCL1,*DATST,*TNOW1>
                 else  % uifigure
                     hNewHandle = hNewFig;
                 end
+                % Pass the copied handle explicitly, including calls that used
+                % the current figure implicitly. Preserve the caller's nargout.
                 varargin(cellfun(@(c)isequal(c,fig),varargin)) = {hNewHandle};
-                % Rerun savefig on the legacy figure (with the replaced handle)
-                [imageData, alpha] = savefig(varargin{:});
+                varargin{end+1} = hNewHandle;
+                switch nargout
+                    case 0
+                        pm.vis.figure.savefig(varargin{:});
+                    case 1
+                        imageData = pm.vis.figure.savefig(varargin{:});
+                    otherwise
+                        [imageData, alpha] = pm.vis.figure.savefig(varargin{:});
+                end
                 % Delete the temp legacy figure and bail out
                 try delete(hNewFig); catch, end
                 return
             catch err
                 % Clean up the temp legacy figure and report the error
+                if isUiaxes
+                    try fig.UserData = oldUserData; catch, end
+                end
                 try delete(hNewFig); catch, end
                 rethrow(err)
             end
@@ -2149,7 +2192,13 @@ function [fig, options] = parse_args(nout, fig, argNames, varargin)
     end
 
     % Set default anti-aliasing now we know the renderer
-    try isAA = strcmp(get(ancestor(fig, 'figure'), 'GraphicsSmoothing'), 'on'); catch, isAA = false; end
+    if verLessThan('matlab','25.1')
+        try isAA = strcmp(get(ancestor(fig, 'figure'), 'GraphicsSmoothing'), 'on'); catch, isAA = false; end
+    else
+        % Graphics are always smoothed since R2025a. Reading the obsolete
+        % property emits a warning in R2026b and later.
+        isAA = true;
+    end
     if isAA
         if options.aa_factor > 1 && ~options.silent
             warning('savefig:AntiAliasing','You requested anti-aliased savefig output of a figure that is already anti-aliased - your -a option in savefig is ignored.')
@@ -3023,7 +3072,7 @@ function addToolbarButton(hFig, options)
             filename = [defaultFname '.' thisFormat];
             label = [upper(thisFormat) ' image file (' filename ')'];
             jMenuItem = handle(jButtonMenu.add(label),'CallbackProperties');
-            callback = @(h,e) savefig(hFig, filename, options.propagatedOpts{:});
+            callback = @(h,e) pm.vis.figure.savefig(hFig, filename, options.propagatedOpts{:});
             set(jMenuItem,'ActionPerformedCallback',callback);
         end
         jButtonMenu.addSeparator();
@@ -3039,7 +3088,7 @@ function addToolbarButton(hFig, options)
             exFormat = ['-clipboard:' thisFormat];
             label = ['Clipboard (' thisFormat ' format)'];
             jMenuItem = handle(jButtonMenu.add(label),'CallbackProperties');
-            callback = @(h,e) savefig(hFig, exFormat, options.propagatedOpts{:});
+            callback = @(h,e) pm.vis.figure.savefig(hFig, exFormat, options.propagatedOpts{:});
             set(jMenuItem,'ActionPerformedCallback',callback);
         end
         jButtonMenu.addSeparator();
@@ -3094,7 +3143,7 @@ function addMenuItems(hMainMenu, hFig, options)
         thisFormat = imFormats{idx};
         filename = [defaultFname '.' thisFormat];
         label = [upper(thisFormat) ' image file (' filename ')'];
-        callback = @(h,e) savefig(hFig, filename, options.propagatedOpts{:});
+        callback = @(h,e) pm.vis.figure.savefig(hFig, filename, options.propagatedOpts{:});
         uimenu(hMainMenu, 'Text',label, 'MenuSelectedFcn',callback);
     end
     if ispc  % winopen only works on Windows
@@ -3107,7 +3156,7 @@ function addMenuItems(hMainMenu, hFig, options)
         exFormat = ['-clipboard:' thisFormat];
         label = ['Clipboard (' thisFormat ' format)'];
         sep = 'off'; if idx==1, sep = 'on'; end
-        callback = @(h,e) savefig(hFig, exFormat, options.propagatedOpts{:});
+        callback = @(h,e) pm.vis.figure.savefig(hFig, exFormat, options.propagatedOpts{:});
         uimenu(hMainMenu, 'Text',label, 'Separator',sep, ...
                         'MenuSelectedFcn',callback);
     end
@@ -3203,9 +3252,9 @@ function interactiveExport(hObject, options)
         thisFormat = formats{idx};
         if ~any(thisFormat==':')  % export to image file
             filename = fullfile(pathname,filename);
-            savefig(hFig, filename, options.propagatedOpts{:});
+            pm.vis.figure.savefig(hFig, filename, options.propagatedOpts{:});
         else  % export to clipboard
-            savefig(hFig, ['-' thisFormat], options.propagatedOpts{:});
+            pm.vis.figure.savefig(hFig, ['-' thisFormat], options.propagatedOpts{:});
         end
     else
         % User canceled the dialog - bail out silently

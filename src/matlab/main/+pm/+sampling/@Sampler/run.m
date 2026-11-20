@@ -1,5 +1,6 @@
 %>  \brief
-%>  Perform the basic runtime checks for the sampler and return nothing.
+%>  Validate the simulation settings, execute the selected native ParaMonte sampler,
+%>  and finalize its run-scoped MATLAB resources. This method returns nothing.
 %>
 %>  \param[inout]   self        :   The input/output parent object of class [pm.sampling.Sampler](@ref Sampler)
 %>                                  which is **implicitly** passed to this dynamic method (not by the user).<br>
@@ -23,11 +24,57 @@
 %>  \param[in]      ndim        :   The input scalar positive-valued whole-number representing the number of dimensions
 %>                                  of the domain of the user-specified objective function in the input ``getLogFunc()``.<br>
 %>
+%>  \details
+%>  MPI takes precedence over thread parallelism. If MPI is not selected,
+%>  ``spec.parallelismNumThread = []`` selects serial execution; a positive
+%>  integer selects thread parallelism, and zero uses ``maxNumCompThreads()``.
+%>  Thread-parallel objective dispatch is selected automatically: MATLAB R2025a
+%>  and later use persistent queue workers; earlier releases with thread-pool
+%>  support use timed ``parfor`` on a reused thread pool. No additional sampler
+%>  property or simulation specification is required.<br>
+%>
+%>  The native OpenMP callback passes an ``ndim``-by-``njob`` matrix of
+%>  candidate states to the dispatcher. Both backends return an ``njob``-by-1
+%>  vector in original column order, the arithmetic mean of the individual
+%>  evaluation times (seconds), and the nonnegative difference between batch
+%>  wall time and that mean (seconds). The latter is not pure communication time.<br>
+%>
+%>  In persistent mode, one resident ``parfeval`` task per worker remains active
+%>  until the simulation ends. A private closure owned by this run manages
+%>  worker state; neither the closure nor its handles are exposed as a public
+%>  sampler property. The objective handle and its captured data are
+%>  passed at startup, not on each callback. The callback is synchronous: the
+%>  native sampler resumes only after all proposals in the batch have completed.<br>
+%>
+%>  \note
+%>  Both paths require Parallel Computing Toolbox and a thread-capable objective.
+%>  A compatible thread pool is reused and retained after the run, even if created
+%>  by the sampler. R2022b and later require the requested worker count; older
+%>  releases use the existing/default count with a warning if it differs.
+%>  Persistent dispatch requires an idle pool. An existing incompatible pool
+%>  is never deleted or resized automatically. Only the resident futures
+%>  created for this run are stopped. The cleanup guard removes
+%>  the temporary MEX path and restores saved GNU Fortran environment settings.
+%>  No output argument is returned; use the sampler's output-reading methods
+%>  to access the generated files.<br>
+%>
+%>  \warning
+%>  The objective must be safe for concurrent execution on MATLAB thread workers.
+%>  Do not rely on execution order, worker-local mutable state, or random-stream
+%>  placement; do not submit nested work to the occupied pool. Worker errors abort
+%>  the batch and are propagated to the caller. Cleanup on interruption is best
+%>  effort for uninterruptible native or objective code.<br>
+%>
+%>  \note
+%>  If ``input`` supplies an external namelist, its native thread configuration
+%>  must agree with ``spec.parallelismNumThread``. The internal dispatcher
+%>  selection does not change the native namelist or callback interface.<br>
 %>  \interface{run}
 %>  \code{.m}
 %>
-%>      sampler = pm.sampling.Sampler();
-%>      sampleList = sampler.run(getLogFunc, ndim);
+%>      sampler = pm.sampling.Paradram();
+%>      sampler.spec.parallelismNumThread = 4;
+%>      sampler.run(getLogFunc, ndim);
 %>
 %>  \endcode
 %>
@@ -97,6 +144,8 @@ function run(self, getLogFunc, ndim)
     %%%% First detect potential use of MPI, then check for thread parallelism.
     %%%%
 
+    self.partype = "serial";
+    numThread = [];
     if  0 < pm.array.len(self.mpiname) % MPI enabled.
 
         self.silent = true; % Otherwise, we keep the default value of self.silent.
@@ -120,7 +169,9 @@ function run(self, getLogFunc, ndim)
             self.partype = "openmp";
             if  self.spec.parallelismNumThread == 0
                 %%%% Negative threads count indicates to the ParaMonte sampler that the user set `parallelismNumThread` to zero.
-                self.spec.parallelismNumThread = -maxNumCompThreads();
+                numThread = maxNumCompThreads();
+            else
+                numThread = double(self.spec.parallelismNumThread);
             end
         else
             help("pm.sampling.Sampler.run");
@@ -138,7 +189,7 @@ function run(self, getLogFunc, ndim)
                     + "If missing or specified as empty ``[]``, the simulation will run in serial mode." + newline ...
                     + "You have specified:" + newline ...
                     + newline ...
-                    + pm.io.tab() + "self.spec.parallelismNumThread = " + string(self.parallelismNumThread) + newline ...
+                    + pm.io.tab() + "self.spec.parallelismNumThread = " + string(self.spec.parallelismNumThread) + newline ...
                     + newline ...
                     + "Does your MATLAB have Parallel Computing Toolbox?" + newline ...
                     + newline ...
@@ -225,8 +276,14 @@ function run(self, getLogFunc, ndim)
                         );
             end
         else
-            %self.nml = [convertStringsToChars(self.getInputFile())];
-            self.nml = "&" + self.method + " " + self.spec.getEntriesNML(ndim) + " " + "/" + newline;
+            % Preserve the native negative-count sentinel without permanently
+            % changing the user-facing specification from zero to a negative value.
+            if self.partype == "openmp" && self.spec.parallelismNumThread == 0
+                entries = getEntriesWithThreadSentinel(self.spec, ndim, numThread);
+            else
+                entries = self.spec.getEntriesNML(ndim);
+            end
+            self.nml = "&" + self.method + " " + entries + " " + "/" + newline;
         end
     end
 
@@ -336,8 +393,17 @@ function run(self, getLogFunc, ndim)
     %%%% Add the identified MEX path to the MATLAB path list, only temporarily.
     %%%%
 
+    dispatcher = [];
+    if self.partype == "openmp"
+        dispatcher = getObjectiveDispatcher(@serveObjectiveJobs, @evaluateObjectiveParfor);
+    end
+
     pm.lib.path.clean();
     self.matpath = path;
+    originalEnv = {getenv('GFORTRAN_STDIN_UNIT'), ...
+                   getenv('GFORTRAN_STDOUT_UNIT'), ...
+                   getenv('GFORTRAN_STDERR_UNIT')};
+    runGuard = onCleanup(@() self.finalize(dispatcher, originalEnv));
     path(self.matpath, mexdir);
     munlock(self.mexname);
     clear(self.mexname);
@@ -357,105 +423,16 @@ function run(self, getLogFunc, ndim)
     end
 
     %%%%
-    %%%% Set up the MEX file to call.
-    %%%%
-
-    if  self.partype == "openmp"
-        mexcall = string(self.mexname + "(convertStringsToChars(self.method), @getLogFuncConcurrent, ndim, convertStringsToChars(self.nml))");
-        if ~self.silent
-            delete(gcp("nocreate"));
-            % The following works only in MATLAB 2022b and beyond.
-            if  pm.matlab.release() < "2022b"
-                pool = parpool("threads");
-                maxNumCompThreads(abs(self.spec.parallelismNumThread));
-            else
-                pool = parpool("threads", abs(self.spec.parallelismNumThread));
-            end
-        else
-            evalc('delete(gcp("nocreate"))');
-            if  pm.matlab.release() < "2022b"
-                evalc('pool = parpool("threads")');
-                evalc('maxNumCompThreads(abs(self.spec.parallelismNumThread))');
-            else
-                evalc('pool = parpool("threads", abs(self.spec.parallelismNumThread))');
-            end
-        end
-    else
-        mexcall = string(self.mexname + "(convertStringsToChars(self.method), @getLogFuncWrapped, ndim, convertStringsToChars(self.nml))");
-        %getLogFuncSpec = functions(getLogFunc);
-    end
-
-    %%%%
-    %%%% Define the ``getLogFunc`` wrapper function for serial/MPI sampling.
-    %%%%
-
-    function logFunc = getLogFuncWrapped(state)
-        logFunc = getLogFunc(state);
-    end
-
-    %%%%
-    %%%% Define the ``getLogFunc`` wrapper function for OpenMP sampling.
-    %%%%
-
-    %getLogFuncConst = parallel.pool.Constant(@(state) getLogFunc(state));
-    function [logFunc, avgTimePerFunCall, avgCommPerFunCall] = getLogFuncConcurrent(state)
-        %state = parallel.pool.Constant(state(2 : end, :));
-        avgCommPerFunCall = tic();
-        avgTimePerFunCall = 0;
-        njob = size(state, 2);
-
-        % %getState = arrayfun(@(ijob) state(:, ijob), 1 : njob, 'UniformOutput', 0);
-        % fout(1 : njob) = parallel.FevalFuture;
-        % start = zeros(njob, 'uint64');
-        % delta = zeros(njob);
-        % for ijob = 1 : njob
-        %     %slice = getState(ijob);
-        %     start(ijob) = tic();
-        %     %fout(ijob) = parfeval(pool, getLogFunc, 1, slice{1});
-        %     %fout(ijob) = parfeval(getLogFunc, 1, state(:, ijob));
-        %     fout(ijob) = parfeval(pool, getLogFunc, 1, state(:, ijob));
-        %     delta(ijob) = toc(start(ijob));
-        % end
-        % avgTimePerFunCall = sum(delta);
-        % logFunc = fetchOutputs(fout);
-
-        %spmd
-        %    indx = spmdIndex;
-        %    avgTimePerFunCall = tic();
-        %    logFunc = getLogFunc(state(:, indx));
-        %    avgTimePerFunCall = toc(avgTimePerFunCall);
-        %end
-        %logFunc = [logFunc{:}];
-        %avgTimePerFunCall = mean([avgTimePerFunCall{:}]);
-
-        %%pause
-
-        % \devnote
-        % `parfor` is slightly slower than `parfeval` (abour 20 ms for density function costing .1 ms).
-        % However, the slight penalty diminishes for costly problems and furthermore, `parfor` allows
-        % a reliable method of timing the density function, unlike `parfeval`.
-
-        logFunc = zeros(njob, 1);
-        %getSlice = arrayfun(@(ijob) state(:, ijob), 1 : njob, 'UniformOutput', 0);
-        parfor ijob = 1 : njob
-            start = tic();
-            %logFunc(ijob) = getLogFunc(getSlice{ijob});
-            %logFunc(ijob) = getLogFunc(state(:, ijob));
-            logFunc(ijob) = feval(getLogFunc, state(:, ijob));
-            avgTimePerFunCall = avgTimePerFunCall + toc(start);
-        end
-
-        avgTimePerFunCall = avgTimePerFunCall / njob;
-        avgCommPerFunCall = toc(avgCommPerFunCall) - avgTimePerFunCall;
-    end
-
-    %%%%
-    %%%% Call the MEX sampler.
+    %%%% Initialize the objective dispatcher and call the MEX sampler.
     %%%%
 
     try
-        eval(mexcall);
-        self.finalize();
+        if self.partype == "openmp"
+            dispatcher.start(numThread, getLogFunc, self.silent);
+        end
+        invokeMex(self, getLogFunc, ndim, dispatcher);
+        % Stop the resident workers before restoring paths or printing the report.
+        clear runGuard;
         if ~self.silent
             disp( newline ...
                 + self.getppm() + newline ...
@@ -466,7 +443,7 @@ function run(self, getLogFunc, ndim)
                 );
         end
     catch me
-        self.finalize();
+        clear runGuard;
         msg = string(me.identifier) + " : " + string(me.message) + newline;
         if ismac && strcmpi(me.identifier, 'MATLAB:mex:ErrInvalidMEXFile')
             msg = msg ...
@@ -488,11 +465,52 @@ function run(self, getLogFunc, ndim)
                 + "Also check the contents of the generated output '*_report.txt' files" + newline ...
                 + "if any such files were generated before the simulation crash:" + newline ...
                 + newline ...
-                + pm.io.tab() + self.spec.outputFileName + "*_report.txt" + newline ...
+                + pm.io.tab() + reportPrefix(self.spec.outputFileName) + "*_report.txt" + newline ...
                 + newline ...
                 ;
         end
-        error(msg);
+        failure = MException('pm:sampling:Sampler:RunFailed', '%s', char(msg));
+        failure = addCause(failure, me);
+        throw(failure);
     end
 
+end
+
+function entries = getEntriesWithThreadSentinel(spec, ndim, numThread)
+    originalSpec = spec.parallelismNumThread;
+    specGuard = onCleanup(@() restoreThreadSpec(spec, originalSpec));
+    spec.parallelismNumThread = -numThread;
+    entries = spec.getEntriesNML(ndim);
+end
+
+function restoreThreadSpec(spec, originalSpec)
+    spec.parallelismNumThread = originalSpec;
+end
+
+function invokeMex(self, getLogFunc, ndim, dispatcher)
+    % Keep the original callback signatures, including all three OpenMP
+    % outputs. This nested workspace owns no run-level cleanup objects.
+    if self.partype == "openmp"
+        callback = @getLogFuncConcurrent;
+    else
+        callback = @getLogFuncWrapped;
+    end
+    feval(char(self.mexname), convertStringsToChars(self.method), ...
+          callback, ndim, convertStringsToChars(self.nml));
+
+    function logFunc = getLogFuncWrapped(state)
+        logFunc = getLogFunc(state);
+    end
+
+    function [logFunc, avgTimePerFunCall, avgCommPerFunCall] = getLogFuncConcurrent(state)
+        [logFunc, avgTimePerFunCall, avgCommPerFunCall] = dispatcher.evaluate(state);
+    end
+end
+
+function prefix = reportPrefix(outputFileName)
+    if isempty(outputFileName)
+        prefix = "";
+    else
+        prefix = string(outputFileName);
+    end
 end

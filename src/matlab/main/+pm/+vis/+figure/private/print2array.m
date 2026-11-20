@@ -11,11 +11,12 @@ function [A, bcol, alpha] = print2array(fig, res, renderer, gs_options)
 %
 % This function outputs a bitmap image of a figure, at the desired resolution.
 %
-% When resolution==1, fast Java screen-capture is attempted first.
-% If the Java screen-capture fails or if resolution~=1, the builtin print()
-% function is used to create a temp TIF file, which is then loaded and reported.
-% If this fails, print() is used to create a temp EPS file which is converted to
-% a TIF file using Ghostcript (http://www.ghostscript.com), loaded and reported.
+% On R2025a and newer, exportgraphics() is attempted first, using the
+% requested pixel dimensions and the figure background explicitly.
+% On older releases, fast Java screen-capture is attempted at resolution==1.
+% The legacy fallback uses print() to obtain an RGB array or a temporary TIF.
+% If painters bitmap export fails, print() can create a temp EPS file which
+% is converted to TIF using Ghostscript (http://www.ghostscript.com).
 %
 % Inputs:
 %   figure_handle - The handle of the figure to be exported. Default: gcf.
@@ -66,6 +67,8 @@ function [A, bcol, alpha] = print2array(fig, res, renderer, gs_options)
 % 19/12/21: Speedups; fixed exporting non-current figure (hopefully fixes issue #318)
 % 22/12/21: Avoid memory leak during screen-capture
 % 30/03/23: Added another short pause to avoid unintended image cropping (issue #318) 
+% 19/11/26: ParaMonte: use exportgraphics for modern bitmap rendering,
+%           avoiding the obsolete InvertHardcopy handling in print().
 %}
 
     % Generate default input arguments, if needed
@@ -88,7 +91,7 @@ function [A, bcol, alpha] = print2array(fig, res, renderer, gs_options)
     try
         % Try a direct Java screen-capture first - *MUCH* faster than print() to file
         % Note: we could also use A=matlab.graphics.internal.getframeWithDecorations(fig,false) but it (1) returns no alpha and (2) does not exist in older Matlabs
-        if res == 1
+        if res == 1 && verLessThan('matlab', '25.1')
             [A, alpha] = getJavaImage(fig);
         else
             error('magnify/downscale via print() to image file and then import');
@@ -138,7 +141,7 @@ function [A, bcol, alpha] = print2array(fig, res, renderer, gs_options)
             % First try to print directly to image file
             try
                 % Print the file into a temporary image file and read it into array A
-                [A, alpha, err, ex] = getPrintImage(fig, res_str, renderer, tmp_nam);
+                [A, alpha, err, ex] = getPrintImage(fig, res_str, renderer, tmp_nam, round(px(3:4)*res));
                 if err, rethrow(ex); end
             catch  % error - try to print to EPS and then using Ghostscript to TIF
                 % Ensure that ghostscript() exists on the Matlab path
@@ -181,7 +184,7 @@ function [A, bcol, alpha] = print2array(fig, res, renderer, gs_options)
                 renderer = '-opengl';
             end
             % Print the file into a temporary image file and read it into array A
-            [A, alpha, err, ex] = getPrintImage(fig, res_str, renderer, tmp_nam);
+            [A, alpha, err, ex] = getPrintImage(fig, res_str, renderer, tmp_nam, round(px(3:4)*res));
             % Throw any error that occurred
             if err
                 % Display suggested workarounds to internal print() error (issue #16)
@@ -320,13 +323,34 @@ function [imgData, alpha] = getJavaImage(hFig)
 end
 
 % Export an image file of the figure using print() and then read it into an array
-function [imgData, alpha, err, ex] = getPrintImage(fig, res_str, renderer, tmp_nam)
+function [imgData, alpha, err, ex] = getPrintImage(fig, res_str, renderer, tmp_nam, imageSize)
     imgData = [];  % fix for issue #254
     err     = false;
     ex      = [];
     alpha   = [];
     % Temporarily set the paper size
     fig = ancestor(fig, 'figure');  % just in case it's not a figure...
+
+    % R2025a introduced explicit output size and padding for exportgraphics.
+    % Unlike print, this path does not consult the obsolete InvertHardcopy
+    % property. Keep the full figure geometry for the caller's cropping and
+    % background-based transparency processing. If exportgraphics cannot
+    % export a particular figure layout, retain the original print fallback.
+    if ~verLessThan('matlab', '25.1')
+        try
+            imgData = getExportGraphicsImage(fig, res_str, tmp_nam, imageSize);
+            alpha = 255 * ones(size(imgData,1), size(imgData,2), 'uint8');
+            return
+        catch
+            % Some container layouts are unsupported by exportgraphics.
+            % Preserve the original print pipeline in that case. Restore
+            % the caller's warning state even if the fallback fails.
+            hardcopyWarning = warning('off', ...
+                'MATLAB:print:InvertHardcopyIgnoredDefaultColorUsed');
+            restoreHardcopyWarning = onCleanup(@() warning(hardcopyWarning)); %#ok<NASGU>
+        end
+    end
+
     old_pos_mode    = get(fig, 'PaperPositionMode');
     old_orientation = get(fig, 'PaperOrientation');
     set(fig, 'PaperPositionMode','auto', 'PaperOrientation','portrait');
@@ -357,6 +381,54 @@ function [imgData, alpha, err, ex] = getPrintImage(fig, res_str, renderer, tmp_n
     end
     % Reset the paper size
     set(fig, 'PaperPositionMode',old_pos_mode, 'PaperOrientation',old_orientation);
+end
+
+% Render an RGB bitmap using the modern MATLAB graphics exporter.
+% imageSize is [width height] in pixels; res_str specifies the requested DPI.
+% The background is deliberately opaque: savefig performs its own alpha
+% computation using the rendered figure background. The temporary PNG is
+% removed on success and on failure.
+function imgData = getExportGraphicsImage(fig, res_str, tmp_nam, imageSize)
+    [folder, name] = fileparts(tmp_nam);
+    pngFile = fullfile(folder, [name '.png']);
+    cleanupFile = onCleanup(@() deleteExportImage(pngFile)); %#ok<NASGU>
+
+    backgroundColor = get(fig, 'Color');
+    if isequal(backgroundColor, 'none')
+        backgroundColor = 'current';
+    end
+
+    exportgraphics(fig, pngFile, ...
+        'BackgroundColor', backgroundColor, ...
+        'Resolution', str2double(res_str(3:end)), ...
+        'Units', 'pixels', ...
+        'Width', max(1, imageSize(1)), ...
+        'Height', max(1, imageSize(2)), ...
+        'Padding', 'figure', ...
+        'PreserveAspectRatio', 'on');
+
+    [imgData, colorMap] = imread(pngFile);
+    if ~isempty(colorMap)
+        imgData = uint8(round(255 * ind2rgb(imgData, colorMap)));
+    elseif isa(imgData, 'uint16')
+        imgData = uint8(round(double(imgData) / 257));
+    elseif islogical(imgData)
+        imgData = uint8(imgData) .* uint8(255);
+    end
+    if ismatrix(imgData)
+        imgData = repmat(imgData, [1, 1, 3]);
+    end
+    if ~isa(imgData, 'uint8') || size(imgData,3) ~= 3
+        error('savefig:print2array:InvalidBitmap', ...
+            'exportgraphics did not return an RGB uint8 bitmap.');
+    end
+end
+
+% Remove a temporary exported bitmap, if one was created.
+function deleteExportImage(filename)
+    if exist(filename, 'file') == 2
+        delete(filename);
+    end
 end
 
 % Return (and create, where necessary) the font path (for use by ghostscript)

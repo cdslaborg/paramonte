@@ -61,6 +61,9 @@ function verify(varval, vartype, maxlen, varname)
     else
         varname = string(strtrim(varname));
     end
+    if ischar(varval)
+        varval = string(varval);
+    end
     varval = varval(:);
     if ~pm.introspection.verified(varval, vartype, maxlen)
         disp(varname + " = ");

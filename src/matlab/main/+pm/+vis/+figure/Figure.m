@@ -245,7 +245,7 @@ classdef Figure < pm.matlab.Handle
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             self.figure.alphamap = [];
-            self.figure.color = "white";
+            self.figure.color = [];
             self.figure.colormap = [];
             self.figure.fileName = [];
             self.figure.innerPosition = [];

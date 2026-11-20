@@ -56,7 +56,7 @@ function [val, failed] = getKeyVal(key, hashmap)
     if  1 < nargout
         failed = true;
     end
-    for i = 1 : vararginLen - 1
+    for i = 1 : 2 : vararginLen - 1
         if strcmpi(string(hashmap{i}), string(key))
             if 1 < nargout
                 failed = false;
