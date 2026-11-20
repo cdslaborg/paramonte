@@ -3881,7 +3881,7 @@ module pm_strASCII
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if SK5_ENABLED
-    pure elemental module function getStrUpper_SK5(str) result(strUpper)
+    pure module function getStrUpper_SK5(str) result(strUpper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrUpper_SK5
 #endif
@@ -3892,7 +3892,7 @@ module pm_strASCII
 #endif
 
 #if SK4_ENABLED
-    pure elemental module function getStrUpper_SK4(str) result(strUpper)
+    pure module function getStrUpper_SK4(str) result(strUpper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrUpper_SK4
 #endif
@@ -3903,7 +3903,7 @@ module pm_strASCII
 #endif
 
 #if SK3_ENABLED
-    pure elemental module function getStrUpper_SK3(str) result(strUpper)
+    pure module function getStrUpper_SK3(str) result(strUpper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrUpper_SK3
 #endif
@@ -3914,7 +3914,7 @@ module pm_strASCII
 #endif
 
 #if SK2_ENABLED
-    pure elemental module function getStrUpper_SK2(str) result(strUpper)
+    pure module function getStrUpper_SK2(str) result(strUpper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrUpper_SK2
 #endif
@@ -3925,7 +3925,7 @@ module pm_strASCII
 #endif
 
 #if SK1_ENABLED
-    pure elemental module function getStrUpper_SK1(str) result(strUpper)
+    pure module function getStrUpper_SK1(str) result(strUpper)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrUpper_SK1
 #endif
@@ -4094,7 +4094,7 @@ module pm_strASCII
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if SK5_ENABLED
-    pure elemental module function getStrLower_SK5(str) result(strLower)
+    pure module function getStrLower_SK5(str) result(strLower)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrLower_SK5
 #endif
@@ -4105,7 +4105,7 @@ module pm_strASCII
 #endif
 
 #if SK4_ENABLED
-    pure elemental module function getStrLower_SK4(str) result(strLower)
+    pure module function getStrLower_SK4(str) result(strLower)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrLower_SK4
 #endif
@@ -4116,7 +4116,7 @@ module pm_strASCII
 #endif
 
 #if SK3_ENABLED
-    pure elemental module function getStrLower_SK3(str) result(strLower)
+    pure module function getStrLower_SK3(str) result(strLower)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrLower_SK3
 #endif
@@ -4127,7 +4127,7 @@ module pm_strASCII
 #endif
 
 #if SK2_ENABLED
-    pure elemental module function getStrLower_SK2(str) result(strLower)
+    pure module function getStrLower_SK2(str) result(strLower)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrLower_SK2
 #endif
@@ -4138,7 +4138,7 @@ module pm_strASCII
 #endif
 
 #if SK1_ENABLED
-    pure elemental module function getStrLower_SK1(str) result(strLower)
+    pure module function getStrLower_SK1(str) result(strLower)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrLower_SK1
 #endif

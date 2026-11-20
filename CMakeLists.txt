@@ -482,6 +482,36 @@ include(presetParaMonteBuild) # Predefines `CMAKE_BUILD_TYPE` and `CMAKE_CONFIGU
 include(presetParaMonteCompiler) # Predefines `CMAKE_Fortran_COMPILER` based on the user choice `fc`.
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# Create the ParaMonte Version Preprocessor Flag. This is to avoid recompilation cascades caused by changing the value of the version macro
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+if (TRUE)
+    include(setParaMonteVersion)
+    set(ParaMonteVersionFortranSourceFile "${paramonte_src_fortran_main_dir}/pm_paramonte@version.inc.F90")
+    # do not regenerate the file if it already exists and the version is correct.
+    # Otherwise, a file rewrite will lead to a recompilation which can be lengthy with interprocedural optimization.
+    set(fileGenEnabled ON)
+    if (EXISTS "${ParaMonteVersionFortranSourceFile}")
+        file(READ  "${ParaMonteVersionFortranSourceFile}" contents)
+        if ("${contents}" MATCHES "PARAMONTE_VERSION = \"${ParaMonteVersion}\"")
+            set(fileGenEnabled OFF)
+        endif()
+    endif()
+    if (fileGenEnabled)
+        file(WRITE  "${ParaMonteVersionFortranSourceFile}"
+                    "! WARNING - DO NOT CHANGE THE CONTENTS OF THIS FILE MANUALLY.\n"
+                    "! WARNING - This file is auto-generated and overwritten by the ParaMonte CMake build scripts.\n"
+                    "character(*, SK), parameter :: PARAMONTE_VERSION = \"${ParaMonteVersion}\""
+                    )
+    endif()
+    #   Alternatively, we can also define the preprocessor macro PARAMONTE_VERSION.
+    #   But changing the value of this macro (which is frequently done in production and release process(
+    #   will lead to complete rebuild of the entire library which extremely lengthy and unnecessary.
+    #   set(FPP_FLAGS "${FPP_FLAGS}" -DPARAMONTE_VERSION=\"'${ParaMonteVersion}'\") ! deprecated
+    #   add_compile_definitions("PARAMONTE_VERSION=${ParaMonteVersion}")
+endif()
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Specify source languages and standards.
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -497,6 +527,10 @@ if (TRUE)
     set(CMAKE_Fortran_STANDARD 2008)
     set(CMAKE_SHARED_LIBRARY_PREFIX_Fortran "") # The default is `lib`.
     set(CMAKE_STATIC_LIBRARY_PREFIX_Fortran "") # The default is `lib`.
+    project(ParaMonte VERSION "${ParaMonteVersion}" LANGUAGES C Fortran DESCRIPTION "A high-performance parallel Machine Learning library")
+    set(CMAKE_Fortran_PREPROCESS ON)
+    set(CMAKE_MACOSX_RPATH ON)
+    set(CMAKE_INSTALL_RPATH_USE_LINK_PATH ON)
     enable_language(Fortran) # Fortran C CXX # redundant
 endif()
 
@@ -1101,36 +1135,6 @@ endif()
 #option(ParaMonteExampleMVNPython_RUN_ENABLED   "Run ParaMonte library examples' sctips for Python" OFF)
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-# Create the ParaMonte Version Preprocessor Flag. This is to avoid recompilation cascades caused by changing the value of the version macro
-#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-if (TRUE)
-    include(setParaMonteVersion)
-    set(ParaMonteVersionFortranSourceFile "${paramonte_src_fortran_main_dir}/pm_paramonte@version.inc.F90")
-    # do not regenerate the file if it already exists and the version is correct.
-    # Otherwise, a file rewrite will lead to a recompilation which can be lengthy with interprocedural optimization.
-    set(fileGenEnabled ON)
-    if (EXISTS "${ParaMonteVersionFortranSourceFile}")
-        file(READ  "${ParaMonteVersionFortranSourceFile}" contents)
-        if ("${contents}" MATCHES "PARAMONTE_VERSION = \"${ParaMonteVersion}\"")
-            set(fileGenEnabled OFF)
-        endif()
-    endif()
-    if (fileGenEnabled)
-        file(WRITE  "${ParaMonteVersionFortranSourceFile}"
-                    "! WARNING - DO NOT CHANGE THE CONTENTS OF THIS FILE MANUALLY.\n"
-                    "! WARNING - This file is auto-generated and overwritten by the ParaMonte CMake build scripts.\n"
-                    "character(*, SK), parameter :: PARAMONTE_VERSION = \"${ParaMonteVersion}\""
-                    )
-    endif()
-    #   Alternatively, we can also define the preprocessor macro PARAMONTE_VERSION.
-    #   But changing the value of this macro (which is frequently done in production and release process(
-    #   will lead to complete rebuild of the entire library which extremely lengthy and unnecessary.
-    #   set(FPP_FLAGS "${FPP_FLAGS}" -DPARAMONTE_VERSION=\"'${ParaMonteVersion}'\") ! deprecated
-    #   add_compile_definitions("PARAMONTE_VERSION=${ParaMonteVersion}")
-endif()
-
-#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Create the ParaMonte build timestamp for unsupported compilers. The supported compilers use the intrinsic `__TIMESTAMP__`.
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -1486,11 +1490,6 @@ message(NOTICE "${pmattn} The ParaMonte library binary folder name: binname=\"${
 ####################################################################################################################################
 ####################################################################################################################################
 ####################################################################################################################################
-
-project(ParaMonte VERSION "${ParaMonteVersion}" LANGUAGES C Fortran DESCRIPTION "A high-performance parallel Machine Learning library")
-set(CMAKE_Fortran_PREPROCESS ON)
-set(CMAKE_MACOSX_RPATH ON)
-set(CMAKE_INSTALL_RPATH_USE_LINK_PATH ON)
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Find the BLAS library if needed.
