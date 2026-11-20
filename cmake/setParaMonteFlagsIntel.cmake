@@ -191,7 +191,7 @@ if(WIN32)
     /O3                             # Enable O3 optimization.
     /Qftz                           # Flushes subnormal results to zero. It may improve performance if the subnormal values are not critical to your application's behavior.
     /Qunroll                        # [:n] set the maximum number of times to unroll loops (no number n means automatic).
-    /Qunroll-aggressive             # use more aggressive unrolling for certain loops.
+   #/Qunroll-aggressive             # use more aggressive unrolling for certain loops.
     /Qinline-forceinline            # Instructs the compiler to force inlining of functions suggested for inlining whenever the compiler is capable doing so.
     /Qdiag-disable:10448            # Disables "ifort: remark #10448: Intel(R) Fortran Compiler Classic (ifort) is now deprecated and will be discontinued late 2024."
    #/Qvec                           # enable vectorization. This is now the default as of Intel 2019. Use /Qax to specify multiple target archs.

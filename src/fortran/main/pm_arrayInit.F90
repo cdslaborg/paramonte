@@ -191,7 +191,7 @@ module pm_arrayInit
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if SK5_ENABLED
-    PURE elemental module function getCoreHaloArr_D0_SK5(size, core, halo, coffset) result(array)
+    PURE module function getCoreHaloArr_D0_SK5(size, core, halo, coffset) result(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D0_SK5
 #endif
@@ -205,7 +205,7 @@ module pm_arrayInit
 #endif
 
 #if SK4_ENABLED
-    PURE elemental module function getCoreHaloArr_D0_SK4(size, core, halo, coffset) result(array)
+    PURE module function getCoreHaloArr_D0_SK4(size, core, halo, coffset) result(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D0_SK4
 #endif
@@ -219,7 +219,7 @@ module pm_arrayInit
 #endif
 
 #if SK3_ENABLED
-    PURE elemental module function getCoreHaloArr_D0_SK3(size, core, halo, coffset) result(array)
+    PURE module function getCoreHaloArr_D0_SK3(size, core, halo, coffset) result(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D0_SK3
 #endif
@@ -233,7 +233,7 @@ module pm_arrayInit
 #endif
 
 #if SK2_ENABLED
-    PURE elemental module function getCoreHaloArr_D0_SK2(size, core, halo, coffset) result(array)
+    PURE module function getCoreHaloArr_D0_SK2(size, core, halo, coffset) result(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D0_SK2
 #endif
@@ -247,7 +247,7 @@ module pm_arrayInit
 #endif
 
 #if SK1_ENABLED
-    PURE elemental module function getCoreHaloArr_D0_SK1(size, core, halo, coffset) result(array)
+    PURE module function getCoreHaloArr_D0_SK1(size, core, halo, coffset) result(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D0_SK1
 #endif

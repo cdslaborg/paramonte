@@ -4178,7 +4178,7 @@ module pm_distUnif
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if SK5_ENABLED
-    impure elemental module function getUnifRandRNGDLU_D0_SK5(lb, ub) result(rand)
+    impure module function getUnifRandRNGDLU_D0_SK5(lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_SK5
 #endif
@@ -4189,7 +4189,7 @@ module pm_distUnif
 #endif
 
 #if SK4_ENABLED
-    impure elemental module function getUnifRandRNGDLU_D0_SK4(lb, ub) result(rand)
+    impure module function getUnifRandRNGDLU_D0_SK4(lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_SK4
 #endif
@@ -4200,7 +4200,7 @@ module pm_distUnif
 #endif
 
 #if SK3_ENABLED
-    impure elemental module function getUnifRandRNGDLU_D0_SK3(lb, ub) result(rand)
+    impure module function getUnifRandRNGDLU_D0_SK3(lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_SK3
 #endif
@@ -4211,7 +4211,7 @@ module pm_distUnif
 #endif
 
 #if SK2_ENABLED
-    impure elemental module function getUnifRandRNGDLU_D0_SK2(lb, ub) result(rand)
+    impure module function getUnifRandRNGDLU_D0_SK2(lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_SK2
 #endif
@@ -4222,7 +4222,7 @@ module pm_distUnif
 #endif
 
 #if SK1_ENABLED
-    impure elemental module function getUnifRandRNGDLU_D0_SK1(lb, ub) result(rand)
+    impure module function getUnifRandRNGDLU_D0_SK1(lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_SK1
 #endif
@@ -5453,7 +5453,7 @@ module pm_distUnif
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if SK5_ENABLED
-    impure elemental module function getUnifRandRNGFLU_D0_SK5(rng, lb, ub) result(rand)
+    impure module function getUnifRandRNGFLU_D0_SK5(rng, lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_SK5
 #endif
@@ -5465,7 +5465,7 @@ module pm_distUnif
 #endif
 
 #if SK4_ENABLED
-    impure elemental module function getUnifRandRNGFLU_D0_SK4(rng, lb, ub) result(rand)
+    impure module function getUnifRandRNGFLU_D0_SK4(rng, lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_SK4
 #endif
@@ -5477,7 +5477,7 @@ module pm_distUnif
 #endif
 
 #if SK3_ENABLED
-    impure elemental module function getUnifRandRNGFLU_D0_SK3(rng, lb, ub) result(rand)
+    impure module function getUnifRandRNGFLU_D0_SK3(rng, lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_SK3
 #endif
@@ -5489,7 +5489,7 @@ module pm_distUnif
 #endif
 
 #if SK2_ENABLED
-    impure elemental module function getUnifRandRNGFLU_D0_SK2(rng, lb, ub) result(rand)
+    impure module function getUnifRandRNGFLU_D0_SK2(rng, lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_SK2
 #endif
@@ -5501,7 +5501,7 @@ module pm_distUnif
 #endif
 
 #if SK1_ENABLED
-    impure elemental module function getUnifRandRNGFLU_D0_SK1(rng, lb, ub) result(rand)
+    impure module function getUnifRandRNGFLU_D0_SK1(rng, lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_SK1
 #endif
@@ -6828,7 +6828,7 @@ module pm_distUnif
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if SK5_ENABLED
-    impure elemental module function getUnifRandRNGSLU_D0_SK5(rng, lb, ub) result(rand)
+    impure module function getUnifRandRNGSLU_D0_SK5(rng, lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_SK5
 #endif
@@ -6840,7 +6840,7 @@ module pm_distUnif
 #endif
 
 #if SK4_ENABLED
-    impure elemental module function getUnifRandRNGSLU_D0_SK4(rng, lb, ub) result(rand)
+    impure module function getUnifRandRNGSLU_D0_SK4(rng, lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_SK4
 #endif
@@ -6852,7 +6852,7 @@ module pm_distUnif
 #endif
 
 #if SK3_ENABLED
-    impure elemental module function getUnifRandRNGSLU_D0_SK3(rng, lb, ub) result(rand)
+    impure module function getUnifRandRNGSLU_D0_SK3(rng, lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_SK3
 #endif
@@ -6864,7 +6864,7 @@ module pm_distUnif
 #endif
 
 #if SK2_ENABLED
-    impure elemental module function getUnifRandRNGSLU_D0_SK2(rng, lb, ub) result(rand)
+    impure module function getUnifRandRNGSLU_D0_SK2(rng, lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_SK2
 #endif
@@ -6876,7 +6876,7 @@ module pm_distUnif
 #endif
 
 #if SK1_ENABLED
-    impure elemental module function getUnifRandRNGSLU_D0_SK1(rng, lb, ub) result(rand)
+    impure module function getUnifRandRNGSLU_D0_SK1(rng, lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_SK1
 #endif
@@ -8203,7 +8203,7 @@ module pm_distUnif
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if SK5_ENABLED
-    impure elemental module function getUnifRandRNGXLU_D0_SK5(rng, lb, ub) result(rand)
+    impure module function getUnifRandRNGXLU_D0_SK5(rng, lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_SK5
 #endif
@@ -8215,7 +8215,7 @@ module pm_distUnif
 #endif
 
 #if SK4_ENABLED
-    impure elemental module function getUnifRandRNGXLU_D0_SK4(rng, lb, ub) result(rand)
+    impure module function getUnifRandRNGXLU_D0_SK4(rng, lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_SK4
 #endif
@@ -8227,7 +8227,7 @@ module pm_distUnif
 #endif
 
 #if SK3_ENABLED
-    impure elemental module function getUnifRandRNGXLU_D0_SK3(rng, lb, ub) result(rand)
+    impure module function getUnifRandRNGXLU_D0_SK3(rng, lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_SK3
 #endif
@@ -8239,7 +8239,7 @@ module pm_distUnif
 #endif
 
 #if SK2_ENABLED
-    impure elemental module function getUnifRandRNGXLU_D0_SK2(rng, lb, ub) result(rand)
+    impure module function getUnifRandRNGXLU_D0_SK2(rng, lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_SK2
 #endif
@@ -8251,7 +8251,7 @@ module pm_distUnif
 #endif
 
 #if SK1_ENABLED
-    impure elemental module function getUnifRandRNGXLU_D0_SK1(rng, lb, ub) result(rand)
+    impure module function getUnifRandRNGXLU_D0_SK1(rng, lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_SK1
 #endif
@@ -9578,7 +9578,7 @@ module pm_distUnif
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if SK5_ENABLED
-    impure elemental module function getUnifRandRNGGLU_D0_SK5(rng, lb, ub) result(rand)
+    impure module function getUnifRandRNGGLU_D0_SK5(rng, lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_SK5
 #endif
@@ -9590,7 +9590,7 @@ module pm_distUnif
 #endif
 
 #if SK4_ENABLED
-    impure elemental module function getUnifRandRNGGLU_D0_SK4(rng, lb, ub) result(rand)
+    impure module function getUnifRandRNGGLU_D0_SK4(rng, lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_SK4
 #endif
@@ -9602,7 +9602,7 @@ module pm_distUnif
 #endif
 
 #if SK3_ENABLED
-    impure elemental module function getUnifRandRNGGLU_D0_SK3(rng, lb, ub) result(rand)
+    impure module function getUnifRandRNGGLU_D0_SK3(rng, lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_SK3
 #endif
@@ -9614,7 +9614,7 @@ module pm_distUnif
 #endif
 
 #if SK2_ENABLED
-    impure elemental module function getUnifRandRNGGLU_D0_SK2(rng, lb, ub) result(rand)
+    impure module function getUnifRandRNGGLU_D0_SK2(rng, lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_SK2
 #endif
@@ -9626,7 +9626,7 @@ module pm_distUnif
 #endif
 
 #if SK1_ENABLED
-    impure elemental module function getUnifRandRNGGLU_D0_SK1(rng, lb, ub) result(rand)
+    impure module function getUnifRandRNGGLU_D0_SK1(rng, lb, ub) result(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_SK1
 #endif

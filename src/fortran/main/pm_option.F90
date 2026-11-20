@@ -141,7 +141,7 @@ module pm_option
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if SK5_ENABLED
-    PURE elemental module function getOption_D0_SK5(default, optional) result(value)
+    PURE module function getOption_D0_SK5(default, optional) result(value)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getOption_D0_SK5
 #endif
@@ -153,7 +153,7 @@ module pm_option
 #endif
 
 #if SK4_ENABLED
-    PURE elemental module function getOption_D0_SK4(default, optional) result(value)
+    PURE module function getOption_D0_SK4(default, optional) result(value)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getOption_D0_SK4
 #endif
@@ -165,7 +165,7 @@ module pm_option
 #endif
 
 #if SK3_ENABLED
-    PURE elemental module function getOption_D0_SK3(default, optional) result(value)
+    PURE module function getOption_D0_SK3(default, optional) result(value)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getOption_D0_SK3
 #endif
@@ -177,7 +177,7 @@ module pm_option
 #endif
 
 #if SK2_ENABLED
-    PURE elemental module function getOption_D0_SK2(default, optional) result(value)
+    PURE module function getOption_D0_SK2(default, optional) result(value)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getOption_D0_SK2
 #endif
@@ -189,7 +189,7 @@ module pm_option
 #endif
 
 #if SK1_ENABLED
-    PURE elemental module function getOption_D0_SK1(default, optional) result(value)
+    PURE module function getOption_D0_SK1(default, optional) result(value)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getOption_D0_SK1
 #endif

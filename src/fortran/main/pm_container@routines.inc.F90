@@ -70,13 +70,13 @@
 		integer(IK) :: idim
 		if (present(trimmed)) then
             if (trimmed) then
-				do concurrent(idim = 1 : size(val, 1, IK))
+				do idim = 1, size(val, 1, IK)
 					container(idim)%val = val(idim)
 				end do
 				return
             end if
         end if
-		do concurrent(idim = 1 : size(val, 1, IK))
+		do idim = 1, size(val, 1, IK)
 			container(idim)%val = trim(val(idim))
 		end do
 #elif   getVal_ENABLED
